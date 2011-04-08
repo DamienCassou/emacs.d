@@ -1,0 +1,80 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Singapore}           % Thème central.
+  \useoutertheme{infolines}      % Utilise les en-têtes et pieds de pages
+                                 % d'un autre thème.
+  \setbeamercovered{transparent} % Utilise la transparence plutôt que
+                                 % masquer complètement les éléments
+                                 % futurs.
+  \setbeamertemplate{navigation symbols}{} % Pas de barre de navigation
+}
+
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\graphicspath{{figures/}} 
+\newcommand{\fig}[2]{ 
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=#1\textwidth]{#2}
+    \end{center}
+  \end{figure}
+}
+
+\title{Title}
+
+\subtitle{Subtitle}
+
+\author{Damien \textsc{Cassou}}
+
+\institute
+{
+Phoenix
+}
+
+\date
+{\today{}}
+
+% Si vous avez un logo :
+%\titlegraphic{\includegraphics[scale=0.3]{esug}}
+
+\subject{Talks}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+\begin{document}
+
+\begin{frame}[plain] % <- 'plain' to remove header/footer
+  \titlepage
+\end{frame}
+
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: utf-8
+%%% TeX-PDF-mode: t
+%%% ispell-local-dictionary: "english"
+%%% End: 
