@@ -62,6 +62,7 @@
 		 ("\\\\macitation" ispell-tex-arg-end 3)
 		 ("\\\\mm" ispell-tex-arg-end)
 		 ("\\\\begin{lstlisting}" . "\\\\end{lstlisting}")
+		 ("\\\\begin{code}{}" . "\\\\end{code}")
                  ))
        (append (cadr ispell-tex-skip-alists)
 	       '(("tabular" ispell-tex-arg-end)
