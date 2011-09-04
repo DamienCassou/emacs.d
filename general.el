@@ -102,6 +102,15 @@ all get spell checked."
                           nil t))))
 (global-set-key (kbd "C-c r") 'xsteve-ido-choose-from-recentf)
 
+(defun LaTeX-align-table ()
+  (interactive)
+  (save-excursion
+    (LaTeX-mark-environment)
+    (while (re-search-forward "& *" (region-end) t)
+      (replace-match "& " nil nil))
+    (LaTeX-mark-environment)
+    (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))
+
 (defun ido-execute ()
   "It would be really nice if ido mode could be implemented also
 for M-x (command completion)."
