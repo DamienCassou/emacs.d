@@ -1,17 +1,20 @@
+(require 'bibtex)
+
 (defun my-bibtex-compare-key ()
   (interactive)
-  (let ((current-key (downcase (save-excursion
-		       (re-search-forward (if (eq entry-type 'string)
-					      bibtex-string-maybe-empty-head
-					    bibtex-entry-maybe-empty-head))
-		       (if (match-beginning bibtex-key-in-head)
-			   (buffer-substring (match-beginning bibtex-key-in-head)
-					  (match-end bibtex-key-in-head))))))
+  (let ((current-key
+	 (downcase (save-excursion
+		     (re-search-forward (if (eq bibtex-entry-type 'string)
+					    bibtex-string-maybe-empty-head
+					  bibtex-entry-maybe-empty-head))
+		     (if (match-beginning bibtex-key-in-head)
+			 (buffer-substring (match-beginning bibtex-key-in-head)
+					   (match-end bibtex-key-in-head))))))
 	(autokey (downcase (bibtex-generate-autokey))))
     (unless (my-string-startwith-p current-key autokey)
       (display-warning '(bibtex) (concat "The generated key '" autokey
-		     "' does not look like your key '"
-		     current-key "' with a suffix")))
+					 "' does not look like your key '"
+					 current-key "' with a suffix")))
     (if (string= current-key autokey)
 	(display-warning '(bibtex) (concat "There is no suffix at the end of key '" current-key "'")))))
 
