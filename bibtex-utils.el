@@ -92,6 +92,7 @@ the empty string will quit the prompt."
   (skip-chars-backward "}")
   (unless arg
     (let ((cnt 0)
+	  k
 	  (keywords (bibtex-collect-keywords-values)))
       (while (and (setq k (completing-read 
 			   "Keyword (RET to quit): " keywords nil))
