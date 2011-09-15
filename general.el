@@ -12,6 +12,10 @@
   (global-set-key (kbd "C-z") 'suspend-on-tty-only)
   (global-set-key (kbd "C-x C-z") 'suspend-on-tty-only))
 
+;; Change theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
+(load-theme 'zenburn t nil)
+
 ;; Clipboard handling
 (global-set-key (kbd "C-w") 'clipboard-kill-region)
 (global-set-key (kbd "M-w") 'clipboard-kill-ring-save)
@@ -180,6 +184,16 @@ for M-x (command completion)."
 
 ;; ediff
 (require 'ediff)
+
+;; Java
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/vendor"))
+(require 'eclim)
+
+(setq eclim-auto-save t)
+(global-eclim-mode)
+
+
 
 ;;; When saving this file, a .elc is automatically generated.
 ;;; Local Variables:
