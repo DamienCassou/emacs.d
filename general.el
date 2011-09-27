@@ -37,6 +37,8 @@
 ;; The following lines are always needed.  Choose your own keys.
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
+(add-hook 'text-mode-hook 'flyspell-mode)
+
 ;; ispell must ignore LaTeX commands and environments
 (setq ispell-tex-skip-alists
       (list
@@ -186,17 +188,12 @@ for M-x (command completion)."
 (require 'ediff)
 
 ;; Java
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/vendor"))
-(require 'eclim)
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/vendor"))
+;; (require 'eclim)
 
-(setq eclim-auto-save t)
-(global-eclim-mode)
+;; (setq eclim-auto-save t)
+;(global-eclim-mode)
 
 
 
-;;; When saving this file, a .elc is automatically generated.
-;;; Local Variables:
-;;; eval: (defun byte-compile-this-file () (write-region (point-min) (point-max) buffer-file-name nil 't) (byte-compile-file buffer-file-name) nil)
-;;; write-file-functions: (byte-compile-this-file)
-;;; End:
