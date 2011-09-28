@@ -13,8 +13,9 @@
   (global-set-key (kbd "C-x C-z") 'suspend-on-tty-only))
 
 ;; Change theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
-(load-theme 'zenburn t nil)
+(when (and window-system (listp  'custom-theme-load-path))
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
+    (load-theme 'zenburn t nil))
 
 ;; Clipboard handling
 (global-set-key (kbd "C-w") 'clipboard-kill-region)
