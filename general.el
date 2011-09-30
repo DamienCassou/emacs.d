@@ -1,7 +1,5 @@
 ;; Path
-(setenv "PATH"
-	(concat "/opt/ghc/bin:/opt/haskell-platform/bin:" (getenv "PATH")))
-(setq exec-path (append exec-path '("/opt/ghc/bin" "/opt/haskell-platform/bin")))
+(add-to-list 'exec-path "~/Documents/configuration/scripts/")
 
 (defun suspend-on-tty-only ()
   (interactive)
@@ -187,6 +185,9 @@ for M-x (command completion)."
 ;; ediff
 (require 'ediff)
 
+;; misc functions
+(load "functions")
+
 ;; Java
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/vendor"))
@@ -194,6 +195,4 @@ for M-x (command completion)."
 
 ;; (setq eclim-auto-save t)
 ;; (global-eclim-mode)
-
-
-
+ 
