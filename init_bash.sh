@@ -1,0 +1,1 @@
+export PAGER=cat
