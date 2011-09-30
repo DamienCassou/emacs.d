@@ -188,12 +188,12 @@ for M-x (command completion)."
 (require 'ediff)
 
 ;; Java
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/"))
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/eclim/emacs-eclim/vendor"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/vendor"))
 ;; (require 'eclim)
 
 ;; (setq eclim-auto-save t)
-;(global-eclim-mode)
+;; (global-eclim-mode)
 
 
 
