@@ -34,12 +34,11 @@ If SUDO is not nil `method' is set to \"sudo\" and `user' to
 	      localname)))
      ,@body))
 
-"from: git://github.com/renard/emacs-el.git"
-(defun cw:shell-run (&optional sudo)
-  "Run terminal in current buffer directory."
-  (interactive "P")
-  (cw:with-parse-directory sudo
-			   (progn
-			     (shell))))
+;; adapted from git://github.com/renard/emacs-el.git with a dedicated
+;; shell per directory
+(defun cw:shell:run ()
+  "Run shell in `default-directory' and set buffer name."
+  (interactive)
+  (shell (format "* Shell: %s *" default-directory)))
 
-(global-set-key (kbd "C-M-'") 'cw:shell-run)
+(global-set-key (kbd "C-M-'") 'cw:shell:run)
