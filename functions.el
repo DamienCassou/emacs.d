@@ -1,4 +1,5 @@
 (require 'cl)
+(require 'tramp)
 
 "from: git://github.com/renard/emacs-el.git"
 (defmacro cw:with-parse-directory (sudo &rest body)
