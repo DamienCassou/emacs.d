@@ -1,0 +1,153 @@
+;;; -*- Mode: Emacs-Lisp -*-
+(add-to-list 'load-path "~/.emacs.d")
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(require 'el-get)
+
+(setq el-get-sources
+      '(el-get java-mode-indent-annotations reftex markdown-mode fill-column-indicator switch-window
+
+	       (:name magit
+		      :features (magit magit-svn)
+		      :after (lambda ()
+			       (global-set-key (kbd "C-x g") 'magit-status)))
+
+	       (:name psvn
+		      :after (lambda () 
+			       (global-set-key (kbd "C-x s") 'svn-status)))
+
+	       (:name browse-kill-ring
+		      :after (lambda ()
+			       (browse-kill-ring-default-keybindings)))
+
+	       (:name auctex
+		      :after (lambda ()
+			       (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+			       (require 'bibtex-utils)
+			       (load "mybibtex" t t t)
+			       (eval-after-load "tex"
+				 '(add-to-list 'TeX-command-list
+					       '("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX nil t :help "Run Bibtex on all aux files") t))))
+
+	       (:name textlint
+		      :url "git@github.com:DamienCassou/textlint.git")
+
+	       (:name haskell-mode
+		      :features haskell-mode
+		      :after (lambda () 
+			       (define-key haskell-mode-map "\C-ch" 'haskell-hoogle)))))
+
+(el-get)
+
+(load "general")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(LaTeX-section-hook (quote (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
+ '(LaTeX-verbatim-environments (quote ("verbatim" "verbatim*" "lstlisting")))
+ '(TeX-PDF-mode t)
+ '(TeX-auto-save t)
+ '(TeX-default-unit-for-image "\\linewidth")
+ '(TeX-engine-alist (quote ((unsafelatex "UnsafeLaTeX" "tex -shell-escape" "latex -shell-escape" ""))))
+ '(TeX-master nil)
+ '(TeX-parse-self t)
+ '(TeX-source-correlate-method (quote synctex))
+ '(TeX-source-correlate-mode t)
+ '(ansi-color-names-vector [zenburn-bg zenburn-red zenburn-green zenburn-yellow zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg])
+ '(backup-by-copying t)
+ '(backup-directory-alist (quote (("." . "~/.saves"))))
+ '(bibtex-align-at-equal-sign t)
+ '(bibtex-autokey-name-case-convert-function (quote identity))
+ '(bibtex-autokey-name-length 4)
+ '(bibtex-autokey-titlewords 0)
+ '(bibtex-entry-format (quote (opts-or-alts required-fields whitespace realign last-comma delimiters)))
+ '(bookmark-save-flag 1)
+ '(calendar-week-start-day 1)
+ '(column-number-mode t)
+ '(confirm-kill-emacs (quote y-or-n-p))
+ '(current-language-environment "UTF-8")
+ '(custom-safe-themes (quote ("5f22336e17239d531a0321fc3a28d3b89556b9fb" "9cab5288bad0d08a8684b0a3ed834cf16c22e04d" "86adc18aa6fb3ea0a801831f7b0bc88ed5999386" default)))
+ '(default-frame-alist (quote ((cursor-type bar . 3) (left . 10) (top . 10) (font . "-unknown-dejavu sans mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1"))))
+ '(delete-by-moving-to-trash t)
+ '(delete-old-versions t)
+ '(diff-switches "-u")
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
+ '(display-time-mode t)
+ '(eclim-executable "~/usr/eclipse.indigo-eclim/eclim")
+ '(eclim-print-debug-messages t)
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(enable-local-variables :all)
+ '(eval-expression-print-level 7)
+ '(flyspell-tex-command-regexp "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+ '(font-latex-match-bold-command-keywords (quote (("damien" "{") ("dc" "{") ("eb" "{") ("bb" "{") ("cc" "{") ("jl" "{") ("sd" "{") ("dp" "{") ("nl" "{"))))
+ '(font-latex-match-math-command-keywords (quote (("mm" "{") ("contract" "{{{"))))
+ '(font-latex-match-reference-keywords (quote (("ccauthor" "[{") ("cauthor" "{"))))
+ '(font-latex-match-type-command-keywords (quote (("ct" "{") ("method" "{") ("class" "{"))))
+ '(frame-title-format "Emacs: %b" t)
+ '(global-font-lock-mode t)
+ '(global-hl-line-mode t)
+ '(global-pair-mode t)
+ '(haskell-hoogle-command "hoogle")
+ '(icomplete-mode t)
+ '(ido-confirm-unique-completion t)
+ '(ido-enable-flex-matching t)
+ '(ido-enabled (quote both) t (ido))
+ '(ido-file-extensions-order (quote (".tex" ".el" ".pdf")))
+ '(ido-ignore-buffers (quote ("\\` " "^*Back" ".*Completion" "^*Ido")))
+ '(ido-max-prospects 6)
+ '(ido-mode (quote both) nil (ido))
+ '(inhibit-startup-screen t)
+ '(initial-buffer-choice "~/Documents/configuration/org/gtd.org")
+ '(initial-scratch-message nil)
+ '(io-command "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
+ '(kept-new-versions 6)
+ '(menu-bar-mode nil)
+ '(org-agenda-files "~/Documents/configuration/org/agenda_files")
+ '(org-file-apps (quote ((auto-mode . emacs) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "/usr/bin/acroread %s") (t . "/usr/bin/gnome-open %s"))))
+ '(org-hide-leading-stars t)
+ '(org-log-done t)
+ '(org-special-ctrl-a/e t)
+ '(org-time-stamp-rounding-minutes 10)
+ '(proced-filter (quote all))
+ '(read-file-name-completion-ignore-case t)
+ '(recentf-auto-cleanup 300)
+ '(recentf-exclude (quote ("~$" "\\.log$")))
+ '(recentf-keep (quote (recentf-keep-default-predicate ".*\\.emacs$" ".*general.el$")))
+ '(recentf-max-saved-items 4000)
+ '(recentf-mode t)
+ '(recentf-save-file "~/.emacs.d/recentf")
+ '(reftex-plug-into-AUCTeX t)
+ '(reftex-view-crossref-cite-macros "\\`\\\\cite\\|cite\\*?\\'\\|bibentry\\|ccauthor")
+ '(reftex-view-crossref-extra nil)
+ '(safe-local-variable-values (quote ((TeX-master . \.\./main) (eval whitespace-mode) (eval set-face-attribute (quote whitespace-line) nil :background "red1" :foreground "yellow" :weight (quote bold)) (eval set-face-attribute (quote whitespace-tab) nil :background "red1" :foreground "yellow" :weight (quote bold)) (whitespace-style face trailing lines-tail) (whitespace-line-column . 80) (eval require (quote whitespace)) (sh-basic-offset . 4) (TeX-master . Lint\.tex) (sh-indent-comment . t) (default-justification quote full) (LocalWords . ADL) (reftex-default-bibliography "../Bibliography.bib") (reftex-default-bibliography quote ("../Bibliography.bib")) (reftex-default-bibliography . "../Bibliography.bib") (TeX-engine . unsafelatex) (eval defun byte-compile-this-file nil (write-region (point-min) (point-max) buffer-file-name nil (quote t)) (byte-compile-file buffer-file-name) nil) (TeX-master . flyer) (TeX-master . t) (TeX-PDF-mode . t))))
+ '(save-place t nil (saveplace))
+ '(save-place-file "~/.emacs.d/places")
+ '(scroll-bar-mode nil)
+ '(sentence-end-double-space nil)
+ '(sh-indent-comment t)
+ '(show-paren-mode t)
+ '(show-paren-style (quote mixed))
+ '(svn-status-hide-unmodified t)
+ '(svn-status-prefix-key [(control x) 118])
+ '(svn-status-verbose t)
+ '(tool-bar-mode nil)
+ '(tooltip-mode nil)
+ '(truncate-partial-width-windows nil)
+ '(undo-limit 50000)
+ '(user-mail-address "damien.cassou@gmail.com")
+ '(vc-follow-symlinks nil)
+ '(version-control t)
+ '(visible-bell t)
+ '(winner-mode t nil (winner))
+ '(woman-use-own-frame nil)
+ '(x-select-enable-clipboard nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
