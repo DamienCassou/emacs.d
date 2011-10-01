@@ -143,7 +143,6 @@
  '(version-control t)
  '(visible-bell t)
  '(winner-mode t nil (winner))
- '(woman-use-own-frame nil)
  '(x-select-enable-clipboard nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
