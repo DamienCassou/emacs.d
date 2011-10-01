@@ -1,46 +1,4 @@
 ;;; -*- Mode: Emacs-Lisp -*-
-(add-to-list 'load-path "~/.emacs.d")
-
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(require 'el-get)
-
-(setq el-get-sources
-      '(el-get java-mode-indent-annotations reftex markdown-mode fill-column-indicator switch-window
-
-	       (:name magit
-		      :features (magit magit-svn)
-		      :after (lambda ()
-			       (global-set-key (kbd "C-x g") 'magit-status)))
-
-	       (:name psvn
-		      :after (lambda () 
-			       (global-set-key (kbd "C-x s") 'svn-status)))
-
-	       (:name browse-kill-ring
-		      :after (lambda ()
-			       (browse-kill-ring-default-keybindings)))
-
-	       (:name auctex
-		      :after (lambda ()
-			       (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-			       (require 'bibtex-utils)
-			       (load "mybibtex" t t t)
-			       (eval-after-load "tex"
-				 '(add-to-list 'TeX-command-list
-					       '("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX nil t :help "Run Bibtex on all aux files") t))))
-
-	       (:name textlint
-		      :url "git@github.com:DamienCassou/textlint.git")
-
-	       (:name haskell-mode
-		      :features haskell-mode
-		      :after (lambda () 
-			       (define-key haskell-mode-map "\C-ch" 'haskell-hoogle)))))
-
-(el-get)
-
-(load "general")
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -80,6 +38,7 @@
  '(eclim-executable "~/usr/eclipse.indigo-eclim/eclim")
  '(eclim-print-debug-messages t)
  '(ediff-split-window-function (quote split-window-horizontally))
+ '(el-get-user-package-directory "~/.emacs.d/init-packages")
  '(enable-local-variables :all)
  '(eval-expression-print-level 7)
  '(flyspell-tex-command-regexp "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
@@ -150,3 +109,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-to-list 'load-path "~/.emacs.d")
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
+
+(setq el-get-sources '(el-get java-mode-indent-annotations reftex
+      markdown-mode fill-column-indicator switch-window auctex
+      magit psvn))
+
+(el-get 'sync)
+
+(load "general")
