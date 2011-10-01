@@ -75,7 +75,6 @@
  '(read-file-name-completion-ignore-case t)
  '(recentf-auto-cleanup 300)
  '(recentf-exclude (quote ("~$" "\\.log$")))
- '(recentf-keep (quote (recentf-keep-default-predicate ".*\\.emacs$" ".*general.el$")))
  '(recentf-max-saved-items 4000)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/recentf")
