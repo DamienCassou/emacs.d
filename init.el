@@ -121,10 +121,13 @@
      (end-of-buffer)
      (eval-print-last-sexp))))
 
-(setq el-get-sources '(el-get java-mode-indent-annotations reftex
-      markdown-mode fill-column-indicator switch-window auctex
-      magit psvn))
+;; Omit auctex and reftex as they can't be compiled on all my
+;; computers. I will install them manually on the computers I want
+;; them.
+(setq el-get-sources '(el-get java-mode-indent-annotations
+      browse-kill-ring markdown-mode fill-column-indicator
+      switch-window magit psvn textlint))
 
-(el-get 'sync)
+(el-get 'sync el-get-sources)
 
 (load "general")
