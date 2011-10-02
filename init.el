@@ -100,8 +100,7 @@
  '(vc-follow-symlinks nil)
  '(version-control t)
  '(visible-bell t)
- '(winner-mode t nil (winner))
- '(x-select-enable-clipboard nil))
+ '(winner-mode t nil (winner)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
