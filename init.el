@@ -64,6 +64,7 @@
  '(initial-scratch-message nil)
  '(io-command "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
  '(kept-new-versions 6)
+ '(magit-commit-signoff t)
  '(menu-bar-mode nil)
  '(org-agenda-files "~/Documents/configuration/org/agenda_files")
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "/usr/bin/acroread %s") (t . "/usr/bin/gnome-open %s"))))
@@ -113,19 +114,22 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
-  (url-retrieve
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda (s)
-     (end-of-buffer)
-     (eval-print-last-sexp))))
+  (when (executable-find "git")
+    (with-current-buffer
+	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+      (end-of-buffer)
+      (eval-print-last-sexp))))
 
-;; Omit auctex and reftex as they can't be compiled on all my
-;; computers. I will install them manually on the computers I want
-;; them.
-(setq el-get-sources '(el-get java-mode-indent-annotations
+(eval-after-load 'el-get
+  '(progn
+     (setq el-get-sources '(java-mode-indent-annotations
       browse-kill-ring markdown-mode fill-column-indicator
-      switch-window magit psvn textlint))
+      switch-window magit psvn textlint dired-toggle-sudo undo-tree mingus))
 
-(el-get 'sync el-get-sources)
+     (when (executable-find "latex")
+       (add-to-list 'el-get-sources 'auctex)
+       (add-to-list 'el-get-sources 'reftex))
+
+     (el-get 'sync el-get-sources)))
 
 (load "general")
