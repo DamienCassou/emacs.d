@@ -188,6 +188,12 @@ for M-x (command completion)."
 ;; misc functions
 (load "functions")
 
+(defun no-exit ()
+  (interactive)
+  (message "I don't want to quit. If you really want to, call save-buffers-kill-terminal manually"))
+
+(global-set-key (kbd "C-x C-c") 'no-exit)
+
 ;; Java
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/vendor"))
