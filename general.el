@@ -92,20 +92,6 @@ all get spell checked."
 ;; Make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Provides a keyboard way to find recent files
-(require 'recentf)
-(defun xsteve-ido-choose-from-recentf ()
-  "Use ido to select a recently opened file from the `recentf-list'"
-  (interactive)
-  (let ((home (expand-file-name (getenv "HOME"))))
-    (find-file
-     (ido-completing-read "Recentf open: "
-                          (mapcar (lambda (path)
-                                    (replace-regexp-in-string home "~" path))
-                                  recentf-list)
-                          nil t))))
-(global-set-key (kbd "C-c r") 'xsteve-ido-choose-from-recentf)
-
 (defun LaTeX-align-table ()
   (interactive)
   (save-excursion
