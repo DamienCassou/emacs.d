@@ -27,7 +27,7 @@
  '(column-number-mode t)
  '(confirm-kill-emacs (quote y-or-n-p))
  '(current-language-environment "UTF-8")
- '(custom-safe-themes (quote ("5f22336e17239d531a0321fc3a28d3b89556b9fb" "9cab5288bad0d08a8684b0a3ed834cf16c22e04d" "86adc18aa6fb3ea0a801831f7b0bc88ed5999386" default)))
+ '(custom-safe-themes (quote ("e433724c30fbe75de87e5062e85e4db81c9d6324" "0174d99a8f1fdc506fa54403317072982656f127" "5600dc0bb4a2b72a613175da54edb4ad770105aa" "4d3ca0f22cacbf6b076240a05cb8214f926e09c8" "5f22336e17239d531a0321fc3a28d3b89556b9fb" "9cab5288bad0d08a8684b0a3ed834cf16c22e04d" "86adc18aa6fb3ea0a801831f7b0bc88ed5999386" default)))
  '(default-frame-alist (quote ((cursor-type bar . 3) (left . 10) (top . 10) (font . "-unknown-dejavu sans mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1"))))
  '(delete-by-moving-to-trash t)
  '(delete-old-versions t)
@@ -126,8 +126,9 @@
 (eval-after-load 'el-get
   '(progn
      (setq el-get-sources '(java-mode-indent-annotations
-      browse-kill-ring markdown-mode fill-column-indicator
-      switch-window magit psvn textlint dired-toggle-sudo undo-tree mingus))
+      browse-kill-ring markdown-mode fill-column-indicator dired-toggle-sudo
+      switch-window magit psvn textlint dired-toggle-sudo undo-tree ;mingus
+      ))
 
      (when (executable-find "latex")
        (add-to-list 'el-get-sources 'auctex)
