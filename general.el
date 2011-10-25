@@ -11,8 +11,10 @@
   (global-set-key (kbd "C-x C-z") 'suspend-on-tty-only))
 
 ;; Change theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
-(load-theme 'zenburn t nil)
+(let ((themes-directory "~/.emacs.d/themes/"))
+  (when (file-directory-p themes-directory)
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
+    (load-theme 'zenburn t nil)))
 
 ;; Clipboard handling
 (global-set-key (kbd "C-w") 'clipboard-kill-region)
@@ -174,11 +176,13 @@ for M-x (command completion)."
 ;; misc functions
 (load "functions")
 
-(defun no-exit ()
-  (interactive)
-  (message "I don't want to quit. If you really want to, call save-buffers-kill-terminal manually"))
-
-(global-set-key (kbd "C-x C-c") 'no-exit)
+;; Prevents existing by accident
+(global-set-key (kbd "C-x C-c")
+		(lambda (arg)
+		  (interactive "P")
+		  (if arg
+		      (save-buffers-kill-terminal)
+		    (message "I don't want to quit. If you really want to, use prefix arg `C-u'"))))
 
 ;; Java
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))
