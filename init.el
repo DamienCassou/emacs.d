@@ -27,7 +27,7 @@
  '(column-number-mode t)
  '(confirm-kill-emacs (quote y-or-n-p))
  '(current-language-environment "UTF-8")
- '(custom-safe-themes (quote ("e433724c30fbe75de87e5062e85e4db81c9d6324" "0174d99a8f1fdc506fa54403317072982656f127" "5600dc0bb4a2b72a613175da54edb4ad770105aa" "4d3ca0f22cacbf6b076240a05cb8214f926e09c8" "5f22336e17239d531a0321fc3a28d3b89556b9fb" "9cab5288bad0d08a8684b0a3ed834cf16c22e04d" "86adc18aa6fb3ea0a801831f7b0bc88ed5999386" default)))
+ '(custom-safe-themes (quote ("a38d7b7badd76088ea8773225211de0051f982cb" "e5f3b83e098ccb62ef1970137ba430c160e1a900" "47928ab6068ab1edc2ca0407dd6d1fd67f684a14" "50dc3435389dc2a4854ad124e90b2b576bd4b591" "e9704e8b957e4151cd570c5f25ec81c297aa2b6a" "e433724c30fbe75de87e5062e85e4db81c9d6324" "0174d99a8f1fdc506fa54403317072982656f127" "5600dc0bb4a2b72a613175da54edb4ad770105aa" "4d3ca0f22cacbf6b076240a05cb8214f926e09c8" "5f22336e17239d531a0321fc3a28d3b89556b9fb" "9cab5288bad0d08a8684b0a3ed834cf16c22e04d" "86adc18aa6fb3ea0a801831f7b0bc88ed5999386" default)))
  '(default-frame-alist (quote ((cursor-type bar . 3) (left . 10) (top . 10) (font . "-unknown-dejavu sans mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1"))))
  '(delete-by-moving-to-trash t)
  '(delete-old-versions t)
@@ -50,6 +50,7 @@
  '(frame-title-format "Emacs: %b" t)
  '(global-font-lock-mode t)
  '(global-hl-line-mode t)
+ '(global-hl-line-sticky-flag t)
  '(global-pair-mode t)
  '(haskell-hoogle-command "hoogle")
  '(icomplete-mode t)
@@ -117,7 +118,8 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
-  (when (executable-find "git")
+  (if (not (executable-find "git"))
+      (message "Warning: Git is not available. I can't install el-get")
     (with-current-buffer
 	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
       (end-of-buffer)
