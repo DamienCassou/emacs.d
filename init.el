@@ -89,6 +89,7 @@
  '(safe-local-variable-values (quote ((TeX-master . \.\./main) (eval whitespace-mode) (eval set-face-attribute (quote whitespace-line) nil :background "red1" :foreground "yellow" :weight (quote bold)) (eval set-face-attribute (quote whitespace-tab) nil :background "red1" :foreground "yellow" :weight (quote bold)) (whitespace-style face trailing lines-tail) (whitespace-line-column . 80) (eval require (quote whitespace)) (sh-basic-offset . 4) (TeX-master . Lint\.tex) (sh-indent-comment . t) (default-justification quote full) (LocalWords . ADL) (reftex-default-bibliography "../Bibliography.bib") (reftex-default-bibliography quote ("../Bibliography.bib")) (reftex-default-bibliography . "../Bibliography.bib") (TeX-engine . unsafelatex) (eval defun byte-compile-this-file nil (write-region (point-min) (point-max) buffer-file-name nil (quote t)) (byte-compile-file buffer-file-name) nil) (TeX-master . flyer) (TeX-master . t) (TeX-PDF-mode . t))))
  '(save-place t nil (saveplace))
  '(save-place-file "~/.emacs.d/places")
+ '(scheme-program-name "petite")
  '(scroll-bar-mode nil)
  '(sentence-end-double-space nil)
  '(sh-indent-comment t)
