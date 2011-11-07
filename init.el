@@ -11,6 +11,8 @@
  '(TeX-default-unit-for-image "\\linewidth")
  '(TeX-master nil)
  '(TeX-parse-self t)
+ '(TeX-view-program-list (quote (("AcrobatReader" "acroread %o"))))
+ '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi") (output-pdf "AcrobatReader") (output-html "xdg-open"))))
  '(ansi-color-names-vector [zenburn-bg zenburn-red zenburn-green zenburn-yellow zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg])
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.saves"))))
@@ -133,6 +135,9 @@
      (when (executable-find "latex")
        (add-to-list 'el-get-sources 'auctex)
        (add-to-list 'el-get-sources 'reftex))
+
+     (when (executable-find "sbcl")
+       (add-to-list 'el-get-sources 'slime))
 
      (el-get 'sync el-get-sources)))
 
