@@ -25,6 +25,9 @@
 	  (delete-file  "slides-output.tex" nil))
       (call-process (expand-file-name "~/.emacs.d/ibcl")
 		    "compile.tmp" "*dslides-output*" nil)
+      (let ((file-size (car (nthcdr 7 (file-attributes "slides-output.tex")))))
+	(when (zerop file-size)
+	  (error "slides-output.tex is empty, something went wrong with ibcl")))
       (call-process "pdflatex" nil "*dslides-output*" nil "clos.tex"))))
 
 (defadvice message (around inhibit-message (format-string &rest args)
