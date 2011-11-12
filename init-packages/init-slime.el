@@ -1,7 +1,7 @@
 (setq inferior-lisp-program "sbcl")
 (setq inferior-lisp-program "~/.emacs.d/ibcl")
 (require 'slime)
-(slime-setup '(slime-fancy slime-asdf))
+(slime-setup '(slime-fancy slime-asdf slime-hyperdoc))
 
 (define-key (eval 'slime-mode-map) (kbd "C-c c") (lambda (&optional arg)
      "Copy/past the previous sexp to the slime buffer"
@@ -17,8 +17,11 @@
       (re-search-backward "^(slide")
       (mark-sexp)
       (kill-ring-save (region-beginning) (region-end))
+      (kill-ring-save (point-min) (point-max))
       (with-temp-file "one-slide.tmp"
-	(yank))
+	(yank)
+	(insert "(deck-reset)")
+	(yank 2))
       (with-temp-file "compile.tmp"
 	(insert "(load \"dslides.lisp\")(load \"one-slide.tmp\")(deck-real-output)"))
       (if (file-exists-p "slides-output.tex")
@@ -45,9 +48,9 @@
     (ad-activate 'message)
     (let ((revert-without-query '("clos\.pdf")))
       (find-file (expand-file-name (concat directory "clos.pdf"))))
-    (doc-view-fit-page-to-window)
     (doc-view-first-page)
     (ad-disable-advice 'message 'around 'inhibit-message)
-    (ad-activate 'message)))
+    (ad-activate 'message)
+    (doc-view-fit-page-to-window)))
 
 (define-key (eval 'slime-mode-map) (kbd "C-c v") #'show-slide)
