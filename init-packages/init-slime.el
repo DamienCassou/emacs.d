@@ -26,10 +26,13 @@
 	(insert "(load \"dslides.lisp\")(load \"one-slide.tmp\")(deck-real-output)"))
       (if (file-exists-p "slides-output.tex")
 	  (delete-file  "slides-output.tex" nil))
+      (when (get-buffer "*dslides-output*")
+	(with-current-buffer "*dslides-output*"
+	  (erase-buffer)))
       (call-process (expand-file-name "~/.emacs.d/ibcl")
 		    "compile.tmp" "*dslides-output*" nil)
       (let ((file-size (car (nthcdr 7 (file-attributes "slides-output.tex")))))
-	(when (zerop file-size)
+	(when (or (null file-size) (zerop file-size))
 	  (error "slides-output.tex is empty, something went wrong with ibcl")))
       (call-process "pdflatex" nil "*dslides-output*" nil "clos.tex"))))
 
