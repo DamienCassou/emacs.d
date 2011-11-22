@@ -32,6 +32,11 @@
 (require 'dired)
 (load "dired-x")
 
+(add-to-list 'completion-ignored-extensions ".log")
+(add-to-list 'dired-omit-extensions ".log")
+(add-to-list 'completion-ignored-extensions ".out")
+(add-to-list 'dired-omit-extensions ".out")
+
 ;; Sets the frame title:
 (setq frame-title-format '("Emacs: " (buffer-file-name " %f")))
 
@@ -90,56 +95,13 @@ all get spell checked."
         (ispell-buffer)))
     (message nil)))
 
-;; Allows for S-left, S-top... to change selected buffer frame
-(windmove-default-keybindings)
-
 ;; Make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
-
-(defun LaTeX-align-table ()
-  (interactive)
-  (save-excursion
-    (LaTeX-mark-environment)
-    (while (re-search-forward "& *" (region-end) t)
-      (replace-match "& " nil nil))
-    (LaTeX-mark-environment)
-    (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))
-
-(defun ido-execute ()
-  "It would be really nice if ido mode could be implemented also
-for M-x (command completion)."
-  (interactive)
-  (call-interactively
-   (intern
-    (ido-completing-read
-     "M-x "
-     (let (cmd-list)
-       (mapatoms (lambda (S) (when (commandp S) (setq cmd-list (cons (format "%S" S) cmd-list)))))
-       cmd-list)))))
-
-(global-set-key (kbd "M-x") 'ido-execute)
 
 (global-set-key (kbd "<f2>") 'indent-region)
 (global-set-key (kbd "<f5>") 'comment-region)
 
-(defun my-tab-fix ()
-  (interactive)
-  (local-set-key [tab] 'indent-according-to-mode))
-
 (global-set-key (kbd "s-SPC")          'hippie-expand)
-
-(add-hook 'LaTeX-mode-hook      'my-tab-fix)
-(add-hook 'sh-mode-hook         'my-tab-fix)
-(add-hook 'emacs-lisp-mode-hook 'my-tab-fix)
-(add-hook 'lisp-mode-hook       'my-tab-fix)
-
-;; Byte compile all emacs list files in ~/.emacs.d
-(defun byte-compile-my-emacs-files ()
-  (interactive)
-  (dolist (file (directory-files "~/.emacs.d/" t "\.el$"))
-    (unless (byte-compile-file file)
-      (error "Byte compile failed for: %s" file))))
-
 
 ;; Press C-o when in search mode and all occurrences will appear
 ;; http://www.emacsblog.org/2007/02/27/quick-tip-add-occur-to-isearch/
@@ -171,10 +133,6 @@ for M-x (command completion)."
 	(setq fname (concat "/sudo:root@localhost:" fname)))
       (find-alternate-file fname))))
 
-
-;; ediff
-(require 'ediff)
-
 ;; misc functions
 (load "functions")
 
@@ -185,6 +143,10 @@ for M-x (command completion)."
 		  (if arg
 		      (save-buffers-kill-terminal)
 		    (message "I don't want to quit. If you really want to, use prefix arg `C-u'"))))
+
+(add-to-list 'load-path "~/.emacs.d/init-other-packages")
+(load "init-which-func")
+(load "init-ediff")
 
 ;; Java
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))
