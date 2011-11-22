@@ -94,6 +94,7 @@
  '(sh-indent-comment t)
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
+ '(smex-save-file "~/.config/smex-items")
  '(svn-status-hide-unmodified t)
  '(svn-status-prefix-key [(control x) 118])
  '(svn-status-verbose t)
@@ -137,6 +138,7 @@
 			    magit
 			    markdown-mode
 			    psvn
+			    smex
 			    switch-window
 			    textlint
 			    undo-tree
