@@ -105,6 +105,7 @@
  '(vc-follow-symlinks nil)
  '(version-control t)
  '(visible-bell t)
+ '(which-function-mode t)
  '(winner-mode t nil (winner)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -127,9 +128,18 @@
 
 (eval-after-load 'el-get
   '(progn
-     (setq el-get-sources '(java-mode-indent-annotations
-      browse-kill-ring markdown-mode fill-column-indicator dired-toggle-sudo
-      switch-window magit psvn textlint dired-toggle-sudo undo-tree ;mingus
+     (setq el-get-sources '(
+			    browse-kill-ring
+			    dired-toggle-sudo
+			    fill-column-indicator
+			    idomenu
+			    java-mode-indent-annotations
+			    magit
+			    markdown-mode
+			    psvn
+			    switch-window
+			    textlint
+			    undo-tree
       ))
 
      (when (executable-find "latex")
@@ -138,7 +148,7 @@
 
      (when (executable-find "sbcl")
        (add-to-list 'el-get-sources 'slime))
-
+     
      (el-get 'sync el-get-sources)))
 
 (load "general")
