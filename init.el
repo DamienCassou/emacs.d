@@ -101,7 +101,10 @@
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(truncate-partial-width-windows nil)
- '(undo-limit 50000)
+ '(undo-limit 5000000)
+ '(undo-outer-limit 200000000)
+ '(undo-strong-limit 10000000)
+ '(undo-tree-mode-lighter " Undo")
  '(user-mail-address "damien.cassou@gmail.com")
  '(vc-follow-symlinks nil)
  '(version-control t)
@@ -121,7 +124,7 @@
 
 (unless (require 'el-get nil t)
   (if (not (executable-find "git"))
-      (message "Warning: Git is not available. I can't install el-get")
+      (warn "Warning: Git is not available. As a result I can't install el-get")
     (with-current-buffer
 	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
       (end-of-buffer)
