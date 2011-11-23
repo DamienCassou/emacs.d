@@ -140,7 +140,6 @@
 			    java-mode-indent-annotations
 			    magit
 			    markdown-mode
-			    psvn
 			    smex
 			    switch-window
 			    textlint
