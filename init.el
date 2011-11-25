@@ -59,6 +59,7 @@
  '(ido-enabled (quote both) t (ido))
  '(ido-file-extensions-order (quote (".tex" ".el" ".pdf")))
  '(ido-ignore-buffers (quote ("\\` " "^*Back" ".*Completion" "^*Ido")))
+ '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`\\.ido\\.last")))
  '(ido-max-prospects 6)
  '(ido-mode (quote both) nil (ido))
  '(ido-use-virtual-buffers t)
