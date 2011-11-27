@@ -23,20 +23,6 @@
 (global-set-key (kbd "M-w") 'clipboard-kill-ring-save)
 (global-set-key (kbd "C-y") 'clipboard-yank)
 
-; Configuring dired
-
-(eval-after-load "dired-aux"
-  '(add-to-list
-    'dired-compress-file-suffixes '("\\.zip\\'" ".zip" "unzip")))
-
-(require 'dired)
-(load "dired-x")
-
-(add-to-list 'completion-ignored-extensions ".log")
-(add-to-list 'dired-omit-extensions ".log")
-(add-to-list 'completion-ignored-extensions ".out")
-(add-to-list 'dired-omit-extensions ".out")
-
 ;; Sets the frame title:
 (setq frame-title-format '("Emacs: " (buffer-file-name " %f")))
 
@@ -82,19 +68,6 @@
 		 ("equation\\*" . "\\\\end[ 	\n]*{[ 	\n]*equation\\*[ 	\n]*}")
 		 ("tikzpicture" . "\\\\end[ 	\n]*{[ 	\n]*tikzpicture[ 	\n]*}")))))
 
-(defun dired-do-ispell (&optional arg)
-  "Mark files in dired before running this function and they will
-all get spell checked."
-  (interactive "P")
-  (dolist (file (dired-get-marked-files
-                 nil arg
-                 #'(lambda (f)
-                     (not (file-directory-p f)))))
-    (save-window-excursion
-      (with-current-buffer (find-file file)
-        (ispell-buffer)))
-    (message nil)))
-
 ;; Make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -135,6 +108,7 @@ all get spell checked."
 (add-to-list 'load-path "~/.emacs.d/init-other-packages")
 (load "init-which-func")
 (load "init-ediff")
+(load "init-dired")
 
 ;; Java
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))
