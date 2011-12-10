@@ -109,6 +109,7 @@
 (load "init-which-func")
 (load "init-ediff")
 (load "init-dired")
+(load "init-bibtex")
 
 ;; Java
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))

@@ -1,4 +1,3 @@
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (load "mybibtex" t t t)
 (eval-after-load "tex"
   '(add-to-list 'TeX-command-list
