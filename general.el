@@ -110,12 +110,3 @@
 (load "init-ediff")
 (load "init-dired")
 (load "init-bibtex")
-
-;; Java
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/"))
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-eclim/vendor"))
-;; (require 'eclim)
-
-;; (setq eclim-auto-save t)
-;; (global-eclim-mode)
- 
