@@ -150,8 +150,8 @@
        (add-to-list 'el-get-sources 'auctex)
        (add-to-list 'el-get-sources 'reftex))
 
-     (when (executable-find "sbcl")
-       (add-to-list 'el-get-sources 'slime))
+     ;; (when (executable-find "sbcl")
+     ;;   (add-to-list 'el-get-sources 'slime))
      
      (el-get 'sync el-get-sources)))
 
