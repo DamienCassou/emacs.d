@@ -26,7 +26,7 @@
  '(confirm-kill-emacs (quote y-or-n-p))
  '(current-language-environment "UTF-8")
  '(custom-safe-themes t)
- '(default-frame-alist (quote ((cursor-type bar . 3) (left . 10) (top . 10) (font . "-unknown-dejavu sans mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1"))))
+ '(default-frame-alist (quote ((cursor-type bar . 3) (left . 10) (top . 10) (font . "DejaVu Sans Mono-10"))))
  '(delete-by-moving-to-trash t)
  '(delete-old-versions t)
  '(diff-switches "-u")
