@@ -1,12 +1,25 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 
+(defun ispell-set-dictionary (dict)
+  (save-excursion
+    (add-file-local-variable 'ispell-local-dictionary dict)))
+
 (defun ispell-change-dictionary-to-french ()
   (interactive)
-  (ispell-change-dictionary "francais"))
+  (ispell-change-dictionary "francais")
+  (ispell-set-dictionary "francais"))
 
 (defun ispell-change-dictionary-to-english ()
   (interactive)
-  (ispell-change-dictionary "english"))
+  (ispell-change-dictionary "english")
+  (ispell-set-dictionary "english"))
+
+(defun flyspell-toggle ()
+  (interactive)
+  (let ((mode-value (if flyspell-mode -1 1)))
+    (save-excursion
+      (add-file-local-variable 'eval `(flyspell-mode ,mode-value)))
+    (flyspell-mode mode-value)))
 
 (global-set-key (kbd "s-i b") 'ispell-buffer)
 (global-set-key (kbd "s-i w") 'ispell-word)
@@ -14,7 +27,7 @@
 (global-set-key (kbd "s-i d e") 'ispell-change-dictionary-to-english)
 (global-set-key (kbd "s-i d ?") 'ispell-change-dictionary)
 (global-set-key (kbd "s-f b") 'flyspell-buffer)
-(global-set-key (kbd "s-f m") 'flyspell-mode)
+(global-set-key (kbd "s-f m") 'flyspell-toggle)
 
 ;; ispell must ignore LaTeX commands and environments
 (setq ispell-tex-skip-alists
@@ -51,4 +64,3 @@
 	       '(("tabular" ispell-tex-arg-end)
 		 ("equation\\*" . "\\\\end[ 	\n]*{[ 	\n]*equation\\*[ 	\n]*}")
 		 ("tikzpicture" . "\\\\end[ 	\n]*{[ 	\n]*tikzpicture[ 	\n]*}")))))
-
