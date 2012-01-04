@@ -127,8 +127,10 @@
       (warn "Warning: Git is not available. As a result I can't install el-get")
     (with-current-buffer
 	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-      (end-of-buffer)
-      (eval-print-last-sexp))))
+      (let (el-get-master-branch)
+	(end-of-buffer)
+	(eval-print-last-sexp))
+      (funcall 'el-get-emacswiki-build-local-recipes))))
 
 (eval-after-load 'el-get
   '(progn
