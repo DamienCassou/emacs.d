@@ -13,6 +13,7 @@
 ;; Change theme
 (let ((themes-directory "~/.emacs.d/themes/"))
   (when (and window-system
+	     (boundp 'custom-theme-load-path)
 	     (listp custom-theme-load-path)
 	     (file-directory-p themes-directory))
     (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
