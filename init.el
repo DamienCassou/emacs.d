@@ -144,8 +144,10 @@
 			    idomenu
 			    iy-go-to-char
 			    java-mode-indent-annotations
+			    offlineimap
 			    magit
 			    markdown-mode
+			    notmuch
 			    smex
 			    switch-window
 			    textlint
