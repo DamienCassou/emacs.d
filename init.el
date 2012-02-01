@@ -137,8 +137,10 @@
      (setq el-get-sources '(
 			    browse-kill-ring
 			    dired-toggle-sudo
+			    expand-region
 			    fill-column-indicator
 			    idomenu
+			    iy-go-to-char
 			    java-mode-indent-annotations
 			    magit
 			    markdown-mode

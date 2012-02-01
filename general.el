@@ -48,15 +48,6 @@
       (occur (if isearch-regexp isearch-string
                (regexp-quote isearch-string))))))
 
-(defun my-mark-word ()
-  "Marks the whole word at point contrary to builtin mark-word which only marks the end"
-  (interactive)
-  (let ((word-pos (bounds-of-thing-at-point 'word)))
-    (goto-char (car word-pos))
-    (set-mark (point))
-    (goto-char (cdr word-pos))))
-(global-set-key (kbd "M-@") 'my-mark-word)
-
 ;; misc functions
 (load "functions")
 
