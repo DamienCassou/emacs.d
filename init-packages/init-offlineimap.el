@@ -1,2 +1,5 @@
-(add-to-list 'exec-path "~/Downloads/offlineimap/spaetz-offlineimap-36dd46a/")
-
+(let* ((offlineimap-path "~/Downloads/offlineimap/spaetz-offlineimap-36dd46a")
+       (offlineimap-exec-path (concat offlineimap-path "/bin")))
+  (add-to-list 'exec-path offlineimap-exec-path)
+  (setenv "PATH" (concat (getenv "PATH") ":" offlineimap-exec-path))
+  (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH") ":" (expand-file-name offlineimap-path))))
