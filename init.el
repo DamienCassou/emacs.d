@@ -158,7 +158,7 @@
 			    switch-window
 			    textlint
 			    undo-tree
-      ))
+			    ))
 
      (when (executable-find "latex")
        (add-to-list 'el-get-sources 'auctex)
