@@ -43,12 +43,12 @@ If SUDO is not nil `method' is set to \"sudo\" and `user' to
 
 (global-set-key (kbd "C-M-'") 'cw:shell:run)
 
-(let ((buffers-to-keep '("*scratch*" "*Messages*")))
-  (defun buffer-killable-p (buffer)
-    (and
-     (not (member (buffer-name buffer) buffers-to-keep))
-     (or (null (buffer-file-name buffer)) ;; buffer is not a file
-	 (not (buffer-modified-p buffer)))))) ;; or file is not modified
+(defvar buffers-to-keep '("*scratch*" "*Messages*"))
+(defun buffer-killable-p (buffer)
+  (and
+   (not (member (buffer-name buffer) buffers-to-keep))
+   (or (null (buffer-file-name buffer)) ;; buffer is not a file
+       (not (buffer-modified-p buffer))))) ;; or file is not modified
 
 (defun kill-all-buffers ()
   (interactive)
