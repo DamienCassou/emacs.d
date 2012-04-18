@@ -8,7 +8,9 @@
 (eval-after-load "dired-aux"
   '(progn
      ;; Redefines this function from dired-aux to pass a buffer name
-     ;; as parameter to shell-command
+     ;; as parameter to shell-command. Because of this, we can now
+     ;; execute multiple asynchronous commands, each with its own
+     ;; buffer
      (defun dired-run-shell-command (command)
        (let ((handler
 	      (find-file-name-handler (directory-file-name default-directory)
