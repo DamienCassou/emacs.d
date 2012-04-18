@@ -1,5 +1,10 @@
 ; Configuring dired
 
+(eval-after-load "dired"
+  '(progn
+     (require 'dired-aux)
+     (require 'dired-x)))
+
 (eval-after-load "dired-aux"
   '(progn
      ;; Redefines this function from dired-aux to pass a buffer name
