@@ -35,8 +35,10 @@
      (add-hook
       'dired-mode-hook
       (lambda () (dired-omit-mode)))
-     (push '("\\.image" "pharo.sh")
-	   dired-guess-shell-alist-user)))
+     (let ((dired-guessing '(("\\.image" "pharo.sh"))))
+       (mapcar (lambda (pair)
+		 (add-to-list 'dired-guess-shell-alist-user pair))
+	       dired-guessing))))
 
 (defun dired-do-ispell (&optional arg)
   "Mark files in dired before running this function and they will
