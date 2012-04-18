@@ -143,6 +143,7 @@
   '(progn
      (setq el-get-sources '(
 			    browse-kill-ring
+			    diminish
 			    dired-toggle-sudo
 			    expand-region
 			    fill-column-indicator
