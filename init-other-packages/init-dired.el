@@ -11,6 +11,7 @@
 (add-to-list 'dired-omit-extensions ".log")
 (add-to-list 'completion-ignored-extensions ".out")
 (add-to-list 'dired-omit-extensions ".out")
+(add-to-list 'dired-omit-extensions ".lol")
 
 (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
 
