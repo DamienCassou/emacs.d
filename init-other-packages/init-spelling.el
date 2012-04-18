@@ -7,12 +7,14 @@
 (defun ispell-change-dictionary-to-french ()
   (interactive)
   (ispell-change-dictionary "francais")
-  (ispell-set-dictionary "francais"))
+  (ispell-set-dictionary "francais")
+  (flyspell-buffer))
 
 (defun ispell-change-dictionary-to-english ()
   (interactive)
   (ispell-change-dictionary "english")
-  (ispell-set-dictionary "english"))
+  (ispell-set-dictionary "english")
+  (flyspell-buffer))
 
 (defun flyspell-toggle ()
   (interactive)
