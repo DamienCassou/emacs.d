@@ -1,8 +1,22 @@
 ; Configuring dired
 
 (eval-after-load "dired-aux"
-  '(add-to-list
-    'dired-compress-file-suffixes '("\\.zip\\'" ".zip" "unzip")))
+  '(progn
+     ;; Redefines this function from dired-aux to pass a buffer name
+     ;; as parameter to shell-command
+     (defun dired-run-shell-command (command)
+       (let ((handler
+	      (find-file-name-handler (directory-file-name default-directory)
+				      'shell-command)))
+	 (if handler (apply handler 'shell-command (list command))
+	   (shell-command command
+			  ;; Damien: only the following sexp is changed:
+			  (generate-new-buffer-name
+			   (concat "*Shell Command Output: '" command "'*")))))
+       ;; Return nil for sake of nconc in dired-bunch-files.
+       nil)
+     (add-to-list
+      'dired-compress-file-suffixes '("\\.zip\\'" ".zip" "unzip"))))
 
 (require 'dired)
 (load "dired-x")
