@@ -25,16 +25,18 @@
      (add-to-list
       'dired-compress-file-suffixes '("\\.zip\\'" ".zip" "unzip"))))
 
-(require 'dired)
-(load "dired-x")
-
-(add-to-list 'completion-ignored-extensions ".log")
-(add-to-list 'dired-omit-extensions ".log")
-(add-to-list 'completion-ignored-extensions ".out")
-(add-to-list 'dired-omit-extensions ".out")
-(add-to-list 'dired-omit-extensions ".lol")
-
-(add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
+(eval-after-load "dired-x"
+  '(progn
+     (let ((extensions-to-ignore '(".log" ".out" ".lol")))
+       (mapcar (lambda (extension)
+		 (add-to-list 'completion-ignored-extensions extension)
+		 (add-to-list 'dired-omit-extensions extension))
+	       extensions-to-ignore))
+     (add-hook
+      'dired-mode-hook
+      (lambda () (dired-omit-mode)))
+     (push '("\\.image" "pharo.sh")
+	   dired-guess-shell-alist-user)))
 
 (defun dired-do-ispell (&optional arg)
   "Mark files in dired before running this function and they will
