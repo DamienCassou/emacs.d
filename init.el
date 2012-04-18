@@ -136,11 +136,11 @@
 	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
       (let ((el-get-install-branch "3.stable"))
 	(end-of-buffer)
-	(eval-print-last-sexp))
-      (funcall 'el-get-emacswiki-build-local-recipes))))
+	(eval-print-last-sexp)))))
 
 (eval-after-load 'el-get
   '(progn
+     (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
      (setq el-get-sources '(
 			    browse-kill-ring
 			    diminish
@@ -148,7 +148,6 @@
 			    expand-region
 			    fill-column-indicator
 			    idomenu
-			    iy-go-to-char
 			    java-mode-indent-annotations
 			    offlineimap
 			    magit
