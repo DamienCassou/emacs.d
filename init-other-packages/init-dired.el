@@ -32,10 +32,15 @@
 		 (add-to-list 'completion-ignored-extensions extension)
 		 (add-to-list 'dired-omit-extensions extension))
 	       extensions-to-ignore))
-     (add-hook
-      'dired-mode-hook
+     (let ((files-to-ignore '("Thumbs.db" "Thumbs.db:encryptable")))
+       (mapcar (lambda (filename)
+		 (setq dired-omit-files
+		       (concat dired-omit-files "\\|^" filename "$")))
+	       files-to-ignore))
+     (add-hook 'dired-mode-hook
       (lambda () (dired-omit-mode)))
-     (let ((dired-guessing '(("\\.image" "pharo.sh"))))
+     (let ((dired-guessing '(("\\.image" "pharo.sh")
+			     ("\\.pdf" "acroread"))))
        (mapcar (lambda (pair)
 		 (add-to-list 'dired-guess-shell-alist-user pair))
 	       dired-guessing))))
