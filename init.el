@@ -142,20 +142,31 @@
   '(progn
      (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
      (setq el-get-sources '(
+			    ;; M-y to show kill ring
 			    browse-kill-ring
+			    ;; Shorter mode names in the modeline
 			    diminish
+			    ;; C-x s to toggle sudo
 			    dired-toggle-sudo
+			    ;; M-@ repeadly to mark regions
 			    expand-region
+			    ;; fci-mode to show the right margin
 			    fill-column-indicator
+			    ;; M-i to list sections of the buffer
 			    idomenu
+			    ;; Fix Java mode for annotations
 			    java-mode-indent-annotations
-			    offlineimap
+			    ;; Integrate git
 			    magit
+			    ;; Major mode for markdown format
 			    markdown-mode
-			    notmuch
+			    ;; Replacement for M-x
 			    smex
+			    ;; Displays numbers when using C-x o
 			    switch-window
+			    ;; Assistant to correct english text
 			    textlint
+			    ;; C-x u to show the undo tree
 			    undo-tree
 			    ))
 
