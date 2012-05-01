@@ -39,7 +39,7 @@
 	       files-to-ignore))
      (add-hook 'dired-mode-hook
       (lambda () (dired-omit-mode)))
-     (let ((dired-guessing '(("\\.image" "pharo.sh")
+     (let ((dired-guessing '(("\\.image" "~/Documents/configuration/scripts/pharo.sh")
 			     ("\\.pdf" "acroread"))))
        (mapcar (lambda (pair)
 		 (add-to-list 'dired-guess-shell-alist-user pair))
