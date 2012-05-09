@@ -160,6 +160,8 @@
 			    magit
 			    ;; Major mode for markdown format
 			    markdown-mode
+			    ;; Major mode for python
+			    python-mode
 			    ;; Replacement for M-x
 			    smex
 			    ;; Displays numbers when using C-x o
