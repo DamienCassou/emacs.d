@@ -1,5 +1,6 @@
 ;; Path
 (add-to-list 'exec-path "~/Documents/configuration/scripts/")
+(add-to-list 'exec-path "/usr/local/texlive/2011/bin/i386-linux/")
 
 (defun suspend-on-tty-only ()
   (interactive)
