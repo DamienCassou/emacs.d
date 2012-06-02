@@ -48,8 +48,9 @@
 		    (message "I don't want to quit. If you really want to, use prefix arg `C-u'"))))
 
 (add-to-list 'load-path "~/.emacs.d/init-other-packages")
-(load "init-which-func")
-(load "init-ediff")
-(load "init-dired")
 (load "init-bibtex")
+(load "init-dired")
+(load "init-ediff")
+(load "init-shell")
 (load "init-spelling")
+(load "init-which-func")
