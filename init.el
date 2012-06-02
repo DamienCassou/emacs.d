@@ -129,6 +129,15 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
+;; Path
+(mapcar
+ (lambda (path)
+   (let ((expanded-path (expand-file-name path)))
+     (add-to-list 'exec-path expanded-path)
+     (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
+ '("~/Documents/configuration/scripts/"
+   "~/usr/apps/texlive/2011/bin/i386-linux/"))
+
 (unless (require 'el-get nil t)
   (if (not (executable-find "git"))
       (warn "Warning: Git is not available. As a result I can't install el-get")
