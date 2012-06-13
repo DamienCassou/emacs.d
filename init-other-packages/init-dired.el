@@ -3,7 +3,29 @@
 (eval-after-load "dired"
   '(progn
      (require 'dired-aux)
-     (require 'dired-x)))
+     (require 'dired-x)
+     (defun dired-do-ispell (&optional arg)
+       "Mark files in dired before running this function and they will
+all get spell checked."
+       (interactive "P")
+       (dolist (file (dired-get-marked-files
+		      nil arg
+		      #'(lambda (f)
+			  (not (file-directory-p f)))))
+	 (save-window-excursion
+	   (with-current-buffer (find-file file)
+	     (ispell-buffer)))
+	 (message nil)))
+
+     (eval-after-load "recentf"
+       '(progn
+	  (defun recentf-track-dired-buffers ()
+	    "I want the dired buffers to be tracked by recentf"
+	    (let ((cur-dir-no-slash (substring ; removes trailing slash
+				     (expand-file-name default-directory)
+				     0 -1)))
+	      (recentf-add-file cur-dir-no-slash)))
+	  (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))))
 
 (eval-after-load "dired-aux"
   '(progn
@@ -55,16 +77,3 @@
        (mapcar (lambda (pair)
 		 (add-to-list 'dired-guess-shell-alist-user pair))
 	       dired-guessing))))
-
-(defun dired-do-ispell (&optional arg)
-  "Mark files in dired before running this function and they will
-all get spell checked."
-  (interactive "P")
-  (dolist (file (dired-get-marked-files
-                 nil arg
-                 #'(lambda (f)
-                     (not (file-directory-p f)))))
-    (save-window-excursion
-      (with-current-buffer (find-file file)
-        (ispell-buffer)))
-    (message nil)))
