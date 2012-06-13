@@ -56,10 +56,10 @@ running shell"
 
 (let ((shell-launcher (kbd "C-M-'")))
   (global-set-key shell-launcher 'my:shell-switch-buffer)
-  ;; (global-set-key shell-launcher 'my:shell:run)
-  ;; (define-key shell-mode-map shell-launcher
-  ;; 	 (lambda ()
-  ;; 	   (interactive)
-  ;; 	   (my:shell:run (read-string "Name for new shell? "))))
+  (global-set-key shell-launcher 'my:shell:run)
+  (define-key shell-mode-map shell-launcher
+    (lambda ()
+      (interactive)
+      (my:shell:run (read-string "Name for new shell? "))))
   )
 
