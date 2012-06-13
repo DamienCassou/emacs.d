@@ -27,7 +27,7 @@
 
 (eval-after-load "dired-x"
   '(progn
-     (let ((extensions-to-ignore '(".log" ".out" ".lol")))
+     (let ((extensions-to-ignore '(".out" ".lol")))
        (mapcar (lambda (extension)
 		 (add-to-list 'completion-ignored-extensions extension)
 		 (add-to-list 'dired-omit-extensions extension))
