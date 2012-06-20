@@ -24,7 +24,9 @@ all get spell checked."
 	    (let ((cur-dir-no-slash (substring ; removes trailing slash
 				     (expand-file-name default-directory)
 				     0 -1)))
-	      (recentf-add-file cur-dir-no-slash)))
+	      (when (and (file-directory-p cur-dir-no-slash)
+			 (not (string-equal "/" (substring cur-dir-no-slash -1))))
+		(recentf-add-file cur-dir-no-slash))))
 	  (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))))
 
 (eval-after-load "dired-aux"
