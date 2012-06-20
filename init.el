@@ -34,6 +34,7 @@
  '(dired-recursive-deletes (quote always))
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
+ '(drag-stuff-global-mode t)
  '(eclim-executable "~/usr/eclipse.indigo-eclim/eclim")
  '(eclim-print-debug-messages t)
  '(ediff-split-window-function (quote split-window-horizontally))
@@ -157,6 +158,8 @@
 			    diminish
 			    ;; C-x s to toggle sudo
 			    dired-toggle-sudo
+			    ;; M-<up|down|left|right> to move things around
+			    drag-stuff
 			    ;; M-@ repeadly to mark regions
 			    expand-region
 			    ;; fci-mode to show the right margin
