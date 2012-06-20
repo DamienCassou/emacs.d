@@ -73,6 +73,7 @@ all get spell checked."
 	      ("\\.pptx" "libreoffice")
 	      ("\\.xls" "libreoffice")
 	      ("\\.odt" "libreoffice")
+	      ("\\.doc" "libreoffice")
 	      ("\\.docx" "libreoffice")
 	      ("\\.xlsx" "libreoffice")
 	      ("\\.html" "firefox"))))
