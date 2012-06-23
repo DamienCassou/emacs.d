@@ -47,10 +47,16 @@
 		      (save-buffers-kill-terminal)
 		    (message "I don't want to quit. If you really want to, use prefix arg `C-u'"))))
 
+;; Don't know why "C-h i" opens info in current window whereas the
+;; others open in other window (like "C-h f")
+(global-set-key (kbd "C-h i") 'info-other-window)
+
 (add-to-list 'load-path "~/.emacs.d/init-other-packages")
 (load "init-bibtex")
 (load "init-dired")
 (load "init-ediff")
+(load "init-info")
+(load "init-org")
 (load "init-shell")
 (load "init-spelling")
 (load "init-which-func")
