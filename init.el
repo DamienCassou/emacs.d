@@ -156,6 +156,9 @@
 			    browse-kill-ring
 			    ;; Shorter mode names in the modeline
 			    diminish
+			    ;; toggle details (size, owner, group,
+			    ;; permissions, ...) in dired buffers
+			    dired-details
 			    ;; C-x s to toggle sudo
 			    dired-toggle-sudo
 			    ;; M-<up|down|left|right> to move things around
