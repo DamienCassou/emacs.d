@@ -68,6 +68,7 @@ all get spell checked."
 	      ("\\.pdf" "acroread")
 	      ("\\.sh" "bash")
 	      ("\\.avi" "vlc")
+	      ("\\.mkv" "vlc")
 	      ("\\.flv" "vlc")
 	      ("\\.jar" "java -jar")
 	      ("\\.pptx" "libreoffice")
