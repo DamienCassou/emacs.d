@@ -151,12 +151,13 @@
   '(progn
      (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
      (setq el-get-sources '(
-			    ;; M-y to show kill ring
+			    ;; [M-y] to show kill ring
 			    browse-kill-ring
 			    ;; Shorter mode names in the modeline
 			    diminish
 			    ;; toggle details (size, owner, group,
 			    ;; permissions, ...) in dired buffers
+			    ;; using `)'
 			    dired-details
 			    ;; C-x s to toggle sudo
 			    dired-toggle-sudo
