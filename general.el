@@ -60,6 +60,6 @@
 (load "init-ediff")
 (load "init-info")
 (load "init-org")
-(load "init-shell")
+;(load "init-shell")
 (load "init-spelling")
 (load "init-which-func")
