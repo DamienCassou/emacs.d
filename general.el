@@ -51,6 +51,9 @@
 ;; others open in other window (like "C-h f")
 (global-set-key (kbd "C-h i") 'info-other-window)
 
+;; Removes whitespace at the end of lines
+(add-hook 'write-file-functions 'delete-trailing-whitespace)
+
 (add-to-list 'load-path "~/.emacs.d/init-other-packages")
 (load "init-bibtex")
 (load "init-dired")
