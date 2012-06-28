@@ -193,7 +193,7 @@
 
      ;; (when (executable-find "sbcl")
      ;;   (add-to-list 'el-get-sources 'slime))
-     
+
      (el-get 'sync el-get-sources)))
 
 (load "general")
