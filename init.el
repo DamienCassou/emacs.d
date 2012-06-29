@@ -180,7 +180,10 @@
 			    markdown-mode
 			    ;; Major mode for python
 			    python-mode
-			    ;; Replacement for M-x
+			    ;; Switch between shells with C-M-' and
+			    ;; C-' followed by more quotes
+			    shell-switcher
+			    ;;  Replacement for M-x
 			    smex
 			    ;; Displays numbers when using C-x o
 			    switch-window
