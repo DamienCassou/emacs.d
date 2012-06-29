@@ -1,0 +1,6 @@
+alias d dired $1
+alias e find-file $1
+alias inst sudo aptitude install
+alias ll ls -l
+alias update sudo aptitude update
+alias upgrade sudo aptitude full-upgrade
