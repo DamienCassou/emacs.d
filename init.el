@@ -117,7 +117,7 @@
  '(version-control t)
  '(visible-bell t)
  '(which-function-mode t)
- '(winner-mode t nil (winner)))
+ '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
