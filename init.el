@@ -164,7 +164,7 @@
 			    ;; M-<up|down|left|right> to move things
 			    ;; around
 			    drag-stuff
-			    ;; Music player `emms-playlist-mode-go'
+			    ;; Music player, start with <f12>
 			    emms
 			    ;; M-@ repeadly to mark regions
 			    expand-region
