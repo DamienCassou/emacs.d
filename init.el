@@ -157,39 +157,39 @@
 			    diminish
 			    ;; toggle details (size, owner, group,
 			    ;; permissions, ...) in dired buffers
-			    ;; using `)'
+			    ;; using <)>
 			    dired-details
-			    ;; C-x s to toggle sudo
+			    ;; <C-x s> to toggle sudo
 			    dired-toggle-sudo
 			    ;; M-<up|down|left|right> to move things
 			    ;; around
 			    drag-stuff
 			    ;; Music player, start with <f12>
 			    emms
-			    ;; M-@ repeadly to mark regions
+			    ;; <M-@> repeadly to mark regions
 			    expand-region
-			    ;; fci-mode to show the right margin
+			    ;; `fci-mode' to show the right margin
 			    fill-column-indicator
-			    ;; M-i to list sections of the buffer
+			    ;; <M-i> to list sections of the buffer
 			    idomenu
 			    ;; Fix Java mode for annotations
 			    java-mode-indent-annotations
-			    ;; Integrate git
+			    ;; Integrate git <C-x g>
 			    magit
 			    ;; Major mode for markdown format
 			    markdown-mode
 			    ;; Major mode for python
 			    python-mode
-			    ;; Switch between shells with C-M-' and
+			    ;; Switch between shells with <C-'> and
 			    ;; C-' followed by more quotes
 			    shell-switcher
-			    ;;  Replacement for M-x
+			    ;;  Replacement for <M-x>
 			    smex
-			    ;; Displays numbers when using C-x o
+			    ;; Displays numbers when using <C-x o>
 			    switch-window
 			    ;; Assistant to correct english text
 			    textlint
-			    ;; C-x u to show the undo tree
+			    ;; <C-x u> to show the undo tree
 			    undo-tree
 			    ))
 
