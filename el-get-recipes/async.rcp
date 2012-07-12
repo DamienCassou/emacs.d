@@ -1,0 +1,5 @@
+(:name async
+       :type git
+       :url "git://github.com/jwiegley/emacs-async.git"
+       :description "Simple library for asynchronous processing in Emacs."
+       :website "https://github.com/jwiegley/emacs-async#readme")
