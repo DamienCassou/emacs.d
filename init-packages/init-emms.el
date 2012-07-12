@@ -10,4 +10,4 @@
 
 (require 'emms-browser)
 (emms-cache-set-from-mpd-all)
-(global-set-key (kbd "<f12>") 'emms-smart-browse)
+(global-set-key (kbd "<f11>") 'emms-smart-browse)
