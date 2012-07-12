@@ -58,6 +58,7 @@
 (load "init-bibtex")
 (load "init-dired")
 (load "init-ediff")
+(load "init-eshell")
 (load "init-info")
 (load "init-org")
 (load "init-spelling")
