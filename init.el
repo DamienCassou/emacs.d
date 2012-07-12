@@ -96,6 +96,7 @@
  '(send-mail-function (quote smtpmail-send-it))
  '(sentence-end-double-space nil)
  '(sh-indent-comment t)
+ '(shell-switcher-new-shell-function (quote shell-switcher-make-eshell))
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
  '(smex-save-file "~/.config/smex-items")
