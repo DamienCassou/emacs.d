@@ -152,6 +152,8 @@
   '(progn
      (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
      (setq el-get-sources '(
+			    ;; Asynchronous file management in Emacs
+			    async
 			    ;; [M-y] to show kill ring
 			    browse-kill-ring
 			    ;; Shorter mode names in the modeline
