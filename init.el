@@ -137,7 +137,7 @@
      (add-to-list 'exec-path expanded-path)
      (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
  '("~/Documents/configuration/scripts/"
-   "~/usr/apps/texlive/2011/bin/i386-linux/"))
+   "~/usr/apps/texlive/latest/bin/i386-linux/"))
 
 (unless (require 'el-get nil t)
   (if (not (executable-find "git"))
