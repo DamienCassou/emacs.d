@@ -69,7 +69,7 @@
  '(io-command "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
  '(kept-new-versions 6)
  '(magit-commit-signoff t)
- '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures/" "~/Documents/" "~/.emacs.d/el-get/" "~/.emacs.d/themes/" "~/Documents/smalltalk/SBA/" "~/tmp/")))
+ '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures/" "~/Documents/" "~/.emacs.d/el-get/" "~/.emacs.d/themes/" "~/Documents/smalltalk/" "~/tmp/")))
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
  '(org-agenda-files "~/Documents/configuration/org/agenda_files")
