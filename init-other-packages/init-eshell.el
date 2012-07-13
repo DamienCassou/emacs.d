@@ -1,5 +1,3 @@
-(setq eshell-highlight-prompt nil)
-
 (defconst my:prompt-defaults
   `(("username" . (user-login-name))
     ("hostname" . (substring (shell-command-to-string "hostname") 0 -1))))
