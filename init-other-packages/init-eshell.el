@@ -49,8 +49,6 @@
     (insert-separator ":")
     (insert-pwd)
     (insert-branch)
-    (if (= (user-uid) 0)
-	(insert-value "# ")
-      (insert-value "$ "))))
+    (insert-value (if (= (user-uid) 0) " # " " $ "))))
 
 (setq eshell-prompt-function 'my:eshell-prompt)
