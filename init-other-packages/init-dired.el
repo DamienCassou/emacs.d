@@ -80,6 +80,7 @@ all get spell checked."
 	      ("\\.pptx" "libreoffice")
 	      ("\\.sh" "bash")
 	      ("\\.svg" "inkscape")
+	      ("\\.webm" "vlc")
 	      ("\\.xls" "libreoffice")
 	      ("\\.xlsx" "libreoffice")
 )))
