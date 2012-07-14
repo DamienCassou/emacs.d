@@ -83,7 +83,7 @@ all get spell checked."
 	      ("\\.webm" "vlc")
 	      ("\\.xls" "libreoffice")
 	      ("\\.xlsx" "libreoffice")
-)))
+	      )))
        (mapcar (lambda (pair)
 		 (add-to-list 'dired-guess-shell-alist-user pair))
 	       dired-guessing))))
