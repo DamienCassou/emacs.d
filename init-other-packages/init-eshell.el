@@ -6,7 +6,7 @@
   (mapcar (lambda (pair) (cons (car pair) (eval (cdr pair))))
 	  my:prompt-defaults))
 
-(defun prompt-value (variable)
+(defun my:prompt-value (variable)
   "Returns current value for VARIABLE if it's not default, "" otherwise."
   (let ((default (cdr (assoc variable my:prompt-default-values)))
 	(current (eval (cdr (assoc variable my:prompt-defaults)))))
@@ -14,41 +14,66 @@
 	""
       current)))
 
-(defvar prompt-inserted nil)
+(defvar my:prompt-inserted nil)
 
-(defun mprint (obj)
-  (princ obj))
+(defun my:color (type)
+  (case type
+    ('alert "red")
+    ('good "lime green")
+    ('warning "dark orange")
+    (t "black")))
 
-(defun insert-value (value)
-  (mprint value)
-  (setq prompt-inserted (not (string= value ""))))
+(defun my:mprint (obj &optional color)
+  (if color
+      (insert (propertize obj 'face `(:foreground ,(my:color color))))
+    (insert obj)))
 
-(defun insert-variable (variable)
-  (insert-value (prompt-value variable)))
+(defun my:insert-value (value &optional color)
+  (my:mprint value color)
+  (setq my:prompt-inserted (not (string= value ""))))
 
-(defun insert-separator (&optional separator)
+(defun my:insert-variable (variable)
+  (my:insert-value (my:prompt-value variable)))
+
+(defun my:insert-separator (&optional separator)
   (let ((sep (or separator ":")))
-    (if prompt-inserted
-	(mprint sep))))
+    (if my:prompt-inserted
+	(my:mprint sep))))
 
-(defun insert-pwd ()
+(defun my:insert-pwd ()
   (let ((pwd (abbreviate-file-name (eshell/pwd))))
-    (insert-value pwd)))
+    (my:insert-value pwd)))
 
-(defun insert-branch ()
+(defun my:git-color ()
+  "Returns a color code based on the current repository status"
+  (if (zerop (magit-git-exit-code "diff" "--quiet"))
+      ;; nothing to commit because nothing changed
+      (if (zerop (length (magit-git-string
+			  "rev-list" (concat "origin/"
+					     (magit-get-current-branch)
+					     ".."
+					     (magit-get-current-branch)))))
+	  ;; nothing to push as well
+	  'good
+	;; nothing to commit, but some commits must be pushed
+	'warning)
+    'alert))
+
+(defun my:insert-branch ()
   (let ((branch (magit-get-current-branch)))
-    (mprint (if branch
-		(concat " <" (magit-get-current-branch) ">")
-	      ""))))
+    (if branch
+	(my:mprint (concat " <" branch ">") (my:git-color)))))
 
 (defun my:eshell-prompt ()
-  (with-output-to-string
-    (insert-variable "username")
-    (insert-separator "@")
-    (insert-variable "hostname")
-    (insert-separator ":")
-    (insert-pwd)
-    (insert-branch)
-    (insert-value (if (= (user-uid) 0) " # " " $ "))))
+  (with-temp-buffer
+    (my:insert-variable "username")
+    (my:insert-separator "@")
+    (my:insert-variable "hostname")
+    (my:insert-separator ":")
+    (my:insert-pwd)
+    (my:insert-branch)
+    (my:insert-value (if (= (user-uid) 0) " # " " $ "))
+    (buffer-substring (point-min) (point-max))))
 
+(setq eshell-highlight-prompt nil)
 (setq eshell-prompt-function 'my:eshell-prompt)
