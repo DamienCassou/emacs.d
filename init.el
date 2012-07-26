@@ -21,6 +21,7 @@
  '(bibtex-autokey-titlewords 0)
  '(bibtex-entry-format (quote (opts-or-alts required-fields whitespace realign last-comma delimiters)))
  '(bookmark-save-flag 1)
+ '(calendar-date-style (quote european))
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(confirm-kill-emacs (quote y-or-n-p))
