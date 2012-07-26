@@ -54,13 +54,12 @@
 ;; Removes whitespace at the end of lines
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
-(add-to-list 'load-path "~/.emacs.d/init-other-packages")
-(load "init-bibtex")
-(load "init-dired")
-(load "init-ediff")
-(load "init-eshell")
-(load "init-info")
-(load "init-org")
-(load "init-spelling")
-(load "init-which-func")
-(load "init-winner")
+;; Each file in init-other-packages named init-<somelibrary>.el is
+;; loaded just after its corresponding library.
+(let ((other-pkgs-dir "~/.emacs.d/init-other-packages"))
+  (add-to-list 'load-path other-pkgs-dir)
+
+  (dolist (file (directory-files other-pkgs-dir) t)
+    (when (string-match (format "^init-\\(.+\\)\\.el$") file)
+      (eval-after-load (match-string-no-properties 1 file)
+	`(load ,file)))))
