@@ -1,7 +1,5 @@
-(eval-after-load "bibtex"
-  '(progn
-     (add-to-list 'bibtex-BibTeX-entry-alist
-	     '("software" "A software" 
+(add-to-list 'bibtex-BibTeX-entry-alist
+	     '("software" "A software"
 	       (("title")
 		("version")
 		("organization")
@@ -10,7 +8,9 @@
 		("id"))
 	       nil
 	       nil))
-     ;; "keywords" should be a recognized field
-     (mapc (lambda (list) (push '("keywords") (fifth list))) bibtex-BibTeX-entry-alist)))
 
-
+;; "keywords" should be a recognized field
+(mapc
+ (lambda (list)
+   (push '("keywords") (fifth list)))
+ bibtex-BibTeX-entry-alist)
