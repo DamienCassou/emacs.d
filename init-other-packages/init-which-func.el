@@ -1,4 +1,3 @@
-(require 'which-func)
 (add-to-list 'which-func-modes 'org-mode)
 (add-to-list 'which-func-modes 'latex-mode)
 (add-to-list 'which-func-modes 'php-mode)
