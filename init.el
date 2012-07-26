@@ -38,6 +38,7 @@
  '(eclim-executable "~/usr/eclipse.indigo-eclim/eclim")
  '(eclim-print-debug-messages t)
  '(ediff-split-window-function (quote split-window-horizontally))
+ '(el-get-byte-compile nil)
  '(el-get-user-package-directory "~/.emacs.d/init-packages")
  '(enable-local-variables :all)
  '(eval-expression-print-level 7)
