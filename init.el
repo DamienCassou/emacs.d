@@ -71,6 +71,7 @@
  '(initial-scratch-message nil)
  '(io-command "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
  '(kept-new-versions 6)
+ '(kept-old-versions 10)
  '(magit-commit-signoff t)
  '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures/" "~/Documents/" "~/.emacs.d/el-get/" "~/.emacs.d/themes/" "~/Documents/smalltalk/" "~/tmp/")))
  '(magit-repo-dirs-depth 1)
