@@ -43,6 +43,7 @@
  '(enable-local-variables :all)
  '(eval-expression-print-level 7)
  '(flyspell-tex-command-regexp "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+ '(flyspell-use-meta-tab nil)
  '(font-latex-match-bold-command-keywords (quote (("damien" "{") ("dc" "{") ("eb" "{") ("bb" "{") ("cc" "{") ("jl" "{") ("sd" "{") ("dp" "{") ("nl" "{"))))
  '(font-latex-match-math-command-keywords (quote (("mm" "{") ("contract" "{{{"))))
  '(font-latex-match-reference-keywords (quote (("ccauthor" "[{") ("cauthor" "{"))))
