@@ -14,7 +14,7 @@
  '(TeX-view-program-list (quote (("AcrobatReader" "acroread %o"))))
  '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi") (output-pdf "AcrobatReader") (output-html "xdg-open"))))
  '(backup-by-copying t)
- '(backup-directory-alist (quote (("." . "~/.saves"))))
+ '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(bibtex-align-at-equal-sign t)
  '(bibtex-autokey-name-case-convert-function (quote identity))
  '(bibtex-autokey-name-length 4)
