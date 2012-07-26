@@ -133,7 +133,6 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 ;; Path
 (mapcar
@@ -144,12 +143,14 @@
  '("~/Documents/configuration/scripts/"
    "~/usr/apps/texlive/latest/bin/i386-linux/"))
 
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
 (unless (require 'el-get nil t)
   (if (not (executable-find "git"))
       (warn "Warning: Git is not available. As a result I can't install el-get")
     (with-current-buffer
 	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-      (let ((el-get-install-branch "3.stable"))
+      (let ((el-get-install-branch "master"))
 	(goto-char (point-max))
 	(eval-print-last-sexp)))))
 
@@ -172,6 +173,8 @@
 			    ;; M-<up|down|left|right> to move things
 			    ;; around
 			    drag-stuff
+			    ;; el-get itself
+			    el-get
 			    ;; Music player, start with <f12>
 			    emms
 			    ;; <M-@> repeadly to mark regions
