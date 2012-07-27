@@ -173,8 +173,6 @@
 			    ;; M-<up|down|left|right> to move things
 			    ;; around
 			    drag-stuff
-			    ;; el-get itself
-			    el-get
 			    ;; Music player, start with <f12>
 			    emms
 			    ;; <M-@> repeadly to mark regions
