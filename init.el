@@ -76,6 +76,8 @@
  '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/el-get" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp" "~/Documents/projects")))
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
+ '(message-log-max 10000)
+ '(next-screen-context-lines 5)
  '(org-agenda-files "~/Documents/configuration/org/agenda_files")
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "/usr/bin/acroread %s") (t . "/usr/bin/gnome-open %s"))))
  '(org-hide-leading-stars t)
