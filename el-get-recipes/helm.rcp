@@ -1,5 +1,0 @@
-(:name helm
-       :type git
-       :url "git://github.com/emacs-helm/helm.git"
-       :description "Emacs incremental and narrowing framework"
-       :features helm-config)
