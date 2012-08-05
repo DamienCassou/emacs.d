@@ -135,7 +135,6 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
-
 ;; Path
 (mapcar
  (lambda (path)
