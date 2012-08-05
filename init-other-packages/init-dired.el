@@ -54,13 +54,15 @@ all get spell checked."
 	    (add-to-list 'completion-ignored-extensions extension)
 	    (add-to-list 'dired-omit-extensions extension))
 	  extensions-to-ignore))
+
 (let ((files-to-ignore '("Thumbs.db" "Thumbs.db:encryptable")))
   (mapcar (lambda (filename)
 	    (setq dired-omit-files
 		  (concat dired-omit-files "\\|^" filename "$")))
 	  files-to-ignore))
-(add-hook 'dired-mode-hook
-	  (lambda () (dired-omit-mode)))
+
+(add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
+
 (let ((dired-guessing
        '(
 	 ("\\.avi" "vlc")
