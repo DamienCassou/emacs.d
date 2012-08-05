@@ -1,7 +1,3 @@
-(add-to-list 'which-func-modes 'org-mode)
-(add-to-list 'which-func-modes 'latex-mode)
-(add-to-list 'which-func-modes 'php-mode)
-
 (defun which-func--limit (str)
   "Returns a string that is equal to STR if STR's length is lower
   than 20. Otherwise, returns the first 17 characters and append '...'."
@@ -19,7 +15,6 @@
   "Cleans STR so that is can be displayed nicely within the mode line."
   (which-func--limit (which-func--trim str)))
 
-(defadvice which-function (around prepare-which-function)
+(defadvice which-function (around prepare-which-function activate)
   ad-do-it
   (setf ad-return-value (which-func--prepare ad-return-value)))
-(ad-activate 'which-function)
