@@ -41,10 +41,6 @@
 		      (save-buffers-kill-terminal)
 		    (message "I don't want to quit. If you really want to, use prefix arg `C-u'"))))
 
-;; Don't know why "C-h i" opens info in current window whereas the
-;; others open in other window (like "C-h f")
-(global-set-key (kbd "C-h i") 'info-other-window)
-
 ;; Removes whitespace at the end of lines
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
