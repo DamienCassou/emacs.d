@@ -30,6 +30,9 @@
 ;; misc functions
 (load "functions")
 
+(unless (require 'my-autoloads nil t)
+  (my:update-autoloads))
+
 ;; Prevents existing by accident
 (global-set-key (kbd "C-x C-c")
 		(lambda (arg)

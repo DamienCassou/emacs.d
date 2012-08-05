@@ -8,6 +8,17 @@
    (or (null (buffer-file-name buffer)) ;; buffer is not a file
        (not (buffer-modified-p buffer))))) ;; or file is not modified
 
+(defun my:update-autoloads ()
+  "Manually call this command when you want to update autoloads"
+  (interactive)
+  (let ((generated-autoload-file "~/.emacs.d/my-autoloads.el"))
+    (delete-file generated-autoload-file t)
+    (update-directory-autoloads "~/.emacs.d")
+    (update-directory-autoloads  "~/.emacs.d/init-other-packages")
+    (load generated-autoload-file)
+    (let ((buf (get-file-buffer generated-autoload-file)))
+      (when buf (kill-buffer buf)))))
+
 (defun kill-all-buffers ()
   (interactive)
   (let ((count 0))
