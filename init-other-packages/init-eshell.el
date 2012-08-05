@@ -75,5 +75,7 @@
     (my:insert-value (if (= (user-uid) 0) " # " " $ "))
     (buffer-substring (point-min) (point-max))))
 
-(setq eshell-highlight-prompt nil)
-(setq eshell-prompt-function 'my:eshell-prompt)
+(eval-after-load "em-prompt"
+  '(progn
+     (setq eshell-highlight-prompt nil)
+     (setq eshell-prompt-function 'my:eshell-prompt)))
