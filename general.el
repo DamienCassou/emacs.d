@@ -38,7 +38,9 @@
 		(lambda (arg)
 		  (interactive "P")
 		  (if arg
-		      (save-buffers-kill-terminal)
+		      (progn
+			(save-buffers-kill-terminal)
+			(kill-emacs))
 		    (message "I don't want to quit. If you really want to, use prefix arg `C-u'"))))
 
 ;; Removes whitespace at the end of lines
