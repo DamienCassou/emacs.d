@@ -23,7 +23,6 @@
   (interactive)
   (let ((count 0))
     (dolist (buffer (buffer-list))
-      (message "Count is %s" count)
       (when (buffer-killable-p buffer)
 	(incf count)
 	(message "Killing %s" (buffer-name buffer))
