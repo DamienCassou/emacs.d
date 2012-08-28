@@ -1,13 +1,3 @@
-(require 'cl)
-(require 'tramp)
-
-(defvar buffers-to-keep '("*scratch*" "*Messages*"))
-(defun buffer-killable-p (buffer)
-  (and
-   (not (member (buffer-name buffer) buffers-to-keep))
-   (or (null (buffer-file-name buffer)) ;; buffer is not a file
-       (not (buffer-modified-p buffer))))) ;; or file is not modified
-
 (defun my:update-autoloads ()
   "Manually call this command when you want to update autoloads"
   (interactive)
@@ -18,6 +8,13 @@
     (load generated-autoload-file)
     (let ((buf (get-file-buffer generated-autoload-file)))
       (when buf (kill-buffer buf)))))
+
+(defvar buffers-to-keep '("*scratch*" "*Messages*"))
+(defun buffer-killable-p (buffer)
+  (and
+   (not (member (buffer-name buffer) buffers-to-keep))
+   (or (null (buffer-file-name buffer)) ;; buffer is not a file
+       (not (buffer-modified-p buffer))))) ;; or file is not modified
 
 (defun kill-all-buffers ()
   (interactive)
