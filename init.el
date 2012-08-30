@@ -151,9 +151,8 @@
       (warn "Warning: Git is not available. As a result I can't install el-get")
     (with-current-buffer
 	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-      (let ((el-get-install-branch "master"))
-	(goto-char (point-max))
-	(eval-print-last-sexp)))))
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
 
 (eval-after-load 'el-get
   '(progn
