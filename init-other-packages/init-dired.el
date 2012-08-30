@@ -24,9 +24,12 @@ all get spell checked."
 				(expand-file-name default-directory)
 				0 -1)))
 	 (when (and (file-directory-p cur-dir-no-slash)
+		    ;; because of recentf limitations,
+		    ;; - we can't store the filesystem root
 		    (not (zerop (length cur-dir-no-slash)))
-		    (not (string-equal "/" cur-dir-no-slash))
-		    (not (string-equal "/" (substring cur-dir-no-slash -1))))
+		    ;; - we can't store a TRAMP root
+		    (not (string-equal ":" (substring cur-dir-no-slash -1))))
+	   ;; recentf does not play well with file ending with a slash
 	   (recentf-add-file cur-dir-no-slash))))
      (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))
 
