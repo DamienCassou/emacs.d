@@ -157,7 +157,7 @@
 (eval-after-load 'el-get
   '(progn
      (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
-     (setq el-get-sources '(
+     (let ((my-packages   '(
 			    ;; Asynchronous file management in Emacs
 			    ;; async
 			    ;; [M-y] to show kill ring
@@ -202,15 +202,12 @@
 			    textlint
 			    ;; <C-x u> to show the undo tree
 			    undo-tree
-			    ))
+			    )))
 
      (when (executable-find "latex")
-       (add-to-list 'el-get-sources 'auctex)
-       (add-to-list 'el-get-sources 'reftex))
+       (add-to-list 'my-packages 'auctex)
+       (add-to-list 'my-packages 'reftex))
 
-     ;; (when (executable-find "sbcl")
-     ;;   (add-to-list 'el-get-sources 'slime))
-
-     (el-get 'sync el-get-sources)))
+     (el-get 'sync my-packages))))
 
 (load "general")
