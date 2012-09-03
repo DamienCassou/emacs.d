@@ -38,6 +38,7 @@
      t)
     (message message)))
 
+(global-unset-key (kbd "M-@"))
 (global-set-key (kbd "C-x =")
 		(lambda ()
 		  (interactive)
