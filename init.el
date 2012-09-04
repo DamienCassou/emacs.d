@@ -188,6 +188,9 @@
 			    java-mode-indent-annotations
 			    ;; Integrate git <C-x g>
 			    magit
+			    ;; View git file through history
+			    ;; through `magit-view-file-history'
+			    magit-view-file
 			    ;; Major mode for markdown format
 			    markdown-mode
 			    ;; Major mode for python
