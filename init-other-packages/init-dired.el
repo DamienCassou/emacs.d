@@ -87,5 +87,6 @@ all get spell checked."
 	 ("\\.xlsx?" "libreoffice")
 	 )))
   (mapcar (lambda (pair)
-	    (add-to-list 'dired-guess-shell-alist-user pair))
+	    (add-to-list 'dired-guess-shell-alist-user
+			 (list (first pair) (concat "nohup " (second pair)))))
 	  dired-guessing))
