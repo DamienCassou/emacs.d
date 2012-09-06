@@ -2,7 +2,8 @@
   "Manually call this command when you want to update autoloads"
   (interactive)
   (let ((generated-autoload-file "~/.emacs.d/my-autoloads.el"))
-    (delete-file generated-autoload-file t)
+    (if (file-exists-p generated-autoload-file)
+	(delete-file generated-autoload-file t))
     (update-directory-autoloads "~/.emacs.d")
     (update-directory-autoloads  "~/.emacs.d/init-other-packages")
     (load generated-autoload-file)
