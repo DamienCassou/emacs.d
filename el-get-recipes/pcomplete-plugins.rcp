@@ -1,0 +1,4 @@
+(:name pcomplete-plugins
+       :description "Some plugins for Emacs pcomplete mechanism"
+       :type github
+       :pkgname "DamienCassou/emacs-pcomplete-plugins")
