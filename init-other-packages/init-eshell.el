@@ -79,3 +79,7 @@
   '(progn
      (setq eshell-highlight-prompt nil)
      (setq eshell-prompt-function 'my:eshell-prompt)))
+
+(eval-after-load "em-term"
+  '(progn
+     (add-to-list 'eshell-visual-commands "htop")))
