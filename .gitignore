@@ -2,3 +2,8 @@ el-get
 auto-save-list
 places
 recentf
+emms/
+/eshell/history
+/eshell/lastdir
+/my-autoloads.el
+/tramp
