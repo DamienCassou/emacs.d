@@ -181,6 +181,8 @@
 			    el-get
 			    ;; Music player, start with <f12>
 			    emms
+			    ;; Some manual for eshell (as Info node)
+			    eshell-manual
 			    ;; <M-@> repeadly to mark regions
 			    expand-region
 			    ;; `fci-mode' to show the right margin
@@ -196,6 +198,8 @@
 			    magit-view-file
 			    ;; Major mode for markdown format
 			    markdown-mode
+			    ;; More completion for eshell
+			    pcomplete-plugins
 			    ;; Major mode for python
 			    python-mode
 			    ;; Switch between shells with <C-'> and
