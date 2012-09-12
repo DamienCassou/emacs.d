@@ -166,8 +166,6 @@
 			    ;; async
 			    ;; [M-y] to show kill ring
 			    browse-kill-ring
-			    ;; Shorter mode names in the modeline
-			    diminish
 			    ;; toggle details (size, owner, group,
 			    ;; permissions, ...) in dired buffers
 			    ;; using <)>
@@ -200,6 +198,8 @@
 			    markdown-mode
 			    ;; More completion for eshell
 			    pcomplete-plugins
+			    ;; Get a nice mode line
+			    powerline
 			    ;; Major mode for python
 			    python-mode
 			    ;; Switch between shells with <C-'> and
