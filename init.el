@@ -166,6 +166,8 @@
 			    ;; async
 			    ;; [M-y] to show kill ring
 			    browse-kill-ring
+			    ;; Shorter mode names in the modeline
+			    diminish
 			    ;; toggle details (size, owner, group,
 			    ;; permissions, ...) in dired buffers
 			    ;; using <)>
