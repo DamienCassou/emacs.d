@@ -8,3 +8,5 @@
 (ignore-mode reftex-base reftex-mode)
 
 (ignore-mode drag-stuff drag-stuff-mode)
+
+(ignore-mode magit-svn magit-svn-mode)
