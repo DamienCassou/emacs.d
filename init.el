@@ -138,14 +138,22 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
+(defun darwinp ()
+  (interactive)
+  "Return true if system is darwin-based (Mac OS X)"
+  (string-equal system-type "darwin"))
+
 ;; Path
 (mapcar
  (lambda (path)
    (let ((expanded-path (expand-file-name path)))
      (add-to-list 'exec-path expanded-path)
      (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
- '("~/Documents/configuration/scripts/"
-   "~/usr/apps/texlive/latest/bin/i386-linux/"))
+ (if (darwinp)
+     (list  "/usr/local/bin"
+	    "/usr/local/sbin")
+   (list "~/Documents/configuration/scripts/"
+	 "~/usr/apps/texlive/latest/bin/i386-linux/")))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
