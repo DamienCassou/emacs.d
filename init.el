@@ -179,8 +179,6 @@
 			    drag-stuff
 			    ;; el-get itself (useful for info)
 			    el-get
-			    ;; Music player, start with <f12>
-			    emms
 			    ;; Some manual for eshell (as Info node)
 			    eshell-manual
 			    ;; <M-@> repeadly to mark regions
@@ -217,10 +215,13 @@
 			    undo-tree
 			    )))
 
-     (when (executable-find "latex")
-       (add-to-list 'my-packages 'auctex)
-       (add-to-list 'my-packages 'reftex))
+       (when (executable-find "mpd")
+	 (add-to-list 'my-packages 'emms))
 
-     (el-get 'sync my-packages))))
+       (when (executable-find "latex")
+	 (add-to-list 'my-packages 'auctex)p
+	 (add-to-list 'my-packages 'reftex))
+
+       (el-get 'sync my-packages))))
 
 (load "general")
