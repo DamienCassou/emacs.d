@@ -8,3 +8,5 @@ emms/
 /my-autoloads.el
 /tramp
 /backups
+/.DS_Store
+/smex-items
