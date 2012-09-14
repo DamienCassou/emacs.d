@@ -109,7 +109,7 @@
  '(shell-switcher-new-shell-function (quote shell-switcher-make-eshell))
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
- '(smex-save-file "~/.config/smex-items")
+ '(smex-save-file "~/.emacs.d/smex-items")
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
  '(smtpmail-smtp-user "damien.cassou@gmail.com")
