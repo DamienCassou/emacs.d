@@ -76,7 +76,7 @@
  '(kept-new-versions 6)
  '(kept-old-versions 10)
  '(magit-commit-signoff t)
- '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/el-get" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp" "~/Documents/projects" "~/Documents/websites")))
+ '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/el-get" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
  '(message-log-max 10000)
