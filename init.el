@@ -221,7 +221,7 @@
 	 (add-to-list 'my-packages 'emms))
 
        (when (executable-find "latex")
-	 (add-to-list 'my-packages 'auctex)p
+	 (add-to-list 'my-packages 'auctex)
 	 (add-to-list 'my-packages 'reftex))
 
        (el-get 'sync my-packages))))
