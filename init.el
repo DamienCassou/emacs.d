@@ -147,7 +147,8 @@
      (list  "/usr/local/bin"
 	    "/usr/local/sbin")
    (list "~/Documents/configuration/scripts/"
-	 "~/usr/apps/texlive/latest/bin/i386-linux/")))
+	 "~/usr/apps/texlive/latest/bin/i386-linux/"
+	 "~/usr/bin")))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
