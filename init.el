@@ -182,8 +182,6 @@
 			    drag-stuff
 			    ;; el-get itself (useful for info)
 			    el-get
-			    ;; Some manual for eshell (as Info node)
-			    eshell-manual
 			    ;; <M-@> repeadly to mark regions
 			    expand-region
 			    ;; `fci-mode' to show the right margin
@@ -218,7 +216,12 @@
 			    undo-tree
 			    )))
 
+       (when (executable-find "makeinfo")
+	 ;; Some manual for eshell (as Info node)
+	 (add-to-list 'my-packages 'eshell-manual))
+
        (when (executable-find "mpd")
+	 ;; Listening to music from Emacs with <F11>
 	 (add-to-list 'my-packages 'emms))
 
        (when (executable-find "latex")
