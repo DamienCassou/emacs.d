@@ -190,11 +190,6 @@
 			    idomenu
 			    ;; Fix Java mode for annotations
 			    java-mode-indent-annotations
-			    ;; Integrate git <C-x g>
-			    magit
-			    ;; View git file through history
-			    ;; through `magit-view-file-history'
-			    magit-view-file
 			    ;; Major mode for markdown format
 			    markdown-mode
 			    ;; More completion for eshell
@@ -219,7 +214,11 @@
        (when (executable-find "makeinfo")
 	 ;; Some manual for eshell (as Info node)
 	 (add-to-list 'my-packages 'eshell-manual)
-	 (add-to-list 'my-packages 'magit))
+	 ;; Integrate git <C-x g>
+	 (add-to-list 'my-packages 'magit)
+	 ;; View git file through history
+	 ;; through `magit-view-file-history'
+	 (add-to-list 'my-packages 'magit-view-file))
 
        (when (executable-find "mpd")
 	 ;; Listening to music from Emacs with <F11>
