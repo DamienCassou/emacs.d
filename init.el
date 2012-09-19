@@ -218,7 +218,8 @@
 
        (when (executable-find "makeinfo")
 	 ;; Some manual for eshell (as Info node)
-	 (add-to-list 'my-packages 'eshell-manual))
+	 (add-to-list 'my-packages 'eshell-manual)
+	 (add-to-list 'my-packages 'magit))
 
        (when (executable-find "mpd")
 	 ;; Listening to music from Emacs with <F11>
