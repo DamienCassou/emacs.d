@@ -11,6 +11,7 @@
  '(TeX-default-unit-for-image "\\linewidth")
  '(TeX-master nil)
  '(TeX-parse-self t)
+ '(TeX-source-correlate-mode t)
  '(TeX-view-program-list (quote (("AcrobatReader" "acroread %o"))))
  '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi") (output-pdf "AcrobatReader") (output-html "xdg-open"))))
  '(backup-by-copying t)

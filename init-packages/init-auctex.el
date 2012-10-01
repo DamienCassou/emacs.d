@@ -15,3 +15,5 @@
 	 (LaTeX-mark-environment)
 	 (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))
      (define-key (eval 'TeX-mode-map) (kbd "s-a") #'LaTeX-align-table)))
+
+(require 'auctex-evince-sync)
