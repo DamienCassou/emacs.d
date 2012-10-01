@@ -183,7 +183,7 @@
 			    drag-stuff
 			    ;; el-get itself (useful for info)
 			    el-get
-			    ;; <M-@> repeadly to mark regions
+			    ;; <C-x => repeadly to mark regions
 			    expand-region
 			    ;; `fci-mode' to show the right margin
 			    fill-column-indicator
