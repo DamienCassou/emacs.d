@@ -226,6 +226,9 @@
 	 ;; Listening to music from Emacs with <F11>
 	 (add-to-list 'my-packages 'emms))
 
+       (when (locate-library "notmuch")
+	 (add-to-list 'my-packages 'notmuch-labeler))
+
        (when (executable-find "latex")
 	 (add-to-list 'my-packages 'auctex)
 	 (add-to-list 'my-packages 'reftex))
