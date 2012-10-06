@@ -45,12 +45,14 @@
           (auctex-evince-forward-sync pdf tex line)))
 
       ;; New view entry: Evince via D-bus.
-      (add-to-list 'TeX-view-program-list '("EvinceDbus" auctex-evince-view))
+      (eval-after-load 'tex
+	'(progn
+	   (add-to-list 'TeX-view-program-list '("EvinceDbus" auctex-evince-view))
 
-      ;; Use Evince via D-bus for reading pdf files
-      (setcar (member-if (lambda (pair) (equal 'output-pdf (car pair)))
-			 TeX-view-program-selection)
-	      '(output-pdf "EvinceDbus"))
+	   ;; Use Evince via D-bus for reading pdf files
+	   (setcar (member-if (lambda (pair) (equal 'output-pdf (car pair)))
+			      TeX-view-program-selection)
+		   '(output-pdf "EvinceDbus"))))
 
       ;; Inverse search.
       ;; Adapted from: http://www.mail-archive.com/auctex@gnu.org/msg04175.html
