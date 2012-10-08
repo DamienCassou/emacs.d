@@ -1,8 +1,13 @@
 (load "mybibtex" t t t)
 (eval-after-load "tex"
-  '(add-to-list 'TeX-command-list
-		'("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX
-		  nil t :help "Run Bibtex on all aux files") t))
+  '(progn
+     (add-to-list 'TeX-command-list
+		  '("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX
+		    nil t :help "Run Bibtex on all aux files") t)
+     (unless (darwinp)
+       (progn
+	 (add-to-list 'TeX-view-program-list '("AcrobatReader" "acroread %o"))
+	 (add-to-list 'TeX-view-program-selection '(output-pdf "AcrobatReader"))))))
 
 (eval-after-load "latex"
   `(progn
@@ -16,4 +21,6 @@
 	 (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))
      (define-key (eval 'TeX-mode-map) (kbd "s-a") #'LaTeX-align-table)))
 
-(require 'auctex-evince-sync)
+(if (darwinp)
+    (require 'auctex-skim-sync)
+  (require 'auctex-evince-sync))

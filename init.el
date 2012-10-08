@@ -12,8 +12,6 @@
  '(TeX-master nil)
  '(TeX-parse-self t)
  '(TeX-source-correlate-mode t)
- '(TeX-view-program-list (quote (("AcrobatReader" "acroread %o"))))
- '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi") (output-pdf "AcrobatReader") (output-html "xdg-open"))))
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(bibtex-align-at-equal-sign t)
@@ -147,7 +145,8 @@
      (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
  (if (darwinp)
      (list  "/usr/local/bin"
-	    "/usr/local/sbin")
+	    "/usr/local/sbin"
+	    "~/usr/apps/texlive/latest/bin/universal-darwin/")
    (list "~/Documents/configuration/scripts/"
 	 "~/usr/apps/texlive/latest/bin/i386-linux/"
 	 "~/usr/bin")))
