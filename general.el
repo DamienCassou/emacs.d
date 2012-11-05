@@ -43,9 +43,6 @@
 			(kill-emacs))
 		    (message "I don't want to quit. If you really want to, use prefix arg `C-u'"))))
 
-;; Removes whitespace at the end of lines
-(add-hook 'write-file-functions 'delete-trailing-whitespace)
-
 ;; Each file in init-other-packages named init-<somelibrary>.el is
 ;; loaded just after its corresponding library.
 (let ((other-pkgs-dir "~/.emacs.d/init-other-packages"))

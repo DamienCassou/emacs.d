@@ -10,3 +10,5 @@
 (ignore-mode drag-stuff drag-stuff-mode)
 
 (ignore-mode magit-svn magit-svn-mode)
+
+(ignore-mode ethan-wspace ethan-wspace-mode)

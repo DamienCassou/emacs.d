@@ -68,6 +68,7 @@
  '(ido-mode (quote both) nil (ido))
  '(ido-use-virtual-buffers t)
  '(imenu-auto-rescan t)
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
  '(initial-scratch-message nil)
@@ -183,6 +184,8 @@
 			    drag-stuff
 			    ;; el-get itself (useful for info)
 			    el-get
+			    ;; Correctly takes care of trailing spaces
+			    ethan-wspace
 			    ;; <C-x => repeadly to mark regions
 			    expand-region
 			    ;; `fci-mode' to show the right margin
