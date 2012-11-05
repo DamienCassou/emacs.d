@@ -141,11 +141,13 @@
   (string-equal system-type "darwin"))
 
 ;; Path
+(defun add-to-executable-path (path)
+  (let ((expanded-path (expand-file-name path)))
+    (add-to-list 'exec-path expanded-path)
+    (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
+
 (mapcar
- (lambda (path)
-   (let ((expanded-path (expand-file-name path)))
-     (add-to-list 'exec-path expanded-path)
-     (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
+ 'add-to-executable-path
  (if (darwinp)
      (list  "/usr/local/bin"
 	    "/usr/local/sbin"
