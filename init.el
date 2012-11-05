@@ -38,6 +38,7 @@
  '(eclim-print-debug-messages t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(el-get-byte-compile nil)
+ '(el-get-github-default-url-type (quote https))
  '(el-get-user-package-directory "~/.emacs.d/init-packages")
  '(enable-local-variables :all)
  '(eshell-buffer-shorthand t)
