@@ -200,6 +200,10 @@
 			    java-mode-indent-annotations
 			    ;; Major mode for markdown format
 			    markdown-mode
+			    ;; Mail client <M-x notmuch>
+			    notmuch
+			    ;; Labeler for notmuch
+			    notmuch-labeler
 			    ;; More completion for eshell
 			    pcomplete-plugins
 			    ;; Get a nice mode line
