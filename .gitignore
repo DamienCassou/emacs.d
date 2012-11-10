@@ -12,3 +12,6 @@ emms/
 /smex-items
 /bookmarks
 TAGS
+/url
+session.*
+*~
