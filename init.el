@@ -150,11 +150,11 @@
  'add-to-executable-path
  (if (darwinp)
      (list  "/usr/local/bin"
-	    "/usr/local/sbin"
-	    "~/usr/apps/texlive/latest/bin/universal-darwin/")
+            "/usr/local/sbin"
+            "~/usr/apps/texlive/latest/bin/universal-darwin/")
    (list "~/Documents/configuration/scripts/"
-	 "~/usr/apps/texlive/latest/bin/i386-linux/"
-	 "~/usr/bin")))
+         "~/usr/apps/texlive/latest/bin/i386-linux/"
+         "~/usr/bin")))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -162,88 +162,88 @@
   (if (not (executable-find "git"))
       (warn "Warning: Git is not available. As a result I can't install el-get")
     (with-current-buffer
-	(url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+        (url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
       (let (el-get-master-branch)
-	(goto-char (point-max))
-	(eval-print-last-sexp)))))
+        (goto-char (point-max))
+        (eval-print-last-sexp)))))
 
 (eval-after-load 'el-get
   '(progn
      (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
      (let ((my-packages   '(
-			    ;; Asynchronous file management in Emacs
-			    ;; async
-			    ;; [M-y] to show kill ring
-			    browse-kill-ring
-			    ;; Shorter mode names in the modeline
-			    diminish
+                            ;; Asynchronous file management in Emacs
+                            ;; async
+                            ;; [M-y] to show kill ring
+                            browse-kill-ring
+                            ;; Shorter mode names in the modeline
+                            diminish
                             ;; improvements to dired+
                             dired+
-			    ;; toggle details (size, owner, group,
-			    ;; permissions, ...) in dired buffers
-			    ;; using <)>
-			    dired-details
-			    ;; <C-x s> to toggle sudo
-			    dired-toggle-sudo
-			    ;; M-<up|down|left|right> to move things
-			    ;; around
-			    drag-stuff
-			    ;; el-get itself (useful for info)
-			    el-get
-			    ;; Correctly takes care of trailing spaces
-			    ethan-wspace
-			    ;; <C-x => repeadly to mark regions
-			    expand-region
-			    ;; `fci-mode' to show the right margin
-			    fill-column-indicator
-			    ;; <M-i> to list sections of the buffer
-			    idomenu
-			    ;; Fix Java mode for annotations
-			    java-mode-indent-annotations
-			    ;; Major mode for markdown format
-			    markdown-mode
-			    ;; Mail client <M-x notmuch>
-			    notmuch
-			    ;; Labeler for notmuch
-			    notmuch-labeler
-			    ;; More completion for eshell
-			    pcomplete-plugins
-			    ;; Get a nice mode line
-			    powerline
-			    ;; Major mode for python
-			    python-mode
-			    ;; Switch between shells with <C-'> and
-			    ;; C-' followed by more quotes
-			    shell-switcher
-			    ;;  Replacement for <M-x>
-			    smex
-			    ;; Displays numbers when using <C-x o>
-			    switch-window
-			    ;; Assistant to correct english text
-			    textlint
-			    ;; <C-x u> to show the undo tree
-			    undo-tree
-			    )))
+                            ;; toggle details (size, owner, group,
+                            ;; permissions, ...) in dired buffers
+                            ;; using <)>
+                            dired-details
+                            ;; <C-x s> to toggle sudo
+                            dired-toggle-sudo
+                            ;; M-<up|down|left|right> to move things
+                            ;; around
+                            drag-stuff
+                            ;; el-get itself (useful for info)
+                            el-get
+                            ;; Correctly takes care of trailing spaces
+                            ethan-wspace
+                            ;; <C-x => repeadly to mark regions
+                            expand-region
+                            ;; `fci-mode' to show the right margin
+                            fill-column-indicator
+                            ;; <M-i> to list sections of the buffer
+                            idomenu
+                            ;; Fix Java mode for annotations
+                            java-mode-indent-annotations
+                            ;; Major mode for markdown format
+                            markdown-mode
+                            ;; Mail client <M-x notmuch>
+                            notmuch
+                            ;; Labeler for notmuch
+                            notmuch-labeler
+                            ;; More completion for eshell
+                            pcomplete-plugins
+                            ;; Get a nice mode line
+                            powerline
+                            ;; Major mode for python
+                            python-mode
+                            ;; Switch between shells with <C-'> and
+                            ;; C-' followed by more quotes
+                            shell-switcher
+                            ;;  Replacement for <M-x>
+                            smex
+                            ;; Displays numbers when using <C-x o>
+                            switch-window
+                            ;; Assistant to correct english text
+                            textlint
+                            ;; <C-x u> to show the undo tree
+                            undo-tree
+                            )))
 
        (when (executable-find "makeinfo")
-	 ;; Some manual for eshell (as Info node)
-	 (add-to-list 'my-packages 'eshell-manual)
-	 ;; Integrate git <C-x g>
-	 (add-to-list 'my-packages 'magit)
-	 ;; View git file through history
-	 ;; through `magit-view-file-history'
-	 (add-to-list 'my-packages 'magit-view-file))
+         ;; Some manual for eshell (as Info node)
+         (add-to-list 'my-packages 'eshell-manual)
+         ;; Integrate git <C-x g>
+         (add-to-list 'my-packages 'magit)
+         ;; View git file through history
+         ;; through `magit-view-file-history'
+         (add-to-list 'my-packages 'magit-view-file))
 
        (when (executable-find "mpd")
-	 ;; Listening to music from Emacs with <F11>
-	 (add-to-list 'my-packages 'emms))
+         ;; Listening to music from Emacs with <F11>
+         (add-to-list 'my-packages 'emms))
 
        (when (locate-library "notmuch")
-	 (add-to-list 'my-packages 'notmuch-labeler))
+         (add-to-list 'my-packages 'notmuch-labeler))
 
        (when (executable-find "latex")
-	 (add-to-list 'my-packages 'auctex)
-	 (add-to-list 'my-packages 'reftex))
+         (add-to-list 'my-packages 'auctex)
+         (add-to-list 'my-packages 'reftex))
 
        (el-get 'sync my-packages))))
 
