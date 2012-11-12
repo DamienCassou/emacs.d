@@ -177,6 +177,8 @@
 			    browse-kill-ring
 			    ;; Shorter mode names in the modeline
 			    diminish
+                            ;; improvements to dired+
+                            dired+
 			    ;; toggle details (size, owner, group,
 			    ;; permissions, ...) in dired buffers
 			    ;; using <)>
