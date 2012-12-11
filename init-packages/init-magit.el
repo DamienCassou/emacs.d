@@ -10,3 +10,9 @@
      '(progn
         (define-key rebase-mode-map (drag-stuff--kbd 'up) 'rebase-mode-move-line-up)
         (define-key rebase-mode-map (drag-stuff--kbd 'down) 'rebase-mode-move-line-down))))
+
+;; Make C-x C-j the same as in all other modes
+(define-key magit-mode-map (kbd "C-x C-j")
+  '(lambda ()
+     (interactive)
+     (dired default-directory)))
