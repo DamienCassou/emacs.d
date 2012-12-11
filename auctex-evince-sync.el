@@ -1,3 +1,12 @@
+;; Synctex with evince using DBus
+(defadvice raise-frame (after make-it-work (&optional frame) activate)
+  "Work around some bug? in raise-frame/Emacs/GTK/Metacity/something.
+     Katsumi Yamaoka <yamaoka@jpl.org> posted this in
+     http://article.gmane.org/gmane.emacs.devel:39702"
+  (call-process
+   "wmctrl" nil nil nil "-i" "-R"
+   (frame-parameter (or frame (selected-frame)) 'outer-window-id)))
+
 ;; Forward/inverse search with evince using D-bus.
 (if (require 'dbus "dbus" t)
     (progn
