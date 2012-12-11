@@ -194,7 +194,7 @@
                             ethan-wspace
                             ;; <C-x => repeadly to mark regions
                             expand-region
-                            ;; `fci-mode' to show the right margin
+                            ;; M-x `fci-mode' to show the right margin
                             fill-column-indicator
                             ;; <M-i> to list sections of the buffer
                             idomenu
