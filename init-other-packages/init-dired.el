@@ -68,6 +68,17 @@ all get spell checked."
 
 (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
 
+;; Auto-rotate pictures according to EXIF data
+(eval-after-load "image-dired"
+  '(progn
+     (setq image-dired-cmd-create-thumbnail-options
+           (replace-regexp-in-string "-strip" "-auto-orient -strip" image-dired-cmd-create-thumbnail-options)
+           image-dired-cmd-create-temp-image-options
+           (replace-regexp-in-string "-strip" "-auto-orient -strip" image-dired-cmd-create-temp-image-options))))
+
+
+
+
 (let ((dired-guessing
        '(
          ("\\.avi" "vlc")
