@@ -28,7 +28,9 @@ all get spell checked."
                     ;; - we can't store the filesystem root
                     (not (zerop (length cur-dir-no-slash)))
                     ;; - we can't store a TRAMP root
-                    (not (string-equal ":" (substring cur-dir-no-slash -1))))
+                    (not (string-equal ":" (substring cur-dir-no-slash -1)))
+                    ;; And I prefer not storing TRAMP files
+                    (not (tramp-tramp-file-p cur-dir-no-slash)))
            ;; recentf does not play well with file ending with a slash
            (recentf-add-file cur-dir-no-slash))))
      (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))
