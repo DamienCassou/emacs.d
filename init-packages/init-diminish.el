@@ -12,3 +12,7 @@
 (ignore-mode magit-svn magit-svn-mode)
 
 (ignore-mode ethan-wspace ethan-wspace-mode)
+
+(ignore-mode eldoc eldoc-mode)
+
+(ignore-mode checkdoc checkdoc-minor-mode)
