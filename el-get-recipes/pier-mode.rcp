@@ -1,0 +1,7 @@
+(:name pier-mode
+       :description "Emacs Major mode for Pier-formatted text files"
+       :type github
+       :url-type ssh
+       :pkgname "DamienCassou/pier-cl"
+       :features pier-mode
+       :build `(("./install.bash")))
