@@ -67,6 +67,7 @@
  '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`\\.ido\\.last")))
  '(ido-max-prospects 6)
  '(ido-mode (quote both) nil (ido))
+ '(ido-ubiquitous-mode t)
  '(ido-use-virtual-buffers t)
  '(imenu-auto-rescan t)
  '(indent-tabs-mode nil)
@@ -198,6 +199,8 @@
                             fill-column-indicator
                             ;; <M-i> to list sections of the buffer
                             idomenu
+                            ;; Install ido everywhere
+                            ido-ubiquitous
                             ;; Fix Java mode for annotations
                             java-mode-indent-annotations
                             ;; Major mode for markdown format
