@@ -122,6 +122,7 @@
  '(undo-tree-mode-lighter "")
  '(user-mail-address "damien.cassou@gmail.com")
  '(vc-follow-symlinks nil)
+ '(vc-make-backup-files t)
  '(version-control t)
  '(visible-bell t)
  '(which-function-mode t)
