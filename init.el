@@ -81,7 +81,7 @@
  '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/el-get" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
- '(message-log-max 10000)
+ '(message-log-max t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
  '(proced-filter (quote all))
