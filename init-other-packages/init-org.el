@@ -14,9 +14,11 @@
 (setq org-default-notes-file "tasks.org")
 
 ;;;###autoload
-(define-key global-map (kbd "s-c") 'org-capture)
+(define-key global-map (kbd "C-. o c") 'org-capture)
 ;;;###autoload
 (define-key global-map (kbd "C-,") 'org-cycle-agenda-files)
+;;;###autoload
+(define-key global-map (kbd "C-. o a") 'org-agenda)
 
 (setq org-capture-templates '())
 
