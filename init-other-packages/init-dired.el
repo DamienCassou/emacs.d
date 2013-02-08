@@ -76,8 +76,21 @@ all get spell checked."
            image-dired-cmd-create-temp-image-options
            (replace-regexp-in-string "-strip" "-auto-orient -strip" image-dired-cmd-create-temp-image-options))))
 
+(defun dired-back-to-top ()
+  (interactive)
+  (beginning-of-buffer)
+  (dired-next-line (if dired-omit-mode 2 4)))
 
+(define-key dired-mode-map
+  (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
 
+(defun dired-jump-to-bottom ()
+  (interactive)
+  (end-of-buffer)
+  (dired-next-line -1))
+
+(define-key dired-mode-map
+  (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
 (let ((dired-guessing
        '(
