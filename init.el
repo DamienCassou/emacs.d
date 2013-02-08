@@ -237,13 +237,8 @@
                             )))
 
        (when (executable-find "makeinfo")
-         ;; Some manual for eshell (as Info node)
-         (add-to-list 'my-packages 'eshell-manual)
          ;; Integrate git <C-x g>
-         (add-to-list 'my-packages 'magit)
-         ;; View git file through history
-         ;; through `magit-view-file-history'
-         (add-to-list 'my-packages 'magit-view-file))
+         (add-to-list 'my-packages 'magit))
 
        (when (executable-find "mpd")
          ;; Listening to music from Emacs with <F11>
