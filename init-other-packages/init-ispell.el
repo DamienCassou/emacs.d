@@ -67,3 +67,7 @@
 (global-set-key (kbd "s-i d ?") 'ispell-change-dictionary)
 (global-set-key (kbd "s-f b") 'flyspell-buffer)
 (global-set-key (kbd "s-f m") 'flyspell-toggle)
+
+;; Avoids flyspell from overriding <C-.>
+(setq flyspell-mode-map
+      (delq (assoc 67108910 flyspell-mode-map) flyspell-mode-map))
