@@ -173,6 +173,7 @@
         (goto-char (point-max))
         (eval-print-last-sexp)))))
 
+(load "~/.emacs.d/el-get/.loaddefs.el")
 (eval-after-load 'el-get
   '(progn
      (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
