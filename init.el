@@ -42,6 +42,7 @@
  '(el-get-github-default-url-type (quote https))
  '(el-get-user-package-directory "~/.emacs.d/init-packages")
  '(enable-local-variables :all)
+ '(enable-recursive-minibuffers t)
  '(eshell-buffer-shorthand t)
  '(eshell-cmpl-cycle-completions nil)
  '(eval-expression-print-length 20)
