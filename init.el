@@ -86,6 +86,8 @@
  '(message-log-max t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
+ '(org-mobile-directory "~/Dropbox/MobileOrg/")
+ '(org-mobile-inbox-for-pull "~/Documents/configuration/org/from-mobile.org")
  '(proced-filter (quote all))
  '(read-file-name-completion-ignore-case t)
  '(recentf-auto-cleanup 300)
