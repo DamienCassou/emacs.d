@@ -211,6 +211,8 @@
                             java-mode-indent-annotations
                             ;; Major mode for markdown format
                             markdown-mode
+                            ;; Control multiple cursors with C-S-c C-S-c
+                            multiple-cursors
                             ;; Mail client <M-x notmuch>
                             notmuch
                             ;; Labeler for notmuch

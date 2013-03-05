@@ -3,11 +3,16 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-	org-ctrl-c-ctrl-c
-	org-self-insert-command
-	))
+        TeX-insert-backslash
+        org-ctrl-c-ctrl-c
+        org-self-insert-command
+        skeleton-pair-insert-maybe
+        smex
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-	org-delete-backward-char
-	))
+        eval-print-last-sexp
+        indent-for-tab-command
+        org-delete-backward-char
+        ))
