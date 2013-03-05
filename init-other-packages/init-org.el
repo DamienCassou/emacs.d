@@ -14,7 +14,7 @@
 (setq org-default-notes-file "tasks.org")
 
 ;;;###autoload
-(define-key global-map (kbd "C-. o c") 'org-capture)
+(define-key global-map (kbd "C-. o t") 'org-capture)
 ;;;###autoload
 (define-key global-map (kbd "C-,") 'org-cycle-agenda-files)
 ;;;###autoload
@@ -23,11 +23,5 @@
 (setq org-capture-templates '())
 
 (add-to-list 'org-capture-templates
-	     `("c" "Cadeaux" entry
-	       (file "cadeaux.org")
-	       "* %i%?\n%^g"))
-
-(add-to-list 'org-capture-templates
-	     `("t" "Tâches" entry
-	       (file+headline "tasks.org" "Unsorted")
-	       "* TODO %i%?\n"))
+             '("t" "Todo [inbox]" entry (file+headline org-default-notes-file "Tasks")
+               "* TODO %?%i\n %a"))
