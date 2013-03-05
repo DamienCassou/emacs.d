@@ -52,6 +52,7 @@
     (when (string-match (format "^init-\\(.+\\)\\.el$") file)
       (eval-after-load (match-string-no-properties 1 file)
 	`(load ,file)))))
+
 (global-set-key (kbd "M-j")
                 (lambda ()
                   (interactive)
