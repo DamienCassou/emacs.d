@@ -1,5 +1,6 @@
 (add-hook 'ido-setup-hook
           (lambda ()
+            "Press ` to easily go to ~ and ~/.emacs.d"
             ;; Go straight home
             (define-key ido-file-completion-map
               (kbd "`")
