@@ -1,3 +1,5 @@
+(require 'org-protocol)
+
 (setq org-directory (expand-file-name "~/Documents/configuration/org"))
 (setq org-agenda-files (list org-directory))
 

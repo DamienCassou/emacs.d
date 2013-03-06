@@ -253,3 +253,6 @@
        (el-get 'sync my-packages))))
 
 (load "general")
+(require 'org)
+
+(server-start)
