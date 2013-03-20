@@ -1,3 +1,4 @@
+(add-to-list 'org-modules 'habit)
 (require 'org-protocol)
 
 (setq org-directory (expand-file-name "~/Documents/configuration/org"))
