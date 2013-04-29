@@ -219,6 +219,8 @@
                             notmuch
                             ;; Labeler for notmuch
                             notmuch-labeler
+                            ;; Calendars and todo
+                            org-mode
                             ;; More completion for eshell
                             pcomplete-plugins
                             ;; Major mode for Pier-formatted text files
