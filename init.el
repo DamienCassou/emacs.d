@@ -201,6 +201,8 @@
                             ethan-wspace
                             ;; <C-x => repeadly to mark regions
                             expand-region
+                            ;; <z> in dired to facilitate extraction of archive files
+                            extractor
                             ;; M-x `fci-mode' to show the right margin
                             fill-column-indicator
                             ;; <M-i> to list sections of the buffer

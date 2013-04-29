@@ -1,0 +1,6 @@
+(:name extractor
+       :description "Facilitates extraction of archive files"
+       :type github
+       :url-type ssh
+       :pkgname "DamienCassou/extractor-el"
+       :features extractor)
