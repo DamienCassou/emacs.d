@@ -16,3 +16,8 @@
   '(lambda ()
      (interactive)
      (dired default-directory)))
+
+(defun magit-ignore-latex-project ()
+  (interactive)
+  (mapcar #'magit-ignore-file (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz"))
+  (magit-refresh))
