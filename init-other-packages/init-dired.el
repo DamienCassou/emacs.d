@@ -98,7 +98,7 @@ all get spell checked."
          ("\\.docx?" "libreoffice")
          ("\\.flv" "vlc")
          ("\\.html?" "firefox")
-         ("\\.image" "pharo.sh")
+         ("\\.image" "pharo")
          ("\\.jar" "java -jar")
          ("\\.jpg" "eog")
          ("\\.mkv" "vlc")
