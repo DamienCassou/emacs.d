@@ -216,10 +216,6 @@
                             markdown-mode
                             ;; Control multiple cursors with C-S-c C-S-c
                             multiple-cursors
-                            ;; Mail client <M-x notmuch>
-                            notmuch
-                            ;; Labeler for notmuch
-                            notmuch-labeler
                             ;; Calendars and todo
                             org-mode
                             ;; More completion for eshell
@@ -242,6 +238,12 @@
                             ;; <C-x u> to show the undo tree
                             undo-tree
                             )))
+
+       (when (executable-find "notmuch")
+         ;; Mail client <M-x notmuch>
+         (add-to-list 'my-packages 'notmuch)
+         ;; Labeler for notmuch
+         (add-to-list 'my-packages 'notmuch-labeler))
 
        (when (executable-find "makeinfo")
          ;; Integrate git <C-x g>
