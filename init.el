@@ -251,6 +251,7 @@
 
        (when (executable-find "mpd")
          ;; Listening to music from Emacs with <F11>
+         (add-to-list 'my-packages 'mpdel)
          (add-to-list 'my-packages 'emms))
 
        (when (executable-find "latex")
