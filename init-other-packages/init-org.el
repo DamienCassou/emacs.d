@@ -28,3 +28,15 @@
 (add-to-list 'org-capture-templates
              '("t" "Todo [inbox]" entry (file+headline org-default-notes-file "Tasks")
                "* TODO %?%i\n %a"))
+
+;; Display the agenda
+(defun nico/jump-to-org-agenda ()
+  (interactive)
+  (let ((buffer (get-buffer "*Org Agenda*")))
+    (if buffer
+	(switch-to-buffer buffer)
+      (org-agenda-list))
+    (delete-other-windows)))
+
+;; Go to the agenda buffer after 10' idle
+(run-with-idle-timer 600 t 'nico/jump-to-org-agenda)
