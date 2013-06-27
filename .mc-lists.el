@@ -4,7 +4,9 @@
 (setq mc/cmds-to-run-for-all
       '(
         TeX-insert-backslash
+        org-beginning-of-line
         org-ctrl-c-ctrl-c
+        org-delete-char
         org-self-insert-command
         skeleton-pair-insert-maybe
         smex
@@ -15,4 +17,5 @@
         eval-print-last-sexp
         indent-for-tab-command
         org-delete-backward-char
+        org-end-of-line
         ))
