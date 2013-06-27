@@ -112,7 +112,9 @@ all get spell checked."
          ("\\.svg" "inkscape")
          ("\\.uxf" "~/Downloads/Umlet/umlet.sh")
          ("\\.webm" "vlc")
+         ("\\.xcf" "gimp")
          ("\\.xlsx?" "libreoffice")
+         ("\\.xslx?" "libreoffice")
          )))
   (mapcar (lambda (pair)
             (add-to-list 'dired-guess-shell-alist-user
