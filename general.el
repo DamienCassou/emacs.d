@@ -15,6 +15,12 @@
 ;; Sets the frame title:
 (setq frame-title-format '("Emacs: " (buffer-file-name " %f")))
 
+;; (add-to-list 'default-frame-alist
+;;              '(font . "Ubuntu Mono-10"))
+(add-to-list 'default-frame-alist
+             '(cursor-type bar . 3))
+
+
 ;; Orgmode
 ;; The following lines are always needed.  Choose your own keys.
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
