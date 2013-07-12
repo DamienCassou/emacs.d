@@ -250,8 +250,7 @@
 
        (when (executable-find "mpd")
          ;; Listening to music from Emacs with <F11>
-         (add-to-list 'my-packages 'mpdel)
-         (add-to-list 'my-packages 'emms))
+         (add-to-list 'my-packages 'mpdel))
 
        (when (executable-find "latex")
          (add-to-list 'my-packages 'auctex)
