@@ -215,6 +215,8 @@
                             multiple-cursors
                             ;; Calendars and todo
                             org-mode
+                            ;; M-x org-pomodoro on a TODO
+                            org-pomodoro
                             ;; More completion for eshell
                             pcomplete-plugins
                             ;; Major mode for Pier-formatted text files
