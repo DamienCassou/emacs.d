@@ -85,9 +85,6 @@
  '(message-log-max t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
- '(org-imenu-depth 1)
- '(org-mobile-directory "~/Dropbox/MobileOrg/")
- '(org-mobile-inbox-for-pull "~/Documents/configuration/org/from-mobile.org")
  '(proced-filter (quote all))
  '(read-file-name-completion-ignore-case t)
  '(recentf-auto-cleanup 300)
@@ -136,6 +133,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
+ '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
+ '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
  )
 
 (add-to-list 'load-path "~/.emacs.d")
