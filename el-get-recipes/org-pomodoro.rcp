@@ -1,0 +1,5 @@
+(:name org-pomodoro
+       :description "Org Pomodoro"
+       :type github
+       :depends (alert)
+       :pkgname "lolownia/org-pomodoro")
