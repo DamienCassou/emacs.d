@@ -4,4 +4,4 @@
        :url-type ssh
        :pkgname "DamienCassou/pier-cl"
        :features pier-mode
-       :build `(("./install.bash")))
+       :build `(("./download.sh")))
