@@ -1,1 +1,2 @@
-(browse-kill-ring-default-keybindings)
+(eval-after-load 'browse-kill-ring
+  '(browse-kill-ring-default-keybindings))

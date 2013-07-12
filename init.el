@@ -162,6 +162,7 @@
          "~/usr/apps/texlive/latest/bin/i386-linux/"
          "~/usr/bin")))
 
+(add-to-list 'load-path "~/.emacs.d/el-get")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
@@ -173,7 +174,6 @@
         (goto-char (point-max))
         (eval-print-last-sexp)))))
 
-(load "~/.emacs.d/el-get/.loaddefs.el")
 (eval-after-load 'el-get
   '(progn
      (push "~/.emacs.d/el-get-recipes" el-get-recipe-path)
