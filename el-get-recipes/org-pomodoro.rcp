@@ -2,4 +2,4 @@
        :description "Org Pomodoro"
        :type github
        :depends (alert)
-       :pkgname "lolownia/org-pomodoro")
+       :pkgname "DamienCassou/org-pomodoro")
