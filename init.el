@@ -229,6 +229,8 @@
                             shell-switcher
                             ;;  Replacement for <M-x>
                             smex
+                            ;; nice theme for Emacs
+                            solarized-theme
                             ;; Displays numbers when using <C-x o>
                             switch-window
                             ;; Assistant to correct english text
@@ -259,5 +261,7 @@
 
 (load "general")
 (require 'org)
+
+(load-theme 'solarized-light)
 
 (server-start)
