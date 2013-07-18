@@ -1,5 +1,10 @@
 (setq org-directory (expand-file-name "~/Documents/configuration/org"))
-(setq org-agenda-files '("tasks.org"))
+(setq org-agenda-files
+      '("~/Documents/configuration/org/tasks.org"
+        "~/Documents/configuration/org/someday.org"))
+
+(setq org-refile-targets `(("tasks.org" :level . 1)
+			   ("someday.org" :level . 1)))
 
 (setq org-file-apps
       '((auto-mode . emacs) ;; by default, open with emacs
@@ -18,6 +23,7 @@
 (setq org-imenu-depth 1)
 (setq org-mobile-directory "~/Dropbox/MobileOrg/")
 (setq org-mobile-inbox-for-pull "~/Documents/configuration/org/from-mobile.org")
+(setq org-completion-use-ido t)
 
 (setq org-todo-keywords
       '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")
@@ -38,6 +44,7 @@
 (define-key global-map (kbd "C-. o t") 'org-capture)
 ;;;###autoload
 (define-key global-map (kbd "C-. o a") 'org-agenda)
+(define-key global-map (kbd "C-. o ,") 'org-cycle-agenda-files)
 
 (setq org-capture-templates '())
 (add-to-list
