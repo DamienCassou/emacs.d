@@ -1,5 +1,3 @@
-(require 'org-pomodoro)
-
 (setq org-directory (expand-file-name "~/Documents/configuration/org"))
 (setq org-agenda-files '("tasks.org"))
 
@@ -33,7 +31,8 @@
 (setq org-modules '(org-bbdb org-bibtex org-docview org-gnus
                              org-habit org-info org-jsinfo org-habit
                              org-irc org-mew org-mhe org-protocol org-rmail org-vm
-                             org-wl org-w3m org-bookmark))
+                             org-wl org-w3m org-bookmark org-pomodoro
+                             org-pomodoro-pidgin))
 
 ;;;###autoload
 (define-key global-map (kbd "C-. o t") 'org-capture)
