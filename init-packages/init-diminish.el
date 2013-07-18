@@ -16,3 +16,5 @@
 (ignore-mode eldoc eldoc-mode)
 
 (ignore-mode checkdoc checkdoc-minor-mode)
+
+(ignore-mode face-remap text-scale-mode)
