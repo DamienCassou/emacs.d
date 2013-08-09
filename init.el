@@ -30,6 +30,7 @@
  '(delete-by-moving-to-trash t)
  '(delete-old-versions t)
  '(diff-switches "-u")
+ '(dired-dwim-target t)
  '(dired-listing-switches "-alh")
  '(dired-recursive-deletes (quote always))
  '(display-time-24hr-format t)
@@ -134,8 +135,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
  '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
- '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
- )
+ '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t)))))
 
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/usr/share/emacs/site-lisp")
@@ -181,8 +181,6 @@
                             browse-kill-ring
                             ;; Shorter mode names in the modeline
                             diminish
-                            ;; improvements to dired+
-                            dired+
                             ;; toggle details (size, owner, group,
                             ;; permissions, ...) in dired buffers
                             ;; using <)>
