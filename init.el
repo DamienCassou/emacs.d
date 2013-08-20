@@ -185,6 +185,7 @@
                             ;; permissions, ...) in dired buffers
                             ;; using <)>
                             dired-details
+                            dired-details+
                             ;; <C-x s> to toggle sudo
                             dired-toggle-sudo
                             ;; M-<up|down|left|right> to move things
