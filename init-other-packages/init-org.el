@@ -3,8 +3,9 @@
       '("~/Documents/configuration/org/tasks.org"
         "~/Documents/configuration/org/someday.org"))
 
-(setq org-refile-targets `(("tasks.org" :level . 1)
-			   ("someday.org" :level . 1)))
+(setq org-refile-targets `(("tasks.org"      :level . 1)
+			   ("someday.org"    :level . 1)
+                           ("references.org" :level . 1)))
 
 (setq org-file-apps
       '((auto-mode . emacs) ;; by default, open with emacs
