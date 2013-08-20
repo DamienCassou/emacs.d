@@ -92,6 +92,16 @@ all get spell checked."
 (define-key dired-mode-map
   (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
+(defun dired-move-beginning-of-line ()
+  (interactive)
+  (let ((point (point)))
+    (dired-move-to-filename)
+    (when (= point (point))
+      (move-beginning-of-line nil))))
+
+(define-key dired-mode-map
+  (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)
+
 (let ((dired-guessing
        '(
          ("\\.avi" "vlc")
