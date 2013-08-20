@@ -219,8 +219,6 @@
                             pcomplete-plugins
                             ;; Major mode for Pier-formatted text files
                             pier-mode
-                            ;; Get a nice mode line
-                            powerline
                             ;; Major mode for python
                             python-mode
                             ;; Switch between shells with <C-'> and
