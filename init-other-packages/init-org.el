@@ -15,16 +15,16 @@
 
 (setq org-agenda-default-appointment-duration 60)
 (setq org-agenda-restore-windows-after-quit t)
+(setq org-completion-use-ido t)
+(setq org-default-notes-file "tasks.org")
 (setq org-fontify-done-headline t)
 (setq org-hide-leading-stars t)
-(setq org-log-done 'time)
-(setq org-special-ctrl-a/e t)
-(setq org-time-stamp-rounding-minutes '(10 10))
-(setq org-default-notes-file "tasks.org")
 (setq org-imenu-depth 1)
+(setq org-log-done 'time)
 (setq org-mobile-directory "~/Dropbox/MobileOrg/")
 (setq org-mobile-inbox-for-pull "~/Documents/configuration/org/from-mobile.org")
-(setq org-completion-use-ido t)
+(setq org-special-ctrl-a/e t)
+(setq org-time-stamp-rounding-minutes '(10 10))
 
 (setq org-todo-keywords
       '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")
