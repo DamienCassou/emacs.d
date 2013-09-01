@@ -15,6 +15,7 @@
 
 (setq org-agenda-default-appointment-duration 60)
 (setq org-agenda-restore-windows-after-quit t)
+(setq org-clock-clocked-in-display nil)
 (setq org-completion-use-ido t)
 (setq org-default-notes-file "tasks.org")
 (setq org-fontify-done-headline t)
