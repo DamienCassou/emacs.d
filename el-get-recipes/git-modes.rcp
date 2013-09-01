@@ -1,0 +1,5 @@
+(:name git-modes
+       :description "Emacs modes for various Git-related files"
+       :type github
+       :pkgname "magit/git-modes"
+       :features ("git-commit-mode" "git-rebase-mode" "gitconfig-mode" "gitignore-mode" "gitattributes-mode"))

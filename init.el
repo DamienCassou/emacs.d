@@ -201,6 +201,8 @@
                             extractor
                             ;; M-x `fci-mode' to show the right margin
                             fill-column-indicator
+                            ;; additional features for magit
+                            git-modes
                             ;; <M-i> to list sections of the buffer
                             idomenu
                             ;; Install ido everywhere
