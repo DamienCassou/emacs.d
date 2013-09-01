@@ -122,6 +122,7 @@
  '(undo-outer-limit 200000000)
  '(undo-strong-limit 10000000)
  '(undo-tree-mode-lighter "")
+ '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
  '(user-mail-address "damien.cassou@gmail.com")
  '(vc-follow-symlinks nil)
  '(vc-make-backup-files t)
