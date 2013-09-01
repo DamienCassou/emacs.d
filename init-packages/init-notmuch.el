@@ -4,5 +4,5 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/notmuch-labeler")
 (add-to-list 'load-path "~/.emacs.d/notmuch-gmail")
 
-(require 'notmuch-labeler)
-(require 'notmuch-gmail)
+;(require 'notmuch-labeler)
+;(require 'notmuch-gmail)

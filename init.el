@@ -239,11 +239,11 @@
                             undo-tree
                             )))
 
-       (when (executable-find "notmuch")
-         ;; Mail client <M-x notmuch>
-         (add-to-list 'my-packages 'notmuch)
-         ;; Labeler for notmuch
-         (add-to-list 'my-packages 'notmuch-labeler))
+       ;; (when (executable-find "notmuch")
+       ;;   ;; Mail client <M-x notmuch>
+       ;;   (add-to-list 'my-packages 'notmuch)
+       ;;   ;; Labeler for notmuch
+       ;;   (add-to-list 'my-packages 'notmuch-labeler))
 
        (when (executable-find "makeinfo")
          ;; Integrate git <C-x g>
