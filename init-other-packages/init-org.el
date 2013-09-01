@@ -4,7 +4,7 @@
         "~/Documents/configuration/org/someday.org"))
 
 (setq org-refile-targets `(("tasks.org"      :level . 1)
-			   ("someday.org"    :level . 1)
+			   ("someday.org"    :maxlevel . 2)
                            ("references.org" :level . 1)))
 
 (setq org-file-apps
