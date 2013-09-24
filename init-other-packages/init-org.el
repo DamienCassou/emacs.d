@@ -40,7 +40,7 @@
                              org-habit org-info org-jsinfo org-habit
                              org-irc org-mew org-mhe org-protocol org-rmail org-vm
                              org-wl org-w3m org-bookmark org-pomodoro
-                             org-pomodoro-pidgin))
+                             org-pomodoro-pidgin org-publish))
 
 ;;;###autoload
 (define-key global-map (kbd "C-. o t") 'org-capture)
