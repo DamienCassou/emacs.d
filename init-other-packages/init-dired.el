@@ -54,13 +54,13 @@ all get spell checked."
 (add-to-list
  'dired-compress-file-suffixes '("\\.zip\\'" ".zip" "unzip"))
 
-(let ((extensions-to-ignore '(".out" ".lol")))
+(let ((extensions-to-ignore '(".out" ".lol" ".ali")))
   (mapcar (lambda (extension)
             (add-to-list 'completion-ignored-extensions extension)
             (add-to-list 'dired-omit-extensions extension))
           extensions-to-ignore))
 
-(let ((files-to-ignore '("Thumbs.db" "Thumbs.db:encryptable")))
+(let ((files-to-ignore '("Thumbs\.db" "Thumbs\.db:encryptable" "b~.*\.ad[sb]")))
   (mapcar (lambda (filename)
             (setq dired-omit-files
                   (concat dired-omit-files "\\|^" filename "$")))
