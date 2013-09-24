@@ -1,11 +1,12 @@
 (setq org-directory (expand-file-name "~/Documents/configuration/org"))
 (setq org-agenda-files
       '("~/Documents/configuration/org/tasks.org"
-        "~/Documents/configuration/org/someday.org"))
+        "~/Documents/configuration/org/someday.org"
+        "~/Documents/configuration/org/repeating.org"))
 
-(setq org-refile-targets `(("tasks.org"      :level . 1)
+(setq org-refile-targets `(("tasks.org"      :maxlevel . 2)
 			   ("someday.org"    :maxlevel . 2)
-                           ("references.org" :level . 1)))
+                           ("repeating.org"  :level    . 1)))
 
 (setq org-file-apps
       '((auto-mode . emacs) ;; by default, open with emacs
