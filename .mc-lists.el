@@ -4,18 +4,20 @@
 (setq mc/cmds-to-run-for-all
       '(
         TeX-insert-backslash
+        clipboard-kill-region
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
+        org-end-of-line
+        org-force-self-insert
+        org-kill-line
         org-self-insert-command
+        org-transpose-words
         skeleton-pair-insert-maybe
         smex
+        wdired-finish-edit
         ))
 
 (setq mc/cmds-to-run-once
       '(
-        eval-print-last-sexp
-        indent-for-tab-command
-        org-delete-backward-char
-        org-end-of-line
         ))
