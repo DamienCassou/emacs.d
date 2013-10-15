@@ -202,6 +202,8 @@
                             extractor
                             ;; M-x `fci-mode' to show the right margin
                             fill-column-indicator
+                            ;; flycheck to check files on the fly
+                            flycheck
                             ;; additional features for magit
                             git-modes
                             ;; <M-i> to list sections of the buffer
@@ -210,6 +212,8 @@
                             ido-ubiquitous
                             ;; Fix Java mode for annotations
                             java-mode-indent-annotations
+                            ;; lesscss mode
+                            lesscss
                             ;; Major mode for markdown format
                             markdown-mode
                             ;; Control multiple cursors with C-S-c C-S-c
@@ -261,6 +265,7 @@
 
 (load "general")
 (require 'org)
+(require 'flycheck)
 
 (load-theme 'solarized-light)
 
