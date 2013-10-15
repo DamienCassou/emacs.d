@@ -66,3 +66,42 @@
 
 ;; Go to the agenda buffer after 10' idle
 (run-with-idle-timer 600 t 'nico/jump-to-org-agenda)
+
+(defvar-local dc:org-publish-on-save nil
+  "Set to t if you want to publish the project on each save.")
+(defun dc:org-publish-on-save ()
+  "Publish the current project."
+  (when dc:org-publish-on-save
+    (save-excursion
+      (org-publish-current-project))))
+
+(defun org-publish-lesscss (plist filename pub-dir)
+  "Publish a file with no transformation of any kind.
+
+FILENAME is the filename of the Org file to be published.  PLIST
+is the property list for the given project.  PUB-DIR is the
+publishing directory.
+
+Return output file name."
+  (save-excursion
+    (unless (file-directory-p pub-dir)
+      (make-directory pub-dir t))
+    (unless (equal (expand-file-name (file-name-directory filename))
+                   (file-name-as-directory (expand-file-name pub-dir)))
+      (let* ((cssfilename (format "%s.css" (file-name-base filename)))
+             (destination (expand-file-name cssfilename pub-dir))
+             ret output)
+        (message "Compiling %s to %s" filename destination)
+        ;; lessc lessfilename destination
+        (with-temp-buffer
+          (setq ret (call-process-shell-command "lessc" nil t nil
+                                                filename
+                                                destination))
+          (setq output (buffer-string)))
+        (unless (= ret 0)
+          (message "Can't compile less file %s. %s" filename output))))))
+
+(defmath vwsum (vec1 vec2)
+  (+ (* vec1 vec2)))
+
+(add-hook 'after-save-hook #'dc:org-publish-on-save)
