@@ -1,4 +1,0 @@
-(:name lesscss
-       :description "Emacs support for LESS CSS"
-       :type github
-       :pkgname "purcell/less-css-mode")

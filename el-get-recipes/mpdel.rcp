@@ -1,6 +1,0 @@
-(:name mpdel
-       :description "A simple MPD client"
-       :type github
-       :url-type ssh
-       :pkgname "DamienCassou/mpdel"
-       :features mpdel)

@@ -1,6 +1,0 @@
-(:name notmuch
-       :type github
-       :url-type ssh
-       :pkgname "DamienCassou/notmuch"
-       :load-path ("./emacs")
-       :build ("./configure" "make"))

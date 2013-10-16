@@ -1,6 +1,0 @@
-;; before pushing to el-get, remove :url-type and add :depends notmuch
-(:name notmuch-labeler
-       :description "Improve notmuch way of displaying labels and make them interactive."
-       :type github
-       :url-type ssh
-       :pkgname "DamienCassou/notmuch-labeler")
