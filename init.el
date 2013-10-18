@@ -244,6 +244,8 @@
 	(kill-buffer buffer)))
       (message "%s buffers have been killed" count)))
 
+(add-to-list 'load-path "~/.emacs.d/packages/runner")
+
 (use-package dired
   :defer t
   :bind ("C-x C-j" . dired-jump)

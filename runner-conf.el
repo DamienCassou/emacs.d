@@ -1,0 +1,4 @@
+
+("ext-uxf" "SVG" "Shell file" "PDF" "Gimp image" "Pictures" "Archive" "JAR file" "pharo-image" "Web pages" "ext-docx" "Video")
+
+(("ext-uxf" 0 "uxf" (("UMLet" "~/Downloads/Umlet/umlet.sh" 5))) ("SVG" 0 "svg" (("Inkscape" "inkscape" 5))) ("Shell file" 0 "sh bash" (("Bash" "bash" 5))) ("PDF" 0 "pdf" (("Evince" "evince" 5) ("Acroread" "acroread" 6))) ("Gimp image" 0 "xcf" (("Gimp" "gimp" 5))) ("Pictures" 0 "jpe?g gif png bmp svg" (("Image Viewer" "eog" 5) ("Gimp" "gimp" 6))) ("Archive" 0 "zip gz tar rar jar" (("" "file-roller" 5))) ("JAR file" 0 "jar" (("Run with java" "java -jar" 5))) ("pharo-image" 0 "image" (("Pharo VM" "pharo-vm-x" 0) ("Pharo VM (headless)" "pharo-vm-nox" 1))) ("Web pages" 0 "html? xml" (("Firefox" "firefox" 5) ("Chromium" "chromium-browser" 6))) ("ext-docx" 0 "docx? xls? xslx? od[pts] pptx?" (("LibreOffice" "libreoffice" 5))) ("Video" 0 "avi flv mkv mp4 mpe?g ogv webm" (("VLC" "vlc" 5) ("Gnome Video" "totem" 6))))

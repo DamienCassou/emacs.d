@@ -37,6 +37,7 @@
 (depends-on "org-plus-contrib")
 ;; M-x org-pomodoro on a TODO
 (depends-on "org-pomodoro")
+(depends-on "runner")
 ;; Switch between shells with <C-'> and
 ;; C-' followed by more quotes
 (depends-on "shell-switcher")
