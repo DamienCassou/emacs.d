@@ -244,8 +244,6 @@
 	(kill-buffer buffer)))
       (message "%s buffers have been killed" count)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/runner")
-
 (use-package dired
   :defer t
   :bind ("C-x C-j" . dired-jump)
@@ -296,36 +294,7 @@
           (move-beginning-of-line nil))))
 
     (define-key dired-mode-map
-      (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)
-
-    (let ((dired-guessing
-           '(
-             ("\\.avi" "vlc")
-             ("\\.docx?" "libreoffice")
-             ("\\.flv" "vlc")
-             ("\\.html?" "firefox")
-             ("\\.image" "pharo-vm-x")
-             ("\\.jar" "java -jar")
-             ("\\.jpg" "eog")
-             ("\\.mkv" "vlc")
-             ("\\.mp4" "vlc")
-             ("\\.od[pts]" "libreoffice")
-             ("\\.ogv" "vlc")
-             ("\\.pdf" "evince")
-             ("\\.png" "eog")
-             ("\\.pptx?" "libreoffice")
-             ("\\.sh" "bash")
-             ("\\.svg" "inkscape")
-             ("\\.uxf" "~/Downloads/Umlet/umlet.sh")
-             ("\\.webm" "vlc")
-             ("\\.xcf" "gimp")
-             ("\\.xlsx?" "libreoffice")
-             ("\\.xslx?" "libreoffice")
-             )))
-      (mapcar (lambda (pair)
-                (add-to-list 'dired-guess-shell-alist-user
-                             (list (first pair) (concat "nohup " (second pair)))))
-              dired-guessing))))
+      (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)))
 
 (use-package recentf
   :defer t
