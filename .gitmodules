@@ -1,0 +1,6 @@
+[submodule "packages/cask"]
+	path = packages/cask
+	url = https://github.com/cask/cask.git
+[submodule "packages/use-package"]
+	path = packages/use-package
+	url = https://github.com/jwiegley/use-package.git

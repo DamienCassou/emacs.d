@@ -154,7 +154,7 @@
 (require 'cask "~/usr/apps/cask/cask.el")
 (cask-initialize)
 
-(require 'use-package)
+(require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
 (eval-when-compile
   (setq use-package-verbose (null byte-compile-current-file)))
 

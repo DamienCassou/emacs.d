@@ -49,8 +49,6 @@
 (depends-on "switch-window")
 ;; <C-x u> to show the undo tree
 (depends-on "undo-tree")
-(depends-on "use-package")
-
 
 ;; <C-x s> to toggle sudo
 ;; (depends-on "dired-toggle-sudo")
