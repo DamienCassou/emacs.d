@@ -472,7 +472,7 @@
       (interactive)
       (mapc
        #'magit-ignore-file
-       (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz"))
+       (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz" "*.toc"))
       (magit-refresh))))
 
 (use-package ido
