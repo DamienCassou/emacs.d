@@ -837,6 +837,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-undo-tree-mode)))
 
+(use-package dired-toggle-sudo
+  :defer t
+  :bind (("C-x s" . dired-toggle-sudo)))
+
 (use-package web-mode
   :defer t
   :mode ("\\.html?\\'" . web-mode)

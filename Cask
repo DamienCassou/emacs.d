@@ -51,11 +51,11 @@
 (depends-on "undo-tree")
 
 ;; <C-x s> to toggle sudo
-;; (depends-on "dired-toggle-sudo")
 ;; <z> in dired to facilitate extraction of archive files
 ;; (depends-on "extractor")
 ;; Fix Java mode for annotations
 ;; (depends-on "java-mode-indent-annotations")
+(depends-on "dired-toggle-sudo")
 
 ;; Calendars and todo
 ;; (depends-on "org-mode")
