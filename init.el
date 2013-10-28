@@ -151,7 +151,7 @@
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
-(require 'cask "~/usr/apps/cask/cask.el")
+(require 'cask "~/.emacs.d/packages/cask/cask.el")
 (cask-initialize)
 
 (require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
