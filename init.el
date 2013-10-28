@@ -169,7 +169,7 @@
     (add-to-list 'exec-path expanded-path)
     (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
 
-(mapcar
+(mapc
  'add-to-executable-path
  (if (darwinp)
      (list  "/usr/local/bin"
@@ -256,14 +256,14 @@
       (progn
         (setq dired-details-hidden-string "")))
 
-    (let ((extensions-to-ignore '(".out" ".lol" ".ali")))
-      (mapcar (lambda (extension)
-                (add-to-list 'completion-ignored-extensions extension)
-                (add-to-list 'dired-omit-extensions extension))
-              extensions-to-ignore))
+    (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".changes" ".build" ".dsc")))
+      (mapc (lambda (extension)
+              (add-to-list 'completion-ignored-extensions extension)
+              (add-to-list 'dired-omit-extensions extension))
+            extensions-to-ignore))
 
     (let ((files-to-ignore '("Thumbs\.db" "Thumbs\.db:encryptable" "b~.*\.ad[sb]")))
-      (mapcar (lambda (filename)
+      (mapc (lambda (filename)
                 (setq dired-omit-files
                       (concat dired-omit-files "\\|^" filename "$")))
               files-to-ignore))
