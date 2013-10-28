@@ -836,3 +836,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :init
   (progn
     (global-undo-tree-mode)))
+
+(use-package web-mode
+  :defer t
+  :mode ("\\.html?\\'" . web-mode)
+  :init
+  (progn
+    (setq web-mode-engines-alist
+          '(("liquid" .
+             "jekyll/_layouts/.*\\.html\\'")))))
