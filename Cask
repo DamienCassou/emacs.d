@@ -51,20 +51,16 @@
 (depends-on "undo-tree")
 
 ;; <C-x s> to toggle sudo
-;; <z> in dired to facilitate extraction of archive files
-;; (depends-on "extractor")
-;; Fix Java mode for annotations
-;; (depends-on "java-mode-indent-annotations")
 (depends-on "dired-toggle-sudo")
 
-;; Calendars and todo
-;; (depends-on "org-mode")
-;; More completion for eshell
-;; (depends-on "pcomplete-plugins")
 ;; Major mode for Pier-formatted text files
-;; (depends-on "pier-mode")
-;; Major mode for python
-;; (depends-on "python-mode")
+(depends-on "pier-mode")
+
+;; Major mode for editing HTML files and templates
+(depends-on "web-mode")
+
+;; <z> in dired to facilitate extraction of archive files
+;; (depends-on "extractor")
 ;; Assistant to correct english text
 ;; (depends-on "textlint")
 ;; Listening to music from Emacs with <F11>
