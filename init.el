@@ -256,7 +256,7 @@
       (progn
         (setq dired-details-hidden-string "")))
 
-    (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".changes" ".build" ".dsc")))
+    (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".build" ".dsc")))
       (mapc (lambda (extension)
               (add-to-list 'completion-ignored-extensions extension)
               (add-to-list 'dired-omit-extensions extension))
