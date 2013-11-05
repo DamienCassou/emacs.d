@@ -154,6 +154,7 @@
 (require 'cask "~/.emacs.d/packages/cask/cask.el")
 (cask-initialize)
 
+(require 'bind-key "~/.emacs.d/packages/use-package/bind-key.el")
 (require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
 (eval-when-compile
   (setq use-package-verbose (null byte-compile-current-file)))
@@ -255,6 +256,11 @@
       :init
       (progn
         (setq dired-details-hidden-string "")))
+
+    (when (darwinp)
+      ;; Use coreutils from homebrew to provide a real ls
+      (setq dired-use-ls-dired t)
+      (setq insert-directory-program "gls"))
 
     (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".changes" ".build" ".dsc")))
       (mapc (lambda (extension)
