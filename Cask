@@ -19,8 +19,6 @@
 (depends-on "fill-column-indicator")
 ;; flycheck to check files on the fly
 (depends-on "flycheck")
-(depends-on "git-commit-mode") ;; Edit Git commit messages
-(depends-on "git-rebase-mode") ;; Interactive rebase mode
 ;; <M-i> to list sections of the buffer
 (depends-on "idomenu")
 ;; Install ido everywhere
