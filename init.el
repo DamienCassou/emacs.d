@@ -96,6 +96,7 @@
  '(org-log-done (quote time))
  '(org-special-ctrl-a/e t)
  '(org-time-stamp-rounding-minutes (quote (10 10)))
+ '(org-use-speed-commands t)
  '(proced-filter (quote all))
  '(read-file-name-completion-ignore-case t)
  '(recentf-auto-cleanup 300)
