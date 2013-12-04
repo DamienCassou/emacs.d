@@ -636,12 +636,11 @@
   :init
   (progn
     (setq org-modules '(org-bbdb org-bibtex org-docview org-gnus
-                                 org-habit org-info org-jsinfo
-                                 org-habit org-irc org-mew
-                                 org-mhe org-protocol org-rmail
-                                 org-vm org-wl org-w3m
-                                 org-bookmark org-pomodoro
-                                 org-pomodoro-pidgin
+                                 org-capture org-info org-jsinfo
+                                 org-irc org-mew org-mhe
+                                 org-protocol org-rmail org-vm
+                                 org-wl org-w3m org-bookmark
+                                 org-pomodoro org-pomodoro-pidgin
                                  org-publish))
 
     ;; Display the agenda
