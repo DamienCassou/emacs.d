@@ -858,3 +858,14 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package switch-window
   :bind (("C-x o" . switch-window)))
+(use-package guide-key
+  :init
+  (progn
+    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c p"))
+    (guide-key-mode 1)))
+
+(use-package projectile
+  :diminish projectile-mode
+  :init
+  (progn
+    (projectile-global-mode)))

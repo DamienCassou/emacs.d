@@ -13,6 +13,7 @@
 (depends-on "expand-region") ;; <C-x => repeadly to mark regions
 (depends-on "fill-column-indicator") ;; M-x `fci-mode' to show the right margin
 (depends-on "flycheck") ;; flycheck to check files on the fly
+(depends-on "guide-key") ;; help you learn emacs
 (depends-on "idomenu") ;; <M-i> to list sections of the buffer
 (depends-on "ido-ubiquitous") ;; Install ido everywhere
 (depends-on "json-mode") ;; Major mode to edit JSON files
@@ -24,6 +25,7 @@
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
 (depends-on "pier-mode") ;; Major mode for pier/pillar-formatted text files
+(depends-on "projectile") ;; many functions on projects
 (depends-on "runner") ;; Associate external applications to file extensions
 (depends-on "shell-switcher") ;; Switch between shells with <C-'> and <C-'>
 (depends-on "smex") ;;  Replacement for <M-x>
