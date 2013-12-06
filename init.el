@@ -200,7 +200,7 @@
   (interactive)
   (join-line -1))
 
-(bind-key "M-j" 'my-join-line) 
+(bind-key "M-j" 'my-join-line)
 
 (defun toggle-window-split ()
   (interactive)
@@ -241,10 +241,10 @@
   (let ((count 0))
     (dolist (buffer (buffer-list))
       (when (buffer-killable-p buffer)
-	(incf count)
-	(message "Killing %s" (buffer-name buffer))
-	(kill-buffer buffer)))
-      (message "%s buffers have been killed" count)))
+        (incf count)
+        (message "Killing %s" (buffer-name buffer))
+        (kill-buffer buffer)))
+    (message "%s buffers have been killed" count)))
 
 (use-package dired
   :defer t
@@ -271,9 +271,9 @@
 
     (let ((files-to-ignore '("Thumbs\.db" "Thumbs\.db:encryptable" "b~.*\.ad[sb]")))
       (mapc (lambda (filename)
-                (setq dired-omit-files
-                      (concat dired-omit-files "\\|^" filename "$")))
-              files-to-ignore))
+              (setq dired-omit-files
+                    (concat dired-omit-files "\\|^" filename "$")))
+            files-to-ignore))
 
     (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
 
@@ -440,7 +440,7 @@
     (eval-after-load "em-prompt"
       '(progn
          (setq eshell-highlight-prompt nil)
-         (setq eshell-prompt-function 'my:eshell-prompt)))   
+         (setq eshell-prompt-function 'my:eshell-prompt)))
 
     (eval-after-load "em-term"
       '(progn
@@ -524,7 +524,7 @@
 (use-package ispell
   :defer t
   :requires flyspell
-  :bind 
+  :bind
   (("C-. i b"   . ispell-buffer)
    ("C-. i w"   . ispell-word)
    ("C-. i d f" . ispell-change-dictionary-to-french)
@@ -858,6 +858,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package switch-window
   :bind (("C-x o" . switch-window)))
+
 (use-package guide-key
   :init
   (progn
