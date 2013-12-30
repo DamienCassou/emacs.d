@@ -4,3 +4,6 @@
 [submodule "packages/use-package"]
 	path = packages/use-package
 	url = https://github.com/jwiegley/use-package.git
+[submodule "packages/mu"]
+	path = packages/mu
+	url = https://github.com/djcb/mu.git
