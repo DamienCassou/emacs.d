@@ -936,6 +936,15 @@ able to type <C-c left left left> to undo 3 times whereas it was
     ;; don't keep message buffers around
     (setq message-kill-buffer-on-exit t)))
 
+;; (use-package flx-ido
+;;   :init
+;;   (progn
+;;     (ido-mode 1)
+;;     (ido-everywhere 1)
+;;     (flx-ido-mode 1)
+;;     ;; disable ido faces to see flx highlights.
+;;     (setq ido-use-faces nil)))
+
 ;; Fix for issue
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
 (use-package iso-transl)
