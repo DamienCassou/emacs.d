@@ -540,16 +540,18 @@
       (save-excursion
         (add-file-local-variable 'ispell-local-dictionary dict)))
 
-    (defun ispell-change-dictionary-to-french ()
-      (interactive)
+    (defun ispell-change-dictionary-to-french (arg)
+      (interactive "P")
       (ispell-change-dictionary "francais")
-      (ispell-set-dictionary "francais")
+      (unless arg
+        (ispell-set-dictionary "francais"))
       (flyspell-buffer))
 
-    (defun ispell-change-dictionary-to-english ()
-      (interactive)
+    (defun ispell-change-dictionary-to-english (arg)
+      (interactive "P")
       (ispell-change-dictionary "english")
-      (ispell-set-dictionary "english")
+      (unless arg
+        (ispell-set-dictionary "english"))
       (flyspell-buffer))
 
     (defun flyspell-toggle ()
