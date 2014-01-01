@@ -91,6 +91,7 @@
  '(org-completion-use-ido t)
  '(org-default-notes-file "tasks.org")
  '(org-directory "~/Documents/configuration/org")
+ '(org-export-allow-bind-keywords t)
  '(org-fontify-done-headline t)
  '(org-hide-leading-stars t)
  '(org-imenu-depth 1)
