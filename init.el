@@ -945,6 +945,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
 ;;     ;; disable ido faces to see flx highlights.
 ;;     (setq ido-use-faces nil)))
 
+(use-package diminish
+  :config
+  (progn
+    (eval-after-load "simple"
+      `(progn
+         (diminish 'overwrite-mode)))))
+
 ;; Fix for issue
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
 (use-package iso-transl)
