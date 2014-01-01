@@ -936,6 +936,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
     ;; don't keep message buffers around
     (setq message-kill-buffer-on-exit t)))
 
+(use-package image
+  :config
+  (imagemagick-register-types))
+
 ;; (use-package flx-ido
 ;;   :init
 ;;   (progn
