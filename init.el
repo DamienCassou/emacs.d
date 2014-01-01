@@ -530,10 +530,9 @@
   :requires flyspell
   :bind
   (("C-. i b"   . ispell-buffer)
-   ("C-. i w"   . ispell-word)
-   ("C-. i d f" . ispell-change-dictionary-to-french)
-   ("C-. i d e" . ispell-change-dictionary-to-english)
-   ("C-. i d ?" . ispell-change-dictionary))
+   ("C-. d f" . ispell-change-dictionary-to-french)
+   ("C-. d e" . ispell-change-dictionary-to-english)
+   ("C-. d ?" . ispell-change-dictionary))
 
   :init
   (progn
