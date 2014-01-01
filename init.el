@@ -84,6 +84,7 @@
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
  '(message-log-max t)
+ '(mu4e-use-fancy-chars t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
  '(org-clock-clocked-in-display nil)
@@ -145,6 +146,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(mu4e-header-highlight-face ((t (:underline t))))
  '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
  '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
  '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t)))))
@@ -871,7 +873,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (projectile-global-mode)))
 
+(add-to-list 'load-path "~/.emacs.d/packages/mu/mu4e")
 (use-package mu4e
+  :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new))
   :config
   (progn
     (setq mu4e-mu-binary "~/.emacs.d/packages/mu/mu/mu")
@@ -879,20 +883,26 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (setq mu4e-drafts-folder "/[Gmail].Drafts")
     (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
     (setq mu4e-trash-folder  "/[Gmail].Trash")
+    (setq mu4e-hide-index-messages t)
+    (setq mu4e-update-interval 30)
+    (setq mu4e-attachment-dir "~/")
+    (setq mu4e-view-show-images t)
+
+    (bind-key "d" 'mu4e-headers-mark-for-delete
+              mu4e-headers-mode-map)
+    (bind-key "d" 'mu4e-view-mark-for-delete
+              mu4e-view-mode-map)
+
+    (add-to-list 'mu4e-view-actions
+                 '("View in browser" . mu4e-action-view-in-browser) t)
 
     ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
     (setq mu4e-sent-messages-behavior 'delete)
 
-    ;; setup some handy shortcuts
-    ;; you can quickly switch to your Inbox -- press ``ji''
-    ;; then, when you want archive some messages, move them to
-    ;; the 'All Mail' folder by pressing ``ma''.
-
     (setq mu4e-maildir-shortcuts
           '( ("/INBOX"               . ?i)
              ("/[Gmail].Sent Mail"   . ?s)
-             ("/[Gmail].Trash"       . ?t)
-             ("/[Gmail].All Mail"    . ?a)))
+             ("/[Gmail].Drafts"      . ?d)))
 
     ;; allow for updating mail using 'U' in the main view:
     (setq mu4e-get-mail-command "offlineimap")
@@ -901,10 +911,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (setq
      user-mail-address "damien.cassou@gmail.com"
      user-full-name  "Damien Cassou"
-     message-signature
-     (concat
-      "Foo X. Bar\n"
-      "http://www.example.com\n"))
+     message-signature t
+     message-signature-file "~/.signature-gmail")
+
+    (setq mu4e-user-mail-address-list
+          '("damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr" "cassou@inria.fr" "damien.cassou@laposte.net" "Damien.Cassou@univ-lille1.fr"))
 
     ;; sending mail -- replace USERNAME with your gmail username
     ;; also, make sure the gnutls command line utils are installed
