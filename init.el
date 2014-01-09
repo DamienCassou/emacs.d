@@ -305,7 +305,22 @@
           (move-beginning-of-line nil))))
 
     (define-key dired-mode-map
-      (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)))
+      (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)
+
+    (defun dired-imenu-prev-index-position ()
+      "Used by imenu to get the list of all files in a dired buffer."
+      (dired-previous-line 1))
+
+    (defun dired-imenu-extract-index-name ()
+      "Used by imenu to get the list of all files in a dired buffer."
+      (dired-get-filename 'verbatim))
+
+    (defun dired-setup-imenu ()
+      "Used by imenu to get the list of all files in a buffer."
+      (set (make-local-variable 'imenu-prev-index-position-function) 'dired-imenu-prev-index-position)
+      (set (make-local-variable 'imenu-extract-index-name-function) 'dired-imenu-extract-index-name))
+
+    (add-hook 'dired-mode-hook 'dired-setup-imenu)))
 
 (use-package recentf
   :defer t
