@@ -8,6 +8,7 @@
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-details+") ;; toggle details using <)>
 (depends-on "dired-toggle-sudo") ;; <C-x s> to toggle sudo state of buffer
+(depends-on "discover") ;; popus for some features
 (depends-on "drag-stuff") ;; use <M-arrow> to move things around
 (depends-on "ethan-wspace") ;; Correctly takes care of trailing spaces
 (depends-on "expand-region") ;; <C-x => repeadly to mark regions
@@ -33,7 +34,6 @@
 (depends-on "switch-window") ;; Displays numbers when using <C-x o>
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
-
 ;; <z> in dired to facilitate extraction of archive files
 ;; (depends-on "extractor")
 ;; Assistant to correct english text

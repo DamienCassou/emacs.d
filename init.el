@@ -846,7 +846,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package undo-tree
   :init
   (progn
-    (global-undo-tree-mode)))
+    (global-undo-tree-mode)
+    (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package dired-toggle-sudo
   :defer t
@@ -868,7 +869,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :diminish guide-key-mode
   :init
   (progn
-    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-. p"))
+    (setq guide-key/guide-key-sequence '("C-x 4" "C-. p"))
     (guide-key-mode 1)))
 
 (use-package projectile
@@ -957,6 +958,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (eval-after-load "simple"
       `(progn
          (diminish 'overwrite-mode)))))
+
+(use-package discover
+  :init
+  (progn
+    (global-discover-mode 1)))
 
 ;; Fix for issue
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
