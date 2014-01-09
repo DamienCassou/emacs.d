@@ -982,3 +982,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 ;; Fix for issue
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
 (use-package iso-transl)
+
+
+
+(server-start)
