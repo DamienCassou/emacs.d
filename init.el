@@ -899,7 +899,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (add-to-list 'load-path "~/.emacs.d/packages/mu/mu4e")
 (use-package mu4e
-  :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new))
+  :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new) ("C-. m i" . mu4e-goto-inbox))
   :config
   (progn
     (setq mu4e-mu-binary "~/.emacs.d/packages/mu/mu/mu")
@@ -956,7 +956,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
      smtpmail-smtp-service 587)
 
     ;; don't keep message buffers around
-    (setq message-kill-buffer-on-exit t)))
+    (setq message-kill-buffer-on-exit t)
+
+    (defun mu4e-goto-inbox ()
+      (interactive)
+      (mu4e~headers-jump-to-maildir "/INBOX"))
+
     (require 'gnus-dired)
 
     ;; Attach files with dired
