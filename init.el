@@ -893,6 +893,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (projectile-global-mode)))
 
+(use-package gnus-dired
+  :bind (("C-x C-a" . gnus-dired-attach))
+  :defer t)
+
 (add-to-list 'load-path "~/.emacs.d/packages/mu/mu4e")
 (use-package mu4e
   :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new))
@@ -953,6 +957,24 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
     ;; don't keep message buffers around
     (setq message-kill-buffer-on-exit t)))
+    (require 'gnus-dired)
+
+    ;; Attach files with dired
+    ;; make the `gnus-dired-mail-buffers' function also work on
+    ;; message-mode derived modes, such as mu4e-compose-mode
+    (defun gnus-dired-mail-buffers ()
+      "Return a list of active message buffers."
+      (let (buffers)
+        (save-current-buffer
+          (dolist (buffer (buffer-list t))
+            (set-buffer buffer)
+            (when (and (derived-mode-p 'message-mode)
+                       (null message-sent-message-via))
+              (push (buffer-name buffer) buffers))))
+        (nreverse buffers)))
+
+    (setq gnus-dired-mail-mode 'mu4e-user-agent)
+    (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)))
 
 (use-package image
   :config
