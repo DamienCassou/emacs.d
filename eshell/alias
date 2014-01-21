@@ -1,6 +1,7 @@
-alias d dired $1
-alias e find-file $1
-alias inst sudo aptitude install
-alias ll ls -l
-alias update sudo aptitude update
+alias dquilt quilt --quiltrc=/home/cassou/.quiltrc-dpkg
 alias upgrade sudo aptitude full-upgrade
+alias update sudo aptitude update
+alias ll ls -l
+alias inst sudo aptitude install
+alias e find-file $1
+alias d dired $1
