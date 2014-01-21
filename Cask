@@ -7,6 +7,7 @@
 (depends-on "browse-kill-ring") ;; [M-y] to show kill ring
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-details+") ;; toggle details using <)>
+(depends-on "dired-imenu") ;; integrates imenu in dired
 (depends-on "dired-toggle-sudo") ;; <C-x s> to toggle sudo state of buffer
 (depends-on "discover") ;; popus for some features
 (depends-on "drag-stuff") ;; use <M-arrow> to move things around
