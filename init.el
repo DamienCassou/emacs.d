@@ -135,6 +135,8 @@
  '(undo-limit 5000000)
  '(undo-outer-limit 200000000)
  '(undo-strong-limit 10000000)
+ '(undo-tree-auto-save-history t)
+ '(undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/.undo-tree/"))))
  '(undo-tree-mode-lighter "")
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
  '(user-mail-address "damien.cassou@gmail.com")
