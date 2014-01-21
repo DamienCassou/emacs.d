@@ -886,6 +886,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (add-to-list 'load-path "~/.emacs.d/packages/mu/mu4e")
 (use-package mu4e
   :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new) ("C-. m i" . mu4e-goto-inbox))
+  :init
+  (progn
+    (setq mu4e-update-interval 30))
   :config
   (progn
     (setq mu4e-mu-binary "~/.emacs.d/packages/mu/mu/mu")
@@ -894,7 +897,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
     (setq mu4e-trash-folder  "/[Gmail].Trash")
     (setq mu4e-hide-index-messages t)
-    (setq mu4e-update-interval 30)
     (setq mu4e-attachment-dir "~/")
     (setq mu4e-view-show-images t)
 
@@ -965,7 +967,30 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (nreverse buffers)))
 
     (setq gnus-dired-mail-mode 'mu4e-user-agent)
-    (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)))
+    (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+    (defun mu4e-compose-goto-top ()
+      (interactive)
+      (let ((old-position (point)))
+        (message-goto-body)
+        (when (equal (point) old-position)
+            (beginning-of-buffer))))
+
+    (define-key mu4e-compose-mode-map
+      (vector 'remap 'beginning-of-buffer) 'mu4e-compose-goto-top)
+
+    (defun mu4e-compose-goto-bottom ()
+      (interactive)
+      (let ((old-position (point))
+            (message-position (save-excursion (message-goto-body) (point))))
+        (end-of-buffer)
+        (when (re-search-backward "^-- $" message-position t)
+          (previous-line))
+        (when (equal (point) old-position)
+          (end-of-buffer))))
+
+    (define-key mu4e-compose-mode-map
+      (vector 'remap 'end-of-buffer) 'mu4e-compose-goto-bottom)))
 
 (use-package image
   :config
