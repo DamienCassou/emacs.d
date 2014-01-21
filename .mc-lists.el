@@ -5,6 +5,7 @@
       '(
         TeX-insert-backslash
         clipboard-kill-region
+        indent-for-tab-command
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
