@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: picture
+# key: picture
+# --
++${1:A caption}>file://`(file-relative-name (read-file-name "Select a picture file " nil "figures/picture.png" 'confirm-after-completion))`${2:|label=${3:figName}}${4:|width=${5:50}}+

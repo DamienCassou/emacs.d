@@ -727,7 +727,9 @@ Return output file name."
             (unless (= ret 0)
               (message "Can't compile less file %s. %s" filename output))))))
 
-    (unbind-key "C-'" org-mode-map)))
+    (unbind-key "C-'" org-mode-map)
+
+    (add-hook 'org-mode-hook 'yas-minor-mode)))
 
 (use-package calc
   :defer t
@@ -876,6 +878,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (setq guide-key/guide-key-sequence '("C-x 4" "C-. p"))
     (guide-key-mode 1)))
+
+(use-package pier
+  :defer t
+  :config
+  (progn
+    (add-hook 'pier-mode-hook 'yas-minor-mode)))
 
 (use-package projectile
   :diminish projectile-mode
@@ -1026,6 +1034,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :init
   (progn
     (ido-vertical-mode 1)))
+
+(use-package yasnippet
+  :defer t
+  :config
+  (progn
+    (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (yas-reload-all)))
 
 ;; Fix for issue
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176

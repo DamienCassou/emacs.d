@@ -36,6 +36,7 @@
 (depends-on "switch-window") ;; Displays numbers when using <C-x o>
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
+(depends-on "yasnippet") ;; snippet utility
 ;; <z> in dired to facilitate extraction of archive files
 ;; (depends-on "extractor")
 ;; Assistant to correct english text

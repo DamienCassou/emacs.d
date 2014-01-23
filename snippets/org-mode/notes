@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: Tableau de notes
+# key: notes
+# contributor: Damien Cassou <damien.cassou@gmail.com>
+# --
+|---+------------------+--------+--------+-------+-------+-------+------|
+|   | Groupe           | $1     | $2     |       |       |       |      |
+| ! |                  | PreExo | DerExo | Somme | Total | Bonus | Note |
+|---+------------------+--------+--------+-------+-------+-------+------|
+|   | Coefficients     |        |        |       |       |       |      |
+| # | Meilleures notes |        |        |     0 |     0 |       |    0 |
+| ^ |                  |        |        |   Max |       |       |      |
+|---+------------------+--------+--------+-------+-------+-------+------|
+| # | $0          |        |        |     0 |     0 |       |    0 |
+|---+------------------+--------+--------+-------+-------+-------+------|
+#+TBLFM: \$5=vwsum($PreExo..$DerExo,@4$PreExo..@4$DerExo):: \$6=($Somme/$Max)*20;%.0f:: \$8=$Total+$Bonus
