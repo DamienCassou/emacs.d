@@ -1066,4 +1066,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
     (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)))
 
+(use-package git-auto-commit-mode
+  :defer t
+  :diminish git-auto-commit-mode)
+
 (server-start)
