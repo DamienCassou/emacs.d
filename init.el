@@ -1048,5 +1048,22 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package iso-transl)
 
 
+(use-package lisp-mode
+  :defer t
+  :config
+  (progn
+    (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+    (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
+
+    (defun my:setup-imenu-for-use-package ()
+      "Recognize `use-package` in imenu"
+      (when (string= buffer-file-name (expand-file-name "init.el" "~/.emacs.d"))
+        (setq imenu-generic-expression
+              '((nil "^\\s-*(\\(def\\(?:advice\\|generic\\|ine-\\(?:compiler-macro\\|derived-mode\\|g\\(?:\\(?:eneric\\|lobal\\(?:\\(?:ized\\)?-minor\\)\\)-mode\\)\\|m\\(?:ethod-combination\\|inor-mode\\|odify-macro\\)\\|s\\(?:etf-expander\\|keleton\\)\\)\\|m\\(?:acro\\|ethod\\)\\|s\\(?:etf\\|ubst\\)\\|un\\*?\\)\\|use-package\\)\\s-+\\(\\(\\sw\\|\\s_\\)+\\)" 2)
+ ("Variables" "^\\s-*(\\(def\\(?:c\\(?:onst\\(?:ant\\)?\\|ustom\\)\\|ine-symbol-macro\\|parameter\\)\\)\\s-+\\(\\(\\sw\\|\\s_\\)+\\)" 2)
+ ("Variables" "^\\s-*(defvar\\s-+\\(\\(\\sw\\|\\s_\\)+\\)[[:space:]\n]+[^)]" 1)
+ ("Types" "^\\s-*(\\(def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(\\sw\\|\\s_\\)+\\)" 2)))))
+
+    (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)))
 
 (server-start)
