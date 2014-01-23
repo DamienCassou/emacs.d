@@ -64,6 +64,7 @@
  '(ido-create-new-buffer (quote never))
  '(ido-enable-flex-matching t)
  '(ido-enabled (quote both) t (ido))
+ '(ido-everywhere t)
  '(ido-file-extensions-order (quote (".tex" ".el" ".pdf")))
  '(ido-ignore-buffers (quote ("\\` " "^*Back" ".*Completion" "^*Ido")))
  '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`\\.ido\\.last")))
