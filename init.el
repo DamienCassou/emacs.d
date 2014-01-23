@@ -151,10 +151,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mu4e-header-highlight-face ((t (:underline t))))
- '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
- '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
- '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t)))))
+ '(hl-line ((t (:underline t))))
+ '(mu4e-header-highlight-face ((t (:underline t))) t)
+ '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))) t)
+ '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))) t)
+ '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))) t))
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
@@ -166,6 +167,9 @@
 (require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
 (eval-when-compile
   (setq use-package-verbose (null byte-compile-current-file)))
+
+(use-package-with-elapsed-timer "Loading theme"
+  (load-theme 'wombat))
 
 (defun darwinp ()
   (interactive)
