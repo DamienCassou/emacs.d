@@ -1042,6 +1042,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package yasnippet
   :defer t
+  :diminish yas-minor-mode
   :config
   (progn
     (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
@@ -1069,6 +1070,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
  ("Types" "^\\s-*(\\(def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(\\sw\\|\\s_\\)+\\)" 2)))))
 
     (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)))
+
+(use-package autorevert
+  :defer t
+  :diminish auto-revert-mode)
 
 (use-package git-auto-commit-mode
   :defer t
