@@ -886,7 +886,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (setq guide-key/guide-key-sequence '("C-x 4" "C-. p" "C-c @"))
     (guide-key-mode 1)))
 
-(use-package pier
+(use-package pier-mode
   :defer t
   :config
   (progn
