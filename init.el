@@ -123,6 +123,8 @@
  '(shell-switcher-new-shell-function (quote shell-switcher-make-eshell))
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
+ '(smart-tab-completion-functions-alist nil)
+ '(smart-tab-using-hippie-expand t)
  '(smex-save-file "~/.emacs.d/smex-items")
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
@@ -1079,4 +1081,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :defer t
   :diminish git-auto-commit-mode)
 
-(server-start)
+(use-package smart-tab
+  :init
+  (progn
+    (global-smart-tab-mode 1)))
+
+(use-package-with-elapsed-timer "Starting server"
+  (server-start))
