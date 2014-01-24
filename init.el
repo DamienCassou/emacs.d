@@ -890,7 +890,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :defer t
   :config
   (progn
-    (add-hook 'pier-mode-hook 'yas-minor-mode)))
+    (add-to-list 'ac-modes 'pier-mode)
+
+    (defun my:setup-pier-mode ()
+      (add-to-list 'ac-sources 'ac-source-yasnippet))
+
+    (add-hook 'pier-mode-hook 'my:setup-pier-mode)))
 
 (use-package projectile
   :diminish projectile-mode
@@ -1085,6 +1090,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :init
   (progn
     (global-smart-tab-mode 1)))
+
+(use-package auto-complete-config
+  :config
+  (progn
+    (ac-config-default)
+    (add-to-list 'ac-user-dictionary user-mail-address)
+    (setq ac-use-menu-map t)))
 
 (use-package-with-elapsed-timer "Starting server"
   (server-start))

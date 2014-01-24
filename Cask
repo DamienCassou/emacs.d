@@ -4,6 +4,7 @@
 (source org)
 
 (depends-on "auctex") ;; LaTeX mode
+(depends-on "auto-complete") ;; complete everything
 (depends-on "browse-kill-ring") ;; [M-y] to show kill ring
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-details+") ;; toggle details using <)>
@@ -46,4 +47,3 @@
 ;; (depends-on "textlint")
 ;; Listening to music from Emacs with <F11>
 ;; (depends-on "mpdel")
-
