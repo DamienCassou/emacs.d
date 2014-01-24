@@ -1049,11 +1049,16 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package yasnippet
   :defer t
-  :diminish yas-minor-mode
-  :config
+  :commands (yas-minor-mode yas-expand)
+  :idle
   (progn
     (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-    (yas-reload-all)))
+    (yas-global-mode)
+    (yas-reload-all)
+
+    ;; let <tab> be bound to smart-tab
+    (define-key yas-minor-mode-map [(tab)] nil)
+    (define-key yas-minor-mode-map (kbd "TAB") nil)))
 
 ;; Fix for issue
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
