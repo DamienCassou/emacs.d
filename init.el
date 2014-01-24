@@ -194,6 +194,8 @@
          "~/usr/apps/texlive/latest/bin/i386-linux/"
          "~/usr/bin")))
 
+(mapc 'add-to-executable-path '("~/.emacs.d/packages/cask/bin"))
+
 (defun suspend-on-tty-only ()
   (interactive)
   (unless window-system
