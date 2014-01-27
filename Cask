@@ -31,6 +31,7 @@
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
 (depends-on "pier-mode") ;; Major mode for pier/pillar-formatted text files
+(depends-on "pos-tip") ;; make tool-tips appear nicely
 (depends-on "projectile") ;; many functions on projects
 (depends-on "runner") ;; Associate external applications to file extensions
 (depends-on "shell-switcher") ;; Switch between shells with <C-'> and <C-'>
