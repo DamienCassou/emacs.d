@@ -781,36 +781,29 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
     (bind-key "C-c <left>" 'winner:initial-undo  winner-mode-map)))
 
-(use-package auctex
+(use-package latex
   :defer t
+  :mode ("\\.tex\\'" . latex-mode)
   :config
   (progn
     (load "mybibtex" t t t)
-    (eval-after-load "tex"
-      '(progn
-         (add-to-list 'TeX-command-list
-                      '("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX
-                        nil t :help "Run Bibtex on all aux files") t)
-         (unless (darwinp)
-           (progn
-             (add-to-list 'TeX-view-program-list '("AcrobatReader" "acroread %o"))
-             (add-to-list 'TeX-view-program-selection '(output-pdf "AcrobatReader"))))))
 
-    (eval-after-load "latex"
-      `(progn
-         (defun LaTeX-align-table ()
-           (interactive)
-           (save-excursion
-             (LaTeX-mark-environment)
-             (while (re-search-forward "& *" (region-end) t)
-               (replace-match "& " nil nil))
-             (LaTeX-mark-environment)
-             (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))
-         (define-key (eval 'TeX-mode-map) (kbd "s-a") #'LaTeX-align-table)))
+    (add-to-list 'TeX-command-list
+                 '("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX
+                   nil t :help "Run Bibtex on all aux files") t)
 
-    (if (darwinp)
-        (require 'auctex-skim-sync)
-      (require 'auctex-evince-sync))))
+    (defadvice TeX-source-correlate-sync-source (after my:highlight-line-correlate activate)
+      (when (require 'pulse nil t)
+        (pulse-momentary-highlight-one-line (point))))
+
+    (defun LaTeX-align-table ()
+      (interactive)
+      (save-excursion
+        (LaTeX-mark-environment)
+        (while (re-search-forward "& *" (region-end) t)
+          (replace-match "& " nil nil))
+        (LaTeX-mark-environment)
+        (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))))
 
 (use-package browse-kill-ring
   :init
