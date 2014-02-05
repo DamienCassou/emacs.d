@@ -1079,7 +1079,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
                 ("Variables" "^\\s-*(defvar\\s-+\\(\\(\\sw\\|\\s_\\)+\\)[[:space:]\n]+[^)]" 1)
                 ("Types" "^\\s-*(\\(def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(\\sw\\|\\s_\\)+\\)" 2)))))
 
-    (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)))
+    (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)
+
+    (defun my:setup-lisp-mode ()
+      (add-to-list 'ac-sources 'ac-source-filename))
+
+    (add-hook 'emacs-lisp-mode-hook 'my:setup-lisp-mode t)
+
     (use-package paredit
       :config
       (progn
@@ -1099,18 +1105,40 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package smart-tab
   :init
   (progn
-    (global-smart-tab-mode 1)))
+    (global-smart-tab-mode 1)
+    (add-to-list 'smart-tab-disabled-major-modes 'help-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'Custom-mode)))
+
+(use-package pos-tip)
 
 (use-package auto-complete-config
+  :init
+  (progn
+    (use-package pos-tip)
+    (ac-config-default))
   :config
   (progn
-    (ac-config-default)
     (add-to-list 'ac-user-dictionary user-mail-address)
-    (setq ac-use-menu-map t)))
+    (setq ac-use-menu-map t)
+    (ac-flyspell-workaround)))
+
 (add-to-list 'load-path "~/.emacs.d/packages/skeletor.el")
 (use-package skeletor
   :commands (skeletor-create-project))
 
+(use-package sh-script
+  :defer t
+  :config
+  (progn
+    (defun my:setup-sh-mode ()
+      (add-to-list 'ac-sources 'ac-source-filename))
+
+    (add-hook 'sh-mode-hook 'my:setup-sh-mode t)))
+
+(use-package ido-ubiquitous
+  :init
+  (progn
+    (ido-ubiquitous-mode)))
 
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
