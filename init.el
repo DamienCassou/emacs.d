@@ -157,9 +157,9 @@
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:underline t))))
  '(mu4e-header-highlight-face ((t (:underline t))) t)
- '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))) t)
- '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))) t)
- '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))) t))
+ '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
+ '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
+ '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t)))))
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
@@ -1047,7 +1047,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package yasnippet
   :defer t
-  :commands (yas-minor-mode yas-expand)
   :idle
   (progn
     (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
@@ -1062,9 +1061,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
 (use-package iso-transl)
 
-
 (use-package lisp-mode
   :defer t
+  :bind (("C-c RET" . pp-macroexpand-last-sexp))
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
@@ -1093,6 +1092,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (eldoc-add-command 'paredit-backward-delete 'paredit-close-round)))
 
     (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
+
 
 (use-package autorevert
   :defer t
