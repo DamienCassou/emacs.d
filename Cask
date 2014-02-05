@@ -39,7 +39,6 @@
 (depends-on "runner") ;; Associate external applications to file extensions
 (depends-on "s") ;; string library
 (depends-on "shell-switcher") ;; Switch between shells with <C-'> and <C-'>
-(depends-on "skeletor") ;; Powerful project skeletons for Emacs
 (depends-on "smart-tab") ;; bind TAB to completion and indentation
 (depends-on "smex") ;;  Replacement for <M-x>
 (depends-on "switch-window") ;; Displays numbers when using <C-x o>

@@ -123,6 +123,8 @@
  '(shell-switcher-new-shell-function (quote shell-switcher-make-eshell))
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
+ '(skeletor-project-directory "/home/cassou/.emacs.d/packages/")
+ '(skeletor-show-project-command (quote magit-status))
  '(smart-tab-completion-functions-alist nil)
  '(smart-tab-using-hippie-expand t)
  '(smex-save-file "~/.emacs.d/smex-items")
@@ -1104,6 +1106,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (ac-config-default)
     (add-to-list 'ac-user-dictionary user-mail-address)
     (setq ac-use-menu-map t)))
+(add-to-list 'load-path "~/.emacs.d/packages/skeletor.el")
+(use-package skeletor
+  :commands (skeletor-create-project))
+
 
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
