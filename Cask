@@ -6,6 +6,7 @@
 (depends-on "auctex") ;; LaTeX mode
 (depends-on "auto-complete") ;; complete everything
 (depends-on "browse-kill-ring") ;; [M-y] to show kill ring
+(depends-on "dash") ;; list library
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-details+") ;; toggle details using <)>
 (depends-on "dired-imenu") ;; integrates imenu in dired
@@ -14,6 +15,7 @@
 (depends-on "drag-stuff") ;; use <M-arrow> to move things around
 (depends-on "ethan-wspace") ;; Correctly takes care of trailing spaces
 (depends-on "expand-region") ;; <C-x => repeadly to mark regions
+(depends-on "f") ;; file manipulation library
 (depends-on "fill-column-indicator") ;; M-x `fci-mode' to show the right margin
 (depends-on "flx-ido") ;; Fuzzy matching for Emacs
 (depends-on "flycheck") ;; flycheck to check files on the fly
@@ -34,6 +36,7 @@
 (depends-on "pos-tip") ;; make tool-tips appear nicely
 (depends-on "projectile") ;; many functions on projects
 (depends-on "runner") ;; Associate external applications to file extensions
+(depends-on "s") ;; string library
 (depends-on "shell-switcher") ;; Switch between shells with <C-'> and <C-'>
 (depends-on "skeletor") ;; Powerful project skeletons for Emacs
 (depends-on "smart-tab") ;; bind TAB to completion and indentation
