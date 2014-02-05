@@ -1077,6 +1077,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
                 ("Types" "^\\s-*(\\(def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(\\sw\\|\\s_\\)+\\)" 2)))))
 
     (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)))
+    (use-package paredit
+      :config
+      (progn
+        (use-package eldoc)
+        (eldoc-add-command 'paredit-backward-delete 'paredit-close-round)))
+
+    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
 
 (use-package autorevert
   :defer t

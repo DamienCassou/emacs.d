@@ -32,6 +32,7 @@
 (depends-on "multiple-cursors") ;; Control multiple cursors with <C-S-c C-S-c>
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
+(depends-on "paredit") ;; Major mode for pier/pillar-formatted text files
 (depends-on "pier-mode") ;; Major mode for pier/pillar-formatted text files
 (depends-on "pos-tip") ;; make tool-tips appear nicely
 (depends-on "projectile") ;; many functions on projects
