@@ -883,16 +883,17 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (setq guide-key/guide-key-sequence '("C-x 4" "C-. p" "C-c @"))
     (guide-key-mode 1)))
 
-(use-package pier-mode
+(use-package pillar
   :defer t
   :config
   (progn
-    (add-to-list 'ac-modes 'pier-mode)
+    (add-to-list 'ac-modes 'pillar-mode)
 
-    (defun my:setup-pier-mode ()
-      (add-to-list 'ac-sources 'ac-source-yasnippet))
+    (defun my:setup-pillar-mode ()
+      (add-to-list 'ac-sources 'ac-source-yasnippet)
+      (add-to-list 'ac-sources 'ac-source-filename))
 
-    (add-hook 'pier-mode-hook 'my:setup-pier-mode)))
+    (add-hook 'pillar-mode-hook 'my:setup-pillar-mode)))
 
 (use-package projectile
   :diminish projectile-mode
