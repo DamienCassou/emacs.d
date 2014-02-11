@@ -16,6 +16,7 @@
 (depends-on "ethan-wspace") ;; Correctly takes care of trailing spaces
 (depends-on "expand-region") ;; <C-x => repeadly to mark regions
 (depends-on "f") ;; file manipulation library
+(depends-on "feature-mode") ;; major mode for editing feature files
 (depends-on "fill-column-indicator") ;; M-x `fci-mode' to show the right margin
 (depends-on "flx-ido") ;; Fuzzy matching for Emacs
 (depends-on "flycheck") ;; flycheck to check files on the fly
