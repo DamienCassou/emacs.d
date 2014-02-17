@@ -4,7 +4,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(LaTeX-section-hook (quote (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
+ '(LaTeX-section-hook
+   (quote
+    (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
  '(LaTeX-verbatim-environments (quote ("verbatim" "verbatim*" "lstlisting")))
  '(TeX-PDF-mode t)
  '(TeX-auto-save t)
@@ -19,10 +21,13 @@
  '(bibtex-autokey-name-case-convert-function (quote identity))
  '(bibtex-autokey-name-length 4)
  '(bibtex-autokey-titlewords 0)
- '(bibtex-entry-format (quote (opts-or-alts required-fields whitespace realign last-comma delimiters)))
+ '(bibtex-entry-format
+   (quote
+    (opts-or-alts required-fields whitespace realign last-comma delimiters)))
  '(bookmark-save-flag 1)
  '(calendar-date-style (quote european))
  '(calendar-week-start-day 1)
+ '(checkdoc-spellcheck-documentation-flag t)
  '(column-number-mode t)
  '(confirm-kill-emacs (quote y-or-n-p))
  '(current-language-environment "UTF-8")
@@ -47,12 +52,28 @@
  '(eshell-cmpl-cycle-completions nil)
  '(eval-expression-print-length 20)
  '(eval-expression-print-level nil)
- '(flyspell-tex-command-regexp "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+ '(flyspell-tex-command-regexp
+   "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(flyspell-use-meta-tab nil)
- '(font-latex-match-bold-command-keywords (quote (("damien" "{") ("dc" "{") ("eb" "{") ("bb" "{") ("cc" "{") ("jl" "{") ("sd" "{") ("dp" "{") ("nl" "{"))))
+ '(font-latex-match-bold-command-keywords
+   (quote
+    (("damien" "{")
+     ("dc" "{")
+     ("eb" "{")
+     ("bb" "{")
+     ("cc" "{")
+     ("jl" "{")
+     ("sd" "{")
+     ("dp" "{")
+     ("nl" "{"))))
  '(font-latex-match-math-command-keywords (quote (("mm" "{") ("contract" "{{{"))))
  '(font-latex-match-reference-keywords (quote (("ccauthor" "[{") ("cauthor" "{"))))
- '(font-latex-match-type-command-keywords (quote (("ct" "{") ("method" "{") ("class" "{") ("lct" "{"))))
+ '(font-latex-match-type-command-keywords
+   (quote
+    (("ct" "{")
+     ("method" "{")
+     ("class" "{")
+     ("lct" "{"))))
  '(frame-title-format "Emacs: %b" t)
  '(global-font-lock-mode t)
  '(global-hl-line-mode t)
@@ -67,7 +88,9 @@
  '(ido-everywhere t)
  '(ido-file-extensions-order (quote (".tex" ".el" ".pdf")))
  '(ido-ignore-buffers (quote ("\\` " "^*Back" ".*Completion" "^*Ido")))
- '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`\\.ido\\.last")))
+ '(ido-ignore-files
+   (quote
+    ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`\\.ido\\.last")))
  '(ido-max-prospects 6)
  '(ido-mode (quote both) nil (ido))
  '(ido-ubiquitous-mode t)
@@ -77,11 +100,14 @@
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
  '(initial-scratch-message nil)
- '(io-command "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
+ '(io-command
+   "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
  '(kept-new-versions 6)
  '(kept-old-versions 10)
  '(magit-commit-signoff t)
- '(magit-repo-dirs (quote ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
+ '(magit-repo-dirs
+   (quote
+    ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
  '(message-log-max t)
