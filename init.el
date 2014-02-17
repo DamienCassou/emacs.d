@@ -295,11 +295,14 @@
   :config
   (progn
     (use-package runner)
-    (use-package dired-x)
-    (use-package dired-details+
+    (use-package dired-x
       :init
       (progn
-        (setq dired-details-hidden-string "")))
+        (add-hook 'dired-mode-hook #'dired-omit-mode)
+        (bind-key "M-o" 'dired-omit-mode dired-mode-map)))
+
+    (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+
     (use-package dired-imenu)
 
     (when (darwinp)
@@ -345,7 +348,9 @@
           (move-beginning-of-line nil))))
 
     (define-key dired-mode-map
-      (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)))
+      (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)
+
+    (use-package dired-omit)))
 
 (use-package recentf
   :defer t
