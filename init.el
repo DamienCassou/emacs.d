@@ -771,7 +771,19 @@ Return output file name."
 
     (unbind-key "C-'" org-mode-map)
 
-    (add-hook 'org-mode-hook 'yas-minor-mode)))
+    (add-hook 'org-mode-hook 'yas-minor-mode)
+
+    (defun my:open-file-with-dired (file)
+      "Ask dired how it would open FILE.
+This code is useful if dired is well configured to open files
+with external applications. I recommend using the `runner`
+package to do so."
+      (dired-do-shell-command
+       (dired-guess-shell-command (format  "Open %s " file) (list file))
+       0
+       (list file)))
+
+    (setq org-file-apps '((t . (my:open-file-with-dired file))))))
 
 (use-package calc
   :defer t
