@@ -359,6 +359,15 @@
 
     (use-package dired-omit)))
 
+(use-package python
+  :config
+  (progn
+    (defun my:setup-python-mode ()
+      (add-to-list 'ac-sources 'ac-source-yasnippet)
+      (add-to-list 'ac-sources 'ac-source-filename))
+
+    (add-hook 'python-mode-hook 'my:setup-python-mode)))
+
 (use-package recentf
   :defer t
   :config
