@@ -34,6 +34,7 @@
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
 (depends-on "paredit") ;; Major mode for pier/pillar-formatted text files
 (depends-on "pos-tip") ;; make tool-tips appear nicely
+(depends-on "powerline") ;; theme for the modeline
 (depends-on "projectile") ;; many functions on projects
 (depends-on "runner") ;; Associate external applications to file extensions
 (depends-on "s") ;; string library
