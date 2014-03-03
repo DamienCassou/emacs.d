@@ -680,7 +680,13 @@
 
 (use-package flycheck
   :defer t
-  :diminish flycheck-mode)
+  :diminish flycheck-mode
+  :config
+  (progn
+    (use-package flycheck-cask
+      :config
+      (progn
+        (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))))
 
 (use-package idomenu
   :bind ("M-i" . idomenu))
