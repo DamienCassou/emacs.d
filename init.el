@@ -1206,6 +1206,62 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (ido-ubiquitous-mode)))
 
+(defun update-pillar-image ()
+  (interactive)
+  (require 'f)
+  (require 's)
+  (require 'dash)
+
+  (defvar images-dir "~/Documents/smalltalk/images/")
+
+  (defvar pillar-directories
+    (-map #'f-filename (f-directories
+                        images-dir
+                        (lambda (dir)
+                          (s-starts-with? "pillar" (f-filename dir)))
+                        t)))
+
+  (defvar pillar-directory
+    (cond
+     ((null pillar-directories)
+      (error "No pillar image found in %s" images-dir))
+     ((= 1 (length pillar-directories))
+      (car pillar-directories))
+     (t (completing-read "Image: " pillar-directories nil t nil nil
+                         (car pillar-directories)))))
+
+  (defvar pillar-image
+    (f-expand (s-concat pillar-directory ".image")
+              (f-expand pillar-directory images-dir)))
+
+  (unless (f-exists? pillar-image)
+    (error "No image at %s" pillar-image))
+
+  (defvar pillar-changes
+    (s-concat (f-no-ext pillar-image) ".changes"))
+
+  (unless (f-exists? pillar-changes)
+    (error "No changes at %s" pillar-changes))
+
+
+  (defvar destination-image
+    (f-expand "Pharo.image" default-directory))
+
+  (defvar destination-changes
+    (f-expand "Pharo.changes" default-directory))
+
+  (when (f-exists? destination-image)
+    (if (yes-or-no-p (format "Are you sure you want to delete %s? "
+                             destination-image))
+        (progn
+          (f-delete destination-image)
+          (f-delete destination-changes))
+      (error "Can't continue without deleting existing image %s"
+             destination-image)))
+
+  (f-symlink pillar-image destination-image)
+  (f-symlink pillar-changes destination-changes))
+
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
 
