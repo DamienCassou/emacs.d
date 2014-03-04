@@ -334,7 +334,7 @@
     (defun dired-back-to-top ()
       (interactive)
       (goto-char (point-min))
-      (dired-next-line (if dired-omit-mode 1 3)))
+      (dired-next-line (if dired-omit-mode 2 4)))
 
     (define-key dired-mode-map
       (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
