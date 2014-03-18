@@ -282,7 +282,7 @@
 (unbind-key "C-x z")
 (use-package dired
   :defer t
-  :bind ("C-x C-j" . dired-jump)
+  :bind (("C-x C-j" . dired-jump))
   :config
   (progn
     (use-package runner)
