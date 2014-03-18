@@ -54,6 +54,7 @@
  '(eval-expression-print-level nil)
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
+ '(flx-ido-threshhold 10000)
  '(flyspell-use-meta-tab nil)
  '(font-latex-match-bold-command-keywords
    (quote
@@ -75,6 +76,7 @@
      ("class" "{")
      ("lct" "{"))))
  '(frame-title-format "Emacs: %b" t)
+ '(gc-cons-threshold 20000000)
  '(global-font-lock-mode t)
  '(global-hl-line-mode t)
  '(global-hl-line-sticky-flag t)
@@ -85,7 +87,7 @@
  '(ido-create-new-buffer (quote never))
  '(ido-enable-flex-matching t)
  '(ido-enabled (quote both) t (ido))
- '(ido-everywhere t)
+ '(ido-everywhere nil nil nil "Better implemented in ido-ubiquitous")
  '(ido-file-extensions-order (quote (".tex" ".el" ".pdf")))
  '(ido-ignore-buffers (quote ("\\` " "^*Back" ".*Completion" "^*Ido")))
  '(ido-ignore-files
@@ -94,6 +96,7 @@
  '(ido-max-prospects 6)
  '(ido-mode (quote both) nil (ido))
  '(ido-ubiquitous-mode t)
+ '(ido-use-filename-at-point (quote guess))
  '(ido-use-virtual-buffers t)
  '(imenu-auto-rescan t)
  '(indent-tabs-mode nil)
@@ -543,6 +546,24 @@
       (magit-refresh))))
 
 (use-package ido
+  :config
+  (progn
+    (use-package flx-ido
+      :init
+      (progn
+        (ido-mode 1)
+        (ido-everywhere 1)
+        (flx-ido-mode 1)
+        ;; disable ido faces to see flx highlights.
+        (setq ido-use-faces t)))
+    (use-package ido-vertical-mode
+      :init
+      (progn
+        (ido-vertical-mode 1)))
+    (use-package ido-ubiquitous
+      :init
+      (progn
+        (ido-ubiquitous-mode))))
   :init
   (progn
     (defun ido-backquote-to-home ()
@@ -557,7 +578,8 @@
             (if (looking-back "/")
                 (insert "~/")
               (call-interactively 'self-insert-command))))))
-    (add-hook 'ido-setup-hook 'ido-backquote-to-home)))
+    (add-hook 'ido-setup-hook 'ido-backquote-to-home)
+    (ido-mode 'buffer)))
 
 (use-package info
   :bind ("C-h i" . info-other-window)
@@ -1080,15 +1102,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (imagemagick-register-types))
 
-;; (use-package flx-ido
-;;   :init
-;;   (progn
-;;     (ido-mode 1)
-;;     (ido-everywhere 1)
-;;     (flx-ido-mode 1)
-;;     ;; disable ido faces to see flx highlights.
-;;     (setq ido-use-faces nil)))
-
 (use-package diminish
   :config
   (progn
@@ -1100,11 +1113,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :init
   (progn
     (global-discover-mode 1)))
-
-(use-package ido-vertical-mode
-  :init
-  (progn
-    (ido-vertical-mode 1)))
 
 (use-package yasnippet
   :defer t
@@ -1196,10 +1204,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
     (add-hook 'sh-mode-hook 'my:setup-sh-mode t)))
 
-(use-package ido-ubiquitous
   :init
   (progn
-    (ido-ubiquitous-mode)))
 
 (defun update-pillar-image ()
   (interactive)
