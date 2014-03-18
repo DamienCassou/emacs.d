@@ -1163,6 +1163,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (add-hook 'emacs-lisp-mode-hook 'my:setup-lisp-mode t)
 
     (use-package paredit
+      :diminish paredit-mode
       :config
       (progn
         (use-package eldoc)
