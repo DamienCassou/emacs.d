@@ -37,6 +37,7 @@
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
 (depends-on "paredit") ;; edit lisp AST instead of characters
+(depends-on "pillar") ;; Major mode for pier/pillar-formatted text files
 (depends-on "pos-tip") ;; make tool-tips appear nicely
 (depends-on "powerline") ;; theme for the modeline
 (depends-on "projectile") ;; many functions on projects

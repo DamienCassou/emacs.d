@@ -968,7 +968,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (guide-key-mode 1)))
 
 (use-package pillar
-  :defer t
+  :mode ("\\.\\(pier\\|pillar\\)\\'" . pillar-mode)
   :config
   (progn
     (eval-after-load "auto-complete-config"
