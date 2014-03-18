@@ -239,7 +239,6 @@
   (unless window-system
     (suspend-frame)))
 
-(bind-key "C-z" 'suspend-on-tty-only)
 (bind-key "C-x C-z" 'suspend-on-tty-only)
 
 (add-to-list 'default-frame-alist '(cursor-type bar . 3))
@@ -302,6 +301,10 @@
 ;; faster than C-x o
 (bind-key* "M-o" 'other-window)
 (unbind-key "C-x o")
+
+;; faster than C-x z
+(bind-key "C-z" 'repeat)
+(unbind-key "C-x z")
 (use-package dired
   :defer t
   :bind ("C-x C-j" . dired-jump)
