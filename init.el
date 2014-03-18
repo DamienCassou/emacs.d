@@ -361,8 +361,10 @@
   :config
   (progn
     (defun my:setup-python-mode ()
-      (add-to-list 'ac-sources 'ac-source-yasnippet)
-      (add-to-list 'ac-sources 'ac-source-filename))
+      (eval-after-load "auto-complete-config"
+        `(progn
+          (add-to-list 'ac-sources 'ac-source-yasnippet)
+          (add-to-list 'ac-sources 'ac-source-filename))))
 
     (add-hook 'python-mode-hook 'my:setup-python-mode)))
 
@@ -969,11 +971,15 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :defer t
   :config
   (progn
-    (add-to-list 'ac-modes 'pillar-mode)
+    (eval-after-load "auto-complete-config"
+      `(progn
+         (add-to-list 'ac-modes 'pillar-mode)))
 
     (defun my:setup-pillar-mode ()
-      (add-to-list 'ac-sources 'ac-source-yasnippet)
-      (add-to-list 'ac-sources 'ac-source-filename)
+      (eval-after-load "auto-complete-config"
+        `(progn
+          (add-to-list 'ac-sources 'ac-source-yasnippet)
+          (add-to-list 'ac-sources 'ac-source-filename)))
       (variable-pitch-mode))
 
     (add-hook 'pillar-mode-hook 'my:setup-pillar-mode)))
@@ -1150,7 +1156,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)
 
     (defun my:setup-lisp-mode ()
-      (add-to-list 'ac-sources 'ac-source-filename))
+      (eval-after-load "auto-complete-mode"
+        `(progn
+           (add-to-list 'ac-sources 'ac-source-filename))))
 
     (add-hook 'emacs-lisp-mode-hook 'my:setup-lisp-mode t)
 
@@ -1181,6 +1189,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package pos-tip)
 
 (use-package auto-complete-config
+  :disabled t
   :init
   (progn
     (use-package pos-tip)
@@ -1200,12 +1209,18 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (defun my:setup-sh-mode ()
-      (add-to-list 'ac-sources 'ac-source-filename))
-
+      (eval-after-load "auto-complete-config"
+        `(progn
+          (add-to-list 'ac-sources 'ac-source-filename))))
     (add-hook 'sh-mode-hook 'my:setup-sh-mode t)))
 
+(use-package company
   :init
   (progn
+    (add-hook 'prog-mode-hook 'company-mode)
+    (bind-key "C-. y" 'company-yasnippet)))
+
+
 
 (defun update-pillar-image ()
   (interactive)
