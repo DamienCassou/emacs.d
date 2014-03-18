@@ -1215,6 +1215,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
           (add-to-list 'ac-sources 'ac-source-filename))))
     (add-hook 'sh-mode-hook 'my:setup-sh-mode t)))
 
+(use-package smartscan
+  :defer t
+  :init
+  (progn
+    (add-hook 'prog-mode-hook 'smartscan-mode)
+    (add-hook 'pillar-mode-hook 'smartscan-mode)))
+
 (use-package company
   :init
   (progn

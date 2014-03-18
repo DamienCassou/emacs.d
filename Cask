@@ -33,6 +33,7 @@
 (depends-on "magit-svn")
 (depends-on "markdown-mode") ;; Major mode for markdown format
 (depends-on "multiple-cursors") ;; Control multiple cursors with <C-S-c C-S-c>
+(depends-on "smartscan") ;; M-n M-p to move between same symbol in buffer
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
 (depends-on "paredit") ;; edit lisp AST instead of characters
