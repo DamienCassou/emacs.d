@@ -299,6 +299,9 @@
         (kill-buffer buffer)))
     (message "%s buffers have been killed" count)))
 
+;; faster than C-x o
+(bind-key* "M-o" 'other-window)
+(unbind-key "C-x o")
 (use-package dired
   :defer t
   :bind ("C-x C-j" . dired-jump)
@@ -311,6 +314,8 @@
       (progn
         (setq dired-details-hidden-string "")))
     (use-package dired-imenu)
+
+    (bind-key ")" 'dired-omit-mode dired-mode-map)
 
     (when (darwinp)
       ;; Use coreutils from homebrew to provide a real ls
@@ -958,6 +963,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
              "jekyll/_layouts/.*\\.html\\'")))))
 
 (use-package switch-window
+  :disabled t
   :bind (("C-x o" . switch-window)))
 
 (use-package guide-key
