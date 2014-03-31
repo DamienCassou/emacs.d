@@ -184,7 +184,7 @@
   (setq use-package-verbose (null byte-compile-current-file)))
 
 (use-package-with-elapsed-timer "Loading theme"
-  (load-theme 'wombat))
+  (load-theme 'niflheim))
 
 (defun darwinp ()
   (interactive)
