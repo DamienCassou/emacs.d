@@ -584,6 +584,17 @@
        file-or-node
        (switch-to-buffer-other-window (or buffer "*info*"))))))
 
+(use-package ace-link
+  :defer t
+  :init
+  (progn
+    (eval-after-load "info"
+      `(progn
+         (define-key Info-mode-map "o" 'ace-link-info)))
+    (eval-after-load "help-mode"
+      `(progn
+         (define-key help-mode-map "o" 'ace-link-help)))))
+
 (use-package magit-svn
   :defer t
   :diminish magit-svn-mode)
@@ -1210,6 +1221,14 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (add-hook 'prog-mode-hook 'company-mode)
     (bind-key "C-. y" 'company-yasnippet)))
+
+(use-package zoom-frm
+  :bind (("C-x C-+" . zoom-in/out)
+         ("C-x C--" . zoom-in/out)
+         ("C-x C-=" . zoom-in/out)
+         ("C-x C-0" . zoom-in/out)
+         ("<C-mouse-4>" . zoom-in)
+         ("<C-mouse-5>" . zoom-out)))
 
 (defun update-pillar-image ()
   (interactive)

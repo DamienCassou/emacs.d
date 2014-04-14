@@ -3,6 +3,7 @@
 (source melpa)
 (source org)
 
+(depends-on "ace-link") ;; type o in help-mode to go to a link
 (depends-on "auctex") ;; LaTeX mode
 (depends-on "auto-complete") ;; complete everything
 (depends-on "browse-kill-ring") ;; [M-y] to show kill ring
@@ -51,6 +52,7 @@
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
 (depends-on "yasnippet") ;; snippet utility
+(depends-on "zoom-frm") ;; increase/decrease font size for all buffers
 ;; <z> in dired to facilitate extraction of archive files
 ;; (depends-on "extractor")
 ;; Assistant to correct english text
