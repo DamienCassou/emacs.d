@@ -14,6 +14,7 @@
         org-kill-line
         org-self-insert-command
         org-transpose-words
+        org-yank
         paredit-forward-slurp-sexp
         paredit-open-round
         skeleton-pair-insert-maybe
