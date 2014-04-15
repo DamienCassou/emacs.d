@@ -346,8 +346,8 @@
     (defun my:setup-python-mode ()
       (eval-after-load "auto-complete-config"
         `(progn
-          (add-to-list 'ac-sources 'ac-source-yasnippet)
-          (add-to-list 'ac-sources 'ac-source-filename))))
+           (add-to-list 'ac-sources 'ac-source-yasnippet)
+           (add-to-list 'ac-sources 'ac-source-filename))))
 
     (add-hook 'python-mode-hook 'my:setup-python-mode)))
 
@@ -973,8 +973,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (defun my:setup-pillar-mode ()
       (eval-after-load "auto-complete-config"
         `(progn
-          (add-to-list 'ac-sources 'ac-source-yasnippet)
-          (add-to-list 'ac-sources 'ac-source-filename)))
+           (add-to-list 'ac-sources 'ac-source-yasnippet)
+           (add-to-list 'ac-sources 'ac-source-filename)))
       (variable-pitch-mode))
 
     (add-hook 'pillar-mode-hook 'my:setup-pillar-mode)))
@@ -1206,7 +1206,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (defun my:setup-sh-mode ()
       (eval-after-load "auto-complete-config"
         `(progn
-          (add-to-list 'ac-sources 'ac-source-filename))))
+           (add-to-list 'ac-sources 'ac-source-filename))))
     (add-hook 'sh-mode-hook 'my:setup-sh-mode t)))
 
 (use-package smartscan
