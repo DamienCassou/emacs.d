@@ -93,13 +93,15 @@
  '(notmuch-labeler-hide-known-labels t)
  '(org-clock-clocked-in-display nil)
  '(org-completion-use-ido t)
- '(org-default-notes-file "tasks.org")
+ '(org-default-notes-file "refile.org")
  '(org-directory "~/Documents/configuration/org")
  '(org-export-allow-bind-keywords t)
  '(org-fontify-done-headline t)
  '(org-hide-leading-stars t)
  '(org-imenu-depth 1)
  '(org-log-done (quote time))
+ '(org-outline-path-complete-in-steps nil)
+ '(org-refile-use-outline-path (quote full-file-path))
  '(org-special-ctrl-a/e t)
  '(org-time-stamp-rounding-minutes (quote (10 10)))
  '(org-use-speed-commands t)
@@ -735,7 +737,9 @@
       (let ((buffer (get-buffer "*Org Agenda*")))
         (if buffer
             (switch-to-buffer buffer)
-          (org-agenda-list))
+          ;; open the agenda associated to the Space key in the org-agenda popup
+          (let ((entry (assoc " " org-agenda-custom-commands)))
+            (org-agenda-run-series (nth 1 entry) (cddr entry))))
         (delete-other-windows)))
 
     ;; Go to the agenda buffer after 10' idle
@@ -752,9 +756,26 @@
 
   :config
   (progn
+    ;; Custom agenda command definitions
+    (setq org-agenda-custom-commands
+          (quote (("N" "Notes" tags "NOTE"
+                   ((org-agenda-overriding-header "Notes")
+                    (org-tags-match-list-sublevels t)))
+                  ("h" "Habits" tags-todo "STYLE=\"habit\""
+                   ((org-agenda-overriding-header "Habits")
+                    (org-agenda-sorting-strategy
+                     '(todo-state-down effort-up category-keep))))
+                  (" " "Agenda"
+                   ((agenda "" nil)
+                    (tags "REFILE"
+                          ((org-agenda-overriding-header "Tasks to Refile")
+                           (org-tags-match-list-sublevels nil))))
+                   nil))))
+
     (setq org-agenda-files
 
-          '("~/Documents/configuration/org/tasks.org"
+          '("~/Documents/configuration/org/refile.org"
+            "~/Documents/configuration/org/tasks.org"
             "~/Documents/configuration/org/someday.org"
             "~/Documents/configuration/org/repeating.org"))
 
@@ -775,7 +796,7 @@
     (add-to-list
      'org-capture-templates
      '("t" "Todo [inbox]" entry
-       (file+headline org-default-notes-file "Tasks")
+       (file org-default-notes-file)
        "* TODO %?%i\n %a"))
 
     (defun org-publish-lesscss (plist filename pub-dir)
