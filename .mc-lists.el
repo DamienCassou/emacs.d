@@ -5,6 +5,7 @@
       '(
         TeX-insert-backslash
         clipboard-kill-region
+        dired-unmark-all-files
         indent-for-tab-command
         org-beginning-of-line
         org-ctrl-c-ctrl-c
