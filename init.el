@@ -162,14 +162,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:underline t))))
- '(mode-line ((t (:background "#ffffff" :foreground "#005F69" :box (:line-width -1 :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line :background "#cccccc" :foreground "#93a1a1" :box (:line-width 1 :color "#eee8d5" :style unspecified) :weight light))))
  '(mu4e-header-highlight-face ((t (:underline t))) t)
  '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
  '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
- '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
- '(powerline-active1 ((t (:inherit mode-line :background "#0087AF" :foreground "#ffffff"))))
- '(powerline-active2 ((t (:inherit mode-line :background "#005F87")))))
+ '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t)))))
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
