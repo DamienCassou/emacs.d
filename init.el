@@ -730,12 +730,8 @@
     ;; Display the agenda
     (defun nico/jump-to-org-agenda ()
       (interactive)
-      (let ((buffer (get-buffer "*Org Agenda*")))
-        (if buffer
-            (switch-to-buffer buffer)
-          ;; open the agenda associated to the Space key in the org-agenda popup
-          (let ((entry (assoc " " org-agenda-custom-commands)))
-            (org-agenda-run-series (nth 1 entry) (cddr entry))))
+      (let ((entry (assoc " " org-agenda-custom-commands)))
+        (org-agenda-run-series (nth 1 entry) (cddr entry))
         (delete-other-windows)))
 
     ;; Go to the agenda buffer after 10' idle
@@ -765,7 +761,10 @@
                    ((agenda "" nil)
                     (tags "REFILE"
                           ((org-agenda-overriding-header "Tasks to Refile")
-                           (org-tags-match-list-sublevels nil))))
+                           (org-tags-match-list-sublevels nil)))
+                    (tags-todo "PLANNED"
+                               ((org-agenda-overriding-header "Todo items")
+                                (org-tags-match-list-sublevels nil))))
                    nil))))
 
     (setq org-agenda-files
@@ -777,7 +776,7 @@
 
     (setq org-refile-targets `(("tasks.org"      :maxlevel . 2)
                                ("someday.org"    :maxlevel . 2)
-                               ("repeating.org"  :level    . 1)))
+                               ("repeating.org"  :maxlevel . 2)))
 
     (setq org-todo-keywords
           '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")
