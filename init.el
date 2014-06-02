@@ -689,10 +689,6 @@
   (progn
     (unbind-key "C-." flyspell-mode-map)))
 
-(use-package ethan-wspace
-  :defer t
-  :diminish ethan-wspace-mode)
-
 (use-package eldoc
   :defer t
   :diminish eldoc-mode)
@@ -922,6 +918,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (add-to-list 'drag-stuff-except-modes 'rebase-mode)))
 
 (use-package ethan-wspace
+  :disabled t
+  :defer t
+  :diminish ethan-wspace-mode
   :init
   (progn
     (global-ethan-wspace-mode 1)))
