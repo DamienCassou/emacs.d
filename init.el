@@ -760,6 +760,8 @@
                    ((org-agenda-overriding-header "Habits")
                     (org-agenda-sorting-strategy
                      '(todo-state-down effort-up category-keep))))
+                  ("l" "Logbook" nico/org-agenda-log ""
+                   ((org-agenda-overriding-header "Logbook")))
                   (" " "Agenda"
                    ((agenda "" nil)
                     (tags "REFILE"
@@ -769,6 +771,14 @@
                                ((org-agenda-overriding-header "Todo items")
                                 (org-tags-match-list-sublevels nil))))
                    nil))))
+
+    (defun nico/org-agenda-log (arg)
+      (let ((org-agenda-files org-agenda-files))
+        (add-to-list 'org-agenda-files "~/Documents/configuration/org/tasks.org_archive")
+        (add-to-list 'org-agenda-files "~/Documents/configuration/org/someday.org_archive")
+        (org-agenda-list arg)
+        (org-agenda-log-mode)
+        (org-agenda-earlier 1)))
 
     (setq org-agenda-files
 
