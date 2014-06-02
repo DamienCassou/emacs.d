@@ -53,6 +53,7 @@
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
 (depends-on "yasnippet") ;; snippet utility
+(depends-on "visible-mark") ;; show the current mark
 (depends-on "zoom-frm") ;; increase/decrease font size for all buffers
 ;; <z> in dired to facilitate extraction of archive files
 ;; (depends-on "extractor")

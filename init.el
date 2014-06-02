@@ -162,10 +162,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:underline t))))
+ '(mode-line ((t (:background "#bd6626" :foreground "#f6f3e8"))))
+ '(mode-line-highlight ((t (:foreground unspecified :background unspecified :weight bold))))
+ '(mode-line-inactive ((t (:background "#454545" :foreground "#666666"))))
  '(mu4e-header-highlight-face ((t (:underline t))) t)
  '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
  '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
- '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t)))))
+ '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
+ '(powerline-active1 ((t (:inherit mode-line :background "#666666" :foreground "#f6f3e8"))))
+ '(powerline-active2 ((t (:inherit mode-line :background "#252525" :foreground "#f6f3e8"))))
+ '(powerline-inactive2 ((t (:inherit mode-line :background "#666666" :foreground "#aaaaaa"))))
+ '(visible-mark-face1 ((t (:background "light salmon" :foreground "black" :box (:line-width 1 :color "grey75" :style released-button))))))
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
@@ -1286,6 +1293,16 @@ able to type <C-c left left left> to undo 3 times whereas it was
                destination-image)))
     (f-symlink pillar-image destination-image)
     (f-symlink pillar-changes destination-changes)))
+
+(use-package visible-mark
+  :config
+  (progn
+    (global-visible-mark-mode 1)
+    (setq visible-mark-max 1)
+    (setq visible-mark-faces `(visible-mark-face1))
+    (defface visible-mark-active
+      '((((type tty) (class mono)))
+        (t (:background "magenta"))) "")))
 
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
