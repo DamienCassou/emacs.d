@@ -946,6 +946,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package org-pomodoro
   :defer t
+  :disabled t
   :init
   (progn
     (eval-after-load "org"
