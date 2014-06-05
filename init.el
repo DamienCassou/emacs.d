@@ -720,18 +720,12 @@
 (use-package org
   :defer t
   :bind
-  (("C-. o t" . org-capture)
-   ("C-. o a" . org-agenda)
-   ("C-. o ," . org-cycle-agenda-files))
+  (("C-. o t"   . org-capture)
+   ("C-. o a"   . org-agenda)
+   ("C-. o ,"   . org-cycle-agenda-files)
   :init
   (progn
-    (setq org-modules '(org-bbdb org-bibtex org-docview org-gnus
-                                 org-capture org-info org-jsinfo
-                                 org-irc org-mew org-mhe
-                                 org-protocol org-rmail org-vm
-                                 org-wl org-w3m org-bookmark
-                                 org-pomodoro org-pomodoro-pidgin
-                                 org-publish))
+    (setq org-modules '(org-publish org-protocol org-capture))
 
     ;; Display the agenda
     (defun nico/jump-to-org-agenda ()
