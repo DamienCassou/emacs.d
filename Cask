@@ -4,6 +4,7 @@
 (source org)
 
 (depends-on "ack-and-a-half") ;; ack support
+(depends-on "ace-jump-mode") ;; move fast in buffer with C-m
 (depends-on "ace-link") ;; type o in help-mode to go to a link
 (depends-on "auctex") ;; LaTeX mode
 (depends-on "auto-complete") ;; complete everything

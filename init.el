@@ -589,6 +589,9 @@
        file-or-node
        (switch-to-buffer-other-window (or buffer "*info*"))))))
 
+(use-package ace-jump-mode
+  :bind ("C-," . ace-jump-mode))
+
 (use-package ace-link
   :defer t
   :init
