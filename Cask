@@ -16,6 +16,7 @@
 (depends-on "dired-toggle-sudo") ;; <C-x s> to toggle sudo state of buffer
 (depends-on "discover") ;; popus for some features
 (depends-on "drag-stuff") ;; use <M-arrow> to move things around
+(depends-on "elisp-slime-nav") ;; fast navigation between symbols in elisp with M-. and C-c C-d C-d
 (depends-on "ethan-wspace") ;; Correctly takes care of trailing spaces
 (depends-on "expand-region") ;; <C-x => repeadly to mark regions
 (depends-on "f") ;; file manipulation library

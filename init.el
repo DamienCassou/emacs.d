@@ -1316,6 +1316,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
       '((((type tty) (class mono)))
         (t (:background "magenta"))) "")))
 
+(use-package elisp-slime-nav
+  :init
+  (progn
+    (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)))
+
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
 
