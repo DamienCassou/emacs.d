@@ -98,7 +98,7 @@
  '(org-export-allow-bind-keywords t)
  '(org-fontify-done-headline t)
  '(org-hide-leading-stars t)
- '(org-imenu-depth 1)
+ '(org-imenu-depth 2)
  '(org-log-done (quote time))
  '(org-outline-path-complete-in-steps nil)
  '(org-refile-use-outline-path (quote full-file-path))
