@@ -723,6 +723,7 @@
   (("C-. o t"   . org-capture)
    ("C-. o a"   . org-agenda)
    ("C-. o ,"   . org-cycle-agenda-files)
+   ("C-. o SPC" . dc/my-agenda))
   :init
   (progn
     (setq org-modules '(org-publish org-protocol org-capture))
@@ -730,9 +731,14 @@
     ;; Display the agenda
     (defun nico/jump-to-org-agenda ()
       (interactive)
+      (dc/my-agenda)
+      (delete-other-windows))
+
+    (defun dc/my-agenda ()
+      (interactive)
+      (require 'org-agenda)
       (let ((entry (assoc " " org-agenda-custom-commands)))
-        (org-agenda-run-series (nth 1 entry) (cddr entry))
-        (delete-other-windows)))
+        (org-agenda-run-series (nth 1 entry) (cddr entry))))
 
     ;; Go to the agenda buffer after 10' idle
     (run-with-idle-timer 600 t 'nico/jump-to-org-agenda)
