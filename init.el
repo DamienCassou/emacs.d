@@ -172,7 +172,8 @@
  '(powerline-active1 ((t (:inherit mode-line :background "#666666" :foreground "#f6f3e8"))))
  '(powerline-active2 ((t (:inherit mode-line :background "#252525" :foreground "#f6f3e8"))))
  '(powerline-inactive2 ((t (:inherit mode-line :background "#666666" :foreground "#aaaaaa"))))
- '(visible-mark-face1 ((t (:background "light salmon" :foreground "black" :box (:line-width 1 :color "grey75" :style released-button))))))
+ '(visible-mark-face1 ((t (:background "salmon" :foreground "black" :box (:line-width 1 :color "grey75" :style released-button)))))
+ '(visible-mark-face2 ((t (:background "light salmon" :foreground "black" :box (:line-width 1 :color "grey75" :style released-button))))))
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
@@ -1313,8 +1314,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (global-visible-mark-mode 1)
-    (setq visible-mark-max 1)
-    (setq visible-mark-faces `(visible-mark-face1))
+    (setq visible-mark-max 2)
+    (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
     (defface visible-mark-active
       '((((type tty) (class mono)))
         (t (:background "magenta"))) "")))
