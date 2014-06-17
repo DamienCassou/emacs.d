@@ -16,13 +16,17 @@
         org-self-insert-command
         org-transpose-words
         org-yank
+        paredit-forward-delete
         paredit-forward-slurp-sexp
         paredit-open-round
         skeleton-pair-insert-maybe
         smex
         wdired-finish-edit
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        end-of-buffer
+        orgtbl-self-insert-command
         ))
