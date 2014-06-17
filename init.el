@@ -1329,6 +1329,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)))
 
+(use-package paren-face
+  :init
+  (progn
+    (global-paren-face-mode)))
+
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
 
