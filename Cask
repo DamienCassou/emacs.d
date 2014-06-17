@@ -7,9 +7,7 @@
 (depends-on "ace-jump-mode") ;; move fast in buffer with C-m
 (depends-on "ace-link") ;; type o in help-mode to go to a link
 (depends-on "auctex") ;; LaTeX mode
-(depends-on "auto-complete") ;; complete everything
 (depends-on "browse-kill-ring") ;; [M-y] to show kill ring
-(depends-on "company") ;; complete everything
 (depends-on "dash") ;; list library
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-details+") ;; hide details in dired
