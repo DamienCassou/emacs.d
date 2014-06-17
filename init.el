@@ -804,12 +804,13 @@
           '(("NEXT" :foreground "orange" :weight bold)
             ("CANCELLED" :foreground "forest green")))
 
-    (setq org-capture-templates '())
-    (add-to-list
-     'org-capture-templates
-     '("t" "Todo [inbox]" entry
-       (file org-default-notes-file)
-       "* TODO %?%i\n %a"))
+    (setq org-capture-templates
+          '(("t" "Todo" entry
+             (file org-default-notes-file)
+             "* TODO %?%i")
+            ("u" "URL" entry
+             (file org-default-notes-file)
+             "* TODO %?%i\n %a")))
 
     (defun org-publish-lesscss (plist filename pub-dir)
       "Publish a file with no transformation of any kind.
