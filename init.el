@@ -1338,6 +1338,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-paren-face-mode)))
 
+(use-package ido-at-point
+  :init
+  (progn
+    (ido-at-point-mode)))
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
 

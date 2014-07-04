@@ -27,6 +27,7 @@
 (depends-on "git-auto-commit-mode") ;; commit after each file save
 (depends-on "guide-key") ;; help you learn emacs
 (depends-on "idomenu") ;; <M-i> to list sections of the buffer
+(depends-on "ido-at-point") ;; M-Tab uses ido-style completion
 (depends-on "ido-vertical-mode") ;; shows ido results vertically
 (depends-on "ido-ubiquitous") ;; Install ido everywhere
 (depends-on "json-mode") ;; Major mode to edit JSON files
