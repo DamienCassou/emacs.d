@@ -21,6 +21,7 @@
         paredit-open-round
         skeleton-pair-insert-maybe
         smex
+        transpose-words
         wdired-finish-edit
         yas-expand
         ))
