@@ -71,7 +71,6 @@
  '(ido-file-extensions-order (quote (".tex" ".el" ".pdf")))
  '(ido-ignore-buffers (quote ("\\` " "^*Back" ".*Completion" "^*Ido")))
  '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`\\.ido\\.last")))
- '(ido-max-prospects 6)
  '(ido-mode (quote both) nil (ido))
  '(ido-ubiquitous-mode t)
  '(ido-use-virtual-buffers t)
@@ -306,7 +305,7 @@
       (setq dired-use-ls-dired t)
       (setq insert-directory-program "gls"))
 
-    (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".build" ".dsc")))
+    (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".build" ".dsc" ".synctex.gz")))
       (mapc (lambda (extension)
               (add-to-list 'completion-ignored-extensions extension)
               (add-to-list 'dired-omit-extensions extension))
@@ -591,7 +590,10 @@
        (switch-to-buffer-other-window (or buffer "*info*"))))))
 
 (use-package ace-jump-mode
-  :bind ("C-," . ace-jump-mode))
+  :bind ("C-," . ace-jump-mode)
+  :init
+  (progn
+    (bind-key* "C-," 'ace-jump-mode)))
 
 (use-package ace-link
   :defer t
@@ -770,10 +772,7 @@
                    ((agenda "" nil)
                     (tags "REFILE"
                           ((org-agenda-overriding-header "Tasks to Refile")
-                           (org-tags-match-list-sublevels nil)))
-                    (tags-todo "PLANNED"
-                               ((org-agenda-overriding-header "Todo items")
-                                (org-tags-match-list-sublevels nil))))
+                           (org-tags-match-list-sublevels nil))))
                    nil))))
 
     (defun nico/org-agenda-log (arg)
