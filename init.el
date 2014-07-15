@@ -112,6 +112,7 @@
  '(recentf-max-saved-items 4000)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/recentf")
+ '(reftex-default-bibliography (quote ("~/Documents/rmodbib/bib/rmod.bib" "~/Documents/rmodbib/bib/others.bib")))
  '(reftex-plug-into-AUCTeX t)
  '(reftex-view-crossref-cite-macros "\\`\\\\cite\\|cite\\*?\\'\\|bibentry\\|ccauthor")
  '(reftex-view-crossref-extra nil)
