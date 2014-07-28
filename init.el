@@ -28,6 +28,7 @@
  '(confirm-kill-emacs (quote y-or-n-p))
  '(current-language-environment "UTF-8")
  '(custom-safe-themes t)
+ '(delete-active-region nil)
  '(delete-by-moving-to-trash t)
  '(delete-old-versions t)
  '(diff-switches "-u")
