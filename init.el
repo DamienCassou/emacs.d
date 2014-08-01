@@ -288,6 +288,33 @@
 ;; faster than C-x z
 (bind-key "C-z" 'repeat)
 (unbind-key "C-x z")
+
+(define-prefix-command 'endless/toggle-map)
+(bind-key "t" 'endless/toggle-map ctl-x-map)
+(bind-key "c" 'column-number-mode endless/toggle-map)
+(bind-key "d" 'toggle-debug-on-error endless/toggle-map)
+(bind-key "f" 'auto-fill-mode endless/toggle-map)
+(bind-key "l" 'toggle-truncate-lines endless/toggle-map)
+(bind-key "q" 'toggle-debug-on-quit endless/toggle-map)
+(bind-key "r" 'dired-toggle-read-only endless/toggle-map)
+
+(defun narrow-or-widen-dwim (p)
+  "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
+Intelligently means: region, subtree, or defun, whichever applies
+first.
+
+With prefix P, don't widen, just narrow even if buffer is already
+narrowed."
+  (interactive "P")
+  (declare (interactive-only))
+  (cond ((and (buffer-narrowed-p) (not p)) (widen))
+        ((region-active-p)
+         (narrow-to-region (region-beginning) (region-end)))
+        ((derived-mode-p 'org-mode) (org-narrow-to-subtree))
+        (t (narrow-to-defun))))
+
+(bind-key "n" 'narrow-or-widen-dwim endless/toggle-map)
+
 (use-package dired
   :defer t
   :bind (("C-x C-j" . dired-jump))
@@ -1000,7 +1027,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :diminish guide-key-mode
   :idle
   (progn
-    (setq guide-key/guide-key-sequence '("C-x 4" "C-. p" "C-c @"))
+    (setq guide-key/guide-key-sequence '("C-x 4" "C-. p" "C-c @" "C-x t"))
     (guide-key-mode 1)))
 
 (use-package pillar
