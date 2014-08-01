@@ -1352,6 +1352,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (define-key 'help-command (kbd "C-k") 'find-function-on-key)
     (define-key 'help-command (kbd "C-v") 'find-variable)))
 
+(use-package hungry-delete
+  :config
+  (global-hungry-delete-mode))
+
+(use-package git-timemachine)
+
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
 
