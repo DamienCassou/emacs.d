@@ -1352,11 +1352,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
       '((((type tty) (class mono)))
         (t (:background "magenta"))) "")))
 
-(use-package popwin
-  :config
-  (progn
-    (popwin-mode 1)))
-
 (use-package elisp-slime-nav
   :init
   (progn
