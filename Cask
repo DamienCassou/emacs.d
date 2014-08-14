@@ -39,6 +39,7 @@
 (depends-on "markdown-mode") ;; Major mode for markdown format
 (depends-on "multiple-cursors") ;; Control multiple cursors with <C-S-c C-S-c>
 (depends-on "niflheim-theme") ;; Nicolas&Ben's theme
+(depends-on "nix-mode") ;; major mode to edit nix expressions
 (depends-on "smartscan") ;; M-n M-p to move between same symbol in buffer
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
