@@ -877,7 +877,7 @@ This code is useful if dired is well configured to open files
 with external applications. I recommend using the `runner`
 package to do so."
       (use-package dired-aux)
-      (dired-do-shell-command
+      (dired-do-async-shell-command
        (dired-guess-shell-command (format  "Open %s " file) (list file))
        0
        (list file)))
