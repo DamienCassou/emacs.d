@@ -6,6 +6,7 @@
         TeX-insert-backslash
         clipboard-kill-region
         dired-unmark-all-files
+        hungry-delete-backward
         indent-for-tab-command
         org-beginning-of-line
         org-ctrl-c-ctrl-c
