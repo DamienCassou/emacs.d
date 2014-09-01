@@ -192,8 +192,18 @@
 (eval-when-compile
   (setq use-package-verbose (null byte-compile-current-file)))
 
-(use-package-with-elapsed-timer "Loading theme"
-  (load-theme 'niflheim))
+(defun set-selected-frame-dark ()
+  (interactive)
+  (let ((frame-name (cdr (assq 'name (frame-parameters (selected-frame))))))
+    (call-process-shell-command
+     (format
+      "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
+      frame-name))))
+
+(when (window-system)
+  (use-package-with-elapsed-timer "Loading theme"
+    (load-theme 'niflheim))
+  (set-selected-frame-dark))
 
 (defun darwinp ()
   (interactive)
