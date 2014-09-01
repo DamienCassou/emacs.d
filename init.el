@@ -473,11 +473,12 @@ narrowed."
     (defvar my:prompt-inserted nil)
 
     (defun my:color (type)
-      (case type
-        ('alert "red")
-        ('good "lime green")
-        ('warning "dark orange")
-        (t "black")))
+      (require 'cl-lib)
+      (cl-case type
+           ('alert "red")
+           ('good "lime green")
+           ('warning "dark orange")
+           (t "black")))
 
     (defun my:mprint (obj &optional color)
       (if color
