@@ -127,6 +127,7 @@
  '(send-mail-function (quote smtpmail-send-it))
  '(sentence-end-double-space nil)
  '(sh-indent-comment t)
+ '(shell-switcher-ask-before-creating-new t)
  '(shell-switcher-mode t)
  '(shell-switcher-new-shell-function (quote shell-switcher-make-eshell))
  '(show-paren-mode t)
