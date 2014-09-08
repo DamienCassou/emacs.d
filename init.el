@@ -164,6 +164,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(anzu-mode-line ((t (:foreground "black" :weight bold))) t)
  '(hl-line ((t (:underline t))))
  '(mode-line ((t (:background "#bd6626" :foreground "#f6f3e8"))))
  '(mode-line-highlight ((t (:foreground unspecified :background unspecified :weight bold))))
@@ -1392,6 +1393,14 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (global-hungry-delete-mode))
 
 (use-package git-timemachine)
+
+(use-package anzu
+  :bind (("M-%" . anzu-query-replace)
+         ("C-M-%" . anzu-query-replace-regexp))
+  :diminish anzu-mode
+  :config
+  (progn
+    (global-anzu-mode +1)))
 
 (use-package-with-elapsed-timer "Starting server"
   (server-start))
