@@ -208,6 +208,7 @@
 (when (window-system)
   (use-package-with-elapsed-timer "Loading theme"
     (load-theme 'niflheim))
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (set-selected-frame-dark))
 
 (defun darwinp ()
