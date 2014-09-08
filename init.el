@@ -92,13 +92,17 @@
  '(mu4e-use-fancy-chars t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
+ '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t))))
+ '(org-catch-invisible-edits (quote error))
  '(org-clock-clocked-in-display nil)
  '(org-completion-use-ido t)
  '(org-default-notes-file "refile.org")
  '(org-directory "~/Documents/configuration/org")
  '(org-export-allow-bind-keywords t)
+ '(org-export-with-toc nil)
  '(org-fontify-done-headline t)
  '(org-hide-leading-stars t)
+ '(org-html-postamble nil)
  '(org-imenu-depth 2)
  '(org-log-done (quote time))
  '(org-outline-path-complete-in-steps nil)
@@ -772,7 +776,13 @@ narrowed."
    ("C-. o SPC" . dc/my-agenda))
   :init
   (progn
-    (setq org-modules '(org-publish org-protocol org-capture))
+    (setq org-modules '(org-publish org-protocol org-capture ox-beamer))
+
+    (eval-after-load "org-latex"
+      `(progn
+         (setq org-latex-listings t)
+         (add-to-list 'org-latex-packages-alist '("" "listings"))
+         (add-to-list 'org-latex-packages-alist '("" "color"))))
 
     ;; Display the agenda
     (defun nico/jump-to-org-agenda ()
@@ -895,7 +905,7 @@ package to do so."
        0
        (list file)))
 
-    (setq org-file-apps '((t . (my:open-file-with-dired file))))))
+    (add-to-list 'org-file-apps '(t . (my:open-file-with-dired file)))))
 
 (use-package calc
   :defer t
