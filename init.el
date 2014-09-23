@@ -907,7 +907,8 @@ package to do so."
        0
        (list file)))
 
-    (add-to-list 'org-file-apps '(t . (my:open-file-with-dired file)))))
+    (add-to-list 'org-file-apps '(t . (my:open-file-with-dired file)))
+    (add-to-list 'org-file-apps '("\\.png\\'" . default))))
 
 (use-package calc
   :defer t
