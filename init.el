@@ -76,6 +76,7 @@
  '(ido-ubiquitous-mode t)
  '(ido-use-virtual-buffers t)
  '(imenu-auto-rescan t)
+ '(indent-guide-recursive t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
@@ -1415,6 +1416,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (global-anzu-mode +1)))
+
+(use-package indent-guide
+  :config
+  (progn
+    (indent-guide-global-mode)))
 
 (use-package-with-elapsed-timer "Starting server"
   (server-start))

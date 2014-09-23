@@ -32,6 +32,7 @@
 (depends-on "ido-at-point") ;; M-Tab uses ido-style completion
 (depends-on "ido-vertical-mode") ;; shows ido results vertically
 (depends-on "ido-ubiquitous") ;; Install ido everywhere
+(depends-on "indent-guide") ;; show indentation alignment
 (depends-on "json-mode") ;; Major mode to edit JSON files
 (depends-on "less-css-mode") ;; lesscss mode
 (depends-on "magit") ;; Integrate git <C-x g>
