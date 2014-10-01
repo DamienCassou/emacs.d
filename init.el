@@ -169,15 +169,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(anzu-mode-line ((t (:foreground "black" :weight bold))) t)
+ '(anzu-mode-line ((t (:foreground "black" :weight bold))))
  '(hl-line ((t (:underline t))))
  '(mode-line ((t (:background "#bd6626" :foreground "#f6f3e8"))))
  '(mode-line-highlight ((t (:foreground unspecified :background unspecified :weight bold))))
  '(mode-line-inactive ((t (:background "#454545" :foreground "#666666"))))
  '(mu4e-header-highlight-face ((t (:underline t))) t)
- '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))) t)
- '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))) t)
- '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))) t)
+ '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
+ '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
+ '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
  '(powerline-active1 ((t (:inherit mode-line :background "#666666" :foreground "#f6f3e8"))))
  '(powerline-active2 ((t (:inherit mode-line :background "#252525" :foreground "#f6f3e8"))))
  '(powerline-inactive2 ((t (:inherit mode-line :background "#666666" :foreground "#aaaaaa"))))
