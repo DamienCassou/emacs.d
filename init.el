@@ -105,6 +105,7 @@
  '(org-hide-leading-stars t)
  '(org-html-postamble nil)
  '(org-imenu-depth 2)
+ '(org-latex-tables-booktabs t)
  '(org-log-done (quote time))
  '(org-outline-path-complete-in-steps nil)
  '(org-refile-use-outline-path (quote full-file-path))
