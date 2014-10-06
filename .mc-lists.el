@@ -9,6 +9,7 @@
         hungry-delete-backward
         hungry-delete-forward
         indent-for-tab-command
+        kill-region
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
