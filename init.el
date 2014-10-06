@@ -310,7 +310,7 @@
 
 (define-prefix-command 'endless/toggle-map)
 (bind-key "t" 'endless/toggle-map ctl-x-map)
-(bind-key "c" 'column-number-mode endless/toggle-map)
+(bind-key "c" 'flycheck-mode endless/toggle-map)
 (bind-key "d" 'toggle-debug-on-error endless/toggle-map)
 (bind-key "f" 'auto-fill-mode endless/toggle-map)
 (bind-key "l" 'toggle-truncate-lines endless/toggle-map)
