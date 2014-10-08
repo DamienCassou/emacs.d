@@ -244,9 +244,18 @@
             "/usr/local/sbin"
             "~/usr/apps/texlive/latest/bin/universal-darwin/")
    (list "~/Documents/configuration/scripts/"
-         "~/usr/apps/texlive/latest/bin/i386-linux/"
-         "~/usr/bin")))
-
+         "/nix/store/ij052kind6xb6gnw4f0akc98ssqhq8dc-unzip-6.0/bin"
+         "/var/setuid-wrappers"
+         "/home/cassou/.nix-profile/bin"
+         "/home/cassou/.nix-profile/sbin"
+         "/home/cassou/.nix-profile/lib/kde4/libexec"
+         "/nix/var/nix/profiles/default/bin"
+         "/nix/var/nix/profiles/default/sbin"
+         "/nix/var/nix/profiles/default/lib/kde4/libexec"
+         "/run/current-system/sw/bin"
+         "/run/current-system/sw/sbin"
+         "/run/current-system/sw/lib/kde4/libexec")))
+ 
 (mapc 'add-to-executable-path '("~/.emacs.d/packages/cask/bin"))
 
 (defun suspend-on-tty-only ()
