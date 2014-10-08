@@ -208,11 +208,23 @@
       "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
       frame-name))))
 
-(when (window-system)
-  (use-package-with-elapsed-timer "Loading theme"
-    (load-theme 'niflheim))
+(use-package-with-elapsed-timer "Starting server"
+  (server-start))
+
+(defun my:setup-frame ()
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (set-selected-frame-dark))
+  (when (window-system)
+    (load-theme 'niflheim)
+    (set-selected-frame-dark)))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+                (my:setup-frame)))
+  (my:setup-frame))
+
+
 
 (defun darwinp ()
   (interactive)
@@ -1425,9 +1437,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (indent-guide-global-mode)))
-
-(use-package-with-elapsed-timer "Starting server"
-  (server-start))
 
 ;;; Emacs Configuration
 ;; Local Variables:
