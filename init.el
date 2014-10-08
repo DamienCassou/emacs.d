@@ -110,6 +110,7 @@
  '(org-outline-path-complete-in-steps nil)
  '(org-refile-use-outline-path (quote full-file-path))
  '(org-special-ctrl-a/e t)
+ '(org-startup-align-all-tables t)
  '(org-time-stamp-rounding-minutes (quote (10 10)))
  '(org-use-speed-commands t)
  '(proced-filter (quote all))
