@@ -19,13 +19,16 @@
         org-self-insert-command
         org-transpose-words
         org-yank
+        paredit-backward-kill-word
         paredit-forward-delete
         paredit-forward-slurp-sexp
         paredit-open-round
         skeleton-pair-insert-maybe
         smex
         transpose-words
+        wdired-downcase-word
         wdired-finish-edit
+        wdired-upcase-word
         yas-expand
         ))
 
