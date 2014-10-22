@@ -975,9 +975,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
     (bind-key "C-c <left>" 'winner:initial-undo  winner-mode-map)))
 
-(use-package latex
-  :defer t
+(use-package auctex
   :mode ("\\.tex\\'" . latex-mode)
+  :init
+  (progn
+    (require 'tex-mode)
+    (load "auctex"))
   :config
   (progn
     (load "mybibtex" t t t)
