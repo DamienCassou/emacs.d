@@ -11,7 +11,6 @@
 (depends-on "browse-kill-ring") ;; [M-y] to show kill ring
 (depends-on "dash") ;; list library
 (depends-on "diminish") ;; Shorter mode names in the modeline
-(depends-on "dired-details+") ;; hide details in dired
 (depends-on "dired-imenu") ;; integrates imenu in dired
 (depends-on "dired-toggle-sudo") ;; <C-x s> to toggle sudo state of buffer
 (depends-on "discover") ;; popus for some features
@@ -57,7 +56,6 @@
 (depends-on "skeletor") ;; facilitates the creation of new project
 (depends-on "smart-tab") ;; bind TAB to completion and indentation
 (depends-on "smex") ;;  Replacement for <M-x>
-(depends-on "switch-window") ;; Displays numbers when using <C-x o>
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
 (depends-on "yasnippet") ;; snippet utility
