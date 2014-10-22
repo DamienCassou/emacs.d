@@ -364,6 +364,7 @@ narrowed."
     (use-package runner)
     (use-package dired-x)
     (use-package dired-details+
+      :disabled t ;; useless in emacs 24.4
       :init
       (progn
         (setq dired-details-hidden-string "")))
@@ -388,7 +389,7 @@ narrowed."
                     (concat dired-omit-files "\\|^" filename "$")))
             files-to-ignore))
 
-    (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
+    (add-hook 'dired-mode-hook (lambda () (dired-omit-mode) (dired-hide-details-mode 1)))
 
     (defun dired-back-to-top ()
       (interactive)
