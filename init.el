@@ -769,8 +769,11 @@ narrowed."
     (unbind-key "C-." flyspell-mode-map)))
 
 (use-package eldoc
-  :defer t
-  :diminish eldoc-mode)
+  :diminish eldoc-mode
+  :config
+  (progn
+    (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+    (add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)))
 
 (use-package checkdoc
   :defer t
@@ -1259,7 +1262,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :bind (("C-c RET" . pp-macroexpand-last-sexp))
   :config
   (progn
-    (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
     (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
 
     (defun my:setup-imenu-for-use-package ()
