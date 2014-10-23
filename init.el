@@ -949,7 +949,8 @@ Return output file name."
 
     (unbind-key "C-'" org-mode-map)
 
-    (add-hook 'org-mode-hook 'yas-minor-mode)
+    (eval-after-load "yasnippet"
+      (add-hook 'org-mode-hook 'yas-minor-mode))
 
     (defun my:open-file-with-dired (file)
       "Ask dired how it would open FILE.
