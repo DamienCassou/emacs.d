@@ -59,6 +59,7 @@
 (depends-on "smex") ;;  Replacement for <M-x>
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
+(depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
 (depends-on "yasnippet") ;; snippet utility
 (depends-on "visible-mark") ;; show the current mark
 (depends-on "zoom-frm") ;; increase/decrease font size for all buffers
