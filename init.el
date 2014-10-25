@@ -451,7 +451,7 @@ narrowed."
     (defun my:setup-python-mode ()
       (eval-after-load "auto-complete-config"
         `(progn
-           (add-to-list 'ac-sources 'ac-source-yasnippet)
+           (with-eval-after-load "yasnippet" (add-to-list 'ac-sources 'ac-source-yasnippet))
            (add-to-list 'ac-sources 'ac-source-filename))))
 
     (add-hook 'python-mode-hook 'my:setup-python-mode)))
@@ -949,7 +949,7 @@ Return output file name."
 
     (unbind-key "C-'" org-mode-map)
 
-    (eval-after-load "yasnippet"
+    (with-eval-after-load "yasnippet"
       (add-hook 'org-mode-hook 'yas-minor-mode))
 
     (defun my:open-file-with-dired (file)
@@ -1126,7 +1126,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (defun my:setup-pillar-mode ()
       (eval-after-load "auto-complete-config"
         `(progn
-           (add-to-list 'ac-sources 'ac-source-yasnippet)
+           (with-eval-after-load "yasnippet" (add-to-list 'ac-sources 'ac-source-yasnippet))
            (add-to-list 'ac-sources 'ac-source-filename)))
       (variable-pitch-mode))
 
@@ -1272,7 +1272,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package yasnippet
   :disabled t
   :defer t
-  :idle
+  :config
   (progn
     (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
     (yas-global-mode)
@@ -1291,7 +1291,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :bind (("C-c RET" . pp-macroexpand-last-sexp))
   :config
   (progn
-    (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
+    (with-eval-after-load "yasnippet"
+      (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode))
 
     (defun my:setup-imenu-for-use-package ()
       "Recognize `use-package` in imenu"
@@ -1375,7 +1376,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :init
   (progn
     (add-hook 'prog-mode-hook 'company-mode)
-    (bind-key "C-. y" 'company-yasnippet)))
+    (with-eval-after-load "yasnippet"
+      (bind-key "C-. y" 'company-yasnippet))))
 
 (use-package zoom-frm
   :bind (("C-x C-+" . zoom-in/out)
