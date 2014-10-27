@@ -26,6 +26,7 @@
 (depends-on "flycheck") ;; flycheck to check files on the fly
 (depends-on "flycheck-cask") ;; use Cask when present for dependencies
 (depends-on "git-auto-commit-mode") ;; commit after each file save
+(depends-on "git-gutter") ;; shows git status in margin + possibility to commit right from the buffer
 (depends-on "git-timemachine") ;; view history of a file with M-x git-timemachine
 (depends-on "guide-key") ;; help you learn emacs
 (depends-on "idomenu") ;; <M-i> to list sections of the buffer

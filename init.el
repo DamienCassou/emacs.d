@@ -1489,7 +1489,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-aggressive-indent-mode)))
 
-)
+(use-package git-gutter
+  :config
+  (progn
+    (global-git-gutter-mode +1)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
