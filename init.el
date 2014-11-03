@@ -1488,7 +1488,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package aggressive-indent
   :config
   (progn
-    (global-aggressive-indent-mode)))
+    (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+    (add-hook 'css-mode-hook #'aggressive-indent-mode)))
 
 (use-package git-gutter
   :config
