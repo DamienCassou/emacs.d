@@ -490,7 +490,8 @@ narrowed."
 (use-package bibtex
   :defer t
   :config
-  (progn (add-to-list 'bibtex-BibTeX-entry-alist
+  (progn
+    (add-to-list 'bibtex-BibTeX-entry-alist
                       '("software" "A software"
                         (("title")
                          ("version")
@@ -501,11 +502,11 @@ narrowed."
                         nil
                         nil))
 
-         ;; "keywords" should be a recognized field
-         (mapc
-          (lambda (list)
-            (push '("keywords") (fifth list)))
-          bibtex-BibTeX-entry-alist)))
+    ;; "keywords" should be a recognized field
+    (mapc
+     (lambda (list)
+       (push '("keywords") (cl-fifth list)))
+     bibtex-BibTeX-entry-alist)))
 
 (use-package eshell
   :defer t
