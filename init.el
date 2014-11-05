@@ -1492,6 +1492,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (add-hook 'css-mode-hook #'aggressive-indent-mode)))
 
 (use-package git-gutter
+  :disabled t
   :config
   (progn
     (global-git-gutter-mode +1)))
