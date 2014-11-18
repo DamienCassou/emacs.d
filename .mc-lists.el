@@ -20,6 +20,7 @@
         org-transpose-words
         org-yank
         paredit-backward-kill-word
+        paredit-doublequote
         paredit-forward-delete
         paredit-forward-slurp-sexp
         paredit-open-round
