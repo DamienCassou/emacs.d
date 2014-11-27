@@ -7,7 +7,9 @@
  '(LaTeX-section-hook
    (quote
     (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
- '(LaTeX-verbatim-environments (quote ("verbatim" "verbatim*" "lstlisting")))
+ '(LaTeX-verbatim-environments
+   (quote
+    ("verbatim" "verbatim*" "lstlisting" "comment" "Verbatim")))
  '(TeX-PDF-mode t)
  '(TeX-auto-save t)
  '(TeX-default-unit-for-image "\\linewidth")
@@ -82,6 +84,7 @@
  '(global-hl-line-mode t)
  '(global-hl-line-sticky-flag t)
  '(global-pair-mode t)
+ '(global-prettify-symbols-mode t)
  '(haskell-hoogle-command "hoogle")
  '(icomplete-mode t)
  '(ido-confirm-unique-completion t)
@@ -490,7 +493,8 @@ narrowed."
 (use-package bibtex
   :defer t
   :config
-  (progn (add-to-list 'bibtex-BibTeX-entry-alist
+  (progn
+    (add-to-list 'bibtex-BibTeX-entry-alist
                       '("software" "A software"
                         (("title")
                          ("version")
@@ -501,11 +505,11 @@ narrowed."
                         nil
                         nil))
 
-         ;; "keywords" should be a recognized field
-         (mapc
-          (lambda (list)
-            (push '("keywords") (fifth list)))
-          bibtex-BibTeX-entry-alist)))
+    ;; "keywords" should be a recognized field
+    (mapc
+     (lambda (list)
+       (push '("keywords") (cl-fifth list)))
+     bibtex-BibTeX-entry-alist)))
 
 (use-package eshell
   :defer t
@@ -1519,9 +1523,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package aggressive-indent
   :config
   (progn
-    (global-aggressive-indent-mode)))
+    (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+    (add-hook 'css-mode-hook #'aggressive-indent-mode)))
 
 (use-package git-gutter
+  :disabled t
   :config
   (progn
     (global-git-gutter-mode +1)))
