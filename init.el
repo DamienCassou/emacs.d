@@ -84,6 +84,7 @@
  '(global-hl-line-mode t)
  '(global-hl-line-sticky-flag t)
  '(global-pair-mode t)
+ '(global-prettify-symbols-mode t)
  '(haskell-hoogle-command "hoogle")
  '(icomplete-mode t)
  '(ido-confirm-unique-completion t)
