@@ -7,7 +7,9 @@
  '(LaTeX-section-hook
    (quote
     (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
- '(LaTeX-verbatim-environments (quote ("verbatim" "verbatim*" "lstlisting")))
+ '(LaTeX-verbatim-environments
+   (quote
+    ("verbatim" "verbatim*" "lstlisting" "comment" "Verbatim")))
  '(TeX-PDF-mode t)
  '(TeX-auto-save t)
  '(TeX-default-unit-for-image "\\linewidth")
