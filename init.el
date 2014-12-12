@@ -1139,6 +1139,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (setq guide-key/guide-key-sequence '("C-x 4" "C-. p" "C-c @" "C-x t"))
     (guide-key-mode 1)))
 
+(use-package discover
+  :init
+  (progn
+    (global-discover-mode 1)))
+
 (use-package pillar
   :mode ("\\.\\(pier\\|pillar\\)\\'" . pillar-mode)
   :config
@@ -1287,11 +1292,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (eval-after-load "simple"
       `(progn
          (diminish 'overwrite-mode)))))
-
-(use-package discover
-  :init
-  (progn
-    (global-discover-mode 1)))
 
 (use-package yasnippet
   :disabled t
