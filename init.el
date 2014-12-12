@@ -55,7 +55,6 @@
  '(eshell-cmpl-cycle-completions nil)
  '(eval-expression-print-length 20)
  '(eval-expression-print-level nil)
- '(flx-ido-threshhold 10000)
  '(flyspell-tex-command-regexp
    "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(flyspell-use-meta-tab nil)
@@ -86,20 +85,6 @@
  '(global-pair-mode t)
  '(global-prettify-symbols-mode t)
  '(haskell-hoogle-command "hoogle")
- '(icomplete-mode t)
- '(ido-confirm-unique-completion t)
- '(ido-create-new-buffer (quote never))
- '(ido-enable-flex-matching t)
- '(ido-enabled (quote both) t (ido))
- '(ido-everywhere nil nil nil "Better implemented in ido-ubiquitous")
- '(ido-file-extensions-order (quote (".tex" ".el" ".pdf")))
- '(ido-ignore-buffers (quote ("\\` " "^*Back" ".*Completion" "^*Ido")))
- '(ido-ignore-files
-   (quote
-    ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`\\.ido\\.last")))
- '(ido-mode (quote both) nil (ido))
- '(ido-ubiquitous-mode t)
- '(ido-use-virtual-buffers t)
  '(imenu-auto-rescan t)
  '(indent-guide-recursive t)
  '(indent-tabs-mode nil)
@@ -641,13 +626,14 @@ narrowed."
       (magit-refresh))))
 
 (use-package ido
+  :disabled t
   :config
   (progn
     (use-package flx-ido
       :init
       (progn
         (ido-mode 1)
-        (ido-everywhere 1)
+        (ido-everywhere -1)
         (flx-ido-mode 1)
         ;; disable ido faces to see flx highlights.
         (setq ido-use-faces t)))
@@ -658,7 +644,7 @@ narrowed."
     (use-package ido-ubiquitous
       :init
       (progn
-        (ido-ubiquitous-mode))))
+        (ido-ubiquitous-mode -1))))
   :init
   (progn
     (defun ido-backquote-to-home ()
@@ -826,6 +812,7 @@ narrowed."
         (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))))
 
 (use-package idomenu
+  :disabled
   :bind ("M-i" . idomenu))
 
 (use-package org
@@ -1116,6 +1103,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window)))
 
 (use-package smex
+  :disabled t
   :bind ("M-x" . smex)
   :config
   (progn
@@ -1485,6 +1473,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (global-paren-face-mode)))
 
 (use-package ido-at-point
+  :disabled t
   :init
   (progn
     (ido-at-point-mode)))
@@ -1532,6 +1521,34 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-git-gutter-mode +1)))
 
+(use-package helm
+  :diminish helm-mode
+  :bind (("M-x"     . helm-M-x)
+         ("M-y"     . helm-show-kill-ring)
+         ("C-x b"   . helm-mini)
+         ("C-x C-f" . helm-find-files)
+         ("C-x d"   . helm-find-files)
+         ("M-i"     . helm-semantic-or-imenu)
+         ("C-h SPC" . helm-all-mark-rings))
+  :config
+  (progn
+    (require 'helm-config)
+    
+    (define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-i")   #'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z")   #'helm-select-action)
+
+    (when (executable-find "curl")
+      (setq helm-google-suggest-use-curl-p t))
+
+    (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+          helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
+          helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+          helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+          helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+          helm-ff-file-name-history-use-recentf t)
+
+    (helm-mode 1)))
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
