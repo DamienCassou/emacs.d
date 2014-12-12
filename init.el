@@ -1521,6 +1521,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-git-gutter-mode +1)))
 
+(use-package names-dev)
+
 (use-package helm
   :diminish helm-mode
   :bind (("M-x"     . helm-M-x)
