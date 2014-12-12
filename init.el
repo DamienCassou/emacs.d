@@ -68,7 +68,8 @@
      ("jl" "{")
      ("sd" "{")
      ("dp" "{")
-     ("nl" "{"))))
+     ("nl" "{")
+     ("cam" "{"))))
  '(font-latex-match-math-command-keywords (quote (("mm" "{") ("contract" "{{{"))))
  '(font-latex-match-reference-keywords (quote (("ccauthor" "[{") ("cauthor" "{"))))
  '(font-latex-match-type-command-keywords
