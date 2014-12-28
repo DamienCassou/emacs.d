@@ -4,24 +4,24 @@
 (source org)
 
 (depends-on "ack-and-a-half") ;; ack support
-(depends-on "ace-jump-mode") ;; move fast in buffer with C-,
+(depends-on "ace-jump-mode") ;; move fast in buffer with <C-,>
 (depends-on "ace-link") ;; type o in help-mode to go to a link
 (depends-on "aggressive-indent") ;; indent code automatically while typing
 (depends-on "anzu") ;; more interactive query-replace
 (depends-on "auctex") ;; LaTeX mode
-(depends-on "browse-kill-ring") ;; [M-y] to show kill ring
+(depends-on "browse-kill-ring") ;; <M-y> to show kill ring
 (depends-on "dash") ;; list library
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-imenu") ;; integrates imenu in dired
 (depends-on "dired-toggle-sudo") ;; <C-x s> to toggle sudo state of buffer
 (depends-on "discover") ;; popus for some features
 (depends-on "drag-stuff") ;; use <M-arrow> to move things around
-(depends-on "elisp-slime-nav") ;; fast navigation between symbols in elisp with M-. and C-c C-d C-d
+(depends-on "elisp-slime-nav") ;; fast navigation between symbols in elisp with <M-.> and <C-c C-d C-d>
 (depends-on "ethan-wspace") ;; Correctly takes care of trailing spaces
 (depends-on "expand-region") ;; <C-x => repeadly to mark regions
 (depends-on "f") ;; file manipulation library
 (depends-on "feature-mode") ;; major mode for editing feature files
-(depends-on "fill-column-indicator") ;; M-x `fci-mode' to show the right margin
+(depends-on "fill-column-indicator") ;; <M-x `fci-mode'> to show the right margin
 (depends-on "flycheck") ;; flycheck to check files on the fly
 (depends-on "flycheck-cask") ;; use Cask when present for dependencies
 (depends-on "git-auto-commit-mode") ;; commit after each file save
@@ -40,7 +40,7 @@
 (depends-on "niflheim-theme") ;; Nicolas&Ben's theme
 (depends-on "nix-mode") ;; major mode to edit nix expressions
 (depends-on "noccur") ;; multi-occur on projects and directories
-(depends-on "smartscan") ;; M-n M-p to move between same symbol in buffer
+(depends-on "smartscan") ;; <M-n> <M-p> to move between same symbol in buffer
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
@@ -55,13 +55,14 @@
 (depends-on "shell-switcher") ;; Switch between shells with <C-'> and <C-'>
 (depends-on "skeletor") ;; facilitates the creation of new project
 (depends-on "smart-tab") ;; bind TAB to completion and indentation
-(depends-on "smex") ;;  Replacement for <M-x>
+(depends-on "smex") ;; Replacement for <M-x>
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
 (depends-on "yasnippet") ;; snippet utility
 (depends-on "visible-mark") ;; show the current mark
-(depends-on "zoom-frm") ;; increase/decrease font size for all buffers
+(depends-on "zoom-frm") ;; increase/decrease font size for all buffers <C-x C-+>
+
 ;; <z> in dired to facilitate extraction of archive files
 ;; (depends-on "extractor")
 ;; Assistant to correct english text
