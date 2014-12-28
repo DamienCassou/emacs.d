@@ -382,11 +382,6 @@ narrowed."
   (progn
     (use-package runner)
     (use-package dired-x)
-    (use-package dired-details+
-      :disabled t ;; useless in emacs 24.4
-      :init
-      (progn
-        (setq dired-details-hidden-string "")))
     (use-package dired-imenu)
 
     (bind-key ")" 'dired-omit-mode dired-mode-map)
@@ -435,17 +430,6 @@ narrowed."
 
     (define-key dired-mode-map
       (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)))
-
-(use-package python
-  :config
-  (progn
-    (defun my:setup-python-mode ()
-      (eval-after-load "auto-complete-config"
-        `(progn
-           (with-eval-after-load "yasnippet" (add-to-list 'ac-sources 'ac-source-yasnippet))
-           (add-to-list 'ac-sources 'ac-source-filename))))
-
-    (add-hook 'python-mode-hook 'my:setup-python-mode)))
 
 (use-package recentf
   :defer t
@@ -628,43 +612,6 @@ narrowed."
        (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz" "*.toc"))
       (magit-refresh))))
 
-(use-package ido
-  :disabled t
-  :config
-  (progn
-    (use-package flx-ido
-      :init
-      (progn
-        (ido-mode 1)
-        (ido-everywhere -1)
-        (flx-ido-mode 1)
-        ;; disable ido faces to see flx highlights.
-        (setq ido-use-faces t)))
-    (use-package ido-vertical-mode
-      :init
-      (progn
-        (ido-vertical-mode 1)))
-    (use-package ido-ubiquitous
-      :init
-      (progn
-        (ido-ubiquitous-mode -1))))
-  :init
-  (progn
-    (defun ido-backquote-to-home ()
-      "Press ` to easily go to ~ and ~/.emacs.d"
-      ;; Go straight home
-      (define-key ido-file-completion-map
-        (kbd "`")
-        (lambda ()
-          (interactive)
-          (if (looking-back "~/")
-              (insert ".emacs.d/")
-            (if (looking-back "/")
-                (insert "~/")
-              (call-interactively 'self-insert-command))))))
-    (add-hook 'ido-setup-hook 'ido-backquote-to-home)
-    (ido-mode 'buffer)))
-
 (use-package info
   :bind ("C-h i" . info-other-window)
   :init
@@ -813,10 +760,6 @@ narrowed."
       :config
       (progn
         (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))))
-
-(use-package idomenu
-  :disabled
-  :bind ("M-i" . idomenu))
 
 (use-package org
   :defer t
@@ -1073,14 +1016,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (add-to-list 'drag-stuff-except-modes 'org-mode)
     (add-to-list 'drag-stuff-except-modes 'rebase-mode)))
 
-(use-package ethan-wspace
-  :disabled t
-  :defer t
-  :diminish ethan-wspace-mode
-  :init
-  (progn
-    (global-ethan-wspace-mode 1)))
-
 (use-package expand-region
   :bind ("C-x =" . er/expand-region))
 
@@ -1090,27 +1025,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-(use-package org-pomodoro
-  :defer t
-  :disabled t
-  :init
-  (progn
-    (eval-after-load "org"
-      `(progn
-         (bind-key "C-c p" 'org-pomodoro  org-mode-map)))))
-
 (use-package shell-switcher
   :defer t
   :bind (("C-M-'"   . shell-switcher-new-shell)
          ("C-'"     . shell-switcher-switch-buffer)
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window)))
-
-(use-package smex
-  :disabled t
-  :bind ("M-x" . smex)
-  :config
-  (progn
-    (smex-initialize)))
 
 (use-package undo-tree
   :init
@@ -1131,10 +1050,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
           '(("liquid" .
              "jekyll/_layouts/.*\\.html\\'")))))
 
-(use-package switch-window
-  :disabled t
-  :bind (("C-x o" . switch-window)))
-
 (use-package guide-key
   :diminish guide-key-mode
   :idle
@@ -1154,21 +1069,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (global-discover-mode 1)))
 
 (use-package pillar
-  :mode ("\\.\\(pier\\|pillar\\)\\'" . pillar-mode)
-  :config
-  (progn
-    (eval-after-load "auto-complete-config"
-      `(progn
-         (add-to-list 'ac-modes 'pillar-mode)))
-
-    (defun my:setup-pillar-mode ()
-      (eval-after-load "auto-complete-config"
-        `(progn
-           (with-eval-after-load "yasnippet" (add-to-list 'ac-sources 'ac-source-yasnippet))
-           (add-to-list 'ac-sources 'ac-source-filename)))
-      (variable-pitch-mode))
-
-    (add-hook 'pillar-mode-hook 'my:setup-pillar-mode)))
+  :mode ("\\.\\(pier\\|pillar\\)\\'" . pillar-mode))
 
 (use-package projectile
   :diminish projectile-mode
@@ -1302,19 +1203,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
       `(progn
          (diminish 'overwrite-mode)))))
 
-(use-package yasnippet
-  :disabled t
-  :defer t
-  :config
-  (progn
-    (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-    (yas-global-mode)
-    (yas-reload-all)
-
-    ;; let <tab> be bound to smart-tab
-    (define-key yas-minor-mode-map [(tab)] nil)
-    (define-key yas-minor-mode-map (kbd "TAB") nil)))
-
 ;; Fix for issue
 ;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
 (use-package iso-transl)
@@ -1338,13 +1226,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
     (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)
 
-    (defun my:setup-lisp-mode ()
-      (eval-after-load "auto-complete-mode"
-        `(progn
-           (add-to-list 'ac-sources 'ac-source-filename))))
-
-    (add-hook 'emacs-lisp-mode-hook 'my:setup-lisp-mode t)
-
     (use-package paredit
       :diminish paredit-mode
       :config
@@ -1362,40 +1243,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :defer t
   :diminish git-auto-commit-mode)
 
-(use-package smart-tab
-  :init
-  (progn
-    (global-smart-tab-mode 1)
-    (add-to-list 'smart-tab-disabled-major-modes 'help-mode)
-    (add-to-list 'smart-tab-disabled-major-modes 'Custom-mode)))
-
 (use-package pos-tip)
 
-(use-package auto-complete-config
-  :disabled t
-  :init
-  (progn
-    (use-package pos-tip)
-    (ac-config-default))
-  :config
-  (progn
-    (add-to-list 'ac-user-dictionary user-mail-address)
-    (setq ac-use-menu-map t)
-    (ac-flyspell-workaround)))
-
-(add-to-list 'load-path "~/.emacs.d/packages/skeletor.el")
 (use-package skeletor
   :commands (skeletor-create-project))
-
-(use-package sh-script
-  :defer t
-  :config
-  (progn
-    (defun my:setup-sh-mode ()
-      (eval-after-load "auto-complete-config"
-        `(progn
-           (add-to-list 'ac-sources 'ac-source-filename))))
-    (add-hook 'sh-mode-hook 'my:setup-sh-mode t)))
 
 (use-package smartscan
   :defer t
@@ -1403,14 +1254,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (add-hook 'prog-mode-hook 'smartscan-mode)
     (add-hook 'pillar-mode-hook 'smartscan-mode)))
-
-(use-package company
-  :disabled t
-  :init
-  (progn
-    (add-hook 'prog-mode-hook 'company-mode)
-    (with-eval-after-load "yasnippet"
-      (bind-key "C-. y" 'company-yasnippet))))
 
 (use-package zoom-frm
   :bind (("C-x C-+" . zoom-in/out)
@@ -1481,12 +1324,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-paren-face-mode)))
 
-(use-package ido-at-point
-  :disabled t
-  :init
-  (progn
-    (ido-at-point-mode)))
-
 (use-package find-func
   :config
   (progn
@@ -1494,11 +1331,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (define-key 'help-command (kbd "C-f") 'find-function)
     (define-key 'help-command (kbd "C-k") 'find-function-on-key)
     (define-key 'help-command (kbd "C-v") 'find-variable)))
-
-(use-package hungry-delete
-  :disabled t
-  :config
-  (global-hungry-delete-mode))
 
 (use-package git-timemachine)
 
@@ -1512,23 +1344,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-anzu-mode +1)))
 
-(use-package indent-guide
-  :disabled t
-  :config
-  (progn
-    (indent-guide-global-mode)))
-
 (use-package aggressive-indent
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
     (add-hook 'css-mode-hook #'aggressive-indent-mode)))
-
-(use-package git-gutter
-  :disabled t
-  :config
-  (progn
-    (global-git-gutter-mode +1)))
 
 (use-package names-dev)
 
