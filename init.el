@@ -1540,7 +1540,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("C-x C-f" . helm-find-files)
          ("C-x d"   . helm-find-files)
          ("M-i"     . helm-semantic-or-imenu)
-         ("C-h SPC" . helm-all-mark-rings))
+         ("C-h SPC" . helm-all-mark-rings)
+         ("C-:"     . helm-eval-expression-with-eldoc))
   :config
   (progn
     (require 'helm-config)
@@ -1559,7 +1560,23 @@ able to type <C-c left left left> to undo 3 times whereas it was
           helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
           helm-ff-file-name-history-use-recentf t)
 
+    (with-eval-after-load "eshell"
+      (require 'helm-eshell)
+
+      (add-hook 'eshell-mode-hook
+                #'(lambda ()
+                    (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history))))
+
+    (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
+    (define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
+
+    (with-eval-after-load "projectile"
+      (require 'helm-projectile))
+
+    (require 'helm-descbinds)
+    (helm-descbinds-mode)
     (helm-mode 1)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)

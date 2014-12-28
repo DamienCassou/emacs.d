@@ -29,6 +29,8 @@
 (depends-on "git-timemachine") ;; view history of a file with M-x git-timemachine
 (depends-on "guide-key") ;; help you learn emacs
 (depends-on "helm") ;; selection/completion interface for everything
+(depends-on "helm-descbinds") ;; integrate helm and describe-bindings <any-prefix C-h>
+(depends-on "helm-projectile") ;; integrate projectile and helm <C-. p h>
 (depends-on "indent-guide") ;; show indentation alignment
 (depends-on "json-mode") ;; Major mode to edit JSON files
 (depends-on "less-css-mode") ;; lesscss mode
