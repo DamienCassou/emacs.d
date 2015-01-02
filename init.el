@@ -1377,6 +1377,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package names-dev)
 
 (use-package helm
+  :demand t
   :diminish helm-mode
   :bind (("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
