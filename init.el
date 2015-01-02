@@ -105,7 +105,6 @@
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
  '(message-log-max t)
- '(mu4e-use-fancy-chars t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
  '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t))))
@@ -1082,115 +1081,140 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :bind (("C-x C-a" . gnus-dired-attach))
   :defer t)
 
-(add-to-list 'load-path "~/.emacs.d/packages/mu/mu4e")
-(use-package mu4e
-  :disabled t
-  :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new) ("C-. m i" . mu4e-goto-inbox))
-  :init
-  (progn
-    (setq mu4e-update-interval 30))
-  :config
-  (progn
-    (setq mu4e-mu-binary "~/.emacs.d/packages/mu/mu/mu")
-    (setq mu4e-maildir       "~/Mail/Gmail")
-    (setq mu4e-drafts-folder "/[Gmail].Drafts")
-    (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-    (setq mu4e-trash-folder  "/[Gmail].Trash")
-    (setq mu4e-hide-index-messages t)
-    (setq mu4e-attachment-dir "~/")
-    (setq mu4e-view-show-images t)
+(when (setq mu4e-mu-binary (executable-find "mu"))
+  (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp/mu4e" (file-symlink-p mu4e-mu-binary)))
+  (use-package mu4e
+    :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new) ("C-. m i" . mu4e-goto-inbox))
+    :config
+    (progn
+      (setq mu4e-maildir       "~/Mail/GMail")
+      (setq mu4e-drafts-folder "/Drafts")
+      (setq mu4e-sent-folder "/All Mail")
+      (setq mu4e-trash-folder  "/Trash")
+      (setq mu4e-hide-index-messages t)
+      (setq mu4e-attachment-dir "~/")
+      (setq mu4e-view-show-images t)
+      (setq mu4e-headers-include-related t)
 
-    (bind-key "d" 'mu4e-headers-mark-for-delete
-              mu4e-headers-mode-map)
-    (bind-key "d" 'mu4e-view-mark-for-delete
-              mu4e-view-mode-map)
+      ;; Times and dates
+      (setq mu4e-headers-date-format "%Y/%m/%d")
+      (setq mu4e-headers-time-format "%H:%M")
 
-    (add-to-list 'mu4e-view-actions
-                 '("View in browser" . mu4e-action-view-in-browser) t)
+      (setq mu4e-use-fancy-chars t)
 
-    ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
-    (setq mu4e-sent-messages-behavior 'delete)
 
-    (setq mu4e-maildir-shortcuts
-          '( ("/INBOX"               . ?i)
-             ("/[Gmail].Sent Mail"   . ?s)
-             ("/[Gmail].Drafts"      . ?d)))
+      (setq mu4e-headers-fields
+            '((:human-date . 10)
+              (:flags . 6)
+              (:from . 26)
+              (:mailing-list . 10)
+              (:subject)))
 
-    ;; allow for updating mail using 'U' in the main view:
-    (setq mu4e-get-mail-command "offlineimap")
+      (setq mu4e-view-fields
+            '(:from :to :cc :subject :date
+                    :mailing-list :tags :flags
+                    :attachments :signature :decryption))
 
-    ;; something about ourselves
-    (setq
-     user-mail-address "damien.cassou@gmail.com"
-     user-full-name  "Damien Cassou"
-     message-signature t
-     message-signature-file "~/.signature-gmail")
+      (defun my:mu4e-archive-message (message)
+        "Archive MESSAGE by removing the 'Inbox' tag."
+        (mu4e-action-retag-message message "-\\Inbox"))
 
-    (setq mu4e-user-mail-address-list
-          '("damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr" "cassou@inria.fr" "damien.cassou@laposte.net" "Damien.Cassou@univ-lille1.fr"))
+      (setq mu4e-action-tags-header "X-Keywords")
 
-    ;; sending mail -- replace USERNAME with your gmail username
-    ;; also, make sure the gnutls command line utils are installed
-    ;; package 'gnutls-bin' in Debian/Ubuntu
+      (add-to-list 'mu4e-headers-actions '("Retag message" $? #'mu4e-action-retag-message))
+      (add-to-list 'mu4e-headers-actions '("Archive" ?y #'my:mu4e-archive-message))
 
-    (require 'smtpmail)
+      (add-to-list 'mu4e-view-actions '("tRetag message" . mu4e-action-retag-message) t)
+      (add-to-list 'mu4e-view-actions '("View in browser" . mu4e-action-view-in-browser) t)
 
-    ;; alternatively, for emacs-24 you can use:
-    (setq
-     message-send-mail-function 'smtpmail-send-it
-     smtpmail-stream-type 'starttls
-     smtpmail-default-smtp-server "smtp.gmail.com"
-     smtpmail-smtp-server "smtp.gmail.com"
-     smtpmail-smtp-service 587)
+      ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
+      (setq mu4e-sent-messages-behavior 'delete)
 
-    ;; don't keep message buffers around
-    (setq message-kill-buffer-on-exit t)
+      (setq mu4e-maildir-shortcuts
+            `((,mu4e-drafts-folder      . ?d)))
 
-    (defun mu4e-goto-inbox ()
-      (interactive)
-      (mu4e~headers-jump-to-maildir "/INBOX"))
+      (setq mu4e-bookmarks
+            '(("tag:\\\\Inbox"                      "Inbox"           ?i)
+              ("tag:\\\\achats"                     "Achats"          ?a)
+              ("tag:\\\\research AND flag:unread"   "Research"        ?r)
+              ("tag:\\\\smalltalk AND flag:unread"  "Smalltalk"       ?s)
+              ("flag:unread AND NOT flag:trashed"   "Unread messages" ?u)
+              ("size:5M..500M"                      "Large messages"  ?l)))
 
-    (require 'gnus-dired)
+      ;; disable get-mail
+      (setq mu4e-get-mail-command "true")
 
-    ;; Attach files with dired
-    ;; make the `gnus-dired-mail-buffers' function also work on
-    ;; message-mode derived modes, such as mu4e-compose-mode
-    (defun gnus-dired-mail-buffers ()
-      "Return a list of active message buffers."
-      (let (buffers)
-        (save-current-buffer
-          (dolist (buffer (buffer-list t))
-            (set-buffer buffer)
-            (when (and (derived-mode-p 'message-mode)
-                       (null message-sent-message-via))
-              (push (buffer-name buffer) buffers))))
-        (nreverse buffers)))
+      ;; something about ourselves
+      (setq
+       user-mail-address "damien.cassou@gmail.com"
+       user-full-name  "Damien Cassou"
+       message-signature t
+       message-signature-file "~/.signature-gmail")
 
-    (setq gnus-dired-mail-mode 'mu4e-user-agent)
-    (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+      (setq mu4e-user-mail-address-list
+            '("damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr"
+              "cassou@inria.fr" "damien.cassou@laposte.net" "Damien.Cassou@univ-lille1.fr"))
 
-    (defun mu4e-compose-goto-top ()
-      (interactive)
-      (let ((old-position (point)))
-        (message-goto-body)
-        (when (equal (point) old-position)
-          (beginning-of-buffer))))
+      ;; sending mail -- replace USERNAME with your gmail username
+      ;; also, make sure the gnutls command line utils are installed
+      ;; package 'gnutls-bin' in Debian/Ubuntu
 
-    (define-key mu4e-compose-mode-map
-      (vector 'remap 'beginning-of-buffer) 'mu4e-compose-goto-top)
+      (require 'smtpmail)
 
-    (defun mu4e-compose-goto-bottom ()
-      (interactive)
-      (let ((old-position (point))
-            (message-position (save-excursion (message-goto-body) (point))))
-        (end-of-buffer)
-        (when (re-search-backward "^-- $" message-position t)
-          (previous-line))
-        (when (equal (point) old-position)
-          (end-of-buffer))))
+      (setq
+       message-send-mail-function 'smtpmail-send-it
+       smtpmail-stream-type 'starttls
+       smtpmail-default-smtp-server "smtp.gmail.com"
+       smtpmail-smtp-server "smtp.gmail.com"
+       smtpmail-smtp-service 587)
 
-    (define-key mu4e-compose-mode-map
-      (vector 'remap 'end-of-buffer) 'mu4e-compose-goto-bottom)))
+      ;; don't keep message buffers around
+      (setq message-kill-buffer-on-exit t)
+
+      ;; Set mu4e as default emacs email program
+      (setq mail-user-agent 'mu4e-user-agent)
+
+      (require 'gnus-dired)
+
+      ;; Attach files with dired
+      ;; make the `gnus-dired-mail-buffers' function also work on
+      ;; message-mode derived modes, such as mu4e-compose-mode
+      (defun gnus-dired-mail-buffers ()
+        "Return a list of active message buffers."
+        (let (buffers)
+          (save-current-buffer
+            (dolist (buffer (buffer-list t))
+              (set-buffer buffer)
+              (when (and (derived-mode-p 'message-mode)
+                         (null message-sent-message-via))
+                (push (buffer-name buffer) buffers))))
+          (nreverse buffers)))
+
+      (setq gnus-dired-mail-mode 'mu4e-user-agent)
+      (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+      (defun mu4e-compose-goto-top ()
+        (interactive)
+        (let ((old-position (point)))
+          (message-goto-body)
+          (when (equal (point) old-position)
+            (beginning-of-buffer))))
+
+      (define-key mu4e-compose-mode-map
+        (vector 'remap 'beginning-of-buffer) 'mu4e-compose-goto-top)
+
+      (defun mu4e-compose-goto-bottom ()
+        (interactive)
+        (let ((old-position (point))
+              (message-position (save-excursion (message-goto-body) (point))))
+          (end-of-buffer)
+          (when (re-search-backward "^-- $" message-position t)
+            (previous-line))
+          (when (equal (point) old-position)
+            (end-of-buffer))))
+
+      (define-key mu4e-compose-mode-map
+        (vector 'remap 'end-of-buffer) 'mu4e-compose-goto-bottom))))
 
 (use-package image
   :config
