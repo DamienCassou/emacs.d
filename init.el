@@ -961,9 +961,17 @@ package to do so."
 (use-package calc
   :defer t
   :config
-  (defmath vwsum (vec1 vec2)
-    "Weighted sum: VEC1 are marks and VEC2 are coefficients."
-    (+ (* vec1 vec2))))
+  (progn
+    (defmath vwsum (vec1 vec2)
+      "Weighted sum: VEC1 are marks and VEC2 are coefficients."
+      (+ (* vec1 vec2)))
+
+    (defun my:round-to-half (num)
+      (let* ((decimal (- num (ftruncate num))))
+        (cond
+         ((or (zerop decimal) (= 0.5 decimal)) num)
+         ((< decimal 0.5) (+ 0.5 (ftruncate num)))
+         ((> decimal 0.5) (1+ (ftruncate num))))))))
 
 (use-package winner
   :defer t
