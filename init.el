@@ -105,7 +105,11 @@
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
  '(message-log-max t)
+ '(message-send-mail-function (quote message-smtpmail-send-it))
+ '(message-signature t)
+ '(message-signature-file "~/.signature")
  '(mu4e-attachment-dir "~/")
+ '(mu4e-compose-signature t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
  '(mu4e-headers-date-format "%Y/%m/%d")
@@ -123,8 +127,11 @@
  '(mu4e-sent-folder "/All Mail")
  '(mu4e-sent-messages-behavior (quote delete) nil nil "GMail is taking care of that")
  '(mu4e-trash-folder "/Trash")
- '(mu4e-update-interval 300)
+ '(mu4e-update-interval nil)
  '(mu4e-use-fancy-chars t)
+ '(mu4e-user-mail-address-list
+   (quote
+    ("damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr" "cassou@inria.fr" "damien.cassou@laposte.net" "damien.cassou@univ-lille1.fr")))
  '(mu4e-view-fields
    (quote
     (:from :to :cc :subject :date :mailing-list :tags :flags :attachments :signature :decryption)))
@@ -184,9 +191,13 @@
  '(smart-tab-completion-functions-alist nil)
  '(smart-tab-using-hippie-expand t)
  '(smex-save-file "~/.emacs.d/smex-items")
+ '(smtpmail-default-smtp-server "smtp.gmail.com")
+ '(smtpmail-queue-dir "~/Mail/GMail/queued-mail/")
+ '(smtpmail-queue-mail t)
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
  '(smtpmail-smtp-user "damien.cassou@gmail.com")
+ '(smtpmail-stream-type (quote starttls))
  '(svn-status-hide-unmodified t)
  '(svn-status-prefix-key [(control x) 118])
  '(svn-status-verbose t)
@@ -200,6 +211,7 @@
  '(undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/.undo-tree/"))))
  '(undo-tree-mode-lighter "")
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
+ '(user-full-name "Damien Cassou")
  '(user-mail-address "damien.cassou@gmail.com")
  '(vc-follow-symlinks nil)
  '(vc-make-backup-files t)
@@ -1116,72 +1128,22 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (when (setq mu4e-mu-binary (executable-find "mu"))
   (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp/mu4e" (file-symlink-p mu4e-mu-binary)))
   (use-package mu4e
-    :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new) ("C-. m i" . mu4e-goto-inbox))
+    :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new))
     :config
     (progn
-
-
-
-
-      (defun my:mu4e-archive-message (message)
-        "Archive MESSAGE by removing the 'Inbox' tag."
-        (mu4e-action-retag-message message "-\\Inbox"))
-
       (setq mu4e-action-tags-header "X-Keywords")
-
-      (add-to-list 'mu4e-headers-actions '("Retag message" $? #'mu4e-action-retag-message))
-      (add-to-list 'mu4e-headers-actions '("Archive" ?y #'my:mu4e-archive-message))
-
-      (add-to-list 'mu4e-view-actions '("tRetag message" . mu4e-action-retag-message) t)
-      (add-to-list 'mu4e-view-actions '("View in browser" . mu4e-action-view-in-browser) t)
-
-      ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
-      (setq mu4e-sent-messages-behavior 'delete)
-
-      (setq mu4e-maildir-shortcuts
-            `((,mu4e-drafts-folder      . ?d)))
+      (imagemagick-register-types)
 
       (setq mu4e-bookmarks
-            '(("tag:\\\\Inbox"                      "Inbox"           ?i)
-              ("tag:\\\\achats"                     "Achats"          ?a)
-              ("tag:\\\\research AND flag:unread"   "Research"        ?r)
-              ("tag:\\\\smalltalk AND flag:unread"  "Smalltalk"       ?s)
-              ("flag:unread AND NOT flag:trashed"   "Unread messages" ?u)
-              ("size:5M..500M"                      "Large messages"  ?l)))
-
-      ;; disable get-mail
-      (setq mu4e-get-mail-command "true")
-
-      ;; something about ourselves
-      (setq
-       user-mail-address "damien.cassou@gmail.com"
-       user-full-name  "Damien Cassou"
-       message-signature t
-       message-signature-file "~/.signature-gmail")
-
-      (setq mu4e-user-mail-address-list
-            '("damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr"
-              "cassou@inria.fr" "damien.cassou@laposte.net" "Damien.Cassou@univ-lille1.fr"))
-
-      ;; sending mail -- replace USERNAME with your gmail username
-      ;; also, make sure the gnutls command line utils are installed
-      ;; package 'gnutls-bin' in Debian/Ubuntu
+            '(("tag:\\\\Inbox"                    "Inbox"           ?i)
+              ("tag:\\\\Sent"                     "Sent"            ?S)
+              ("tag:achats"                       "Achats"          ?a)
+              ("tag:research AND flag:unread"     "Research"        ?r)
+              ("tag:smalltalk AND flag:unread"    "Smalltalk"       ?s)
+              ("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+              ("size:5M..500M"                    "Large messages"  ?l)))
 
       (require 'smtpmail)
-
-      (setq
-       message-send-mail-function 'smtpmail-send-it
-       smtpmail-stream-type 'starttls
-       smtpmail-default-smtp-server "smtp.gmail.com"
-       smtpmail-smtp-server "smtp.gmail.com"
-       smtpmail-smtp-service 587)
-
-      ;; don't keep message buffers around
-      (setq message-kill-buffer-on-exit t)
-
-      ;; Set mu4e as default emacs email program
-      (setq mail-user-agent 'mu4e-user-agent)
-
       (require 'gnus-dired)
 
       ;; Attach files with dired
