@@ -105,6 +105,30 @@
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
  '(message-log-max t)
+ '(mu4e-attachment-dir "~/")
+ '(mu4e-drafts-folder "/Drafts")
+ '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
+ '(mu4e-headers-date-format "%Y/%m/%d")
+ '(mu4e-headers-fields
+   (quote
+    ((:human-date . 10)
+     (:flags . 6)
+     (:from . 26)
+     (:mailing-list . 10)
+     (:subject))))
+ '(mu4e-headers-include-related t)
+ '(mu4e-headers-time-format "%H:%M")
+ '(mu4e-hide-index-messages t t)
+ '(mu4e-maildir "~/Mail/GMail")
+ '(mu4e-sent-folder "/All Mail")
+ '(mu4e-sent-messages-behavior (quote delete) nil nil "GMail is taking care of that")
+ '(mu4e-trash-folder "/Trash")
+ '(mu4e-update-interval 300)
+ '(mu4e-use-fancy-chars t)
+ '(mu4e-view-fields
+   (quote
+    (:from :to :cc :subject :date :mailing-list :tags :flags :attachments :signature :decryption)))
+ '(mu4e-view-show-images t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
  '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t))))
@@ -192,7 +216,7 @@
  '(mode-line ((t (:background "#bd6626" :foreground "#f6f3e8"))))
  '(mode-line-highlight ((t (:foreground unspecified :background unspecified :weight bold))))
  '(mode-line-inactive ((t (:background "#454545" :foreground "#666666"))))
- '(mu4e-header-highlight-face ((t (:underline t))) t)
+ '(mu4e-header-highlight-face ((t (:underline t))))
  '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
  '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
  '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
@@ -1087,33 +1111,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
     :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new) ("C-. m i" . mu4e-goto-inbox))
     :config
     (progn
-      (setq mu4e-maildir       "~/Mail/GMail")
-      (setq mu4e-drafts-folder "/Drafts")
-      (setq mu4e-sent-folder "/All Mail")
-      (setq mu4e-trash-folder  "/Trash")
-      (setq mu4e-hide-index-messages t)
-      (setq mu4e-attachment-dir "~/")
-      (setq mu4e-view-show-images t)
-      (setq mu4e-headers-include-related t)
-
-      ;; Times and dates
-      (setq mu4e-headers-date-format "%Y/%m/%d")
-      (setq mu4e-headers-time-format "%H:%M")
-
-      (setq mu4e-use-fancy-chars t)
 
 
-      (setq mu4e-headers-fields
-            '((:human-date . 10)
-              (:flags . 6)
-              (:from . 26)
-              (:mailing-list . 10)
-              (:subject)))
 
-      (setq mu4e-view-fields
-            '(:from :to :cc :subject :date
-                    :mailing-list :tags :flags
-                    :attachments :signature :decryption))
 
       (defun my:mu4e-archive-message (message)
         "Archive MESSAGE by removing the 'Inbox' tag."
