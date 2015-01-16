@@ -104,11 +104,12 @@
     ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
  '(magit-repo-dirs-depth 1)
  '(menu-bar-mode nil)
+ '(message-default-charset (quote utf-8))
  '(message-log-max t)
  '(message-send-mail-function (quote message-smtpmail-send-it))
  '(message-signature t)
  '(message-signature-file "~/.signature")
- '(mu4e-attachment-dir "~/")
+ '(mu4e-attachment-dir "/tmp")
  '(mu4e-compose-signature t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
@@ -116,13 +117,14 @@
  '(mu4e-headers-fields
    (quote
     ((:human-date . 10)
-     (:flags . 6)
-     (:from . 26)
-     (:mailing-list . 10)
+     (:flags . 5)
+     (:from . 20)
+     (:mailing-list . 16)
+     (:tags . 15)
      (:subject))))
  '(mu4e-headers-include-related t)
  '(mu4e-headers-time-format "%H:%M")
- '(mu4e-hide-index-messages t t)
+ '(mu4e-html2text-command (quote mu4e-shr2text))
  '(mu4e-maildir "~/Mail/GMail")
  '(mu4e-sent-folder "/All Mail")
  '(mu4e-sent-messages-behavior (quote delete) nil nil "GMail is taking care of that")
@@ -1132,19 +1134,57 @@ able to type <C-c left left left> to undo 3 times whereas it was
     :config
     (progn
       (setq mu4e-action-tags-header "X-Keywords")
+      (setq  mu4e-hide-index-messages nil)
       (imagemagick-register-types)
 
       (setq mu4e-bookmarks
             '(("tag:\\\\Inbox"                    "Inbox"           ?i)
               ("tag:\\\\Sent"                     "Sent"            ?S)
               ("tag:achats"                       "Achats"          ?a)
-              ("tag:research AND flag:unread"     "Research"        ?r)
-              ("tag:smalltalk AND flag:unread"    "Smalltalk"       ?s)
+              ("tag:research"                     "Research"        ?r)
+              ("tag:smalltal"                     "Smalltalk"       ?s)
+              ("tag:nix"                          "Nix"             ?n)
               ("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
               ("size:5M..500M"                    "Large messages"  ?l)))
 
+      (setenv "MU_PLAY_PROGRAM" "eopen")
+
+      (require 'mu4e-contrib)
       (require 'smtpmail)
       (require 'gnus-dired)
+
+      (defun my:mu4e-remove-message-from-inbox (msg)
+        (mu4e-action-retag-message msg "-\\Inbox"))
+
+      (defun my:mu4e-remove-thread-from-inbox (docid &rest target)
+        (mu4e~headers-goto-docid docid)
+        (my:mu4e-remove-message-from-inbox (mu4e-message-at-point)))
+
+      (add-to-list 'mu4e-marks
+                   `(archive :char "a" :prompt "archive"
+                             :show-target (lambda (target) "archive")
+                             :action ,#'my:mu4e-remove-thread-from-inbox))
+
+      (add-to-list 'mu4e-view-actions '("retag" . mu4e-action-retag-message))
+      (add-to-list 'mu4e-headers-actions '("retag" . mu4e-action-retag-message))
+      (add-to-list 'mu4e-view-actions '("archive" . my:mu4e-remove-message-from-inbox))
+      (add-to-list 'mu4e-headers-actions '("archive" . my:mu4e-remove-message-from-inbox))
+
+      (defun my:mu4e-msgv-action-view-in-browser (msg)
+        "View the body of the message in a web browser."
+        (interactive)
+        (let ((html (mu4e-msg-field msg :body-html))
+              (tmpfile (make-temp-file "mu4e" nil ".html")))
+          (unless html (error "No html part for this message"))
+          (with-temp-file tmpfile
+            (insert
+             "<html>"
+             "<head><meta http-equiv=\"content-type\""
+             "content=\"text/html;charset=UTF-8\">"
+             html))
+          (browse-url (concat "file://" tmpfile))))
+      (add-to-list 'mu4e-view-actions
+                   '("bview in browser" . my:mu4e-msgv-action-view-in-browser) t)
 
       ;; Attach files with dired
       ;; make the `gnus-dired-mail-buffers' function also work on
@@ -1185,6 +1225,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (define-key mu4e-compose-mode-map
         (vector 'remap 'end-of-buffer) 'mu4e-compose-goto-bottom))))
+
+(use-package epg-config
+  :init
+  (progn
+    (setq epg-gpg-program (executable-find "gpg2"))))
 
 (use-package image
   :config
