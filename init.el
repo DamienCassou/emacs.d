@@ -225,7 +225,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(anzu-mode-line ((t (:foreground "black" :weight bold))) t)
+ '(anzu-mode-line ((t (:foreground "black" :weight bold))))
  '(hl-line ((t (:underline t))))
  '(mode-line ((t (:background "#bd6626" :foreground "#f6f3e8"))))
  '(mode-line-highlight ((t (:foreground unspecified :background unspecified :weight bold))))
