@@ -412,6 +412,13 @@ narrowed."
 
 (bind-key "n" 'narrow-or-widen-dwim endless/toggle-map)
 
+(use-package ethan-wspace
+  :demand t
+  :config
+  (progn
+    (setq mode-require-final-newline nil) ;; superseded
+    (global-ethan-wspace-mode)))
+
 (use-package dired
   :defer t
   :bind (("C-x C-j" . dired-jump))
