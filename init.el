@@ -1166,22 +1166,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (add-to-list 'mu4e-headers-actions '("retag" . mu4e-action-retag-message))
       (add-to-list 'mu4e-view-actions '("archive" . my:mu4e-remove-message-from-inbox))
       (add-to-list 'mu4e-headers-actions '("archive" . my:mu4e-remove-message-from-inbox))
-
-      (defun my:mu4e-msgv-action-view-in-browser (msg)
-        "View the body of the message in a web browser."
-        (interactive)
-        (let ((html (mu4e-msg-field msg :body-html))
-              (tmpfile (make-temp-file "mu4e" nil ".html")))
-          (unless html (error "No html part for this message"))
-          (with-temp-file tmpfile
-            (insert
-             "<html>"
-             "<head><meta http-equiv=\"content-type\""
-             "content=\"text/html;charset=UTF-8\">"
-             html))
-          (browse-url (concat "file://" tmpfile))))
-      (add-to-list 'mu4e-view-actions
-                   '("bview in browser" . my:mu4e-msgv-action-view-in-browser) t)
+      (add-to-list 'mu4e-view-actions '("bview in browser" . mu4e-action-view-in-browser) t)
 
       ;; Attach files with dired
       ;; make the `gnus-dired-mail-buffers' function also work on
