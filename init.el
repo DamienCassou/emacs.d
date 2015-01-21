@@ -1434,6 +1434,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (helm-descbinds-mode)
     (helm-mode 1)))
 
+(add-to-list 'load-path "~/.emacs.d/packages")
+(use-package youtube)
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
