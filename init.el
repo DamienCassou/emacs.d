@@ -46,6 +46,7 @@
  '(eclim-executable "~/usr/eclipse.indigo-eclim/eclim")
  '(eclim-print-debug-messages t)
  '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(el-get-byte-compile nil)
  '(el-get-github-default-url-type (quote https))
  '(el-get-user-package-directory "~/.emacs.d/init-packages")
