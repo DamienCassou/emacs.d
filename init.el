@@ -1125,7 +1125,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (require 'unify-opening)
 
 (when (setq mu4e-mu-binary (executable-find "mu"))
-  (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp/mu4e" (file-symlink-p mu4e-mu-binary)))
+  (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/mu/mu4e"))
   (use-package mu4e
     :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new))
     :config
