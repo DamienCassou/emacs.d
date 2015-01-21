@@ -1136,11 +1136,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (setq mu4e-bookmarks
             '(("tag:\\\\Inbox"                    "Inbox"           ?i)
-              ("tag:\\\\Sent"                     "Sent"            ?S)
+              ("tag:\\\\Sent"                     "Sent"            ?s)
               ("tag:achats"                       "Achats"          ?a)
-              ("tag:research"                     "Research"        ?r)
-              ("tag:smalltal"                     "Smalltalk"       ?s)
-              ("tag:nix"                          "Nix"             ?n)
               ("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
               ("size:5M..500M"                    "Large messages"  ?l)))
 
