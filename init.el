@@ -1402,7 +1402,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (require 'helm-config)
-    
+
     (define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-i")   #'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z")   #'helm-select-action)
