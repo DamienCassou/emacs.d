@@ -9,7 +9,6 @@
 (depends-on "aggressive-indent") ;; indent code automatically while typing
 (depends-on "anzu") ;; more interactive query-replace
 (depends-on "auctex") ;; LaTeX mode
-(depends-on "browse-kill-ring") ;; <M-y> to show kill ring
 (depends-on "dash") ;; list library
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-imenu") ;; integrates imenu in dired
