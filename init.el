@@ -1118,7 +1118,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :diminish projectile-mode
   :init
   (progn
-    (projectile-global-mode)))
+    (projectile-global-mode)
+    (use-package helm-projectile
+      :init
+      (progn
+        (helm-projectile-on)))))
 
 (use-package gnus-dired
   :disabled t
