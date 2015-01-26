@@ -300,7 +300,6 @@
             "~/usr/apps/texlive/latest/bin/universal-darwin/")
    (list "~/Documents/configuration/scripts/"
          "/nix/store/ij052kind6xb6gnw4f0akc98ssqhq8dc-unzip-6.0/bin"
-         "/var/setuid-wrappers"
          "/home/cassou/.nix-profile/bin"
          "/home/cassou/.nix-profile/sbin"
          "/home/cassou/.nix-profile/lib/kde4/libexec"
@@ -309,7 +308,10 @@
          "/nix/var/nix/profiles/default/lib/kde4/libexec"
          "/run/current-system/sw/bin"
          "/run/current-system/sw/sbin"
-         "/run/current-system/sw/lib/kde4/libexec")))
+         "/run/current-system/sw/lib/kde4/libexec"
+         "/var/setuid-wrappers"))) ;; the /var/setuid-wrappers/
+                                   ;; directory must arrive first on
+                                   ;; the PATH
  
 (mapc 'add-to-executable-path '("~/.emacs.d/packages/cask/bin"))
 
