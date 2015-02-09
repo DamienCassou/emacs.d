@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        LaTeX-insert-left-brace
         TeX-insert-backslash
         clipboard-kill-region
         dired-unmark-all-files
