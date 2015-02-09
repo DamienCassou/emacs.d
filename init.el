@@ -118,10 +118,9 @@
  '(mu4e-headers-fields
    (quote
     ((:human-date . 10)
-     (:flags . 5)
      (:from . 20)
      (:mailing-list . 16)
-     (:tags . 15)
+     (:tags . 10)
      (:subject))))
  '(mu4e-headers-include-related t)
  '(mu4e-headers-time-format "%H:%M")
