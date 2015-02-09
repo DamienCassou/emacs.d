@@ -30,6 +30,7 @@
 (depends-on "helm") ;; selection/completion interface for everything
 (depends-on "helm-descbinds") ;; integrate helm and describe-bindings <any-prefix C-h>
 (depends-on "helm-projectile") ;; integrate projectile and helm <C-. p h>
+(depends-on "iedit") ;; edit several occurences of something at once
 (depends-on "indent-guide") ;; show indentation alignment
 (depends-on "json-mode") ;; Major mode to edit JSON files
 (depends-on "less-css-mode") ;; lesscss mode
@@ -63,6 +64,7 @@
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
 (depends-on "yasnippet") ;; snippet utility
 (depends-on "visible-mark") ;; show the current mark
+(depends-on "wgrep-helm") ;; edit grep buffer
 (depends-on "zoom-frm") ;; increase/decrease font size for all buffers <C-x C-+>
 
 ;; <z> in dired to facilitate extraction of archive files

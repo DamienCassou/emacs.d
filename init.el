@@ -1432,6 +1432,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (add-to-list 'load-path "~/.emacs.d/packages")
 (use-package youtube)
 
+(use-package grep
+  :config
+  (progn
+    (use-package wgrep)
+    (define-key grep-mode-map (kbd "C-x C-q") #'wgrep-change-to-wgrep-mode)
+    (define-key grep-mode-map (kbd "C-c C-c") #'wgrep-finish-edit)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
