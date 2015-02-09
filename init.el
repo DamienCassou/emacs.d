@@ -140,7 +140,7 @@
  '(mu4e-view-show-images t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
- '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t))))
+ '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t) (python . t))))
  '(org-catch-invisible-edits (quote error))
  '(org-clock-clocked-in-display nil)
  '(org-completion-use-ido t)
