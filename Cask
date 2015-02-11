@@ -3,7 +3,6 @@
 (source melpa)
 (source org)
 
-(depends-on "ack-and-a-half") ;; ack support
 (depends-on "ace-jump-mode") ;; move fast in buffer with <C-,>
 (depends-on "ace-link") ;; type o in help-mode to go to a link
 (depends-on "aggressive-indent") ;; indent code automatically while typing
@@ -64,7 +63,7 @@
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
 (depends-on "yasnippet") ;; snippet utility
 (depends-on "visible-mark") ;; show the current mark
-(depends-on "wgrep-helm") ;; edit grep buffer
+(depends-on "wgrep-helm") ;; edit grep buffers
 (depends-on "zoom-frm") ;; increase/decrease font size for all buffers <C-x C-+>
 
 ;; <z> in dired to facilitate extraction of archive files
