@@ -247,8 +247,9 @@
 (require 'cask "~/.emacs.d/packages/cask/cask.el")
 (cask-initialize)
 
-(require 'powerline)
-(powerline-default-theme)
+(require 'powerline nil t)
+(with-eval-after-load 'powerline
+  (powerline-default-theme))
 
 (require 'bind-key "~/.emacs.d/packages/use-package/bind-key.el")
 (require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
