@@ -118,7 +118,7 @@
  '(mu4e-headers-fields
    (quote
     ((:human-date . 10)
-     (:from . 20)
+     (:from-or-to . 20)
      (:mailing-list . 16)
      (:tags . 10)
      (:subject))))
