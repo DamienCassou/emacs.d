@@ -29,6 +29,7 @@
 (depends-on "helm") ;; selection/completion interface for everything
 (depends-on "helm-descbinds") ;; integrate helm and describe-bindings <any-prefix C-h>
 (depends-on "helm-projectile") ;; integrate projectile and helm <C-. p h>
+(depends-on "hydra") ;; easy definition of repeatable shortcuts
 (depends-on "iedit") ;; edit several occurences of something at once
 (depends-on "indent-guide") ;; show indentation alignment
 (depends-on "json-mode") ;; Major mode to edit JSON files
