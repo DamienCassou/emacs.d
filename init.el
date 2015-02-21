@@ -1047,11 +1047,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (LaTeX-mark-environment)
         (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))))
 
-(use-package browse-kill-ring
-  :init
-  (progn
-    (browse-kill-ring-default-keybindings)))
-
 (use-package drag-stuff
   :diminish drag-stuff-mode
   :init
