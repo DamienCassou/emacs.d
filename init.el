@@ -1131,13 +1131,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (when (setq mu4e-mu-binary (executable-find "mu"))
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/mu/mu4e"))
   (use-package mu4e
-    :bind (("C-. m m" . mu4e) ("C-. m c" . mu4e-compose-new) ("C-. m i" . my:mu4e-goto-inbox))
-    :init
-    (progn
-      (defun my:mu4e-goto-inbox ()
-        (interactive)
-        (require 'mu4e-headers)
-        (mu4e-headers-search "tag:\\\\Inbox")))
+    :bind (("C-. m" . mu4e))
     :config
     (progn
       (setq mu4e-action-tags-header "X-Keywords")
