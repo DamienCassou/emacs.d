@@ -61,7 +61,8 @@
  '(flyspell-use-meta-tab nil)
  '(font-latex-match-bold-command-keywords
    (quote
-    (("damien" "{")
+    (("mn" "{")
+     ("damien" "{")
      ("dc" "{")
      ("eb" "{")
      ("bb" "{")
