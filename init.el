@@ -1440,6 +1440,25 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (define-key grep-mode-map (kbd "C-x C-q") #'wgrep-change-to-wgrep-mode)
     (define-key grep-mode-map (kbd "C-c C-c") #'wgrep-finish-edit)))
 
+
+(use-package ical2org
+  :demand t
+  :init
+  (progn
+    (defun ical2org/buffer-to-agenda (&optional buffer)
+      "Import ical events from file `FNAME' to agenda file (will be prompted).
+Saves when `NOSAVE' is non-nil."
+      (interactive)
+      (let ((agenda-file "~/Documents/configuration/org/events.org")
+            (events (ical2org/import-buffer (or buffer (current-buffer)))))
+        (save-current-buffer
+          (find-file agenda-file)
+          (goto-char (point-max))
+          (newline)
+          (dolist (e events)
+            (insert (ical2org/format e))
+            (newline))
+          (save-buffer))))))
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
