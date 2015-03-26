@@ -138,6 +138,7 @@
  '(mu4e-view-fields
    (quote
     (:from :to :cc :subject :date :mailing-list :tags :flags :attachments :signature :decryption)))
+ '(mu4e-view-show-addresses t)
  '(mu4e-view-show-images t)
  '(next-screen-context-lines 5)
  '(notmuch-labeler-hide-known-labels t)
