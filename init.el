@@ -126,15 +126,13 @@
  '(mu4e-headers-include-related t)
  '(mu4e-headers-time-format "%H:%M")
  '(mu4e-html2text-command (quote mu4e-shr2text))
- '(mu4e-maildir "~/Mail/GMail")
- '(mu4e-sent-folder "/All Mail")
- '(mu4e-sent-messages-behavior (quote delete) nil nil "GMail is taking care of that")
+ '(mu4e-maildir "~/Mail")
  '(mu4e-trash-folder "/Trash")
  '(mu4e-update-interval nil)
  '(mu4e-use-fancy-chars t)
  '(mu4e-user-mail-address-list
    (quote
-    ("damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr" "cassou@inria.fr" "damien.cassou@laposte.net" "damien.cassou@univ-lille1.fr")))
+    ("damien@cassou.me" "damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr" "cassou@inria.fr" "damien.cassou@laposte.net" "damien.cassou@univ-lille1.fr")))
  '(mu4e-view-fields
    (quote
     (:from :to :cc :subject :date :mailing-list :tags :flags :attachments :signature :decryption)))
@@ -196,8 +194,7 @@
  '(smart-tab-using-hippie-expand t)
  '(smex-save-file "~/.emacs.d/smex-items")
  '(smtpmail-default-smtp-server "smtp.gmail.com")
- '(smtpmail-queue-dir "~/Mail/GMail/queued-mail/")
- '(smtpmail-queue-mail t)
+ '(smtpmail-queue-mail nil)
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587)
  '(smtpmail-smtp-user "damien.cassou@gmail.com")
@@ -272,7 +269,7 @@
 (defun my:setup-frame ()
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (when (window-system)
-    (load-theme 'niflheim)
+    (ignore-errors (load-theme 'niflheim))
     (set-selected-frame-dark)))
 
 (if (daemonp)
@@ -1175,13 +1172,70 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (imagemagick-register-types)
 
       (setq mu4e-bookmarks
-            '(("tag:\\\\Inbox"                    "Inbox"           ?i)
-              ("tag:\\\\Sent"                     "Sent"            ?s)
-              ("tag:achats"                       "Achats"          ?a)
-              ("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
-              ("size:5M..500M"                    "Large messages"  ?l)))
+            '(("tag:\\\\Inbox OR ((maildir:/Pro/INBOX OR maildir:/Perso/INBOX) AND flag:unread)" "Inbox"           ?i)
+              ("tag:\\\\Sent OR maildir:/Pro/Sent OR maildir:/Perso/Sent"                        "Sent"            ?s)
+              ("tag:achats"                          "Achats"          ?a)
+              ("flag:unread AND NOT flag:trashed"    "Unread messages" ?u)
+              ("size:5M..500M"                       "Large messages"  ?l)))
 
       (setenv "MU_PLAY_PROGRAM" "eopen")
+
+      (setq my:mu4e-account-alist
+            '(("GMail"
+               (mu4e-sent-folder "/GMail/All Mail")
+               (mu4e-sent-messages-behavior delete)
+               (mu4e-drafts-folder "/GMail/Drafts")
+               (user-mail-address "damien.cassou@gmail.com")
+               (smtpmail-queue-dir "~/Mail/GMail/queued-mail/")
+               (smtpmail-local-domain nil)
+               (smtpmail-smtp-user "damien.cassou@gmail.com")
+               (smtpmail-smtp-server "smtp.gmail.com")
+               (smtpmail-stream-type starttls)
+               (smtpmail-smtp-service 587))
+              ("Pro"
+               (mu4e-sent-folder "/Pro/Sent")
+               (mu4e-sent-messages-behavior sent)
+               (mu4e-drafts-folder "/Pro/Drafts")
+               (user-mail-address "damien.cassou@inria.fr")
+               (smtpmail-queue-dir "~/Mail/Pro/queued-mail/")
+               (smtpmail-local-domain nil)
+               (smtpmail-smtp-user "cassou")
+               (smtpmail-smtp-server "smtp.inria.fr")
+               (smtpmail-stream-type starttls)
+               (smtpmail-smtp-service 587))
+              ("Perso"
+               (mu4e-sent-folder "/Perso/Sent")
+               (mu4e-sent-messages-behavior sent)
+               (mu4e-drafts-folder "/Perso/Drafts")
+               (user-mail-address "damien@cassou.me")
+               (smtpmail-queue-dir "~/Mail/Perso/queued-mail/")
+               (smtpmail-local-domain "inria.fr")
+               (smtpmail-smtp-user "dcassou")
+               (smtpmail-smtp-server "bender.ldn-fai.net")
+               (smtpmail-stream-type starttls)
+               (smtpmail-smtp-service 25))))
+
+      (defun my:mu4e-guess-account ()
+        (if mu4e-compose-parent-message
+            (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+              (string-match "/\\(.*?\\)/" maildir)
+              (match-string 1 maildir))
+          (completing-read "Compose with account: "
+                           (mapcar #'car my:mu4e-account-alist)
+                           nil t nil nil (caar my:mu4e-account-alist))))
+
+      (defun my:mu4e-set-account (&optional account)
+        "Set the account for composing a message."
+        (interactive)
+        (let* ((account (or account (my:mu4e-guess-account)))
+               (account-vars (cdr (assoc account my:mu4e-account-alist))))
+          (if account-vars
+              (mapc (lambda (var) (set (car var) (cadr var)))
+                    account-vars)
+            (error "No email account found"))))
+
+      (add-hook 'mu4e-compose-pre-hook 'my:mu4e-set-account)
+      (my:mu4e-set-account "GMail")
 
       (require 'mu4e-contrib)
       (require 'smtpmail)
