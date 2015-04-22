@@ -1595,7 +1595,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (define-key grep-mode-map (kbd "C-x C-q") #'wgrep-change-to-wgrep-mode)
     (define-key grep-mode-map (kbd "C-c C-c") #'wgrep-finish-edit)))
 
-
 (use-package ical2org
   :demand t
   :init
