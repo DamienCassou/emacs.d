@@ -1614,6 +1614,12 @@ Saves when `NOSAVE' is non-nil."
             (insert (ical2org/format e))
             (newline))
           (save-buffer))))))
+
+(use-package password-store
+  :config
+  (progn
+    (setq password-store-password-length 16)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)

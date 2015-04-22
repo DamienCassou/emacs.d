@@ -48,6 +48,7 @@
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
 (depends-on "paredit") ;; edit lisp AST instead of characters
 (depends-on "paren-face") ;; hide parenthesis in elisp code
+(depends-on "password-store") ;; get passwords from the 'pass' command
 (depends-on "pillar") ;; Major mode for pier/pillar-formatted text files
 (depends-on "pos-tip") ;; make tool-tips appear nicely
 (depends-on "powerline") ;; theme for the modeline
