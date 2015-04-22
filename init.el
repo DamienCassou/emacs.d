@@ -116,13 +116,14 @@
  '(mu4e-compose-signature t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
- '(mu4e-headers-date-format "%Y/%m/%d")
+ '(mu4e-headers-date-format "%Y/%m/%d %H:%M")
  '(mu4e-headers-fields
    (quote
-    ((:human-date . 10)
+    ((:human-date . 16)
      (:from-or-to . 20)
      (:mailing-list . 16)
      (:tags . 10)
+     (:maildir . 15)
      (:subject))))
  '(mu4e-headers-include-related t)
  '(mu4e-headers-time-format "%H:%M")
@@ -136,7 +137,7 @@
     ("damien@cassou.me" "damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr" "cassou@inria.fr" "damien.cassou@laposte.net" "damien.cassou@univ-lille1.fr")))
  '(mu4e-view-fields
    (quote
-    (:from :to :cc :subject :date :mailing-list :tags :flags :attachments :signature :decryption)))
+    (:from :to :cc :subject :date :mailing-list :tags :flags :attachments :signature :decryption :maildir)))
  '(mu4e-view-show-addresses t)
  '(mu4e-view-show-images t)
  '(next-screen-context-lines 5)
