@@ -112,6 +112,7 @@
  '(message-signature t)
  '(message-signature-file "~/.signature")
  '(mu4e-attachment-dir "/tmp")
+ '(mu4e-completing-read-function (quote completing-read))
  '(mu4e-compose-signature t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
