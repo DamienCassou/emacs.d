@@ -649,6 +649,9 @@ narrowed."
 
 (use-package magit
   :bind ("C-x g" . magit-status)
+  :init
+  (progn
+    (setq magit-last-seen-setup-instructions "1.4.0"))
   :config
   (progn
     (require 'magit-svn)
