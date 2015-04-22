@@ -1227,15 +1227,18 @@ able to type <C-c left left left> to undo 3 times whereas it was
                (smtpmail-stream-type ssl)
                (smtpmail-smtp-service 465))))
 
+      (defun my:mu4e-account-names ()
+        (mapcar #'car my:mu4e-account-alist))
 
       (defun my:mu4e-guess-account ()
         (if mu4e-compose-parent-message
             (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
               (string-match "/\\(.*?\\)/" maildir)
               (match-string 1 maildir))
-          (completing-read "Compose with account: "
-                           (mapcar #'car my:mu4e-account-alist)
-                           nil t nil nil (caar my:mu4e-account-alist))))
+          (let ((account-names (my:mu4e-account-names)))
+            (completing-read "Compose with account: "
+                             account-names
+                             nil t nil nil (car account-names)))))
 
       (defun my:mu4e-set-account (&optional account)
         "Set the account for composing a message."
@@ -1248,6 +1251,39 @@ able to type <C-c left left left> to undo 3 times whereas it was
             (error "No email account found"))))
 
       (add-hook 'mu4e-compose-pre-hook 'my:mu4e-set-account)
+
+      (defun my:mu4e-addressed-to-me ()
+        (mapconcat
+         (lambda (address) (format "recip:%s" address))
+         mu4e-user-mail-address-list " OR "))
+
+      (defun my:mu4e-in-inbox ()
+        (mapconcat
+         (lambda (account-name) (format "maildir:/%s/INBOX" account-name))
+         (my:mu4e-account-names)
+         " OR "))
+
+      (defun my:mu4e-inbox-query ()
+        (concat
+         "("
+         (my:mu4e-addressed-to-me)
+         ") AND ("
+         (my:mu4e-in-inbox)
+         " OR maildir:\"/GMail/All Mail\") AND (tag:\\\\Inbox OR NOT maildir:\"/GMail/All Mail\")"))
+
+      (defun my:mu4e-sent-query ()
+        (mapconcat
+         (lambda (address) (format "from:%s" address))
+         mu4e-user-mail-address-list
+         " OR "))
+
+      (setq mu4e-bookmarks
+            `((,(my:mu4e-inbox-query) "Inbox" ?i)
+              (,(my:mu4e-sent-query) "Sent" ?s)
+              ("tag:achats"                                                  "Achats"          ?a)
+              ("flag:unread AND NOT flag:trashed"                            "Unread messages" ?u)
+              ("size:5M..500M"                                               "Large messages"  ?l)))
+
       (my:mu4e-set-account "GMail")
 
       (require 'mu4e-contrib)
@@ -1262,6 +1298,23 @@ able to type <C-c left left left> to undo 3 times whereas it was
            `(,capture-letter "Mail" entry
                              (file org-default-notes-file)
                              "* TODO %?%:fromto %a"))))
+
+      (defun my:mu4e-gmail-msg-p (msg)
+        (require 's)
+        (s-starts-with? "/GMail" (mu4e-message-field msg :maildir)))
+
+      (defun my:mu4e-refile-folder (msg)
+        (let ((maildir (mu4e-message-field msg :maildir)))
+          (cond
+           ;; messages to GMail
+           ((my:mu4e-gmail-msg-p msg)
+            (mu4e-action-retag-message msg "-\\Inbox")
+            maildir)
+           (t
+            (require 'f)
+            (f-expand "Archive" (f-parent maildir))))))
+
+      (setq mu4e-refile-folder #'my:mu4e-refile-folder)
 
       (defun my:mu4e-remove-message-from-inbox (msg)
         (mu4e-action-retag-message msg "-\\Inbox"))
