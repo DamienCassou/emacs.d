@@ -129,7 +129,6 @@
  '(mu4e-headers-time-format "%H:%M")
  '(mu4e-html2text-command (quote mu4e-shr2text))
  '(mu4e-maildir "~/Mail")
- '(mu4e-trash-folder "/Trash")
  '(mu4e-update-interval nil)
  '(mu4e-use-fancy-chars t)
  '(mu4e-user-mail-address-list
@@ -1176,17 +1175,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (setq  mu4e-hide-index-messages nil)
       (imagemagick-register-types)
 
-      (setq mu4e-bookmarks
-            '(("tag:\\\\Inbox OR ((maildir:/Pro/INBOX OR maildir:/Perso/INBOX) AND flag:unread)" "Inbox"           ?i)
-              ("tag:\\\\Sent OR maildir:/Pro/Sent OR maildir:/Perso/Sent"                        "Sent"            ?s)
-              ("tag:achats"                          "Achats"          ?a)
-              ("flag:unread AND NOT flag:trashed"    "Unread messages" ?u)
-              ("size:5M..500M"                       "Large messages"  ?l)))
-
       (setenv "MU_PLAY_PROGRAM" "eopen")
 
       (setq my:mu4e-account-alist
             '(("GMail"
+               (mu4e-trash-folder "/GMail/Trash")
                (mu4e-sent-folder "/GMail/All Mail")
                (mu4e-sent-messages-behavior delete)
                (mu4e-drafts-folder "/GMail/Drafts")
@@ -1198,6 +1191,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
                (smtpmail-stream-type starttls)
                (smtpmail-smtp-service 587))
               ("Pro"
+               (mu4e-trash-folder "/Pro/Trash")
                (mu4e-sent-folder "/Pro/Sent")
                (mu4e-sent-messages-behavior sent)
                (mu4e-drafts-folder "/Pro/Drafts")
@@ -1208,7 +1202,20 @@ able to type <C-c left left left> to undo 3 times whereas it was
                (smtpmail-smtp-server "smtp.inria.fr")
                (smtpmail-stream-type starttls)
                (smtpmail-smtp-service 587))
+              ("Lille1"
+               (mu4e-trash-folder "/Lille1/Trash")
+               (mu4e-sent-folder "/Lille1/Sent")
+               (mu4e-sent-messages-behavior sent)
+               (mu4e-drafts-folder "/Lille1/Drafts")
+               (user-mail-address "damien.cassou@univ-lille1.fr")
+               (smtpmail-queue-dir "~/Mail/Lille1/queued-mail/")
+               (smtpmail-local-domain nil)
+               (smtpmail-smtp-user "cassou")
+               (smtpmail-smtp-server "smtps.univ-lille1.fr")
+               (smtpmail-stream-type starttls)
+               (smtpmail-smtp-service 587))
               ("Perso"
+               (mu4e-trash-folder "/Perso/Trash")
                (mu4e-sent-folder "/Perso/Sent")
                (mu4e-sent-messages-behavior sent)
                (mu4e-drafts-folder "/Perso/Drafts")
@@ -1217,8 +1224,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
                (smtpmail-local-domain "inria.fr")
                (smtpmail-smtp-user "dcassou")
                (smtpmail-smtp-server "bender.ldn-fai.net")
-               (smtpmail-stream-type starttls)
-               (smtpmail-smtp-service 25))))
+               (smtpmail-stream-type ssl)
+               (smtpmail-smtp-service 465))))
+
 
       (defun my:mu4e-guess-account ()
         (if mu4e-compose-parent-message
