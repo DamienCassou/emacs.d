@@ -3,6 +3,7 @@
 (source melpa)
 (source org)
 
+(depends-on "ag") ;; search using the 'ag' command (better grep)
 (depends-on "ace-jump-mode") ;; move fast in buffer with <C-,>
 (depends-on "ace-link") ;; type o in help-mode to go to a link
 (depends-on "aggressive-indent") ;; indent code automatically while typing
@@ -27,6 +28,7 @@
 (depends-on "git-timemachine") ;; view history of a file with M-x git-timemachine
 (depends-on "guide-key") ;; help you learn emacs
 (depends-on "helm") ;; selection/completion interface for everything
+(depends-on "helm-ag") ;; use ag from helm
 (depends-on "helm-descbinds") ;; integrate helm and describe-bindings <any-prefix C-h>
 (depends-on "helm-projectile") ;; integrate projectile and helm <C-. p h>
 (depends-on "hydra") ;; easy definition of repeatable shortcuts
