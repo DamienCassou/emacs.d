@@ -1735,6 +1735,16 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 
         (global-set-key (kbd "C-. ;") #'hydra-projectile/body)))))
 
+(use-package org-caldav
+  :config
+  (progn
+    (setq org-caldav-url "https://www.schplaf.org/baikal/cal.php/calendars/damiencnsa"
+          org-caldav-calendar-id "default"
+          org-caldav-inbox "~/Documents/configuration/org/schplaf-default.org"
+          org-caldav-files '()
+          org-icalendar-timezone "Europe/Berlin"
+          org-icalendar-include-body)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
