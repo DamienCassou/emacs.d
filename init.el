@@ -891,14 +891,7 @@ narrowed."
   (progn
     ;; Custom agenda command definitions
     (setq org-agenda-custom-commands
-          (quote (("N" "Notes" tags "NOTE"
-                   ((org-agenda-overriding-header "Notes")
-                    (org-tags-match-list-sublevels t)))
-                  ("h" "Habits" tags-todo "STYLE=\"habit\""
-                   ((org-agenda-overriding-header "Habits")
-                    (org-agenda-sorting-strategy
-                     '(todo-state-down effort-up category-keep))))
-                  ("l" "Logbook" nico/org-agenda-log ""
+          (quote (("l" "Logbook" nico/org-agenda-log ""
                    ((org-agenda-overriding-header "Logbook")))
                   (" " "Agenda"
                    ((agenda "" nil)
