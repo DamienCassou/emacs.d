@@ -908,12 +908,15 @@ narrowed."
         (org-agenda-log-mode)
         (org-agenda-earlier 1)))
 
-    (setq org-agenda-files
+    (setq org-default-calendar-file
+          "~/Documents/configuration/org/schplaf-default.org")
 
-          '("~/Documents/configuration/org/refile.org"
+    (setq org-agenda-files
+          `("~/Documents/configuration/org/refile.org"
             "~/Documents/configuration/org/tasks.org"
             "~/Documents/configuration/org/someday.org"
-            "~/Documents/configuration/org/repeating.org"))
+            "~/Documents/configuration/org/repeating.org"
+            ,org-default-calendar-file))
 
     (setq org-refile-targets `(("tasks.org"      :maxlevel . 2)
                                ("someday.org"    :maxlevel . 2)
@@ -934,7 +937,10 @@ narrowed."
              "* TODO %?%i")
             ("u" "URL" entry
              (file org-default-notes-file)
-             "* TODO %?%i\n %a")))
+             "* TODO %?%i\n %a")
+            ("s" "Schefule" entry
+             (file org-default-calendar-file)
+             "* %?\n%^T")))
 
     (defun org-publish-lesscss (plist filename pub-dir)
       "Publish a file with no transformation of any kind.
@@ -1369,7 +1375,17 @@ able to type <C-c left left left> to undo 3 times whereas it was
             (end-of-buffer))))
 
       (define-key mu4e-compose-mode-map
-        (vector 'remap 'end-of-buffer) 'mu4e-compose-goto-bottom))))
+        (vector 'remap 'end-of-buffer) 'mu4e-compose-goto-bottom)
+
+      (defun my:mu4e-use-org-for-diary (func path what docid param)
+        "If WHAT is \"diary\", import event into org. Otherwise call mu4e~view-temp-handler."
+        (if (string= what "diary")
+            (progn
+              (require 'org-caldav)
+              (my:import-ics-to-org path))
+          (funcall func path what docid param)))
+
+      (advice-add 'mu4e~view-temp-handler :around #'my:mu4e-use-org-for-diary))))
 
 (use-package epg-config
   :init
@@ -1726,15 +1742,32 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 
         (global-set-key (kbd "C-. ;") #'hydra-projectile/body)))))
 
+(add-to-list 'load-path "~/.emacs.d/packages/org-caldav")
 (use-package org-caldav
+  :bind
+  (("C-. o s"   . org-caldav-sync))
   :config
   (progn
     (setq org-caldav-url "https://www.schplaf.org/baikal/cal.php/calendars/damiencnsa"
           org-caldav-calendar-id "default"
-          org-caldav-inbox "~/Documents/configuration/org/schplaf-default.org"
+          org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
-          org-icalendar-include-body)))
+          org-caldav-save-directory "~/.emacs.d/cache/org-caldav"
+          org-caldav-sync-changes-to-org 'all)
+
+    (defun my:import-ics-to-org (path)
+      (with-current-buffer (get-buffer-create "*import-ics-to-org*")
+        (delete-region (point-min) (point-max))
+        (insert-file-contents path)
+        (let ((event (org-caldav-convert-event)))
+          (with-current-buffer (find-file-noselect (org-caldav-inbox-file org-caldav-inbox))
+            (let* ((point-and-level (org-caldav-inbox-point-and-level org-caldav-inbox))
+                   (point (car point-and-level))
+                   (level (cdr point-and-level)))
+              (goto-char point)
+              (apply #'org-caldav-insert-org-entry
+                     (append event (list nil level))))))))))
 
 ;;; Emacs Configuration
 ;; Local Variables:
