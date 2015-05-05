@@ -851,8 +851,9 @@ narrowed."
   :bind
   (("C-. o t"   . org-capture)
    ("C-. o a"   . org-agenda)
-   ("C-. o ,"   . org-cycle-agenda-files)
-   ("C-. o SPC" . dc/my-agenda))
+   ("C-. o SPC" . dc/my-agenda)
+   ("C-. o l"   . org-store-link)
+   ("C-. o w"   . my:org-move-to-refile-target))
   :init
   (progn
     (setq org-modules '(org-publish org-protocol org-capture ox-beamer))
@@ -862,6 +863,11 @@ narrowed."
          (setq org-latex-listings t)
          (add-to-list 'org-latex-packages-alist '("" "listings"))
          (add-to-list 'org-latex-packages-alist '("" "color"))))
+
+    (defun my:org-move-to-refile-target (&optional last)
+      (interactive "p")
+      (org-refile (if last '(16) '(4))))
+
 
     ;; Display the agenda
     (defun nico/jump-to-org-agenda ()
@@ -918,9 +924,9 @@ narrowed."
             "~/Documents/configuration/org/repeating.org"
             ,org-default-calendar-file))
 
-    (setq org-refile-targets `(("tasks.org"      :maxlevel . 2)
-                               ("someday.org"    :maxlevel . 2)
-                               ("repeating.org"  :maxlevel . 2)))
+    (setq org-refile-targets `(("~/Documents/configuration/org/tasks.org"      :maxlevel . 2)
+                               ("~/Documents/configuration/org/someday.org"    :maxlevel . 2)
+                               ("~/Documents/configuration/org/repeating.org"  :maxlevel . 2)))
 
     (setq org-todo-keywords
           '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")
