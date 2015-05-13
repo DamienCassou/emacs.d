@@ -4,12 +4,12 @@
 (source org)
 
 (depends-on "ag") ;; search using the 'ag' command (better grep)
-(depends-on "ace-jump-mode") ;; move fast in buffer with <C-,>
 (depends-on "ace-link") ;; type o in help-mode to go to a link
 (depends-on "ace-window") ;; manage windows with ace-like behavior
 (depends-on "aggressive-indent") ;; indent code automatically while typing
 (depends-on "anzu") ;; more interactive query-replace
 (depends-on "auctex") ;; LaTeX mode
+(depends-on "avy") ;; move fast in buffer with <C-,>
 (depends-on "dash") ;; list library
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-imenu") ;; integrates imenu in dired

@@ -716,6 +716,7 @@ narrowed."
        (switch-to-buffer-other-window (or buffer "*info*"))))))
 
 (use-package ace-jump-mode
+  :disabled t
   :bind ("C-," . ace-jump-mode)
   :init
   (progn
@@ -1774,6 +1775,13 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
               (goto-char point)
               (apply #'org-caldav-insert-org-entry
                      (append event (list nil level))))))))))
+
+(use-package avy
+  :bind (("C-," . avy-goto-char-2))
+  :init
+  (progn
+    ;; keys under my fingers (blue keys on my Kinesis Advantage)
+    (setq avy-keys '(97 115 100 102 106 107 108 59 32))))
 
 ;;; Emacs Configuration
 ;; Local Variables:
