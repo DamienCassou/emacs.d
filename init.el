@@ -1776,11 +1776,14 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
                      (append event (list nil level))))))))))
 
 (use-package avy
-  :bind (("C-," . avy-goto-char-2))
+  :bind (("C-," . avy-goto-char-2)
+         ("M-g g" . avy-goto-line))
   :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq avy-keys '(97 115 100 102 106 107 108 59 32))))
+    (setq avy-keys '(97 115 100 102 106 107 108 59 32))
+    ;; forces this binding even if another mode tries to use it
+    (bind-key* "C-," #'avy-goto-char-2)))
 
 ;;; Emacs Configuration
 ;; Local Variables:
