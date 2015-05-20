@@ -867,8 +867,7 @@ narrowed."
 
     (defun my:org-move-to-refile-target (&optional last)
       (interactive "p")
-      (org-refile (if last '(16) '(4))))
-
+      (org-refile (if (= last 4) '(16) '(4))))
 
     ;; Display the agenda
     (defun nico/jump-to-org-agenda ()
