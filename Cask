@@ -48,7 +48,6 @@
 (depends-on "smartscan") ;; <M-n> <M-p> to move between same symbol in buffer
 (depends-on "org-caldav") ;; Synchronize caldav and org-mode
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
-(depends-on "org-pomodoro") ;; <M-x org-pomodoro> on a TODO
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
 (depends-on "paredit") ;; edit lisp AST instead of characters
 (depends-on "paren-face") ;; hide parenthesis in elisp code
