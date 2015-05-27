@@ -11,6 +11,7 @@
 (depends-on "auctex") ;; LaTeX mode
 (depends-on "avy") ;; move fast in buffer with <C-,>
 (depends-on "dash") ;; list library
+(depends-on "define-word") ;; <C-. D> to get the definition of a word
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-imenu") ;; integrates imenu in dired
 (depends-on "dired-toggle-sudo") ;; <C-x s> to toggle sudo state of buffer

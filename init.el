@@ -1773,6 +1773,9 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
     ;; forces this binding even if another mode tries to use it
     (bind-key* "C-," #'avy-goto-char-2)))
 
+(use-package define-word
+  :bind (("C-. D" . define-word-at-point)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
