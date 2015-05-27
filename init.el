@@ -382,10 +382,6 @@
         (kill-buffer buffer)))
     (message "%s buffers have been killed" count)))
 
-;; faster than C-x o
-(bind-key* "M-o" 'other-window)
-(unbind-key "C-x o")
-
 ;; faster than C-x z
 (bind-key "C-z" 'repeat)
 (unbind-key "C-x z")
@@ -1633,6 +1629,15 @@ Saves when `NOSAVE' is non-nil."
   :config
   (progn
     (setq password-store-password-length 16)))
+
+(use-package ace-window
+  :demand t
+  :bind (("M-o" . ace-window))
+  :config
+  (progn
+    (ace-window-display-mode)
+    ;; Use same keys for both ace-window and avy
+    (setq aw-keys avy-keys)))
 
 (use-package hydra
   :config
