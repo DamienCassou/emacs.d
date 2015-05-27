@@ -122,7 +122,6 @@
      (:tags . 10)
      (:maildir . 15)
      (:subject))))
- '(mu4e-headers-include-related t)
  '(mu4e-headers-time-format "%H:%M")
  '(mu4e-html2text-command (quote mu4e-shr2text))
  '(mu4e-maildir "~/Mail")
@@ -158,6 +157,7 @@
  '(org-startup-align-all-tables t)
  '(org-time-stamp-rounding-minutes (quote (10 10)))
  '(org-use-speed-commands t)
+ '(powerline-display-buffer-size nil)
  '(proced-filter (quote all))
  '(projectile-completion-system (quote helm))
  '(projectile-keymap-prefix (kbd "C-. p"))
@@ -329,6 +329,9 @@
 
 (bind-key "<f5>" 'comment-region)
 
+; Replace `just-one-space' by the more advanced `cycle-spacing'.
+(bind-key "M-SPC" #'cycle-spacing)
+
 (defun my-join-line ()
   (interactive)
   (join-line -1))
@@ -429,7 +432,7 @@ narrowed."
   (progn
     (use-package runner)
     (use-package dired-x)
-    (use-package dired-imenu)
+    (use-package dired-imenu :demand t)
 
     (bind-key ")" 'dired-omit-mode dired-mode-map)
 
@@ -905,7 +908,7 @@ narrowed."
         (org-agenda-earlier 1)))
 
     (setq org-default-calendar-file
-          "~/Documents/configuration/org/schplaf-default.org")
+          "~/Documents/configuration/org/schplaf.org")
 
     (setq org-agenda-files
           `("~/Documents/configuration/org/refile.org"
@@ -1161,7 +1164,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :demand t)
 
 (when (setq mu4e-mu-binary (executable-find "mu"))
-  (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/mu/mu4e"))
+  (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp/mu4e" (file-symlink-p mu4e-mu-binary)))
   (use-package mu4e
     :bind (("C-. m" . mu4e))
     :config
@@ -1293,11 +1296,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (require 'org-mu4e nil t)
       (with-eval-after-load 'org-mu4e
         (lexical-let ((capture-letter "m"))
-          (add-to-list
-           'org-capture-templates
-           `(,capture-letter "Mail" entry
-                             (file org-default-notes-file)
-                             "* TODO %?%:fromto %a"))))
+                     (add-to-list
+                      'org-capture-templates
+                      `(,capture-letter "Mail" entry
+                                        (file org-default-notes-file)
+                                        "* TODO %?%:fromto %a"))))
 
       (defun my:mu4e-gmail-msg-p (msg)
         (require 's)
@@ -1415,12 +1418,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (defun my:setup-imenu-for-use-package ()
       "Recognize `use-package` in imenu"
       (when (string= buffer-file-name (expand-file-name "init.el" "~/.emacs.d"))
-        (setq imenu-generic-expression
-              '((nil "^\\s-*(\\(def\\(?:advice\\|generic\\|ine-\\(?:compiler-macro\\|derived-mode\\|g\\(?:\\(?:eneric\\|lobal\\(?:\\(?:ized\\)?-minor\\)\\)-mode\\)\\|m\\(?:ethod-combination\\|inor-mode\\|odify-macro\\)\\|s\\(?:etf-expander\\|keleton\\)\\)\\|m\\(?:acro\\|ethod\\)\\|s\\(?:etf\\|ubst\\)\\|un\\*?\\)\\|use-package\\)\\s-+\\(\\(\\sw\\|\\s_\\)+\\)" 2)
-                ("Variables" "^\\s-*(\\(def\\(?:c\\(?:onst\\(?:ant\\)?\\|ustom\\)\\|ine-symbol-macro\\|parameter\\)\\)\\s-+\\(\\(\\sw\\|\\s_\\)+\\)" 2)
-                ("Variables" "^\\s-*(defvar\\s-+\\(\\(\\sw\\|\\s_\\)+\\)[[:space:]\n]+[^)]" 1)
-                ("Types" "^\\s-*(\\(def\\(?:class\\|face\\|group\\|ine-\\(?:condition\\|widget\\)\\|package\\|struct\\|t\\(?:\\(?:hem\\|yp\\)e\\)\\)\\)\\s-+'?\\(\\(\\sw\\|\\s_\\)+\\)" 2)))))
-
+        (add-to-list 'imenu-generic-expression
+                     '("Used Packages"
+                       "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2))))
     (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)
 
     (use-package paredit
@@ -1590,18 +1590,21 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (require 'helm-projectile))
 
     (require 'helm-descbinds)
+
+    (add-hook 'helm-grep-mode-hook #'(lambda () (use-package "wgrep")))
+
     (helm-descbinds-mode)
     (helm-mode 1)))
 
 (add-to-list 'load-path "~/.emacs.d/packages")
 (use-package youtube)
 
-(use-package grep
-  :config
+(use-package wgrep
+  :init
   (progn
-    (use-package wgrep)
-    (define-key grep-mode-map (kbd "C-x C-q") #'wgrep-change-to-wgrep-mode)
-    (define-key grep-mode-map (kbd "C-c C-c") #'wgrep-finish-edit)))
+    (with-eval-after-load "helm-grep"
+      (bind-key  "C-x C-q" #'wgrep-change-to-wgrep-mode helm-grep-mode-map)
+      (bind-key "C-c C-c" #'wgrep-finish-edit helm-grep-mode-map))))
 
 (use-package ical2org
   :demand t
@@ -1769,7 +1772,8 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq avy-keys '(97 115 100 102 106 107 108 59 32))
+    (setq avy-keys '(?a ?s  ?d  ?f  ?j  ?k  ?l  59 32))
+
     ;; forces this binding even if another mode tries to use it
     (bind-key* "C-," #'avy-goto-char-2)))
 
