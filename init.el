@@ -419,6 +419,7 @@ narrowed."
 (bind-key "n" 'narrow-or-widen-dwim endless/toggle-map)
 
 (use-package ethan-wspace
+  :diminish ethan-wspace-mode
   :demand t
   :config
   (progn
@@ -649,6 +650,7 @@ narrowed."
                       "bibliographysoft")))))
 
 (use-package magit
+  :diminish magit-auto-revert-mode
   :bind ("C-x g" . magit-status)
   :init
   (progn
@@ -1512,6 +1514,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (t (:background "magenta"))) "")))
 
 (use-package elisp-slime-nav
+  :diminish elisp-slime-nav-mode
   :init
   (progn
     (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)))
@@ -1540,6 +1543,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (global-anzu-mode +1)))
 
 (use-package aggressive-indent
+  :diminish aggressive-indent-mode
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
@@ -1776,6 +1780,9 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 
     ;; forces this binding even if another mode tries to use it
     (bind-key* "C-," #'avy-goto-char-2)))
+
+(use-package outline
+  :diminish outline-minor-mode)
 
 (use-package define-word
   :bind (("C-. D" . define-word-at-point)))
