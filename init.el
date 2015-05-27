@@ -87,7 +87,6 @@
  '(global-prettify-symbols-mode t)
  '(haskell-hoogle-command "hoogle")
  '(imenu-auto-rescan t)
- '(indent-guide-recursive t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
@@ -313,7 +312,7 @@
          "/var/setuid-wrappers"))) ;; the /var/setuid-wrappers/
                                    ;; directory must arrive first on
                                    ;; the PATH
- 
+
 (mapc 'add-to-executable-path '("~/.emacs.d/packages/cask/bin"))
 
 (defun suspend-on-tty-only ()
@@ -869,20 +868,11 @@ narrowed."
       (interactive "p")
       (org-refile (if (= last 4) '(16) '(4))))
 
-    ;; Display the agenda
-    (defun nico/jump-to-org-agenda ()
-      (interactive)
-      (dc/my-agenda)
-      (delete-other-windows))
-
     (defun dc/my-agenda ()
       (interactive)
       (require 'org-agenda)
       (let ((entry (assoc " " org-agenda-custom-commands)))
         (org-agenda-run-series (nth 1 entry) (cddr entry))))
-
-    ;; Go to the agenda buffer after 10' idle
-    (run-with-idle-timer 600 t 'nico/jump-to-org-agenda)
 
     (defvar-local dc:org-publish-on-save nil
       "Set to t if you want to publish the project on each save.")
@@ -1540,8 +1530,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (define-key 'help-command (kbd "C-v") 'find-variable)))
 
 (use-package git-timemachine)
-
-(use-package noccur)
 
 (use-package anzu
   :bind (("M-%" . anzu-query-replace)

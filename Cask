@@ -25,7 +25,6 @@
 (depends-on "flycheck") ;; flycheck to check files on the fly
 (depends-on "flycheck-cask") ;; use Cask when present for dependencies
 (depends-on "git-auto-commit-mode") ;; commit after each file save
-(depends-on "git-gutter") ;; shows git status in margin + possibility to commit right from the buffer
 (depends-on "git-timemachine") ;; view history of a file with M-x git-timemachine
 (depends-on "guide-key") ;; help you learn emacs
 (depends-on "helm") ;; selection/completion interface for everything
@@ -33,8 +32,6 @@
 (depends-on "helm-descbinds") ;; integrate helm and describe-bindings <any-prefix C-h>
 (depends-on "helm-projectile") ;; integrate projectile and helm <C-. p h>
 (depends-on "hydra") ;; easy definition of repeatable shortcuts
-(depends-on "iedit") ;; edit several occurences of something at once
-(depends-on "indent-guide") ;; show indentation alignment
 (depends-on "json-mode") ;; Major mode to edit JSON files
 (depends-on "less-css-mode") ;; lesscss mode
 (depends-on "magit") ;; Integrate git <C-x g>
@@ -44,7 +41,6 @@
 (depends-on "names") ;; a namespace implementation
 (depends-on "niflheim-theme") ;; Nicolas&Ben's theme
 (depends-on "nix-mode") ;; major mode to edit nix expressions
-(depends-on "noccur") ;; multi-occur on projects and directories
 (depends-on "smartscan") ;; <M-n> <M-p> to move between same symbol in buffer
 (depends-on "org-caldav") ;; Synchronize caldav and org-mode
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
@@ -66,7 +62,6 @@
 (depends-on "unify-opening") ;; make everything use the same mechanism to open files
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
-(depends-on "yasnippet") ;; snippet utility
 (depends-on "visible-mark") ;; show the current mark
 (depends-on "wgrep-helm") ;; edit grep buffers
 (depends-on "zoom-frm") ;; increase/decrease font size for all buffers <C-x C-+>
