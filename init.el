@@ -1297,12 +1297,13 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (require 'org-mu4e nil t)
       (with-eval-after-load 'org-mu4e
+        (require 'cl)
         (lexical-let ((capture-letter "m"))
-                     (add-to-list
-                      'org-capture-templates
-                      `(,capture-letter "Mail" entry
-                                        (file org-default-notes-file)
-                                        "* TODO %?%:fromto %a"))))
+          (add-to-list
+           'org-capture-templates
+           `(,capture-letter "Mail" entry
+                             (file org-default-notes-file)
+                             "* TODO %?%:fromto %a"))))
 
       (defun my:mu4e-gmail-msg-p (msg)
         (require 's)
