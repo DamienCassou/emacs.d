@@ -387,7 +387,7 @@
 (unbind-key "C-x z")
 
 (define-prefix-command 'endless/toggle-map)
-(setq endless/toggle-prefix "C-x t")
+(setq endless/toggle-prefix "C-. t")
 (bind-key endless/toggle-prefix 'endless/toggle-map)
 
 (bind-key "c" 'flycheck-mode endless/toggle-map)
@@ -1126,7 +1126,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :diminish guide-key-mode
   :init
   (progn
-    (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p"))
+    (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t"))
 
     (add-to-list 'guide-key/guide-key-sequence endless/toggle-prefix)
 
