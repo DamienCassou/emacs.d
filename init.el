@@ -1273,15 +1273,19 @@ able to type <C-c left left left> to undo 3 times whereas it was
          mu4e-user-mail-address-list
          " OR "))
 
+      (defun my:mu4e-inbox-and-unread-query ()
+        (format "(%s) OR (%s)"
+                (my:mu4e-inbox-query)
+                "flag:unread AND NOT flag:trashed AND NOT (list:pharo* OR list:smallwiki*)"))
+
       (defun my:mu4e-to-archive-query ()
         (my:mu4e-in-inbox))
 
       (setq mu4e-bookmarks
-            `((,(my:mu4e-inbox-query) "Inbox" ?i)
+            `((,(my:mu4e-inbox-and-unread-query) "Inbox" ?i)
               (,(my:mu4e-sent-query) "Sent" ?s)
               (,(my:mu4e-to-archive-query) "To archive" ?A)
               ("tag:achats"                                            "Achats"          ?a)
-              ("flag:unread AND NOT flag:trashed AND NOT (list:pharo* OR list:smallwiki*)"  "Unread messages" ?u)
               ("flag:unread AND NOT flag:trashed AND (list:pharo* OR list:smallwiki*)"      "Pharo"           ?p)
               ("size:20M..500M"                                        "Large messages"  ?l)))
 
