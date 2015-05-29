@@ -1370,29 +1370,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (setq gnus-dired-mail-mode 'mu4e-user-agent)
       (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
-      (defun mu4e-compose-goto-top ()
-        (interactive)
-        (let ((old-position (point)))
-          (message-goto-body)
-          (when (equal (point) old-position)
-            (beginning-of-buffer))))
-
-      (define-key mu4e-compose-mode-map
-        (vector 'remap 'beginning-of-buffer) 'mu4e-compose-goto-top)
-
-      (defun mu4e-compose-goto-bottom ()
-        (interactive)
-        (let ((old-position (point))
-              (message-position (save-excursion (message-goto-body) (point))))
-          (end-of-buffer)
-          (when (re-search-backward "^-- $" message-position t)
-            (previous-line))
-          (when (equal (point) old-position)
-            (end-of-buffer))))
-
-      (define-key mu4e-compose-mode-map
-        (vector 'remap 'end-of-buffer) 'mu4e-compose-goto-bottom)
-
       (defun my:mu4e-use-org-for-diary (func path what docid param)
         "If WHAT is \"diary\", import event into org. Otherwise call mu4e~view-temp-handler."
         (if (string= what "diary")
@@ -1401,7 +1378,41 @@ able to type <C-c left left left> to undo 3 times whereas it was
               (my:import-ics-to-org path))
           (funcall func path what docid param)))
 
-      (advice-add 'mu4e~view-temp-handler :around #'my:mu4e-use-org-for-diary))))
+      (advice-add 'mu4e~view-temp-handler :around #'my:mu4e-use-org-for-diary)
+
+      (with-eval-after-load "message"
+        (with-eval-after-load "mu4e-view"
+          (define-key mu4e-view-mode-map
+            (vector 'remap 'beginning-of-buffer) 'my:message-goto-top)
+          (define-key mu4e-view-mode-map
+            (vector 'remap 'end-of-buffer) 'my:message-goto-bottom))))))
+
+(use-package message
+  :defer t
+  :config
+  (progn
+    (defun my:message-goto-top ()
+      (interactive)
+      (let ((old-position (point)))
+        (message-goto-body)
+        (when (equal (point) old-position)
+          (beginning-of-buffer))))
+
+    (define-key message-mode-map
+      (vector 'remap 'beginning-of-buffer) 'my:message-goto-top)
+
+    (defun my:message-goto-bottom ()
+      (interactive)
+      (let ((old-position (point))
+            (message-position (save-excursion (message-goto-body) (point))))
+        (end-of-buffer)
+        (when (re-search-backward "^-- $" message-position t)
+          (previous-line))
+        (when (equal (point) old-position)
+          (end-of-buffer))))
+
+    (define-key message-mode-map
+      (vector 'remap 'end-of-buffer) 'my:message-goto-bottom)))
 
 (use-package epg-config
   :init
