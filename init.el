@@ -741,7 +741,7 @@ narrowed."
   :defer t
   :requires flyspell
   :bind
-  (("C-. i b"   . ispell-buffer)
+  (("C-. d b"   . ispell-buffer)
    ("C-. d f" . ispell-change-dictionary-to-french)
    ("C-. d e" . ispell-change-dictionary-to-english)
    ("C-. d ?" . ispell-change-dictionary))
@@ -755,14 +755,14 @@ narrowed."
     (defun ispell-change-dictionary-to-french (arg)
       (interactive "P")
       (ispell-change-dictionary "francais")
-      (unless arg
+      (when arg
         (ispell-set-dictionary "francais"))
       (flyspell-buffer))
 
     (defun ispell-change-dictionary-to-english (arg)
       (interactive "P")
       (ispell-change-dictionary "english")
-      (unless arg
+      (when arg
         (ispell-set-dictionary "english"))
       (flyspell-buffer))
 
