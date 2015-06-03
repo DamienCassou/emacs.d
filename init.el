@@ -452,22 +452,6 @@ narrowed."
 
     (add-hook 'dired-mode-hook (lambda () (dired-omit-mode) (dired-hide-details-mode 1)))
 
-    (defun dired-back-to-top ()
-      (interactive)
-      (goto-char (point-min))
-      (dired-next-line (if dired-omit-mode 1 3)))
-
-    (define-key dired-mode-map
-      (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
-
-    (defun dired-jump-to-bottom ()
-      (interactive)
-      (goto-char (point-max))
-      (dired-next-line -1))
-
-    (define-key dired-mode-map
-      (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
-
     (defun dired-move-beginning-of-line ()
       (interactive)
       (let ((point (point)))
