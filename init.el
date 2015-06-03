@@ -1643,7 +1643,13 @@ Saves when `NOSAVE' is non-nil."
   (progn
     (ace-window-display-mode)
     ;; Use same keys for both ace-window and avy
-    (setq aw-keys avy-keys)))
+    (setq aw-keys avy-keys)
+    ;; Make it huge
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:height 6.0
+                    :underline nil
+                    :foreground "red")))))))
 
 (use-package hydra
   :config
