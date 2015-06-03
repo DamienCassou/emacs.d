@@ -1248,46 +1248,38 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (add-hook 'mu4e-compose-pre-hook 'my:mu4e-set-account)
 
-      (defun my:mu4e-addressed-to-me ()
-        (mapconcat
-         (lambda (address) (format "recip:%s" address))
-         mu4e-user-mail-address-list " OR "))
-
-      (defun my:mu4e-in-inbox ()
-        (mapconcat
-         (lambda (account-name) (format "maildir:/%s/INBOX" account-name))
-         (my:mu4e-account-names)
-         " OR "))
-
-      (defun my:mu4e-inbox-query ()
-        (concat
-         "("
-         (my:mu4e-addressed-to-me)
-         ") AND ("
-         (my:mu4e-in-inbox)
-         " OR maildir:\"/GMail/All Mail\") AND (tag:\\\\Inbox OR NOT maildir:\"/GMail/All Mail\")"))
-
       (defun my:mu4e-sent-query ()
         (mapconcat
          (lambda (address) (format "from:%s" address))
          mu4e-user-mail-address-list
          " OR "))
 
-      (defun my:mu4e-inbox-and-unread-query ()
-        (format "(%s) OR (%s)"
-                (my:mu4e-inbox-query)
-                "flag:unread AND NOT flag:trashed AND NOT (list:pharo* OR list:smallwiki*)"))
+      (defun my:mu4e-noisy-mailinglist-query ()
+        "list:pharo* OR list:smallwiki*")
 
-      (defun my:mu4e-to-archive-query ()
-        (my:mu4e-in-inbox))
+      (defun my:mu4e-inbox-folder-or-tag-query ()
+        (format "(%s OR maildir:\"/GMail/All Mail\") AND (tag:\\\\Inbox OR NOT maildir:\"/GMail/All Mail\")"
+                (mapconcat
+                 (lambda (account-name) (format "maildir:/%s/INBOX" account-name))
+                 (my:mu4e-account-names)
+                 " OR ")))
+
+      (defun my:mu4e-new-inbox-query ()
+        (format "(%s) AND (NOT (%s) OR recip:damien*)"
+                (my:mu4e-inbox-folder-or-tag-query)
+                (my:mu4e-noisy-mailinglist-query)))
+
+      (defun my:mu4e-noisy-unarchived-list-query ()
+        (format "(%s) AND (%s)"
+                (my:mu4e-inbox-folder-or-tag-query)
+                (my:mu4e-noisy-mailinglist-query)))
 
       (setq mu4e-bookmarks
-            `((,(my:mu4e-inbox-and-unread-query) "Inbox" ?i)
-              (,(my:mu4e-sent-query) "Sent" ?s)
-              (,(my:mu4e-to-archive-query) "To archive" ?A)
-              ("tag:achats"                                            "Achats"          ?a)
-              ("flag:unread AND NOT flag:trashed AND (list:pharo* OR list:smallwiki*)"      "Pharo"           ?p)
-              ("size:20M..500M"                                        "Large messages"  ?l)))
+            `((,(my:mu4e-new-inbox-query)             "Inbox"          ?i)
+              (,(my:mu4e-noisy-unarchived-list-query) "Pharo"          ?p)
+              (,(my:mu4e-sent-query)                  "Sent"           ?s)
+              ("tag:achats"                           "Achats"         ?A)
+              ("size:20M..500M"                       "Large messages" ?l)))
 
       (my:mu4e-set-account "GMail")
 
