@@ -1798,6 +1798,11 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 (use-package define-word
   :bind (("C-. D" . define-word-at-point)))
 
+(use-package flycheck-package
+  :init
+  (with-eval-after-load "flycheck"
+    (flycheck-package-setup)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
