@@ -25,6 +25,7 @@
 (depends-on "fill-column-indicator") ;; <M-x `fci-mode'> to show the right margin
 (depends-on "flycheck") ;; flycheck to check files on the fly
 (depends-on "flycheck-cask") ;; use Cask when present for dependencies
+(depends-on "flycheck-package") ;; checks elisp package metadata
 (depends-on "git-auto-commit-mode") ;; commit after each file save
 (depends-on "git-timemachine") ;; view history of a file with M-x git-timemachine
 (depends-on "guide-key") ;; help you learn emacs
