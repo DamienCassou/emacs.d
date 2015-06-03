@@ -838,7 +838,8 @@ narrowed."
    ("C-. o a"   . org-agenda)
    ("C-. o SPC" . dc/my-agenda)
    ("C-. o l"   . org-store-link)
-   ("C-. o w"   . my:org-move-to-refile-target))
+   ("C-. o w"   . my:org-move-to-refile-target)
+   ("C-. o s"   . org-save-all-org-buffers))
   :init
   (progn
     (setq org-modules '(org-publish org-protocol org-capture ox-beamer))
@@ -1756,7 +1757,7 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 (add-to-list 'load-path "~/.emacs.d/packages/org-caldav")
 (use-package org-caldav
   :bind
-  (("C-. o s"   . org-caldav-sync))
+  (("C-. o S"   . org-caldav-sync))
   :config
   (progn
     (setq org-caldav-url "https://www.schplaf.org/baikal/cal.php/calendars/damiencnsa"
