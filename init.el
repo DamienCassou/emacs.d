@@ -218,6 +218,7 @@
  '(vc-make-backup-files t)
  '(version-control t)
  '(visible-bell t)
+ '(wgrep-auto-save-buffer t)
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
  '(zoom-frame/buffer (quote frame)))
 (custom-set-faces
