@@ -1554,7 +1554,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (use-package names-dev)
 
 (use-package helm
-  :demand t
   :diminish helm-mode
   :bind (("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
@@ -1564,10 +1563,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("M-i"     . helm-semantic-or-imenu)
          ("C-h SPC" . helm-all-mark-rings)
          ("C-:"     . helm-eval-expression-with-eldoc))
+  :init
+  (progn
+    (require 'helm-config))
   :config
   (progn
-    (require 'helm-config)
-
     (define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-i")   #'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z")   #'helm-select-action)
