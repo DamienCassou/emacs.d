@@ -1810,6 +1810,10 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   (with-eval-after-load "flycheck"
     (flycheck-package-setup)))
 
+(use-package avy-zap
+  :bind (("M-z" . avy-zap-to-char-dwim)
+         ("M-Z" . avy-zap-up-to-char-dwim)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)

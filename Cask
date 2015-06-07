@@ -10,6 +10,7 @@
 (depends-on "anzu") ;; more interactive query-replace
 (depends-on "auctex") ;; LaTeX mode
 (depends-on "avy") ;; move fast in buffer with <C-,>
+(depends-on "avy-zap") ;; zap to char with <M-z> using avy
 (depends-on "dash") ;; list library
 (depends-on "define-word") ;; <C-. D> to get the definition of a word
 (depends-on "diminish") ;; Shorter mode names in the modeline
