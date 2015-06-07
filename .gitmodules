@@ -7,3 +7,9 @@
 [submodule "packages/mu"]
 	path = packages/mu
 	url = https://github.com/djcb/mu.git
+[submodule "packages/pycarddavel"]
+	path = packages/pycarddavel
+	url = git@github.com:DamienCassou/pycarddavel.git
+[submodule "packages/beginend"]
+	path = packages/beginend
+	url = git@github.com:DamienCassou/beginend.git
