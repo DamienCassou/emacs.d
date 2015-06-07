@@ -1810,6 +1810,13 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   (with-eval-after-load "flycheck"
     (flycheck-package-setup)))
 
+(add-to-list 'load-path "~/.emacs.d/packages/beginend")
+(use-package beginend
+  :diminish '(beginend-dired-mode beginend-message-mode)
+  :config
+  (progn
+    (beginend-setup-all)))
+
 (use-package avy-zap
   :bind (("M-z" . avy-zap-to-char-dwim)
          ("M-Z" . avy-zap-up-to-char-dwim)))
