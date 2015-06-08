@@ -229,6 +229,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(anzu-mode-line ((t (:foreground "black" :weight bold))))
+ '(aw-leading-char-face ((t (:height 6.0 :underline nil :foreground "red"))))
  '(hl-line ((t (:underline t))))
  '(mode-line ((t (:background "#bd6626" :foreground "#f6f3e8"))))
  '(mode-line-highlight ((t (:foreground unspecified :background unspecified :weight bold))))
@@ -1646,13 +1647,7 @@ Saves when `NOSAVE' is non-nil."
   (progn
     (ace-window-display-mode)
     ;; Use same keys for both ace-window and avy
-    (setq aw-keys avy-keys)
-    ;; Make it huge
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:height 6.0
-                    :underline nil
-                    :foreground "red")))))))
+    (setq aw-keys avy-keys)))
 
 (use-package hydra
   :config
