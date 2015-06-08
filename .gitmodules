@@ -16,3 +16,6 @@
 [submodule "packages/org-caldav"]
 	path = packages/org-caldav
 	url = git@github.com:DamienCassou/org-caldav.git
+[submodule "packages/auth-password-store"]
+	path = packages/auth-password-store
+	url = git@github.com:DamienCassou/auth-password-store.git
