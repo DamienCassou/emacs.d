@@ -18,6 +18,7 @@
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")))
+ '(avy-style (quote at-full))
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(bibtex-align-at-equal-sign t)
