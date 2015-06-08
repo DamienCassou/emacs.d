@@ -13,3 +13,6 @@
 [submodule "packages/beginend"]
 	path = packages/beginend
 	url = git@github.com:DamienCassou/beginend.git
+[submodule "packages/org-caldav"]
+	path = packages/org-caldav
+	url = git@github.com:DamienCassou/org-caldav.git

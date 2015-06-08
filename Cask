@@ -44,7 +44,6 @@
 (depends-on "names") ;; a namespace implementation
 (depends-on "niflheim-theme") ;; Nicolas&Ben's theme
 (depends-on "nix-mode") ;; major mode to edit nix expressions
-(depends-on "org-caldav") ;; Synchronize caldav and org-mode
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
 (depends-on "paredit") ;; edit lisp AST instead of characters
