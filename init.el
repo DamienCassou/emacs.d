@@ -111,6 +111,7 @@
  '(message-signature-file "~/.signature")
  '(mu4e-attachment-dir "/tmp")
  '(mu4e-completing-read-function (quote completing-read))
+ '(mu4e-compose-complete-addresses nil nil nil "Use pycarddavel instead")
  '(mu4e-compose-signature t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
@@ -1821,6 +1822,14 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 (use-package avy-zap
   :bind (("M-z" . avy-zap-to-char-dwim)
          ("M-Z" . avy-zap-up-to-char-dwim)))
+
+(add-to-list 'load-path "~/.emacs.d/packages/pycarddavel")
+(use-package pycarddavel
+  :bind (("C-. c" . pycarddavel-search-with-helm))
+  :init
+  (progn
+    (with-eval-after-load "mu4e-compose"
+      (bind-key "M-/" #'pycarddavel-search-with-helm mu4e-compose-mode-map))))
 
 ;;; Emacs Configuration
 ;; Local Variables:
