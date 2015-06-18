@@ -1172,7 +1172,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
                (smtpmail-queue-dir "~/Mail/GMail/queued-mail/")
                (smtpmail-local-domain nil)
                (smtpmail-smtp-user "damien.cassou@gmail.com")
-               (smtpmail-smtp-server "smtp.gmail.com")
+               (smtpmail-smtp-server "QUIT_GMAIL")
                (smtpmail-stream-type starttls)
                (smtpmail-smtp-service 587))
               ("Pro"
