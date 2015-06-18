@@ -1215,15 +1215,18 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (defun my:mu4e-account-names ()
         (mapcar #'car my:mu4e-account-alist))
 
+      (defun my:mu4e-select-account ()
+        (let ((account-names (my:mu4e-account-names)))
+          (completing-read "Compose with account: "
+                           account-names
+                           nil t nil nil (car account-names))))
+
       (defun my:mu4e-guess-account ()
         (if mu4e-compose-parent-message
             (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
               (string-match "/\\(.*?\\)/" maildir)
               (match-string 1 maildir))
-          (let ((account-names (my:mu4e-account-names)))
-            (completing-read "Compose with account: "
-                             account-names
-                             nil t nil nil (car account-names)))))
+          (my:mu4e-select-account)))
 
       (defun my:mu4e-set-account (&optional account)
         "Set the account for composing a message."
@@ -1236,6 +1239,16 @@ able to type <C-c left left left> to undo 3 times whereas it was
             (error "No email account found"))))
 
       (add-hook 'mu4e-compose-pre-hook 'my:mu4e-set-account)
+
+      (defun my:mu4e-force-account (account)
+        "Ask the user for the account to use.
+This is useful when answering an email with another address."
+        (interactive (list (my:mu4e-select-account)))
+        (my:mu4e-set-account account)
+        (message-goto-from)
+        (message-beginning-of-line)
+        (kill-line)
+        (insert user-mail-address))
 
       (defun my:mu4e-sent-query ()
         (mapconcat
