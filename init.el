@@ -17,7 +17,7 @@
  '(TeX-parse-self t)
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
- '(auth-sources (quote ("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")))
+ '(auth-source-do-cache nil nil nil "Don't save as I'm doing experiments with gnupg")
  '(avy-style (quote at-full))
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
@@ -1825,6 +1825,13 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   (progn
     (with-eval-after-load "mu4e-compose"
       (bind-key "M-/" #'pycarddavel-search-with-helm mu4e-compose-mode-map))))
+
+(add-to-list 'load-path "~/.emacs.d/packages/auth-password-store")
+(use-package auth-password-store
+  :demand t
+  :init
+  (progn
+    (setq auth-sources '(password-store))))
 
 ;;; Emacs Configuration
 ;; Local Variables:
