@@ -1438,7 +1438,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (use-package eldoc)
         (eldoc-add-command 'paredit-backward-delete 'paredit-close-round)))
 
-    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
+    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+    (add-hook 'lisp-mode-hook #'enable-paredit-mode)))
 
 (use-package autorevert
   :defer t
@@ -1553,6 +1554,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+    (add-hook 'lisp-mode-hook #'aggressive-indent-mode)
     (add-hook 'css-mode-hook #'aggressive-indent-mode)))
 
 (use-package names-dev)
