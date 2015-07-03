@@ -649,22 +649,22 @@ narrowed."
        (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz" "*.toc"))
       (magit-refresh))
 
-    ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html?source=rss
+    ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html
+    ;; http://endlessparentheses.com/create-github-prs-from-emacs-with-magit.html
     (defun endless/visit-pull-request-url ()
       "Visit the current branch's PR on Github."
       (interactive)
       (browse-url
-       (format "https://github.com/%s/compare/%s"
+       (format "https://github.com/%s/pull/new/%s"
                (replace-regexp-in-string
                 "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
                 (magit-get "remote"
-                           (magit-get-current-remote)
+                           (magit-get-remote)
                            "url"))
-               (magit-get-current-branch))))
+               (cdr (magit-get-remote-branch)))))
 
-    (eval-after-load 'magit
-      '(define-key magit-mode-map "V"
-         #'endless/visit-pull-request-url))
+    (define-key magit-mode-map "v"
+      #'endless/visit-pull-request-url)
 
     ;; http://endlessparentheses.com/automatically-configure-magit-to-access-github-prs.html
     (defun endless/add-PR-fetch ()
