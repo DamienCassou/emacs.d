@@ -1807,11 +1807,7 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 
 (add-to-list 'load-path "~/.emacs.d/packages/pycarddavel")
 (use-package pycarddavel
-  :bind (("C-. c" . pycarddavel-search-with-helm))
-  :init
-  (progn
-    (with-eval-after-load "mu4e-compose"
-      (bind-key "M-/" #'pycarddavel-search-with-helm mu4e-compose-mode-map))))
+  :bind (("C-. c" . pycarddavel-search-with-helm)))
 
 (add-to-list 'load-path "~/.emacs.d/packages/auth-password-store")
 (use-package auth-password-store
