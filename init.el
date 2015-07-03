@@ -249,44 +249,6 @@
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
-(require 'cask "~/.emacs.d/packages/cask/cask.el")
-(cask-initialize)
-
-(require 'powerline nil t)
-(with-eval-after-load 'powerline
-  (powerline-default-theme))
-
-(require 'bind-key "~/.emacs.d/packages/use-package/bind-key.el")
-(require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
-(eval-when-compile
-  (setq use-package-verbose (null byte-compile-current-file)))
-
-(defun set-selected-frame-dark ()
-  (interactive)
-  (let ((frame-name (cdr (assq 'name (frame-parameters (selected-frame))))))
-    (call-process-shell-command
-     (format
-      "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
-      frame-name))))
-
-(use-package-with-elapsed-timer "Starting server"
-  (server-start))
-
-(defun my:setup-frame ()
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (when (window-system)
-    (ignore-errors (load-theme 'niflheim))
-    (set-selected-frame-dark)))
-
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (select-frame frame)
-                (my:setup-frame)))
-  (my:setup-frame))
-
-
-
 (defun darwinp ()
   (interactive)
   "Return true if system is darwin-based (Mac OS X)"
@@ -320,6 +282,40 @@
                                    ;; the PATH
 
 (mapc 'add-to-executable-path '("~/.emacs.d/packages/cask/bin"))
+
+
+(require 'cask "~/.emacs.d/packages/cask/cask.el")
+(cask-initialize)
+
+(require 'powerline nil t)
+(with-eval-after-load 'powerline
+  (powerline-default-theme))
+
+(require 'bind-key "~/.emacs.d/packages/use-package/bind-key.el")
+(require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
+(eval-when-compile
+  (setq use-package-verbose (null byte-compile-current-file)))
+
+(defun set-selected-frame-dark ()
+  (interactive)
+  (let ((frame-name (cdr (assq 'name (frame-parameters (selected-frame))))))
+    (call-process-shell-command
+     (format
+      "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
+      frame-name))))
+
+(defun my:setup-frame ()
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (when (window-system)
+    (ignore-errors (load-theme 'niflheim))
+    (set-selected-frame-dark)))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+                (my:setup-frame)))
+  (my:setup-frame))
 
 (defun suspend-on-tty-only ()
   (interactive)
