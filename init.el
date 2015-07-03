@@ -239,6 +239,7 @@
  '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
  '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
  '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
+ '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic))))
  '(powerline-active1 ((t (:inherit mode-line :background "#666666" :foreground "#f6f3e8"))))
  '(powerline-active2 ((t (:inherit mode-line :background "#252525" :foreground "#f6f3e8"))))
  '(powerline-inactive2 ((t (:inherit mode-line :background "#666666" :foreground "#aaaaaa"))))
