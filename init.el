@@ -1163,93 +1163,69 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (setenv "MU_PLAY_PROGRAM" "eopen")
 
-      (setq my:mu4e-account-alist
-            '(("GMail"
-               (mu4e-trash-folder "/GMail/Trash")
-               (mu4e-sent-folder "/GMail/All Mail")
-               (mu4e-sent-messages-behavior delete)
-               (mu4e-drafts-folder "/GMail/Drafts")
-               (user-mail-address "damien.cassou@gmail.com")
-               (smtpmail-queue-dir "~/Mail/GMail/queued-mail/")
-               (smtpmail-local-domain nil)
-               (smtpmail-smtp-user "damien.cassou@gmail.com")
-               (smtpmail-smtp-server "QUIT_GMAIL")
-               (smtpmail-stream-type starttls)
-               (smtpmail-smtp-service 587))
-              ("Pro"
-               (mu4e-trash-folder "/Pro/Trash")
-               (mu4e-sent-folder "/Pro/Sent")
-               (mu4e-sent-messages-behavior sent)
-               (mu4e-drafts-folder "/Pro/Drafts")
-               (user-mail-address "damien.cassou@inria.fr")
-               (smtpmail-queue-dir "~/Mail/Pro/queued-mail/")
-               (smtpmail-local-domain nil)
-               (smtpmail-smtp-user "cassou")
-               (smtpmail-smtp-server "smtp.inria.fr")
-               (smtpmail-stream-type starttls)
-               (smtpmail-smtp-service 587))
-              ("Lille1"
-               (mu4e-trash-folder "/Lille1/Trash")
-               (mu4e-sent-folder "/Lille1/Sent")
-               (mu4e-sent-messages-behavior sent)
-               (mu4e-drafts-folder "/Lille1/Drafts")
-               (user-mail-address "damien.cassou@univ-lille1.fr")
-               (smtpmail-queue-dir "~/Mail/Lille1/queued-mail/")
-               (smtpmail-local-domain nil)
-               (smtpmail-smtp-user "cassou")
-               (smtpmail-smtp-server "smtps.univ-lille1.fr")
-               (smtpmail-stream-type starttls)
-               (smtpmail-smtp-service 587))
-              ("Perso"
-               (mu4e-trash-folder "/Perso/Trash")
-               (mu4e-sent-folder "/Perso/Sent")
-               (mu4e-sent-messages-behavior sent)
-               (mu4e-drafts-folder "/Perso/Drafts")
-               (user-mail-address "damien@cassou.me")
-               (smtpmail-queue-dir "~/Mail/Perso/queued-mail/")
-               (smtpmail-local-domain "inria.fr")
-               (smtpmail-smtp-user "dcassou")
-               (smtpmail-smtp-server "bender.ldn-fai.net")
-               (smtpmail-stream-type ssl)
-               (smtpmail-smtp-service 465))))
-
-      (defun my:mu4e-account-names ()
-        (mapcar #'car my:mu4e-account-alist))
-
-      (defun my:mu4e-select-account ()
-        (let ((account-names (my:mu4e-account-names)))
-          (completing-read "Compose with account: "
-                           account-names
-                           nil t nil nil (car account-names))))
-
-      (defun my:mu4e-guess-account ()
-        (if mu4e-compose-parent-message
-            (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
-              (string-match "/\\(.*?\\)/" maildir)
-              (match-string 1 maildir))
-          (my:mu4e-select-account)))
-
-      (defun my:mu4e-set-account (&optional account)
-        "Set the account for composing a message."
-        (interactive)
-        (let* ((account (or account (my:mu4e-guess-account)))
-               (account-vars (cdr (assoc account my:mu4e-account-alist))))
-          (if account-vars
-              (mapc (lambda (var) (set (car var) (cadr var)))
-                    account-vars)
-            (error "No email account found"))))
-
-      (add-hook 'mu4e-compose-pre-hook 'my:mu4e-set-account)
-
-      (defun my:mu4e-force-account (account)
-        "Ask the user for the account to use.
-This is useful when answering an email with another address."
-        (interactive (list (my:mu4e-select-account)))
-        (my:mu4e-set-account account)
-        (message-goto-from)
-        (message-beginning-of-line)
-        (kill-line)
-        (insert user-mail-address))
+      (add-to-list 'load-path "~/.emacs.d/packages/multimu4e")
+      (use-package multimu4e
+        :demand t
+        :init
+        (progn
+          (add-hook 'mu4e-compose-pre-hook #'multimu4e-set-account-in-compose)
+          (bind-key "C-c F" #'multimu4e-force-account-in-compose))
+        :config
+        (progn
+          (setq multimu4e-account-alist
+                '(("GMail"
+                   (multimu4e-account-maildir . "/GMail")
+                   (mu4e-trash-folder . "/GMail/Trash")
+                   (mu4e-sent-folder . "/GMail/All Mail")
+                   (mu4e-sent-messages-behavior . delete)
+                   (mu4e-drafts-folder . "/GMail/Drafts")
+                   (user-mail-address . "damien.cassou@gmail.com")
+                   (smtpmail-queue-dir . "~/Mail/GMail/queued-mail/")
+                   (smtpmail-local-domain . nil)
+                   (smtpmail-smtp-user . "damien.cassou@gmail.com")
+                   (smtpmail-smtp-server . "QUIT_GMAIL")
+                   (smtpmail-stream-type . starttls)
+                   (smtpmail-smtp-service . 587))
+                  ("Pro"
+                   (multimu4e-account-maildir . "/Pro")
+                   (mu4e-trash-folder . "/Pro/Trash")
+                   (mu4e-sent-folder . "/Pro/Sent")
+                   (mu4e-sent-messages-behavior . sent)
+                   (mu4e-drafts-folder . "/Pro/Drafts")
+                   (user-mail-address . "damien.cassou@inria.fr")
+                   (smtpmail-queue-dir . "~/Mail/Pro/queued-mail/")
+                   (smtpmail-local-domain . nil)
+                   (smtpmail-smtp-user . "cassou")
+                   (smtpmail-smtp-server . "smtp.inria.fr")
+                   (smtpmail-stream-type . starttls)
+                   (smtpmail-smtp-service . 587))
+                  ("Lille1"
+                   (multimu4e-account-maildir . "/Lille1")
+                   (mu4e-trash-folder . "/Lille1/Trash")
+                   (mu4e-sent-folder . "/Lille1/Sent")
+                   (mu4e-sent-messages-behavior . sent)
+                   (mu4e-drafts-folder . "/Lille1/Drafts")
+                   (user-mail-address . "damien.cassou@univ-lille1.fr")
+                   (smtpmail-queue-dir . "~/Mail/Lille1/queued-mail/")
+                   (smtpmail-local-domain . nil)
+                   (smtpmail-smtp-user . "cassou")
+                   (smtpmail-smtp-server . "smtps.univ-lille1.fr")
+                   (smtpmail-stream-type . starttls)
+                   (smtpmail-smtp-service . 587))
+                  ("Perso"
+                   (multimu4e-account-maildir . "/Perso")
+                   (mu4e-trash-folder . "/Perso/Trash")
+                   (mu4e-sent-folder . "/Perso/Sent")
+                   (mu4e-sent-messages-behavior . sent)
+                   (mu4e-drafts-folder . "/Perso/Drafts")
+                   (user-mail-address . "damien@cassou.me")
+                   (smtpmail-queue-dir . "~/Mail/Perso/queued-mail/")
+                   (smtpmail-local-domain . "inria.fr")
+                   (smtpmail-smtp-user . "dcassou")
+                   (smtpmail-smtp-server . "bender.ldn-fai.net")
+                   (smtpmail-stream-type . ssl)
+                   (smtpmail-smtp-service . 465))))
+          (multimu4e-set-account-from-name "Perso")))
 
       (defun my:mu4e-sent-query ()
         (mapconcat
@@ -1264,7 +1240,7 @@ This is useful when answering an email with another address."
         (format "(%s OR maildir:\"/GMail/All Mail\") AND (tag:\\\\Inbox OR NOT maildir:\"/GMail/All Mail\")"
                 (mapconcat
                  (lambda (account-name) (format "maildir:/%s/INBOX" account-name))
-                 (my:mu4e-account-names)
+                 (multimu4e-account-names)
                  " OR ")))
 
       (defun my:mu4e-new-inbox-query ()
@@ -1283,8 +1259,6 @@ This is useful when answering an email with another address."
               (,(my:mu4e-sent-query)                  "Sent"           ?s)
               ("tag:achats"                           "Achats"         ?a)
               ("size:20M..500M"                       "Large messages" ?l)))
-
-      (my:mu4e-set-account "GMail")
 
       (require 'mu4e-contrib)
       (require 'smtpmail)
