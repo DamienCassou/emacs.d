@@ -5,8 +5,10 @@
       '(
         LaTeX-insert-left-brace
         TeX-insert-backslash
+        avy-zap-to-char-dwim
         clipboard-kill-region
         dired-unmark-all-files
+        helm-show-kill-ring
         hungry-delete-backward
         hungry-delete-forward
         indent-for-tab-command

@@ -19,3 +19,6 @@
 [submodule "packages/auth-password-store"]
 	path = packages/auth-password-store
 	url = git@github.com:DamienCassou/auth-password-store.git
+[submodule "packages/shampoo"]
+	path = packages/shampoo
+	url = https://github.com/dmatveev/shampoo-emacs.git
