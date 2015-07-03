@@ -684,11 +684,11 @@ narrowed."
     (add-hook 'magit-mode-hook #'endless/add-PR-fetch)))
 
 (use-package info
-  :bind ("C-h i" . info-other-window)
-  :init
+  :bind ("C-h i" . my:info-other-window)
+  :config
   (progn
     ;; Redefines info-other-window to use features of `info'
-    (defun info-other-window (&optional file-or-node buffer)
+    (defun my:info-other-window (&optional file-or-node buffer)
       "Like `info' but show the Info buffer in another window."
       (interactive
        (list
