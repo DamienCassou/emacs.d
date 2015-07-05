@@ -306,7 +306,7 @@
 (defun my:setup-frame ()
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (when (window-system)
-    (ignore-errors (load-theme 'niflheim))
+    (ignore-errors (load-theme 'zerodark))
     (set-selected-frame-dark)))
 
 (if (daemonp)

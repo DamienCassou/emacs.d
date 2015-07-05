@@ -42,7 +42,6 @@
 (depends-on "markdown-mode") ;; Major mode for markdown format
 (depends-on "multiple-cursors") ;; Control multiple cursors with <C-S-c C-S-c>
 (depends-on "names") ;; a namespace implementation
-(depends-on "niflheim-theme") ;; Nicolas&Ben's theme
 (depends-on "nix-mode") ;; major mode to edit nix expressions
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
@@ -67,6 +66,7 @@
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
 (depends-on "visible-mark") ;; show the current mark
 (depends-on "wgrep-helm") ;; edit grep buffers
+(depends-on "zerodark-theme") ;; Nicolas' theme
 (depends-on "zoom-frm") ;; increase/decrease font size for all buffers <C-x C-+>
 
 ;; <z> in dired to facilitate extraction of archive files
