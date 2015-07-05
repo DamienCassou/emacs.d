@@ -639,7 +639,7 @@ narrowed."
       :defer t
       :init
       (progn
-        (add-hook 'magit-mode-hook 'turn-on-magit-svn))
+        (add-hook 'magit-mode-hook 'magit-svn-mode))
       :diminish magit-svn-mode)
 
     (defun magit-ignore-latex-project ()
