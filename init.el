@@ -635,8 +635,12 @@ narrowed."
   :bind ("C-x g" . magit-status)
   :config
   (progn
-    (require 'magit-svn)
-    (add-hook 'magit-mode-hook 'turn-on-magit-svn)
+    (use-package magit-svn
+      :defer t
+      :init
+      (progn
+        (add-hook 'magit-mode-hook 'turn-on-magit-svn))
+      :diminish magit-svn-mode)
 
     (defun magit-ignore-latex-project ()
       (interactive)
@@ -714,10 +718,6 @@ narrowed."
     (eval-after-load "help-mode"
       `(progn
          (define-key help-mode-map "o" 'ace-link-help)))))
-
-(use-package magit-svn
-  :defer t
-  :diminish magit-svn-mode)
 
 (use-package ispell
   :defer t
