@@ -99,11 +99,10 @@
  '(kept-new-versions 6)
  '(kept-old-versions 10)
  '(load-prefer-newer t)
- '(magit-commit-signoff t)
- '(magit-repo-dirs
+ '(magit-repository-directories
    (quote
     ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
- '(magit-repo-dirs-depth 1)
+ '(magit-repository-directories-depth 1)
  '(menu-bar-mode nil)
  '(message-default-charset (quote utf-8))
  '(message-log-max t)
@@ -634,9 +633,6 @@ narrowed."
 (use-package magit
   :diminish magit-auto-revert-mode
   :bind ("C-x g" . magit-status)
-  :init
-  (progn
-    (setq magit-last-seen-setup-instructions "1.4.0"))
   :config
   (progn
     (require 'magit-svn)
