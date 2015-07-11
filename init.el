@@ -504,15 +504,15 @@ narrowed."
   :config
   (progn
     (add-to-list 'bibtex-BibTeX-entry-alist
-                      '("software" "A software"
-                        (("title")
-                         ("version")
-                         ("organization")
-                         ("month")
-                         ("year")
-                         ("id"))
-                        nil
-                        nil))
+                 '("software" "A software"
+                   (("title")
+                    ("version")
+                    ("organization")
+                    ("month")
+                    ("year")
+                    ("id"))
+                   nil
+                   nil))
 
     ;; "keywords" should be a recognized field
     (mapc
@@ -547,10 +547,10 @@ narrowed."
     (defun my:color (type)
       (require 'cl-lib)
       (cl-case type
-           ('alert "red")
-           ('good "lime green")
-           ('warning "dark orange")
-           (t "black")))
+        ('alert "red")
+        ('good "lime green")
+        ('warning "dark orange")
+        (t "black")))
 
     (defun my:mprint (obj &optional color)
       (if color
@@ -1676,7 +1676,7 @@ Frames: _f_rame new  _df_ delete
              (windmove-down)))
       ("v" split-window-right)
       ("x" split-window-below)
-                                        ;("t" transpose-frame "'")
+      ;;("t" transpose-frame "'") ;
       ("u" winner-undo)
       ("r" winner-redo) ;;Fixme, not working?
       ("o" delete-other-windows :exit t)
