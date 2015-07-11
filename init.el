@@ -335,7 +335,7 @@
 
 (bind-key "<f5>" 'comment-region)
 
-; Replace `just-one-space' by the more advanced `cycle-spacing'.
+;; Replace `just-one-space' by the more advanced `cycle-spacing'.
 (bind-key "M-SPC" #'cycle-spacing)
 
 (defun my-join-line ()
