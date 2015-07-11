@@ -1820,6 +1820,19 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   (progn
     (setq auth-sources '(password-store))))
 
+(use-package help
+  :defer t
+  :config
+  (progn
+    (defun my:revert-buffer-no-confirm (&optional ignore-auto)
+      "Revert current buffer without asking."
+      (interactive (list (not current-prefix-arg)))
+      (revert-buffer ignore-auto t nil))
+    ;; Make sure `g' reverts buffer without confirmation
+    (bind-key (vector 'remap 'revert-buffer)
+              #'my:revert-buffer-no-confirm
+              help-mode-map)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
