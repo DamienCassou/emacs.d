@@ -848,7 +848,7 @@ narrowed."
    ("C-. o s"   . org-save-all-org-buffers))
   :init
   (progn
-    (setq org-modules '(org-publish org-protocol org-capture ox-beamer))
+    (setq org-modules '(org-protocol org-capture ox-beamer))
 
     (eval-after-load "org-latex"
       `(progn
