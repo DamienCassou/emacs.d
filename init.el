@@ -99,10 +99,15 @@
  '(kept-new-versions 6)
  '(kept-old-versions 10)
  '(load-prefer-newer t)
+ '(magit-diff-refine-hunk t)
  '(magit-repository-directories
    (quote
     ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
  '(magit-repository-directories-depth 1)
+ '(magit-revert-buffers t)
+ '(magit-wip-after-apply-mode t)
+ '(magit-wip-after-save-mode t)
+ '(magit-wip-before-change-mode t)
  '(menu-bar-mode nil)
  '(message-default-charset (quote utf-8))
  '(message-log-max t)
@@ -631,16 +636,19 @@ narrowed."
                       "bibliographysoft")))))
 
 (use-package magit
-  :diminish magit-auto-revert-mode
-  :bind ("C-x g" . magit-status)
+  :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
+  :bind (("C-x g" . magit-status) ("C-x G" . magit-dispatch-popup))
   :config
   (progn
     (use-package magit-svn
       :defer t
       :init
       (progn
-        (add-hook 'magit-mode-hook 'magit-svn-mode))
+        (add-hook 'magit-mode-hook #'magit-svn-mode))
       :diminish magit-svn-mode)
+
+    (when magit-wip-before-change-mode
+      (add-to-list 'magit-no-confirm #'safe-with-wip))
 
     (defun magit-ignore-latex-project ()
       (interactive)
