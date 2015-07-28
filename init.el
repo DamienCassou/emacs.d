@@ -199,7 +199,6 @@
  '(skeletor-show-project-command (quote magit-status))
  '(smart-tab-completion-functions-alist nil)
  '(smart-tab-using-hippie-expand t)
- '(smex-save-file "~/.emacs.d/smex-items")
  '(smtpmail-default-smtp-server "smtp.gmail.com")
  '(smtpmail-queue-mail nil)
  '(smtpmail-smtp-server "smtp.gmail.com")
