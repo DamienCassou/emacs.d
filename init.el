@@ -633,6 +633,7 @@ narrowed."
   (progn
     (use-package magit-svn
       :defer t
+      :disabled t
       :init
       (progn
         (add-hook 'magit-mode-hook #'magit-svn-mode))
