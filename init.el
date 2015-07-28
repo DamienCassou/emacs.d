@@ -224,8 +224,11 @@
  '(vc-make-backup-files t)
  '(version-control t)
  '(visible-bell t)
+ '(visible-mark-faces (quote (visible-mark-face1 visible-mark-face2)))
+ '(visible-mark-max 2)
  '(wgrep-auto-save-buffer t)
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
+ '(zerodark-use-paddings-in-mode-line nil)
  '(zoom-frame/buffer (quote frame)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -235,19 +238,8 @@
  '(anzu-mode-line ((t (:foreground "black" :weight bold))))
  '(aw-leading-char-face ((t (:height 6.0 :underline nil :foreground "red"))))
  '(hl-line ((t (:underline t))))
- '(mode-line ((t (:background "#bd6626" :foreground "#f6f3e8"))))
- '(mode-line-highlight ((t (:foreground unspecified :background unspecified :weight bold))))
- '(mode-line-inactive ((t (:background "#454545" :foreground "#666666"))))
  '(mu4e-header-highlight-face ((t (:underline t))))
- '(org-agenda-done ((t (:foreground "LightSalmon" :strike-through t))))
- '(org-done ((t (:foreground "LightSalmon" :strike-through t :weight bold))))
- '(org-headline-done ((t (:foreground "LightSalmon" :strike-through t))))
- '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic))))
- '(powerline-active1 ((t (:inherit mode-line :background "#666666" :foreground "#f6f3e8"))))
- '(powerline-active2 ((t (:inherit mode-line :background "#252525" :foreground "#f6f3e8"))))
- '(powerline-inactive2 ((t (:inherit mode-line :background "#666666" :foreground "#aaaaaa"))))
- '(visible-mark-face1 ((t (:background "red" :foreground "black"))))
- '(visible-mark-face2 ((t (:background "salmon" :foreground "black")))))
+ '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic)))))
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
@@ -1502,8 +1494,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (global-visible-mark-mode 1)
-    (setq visible-mark-max 2)
-    (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
     (defface visible-mark-active
       '((((type tty) (class mono)))
         (t (:background "magenta"))) "")))
