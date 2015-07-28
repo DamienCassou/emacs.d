@@ -1691,42 +1691,6 @@ Frames: _f_rame new  _df_ delete
             (defun my:projectile-ag ()
               (interactive)
               (helm-ag (projectile-project-root)))))
-
-        (defhydra hydra-projectile (:color teal :hint nil)
-          "
-     PROJECTILE: %(projectile-project-root)
-
-     Find File            Search/Tags          Buffers                Cache
-------------------------------------------------------------------------------------------
-_s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache clear
- _ff_: file dwim       _g_: update gtags      _b_: switch to buffer  _x_: remove known project
- _fd_: file curr dir   _o_: multi-occur     _s-k_: Kill all buffers  _X_: cleanup non-existing
-  _r_: recent file                                               ^^^^_z_: cache current
-  _d_: dir
-
-"
-          ("a"   my:projectile-ag)
-          ("b"   projectile-switch-to-buffer)
-          ("c"   projectile-invalidate-cache)
-          ("d"   projectile-find-dir)
-          ("fF" projectile-find-file)
-          ("ff"  projectile-find-file-dwim)
-          ("fd"  projectile-find-file-in-directory)
-          ("g"   ggtags-update-tags)
-          ("s-g" ggtags-update-tags)
-          ("i"   projectile-ibuffer)
-          ("K"   projectile-kill-buffers)
-          ("m"   projectile-multi-occur)
-          ("o"   projectile-multi-occur)
-          ("p"   projectile-switch-project "switch project")
-          ("s"   projectile-switch-project)
-          ("r"   projectile-recentf)
-          ("x"   projectile-remove-known-project)
-          ("X"   projectile-cleanup-known-projects)
-          ("z"   projectile-cache-current-file)
-          ("`"   hydra-projectile-other-window/body "other window")
-          ("q"   nil "cancel" :color blue))
-
         (global-set-key (kbd "C-. ;") #'hydra-projectile/body)))))
 
 (add-to-list 'load-path "~/.emacs.d/packages/org-caldav")
