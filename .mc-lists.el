@@ -7,6 +7,7 @@
         TeX-insert-backslash
         avy-zap-to-char-dwim
         clipboard-kill-region
+        cycle-spacing
         dired-unmark-all-files
         helm-show-kill-ring
         hungry-delete-backward
@@ -26,6 +27,7 @@
         paredit-backward-kill-word
         paredit-doublequote
         paredit-forward-delete
+        paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-open-round
         skeleton-pair-insert-maybe
