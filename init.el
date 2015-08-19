@@ -411,6 +411,11 @@ narrowed."
 
 (bind-key "n" 'narrow-or-widen-dwim endless/toggle-map)
 
+(bind-key "C-x 8 <right>" (lambda () (interactive) (insert-char ?→))) ; rightwards arrow
+(bind-key "C-x 8 <left>" (lambda () (interactive) (insert-char ?←))) ; leftwards arrow
+(bind-key "C-x 8 <up>" (lambda () (interactive) (insert-char ?↑))) ; upwards arrow
+(bind-key "C-x 8 <down>" (lambda () (interactive) (insert-char ?↓))) ; downwards arrow
+
 (use-package ethan-wspace
   :diminish ethan-wspace-mode
   :demand t
