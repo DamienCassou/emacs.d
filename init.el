@@ -1161,18 +1161,18 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (setenv "MU_PLAY_PROGRAM" "eopen")
 
-      (add-to-list 'load-path "~/.emacs.d/packages/multimu4e")
-      (use-package multimu4e
+      (add-to-list 'load-path "~/.emacs.d/packages/profile")
+      (use-package profile
         :demand t
         :init
         (progn
-          (add-hook 'mu4e-compose-pre-hook #'multimu4e-set-account-in-compose)
-          (bind-key "C-c F" #'multimu4e-force-account-in-compose))
+          (add-hook 'mu4e-compose-pre-hook #'profile-set-profile-in-compose)
+          (bind-key "C-c F" #'profile-force-profile-in-compose message-mode-map))
         :config
         (progn
-          (setq multimu4e-account-alist
+          (setq profile-binding-alist
                 '(("GMail"
-                   (multimu4e-account-maildir . "/GMail")
+                   (profile-maildir . "/GMail")
                    (mu4e-trash-folder . "/GMail/Trash")
                    (mu4e-sent-folder . "/GMail/All Mail")
                    (mu4e-sent-messages-behavior . delete)
@@ -1185,7 +1185,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
                    (smtpmail-stream-type . starttls)
                    (smtpmail-smtp-service . 587))
                   ("Pro"
-                   (multimu4e-account-maildir . "/Pro")
+                   (profile-maildir . "/Pro")
                    (mu4e-trash-folder . "/Pro/Trash")
                    (mu4e-sent-folder . "/Pro/Sent")
                    (mu4e-sent-messages-behavior . sent)
@@ -1198,7 +1198,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
                    (smtpmail-stream-type . starttls)
                    (smtpmail-smtp-service . 587))
                   ("Lille1"
-                   (multimu4e-account-maildir . "/Lille1")
+                   (profile-maildir . "/Lille1")
                    (mu4e-trash-folder . "/Lille1/Trash")
                    (mu4e-sent-folder . "/Lille1/Sent")
                    (mu4e-sent-messages-behavior . sent)
@@ -1211,7 +1211,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
                    (smtpmail-stream-type . starttls)
                    (smtpmail-smtp-service . 587))
                   ("Perso"
-                   (multimu4e-account-maildir . "/Perso")
+                   (profile-maildir . "/Perso")
                    (mu4e-trash-folder . "/Perso/Trash")
                    (mu4e-sent-folder . "/Perso/Sent")
                    (mu4e-sent-messages-behavior . sent)
@@ -1223,7 +1223,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
                    (smtpmail-smtp-server . "bender.ldn-fai.net")
                    (smtpmail-stream-type . ssl)
                    (smtpmail-smtp-service . 465))))
-          (multimu4e-set-account-from-name "Perso")))
+          (profile-set-profile-from-name "Perso")))
 
       (defun my:mu4e-sent-query ()
         (mapconcat
@@ -1237,8 +1237,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (defun my:mu4e-inbox-folder-or-tag-query ()
         (format "(%s OR maildir:\"/GMail/All Mail\") AND (tag:\\\\Inbox OR NOT maildir:\"/GMail/All Mail\")"
                 (mapconcat
-                 (lambda (account-name) (format "maildir:/%s/INBOX" account-name))
-                 (multimu4e-account-names)
+                 (lambda (profile-name) (format "maildir:/%s/INBOX" profile-name))
+                 (profile-names)
                  " OR ")))
 
       (defun my:mu4e-new-inbox-query ()
