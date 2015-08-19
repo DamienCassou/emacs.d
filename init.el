@@ -272,9 +272,9 @@
          "/run/current-system/sw/bin"
          "/run/current-system/sw/sbin"
          "/run/current-system/sw/lib/kde4/libexec"
-         "/var/setuid-wrappers"))) ;; the /var/setuid-wrappers/
-                                   ;; directory must arrive first on
-                                   ;; the PATH
+         "/var/setuid-wrappers")))      ; the /var/setuid-wrappers/
+                                        ; directory must arrive first on
+                                        ; the PATH
 
 (mapc 'add-to-executable-path '("~/.emacs.d/packages/cask/bin"))
 
