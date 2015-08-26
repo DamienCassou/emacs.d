@@ -22,3 +22,6 @@
 [submodule "packages/shampoo"]
 	path = packages/shampoo
 	url = https://github.com/dmatveev/shampoo-emacs.git
+[submodule "packages/profile"]
+	path = packages/profile
+	url = git@github.com:DamienCassou/profile.git
