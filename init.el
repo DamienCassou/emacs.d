@@ -1114,7 +1114,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :diminish guide-key-mode
   :init
   (progn
-    (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t"))
+    (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t" "C-x RET"))
 
     (add-to-list 'guide-key/guide-key-sequence endless/toggle-prefix)
 
