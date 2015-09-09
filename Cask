@@ -41,7 +41,7 @@
 (depends-on "magit-svn") ;; Control git-subversion repositories from magit
 (depends-on "markdown-mode") ;; Major mode for markdown format
 (depends-on "multiple-cursors") ;; Control multiple cursors with <C-S-c C-S-c>
-(depends-on "names") ;; a namespace implementation
+(depends-on "nameless") ;; hide current package name everywhere in elisp code
 (depends-on "nix-mode") ;; major mode to edit nix expressions
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
