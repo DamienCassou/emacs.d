@@ -1786,6 +1786,10 @@ Frames: _f_rame new  _df_ delete
   (progn
     (add-hook 'emacs-lisp-mode-hook #'nameless-mode)))
 
+(defun occur-non-ascii ()
+  "Find any non-ascii characters in the current buffer."
+  (interactive)
+  (occur "[^[:ascii:]]"))
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
