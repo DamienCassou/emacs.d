@@ -36,6 +36,8 @@
         wdired-downcase-word
         wdired-finish-edit
         wdired-upcase-word
+        wgrep-finish-edit
+        yaml-electric-dash-and-dot
         yas-expand
         ))
 
