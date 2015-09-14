@@ -1754,8 +1754,8 @@ Frames: _f_rame new  _df_ delete
     (beginend-setup-all)))
 
 (use-package avy-zap
-  :bind (("M-z" . avy-zap-to-char)
-         ("M-Z" . avy-zap-up-to-char)))
+  :bind (("M-z" . avy-zap-to-char-dwim)
+         ("M-Z" . avy-zap-up-to-char-dwim)))
 
 (add-to-list 'load-path "~/.emacs.d/packages/pycarddavel")
 (use-package pycarddavel
