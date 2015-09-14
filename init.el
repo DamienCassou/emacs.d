@@ -1790,6 +1790,13 @@ Frames: _f_rame new  _df_ delete
   "Find any non-ascii characters in the current buffer."
   (interactive)
   (occur "[^[:ascii:]]"))
+
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :init
+  (progn
+    (yas-global-mode 1)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)

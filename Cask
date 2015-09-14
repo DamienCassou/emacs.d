@@ -65,6 +65,7 @@
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
 (depends-on "visible-mark") ;; show the current mark
 (depends-on "wgrep-helm") ;; edit grep buffers
+(depends-on "yasnippet") ;; expand snippets of text
 (depends-on "zerodark-theme") ;; Nicolas' theme
 (depends-on "zoom-frm") ;; increase/decrease font size for all buffers <C-x C-+>
 
