@@ -128,7 +128,7 @@
      (:mailing-list . 16)
      (:tags . 10)
      (:maildir . 15)
-     (:subject))))
+     (:thread-subject))))
  '(mu4e-headers-time-format "%H:%M")
  '(mu4e-html2text-command (quote mu4e-shr2text))
  '(mu4e-maildir "~/Mail")
