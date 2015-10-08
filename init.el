@@ -637,14 +637,6 @@ narrowed."
   :bind (("C-x g" . magit-status) ("C-x G" . magit-dispatch-popup))
   :config
   (progn
-    (use-package magit-svn
-      :defer t
-      :disabled t
-      :init
-      (progn
-        (add-hook 'magit-mode-hook #'magit-svn-mode))
-      :diminish magit-svn-mode)
-
     (when magit-wip-before-change-mode
       (add-to-list 'magit-no-confirm #'safe-with-wip))
 
