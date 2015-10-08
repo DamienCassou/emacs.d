@@ -1078,6 +1078,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
+(add-to-list 'load-path "~/.emacs.d/packages/shell-switcher")
 (use-package shell-switcher
   :defer t
   :bind (("C-M-'"   . shell-switcher-new-shell)

@@ -55,7 +55,6 @@
 (depends-on "runner") ;; Associate external applications to file extensions
 (depends-on "s") ;; string library
 (depends-on "seq") ;; sequence-manipulation library
-(depends-on "shell-switcher") ;; Switch between shells with <C-'> and <C-'>
 (depends-on "skeletor") ;; facilitates the creation of new project
 (depends-on "smartscan") ;; <M-n> <M-p> to move between same symbol in buffer
 (depends-on "smart-tab") ;; bind TAB to completion and indentation
