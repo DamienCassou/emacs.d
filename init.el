@@ -643,7 +643,7 @@ narrowed."
     (defun magit-ignore-latex-project ()
       (interactive)
       (mapc
-       #'magit-ignore-file
+       #'magit-gitignore
        (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz" "*.toc"))
       (magit-refresh))
 
