@@ -151,6 +151,7 @@
  '(org-default-notes-file "refile.org")
  '(org-directory "~/Documents/configuration/org")
  '(org-export-allow-bind-keywords t)
+ '(org-export-creator-string "")
  '(org-export-with-toc nil)
  '(org-fontify-done-headline t)
  '(org-hide-leading-stars t)
