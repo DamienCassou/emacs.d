@@ -681,7 +681,37 @@ narrowed."
              "config" "--add" "remote.origin.fetch"
              fetch-address)))))
 
-    (add-hook 'magit-mode-hook #'endless/add-PR-fetch)))
+    (add-hook 'magit-mode-hook #'endless/add-PR-fetch)
+
+    (defun magit-process-password-auth-source (host)
+      "Use `auth-source-search` to get a password for HOST.
+If found, return the password. Otherwise, return nil."
+      (when (require 'auth-source nil t)
+        (let ((secret (plist-get (nth 0 (auth-source-search :max 1 :host host))
+                                 :secret)))
+          (if (functionp secret)
+              (funcall secret)
+            secret))))
+
+    (defun magit-process-read-password (prompt)
+      "Find a suitable password for git PROMPT.
+If PROMPT refers to a host, use `auth-source-search` to find a
+suitable password. If no password is found or PROMPT does not
+refer to a host, forward the password request to user."
+      (or (and (string-match "[Pp]assword for '\\(.*\\)': ?$" prompt)
+               (magit-process-password-auth-source (match-string 1 prompt)))
+          (read-passwd prompt)))
+
+    (defun magit-process-password-prompt (process string)
+      "Find a password based on prompt STRING and send it to git.
+If STRING corresponds to a password prompt, get a suitable
+password with `magit-process-read-password` and send it to the
+git process."
+      (--when-let (magit-process-match-prompt
+                   magit-process-password-prompt-regexps string)
+        (process-send-string process
+                             (magit-process-kill-on-abort process
+                               (concat (magit-process-read-password it) "\n")))))))
 
 (use-package info
   :bind ("C-h i" . my:info-other-window)
