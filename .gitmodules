@@ -28,3 +28,6 @@
 [submodule "packages/shell-switcher"]
 	path = packages/shell-switcher
 	url = git@github.com:DamienCassou/shell-switcher.git
+[submodule "packages/unify-opening"]
+	path = packages/unify-opening
+	url = https://github.com/DamienCassou/unify-opening.git

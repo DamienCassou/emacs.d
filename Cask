@@ -59,7 +59,6 @@
 (depends-on "smartscan") ;; <M-n> <M-p> to move between same symbol in buffer
 (depends-on "smart-tab") ;; bind TAB to completion and indentation
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
-(depends-on "unify-opening") ;; make everything use the same mechanism to open files
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)
 (depends-on "visible-mark") ;; show the current mark
