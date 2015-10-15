@@ -1172,6 +1172,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :bind (("C-x C-a" . gnus-dired-attach))
   :defer t)
 
+(add-to-list 'load-path "~/.emacs.d/packages/unify-opening")
 (use-package unify-opening
   :demand t)
 
