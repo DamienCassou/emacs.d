@@ -17,6 +17,7 @@
  '(TeX-parse-self t)
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
+ '(auth-source-debug t)
  '(auth-source-do-cache nil nil nil "Don't save as I'm doing experiments with gnupg")
  '(avy-style (quote at-full))
  '(aw-scope (quote frame))
