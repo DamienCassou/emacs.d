@@ -15,10 +15,9 @@
 /.org-id-locations
 /session.*
 /thumbs/
-/projectile.cache
 /url/
 /.sx/
 /RFC/
 /org-caldav-backup.org
-/cache/org-caldav/
+/cache/*
 *.log
