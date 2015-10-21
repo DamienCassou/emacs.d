@@ -1702,7 +1702,7 @@ Frames: _f_rame new  _df_ delete
   (("C-. o S"   . org-caldav-sync))
   :config
   (progn
-    (setq org-caldav-url "https://www.schplaf.org/baikal/cal.php/calendars/damiencnsa"
+    (setq org-caldav-url "https://cassou.me/baikal/cal.php/calendars/damien"
           org-caldav-calendar-id "default"
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
