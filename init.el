@@ -101,6 +101,7 @@
  '(kept-old-versions 10)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk nil)
+ '(magit-process-find-password-functions (quote (magit-process-password-auth-source)))
  '(magit-repository-directories
    (quote
     ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
