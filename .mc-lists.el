@@ -15,6 +15,7 @@
         indent-for-tab-command
         kill-region
         message-beginning-of-line
+        my-join-line
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
