@@ -418,9 +418,16 @@ narrowed."
 (bind-key "n" 'narrow-or-widen-dwim endless/toggle-map)
 
 (bind-key "C-x 8 <right>" (lambda () (interactive) (insert-char ?→))) ; rightwards arrow
+(bind-key "C-x 8 <S-right>" (lambda () (interactive) (insert-char ?⇒))) ; rightwards double arrow
+
 (bind-key "C-x 8 <left>" (lambda () (interactive) (insert-char ?←))) ; leftwards arrow
+(bind-key "C-x 8 <S-left>" (lambda () (interactive) (insert-char ?⇐))) ; leftwards double arrow
+
 (bind-key "C-x 8 <up>" (lambda () (interactive) (insert-char ?↑))) ; upwards arrow
+(bind-key "C-x 8 <S-up>" (lambda () (interactive) (insert-char ?⇑))) ; upwards double arrow
+
 (bind-key "C-x 8 <down>" (lambda () (interactive) (insert-char ?↓))) ; downwards arrow
+(bind-key "C-x 8 <S-down>" (lambda () (interactive) (insert-char ?⇓))) ; rightwards double arrow
 
 (use-package ethan-wspace
   :diminish ethan-wspace-mode
