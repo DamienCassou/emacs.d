@@ -23,6 +23,7 @@
  '(aw-scope (quote frame))
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
+ '(beacon-blink-when-focused t)
  '(bibtex-align-at-equal-sign t)
  '(bibtex-autokey-name-case-convert-function (quote identity))
  '(bibtex-autokey-name-length 4)
@@ -1795,6 +1796,11 @@ Frames: _f_rame new  _df_ delete
   :init
   (progn
     (yas-global-mode 1)))
+
+(use-package beacon
+  :init
+  (progn
+    (beacon-mode)))
 
 ;;; Emacs Configuration
 ;; Local Variables:
