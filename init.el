@@ -146,7 +146,13 @@
  '(mu4e-view-show-addresses t)
  '(mu4e-view-show-images t)
  '(next-screen-context-lines 5)
+ '(notmuch-always-prompt-for-sender t)
+ '(notmuch-archive-tags (quote ("-inbox" "-unread")))
+ '(notmuch-hello-sections
+   (quote
+    (notmuch-hello-insert-saved-searches notmuch-hello-insert-recent-searches)))
  '(notmuch-labeler-hide-known-labels t)
+ '(notmuch-search-oldest-first nil)
  '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t) (python . t))))
  '(org-catch-invisible-edits (quote error))
  '(org-clock-clocked-in-display nil)
@@ -1333,12 +1339,60 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (advice-add 'mu4e~view-temp-handler :around #'my:mu4e-use-org-for-diary)
 
-      (with-eval-after-load "message"
-        (with-eval-after-load "mu4e-view"
-          (define-key mu4e-view-mode-map
-            (vector 'remap 'beginning-of-buffer) 'my:message-goto-top)
-          (define-key mu4e-view-mode-map
-            (vector 'remap 'end-of-buffer) 'my:message-goto-bottom))))))
+(when (setq notmuch-command (executable-find "notmuch"))
+  (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp" (file-symlink-p notmuch-command)))
+  (use-package notmuch
+    :bind (("C-. m" . notmuch))
+    :config
+    (progn
+      (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
+
+      (defun my:mm-ics-to-org-part (handle &optional prompt)
+        "Add message part HANDLE to org."
+        (mm-with-unibyte-buffer
+          (mm-insert-part handle)
+          (mm-add-meta-html-tag handle)
+          (require 'org-caldav)
+          (my:import-ics-buffer-to-org)))
+
+      (defun my:notmuch-show-ics-to-org-part ()
+        "Save the .ics MIME part containing point to an org file."
+        (interactive)
+        (notmuch-show-apply-to-current-part-handle #'my:mm-ics-to-org-part))
+
+      (with-eval-after-load "notmuch-show"
+        (bind-key "d" #'my:notmuch-show-ics-to-org-part notmuch-show-part-map))
+
+      (use-package profile
+        :demand t
+        :init
+        (progn
+          (defun my:notmuch-build-identity (&optional email)
+            "Return a string of the form \"name <EMAIL>\"."
+            (let ((email (or email user-mail-address)))
+              (format "%s <%s>" (notmuch-user-name) email)))
+
+          (setq notmuch-identities
+                (mapcar #'my:notmuch-build-identity
+                        (profile-email-addresses)))
+
+          (defun my:notmuch-prompt-for-sender ()
+            "Prompt for a sender using `profile-binding-alist'."
+            (profile-set-profile)
+            (my:notmuch-build-identity))
+
+          (advice-add #'notmuch-mua-prompt-for-sender
+                      :override
+                      #'my:notmuch-prompt-for-sender)
+
+          (setq notmuch-archive-tags '("-inbox" "-unread"))
+
+          (setq notmuch-saved-searches
+                `((:name "inbox" :query ,(profile-inbox-query) :key "i")
+                  (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
+                  (:name "unread" :query "tag:unread" :key "u")
+                  (:name "sent" :query ,(profile-sent-query) :key "s"))))))))
+
 
 (use-package message
   :defer t
