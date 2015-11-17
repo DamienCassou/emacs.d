@@ -1280,7 +1280,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
               (my:import-ics-to-org path))
           (funcall func path what docid param)))
 
-      (advice-add 'mu4e~view-temp-handler :around #'my:mu4e-use-org-for-diary)
+      (advice-add 'mu4e~view-temp-handler :around #'my:mu4e-use-org-for-diary))))
 
 (when (setq notmuch-command (executable-find "notmuch"))
   (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp" (file-symlink-p notmuch-command)))
