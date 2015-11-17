@@ -1627,7 +1627,10 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (with-eval-after-load "helm-grep"
       (bind-key  "C-x C-q" #'wgrep-change-to-wgrep-mode helm-grep-mode-map)
-      (bind-key "C-c C-c" #'wgrep-finish-edit helm-grep-mode-map))))
+      (bind-key "C-c C-c" #'wgrep-finish-edit helm-grep-mode-map))
+    (with-eval-after-load "helm-ag"
+      (bind-key  "C-x C-q" #'wgrep-change-to-wgrep-mode helm-ag-mode-map)
+      (bind-key "C-c C-c" #'wgrep-finish-edit helm-ag-mode-map))))
 
 (use-package ical2org
   :demand t
