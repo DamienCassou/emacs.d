@@ -447,6 +447,8 @@ narrowed."
     (use-package dired-x)
     (use-package dired-imenu :demand t)
 
+    (add-hook 'dired-mode-hook #'turn-on-gnus-dired-mode)
+
     (bind-key ")" 'dired-omit-mode dired-mode-map)
 
     (when (darwinp)
@@ -1344,7 +1346,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
           (nreverse buffers)))
 
       (setq gnus-dired-mail-mode 'mu4e-user-agent)
-      (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
       (defun my:mu4e-use-org-for-diary (func path what docid param)
         "If WHAT is \"diary\", import event into org. Otherwise call mu4e~view-temp-handler."
