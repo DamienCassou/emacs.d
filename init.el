@@ -1743,9 +1743,9 @@ Frames: _f_rame new  _df_ delete
   :bind (("M-z" . avy-zap-to-char-dwim)
          ("M-Z" . avy-zap-up-to-char-dwim)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/pycarddavel")
-(use-package pycarddavel
-  :bind (("C-. c" . pycarddavel-search-with-helm)))
+(add-to-list 'load-path "~/.emacs.d/packages/carldavel")
+(use-package carldavel
+  :bind (("C-. c" . carldavel-search-with-helm)))
 
 (add-to-list 'load-path "~/.emacs.d/packages/auth-password-store")
 (use-package auth-password-store
