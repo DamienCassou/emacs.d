@@ -1697,18 +1697,30 @@ Frames: _f_rame new  _df_ delete
           org-caldav-save-directory "~/.emacs.d/cache/org-caldav"
           org-caldav-sync-changes-to-org 'all)
 
+    (defun my:import-ics-buffer-to-org ()
+      "Add ics content in current buffer to `org-caldav-inbox'."
+      (let ((event (org-caldav-convert-event))
+            (file (org-caldav-inbox-file org-caldav-inbox)))
+        (with-current-buffer (find-file-noselect file)
+          (let* ((point-and-level (org-caldav-inbox-point-and-level org-caldav-inbox))
+                 (point (car point-and-level))
+                 (level (cdr point-and-level)))
+            (goto-char point)
+            (apply #'org-caldav-insert-org-entry
+                   (append event (list nil level)))
+            (message "%s: Added event: %s"
+                     file
+                     (buffer-substring
+                      point
+                      (save-excursion
+                        (goto-char point)
+                        (point-at-eol 2))))))))
+
     (defun my:import-ics-to-org (path)
       (with-current-buffer (get-buffer-create "*import-ics-to-org*")
         (delete-region (point-min) (point-max))
         (insert-file-contents path)
-        (let ((event (org-caldav-convert-event)))
-          (with-current-buffer (find-file-noselect (org-caldav-inbox-file org-caldav-inbox))
-            (let* ((point-and-level (org-caldav-inbox-point-and-level org-caldav-inbox))
-                   (point (car point-and-level))
-                   (level (cdr point-and-level)))
-              (goto-char point)
-              (apply #'org-caldav-insert-org-entry
-                     (append event (list nil level))))))))))
+        (my:import-ics-buffer-to-org)))))
 
 (use-package avy
   :bind (("C-," . avy-goto-char-2)
