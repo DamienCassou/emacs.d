@@ -1398,6 +1398,17 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :defer t
   :config
   (progn
+    ;;; The following make sure to use the right profile when sending
+    ;;; the message (i.e., when pressing C-c C-c in message-mode).
+    ;;; It's better to set the profile just before sending to be sure
+    ;;; to use the profile related to the From: message field).
+    (defun my:message-send-and-exit (&optional arg)
+      "Set profile according to From field.
+Designed to be called before `message-send-and-exit'."
+      (profile-set-profile-from-message-from-field))
+    (advice-add #'message-send-and-exit
+                :before
+                #'my:message-send-and-exit)))
 
 (use-package epg-config
   :init
