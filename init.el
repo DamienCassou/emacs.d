@@ -1398,28 +1398,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :defer t
   :config
   (progn
-    (defun my:message-goto-top ()
-      (interactive)
-      (let ((old-position (point)))
-        (message-goto-body)
-        (when (equal (point) old-position)
-          (beginning-of-buffer))))
-
-    (define-key message-mode-map
-      (vector 'remap 'beginning-of-buffer) 'my:message-goto-top)
-
-    (defun my:message-goto-bottom ()
-      (interactive)
-      (let ((old-position (point))
-            (message-position (save-excursion (message-goto-body) (point))))
-        (end-of-buffer)
-        (when (re-search-backward "^-- $" message-position t)
-          (previous-line))
-        (when (equal (point) old-position)
-          (end-of-buffer))))
-
-    (define-key message-mode-map
-      (vector 'remap 'end-of-buffer) 'my:message-goto-bottom)))
 
 (use-package epg-config
   :init
