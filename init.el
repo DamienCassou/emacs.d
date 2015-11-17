@@ -121,7 +121,7 @@
  '(mu4e-completing-read-function (quote completing-read))
  '(mu4e-compose-complete-addresses nil nil nil "Use pycarddavel instead")
  '(mu4e-compose-signature t)
- '(mu4e-drafts-folder "/Drafts")
+ '(mu4e-drafts-folder "/Drafts" t)
  '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
  '(mu4e-headers-date-format "%Y/%m/%d %H:%M")
  '(mu4e-headers-fields
@@ -1169,6 +1169,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 (when (setq mu4e-mu-binary (executable-find "mu"))
   (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp/mu4e" (file-symlink-p mu4e-mu-binary)))
   (use-package mu4e
+    :disabled t
     :bind (("C-. m" . mu4e))
     :config
     (progn
