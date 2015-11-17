@@ -1235,32 +1235,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
                    (smtpmail-stream-type . ssl)
                    (smtpmail-smtp-service . 465))))
           (profile-set-profile-from-name "Perso")))
-
-      (defun my:mu4e-sent-query ()
-        (mapconcat
-         (lambda (address) (format "from:%s" address))
-         mu4e-user-mail-address-list
-         " OR "))
-
-      (defun my:mu4e-noisy-mailinglist-query ()
-        "list:pharo* OR list:smallwiki*")
-
-      (defun my:mu4e-inbox-folder-or-tag-query ()
-        (format "(%s OR maildir:\"/GMail/All Mail\") AND (tag:\\\\Inbox OR NOT maildir:\"/GMail/All Mail\")"
-                (mapconcat
-                 (lambda (profile-name) (format "maildir:/%s/INBOX" profile-name))
-                 (profile-names)
-                 " OR ")))
-
-      (defun my:mu4e-new-inbox-query ()
-        (format "(%s) AND (NOT (%s) OR recip:damien*)"
-                (my:mu4e-inbox-folder-or-tag-query)
-                (my:mu4e-noisy-mailinglist-query)))
-
-      (defun my:mu4e-noisy-unarchived-list-query ()
-        (format "(%s) AND (%s)"
-                (my:mu4e-inbox-folder-or-tag-query)
-                (my:mu4e-noisy-mailinglist-query)))
+          (setq mu4e-user-mail-address-list
+                (profile-all-email-addresses))))
 
       (setq mu4e-bookmarks
             `((,(my:mu4e-new-inbox-query)             "Inbox"          ?i)
