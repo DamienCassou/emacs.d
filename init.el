@@ -1178,69 +1178,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
       (setenv "MU_PLAY_PROGRAM" "eopen")
 
-      (add-to-list 'load-path "~/.emacs.d/packages/profile")
       (use-package profile
-        :demand t
         :init
         (progn
-          (add-hook 'mu4e-compose-pre-hook #'profile-set-profile-in-compose)
-          (bind-key "C-c F" #'profile-force-profile-in-compose message-mode-map))
+          (add-hook 'mu4e-compose-pre-hook #'profile-set-profile-in-compose))
         :config
         (progn
-          (setq profile-binding-alist
-                '(("GMail"
-                   (profile-maildir . "/GMail")
-                   (mu4e-trash-folder . "/GMail/Trash")
-                   (mu4e-sent-folder . "/GMail/All Mail")
-                   (mu4e-sent-messages-behavior . delete)
-                   (mu4e-drafts-folder . "/GMail/Drafts")
-                   (user-mail-address . "damien.cassou@gmail.com")
-                   (smtpmail-queue-dir . "~/Mail/GMail/queued-mail/")
-                   (smtpmail-local-domain . nil)
-                   (smtpmail-smtp-user . "damien.cassou@gmail.com")
-                   (smtpmail-smtp-server . "QUIT_GMAIL")
-                   (smtpmail-stream-type . starttls)
-                   (smtpmail-smtp-service . 587))
-                  ("Pro"
-                   (profile-maildir . "/Pro")
-                   (mu4e-trash-folder . "/Pro/Trash")
-                   (mu4e-sent-folder . "/Pro/Sent")
-                   (mu4e-sent-messages-behavior . sent)
-                   (mu4e-drafts-folder . "/Pro/Drafts")
-                   (user-mail-address . "damien.cassou@inria.fr")
-                   (smtpmail-queue-dir . "~/Mail/Pro/queued-mail/")
-                   (smtpmail-local-domain . nil)
-                   (smtpmail-smtp-user . "cassou")
-                   (smtpmail-smtp-server . "smtp.inria.fr")
-                   (smtpmail-stream-type . starttls)
-                   (smtpmail-smtp-service . 587))
-                  ("Lille1"
-                   (profile-maildir . "/Lille1")
-                   (mu4e-trash-folder . "/Lille1/Trash")
-                   (mu4e-sent-folder . "/Lille1/Sent")
-                   (mu4e-sent-messages-behavior . sent)
-                   (mu4e-drafts-folder . "/Lille1/Drafts")
-                   (user-mail-address . "damien.cassou@univ-lille1.fr")
-                   (smtpmail-queue-dir . "~/Mail/Lille1/queued-mail/")
-                   (smtpmail-local-domain . nil)
-                   (smtpmail-smtp-user . "cassou")
-                   (smtpmail-smtp-server . "smtps.univ-lille1.fr")
-                   (smtpmail-stream-type . starttls)
-                   (smtpmail-smtp-service . 587))
-                  ("Perso"
-                   (profile-maildir . "/Perso")
-                   (mu4e-trash-folder . "/Perso/Trash")
-                   (mu4e-sent-folder . "/Perso/Sent")
-                   (mu4e-sent-messages-behavior . sent)
-                   (mu4e-drafts-folder . "/Perso/Drafts")
-                   (user-mail-address . "damien@cassou.me")
-                   (smtpmail-queue-dir . "~/Mail/Perso/queued-mail/")
-                   (smtpmail-local-domain . "inria.fr")
-                   (smtpmail-smtp-user . "dcassou")
-                   (smtpmail-smtp-server . "bender.ldn-fai.net")
-                   (smtpmail-stream-type . ssl)
-                   (smtpmail-smtp-service . 465))))
-          (profile-set-profile-from-name "Perso")))
           (setq mu4e-user-mail-address-list
                 (profile-all-email-addresses))))
 
@@ -1393,6 +1336,77 @@ able to type <C-c left left left> to undo 3 times whereas it was
                   (:name "unread" :query "tag:unread" :key "u")
                   (:name "sent" :query ,(profile-sent-query) :key "s"))))))))
 
+(add-to-list 'load-path "~/.emacs.d/packages/profile")
+(use-package profile
+  :demand t
+  :init
+  (progn
+    (bind-key "C-c F" #'profile-force-profile-in-compose message-mode-map))
+  :config
+  (progn
+    (setq profile-binding-alist
+          '(("GMail"
+             (profile-maildir . "/GMail")
+             (mu4e-trash-folder . "/GMail/Trash")
+             (mu4e-sent-folder . "/GMail/All Mail")
+             (mu4e-sent-messages-behavior . delete)
+             (mu4e-drafts-folder . "/GMail/Drafts")
+             (user-mail-address . "damien.cassou@gmail.com")
+             (smtpmail-queue-dir . "~/Mail/GMail/queued-mail/")
+             (smtpmail-local-domain . nil)
+             (smtpmail-smtp-user . "damien.cassou@gmail.com")
+             (smtpmail-smtp-server . "QUIT_GMAIL")
+             (smtpmail-stream-type . starttls)
+             (smtpmail-smtp-service . 587))
+            ("Pro"
+             (profile-maildir . "/Pro")
+             (mu4e-trash-folder . "/Pro/Trash")
+             (mu4e-sent-folder . "/Pro/Sent")
+             (notmuch-fcc-dirs . "Pro/Sent")
+             (mu4e-sent-messages-behavior . sent)
+             (mu4e-drafts-folder . "/Pro/Drafts")
+             (user-mail-address . "damien.cassou@inria.fr")
+             (smtpmail-queue-dir . "~/Mail/Pro/queued-mail/")
+             (smtpmail-local-domain . nil)
+             (smtpmail-smtp-user . "cassou")
+             (smtpmail-smtp-server . "smtp.inria.fr")
+             (smtpmail-stream-type . starttls)
+             (smtpmail-smtp-service . 587))
+            ("Lille1"
+             (profile-maildir . "/Lille1")
+             (mu4e-trash-folder . "/Lille1/Trash")
+             (mu4e-sent-folder . "/Lille1/Sent")
+             (notmuch-fcc-dirs . "Lille1/Sent")
+             (mu4e-sent-messages-behavior . sent)
+             (mu4e-drafts-folder . "/Lille1/Drafts")
+             (user-mail-address . "damien.cassou@univ-lille1.fr")
+             (smtpmail-queue-dir . "~/Mail/Lille1/queued-mail/")
+             (smtpmail-local-domain . nil)
+             (smtpmail-smtp-user . "cassou")
+             (smtpmail-smtp-server . "smtps.univ-lille1.fr")
+             (smtpmail-stream-type . starttls)
+             (smtpmail-smtp-service . 587))
+            ("Perso"
+             (profile-maildir . "/Perso")
+             (mu4e-trash-folder . "/Perso/Trash")
+             (mu4e-sent-folder . "/Perso/Sent")
+             (notmuch-fcc-dirs . "Perso/Sent")
+             (mu4e-sent-messages-behavior . sent)
+             (mu4e-drafts-folder . "/Perso/Drafts")
+             (user-mail-address . "damien@cassou.me")
+             (smtpmail-queue-dir . "~/Mail/Perso/queued-mail/")
+             (smtpmail-local-domain . "inria.fr")
+             (smtpmail-smtp-user . "dcassou")
+             (smtpmail-smtp-server . "bender.ldn-fai.net")
+             (smtpmail-stream-type . ssl)
+             (smtpmail-smtp-service . 465))))
+    (profile-set-profile-from-name "Perso")
+    (setq profile-extra-email-addresses
+          (quote
+           ("damien.cassou@lifl.fr" "cassou@inria.fr"
+            "damien.cassou@laposte.net")))
+    (setq profile-noisy-query
+          "list:\"pharo-dev\" OR list:\"pharo-users\" OR list:smallwiki")))
 
 (use-package message
   :defer t
