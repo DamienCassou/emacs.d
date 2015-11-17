@@ -153,6 +153,7 @@
  '(org-completion-use-ido t)
  '(org-default-notes-file "refile.org")
  '(org-directory "~/Documents/configuration/org")
+ '(org-ellipsis "⤵")
  '(org-export-allow-bind-keywords t)
  '(org-export-creator-string "")
  '(org-export-with-toc nil)
