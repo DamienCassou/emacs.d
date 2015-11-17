@@ -861,6 +861,7 @@ narrowed."
 
     (defun my:org-move-to-refile-target (&optional last)
       (interactive "p")
+      (require 'org)
       (org-refile (if (= last 4) '(16) '(4))))
 
     (defun dc/my-agenda ()
