@@ -1336,7 +1336,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
                 `((:name "inbox" :query ,(profile-inbox-query) :key "i")
                   (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
                   (:name "unread" :query "tag:unread" :key "u")
-                  (:name "sent" :query ,(profile-sent-query) :key "s"))))))))
+                  (:name "sent" :query ,(profile-sent-query) :key "s")))
+
+          (add-to-list 'notmuch-hello-sections
+                       #'profile-queue-insert-section
+                       t))))))
 
 (add-to-list 'load-path "~/.emacs.d/packages/profile")
 (use-package profile
