@@ -721,13 +721,6 @@ narrowed."
        file-or-node
        (switch-to-buffer-other-window (or buffer "*info*"))))))
 
-(use-package ace-jump-mode
-  :disabled t
-  :bind ("C-," . ace-jump-mode)
-  :init
-  (progn
-    (bind-key* "C-," 'ace-jump-mode)))
-
 (use-package ace-link
   :defer t
   :init
@@ -1158,131 +1151,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (progn
         (helm-projectile-on)))))
 
-(use-package gnus-dired
-  :disabled t
-  :bind (("C-x C-a" . gnus-dired-attach))
-  :defer t)
-
 (add-to-list 'load-path "~/.emacs.d/packages/unify-opening")
 (use-package unify-opening
   :demand t)
-
-(when (setq mu4e-mu-binary (executable-find "mu"))
-  (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp/mu4e" (file-symlink-p mu4e-mu-binary)))
-  (use-package mu4e
-    :disabled t
-    :bind (("C-. m" . mu4e))
-    :config
-    (progn
-      (setq mu4e-action-tags-header "X-Keywords")
-      (setq  mu4e-hide-index-messages nil)
-      (imagemagick-register-types)
-
-      (setenv "MU_PLAY_PROGRAM" "eopen")
-
-      (use-package profile
-        :init
-        (progn
-          (add-hook 'mu4e-compose-pre-hook #'profile-set-profile-in-compose))
-        :config
-        (progn
-          (setq mu4e-user-mail-address-list
-                (profile-all-email-addresses))))
-
-      (setq mu4e-bookmarks
-            `((,(my:mu4e-new-inbox-query)             "Inbox"          ?i)
-              (,(my:mu4e-noisy-unarchived-list-query) "Pharo"          ?p)
-              (,(my:mu4e-sent-query)                  "Sent"           ?s)
-              ("tag:achats"                           "Achats"         ?a)
-              ("size:20M..500M"                       "Large messages" ?l)))
-
-      (require 'mu4e-contrib)
-      (require 'smtpmail)
-      (require 'gnus-dired)
-
-      (require 'org-mu4e nil t)
-      (with-eval-after-load 'org-mu4e
-        (require 'cl)
-        (lexical-let ((capture-letter "m"))
-          (add-to-list
-           'org-capture-templates
-           `(,capture-letter "Mail" entry
-                             (file org-default-notes-file)
-                             "* TODO %?%:fromto %a"))))
-
-      (defun my:mu4e-gmail-msg-p (msg)
-        (require 's)
-        (s-starts-with? "/GMail" (mu4e-message-field msg :maildir)))
-
-      (defun my:mu4e-refile-folder (msg)
-        (let ((maildir (mu4e-message-field msg :maildir)))
-          (cond
-           ;; messages to GMail
-           ((my:mu4e-gmail-msg-p msg)
-            (mu4e-action-retag-message msg "-\\Inbox")
-            maildir)
-           (t
-            (require 'f)
-            (f-expand "Archive" (f-parent maildir))))))
-
-      (setq mu4e-refile-folder #'my:mu4e-refile-folder)
-
-      (defun my:mu4e-trash-folder (msg)
-        (let ((maildir (mu4e-message-field msg :maildir)))
-          (cond
-           ;; messages to GMail
-           ((my:mu4e-gmail-msg-p msg)
-            (mu4e-action-retag-message msg "+\\Trash")
-            maildir)
-           (t
-            (require 'f)
-            (f-expand "Trash" (f-parent maildir))))))
-
-      (setq mu4e-trash-folder #'my:mu4e-trash-folder)
-
-      (defun my:mu4e-remove-message-from-inbox (msg)
-        (mu4e-action-retag-message msg "-\\Inbox"))
-
-      (defun my:mu4e-remove-thread-from-inbox (docid &rest target)
-        (mu4e~headers-goto-docid docid)
-        (my:mu4e-remove-message-from-inbox (mu4e-message-at-point)))
-
-      (add-to-list 'mu4e-marks
-                   `(archive :char "a" :prompt "archive"
-                             :show-target (lambda (target) "archive")
-                             :action ,#'my:mu4e-remove-thread-from-inbox))
-
-      (add-to-list 'mu4e-view-actions '("retag" . mu4e-action-retag-message))
-      (add-to-list 'mu4e-headers-actions '("retag" . mu4e-action-retag-message))
-      (add-to-list 'mu4e-view-actions '("archive" . my:mu4e-remove-message-from-inbox))
-      (add-to-list 'mu4e-headers-actions '("archive" . my:mu4e-remove-message-from-inbox))
-      (add-to-list 'mu4e-view-actions '("bview in browser" . mu4e-action-view-in-browser) t)
-
-      ;; Attach files with dired
-      ;; make the `gnus-dired-mail-buffers' function also work on
-      ;; message-mode derived modes, such as mu4e-compose-mode
-      (defun gnus-dired-mail-buffers ()
-        "Return a list of active message buffers."
-        (let (buffers)
-          (save-current-buffer
-            (dolist (buffer (buffer-list t))
-              (set-buffer buffer)
-              (when (and (derived-mode-p 'message-mode)
-                         (null message-sent-message-via))
-                (push (buffer-name buffer) buffers))))
-          (nreverse buffers)))
-
-      (setq gnus-dired-mail-mode 'mu4e-user-agent)
-
-      (defun my:mu4e-use-org-for-diary (func path what docid param)
-        "If WHAT is \"diary\", import event into org. Otherwise call mu4e~view-temp-handler."
-        (if (string= what "diary")
-            (progn
-              (require 'org-caldav)
-              (my:import-ics-to-org path))
-          (funcall func path what docid param)))
-
-      (advice-add 'mu4e~view-temp-handler :around #'my:mu4e-use-org-for-diary))))
 
 (when (setq notmuch-command (executable-find "notmuch"))
   (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp" (file-symlink-p notmuch-command)))
@@ -1651,25 +1522,6 @@ Designed to be called before `message-send-and-exit'."
     (with-eval-after-load "helm-ag"
       (bind-key  "C-x C-q" #'wgrep-change-to-wgrep-mode helm-ag-mode-map)
       (bind-key "C-c C-c" #'wgrep-finish-edit helm-ag-mode-map))))
-
-(use-package ical2org
-  :demand t
-  :init
-  (progn
-    (defun ical2org/buffer-to-agenda (&optional buffer)
-      "Import ical events from file `FNAME' to agenda file (will be prompted).
-Saves when `NOSAVE' is non-nil."
-      (interactive)
-      (let ((agenda-file "~/Documents/configuration/org/events.org")
-            (events (ical2org/import-buffer (or buffer (current-buffer)))))
-        (save-current-buffer
-          (find-file agenda-file)
-          (goto-char (point-max))
-          (newline)
-          (dolist (e events)
-            (insert (ical2org/format e))
-            (newline))
-          (save-buffer))))))
 
 (use-package password-store
   :config
