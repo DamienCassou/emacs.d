@@ -236,6 +236,7 @@
  '(user-mail-address "damien.cassou@gmail.com")
  '(vc-follow-symlinks nil)
  '(vc-make-backup-files t)
+ '(vdirel-repository "~/Documents/configuration/contacts")
  '(version-control t)
  '(visible-bell t)
  '(visible-mark-faces (quote (visible-mark-face1 visible-mark-face2)))
@@ -1676,6 +1677,10 @@ Frames: _f_rame new  _df_ delete
 (add-to-list 'load-path "~/.emacs.d/packages/carldavel")
 (use-package carldavel
   :bind (("C-. c" . carldavel-search-with-helm)))
+
+(add-to-list 'load-path "~/.emacs.d/packages/vdirel")
+(use-package vdirel
+  :bind (("C-. c" . vdirel-helm-select-email)))
 
 (add-to-list 'load-path "~/.emacs.d/packages/auth-password-store")
 (use-package auth-password-store
