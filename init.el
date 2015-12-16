@@ -1178,7 +1178,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (notmuch-show-apply-to-current-part-handle #'my:mm-ics-to-org-part))
 
       (with-eval-after-load "notmuch-show"
-        (bind-key "d" #'my:notmuch-show-ics-to-org-part notmuch-show-part-map))
+        (bind-key "d" #'my:notmuch-show-ics-to-org-part notmuch-show-part-map)
+        ;; bind 'r' to reply-all, and 'R' to reply
+        (bind-key "r" #'notmuch-search-reply-to-thread notmuch-search-mode-map)
+        (bind-key "R" #'notmuch-search-reply-to-thread-sender notmuch-search-mode-map)
+        (bind-key "r" #'notmuch-show-reply notmuch-show-mode-map)
+        (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))
 
       (use-package profile
         :demand t
