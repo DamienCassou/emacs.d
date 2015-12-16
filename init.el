@@ -1676,6 +1676,7 @@ Frames: _f_rame new  _df_ delete
 
 (add-to-list 'load-path "~/.emacs.d/packages/carldavel")
 (use-package carldavel
+  :disabled t
   :bind (("C-. c" . carldavel-search-with-helm)))
 
 (add-to-list 'load-path "~/.emacs.d/packages/vdirel")

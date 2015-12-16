@@ -25,9 +25,6 @@
 [submodule "packages/unify-opening"]
 	path = packages/unify-opening
 	url = https://github.com/DamienCassou/unify-opening.git
-[submodule "packages/carldavel"]
-	path = packages/carldavel
-	url = git@github.com:DamienCassou/carldavel.git
 [submodule "packages/vdirel"]
 	path = packages/vdirel
 	url = git@github.com:DamienCassou/vdirel.git
