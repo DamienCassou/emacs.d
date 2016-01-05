@@ -174,6 +174,7 @@
  '(org-refile-use-outline-path (quote full-file-path))
  '(org-special-ctrl-a/e t)
  '(org-startup-align-all-tables t)
+ '(org-table-use-standard-references nil)
  '(org-time-stamp-rounding-minutes (quote (10 10)))
  '(org-use-speed-commands t)
  '(powerline-display-buffer-size nil)
