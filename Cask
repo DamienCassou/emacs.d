@@ -40,7 +40,6 @@
 (depends-on "json-mode") ;; Major mode to edit JSON files
 (depends-on "less-css-mode") ;; lesscss mode
 (depends-on "magit") ;; Integrate git <C-x g>
-(depends-on "magit-gh-pulls") ;; Handle github pull requests from magit
 (depends-on "magit-svn") ;; Control git-subversion repositories from magit
 (depends-on "markdown-mode") ;; Major mode for markdown format
 (depends-on "multiple-cursors") ;; Control multiple cursors with <C-S-c C-S-c>

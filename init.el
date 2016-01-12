@@ -669,12 +669,7 @@ narrowed."
       (mapc
        #'magit-gitignore
        (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz" "*.toc"))
-      (magit-refresh))
-
-    (use-package magit-gh-pulls
-      :init
-      (progn
-        (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)))))
+      (magit-refresh))))
 
 (use-package info
   :bind ("C-h i" . my:info-other-window)
