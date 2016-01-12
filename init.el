@@ -1184,9 +1184,10 @@ able to type <C-c left left left> to undo 3 times whereas it was
                   (:name "sent" :query ,(profile-sent-query) :key "s"))))
         :config
         (progn
-          (add-to-list 'notmuch-hello-sections
-                       #'profile-queue-insert-section
-                       t))))))
+          (with-eval-after-load "notmuch-hello"
+              (add-to-list 'notmuch-hello-sections
+                           #'profile-queue-insert-section
+                           t)))))))
 
 (add-to-list 'load-path "~/.emacs.d/packages/profile")
 (use-package profile
