@@ -21,3 +21,4 @@
 /org-caldav-backup.org
 /cache/*
 *.log
+/var/pcache/cache
