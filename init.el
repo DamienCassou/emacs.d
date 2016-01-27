@@ -1524,6 +1524,9 @@ Designed to be called before `message-send-and-exit'."
 (use-package ace-window
   :demand t
   :bind (("M-o" . ace-window))
+  :init
+  (progn
+    (bind-key* "M-o" #'ace-window))
   :config
   (progn
     (ace-window-display-mode)
