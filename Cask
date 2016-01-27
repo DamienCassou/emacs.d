@@ -47,6 +47,7 @@
 (depends-on "nix-mode") ;; major mode to edit nix expressions
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
+(depends-on "ox-twbs") ;; use twitter bootstrap to export org files to HTML
 (depends-on "paredit") ;; edit lisp AST instead of characters
 (depends-on "paren-face") ;; hide parenthesis in elisp code
 (depends-on "password-store") ;; get passwords from the 'pass' command

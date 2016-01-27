@@ -967,7 +967,9 @@ Return output file name."
     (cl-assert (approx-equal (my:calc-gisele 180.5 15) 194.33))
 
     ;; When service + TP is still not complete: (untested with Gisele)
-    (cl-assert (approx-equal (my:calc-gisele 100 15) 115)))) 
+    (cl-assert (approx-equal (my:calc-gisele 100 15) 115))
+
+    (use-package ox-twbs)))
 
 (use-package calc
   :defer t
