@@ -1092,7 +1092,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package guide-key
   :diminish guide-key-mode
-  :init
+  :config
   (progn
     (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t" "C-x RET"))
 
