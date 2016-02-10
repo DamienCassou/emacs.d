@@ -1345,7 +1345,6 @@ Designed to be called before `message-send-and-exit'."
   :diminish auto-revert-mode)
 
 (use-package git-auto-commit-mode
-  :defer t
   :diminish git-auto-commit-mode)
 
 (use-package pos-tip)
