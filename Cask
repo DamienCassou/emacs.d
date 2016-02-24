@@ -10,7 +10,6 @@
 (depends-on "anzu") ;; more interactive query-replace
 (depends-on "auctex") ;; LaTeX mode
 (depends-on "avy") ;; move fast in buffer with <C-,>
-(depends-on "avy-zap") ;; zap to char with <M-z> using avy
 (depends-on "beacon") ;; highlight my cursor when scrolling
 (depends-on "camcorder") ;; record emacs sessions M-x camcorder-record
 (depends-on "dash") ;; list library
