@@ -1659,7 +1659,7 @@ Frames: _f_rame new  _df_ delete
 
 (add-to-list 'load-path "~/.emacs.d/packages/beginend")
 (use-package beginend
-  :diminish '(beginend-dired-mode beginend-message-mode)
+  :diminish (beginend-dired-mode beginend-message-mode)
   :config
   (progn
     (beginend-setup-all)))
