@@ -439,6 +439,11 @@ narrowed."
 (bind-key "C-x 8 <down>" (lambda () (interactive) (insert-char ?↓))) ; downwards arrow
 (bind-key "C-x 8 <S-down>" (lambda () (interactive) (insert-char ?⇓))) ; rightwards double arrow
 
+(bind-key* "<S-left>" #'beginning-of-buffer)
+(bind-key* "<S-right>" #'end-of-buffer)
+(unbind-key "M-<")
+(unbind-key "M->")
+
 (use-package ethan-wspace
   :diminish ethan-wspace-mode
   :demand t
