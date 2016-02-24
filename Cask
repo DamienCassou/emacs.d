@@ -45,6 +45,7 @@
 (depends-on "nameless") ;; hide current package name everywhere in elisp code
 (depends-on "nix-mode") ;; major mode to edit nix expressions
 (depends-on "org-plus-contrib") ;; org mode plus its extensions
+(depends-on "org-vcard") ;; used by vdirel
 (depends-on "orgtbl-show-header") ;; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
 (depends-on "ox-twbs") ;; use twitter bootstrap to export org files to HTML
 (depends-on "paredit") ;; edit lisp AST instead of characters
