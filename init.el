@@ -253,6 +253,9 @@
  ;; If there is more than one, they won't work right.
  '(anzu-mode-line ((t (:foreground "black" :weight bold))))
  '(aw-leading-char-face ((t (:height 6.0 :underline nil :foreground "red"))))
+ '(column-marker-1 ((t (:underline t))))
+ '(column-marker-2 ((t (:underline t))))
+ '(column-marker-3 ((t (:underline t))))
  '(hl-line ((t (:underline t))))
  '(mu4e-header-highlight-face ((t (:underline t))))
  '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic)))))
