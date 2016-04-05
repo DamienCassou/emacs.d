@@ -107,7 +107,7 @@
    (quote
     ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
  '(magit-repository-directories-depth 1)
- '(magit-revert-buffers t)
+ '(magit-revert-buffers t t)
  '(magit-wip-after-apply-mode nil)
  '(magit-wip-after-save-mode nil)
  '(magit-wip-before-change-mode nil)
