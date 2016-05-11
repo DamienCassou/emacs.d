@@ -1663,6 +1663,9 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (beacon-mode)))
 
+(use-package embrace
+  :bind (("C-. ." . embrace-commander)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
