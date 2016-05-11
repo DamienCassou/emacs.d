@@ -1356,7 +1356,8 @@ Designed to be called before `message-send-and-exit'."
 (use-package git-auto-commit-mode
   :diminish git-auto-commit-mode)
 
-(use-package pos-tip)
+(use-package pos-tip
+  :disabled)
 
 (use-package skeletor
   :commands (skeletor-create-project))
