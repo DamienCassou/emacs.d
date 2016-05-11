@@ -12,13 +12,11 @@
 (depends-on "beacon") ;; highlight my cursor when scrolling
 (depends-on "camcorder") ;; record emacs sessions M-x camcorder-record
 (depends-on "dash") ;; list library
-(depends-on "define-word") ;; <C-. D> to get the definition of a word
 (depends-on "diminish") ;; Shorter mode names in the modeline
 (depends-on "dired-imenu") ;; integrates imenu in dired
 (depends-on "dired-toggle-sudo") ;; <C-x s> to toggle sudo state of buffer
 (depends-on "discover") ;; popus for some features
 (depends-on "drag-stuff") ;; use <M-arrow> to move things around
-(depends-on "elisp-slime-nav") ;; fast navigation between symbols in elisp with <M-.> and <C-c C-d C-d>
 (depends-on "ethan-wspace") ;; Correctly takes care of trailing spaces
 (depends-on "expand-region") ;; <C-x => repeadly to mark regions
 (depends-on "f") ;; file manipulation library
@@ -36,7 +34,6 @@
 (depends-on "helm-projectile") ;; integrate projectile and helm <C-. p h>
 (depends-on "hydra") ;; easy definition of repeatable shortcuts
 (depends-on "json-mode") ;; Major mode to edit JSON files
-(depends-on "less-css-mode") ;; lesscss mode
 (depends-on "magit") ;; Integrate git <C-x g>
 (depends-on "magit-svn") ;; Control git-subversion repositories from magit
 (depends-on "markdown-mode") ;; Major mode for markdown format
@@ -58,7 +55,6 @@
 (depends-on "seq") ;; sequence-manipulation library
 (depends-on "skeletor") ;; facilitates the creation of new project
 (depends-on "smartscan") ;; <M-n> <M-p> to move between same symbol in buffer
-(depends-on "smart-tab") ;; bind TAB to completion and indentation
 (depends-on "undo-tree") ;; <C-x u> to show the undo tree
 (depends-on "web-mode") ;; Major mode for editing HTML files and templates
 (depends-on "yaml-mode") ;; to edit *.yml files (including .travis.yml)

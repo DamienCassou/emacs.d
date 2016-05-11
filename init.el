@@ -1424,6 +1424,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
+  :disabled
   :init
   (progn
     (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)))
@@ -1651,6 +1652,7 @@ Designed to be called before `message-send-and-exit'."
   (occur "[^[:ascii:]]"))
 
 (use-package yasnippet
+  :disabled
   :diminish yas-minor-mode
   :init
   (progn
