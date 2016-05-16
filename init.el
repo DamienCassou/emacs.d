@@ -298,15 +298,7 @@
                                         ; directory must arrive first on
                                         ; the PATH
 
-(mapc 'add-to-executable-path '("~/.emacs.d/packages/cask/bin"))
-
-
-(require 'cask "~/.emacs.d/packages/cask/cask.el")
-(cask-initialize)
-
-(require 'powerline nil t)
-(with-eval-after-load 'powerline
-  (powerline-default-theme))
+(package-initialize)
 
 (require 'bind-key "~/.emacs.d/packages/use-package/bind-key.el")
 (require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
