@@ -8,6 +8,7 @@
         avy-zap-to-char-dwim
         clipboard-kill-region
         cycle-spacing
+        dired-toggle-read-only
         dired-unmark-all-files
         helm-show-kill-ring
         hungry-delete-backward
