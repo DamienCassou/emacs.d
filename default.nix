@@ -42,9 +42,9 @@ let
   });
 in
 (pkgs.emacsPackagesNgGen myEmacs).emacsWithPackages ((with pkgs.emacsPackagesNg.melpaStablePackages; [
-    ag # ; search using the 'ag' command (better grep)
     ace-link # ; type o in help-mode to go to a link
     ace-window # ; manage windows with ace-like behavior
+    ag # ; search using the 'ag' command (better grep)
     aggressive-indent # ; indent code automatically while typing
     anzu # ; more interactive query-replace
     avy # ; move fast in buffer with <C-,>
@@ -55,6 +55,7 @@ in
     dired-imenu # ; integrates imenu in dired
     discover # ; popus for some features
     drag-stuff # ; use <M-arrow> to move things around
+    ethan-wspace # ; Correctly takes care of trailing spaces
     expand-region # ; <C-x => repeadly to mark regions
     f # ; file manipulation library
     feature-mode # ; major mode for editing feature files
@@ -77,17 +78,22 @@ in
     multiple-cursors # ; Control multiple cursors with <C-S-c C-S-c>
     nix-mode # ; major mode to edit nix expressions
     org-vcard # ; used by vdirel
+    orgtbl-show-header # ; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
     ox-twbs # ; use twitter bootstrap to export org files to HTML
     paredit # ; edit lisp AST instead of characters
     paren-face # ; hide parenthesis in elisp code
     password-store # ; get passwords from the 'pass' command
     pdf-tools # to view PDF files inside Emacs
+    pillar # ; Major mode for pier/pillar-formatted text files
     pos-tip # ; make tool-tips appear nicely
     projectile # ; many functions on projects
+    runner # ; Associate external applications to file extensions
     s # ; string library
     skeletor # ; facilitates the creation of new project
     smartscan # ; <M-n> <M-p> to move between same symbol in buffer
+    visible-mark # ; show the current mark
     web-mode # ; Major mode for editing HTML files and templates
+    wgrep-helm # ; edit grep buffers
     yaml-mode # ; to edit *.yml files (including .travis.yml)
     yasnippet # ; expand snippets of text
     zerodark-theme # ; Nicolas' theme
@@ -96,22 +102,10 @@ in
     # status: https://github.com/Malabarba/beacon/issues/48
     dired-toggle-sudo # ; <C-x s> to toggle sudo state of buffer
     # status: https://github.com/renard/dired-toggle-sudo/issues/9
-    ethan-wspace # ; Correctly takes care of trailing spaces
-    # status : nix needs update
     helm-projectile # ; integrate projectile and helm <C-. p h>
     # status : https://github.com/bbatsov/helm-projectile/issues/11
-    orgtbl-show-header # ; <M-x orgtbl-show-header> to show the header of the current column in the minibuffer
-    # status: nix needs update
-    pillar # ; Major mode for pier/pillar-formatted text files
-    # status: nix needs update
-    runner # ; Associate external applications to file extensions
-    # status: nix needs update
     undo-tree # ; <C-x u> to show the undo tree
     # email sent
-    visible-mark # ; show the current mark
-    # status: nix needs update
-    wgrep-helm # ; edit grep buffers
-    # status: nix needs update
     zoom-frm # ; increase/decrease font size for all buffers <C-x C-+>
     # status: ABANDONED email sent (code is on emacs wiki)
   ]) ++ (with pkgs.emacsPackagesNg.elpaPackages; [
