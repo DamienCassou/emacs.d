@@ -234,6 +234,7 @@
  '(undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/.undo-tree/"))))
  '(undo-tree-mode-lighter "")
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
+ '(use-package-enable-imenu-support t)
  '(user-full-name "Damien Cassou")
  '(user-mail-address "damien.cassou@gmail.com")
  '(vc-follow-symlinks nil)
@@ -1320,14 +1321,6 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (with-eval-after-load "yasnippet"
       (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode))
-
-    (defun my:setup-imenu-for-use-package ()
-      "Recognize `use-package` in imenu"
-      (when (string= buffer-file-name (expand-file-name "init.el" "~/.emacs.d"))
-        (add-to-list 'imenu-generic-expression
-                     '("Used Packages"
-                       "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2))))
-    (add-hook 'emacs-lisp-mode-hook 'my:setup-imenu-for-use-package)
 
     (use-package paredit
       :diminish paredit-mode
