@@ -152,9 +152,7 @@
  '(notmuch-always-prompt-for-sender t)
  '(notmuch-archive-tags (quote ("-inbox" "-unread")))
  '(notmuch-crypto-process-mime t)
- '(notmuch-hello-sections
-   (quote
-    (notmuch-hello-insert-saved-searches)))
+ '(notmuch-hello-sections (quote (notmuch-hello-insert-saved-searches)))
  '(notmuch-labeler-hide-known-labels t)
  '(notmuch-search-oldest-first nil)
  '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t) (python . t))))
