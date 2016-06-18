@@ -522,27 +522,6 @@ narrowed."
           image-dired-cmd-create-temp-image-options
           (replace-regexp-in-string "-strip" "-auto-orient -strip" image-dired-cmd-create-temp-image-options))))
 
-(use-package bibtex
-  :defer t
-  :config
-  (progn
-    (add-to-list 'bibtex-BibTeX-entry-alist
-                 '("software" "A software"
-                   (("title")
-                    ("version")
-                    ("organization")
-                    ("month")
-                    ("year")
-                    ("id"))
-                   nil
-                   nil))
-
-    ;; "keywords" should be a recognized field
-    (mapc
-     (lambda (list)
-       (push '("keywords") (cl-fifth list)))
-     bibtex-BibTeX-entry-alist)))
-
 (use-package eshell
   :defer t
   :requires magit
