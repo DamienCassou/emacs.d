@@ -524,7 +524,6 @@ narrowed."
 
 (use-package eshell
   :defer t
-  :requires magit
   :config
   (progn
     (require 'magit)
