@@ -662,15 +662,9 @@ narrowed."
        (switch-to-buffer-other-window (or buffer "*info*"))))))
 
 (use-package ace-link
-  :defer t
   :init
   (progn
-    (eval-after-load "info"
-      `(progn
-         (define-key Info-mode-map "o" 'ace-link-info)))
-    (eval-after-load "help-mode"
-      `(progn
-         (define-key help-mode-map "o" 'ace-link-help)))))
+    (ace-link-setup-default)))
 
 (use-package ispell
   :bind
