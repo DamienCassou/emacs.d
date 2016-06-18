@@ -626,16 +626,7 @@ narrowed."
   :diminish reftex-mode
   :init
   (progn
-    (add-hook 'LaTeX-mode-hook 'turn-on-reftex))
-
-  :config
-  (progn
-    (eval-after-load "reftex-vars"
-      '(progn
-         (add-to-list 'reftex-bibliography-commands
-                      "bibliographyphd")
-         (add-to-list 'reftex-bibliography-commands
-                      "bibliographysoft")))))
+    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)))
 
 (use-package magit
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
