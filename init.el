@@ -300,8 +300,9 @@
 (package-initialize)
 
 (require 'bind-key "~/.emacs.d/packages/use-package/bind-key.el")
-(require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
+
 (eval-when-compile
+  (require 'use-package "~/.emacs.d/packages/use-package/use-package.el")
   (setq use-package-verbose (null byte-compile-current-file)))
 
 (defun set-selected-frame-dark ()
