@@ -979,9 +979,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/shell-switcher")
 (use-package shell-switcher
-  :defer t
+  :load-path "packages/shell-switcher"
   :bind (("C-M-'"   . shell-switcher-new-shell)
          ("C-'"     . shell-switcher-switch-buffer)
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window)))
@@ -993,7 +992,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package dired-toggle-sudo
-  :defer t
   :bind (("C-x s" . dired-toggle-sudo)))
 
 (use-package web-mode
@@ -1029,78 +1027,84 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (progn
         (helm-projectile-on)))))
 
-(add-to-list 'load-path "~/.emacs.d/packages/unify-opening")
 (use-package unify-opening
+  :load-path "packages/unify-opening"
   :demand t)
 
-(when (setq notmuch-command (executable-find "notmuch"))
-  (add-to-list 'load-path (expand-file-name "../../share/emacs/site-lisp" (file-symlink-p notmuch-command)))
-  (use-package notmuch
-    :bind (("C-. m" . notmuch))
-    :config
-    (progn
-      (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
+(eval-and-compile
+  (setq-default notmuch-command (executable-find "notmuch")))
 
-      (defun my:mm-ics-to-org-part (handle &optional prompt)
-        "Add message part HANDLE to org."
-        (mm-with-unibyte-buffer
-          (mm-insert-part handle)
-          (mm-add-meta-html-tag handle)
-          (require 'org-caldav)
-          (my:import-ics-buffer-to-org)))
+(use-package notmuch
+  :if notmuch-command
+  :load-path (lambda () (and notmuch-command
+                        (list (expand-file-name
+                               "../../share/emacs/site-lisp"
+                               (file-symlink-p notmuch-command)))))
+  :bind (("C-. m" . notmuch))
+  :config
+  (progn
+    (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
 
-      (defun my:notmuch-show-ics-to-org-part ()
-        "Save the .ics MIME part containing point to an org file."
-        (interactive)
-        (notmuch-show-apply-to-current-part-handle #'my:mm-ics-to-org-part))
+    (defun my:mm-ics-to-org-part (handle &optional prompt)
+      "Add message part HANDLE to org."
+      (mm-with-unibyte-buffer
+        (mm-insert-part handle)
+        (mm-add-meta-html-tag handle)
+        (require 'org-caldav)
+        (my:import-ics-buffer-to-org)))
 
-      (with-eval-after-load "notmuch-show"
-        (bind-key "d" #'my:notmuch-show-ics-to-org-part notmuch-show-part-map)
-        ;; bind 'r' to reply-all, and 'R' to reply
-        (bind-key "r" #'notmuch-search-reply-to-thread notmuch-search-mode-map)
-        (bind-key "R" #'notmuch-search-reply-to-thread-sender notmuch-search-mode-map)
-        (bind-key "r" #'notmuch-show-reply notmuch-show-mode-map)
-        (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))
+    (defun my:notmuch-show-ics-to-org-part ()
+      "Save the .ics MIME part containing point to an org file."
+      (interactive)
+      (notmuch-show-apply-to-current-part-handle #'my:mm-ics-to-org-part))
 
-      (use-package profile
-        :demand t
-        :init
-        (progn
-          (defun my:notmuch-build-identity (&optional email)
-            "Return a string of the form \"name <EMAIL>\"."
-            (let ((email (or email user-mail-address)))
-              (format "%s <%s>" (notmuch-user-name) email)))
+    (with-eval-after-load "notmuch-show"
+      (bind-key "d" #'my:notmuch-show-ics-to-org-part notmuch-show-part-map)
+      ;; bind 'r' to reply-all, and 'R' to reply
+      (bind-key "r" #'notmuch-search-reply-to-thread notmuch-search-mode-map)
+      (bind-key "R" #'notmuch-search-reply-to-thread-sender notmuch-search-mode-map)
+      (bind-key "r" #'notmuch-show-reply notmuch-show-mode-map)
+      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))
 
-          (setq notmuch-identities
-                (mapcar #'my:notmuch-build-identity
-                        (profile-email-addresses)))
+    (use-package profile
+      :demand t
+      :init
+      (progn
+        (defun my:notmuch-build-identity (&optional email)
+          "Return a string of the form \"name <EMAIL>\"."
+          (let ((email (or email user-mail-address)))
+            (format "%s <%s>" (notmuch-user-name) email)))
 
-          (defun my:notmuch-prompt-for-sender ()
-            "Prompt for a sender using `profile-binding-alist'."
-            (profile-set-profile)
-            (my:notmuch-build-identity))
+        (setq notmuch-identities
+              (mapcar #'my:notmuch-build-identity
+                      (profile-email-addresses)))
 
-          (advice-add #'notmuch-mua-prompt-for-sender
-                      :override
-                      #'my:notmuch-prompt-for-sender)
+        (defun my:notmuch-prompt-for-sender ()
+          "Prompt for a sender using `profile-binding-alist'."
+          (profile-set-profile)
+          (my:notmuch-build-identity))
 
-          (setq notmuch-archive-tags '("-inbox" "-unread"))
+        (advice-add #'notmuch-mua-prompt-for-sender
+                    :override
+                    #'my:notmuch-prompt-for-sender)
 
-          (setq notmuch-saved-searches
-                `((:name "inbox" :query ,(profile-inbox-query) :key "i")
-                  (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
-                  (:name "unread" :query "tag:unread" :key "u")
-                  (:name "sent" :query ,(profile-sent-query) :key "s"))))
-        :config
-        (progn
-          (with-eval-after-load "notmuch-hello"
-            (add-to-list 'notmuch-hello-sections
-                         #'profile-queue-insert-section
-                         t)))))))
+        (setq notmuch-archive-tags '("-inbox" "-unread"))
 
-(add-to-list 'load-path "~/.emacs.d/packages/profile")
+        (setq notmuch-saved-searches
+              `((:name "inbox" :query ,(profile-inbox-query) :key "i")
+                (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
+                (:name "unread" :query "tag:unread" :key "u")
+                (:name "sent" :query ,(profile-sent-query) :key "s"))))
+      :config
+      (progn
+        (with-eval-after-load "notmuch-hello"
+          (add-to-list 'notmuch-hello-sections
+                       #'profile-queue-insert-section
+                       t))))))
+
 (use-package profile
   :demand t
+  :load-path "packages/profile"
   :init
   (progn
     (with-eval-after-load "message"
@@ -1409,8 +1413,8 @@ Designed to be called before `message-send-and-exit'."
     (helm-descbinds-mode)
     (helm-mode 1)))
 
-(add-to-list 'load-path "~/.emacs.d/packages")
-(use-package youtube)
+(use-package youtube
+  :load-path "packages")
 
 (use-package wgrep
   :init
@@ -1440,10 +1444,9 @@ Designed to be called before `message-send-and-exit'."
     ;; Use same keys for both ace-window and avy
     (setq aw-keys avy-keys)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/org-caldav")
 (use-package org-caldav
-  :bind
-  (("C-. o S"   . org-caldav-sync))
+  :load-path "packages/org-caldav"
+  :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
     (setq org-caldav-url "https://cassou.me/baikal/cal.php/calendars/damien"
@@ -1501,9 +1504,9 @@ Designed to be called before `message-send-and-exit'."
   (with-eval-after-load "flycheck"
     (flycheck-package-setup)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/beginend")
 (use-package beginend
   :diminish (beginend-dired-mode beginend-message-mode)
+  :load-path "packages/beginend"
   :config
   (progn
     (beginend-setup-all)))
@@ -1513,13 +1516,13 @@ Designed to be called before `message-send-and-exit'."
   :bind (("M-z" . avy-zap-to-char-dwim)
          ("M-Z" . avy-zap-up-to-char-dwim)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/vdirel")
 (use-package vdirel
+  :load-path "packages/vdirel"
   :bind (("C-. c" . vdirel-helm-select-email)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/auth-password-store")
 (use-package auth-password-store
   :demand t
+  :load-path "packages/auth-password-store"
   :init
   (progn
     (setq auth-sources '(password-store))))
