@@ -802,17 +802,7 @@ narrowed."
       (interactive)
       (require 'org-agenda)
       (let ((entry (assoc " " org-agenda-custom-commands)))
-        (org-agenda-run-series (nth 1 entry) (cddr entry))))
-
-    (defvar-local dc:org-publish-on-save nil
-      "Set to t if you want to publish the project on each save.")
-    (defun dc:org-publish-on-save ()
-      "Publish the current project."
-      (when dc:org-publish-on-save
-        (save-excursion
-          (org-publish-current-project))))
-    (add-hook 'after-save-hook #'dc:org-publish-on-save))
-
+        (org-agenda-run-series (nth 1 entry) (cddr entry)))))
   :config
   (progn
     ;; Custom agenda command definitions
@@ -853,51 +843,15 @@ narrowed."
             (sequence "APPT(p)"    "|" "DONE(d)" "CANCELED(c)")
             (sequence "WAITING(w)" "|" "DONE(d)")))
 
-    (setq org-todo-keyword-faces
-          '(("NEXT" :foreground "orange" :weight bold)
-            ("CANCELLED" :foreground "forest green")))
-
     (setq org-capture-templates
           '(("t" "Todo" entry
              (file org-default-notes-file)
              "* TODO %?%i")
-            ("u" "URL" entry
-             (file org-default-notes-file)
-             "* TODO %?%i\n %a")
-            ("s" "Schefule" entry
+            ("s" "Schedule" entry
              (file org-default-calendar-file)
              "* %?\n%^T")))
 
-    (defun org-publish-lesscss (plist filename pub-dir)
-      "Publish a file with no transformation of any kind.
-
-FILENAME is the filename of the Org file to be published.  PLIST
-is the property list for the given project.  PUB-DIR is the
-publishing directory.
-
-Return output file name."
-      (save-excursion
-        (unless (file-directory-p pub-dir)
-          (make-directory pub-dir t))
-        (unless (equal (expand-file-name (file-name-directory filename))
-                       (file-name-as-directory (expand-file-name pub-dir)))
-          (let* ((cssfilename (format "%s.css" (file-name-base filename)))
-                 (destination (expand-file-name cssfilename pub-dir))
-                 ret output)
-            (message "Compiling %s to %s" filename destination)
-            ;; lessc lessfilename destination
-            (with-temp-buffer
-              (setq ret (call-process-shell-command "lessc" nil t nil
-                                                    filename
-                                                    destination))
-              (setq output (buffer-string)))
-            (unless (= ret 0)
-              (message "Can't compile less file %s. %s" filename output))))))
-
     (unbind-key "C-'" org-mode-map)
-
-    (with-eval-after-load "yasnippet"
-      (add-hook 'org-mode-hook 'yas-minor-mode))
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))
 
@@ -991,8 +945,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (load "auctex"))
   :config
   (progn
-    (load "mybibtex" t t t)
-
     (add-to-list 'TeX-command-list
                  '("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX
                    nil t :help "Run Bibtex on all aux files") t)
@@ -1045,13 +997,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :bind (("C-x s" . dired-toggle-sudo)))
 
 (use-package web-mode
-  :defer t
-  :mode ("\\.html?\\'" . web-mode)
-  :init
-  (progn
-    (setq web-mode-engines-alist
-          '(("liquid" .
-             "jekyll/_layouts/.*\\.html\\'")))))
+  :mode ("\\.html?\\'" . web-mode))
 
 (use-package guide-key
   :diminish guide-key-mode
@@ -1148,9 +1094,9 @@ able to type <C-c left left left> to undo 3 times whereas it was
         :config
         (progn
           (with-eval-after-load "notmuch-hello"
-              (add-to-list 'notmuch-hello-sections
-                           #'profile-queue-insert-section
-                           t)))))))
+            (add-to-list 'notmuch-hello-sections
+                         #'profile-queue-insert-section
+                         t)))))))
 
 (add-to-list 'load-path "~/.emacs.d/packages/profile")
 (use-package profile
@@ -1322,47 +1268,6 @@ Designed to be called before `message-send-and-exit'."
          ("<C-mouse-4>" . zoom-in)
          ("<C-mouse-5>" . zoom-out)))
 
-(defun update-pillar-image ()
-  (interactive)
-  (require 'f)
-  (require 's)
-  (require 'dash)
-
-  (let* ((images-dir "~/Documents/smalltalk/images/")
-         (pillar-directories
-          (-map #'f-filename (f-directories images-dir
-                                            (lambda (dir)
-                                              (s-starts-with? "pillar" (f-filename dir)))
-                                            t)))
-
-         (pillar-directory (cond
-                            ((null pillar-directories)
-                             (error "No pillar image found in %s" images-dir))
-                            ((= 1 (length pillar-directories))
-                             (car pillar-directories))
-                            (t (completing-read "Image: " pillar-directories nil t nil nil
-                                                (car pillar-directories)))))
-         (pillar-image (f-expand (s-concat pillar-directory ".image")
-                                 (f-expand pillar-directory images-dir)))
-         (pillar-changes (s-concat (f-no-ext pillar-image) ".changes"))
-         (destination-image (f-expand "Pharo.image" default-directory))
-         (destination-changes (f-expand "Pharo.changes" default-directory)))
-    (unless (f-exists? pillar-image)
-      (error "No image at %s" pillar-image))
-    (unless (f-exists? pillar-changes)
-      (error "No changes at %s" pillar-changes))
-    (when (or (f-exists? destination-image)
-              (f-symlink? destination-image))
-      (if (yes-or-no-p (format "Are you sure you want to delete %s? "
-                               destination-image))
-          (progn
-            (f-delete destination-image)
-            (f-delete destination-changes))
-        (error "Can't continue without deleting existing image %s"
-               destination-image)))
-    (f-symlink pillar-image destination-image)
-    (f-symlink pillar-changes destination-changes)))
-
 (use-package visible-mark
   :config
   (progn
@@ -1370,13 +1275,6 @@ Designed to be called before `message-send-and-exit'."
     (defface visible-mark-active
       '((((type tty) (class mono)))
         (t (:background "magenta"))) "")))
-
-(use-package elisp-slime-nav
-  :diminish elisp-slime-nav-mode
-  :disabled
-  :init
-  (progn
-    (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)))
 
 (use-package paren-face
   :init
@@ -1615,11 +1513,6 @@ Designed to be called before `message-send-and-exit'."
   :bind (("M-z" . avy-zap-to-char-dwim)
          ("M-Z" . avy-zap-up-to-char-dwim)))
 
-(add-to-list 'load-path "~/.emacs.d/packages/carldavel")
-(use-package carldavel
-  :disabled t
-  :bind (("C-. c" . carldavel-search-with-helm)))
-
 (add-to-list 'load-path "~/.emacs.d/packages/vdirel")
 (use-package vdirel
   :bind (("C-. c" . vdirel-helm-select-email)))
@@ -1653,13 +1546,6 @@ Designed to be called before `message-send-and-exit'."
   "Find any non-ascii characters in the current buffer."
   (interactive)
   (occur "[^[:ascii:]]"))
-
-(use-package yasnippet
-  :disabled
-  :diminish yas-minor-mode
-  :init
-  (progn
-    (yas-global-mode 1)))
 
 (use-package beacon
   :init
