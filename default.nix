@@ -99,8 +99,6 @@ in
     yasnippet # ; expand snippets of text
     zerodark-theme # ; Nicolas' theme
     ]) ++ (with pkgs.emacsPackagesNg.melpaPackages; [
-    beacon # ; highlight my cursor when scrolling
-    # status: https://github.com/Malabarba/beacon/issues/48
     dired-toggle-sudo # ; <C-x s> to toggle sudo state of buffer
     # status: https://github.com/renard/dired-toggle-sudo/issues/9
     helm-projectile # ; integrate projectile and helm <C-. p h>
@@ -111,6 +109,7 @@ in
     # status: ABANDONED email sent (code is on emacs wiki)
   ]) ++ (with pkgs.emacsPackagesNg.elpaPackages; [
     auctex # ; LaTeX mode
+    beacon # ; highlight my cursor when scrolling
     nameless # ; hide current package name everywhere in elisp code
     # https://github.com/Malabarba/Nameless/issues/13
     seq # ; sequence-manipulation library
