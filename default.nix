@@ -111,6 +111,5 @@ in
     auctex # ; LaTeX mode
     beacon # ; highlight my cursor when scrolling
     nameless # ; hide current package name everywhere in elisp code
-    # https://github.com/Malabarba/Nameless/issues/13
     seq # ; sequence-manipulation library
   ]))
