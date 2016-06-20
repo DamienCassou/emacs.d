@@ -51,6 +51,7 @@ in
     camcorder # ; record emacs sessions M-x camcorder-record
     counsel # ; various completions using ivy
     dash # ; list library
+    define-word # ; get definition of a common word
     diminish # ; Shorter mode names in the modeline
     dired-imenu # ; integrates imenu in dired
     discover # ; popus for some features
