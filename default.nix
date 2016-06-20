@@ -27,18 +27,18 @@ $ ./result/bin/emacs
 
 let
   myEmacs = pkgs.lib.overrideDerivation (pkgs.emacs.override {
-            # Use gtk3 instead of the default gtk2
-            withGTK3 = true;
-            withGTK2 = false;
-            # Make sure imagemgick is a dependency because I regularly
-            # look at pictures from Emacs
-            imagemagick = pkgs.imagemagickBig;
-          }) (attrs: {
-            # I don't want emacs.desktop file because I only use
-            # emacsclient.
-            postInstall = attrs.postInstall + ''
-              rm $out/share/applications/emacs.desktop
-            '';
+    # Use gtk3 instead of the default gtk2
+    withGTK3 = true;
+    withGTK2 = false;
+    # Make sure imagemagick is a dependency because I regularly
+    # look at pictures from Emacs
+    imagemagick = pkgs.imagemagickBig;
+  }) (attrs: {
+    # I don't want emacs.desktop file because I only use
+    # emacsclient.
+    postInstall = attrs.postInstall + ''
+      rm $out/share/applications/emacs.desktop
+    '';
   });
 in
 (pkgs.emacsPackagesNgGen myEmacs).emacsWithPackages ((with pkgs.emacsPackagesNg.melpaStablePackages; [

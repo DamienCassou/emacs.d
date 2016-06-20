@@ -669,7 +669,7 @@ narrowed."
 
 (use-package ispell
   :bind
-  (("C-. d b"   . ispell-buffer)
+  (("C-. d b" . ispell-buffer)
    ("C-. d f" . ispell-change-dictionary-to-french)
    ("C-. d e" . ispell-change-dictionary-to-english)
    ("C-. d ?" . ispell-change-dictionary))
@@ -787,11 +787,11 @@ narrowed."
   (progn
     (setq org-modules '(org-protocol org-capture ox-beamer))
 
-    (eval-after-load "org-latex"
-      `(progn
-         (setq org-latex-listings t)
-         (add-to-list 'org-latex-packages-alist '("" "listings"))
-         (add-to-list 'org-latex-packages-alist '("" "color"))))
+    (with-eval-after-load "org-latex"
+      (progn
+        (setq org-latex-listings t)
+        (add-to-list 'org-latex-packages-alist '("" "listings"))
+        (add-to-list 'org-latex-packages-alist '("" "color"))))
 
     (defun my:org-move-to-refile-target (&optional last)
       (interactive "p")
@@ -900,7 +900,6 @@ Return output file name."
       (add-hook 'org-mode-hook 'yas-minor-mode))
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))
-
 
     (defvar fuzz-factor 1.0e-3)
     (defun approx-equal (x y)
@@ -1059,7 +1058,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t" "C-x RET"))
-
     (add-to-list 'guide-key/guide-key-sequence endless/toggle-prefix)
 
     (with-eval-after-load "helm-config"
@@ -1536,6 +1534,7 @@ Designed to be called before `message-send-and-exit'."
   :bind (("M-o" . ace-window))
   :init
   (progn
+    ;; force this binding even if another mode tries to use it
     (bind-key* "M-o" #'ace-window))
   :config
   (progn
