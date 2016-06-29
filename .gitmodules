@@ -18,7 +18,7 @@
 	url = https://DamienCassou@github.com/DamienCassou/shell-switcher.git
 [submodule "packages/unify-opening"]
 	path = packages/unify-opening
-	url = https://DamienCassou@.com/DamienCassou/unify-opening.git
+	url = https://DamienCassou@github.com/DamienCassou/unify-opening.git
 [submodule "packages/vdirel"]
 	path = packages/vdirel
 	url = https://DamienCassou@github.com/DamienCassou/vdirel.git
