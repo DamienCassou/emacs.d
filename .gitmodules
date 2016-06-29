@@ -1,30 +1,24 @@
-[submodule "packages/cask"]
-	path = packages/cask
-	url = https://github.com/cask/cask.git
 [submodule "packages/use-package"]
 	path = packages/use-package
 	url = https://github.com/jwiegley/use-package.git
-[submodule "packages/mu"]
-	path = packages/mu
-	url = https://github.com/djcb/mu.git
 [submodule "packages/beginend"]
 	path = packages/beginend
-	url = git@github.com:DamienCassou/beginend.git
+	url = https://DamienCassou@github.com/DamienCassou/beginend.git
 [submodule "packages/org-caldav"]
 	path = packages/org-caldav
-	url = git@github.com:DamienCassou/org-caldav.git
+	url = https://DamienCassou@github.com/DamienCassou/org-caldav.git
 [submodule "packages/auth-password-store"]
 	path = packages/auth-password-store
-	url = git@github.com:DamienCassou/auth-password-store.git
+	url = https://DamienCassou@github.com/DamienCassou/auth-password-store.git
 [submodule "packages/profile"]
 	path = packages/profile
-	url = git@github.com:DamienCassou/profile.git
+	url = https://DamienCassou@github.com/DamienCassou/profile.git
 [submodule "packages/shell-switcher"]
 	path = packages/shell-switcher
-	url = git@github.com:DamienCassou/shell-switcher.git
+	url = https://DamienCassou@github.com/DamienCassou/shell-switcher.git
 [submodule "packages/unify-opening"]
 	path = packages/unify-opening
-	url = https://github.com/DamienCassou/unify-opening.git
+	url = https://DamienCassou@.com/DamienCassou/unify-opening.git
 [submodule "packages/vdirel"]
 	path = packages/vdirel
-	url = git@github.com:DamienCassou/vdirel.git
+	url = https://DamienCassou@github.com/DamienCassou/vdirel.git
