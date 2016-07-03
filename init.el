@@ -114,6 +114,7 @@
  '(magit-wip-after-apply-mode nil)
  '(magit-wip-after-save-mode nil)
  '(magit-wip-before-change-mode nil)
+ '(markdown-command "Markdown.pl")
  '(menu-bar-mode nil)
  '(message-default-charset (quote utf-8))
  '(message-log-max t)
