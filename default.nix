@@ -76,6 +76,7 @@ in
     magit # ; Integrate git <C-x g>
     magit-svn # ; Control git-subversion repositories from magit
     markdown-mode # ; Major mode for markdown format
+    markdown-preview-mode # ; preview HTML while writing Markdown
     multiple-cursors # ; Control multiple cursors with <C-S-c C-S-c>
     nix-mode # ; major mode to edit nix expressions
     org-vcard # ; used by vdirel
