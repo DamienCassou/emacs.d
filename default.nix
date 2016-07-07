@@ -48,6 +48,7 @@ in
     aggressive-indent # ; indent code automatically while typing
     anzu # ; more interactive query-replace
     avy # ; move fast in buffer with <C-,>
+    bind-key # ; to simplify definition of shortcuts
     camcorder # ; record emacs sessions M-x camcorder-record
     counsel # ; various completions using ivy
     dash # ; list library
@@ -93,6 +94,7 @@ in
     s # ; string library
     skeletor # ; facilitates the creation of new project
     smartscan # ; <M-n> <M-p> to move between same symbol in buffer
+    use-package # ; to structure my init.el file
     visible-mark # ; show the current mark
     web-mode # ; Major mode for editing HTML files and templates
     wgrep-helm # ; edit grep buffers
