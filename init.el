@@ -1174,7 +1174,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
            ("damien.cassou@lifl.fr" "cassou@inria.fr"
             "damien.cassou@laposte.net")))
     (setq profile-noisy-query
-          "list:\"pharo-dev\" OR list:\"pharo-users\" OR list:smallwiki OR to:notmuch@notmuchmail.org OR to:offlineimap-project@lists.alioth.debian.org")))
+          "list:\"pharo-dev\" OR list:\"pharo-users\" OR list:smallwiki OR to:notmuch@notmuchmail.org OR to:offlineimap-project@lists.alioth.debian.org OR list:nix-dev")))
 
 (use-package mml
   :defer t
