@@ -114,5 +114,5 @@ in
     auctex # ; LaTeX mode
     beacon # ; highlight my cursor when scrolling
     nameless # ; hide current package name everywhere in elisp code
-    seq # ; sequence-manipulation library
-  ]))
+    seq # ; sequence-manipulation libraryy
+  ]) ++ [ pkgs.emacsPackagesNg.emacs-source-directory ])
