@@ -26,7 +26,8 @@ $ ./result/bin/emacs
 { pkgs ? import <nixpkgs> {} }:
 
 let
-  myEmacs = pkgs.lib.overrideDerivation (pkgs.emacs.override {
+  baseEmacs = pkgs.emacs25pre;
+  myEmacs = pkgs.lib.overrideDerivation (baseEmacs.override {
     # Use gtk3 instead of the default gtk2
     withGTK3 = true;
     withGTK2 = false;
@@ -40,8 +41,10 @@ let
       rm $out/share/applications/emacs.desktop
     '';
   });
+  myEmacsPackagesNg = pkgs.emacsPackagesNgGen myEmacs;
 in
-(pkgs.emacsPackagesNgGen myEmacs).emacsWithPackages ((with pkgs.emacsPackagesNg.melpaStablePackages; [
+with myEmacsPackagesNg;
+emacsWithPackages ((with melpaStablePackages; [
     ace-link # ; type o in help-mode to go to a link
     ace-window # ; manage windows with ace-like behavior
     ag # ; search using the 'ag' command (better grep)
@@ -90,6 +93,7 @@ in
     pillar # ; Major mode for pier/pillar-formatted text files
     pos-tip # ; make tool-tips appear nicely
     projectile # ; many functions on projects
+    refine #; edit list interactively
     runner # ; Associate external applications to file extensions
     s # ; string library
     skeletor # ; facilitates the creation of new project
@@ -101,7 +105,7 @@ in
     yaml-mode # ; to edit *.yml files (including .travis.yml)
     yasnippet # ; expand snippets of text
     zerodark-theme # ; Nicolas' theme
-    ]) ++ (with pkgs.emacsPackagesNg.melpaPackages; [
+    ]) ++ (with melpaPackages; [
     dired-toggle-sudo # ; <C-x s> to toggle sudo state of buffer
     # status: https://github.com/renard/dired-toggle-sudo/issues/9
     helm-projectile # ; integrate projectile and helm <C-. p h>
@@ -110,9 +114,9 @@ in
     # email sent
     zoom-frm # ; increase/decrease font size for all buffers <C-x C-+>
     # status: ABANDONED email sent (code is on emacs wiki)
-  ]) ++ (with pkgs.emacsPackagesNg.elpaPackages; [
+  ]) ++ (with elpaPackages; [
     auctex # ; LaTeX mode
     beacon # ; highlight my cursor when scrolling
     nameless # ; hide current package name everywhere in elisp code
     seq # ; sequence-manipulation libraryy
-  ]) ++ [ pkgs.emacsPackagesNg.emacs-source-directory ])
+  ]) ++ [ emacs-source-directory ])
