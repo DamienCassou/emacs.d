@@ -119,4 +119,6 @@ emacsWithPackages ((with melpaStablePackages; [
     beacon # ; highlight my cursor when scrolling
     nameless # ; hide current package name everywhere in elisp code
     seq # ; sequence-manipulation libraryy
-  ]) ++ [ emacs-source-directory ])
+  ]) ++ [
+    emacs-source-directory # give Emacs access to its own C sources
+  ])
