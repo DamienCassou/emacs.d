@@ -263,45 +263,13 @@
  '(mu4e-header-highlight-face ((t (:underline t))))
  '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic)))))
 
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
-  (when (fboundp mode) (funcall mode -1)))
-
-(defun darwinp ()
-  (interactive)
-  "Return true if system is darwin-based (Mac OS X)"
-  (string-equal system-type "darwin"))
-
-;; Path
-(defun add-to-executable-path (path)
-  (let ((expanded-path (expand-file-name path)))
-    (add-to-list 'exec-path expanded-path)
-    (setenv "PATH" (concat expanded-path ":" (getenv "PATH")))))
-
-(mapc
- 'add-to-executable-path
- (if (darwinp)
-     (list  "/usr/local/bin"
-            "/usr/local/sbin"
-            "~/usr/apps/texlive/latest/bin/universal-darwin/")
-   (list "~/Documents/configuration/scripts/"
-         "/nix/store/ij052kind6xb6gnw4f0akc98ssqhq8dc-unzip-6.0/bin"
-         "/home/cassou/.nix-profile/bin"
-         "/home/cassou/.nix-profile/sbin"
-         "/home/cassou/.nix-profile/lib/kde4/libexec"
-         "/nix/var/nix/profiles/default/bin"
-         "/nix/var/nix/profiles/default/sbin"
-         "/nix/var/nix/profiles/default/lib/kde4/libexec"
-         "/run/current-system/sw/bin"
-         "/run/current-system/sw/sbin"
-         "/run/current-system/sw/lib/kde4/libexec"
-         "/var/setuid-wrappers")))      ; the /var/setuid-wrappers/
-                                        ; directory must arrive first on
-                                        ; the PATH
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 (package-initialize)
 
-(require 'bind-key)
-
+;;; use-package initialization
 (eval-when-compile
   (require 'use-package)
   (setq use-package-verbose (null byte-compile-current-file)))
@@ -351,6 +319,8 @@
 (bind-key "M-j" 'my-join-line)
 
 (defun toggle-window-split ()
+  "Swap between horizontal and vertical separation when 2 frames
+are visible."
   (interactive)
   (if (= (count-windows) 2)
       (let* ((this-win-buffer (window-buffer))
@@ -377,23 +347,6 @@
 
 (define-key ctl-x-4-map "t" 'toggle-window-split)
 
-(defvar buffers-to-keep '("*scratch*" "*Messages*"))
-(defun buffer-killable-p (buffer)
-  (and
-   (not (member (buffer-name buffer) buffers-to-keep))
-   (or (null (buffer-file-name buffer)) ;; buffer is not a file
-       (not (buffer-modified-p buffer))))) ;; or file is not modified
-
-(defun kill-all-buffers ()
-  (interactive)
-  (let ((count 0))
-    (dolist (buffer (buffer-list))
-      (when (buffer-killable-p buffer)
-        (incf count)
-        (message "Killing %s" (buffer-name buffer))
-        (kill-buffer buffer)))
-    (message "%s buffers have been killed" count)))
-
 ;; faster than C-x z
 (bind-key "C-z" 'repeat)
 (unbind-key "C-x z")
@@ -409,37 +362,20 @@
 (bind-key "q" 'toggle-debug-on-quit endless/toggle-map)
 (bind-key "r" 'dired-toggle-read-only endless/toggle-map)
 
-(defun narrow-or-widen-dwim (p)
-  "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
-Intelligently means: region, subtree, or defun, whichever applies
-first.
+(bind-key "C-x 8 <S-right>" (lambda () (interactive) (insert-char ?→))) ; rightwards arrow
+(bind-key "C-x 8 <right>" (lambda () (interactive) (insert-char ?⇒))) ; rightwards double arrow
 
-With prefix P, don't widen, just narrow even if buffer is already
-narrowed."
-  (interactive "P")
-  (declare (interactive-only))
-  (cond ((and (buffer-narrowed-p) (not p)) (widen))
-        ((region-active-p)
-         (narrow-to-region (region-beginning) (region-end)))
-        ((derived-mode-p 'org-mode) (org-narrow-to-subtree))
-        (t (narrow-to-defun))))
+(bind-key "C-x 8 <S-left>" (lambda () (interactive) (insert-char ?←))) ; leftwards arrow
+(bind-key "C-x 8 <left>" (lambda () (interactive) (insert-char ?⇐))) ; leftwards double arrow
 
-(bind-key "n" 'narrow-or-widen-dwim endless/toggle-map)
+(bind-key "C-x 8 <S-up>" (lambda () (interactive) (insert-char ?↑))) ; upwards arrow
+(bind-key "C-x 8 <up>" (lambda () (interactive) (insert-char ?⇑))) ; upwards double arrow
 
-(bind-key "C-x 8 <right>" (lambda () (interactive) (insert-char ?→))) ; rightwards arrow
-(bind-key "C-x 8 <S-right>" (lambda () (interactive) (insert-char ?⇒))) ; rightwards double arrow
+(bind-key "C-x 8 <S-down>" (lambda () (interactive) (insert-char ?↓))) ; downwards arrow
+(bind-key "C-x 8 <down>" (lambda () (interactive) (insert-char ?⇓))) ; rightwards double arrow
 
-(bind-key "C-x 8 <left>" (lambda () (interactive) (insert-char ?←))) ; leftwards arrow
-(bind-key "C-x 8 <S-left>" (lambda () (interactive) (insert-char ?⇐))) ; leftwards double arrow
-
-(bind-key "C-x 8 <up>" (lambda () (interactive) (insert-char ?↑))) ; upwards arrow
-(bind-key "C-x 8 <S-up>" (lambda () (interactive) (insert-char ?⇑))) ; upwards double arrow
-
-(bind-key "C-x 8 <down>" (lambda () (interactive) (insert-char ?↓))) ; downwards arrow
-(bind-key "C-x 8 <S-down>" (lambda () (interactive) (insert-char ?⇓))) ; rightwards double arrow
-
-(bind-key* "<S-left>" #'beginning-of-buffer)
-(bind-key* "<S-right>" #'end-of-buffer)
+(bind-key "<S-left>" #'beginning-of-buffer)
+(bind-key "<S-right>" #'end-of-buffer)
 (unbind-key "M-<")
 (unbind-key "M->")
 
@@ -463,11 +399,6 @@ narrowed."
     (add-hook 'dired-mode-hook #'turn-on-gnus-dired-mode)
 
     (bind-key ")" 'dired-omit-mode dired-mode-map)
-
-    (when (darwinp)
-      ;; Use coreutils from homebrew to provide a real ls
-      (setq dired-use-ls-dired t)
-      (setq insert-directory-program "gls"))
 
     (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".build" ".dsc" ".synctex.gz")))
       (mapc (lambda (extension)
@@ -806,6 +737,9 @@ narrowed."
         (org-agenda-run-series (nth 1 entry) (cddr entry)))))
   :config
   (progn
+    (bind-key "<S-left>" #'beginning-of-buffer org-mode-map)
+    (bind-key "<S-right>" #'end-of-buffer org-mode-map)
+
     ;; Custom agenda command definitions
     (setq org-agenda-custom-commands
           (quote (("l" "Logbook" nico/org-agenda-log ""
@@ -1380,6 +1314,10 @@ Designed to be called before `message-send-and-exit'."
     (require 'helm-config))
   :config
   (progn
+    (bind-key "<S-left>" #'helm-beginning-of-buffer helm-map)
+    (bind-key "<S-right>" #'helm-end-of-buffer helm-map)
+
+
     (define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-i")   #'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z")   #'helm-select-action)
