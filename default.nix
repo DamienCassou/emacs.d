@@ -78,7 +78,6 @@ emacsWithPackages ((with melpaStablePackages; [
     hydra # ; easy definition of repeatable shortcuts
     json-mode # ; Major mode to edit JSON files
     magit # ; Integrate git <C-x g>
-    magit-svn # ; Control git-subversion repositories from magit
     markdown-mode # ; Major mode for markdown format
     markdown-preview-mode # ; preview HTML while writing Markdown
     multiple-cursors # ; Control multiple cursors with <C-S-c C-S-c>
