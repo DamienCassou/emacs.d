@@ -109,6 +109,8 @@ emacsWithPackages ((with melpaStablePackages; [
     # status: https://github.com/renard/dired-toggle-sudo/issues/9
     helm-projectile # ; integrate projectile and helm <C-. p h>
     # status : https://github.com/bbatsov/helm-projectile/issues/11
+    org-caldav # ; sync between org and caldav
+    # status: https://github.com/dengste/org-caldav/issues/97
     undo-tree # ; <C-x u> to show the undo tree
     # email sent
     zoom-frm # ; increase/decrease font size for all buffers <C-x C-+>

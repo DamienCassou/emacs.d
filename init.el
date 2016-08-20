@@ -1384,7 +1384,6 @@ Designed to be called before `message-send-and-exit'."
     (setq aw-keys avy-keys)))
 
 (use-package org-caldav
-  :load-path "packages/org-caldav"
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
