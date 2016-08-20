@@ -22,3 +22,5 @@
 /cache/*
 *.log
 /var/pcache/cache
+/network-security.data
+/result
