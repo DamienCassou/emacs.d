@@ -23,10 +23,10 @@ To run the newly compiled executable:
 
 $ ./result/bin/emacs
 */
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {}, wantEmacs24 ? false }:
 
 let
-  baseEmacs = pkgs.emacs25pre;
+  baseEmacs = if wantEmacs24 then pkgs.emacs else pkgs.emacs25pre;
   myEmacs = pkgs.lib.overrideDerivation (baseEmacs.override {
     # Use gtk3 instead of the default gtk2
     withGTK3 = true;
