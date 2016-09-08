@@ -58,6 +58,7 @@ emacsWithPackages ((with melpaStablePackages; [
     define-word # ; get definition of a common word
     diminish # ; Shorter mode names in the modeline
     dired-imenu # ; integrates imenu in dired
+    dired-toggle-sudo # ; <C-x s> to toggle sudo state of buffer
     discover # ; popus for some features
     drag-stuff # ; use <M-arrow> to move things around
     ethan-wspace # ; Correctly takes care of trailing spaces
@@ -75,6 +76,7 @@ emacsWithPackages ((with melpaStablePackages; [
     helm # ; selection/completion interface for everything
     helm-ag # ; use ag from helm
     helm-descbinds # ; integrate helm and describe-bindings <any-prefix C-h>
+    helm-projectile # ; integrate projectile and helm <C-. p h>
     hydra # ; easy definition of repeatable shortcuts
     json-mode # ; Major mode to edit JSON files
     magit # ; Integrate git <C-x g>
@@ -105,10 +107,6 @@ emacsWithPackages ((with melpaStablePackages; [
     yasnippet # ; expand snippets of text
     zerodark-theme # ; Nicolas' theme
     ]) ++ (with melpaPackages; [
-    dired-toggle-sudo # ; <C-x s> to toggle sudo state of buffer
-    # status: https://github.com/renard/dired-toggle-sudo/issues/9
-    helm-projectile # ; integrate projectile and helm <C-. p h>
-    # status : https://github.com/bbatsov/helm-projectile/issues/11
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97
     undo-tree # ; <C-x u> to show the undo tree
