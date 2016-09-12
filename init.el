@@ -1028,6 +1028,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (setq notmuch-saved-searches
               `((:name "inbox" :query ,(profile-inbox-query) :key "i")
                 (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
+                (:name "ftgp" :query "damien.cassou@foretagsplatsen.se AND tag:inbox" :key "f")
                 (:name "unread" :query "tag:unread" :key "u")
                 (:name "sent" :query ,(profile-sent-query) :key "s"))))
       :config
@@ -1101,12 +1102,25 @@ able to type <C-c left left left> to undo 3 times whereas it was
              (smtpmail-smtp-user . "dcassou")
              (smtpmail-smtp-server . "bender.ldn-fai.net")
              (smtpmail-stream-type . ssl)
-             (smtpmail-smtp-service . 465))))
+             (smtpmail-smtp-service . 465))
+            ("Ftgp"
+             (profile-maildir . "/Ftgp")
+             (mu4e-trash-folder . "/Ftgp/Trash")
+             (mu4e-sent-folder . "/GMail/[Gmail].All Mail")
+             (mu4e-sent-messages-behavior . delete)
+             (mu4e-drafts-folder . "/Ftgp/Drafts")
+             (user-mail-address . "damien.cassou@foretagsplatsen.se")
+             (smtpmail-queue-dir . "~/Mail/Ftgp/queued-mail/")
+             (smtpmail-local-domain . nil)
+             (smtpmail-smtp-user . "damien.cassou@foretagsplatsen.se")
+             (smtpmail-smtp-server . "smtp.gmail.com")
+             (smtpmail-stream-type . starttls)
+             (smtpmail-smtp-service . 587))))
     (profile-set-profile-from-name "Perso")
     (setq profile-extra-email-addresses
           (quote
            ("damien.cassou@lifl.fr" "cassou@inria.fr"
-            "damien.cassou@laposte.net")))
+            "damien.cassou@laposte.net" "damien@foretagsplatsen.se")))
     (setq profile-noisy-query
           "list:\"pharo-dev\" OR list:\"pharo-users\" OR list:\"smallwiki\" OR to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\" OR \"cristal.univ-lille1.fr\" OR \"tous-lille.inria.fr\" OR \"online.inria.fr\" OR \"tous-les-personnels.univ-lille1.fr\" OR \"cristal-cr-cdl.univ-lille1.fr\" OR \"cristal-permanents.univ-lille1.fr\"")))
 
