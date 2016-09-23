@@ -4,19 +4,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(LaTeX-section-hook
-   (quote
-    (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
- '(LaTeX-verbatim-environments
-   (quote
-    ("verbatim" "verbatim*" "lstlisting" "comment" "Verbatim")))
- '(TeX-PDF-mode t)
- '(TeX-auto-save t)
- '(TeX-default-unit-for-image "\\linewidth")
- '(TeX-master nil)
- '(TeX-parse-self t)
- '(TeX-source-correlate-mode t)
- '(TeX-source-correlate-start-server t)
  '(auth-source-debug t)
  '(auth-source-do-cache nil nil nil "Don't save as I'm doing experiments with gnupg")
  '(avy-style (quote at-full))
@@ -24,13 +11,6 @@
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(beacon-blink-when-focused t)
- '(bibtex-align-at-equal-sign t)
- '(bibtex-autokey-name-case-convert-function (quote identity))
- '(bibtex-autokey-name-length 4)
- '(bibtex-autokey-titlewords 0)
- '(bibtex-entry-format
-   (quote
-    (opts-or-alts required-fields whitespace realign last-comma delimiters)))
  '(bookmark-save-flag 1)
  '(calendar-date-style (quote european))
  '(calendar-week-start-day 1)
@@ -59,30 +39,7 @@
  '(eshell-cmpl-cycle-completions nil)
  '(eval-expression-print-length 20)
  '(eval-expression-print-level nil)
- '(flyspell-tex-command-regexp
-   "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ct\\|c?cauthor\\|sigle\\|\\(lst\\)?\\(lignesa\\|lignes\\|ligne\\)\\|nocheck\\|macitation\\|enword\\|ref\\|eqref\\|pageref\\|page\\|listing\\|usepackage\\|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
  '(flyspell-use-meta-tab nil)
- '(font-latex-match-bold-command-keywords
-   (quote
-    (("mn" "{")
-     ("damien" "{")
-     ("dc" "{")
-     ("eb" "{")
-     ("bb" "{")
-     ("cc" "{")
-     ("jl" "{")
-     ("sd" "{")
-     ("dp" "{")
-     ("nl" "{")
-     ("cam" "{"))))
- '(font-latex-match-math-command-keywords (quote (("mm" "{") ("contract" "{{{"))))
- '(font-latex-match-reference-keywords (quote (("ccauthor" "[{") ("cauthor" "{"))))
- '(font-latex-match-type-command-keywords
-   (quote
-    (("ct" "{")
-     ("method" "{")
-     ("class" "{")
-     ("lct" "{"))))
  '(frame-title-format "Emacs: %b" t)
  '(gc-cons-threshold 20000000)
  '(global-font-lock-mode t)
@@ -170,7 +127,6 @@
  '(org-hide-leading-stars t)
  '(org-html-postamble nil)
  '(org-imenu-depth 2)
- '(org-latex-tables-booktabs t)
  '(org-log-done (quote time))
  '(org-outline-path-complete-in-steps nil)
  '(org-refile-use-outline-path (quote full-file-path))
@@ -192,12 +148,6 @@
  '(recentf-max-saved-items 4000)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/recentf")
- '(reftex-default-bibliography
-   (quote
-    ("~/Documents/rmodbib/bib/rmod.bib" "~/Documents/rmodbib/bib/others.bib")))
- '(reftex-plug-into-AUCTeX t)
- '(reftex-view-crossref-cite-macros "\\`\\\\cite\\|cite\\*?\\'\\|bibentry\\|ccauthor")
- '(reftex-view-crossref-extra nil)
  '(report-emacs-bug-no-explanations t)
  '(runner-run-in-background t)
  '(save-place t nil (saveplace))
@@ -555,13 +505,6 @@ are visible."
   (progn
     (setq-default ediff-auto-refine 'on)))
 
-(use-package reftex
-  :defer t
-  :diminish reftex-mode
-  :init
-  (progn
-    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)))
-
 (use-package magit
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
   :bind (("C-x g" . magit-status) ("C-x G" . magit-dispatch-popup))
@@ -571,14 +514,7 @@ are visible."
       (add-to-list 'magit-no-confirm #'safe-with-wip))
 
     ;; prevents magit from showing ugly passphrase dialog
-    (setenv "SSH_ASKPASS" nil)
-
-    (defun magit-ignore-latex-project ()
-      (interactive)
-      (mapc
-       #'magit-gitignore
-       (list "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "auto/" "*.synctex.gz" "*.toc"))
-      (magit-refresh))))
+    (setenv "SSH_ASKPASS" nil)))
 
 (use-package info
   :bind ("C-h i" . my:info-other-window)
@@ -635,44 +571,7 @@ are visible."
       (let ((mode-value (if flyspell-mode -1 1)))
         (save-excursion
           (add-file-local-variable 'eval `(flyspell-mode ,mode-value)))
-        (flyspell-mode mode-value))))
-  :config
-  ;; ispell must ignore LaTeX commands and environments
-  (progn
-    (setq ispell-tex-skip-alists
-          (list
-           (append (car ispell-tex-skip-alists)
-                   '(("\\\\cite"            ispell-tex-arg-end)
-                     ("\\\\nocite"          ispell-tex-arg-end)
-                     ("\\\\includegraphics" ispell-tex-arg-end)
-                     ("\\\\figScale"         ispell-tex-arg-end)
-                     ("\\\\author"          ispell-tex-arg-end)
-                     ("\\\\ref"             ispell-tex-arg-end)
-                     ("\\\\eqref"             ispell-tex-arg-end)
-                     ("\\\\pageref"             ispell-tex-arg-end)
-                     ("\\\\label"           ispell-tex-arg-end)
-                     ("\\\\lstinputlisting" ispell-tex-arg-end)
-                     ("\\\\enword" ispell-tex-arg-end)
-                     ("\\\\ct" ispell-tex-arg-end)
-                     ("\\\\sigle" ispell-tex-arg-end)
-                     ("\\\\nocheck" ispell-tex-arg-end)
-                     ("\\\\mathit" ispell-tex-arg-end)
-                     ("\\\\url" ispell-tex-arg-end)
-                     ("\\\\lst[p]?\\(lignesa\\|lignes\\|ligne\\)" ispell-tex-arg-end 2)
-                     ("\\\\\\(lignesa\\|lignes\\|ligne\\)" ispell-tex-arg-end)
-                     ("\\\\c?cauthor" ispell-tex-arg-end)
-                     ("\\\\page" ispell-tex-arg-end)
-                     ("\\\\listing" ispell-tex-arg-end)
-                     ("\\\\macitationraw" ispell-tex-arg-end 2)
-                     ("\\\\macitation" ispell-tex-arg-end 3)
-                     ("\\\\mm" ispell-tex-arg-end)
-                     ("\\\\begin{lstlisting}" . "\\\\end{lstlisting}")
-                     ("\\\\begin{code}{}" . "\\\\end{code}")
-                     ))
-           (append (cadr ispell-tex-skip-alists)
-                   '(("tabular" ispell-tex-arg-end)
-                     ("equation\\*" . "\\\\end[ 	\n]*{[ 	\n]*equation\\*[ 	\n]*}")
-                     ("tikzpicture" . "\\\\end[ 	\n]*{[ 	\n]*tikzpicture[ 	\n]*}")))))))
+        (flyspell-mode mode-value)))))
 
 (use-package flyspell
   :diminish flyspell-mode
@@ -722,12 +621,6 @@ are visible."
   :init
   (progn
     (setq org-modules '(org-protocol org-capture ox-beamer))
-
-    (with-eval-after-load "org-latex"
-      (progn
-        (setq org-latex-listings t)
-        (add-to-list 'org-latex-packages-alist '("" "listings"))
-        (add-to-list 'org-latex-packages-alist '("" "color"))))
 
     (defun my:org-move-to-refile-target (&optional last)
       (interactive "p")
@@ -875,31 +768,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
       (winner:prepare-for-futher-undo))
 
     (bind-key "C-c <left>" 'winner:initial-undo  winner-mode-map)))
-
-(use-package auctex
-  :mode ("\\.tex\\'" . latex-mode)
-  :init
-  (progn
-    (require 'tex-mode)
-    (load "auctex"))
-  :config
-  (progn
-    (add-to-list 'TeX-command-list
-                 '("Bibtex all" "multibib/bibtexall" TeX-run-BibTeX
-                   nil t :help "Run Bibtex on all aux files") t)
-
-    (defadvice TeX-source-correlate-sync-source (after my:highlight-line-correlate activate)
-      (when (require 'pulse nil t)
-        (pulse-momentary-highlight-one-line (point))))
-
-    (defun LaTeX-align-table ()
-      (interactive)
-      (save-excursion
-        (LaTeX-mark-environment)
-        (while (re-search-forward "& *" (region-end) t)
-          (replace-match "& " nil nil))
-        (LaTeX-mark-environment)
-        (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)\\(&\\|\\\\\\\\\\)" 1 1 t)))))
 
 (use-package drag-stuff
   :diminish drag-stuff-mode
