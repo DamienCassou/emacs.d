@@ -47,6 +47,7 @@
  '(global-hl-line-sticky-flag t)
  '(global-pair-mode t)
  '(global-prettify-symbols-mode t)
+ '(global-subword-mode t)
  '(global-undo-tree-mode t)
  '(haskell-hoogle-command "hoogle")
  '(imenu-auto-rescan t)
