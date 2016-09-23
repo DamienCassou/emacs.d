@@ -49,10 +49,12 @@ emacsWithPackages ((with melpaStablePackages; [
     ace-window # ; manage windows with ace-like behavior
     ag # ; search using the 'ag' command (better grep)
     aggressive-indent # ; indent code automatically while typing
+    amd-mode # ; handles javascript AMD module requirements
     anzu # ; more interactive query-replace
     avy # ; move fast in buffer with <C-,>
     bind-key # ; to simplify definition of shortcuts
     camcorder # ; record emacs sessions M-x camcorder-record
+    company-tern #; tern backend for company mode
     counsel # ; various completions using ivy
     dash # ; list library
     define-word # ; get definition of a common word
@@ -61,6 +63,7 @@ emacsWithPackages ((with melpaStablePackages; [
     dired-toggle-sudo # ; <C-x s> to toggle sudo state of buffer
     discover # ; popus for some features
     drag-stuff # ; use <M-arrow> to move things around
+    editorconfig # ; handle .editorconfig files automatically
     ethan-wspace # ; Correctly takes care of trailing spaces
     expand-region # ; <C-x => repeadly to mark regions
     f # ; file manipulation library
@@ -71,13 +74,18 @@ emacsWithPackages ((with melpaStablePackages; [
     flycheck-package # ; checks elisp package metadata
     git-auto-commit-mode # ; commit after each file save
     git-timemachine # ; view history of a file with M-x git-timemachine
+    grunt # ; glue for grunt files (Javascript)
     guide-key # ; help you learn emacs
+    gulp-task-runner # ; run gulp from Emacs (Javascript)
     haskell-mode # ; to edit Haskell files
     helm # ; selection/completion interface for everything
     helm-ag # ; use ag from helm
     helm-descbinds # ; integrate helm and describe-bindings <any-prefix C-h>
     helm-projectile # ; integrate projectile and helm <C-. p h>
     hydra # ; easy definition of repeatable shortcuts
+    jade # ; JS development environment
+    js2-mode # ; Improved Javascript editing mode
+    js2-refactor # ; A Javascript refactoring library
     json-mode # ; Major mode to edit JSON files
     magit # ; Integrate git <C-x g>
     markdown-mode # ; Major mode for markdown format
@@ -100,11 +108,13 @@ emacsWithPackages ((with melpaStablePackages; [
     skeletor # ; facilitates the creation of new project
     smartscan # ; <M-n> <M-p> to move between same symbol in buffer
     use-package # ; to structure my init.el file
+    tern # ; Javascript code analyzer
     visible-mark # ; show the current mark
     web-mode # ; Major mode for editing HTML files and templates
     wgrep-helm # ; edit grep buffers
     yaml-mode # ; to edit *.yml files (including .travis.yml)
     yasnippet # ; expand snippets of text
+    xref-js2 # ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
     zerodark-theme # ; Nicolas' theme
     ]) ++ (with melpaPackages; [
     org-caldav # ; sync between org and caldav
