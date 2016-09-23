@@ -570,6 +570,9 @@ are visible."
     (when magit-wip-before-change-mode
       (add-to-list 'magit-no-confirm #'safe-with-wip))
 
+    ;; prevents magit from showing ugly passphrase dialog
+    (setenv "SSH_ASKPASS" nil)
+
     (defun magit-ignore-latex-project ()
       (interactive)
       (mapc
