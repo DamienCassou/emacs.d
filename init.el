@@ -57,8 +57,6 @@
  '(initial-scratch-message nil)
  '(io-command
    "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
- '(ivy-extra-directories nil)
- '(ivy-use-virtual-buffers t)
  '(kept-new-versions 6)
  '(kept-old-versions 10)
  '(load-prefer-newer t)
@@ -1071,59 +1069,6 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
     (add-hook 'lisp-mode-hook #'aggressive-indent-mode)
     (add-hook 'css-mode-hook #'aggressive-indent-mode)))
-
-(use-package ivy
-  :disabled
-  :bind (("C-c C-r" . ivy-resume)
-         ("<f6>" . ivy-resume))
-  :init
-  (progn
-    (ivy-mode 1))
-  :config
-  (progn
-    (bind-key "M-h" #'ivy-dispatching-done ivy-minibuffer-map)
-    (bind-key "C-M-h" #'ivy-dispatching-call ivy-minibuffer-map)
-    (bind-key "C-x C-s" #'ivy-occur ivy-minibuffer-map)
-    (bind-key "C-l" #'ivy-backward-delete-char ivy-minibuffer-map)
-
-    (with-eval-after-load "magit"
-      (setq magit-completing-read-function #'ivy-completing-read))
-    (with-eval-after-load "projectile"
-      (setq projectile-completion-system 'ivy))))
-
-(use-package swiper
-  :disabled
-  :bind (("C-s" . swiper)))
-
-(use-package counsel
-  :disabled t
-  :bind (("M-x"     . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)
-         ("<f1> f"  . counsel-describe-function)
-         ("<f1> v"  . counsel-describe-variable)
-         ("<f1> l"  . counsel-load-library)
-         ("<f2> i"  . counsel-info-lookup-symbol)
-         ("<f2> u"  . counsel-unicode-char)
-         ("M-i"     . counsel-imenu)
-         ("M-y"     . counsel-yank-pop))
-  :init
-  (progn
-    (defun counsel-projectile-switch-project ()
-      (interactive)
-      (ivy-read "Switch to project: "
-                projectile-known-projects
-                :require-match t
-                :action '(1
-                          ("o" projectile-switch-project-by-name "Select file in project")
-                          ("g" projectile-vc "Open project using vc-dir, magit or monky"))))
-    (with-eval-after-load "projectile"
-      (define-key projectile-command-map (kbd "p") #'counsel-projectile-switch-project)))
-  :config
-  (progn
-    (ivy-set-actions
-     'counsel-find-file
-     '(("f" find-file-other-window "other window")
-       ("e" unify-opening-open "open externally")))))
 
 (use-package helm
   :diminish helm-mode
