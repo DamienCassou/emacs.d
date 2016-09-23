@@ -22,3 +22,6 @@
 [submodule "packages/vdirel"]
 	path = packages/vdirel
 	url = https://DamienCassou@github.com/DamienCassou/vdirel.git
+[submodule "packages/emacs-js"]
+	path = packages/emacs-js
+	url = https://DamienCassou@github.com/foretagsplatsen/emacs-js.git
