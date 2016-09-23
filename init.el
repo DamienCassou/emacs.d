@@ -79,34 +79,6 @@
  '(message-send-mail-function (quote message-smtpmail-send-it))
  '(message-signature t)
  '(message-signature-file "~/.signature")
- '(mu4e-attachment-dir "/tmp")
- '(mu4e-completing-read-function (quote completing-read))
- '(mu4e-compose-complete-addresses nil nil nil "Use pycarddavel instead")
- '(mu4e-compose-signature t)
- '(mu4e-drafts-folder "/Drafts" t)
- '(mu4e-get-mail-command "true" nil nil "Disable fetching email as it is done by a daemon")
- '(mu4e-headers-date-format "%Y/%m/%d %H:%M")
- '(mu4e-headers-fields
-   (quote
-    ((:human-date . 16)
-     (:from-or-to . 20)
-     (:mailing-list . 16)
-     (:tags . 10)
-     (:maildir . 15)
-     (:thread-subject))))
- '(mu4e-headers-time-format "%H:%M")
- '(mu4e-html2text-command (quote mu4e-shr2text))
- '(mu4e-maildir "~/Mail")
- '(mu4e-update-interval nil)
- '(mu4e-use-fancy-chars t)
- '(mu4e-user-mail-address-list
-   (quote
-    ("damien@cassou.me" "damien.cassou@gmail.com" "damien.cassou@lifl.fr" "damien.cassou@inria.fr" "cassou@inria.fr" "damien.cassou@laposte.net" "damien.cassou@univ-lille1.fr")))
- '(mu4e-view-fields
-   (quote
-    (:from :to :cc :subject :date :mailing-list :tags :flags :attachments :signature :decryption :maildir)))
- '(mu4e-view-show-addresses t)
- '(mu4e-view-show-images t)
  '(next-screen-context-lines 5)
  '(notmuch-always-prompt-for-sender t)
  '(notmuch-archive-tags (quote ("-inbox" "-unread")))
@@ -210,7 +182,6 @@
  '(column-marker-2 ((t (:underline t))))
  '(column-marker-3 ((t (:underline t))))
  '(hl-line ((t (:underline t))))
- '(mu4e-header-highlight-face ((t (:underline t))))
  '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic)))))
 
 (menu-bar-mode -1)
@@ -918,10 +889,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (setq profile-binding-alist
           '(("GMail"
              (profile-maildir . "/GMail")
-             (mu4e-trash-folder . "/GMail/Trash")
-             (mu4e-sent-folder . "/GMail/All Mail")
-             (mu4e-sent-messages-behavior . delete)
-             (mu4e-drafts-folder . "/GMail/Drafts")
              (user-mail-address . "damien.cassou@gmail.com")
              (smtpmail-queue-dir . "~/Mail/GMail/queued-mail/")
              (smtpmail-local-domain . nil)
@@ -931,11 +898,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
              (smtpmail-smtp-service . 587))
             ("Pro"
              (profile-maildir . "/Pro")
-             (mu4e-trash-folder . "/Pro/Trash")
-             (mu4e-sent-folder . "/Pro/Sent")
              (notmuch-fcc-dirs . "Pro/Sent")
-             (mu4e-sent-messages-behavior . sent)
-             (mu4e-drafts-folder . "/Pro/Drafts")
              (user-mail-address . "damien.cassou@inria.fr")
              (smtpmail-queue-dir . "~/Mail/Pro/queued-mail/")
              (smtpmail-local-domain . nil)
@@ -945,11 +908,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
              (smtpmail-smtp-service . 587))
             ("Lille1"
              (profile-maildir . "/Lille1")
-             (mu4e-trash-folder . "/Lille1/Trash")
-             (mu4e-sent-folder . "/Lille1/Sent")
              (notmuch-fcc-dirs . "Lille1/Sent")
-             (mu4e-sent-messages-behavior . sent)
-             (mu4e-drafts-folder . "/Lille1/Drafts")
              (user-mail-address . "damien.cassou@univ-lille1.fr")
              (smtpmail-queue-dir . "~/Mail/Lille1/queued-mail/")
              (smtpmail-local-domain . nil)
@@ -959,11 +918,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
              (smtpmail-smtp-service . 587))
             ("Perso"
              (profile-maildir . "/Perso")
-             (mu4e-trash-folder . "/Perso/Trash")
-             (mu4e-sent-folder . "/Perso/Sent")
              (notmuch-fcc-dirs . "Perso/Sent")
-             (mu4e-sent-messages-behavior . sent)
-             (mu4e-drafts-folder . "/Perso/Drafts")
              (user-mail-address . "damien@cassou.me")
              (smtpmail-queue-dir . "~/Mail/Perso/queued-mail/")
              (smtpmail-local-domain . "inria.fr")
@@ -973,10 +928,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
              (smtpmail-smtp-service . 465))
             ("Ftgp"
              (profile-maildir . "/Ftgp")
-             (mu4e-trash-folder . "/Ftgp/Trash")
-             (mu4e-sent-folder . "/GMail/[Gmail].All Mail")
-             (mu4e-sent-messages-behavior . delete)
-             (mu4e-drafts-folder . "/Ftgp/Drafts")
              (user-mail-address . "damien.cassou@foretagsplatsen.se")
              (smtpmail-queue-dir . "~/Mail/Ftgp/queued-mail/")
              (smtpmail-local-domain . nil)
