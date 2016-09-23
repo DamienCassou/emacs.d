@@ -47,6 +47,7 @@
  '(global-hl-line-sticky-flag t)
  '(global-pair-mode t)
  '(global-prettify-symbols-mode t)
+ '(global-undo-tree-mode t)
  '(haskell-hoogle-command "hoogle")
  '(imenu-auto-rescan t)
  '(indent-tabs-mode nil)
@@ -792,11 +793,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("C-'"     . shell-switcher-switch-buffer)
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window)))
 
-(use-package undo-tree
-  :init
-  (progn
-    (global-undo-tree-mode)
-    (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package dired-toggle-sudo
   :bind (("C-x s" . dired-toggle-sudo)))
