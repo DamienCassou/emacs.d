@@ -247,7 +247,6 @@
  '(visible-mark-max 2)
  '(wgrep-auto-save-buffer t)
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
- '(zerodark-use-paddings-in-mode-line nil)
  '(zoom-frame/buffer (quote frame)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
