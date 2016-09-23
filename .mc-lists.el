@@ -34,6 +34,7 @@
         paredit-forward-slurp-sexp
         paredit-open-round
         paredit-splice-sexp-killing-backward
+        paredit-wrap-round
         skeleton-pair-insert-maybe
         smex
         transpose-words
