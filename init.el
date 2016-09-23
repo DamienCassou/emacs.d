@@ -201,7 +201,8 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (when (window-system)
     (ignore-errors (load-theme 'zerodark))
-    (set-selected-frame-dark)))
+    (set-selected-frame-dark)
+    (set-face-attribute 'default nil :height 115 :family "Fira Mono")))
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions
