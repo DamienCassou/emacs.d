@@ -120,7 +120,7 @@ emacsWithPackages ((with melpaStablePackages; [
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97
     undo-tree # ; <C-x u> to show the undo tree
-    # email sent
+    # status: wait for nix update
     zoom-frm # ; increase/decrease font size for all buffers <C-x C-+>
     # status: ABANDONED email sent (code is on emacs wiki)
   ]) ++ (with elpaPackages; [
