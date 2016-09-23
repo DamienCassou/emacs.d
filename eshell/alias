@@ -1,7 +1,0 @@
-alias inst sudo apt install
-alias upgrade sudo apt full-upgrade
-alias update sudo apt update
-alias d dired $1
-alias e find-file $1
-alias ll ls -l
-alias dquilt quilt --quiltrc=/home/cassou/.quiltrc-dpkg
