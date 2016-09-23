@@ -545,7 +545,9 @@ are visible."
     (eval-after-load "em-term"
       '(progn
          (add-to-list 'eshell-visual-commands "htop")
-         (add-to-list 'eshell-visual-commands "journalctl")))))
+         (add-to-list 'eshell-visual-commands "journalctl")
+         (add-to-list 'eshell-visual-commands "npm")
+         (add-to-list 'eshell-visual-commands "bower")))))
 
 (use-package ediff
   :defer t
