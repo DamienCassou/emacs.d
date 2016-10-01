@@ -56,6 +56,8 @@
  '(initial-buffer-choice t)
  '(initial-major-mode (quote text-mode))
  '(initial-scratch-message nil)
+ '(jabber-auto-reconnect t)
+ '(jabber-avatar-cache-directory "~/.emacs.d/cache/jabber-avatar-cache")
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk nil)
  '(magit-process-find-password-functions (quote (magit-process-password-auth-source)))
@@ -1304,6 +1306,50 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package ftgp
   :load-path "packages/ftgp")
+
+(use-package jabber
+  :init
+  (progn
+    ;; Rreplace existing function to make sure password can be a lisp form.
+    (defun jabber-sasl-read-passphrase-closure (jc remember)
+      "Return a lambda function suitable for `sasl-read-passphrase' for JC.
+Call REMEMBER with the password.  REMEMBER is expected to return it as well."
+      (lexical-let ((password (plist-get (fsm-get-state-data jc) :password))
+                    (bare-jid (jabber-connection-bare-jid jc))
+                    (remember remember))
+        (if password
+            (lambda (prompt) (funcall remember (copy-sequence
+                                           ;; MY CHANGES
+                                           (cond ((stringp password) password)
+                                                 ((listp password) (eval password)))
+                                           ;; /MY CHANGES
+                                           )))
+          (lambda (prompt) (funcall remember (jabber-read-password bare-jid))))))
+
+    (setq jabber-account-list
+          `(("damien@cassou.me"
+             (:password . (password-store-get "ldn-fai.net"))))))
+  :config
+  (progn
+    ;; I don't want Jabber to steall this keystroke
+    (bind-key "C-. j" jabber-global-keymap)
+
+    (bind-key "C-x C-j" #'dired-jump)
+
+    (setq jabber-global-keymap (make-sparse-keymap))
+    (define-key jabber-global-keymap (kbd "c") #'jabber-connect-all)
+    (define-key jabber-global-keymap (kbd "d") #'jabber-disconnect)
+    (define-key jabber-global-keymap (kbd "r") #'jabber-switch-to-roster-buffer)
+    (define-key jabber-global-keymap (kbd "j") #'jabber-chat-with)
+    (define-key jabber-global-keymap (kbd "l") #'jabber-activity-switch-to)
+    (define-key jabber-global-keymap (kbd "a") #'jabber-send-away-presence)
+    (define-key jabber-global-keymap (kbd "o") #'jabber-send-default-presence)
+    (define-key jabber-global-keymap (kbd "x") #'jabber-send-xa-presence)
+    (define-key jabber-global-keymap (kbd "p") #'jabber-send-presence)
+
+    (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
+
+    (add-hook 'jabber-chat-mode-hook #'flyspell-mode)))
 
 ;;; Emacs Configuration
 ;; Local Variables:
