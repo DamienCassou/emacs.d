@@ -319,18 +319,6 @@ are visible."
 
     (bind-key ")" 'dired-omit-mode dired-mode-map)
 
-    (let ((extensions-to-ignore '(".out" ".lol" ".ali" ".upload" ".build" ".dsc" ".synctex.gz")))
-      (mapc (lambda (extension)
-              (add-to-list 'completion-ignored-extensions extension)
-              (add-to-list 'dired-omit-extensions extension))
-            extensions-to-ignore))
-
-    (let ((files-to-ignore '("Thumbs\.db" "Thumbs\.db:encryptable" "b~.*\.ad[sb]")))
-      (mapc (lambda (filename)
-              (setq dired-omit-files
-                    (concat dired-omit-files "\\|^" filename "$")))
-            files-to-ignore))
-
     (add-hook 'dired-mode-hook (lambda () (dired-omit-mode) (dired-hide-details-mode 1)))
 
     (defun dired-move-beginning-of-line ()
