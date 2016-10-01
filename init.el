@@ -1300,6 +1300,9 @@ Designed to be called before `message-send-and-exit'."
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
 
+(use-package ftgp
+  :load-path "packages/ftgp")
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)

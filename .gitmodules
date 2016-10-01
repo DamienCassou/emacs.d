@@ -25,3 +25,6 @@
 [submodule "packages/emacs-js"]
 	path = packages/emacs-js
 	url = https://DamienCassou@github.com/foretagsplatsen/emacs-js.git
+[submodule "packages/ftgp"]
+	path = packages/ftgp
+	url = https://DamienCassou@gitlab.com/ftgp/emacs.git
