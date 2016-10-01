@@ -15,7 +15,6 @@
  '(checkdoc-spellcheck-documentation-flag t)
  '(column-number-mode t)
  '(confirm-kill-emacs (quote y-or-n-p))
- '(counsel-find-file-at-point t)
  '(current-language-environment "UTF-8")
  '(custom-safe-themes t)
  '(delete-active-region nil)
@@ -24,10 +23,6 @@
  '(dired-dwim-target t)
  '(dired-listing-switches "-alh")
  '(dired-recursive-deletes (quote always))
- '(display-time-24hr-format t)
- '(display-time-default-load-average nil)
- '(eclim-executable "~/usr/eclipse.indigo-eclim/eclim")
- '(eclim-print-debug-messages t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(enable-local-variables :all)
@@ -44,7 +39,6 @@
  '(global-prettify-symbols-mode t)
  '(global-subword-mode t)
  '(global-undo-tree-mode t)
- '(haskell-hoogle-command "hoogle")
  '(imenu-auto-rescan t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -137,9 +131,6 @@
  '(smtpmail-smtp-service 587)
  '(smtpmail-smtp-user "damien.cassou@gmail.com")
  '(smtpmail-stream-type (quote starttls))
- '(svn-status-hide-unmodified t)
- '(svn-status-prefix-key [(control x) 118])
- '(svn-status-verbose t)
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(truncate-partial-width-windows nil)
@@ -169,9 +160,6 @@
  ;; If there is more than one, they won't work right.
  '(anzu-mode-line ((t (:foreground "black" :weight bold))))
  '(aw-leading-char-face ((t (:height 6.0 :underline nil :foreground "red"))))
- '(column-marker-1 ((t (:underline t))))
- '(column-marker-2 ((t (:underline t))))
- '(column-marker-3 ((t (:underline t))))
  '(hl-line ((t (:underline t))))
  '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic)))))
 
@@ -272,12 +260,7 @@ are visible."
 (setq endless/toggle-prefix "C-. t")
 (bind-key endless/toggle-prefix 'endless/toggle-map)
 
-(bind-key "c" 'flycheck-mode endless/toggle-map)
 (bind-key "d" 'toggle-debug-on-error endless/toggle-map)
-(bind-key "f" 'auto-fill-mode endless/toggle-map)
-(bind-key "l" 'toggle-truncate-lines endless/toggle-map)
-(bind-key "q" 'toggle-debug-on-quit endless/toggle-map)
-(bind-key "r" 'dired-toggle-read-only endless/toggle-map)
 
 (bind-key "C-x 8 <S-right>" (lambda () (interactive) (insert-char ?→))) ; rightwards arrow
 (bind-key "C-x 8 <right>" (lambda () (interactive) (insert-char ?⇒))) ; rightwards double arrow
