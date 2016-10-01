@@ -237,6 +237,8 @@
 
 (bind-key "M-j" 'my-join-line)
 
+(bind-key "C-x k" #'kill-this-buffer)
+
 (defun toggle-window-split ()
   "Swap between horizontal and vertical separation when 2 frames
 are visible."
