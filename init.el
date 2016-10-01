@@ -880,43 +880,14 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :config
   (progn
     (setq profile-binding-alist
-          '(("GMail"
-             (profile-maildir . "/GMail")
-             (user-mail-address . "damien.cassou@gmail.com")
-             (smtpmail-queue-dir . "~/Mail/GMail/queued-mail/")
-             (smtpmail-local-domain . nil)
-             (smtpmail-smtp-user . "damien.cassou@gmail.com")
-             (smtpmail-smtp-server . "QUIT_GMAIL")
-             (smtpmail-stream-type . starttls)
-             (smtpmail-smtp-service . 587))
-            ("Pro"
-             (profile-maildir . "/Pro")
-             (notmuch-fcc-dirs . "Pro/Sent")
-             (user-mail-address . "damien.cassou@inria.fr")
-             (smtpmail-queue-dir . "~/Mail/Pro/queued-mail/")
-             (smtpmail-local-domain . nil)
-             (smtpmail-smtp-user . "cassou")
-             (smtpmail-smtp-server . "smtp.inria.fr")
-             (smtpmail-stream-type . starttls)
-             (smtpmail-smtp-service . 587))
-            ("Lille1"
-             (profile-maildir . "/Lille1")
-             (notmuch-fcc-dirs . "Lille1/Sent")
-             (user-mail-address . "damien.cassou@univ-lille1.fr")
-             (smtpmail-queue-dir . "~/Mail/Lille1/queued-mail/")
-             (smtpmail-local-domain . nil)
-             (smtpmail-smtp-user . "cassou")
-             (smtpmail-smtp-server . "smtps.univ-lille1.fr")
-             (smtpmail-stream-type . starttls)
-             (smtpmail-smtp-service . 587))
-            ("Perso"
+          '(("Perso"
              (profile-maildir . "/Perso")
              (notmuch-fcc-dirs . "Perso/Sent")
              (user-mail-address . "damien@cassou.me")
              (smtpmail-queue-dir . "~/Mail/Perso/queued-mail/")
-             (smtpmail-local-domain . "inria.fr")
-             (smtpmail-smtp-user . "dcassou")
-             (smtpmail-smtp-server . "bender.ldn-fai.net")
+             (smtpmail-local-domain . nil)
+             (smtpmail-smtp-user . "damien@cassou.me")
+             (smtpmail-smtp-server . "choca.pics")
              (smtpmail-stream-type . ssl)
              (smtpmail-smtp-service . 465))
             ("Ftgp"
