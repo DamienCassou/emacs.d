@@ -55,8 +55,6 @@
  '(initial-buffer-choice t)
  '(initial-major-mode (quote text-mode))
  '(initial-scratch-message nil)
- '(io-command
-   "/home/cassou/Downloads/stevedekorte-io-f641230/build/_build/binaries/io")
  '(kept-new-versions 6)
  '(kept-old-versions 10)
  '(load-prefer-newer t)
