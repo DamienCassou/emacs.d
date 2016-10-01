@@ -19,7 +19,6 @@
  '(custom-safe-themes t)
  '(delete-active-region nil)
  '(delete-by-moving-to-trash t)
- '(diff-switches "-u")
  '(dired-dwim-target t)
  '(dired-listing-switches "-alh")
  '(dired-recursive-deletes (quote always))
@@ -163,13 +162,8 @@
  '(hl-line ((t (:underline t))))
  '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic)))))
 
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
 (package-initialize)
 
-;;; use-package initialization
 (eval-when-compile
   (require 'use-package)
   (setq use-package-verbose (null byte-compile-current-file)))
