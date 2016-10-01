@@ -198,6 +198,8 @@
       "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
       frame-name))))
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/packages/zerodark-theme")
+
 (defun my:setup-frame ()
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (when (window-system)

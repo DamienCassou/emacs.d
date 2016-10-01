@@ -49,6 +49,7 @@ emacsWithPackages ((with melpaStablePackages; [
     ace-window # ; manage windows with ace-like behavior
     ag # ; search using the 'ag' command (better grep)
     aggressive-indent # ; indent code automatically while typing
+    all-the-icons # ; library with many icons
     amd-mode # ; handles javascript AMD module requirements
     anzu # ; more interactive query-replace
     avy # ; move fast in buffer with <C-,>
@@ -116,7 +117,6 @@ emacsWithPackages ((with melpaStablePackages; [
     yaml-mode # ; to edit *.yml files (including .travis.yml)
     yasnippet # ; expand snippets of text
     xref-js2 # ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
-    zerodark-theme # ; Nicolas' theme
     ]) ++ (with melpaPackages; [
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97

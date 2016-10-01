@@ -28,3 +28,6 @@
 [submodule "packages/ftgp"]
 	path = packages/ftgp
 	url = https://DamienCassou@gitlab.com/ftgp/emacs.git
+[submodule "packages/zerodark-theme"]
+	path = packages/zerodark-theme
+	url = https://DamienCassou@github.com/NicolasPetton/zerodark-theme.git
