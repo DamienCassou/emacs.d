@@ -120,6 +120,8 @@ emacsWithPackages ((with melpaStablePackages; [
     ]) ++ (with melpaPackages; [
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97
+    prodigy # ; manage external services from within Emacs
+    # status : https://github.com/rejeep/prodigy.el/issues/89
     undo-tree # ; <C-x u> to show the undo tree
     # status: wait for nix update
     zoom-frm # ; increase/decrease font size for all buffers <C-x C-+>
