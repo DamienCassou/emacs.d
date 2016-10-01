@@ -32,8 +32,6 @@
  '(frame-title-format "Emacs: %b" t)
  '(gc-cons-threshold 20000000)
  '(global-font-lock-mode t)
- '(global-hl-line-mode t)
- '(global-hl-line-sticky-flag t)
  '(global-pair-mode t)
  '(global-prettify-symbols-mode t)
  '(global-subword-mode t)
