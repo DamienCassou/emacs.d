@@ -1057,12 +1057,14 @@ Designed to be called before `message-send-and-exit'."
 (use-package git-timemachine)
 
 (use-package anzu
-  :bind (("M-%" . anzu-query-replace)
-         ("C-M-%" . anzu-query-replace-regexp))
   :diminish anzu-mode
-  :config
+  :init
   (progn
-    (global-anzu-mode +1)))
+    (global-anzu-mode +1)
+    (global-set-key [remap query-replace] 'anzu-query-replace)
+    (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+    (define-key isearch-mode-map [remap isearch-query-replace] #'anzu-isearch-query-replace)
+    (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)))
 
 (use-package aggressive-indent
   :diminish aggressive-indent-mode
