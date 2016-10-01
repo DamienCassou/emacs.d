@@ -47,13 +47,8 @@
  '(jabber-auto-reconnect t)
  '(jabber-avatar-cache-directory "~/.emacs.d/cache/jabber-avatar-cache")
  '(load-prefer-newer t)
- '(magit-diff-refine-hunk nil)
+ '(magit-diff-refine-hunk t)
  '(magit-process-find-password-functions (quote (magit-process-password-auth-source)))
- '(magit-repository-directories
-   (quote
-    ("~/Documents/writing" "~/Documents/candidatures" "~/Documents" "~/.emacs.d/packages" "~/.emacs.d/themes" "~/Documents/smalltalk" "~/tmp/emacs-configurations" "~/tmp" "~/Documents/projects" "~/Documents/websites" "~/Documents/teaching" "~/")))
- '(magit-repository-directories-depth 1)
- '(magit-revert-buffers t t)
  '(magit-wip-after-apply-mode nil)
  '(magit-wip-after-save-mode nil)
  '(magit-wip-before-change-mode nil)
