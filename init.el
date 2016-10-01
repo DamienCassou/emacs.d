@@ -130,7 +130,6 @@
  '(shell-switcher-mode t)
  '(shell-switcher-new-shell-function (quote shell-switcher-make-eshell))
  '(show-paren-mode t)
- '(show-paren-style (quote mixed))
  '(skeletor-project-directory "/home/cassou/.emacs.d/packages/")
  '(skeletor-show-project-command (quote magit-status))
  '(smart-tab-completion-functions-alist nil)
