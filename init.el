@@ -26,6 +26,8 @@
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(enable-local-variables :all)
  '(enable-recursive-minibuffers t)
+ '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#nixos"))))
+ '(erc-nick "DamienCassou")
  '(eval-expression-print-length 20)
  '(eval-expression-print-level nil)
  '(flyspell-use-meta-tab nil)
@@ -1191,6 +1193,8 @@ Call REMEMBER with the password.  REMEMBER is expected to return it as well."
   (progn
     (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
     (add-hook 'jabber-chat-mode-hook #'flyspell-mode)))
+
+(use-package erc)
 
 ;;; Emacs Configuration
 ;; Local Variables:
