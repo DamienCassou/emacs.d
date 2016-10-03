@@ -269,6 +269,12 @@ are visible."
 (unbind-key "M-<")
 (unbind-key "M->")
 
+(use-package undo-tree
+  :init
+  (progn
+    (global-undo-tree-mode)
+    (define-key undo-tree-map (kbd "C-x r") nil)))
+
 (use-package ethan-wspace
   :diminish ethan-wspace-mode
   :demand t
