@@ -296,7 +296,10 @@ are visible."
 
     (bind-key ")" 'dired-omit-mode dired-mode-map)
 
-    (add-hook 'dired-mode-hook (lambda () (dired-omit-mode) (dired-hide-details-mode 1)))
+    (add-hook 'dired-mode-hook
+              (lambda ()
+                (dired-omit-mode)
+                (dired-hide-details-mode 1)))
 
     (defun dired-move-beginning-of-line ()
       (interactive)
@@ -396,7 +399,6 @@ are visible."
    ("C-. d f" . ispell-change-dictionary-to-french)
    ("C-. d e" . ispell-change-dictionary-to-english)
    ("C-. d ?" . ispell-change-dictionary))
-
   :init
   (progn
     (defun ispell-set-dictionary (dict)
