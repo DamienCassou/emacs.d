@@ -246,10 +246,6 @@ are visible."
 
 (define-key ctl-x-4-map "t" 'toggle-window-split)
 
-;; faster than C-x z
-(bind-key "C-z" 'repeat)
-(unbind-key "C-x z")
-
 (define-prefix-command 'endless/toggle-map)
 (setq endless/toggle-prefix "C-. t")
 (bind-key endless/toggle-prefix 'endless/toggle-map)
@@ -463,7 +459,6 @@ are visible."
   :bind
   (("C-. o t"   . org-capture)
    ("C-. o a"   . org-agenda)
-   ("C-. o SPC" . dc/my-agenda)
    ("C-. o l"   . org-store-link)
    ("C-. o w"   . my:org-move-to-refile-target)
    ("C-. o s"   . org-save-all-org-buffers))
@@ -474,13 +469,7 @@ are visible."
     (defun my:org-move-to-refile-target (&optional last)
       (interactive "p")
       (require 'org)
-      (org-refile (if (= last 4) '(16) '(4))))
-
-    (defun dc/my-agenda ()
-      (interactive)
-      (require 'org-agenda)
-      (let ((entry (assoc " " org-agenda-custom-commands)))
-        (org-agenda-run-series (nth 1 entry) (cddr entry)))))
+      (org-refile (if (= last 4) '(16) '(4)))))
   :config
   (progn
     (bind-key "<S-left>" #'beginning-of-buffer org-mode-map)
@@ -520,9 +509,7 @@ are visible."
                                ("~/Documents/configuration/org/repeating.org"  :maxlevel . 2)))
 
     (setq org-todo-keywords
-          '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")
-            (sequence "APPT(p)"    "|" "DONE(d)" "CANCELED(c)")
-            (sequence "WAITING(w)" "|" "DONE(d)")))
+          '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")))
 
     (setq org-capture-templates
           '(("t" "Todo" entry
