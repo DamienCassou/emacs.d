@@ -44,6 +44,9 @@
  '(initial-scratch-message nil)
  '(jabber-auto-reconnect t)
  '(jabber-avatar-cache-directory "~/.emacs.d/cache/jabber-avatar-cache")
+ '(jabber-backlog-days 30)
+ '(jabber-backlog-number 100)
+ '(jabber-history-enabled t)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk t)
  '(magit-process-find-password-functions (quote (magit-process-password-auth-source)))
@@ -1153,6 +1156,16 @@ Designed to be called before `message-send-and-exit'."
   :load-path "packages/ftgp")
 
 (use-package jabber
+  :bind
+  (("C-. j c" . jabber-connect-all)
+   ("C-. j d" . jabber-disconnect)
+   ("C-. j r" . jabber-switch-to-roster-buffer)
+   ("C-. j j" . jabber-chat-with)
+   ("C-. j l" . jabber-activity-switch-to)
+   ("C-. j a" . jabber-send-away-presence)
+   ("C-. j o" . jabber-send-default-presence)
+   ("C-. j x" . jabber-send-xa-presence)
+   ("C-. j p" . jabber-send-presence))
   :init
   (progn
     ;; Rreplace existing function to make sure password can be a lisp form.
@@ -1176,24 +1189,7 @@ Call REMEMBER with the password.  REMEMBER is expected to return it as well."
              (:password . (password-store-get "ldn-fai.net"))))))
   :config
   (progn
-    ;; I don't want Jabber to steall this keystroke
-    (bind-key "C-. j" jabber-global-keymap)
-
-    (bind-key "C-x C-j" #'dired-jump)
-
-    (setq jabber-global-keymap (make-sparse-keymap))
-    (define-key jabber-global-keymap (kbd "c") #'jabber-connect-all)
-    (define-key jabber-global-keymap (kbd "d") #'jabber-disconnect)
-    (define-key jabber-global-keymap (kbd "r") #'jabber-switch-to-roster-buffer)
-    (define-key jabber-global-keymap (kbd "j") #'jabber-chat-with)
-    (define-key jabber-global-keymap (kbd "l") #'jabber-activity-switch-to)
-    (define-key jabber-global-keymap (kbd "a") #'jabber-send-away-presence)
-    (define-key jabber-global-keymap (kbd "o") #'jabber-send-default-presence)
-    (define-key jabber-global-keymap (kbd "x") #'jabber-send-xa-presence)
-    (define-key jabber-global-keymap (kbd "p") #'jabber-send-presence)
-
     (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
-
     (add-hook 'jabber-chat-mode-hook #'flyspell-mode)))
 
 ;;; Emacs Configuration
