@@ -100,6 +100,7 @@ emacsWithPackages ((with melpaStablePackages; [
     paredit # ; edit lisp AST instead of characters
     paren-face # ; hide parenthesis in elisp code
     password-store # ; get passwords from the 'pass' command
+    powerline # ; required by zerodark theme
     pdf-tools # to view PDF files inside Emacs
     pillar # ; Major mode for pier/pillar-formatted text files
     pos-tip # ; make tool-tips appear nicely

@@ -174,7 +174,9 @@
 (defun my:setup-frame ()
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (when (window-system)
-    (ignore-errors (load-theme 'zerodark))
+    (ignore-errors
+      (load-theme 'zerodark)
+      (zerodark-setup-modeline-format-alt))
     (set-selected-frame-dark)
     (set-face-attribute 'default nil :height 115 :family "Fira Mono")))
 
