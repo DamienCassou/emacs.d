@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: scripts
-# key: [[[
-# --
-[[[${1:language=${2:$$(yas-choose-value '("Smalltalk" "HTML" "HTTP" "Bash"))}}${3:|label=${4:script1}}${5:|caption=${6:A description of this script}}
-$0
-]]]
