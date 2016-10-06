@@ -31,3 +31,6 @@
 [submodule "packages/zerodark-theme"]
 	path = packages/zerodark-theme
 	url = https://DamienCassou@github.com/NicolasPetton/zerodark-theme.git
+[submodule "packages/yasnippet-snippets"]
+	path = packages/yasnippet-snippets
+	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
