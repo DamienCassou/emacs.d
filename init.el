@@ -994,7 +994,6 @@ Designed to be called before `message-send-and-exit'."
     (bind-key* "M-o" #'ace-window))
   :config
   (progn
-    (ace-window-display-mode)
     ;; Use same keys for both ace-window and avy
     (setq aw-keys avy-keys)))
 
