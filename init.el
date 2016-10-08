@@ -1201,6 +1201,12 @@ Designed to be called before `message-send-and-exit'."
     (add-to-list 'yas-snippet-dirs (expand-file-name "packages/yasnippet-snippets" user-emacs-directory))
     (yas-reload-all)))
 
+(use-package json-mode
+  :config
+  (progn
+    (setq indent-tabs-mode nil)
+    (setq json-reformat:indent-width 2)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
