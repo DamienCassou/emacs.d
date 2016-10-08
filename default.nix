@@ -118,6 +118,7 @@ emacsWithPackages ((with melpaStablePackages; [
     visible-mark # ; show the current mark
     web-mode # ; Major mode for editing HTML files and templates
     wgrep-helm # ; edit grep buffers
+    ws-butler # ; trim whitespace only in edited lines
     yaml-mode # ; to edit *.yml files (including .travis.yml)
     yasnippet # ; expand snippets of text
     xref-js2 # ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
