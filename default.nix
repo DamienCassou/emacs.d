@@ -69,7 +69,6 @@ emacsWithPackages ((with melpaStablePackages; [
     drag-stuff # ; use <M-arrow> to move things around
     editorconfig # ; handle .editorconfig files automatically
     ethan-wspace # ; Correctly takes care of trailing spaces
-    expand-region # ; <C-x => repeadly to mark regions
     f # ; file manipulation library
     feature-mode # ; major mode for editing feature files
     fill-column-indicator # ; <M-x `fci-mode'> to show the right margin
@@ -123,6 +122,8 @@ emacsWithPackages ((with melpaStablePackages; [
     yasnippet # ; expand snippets of text
     xref-js2 # ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
     ]) ++ (with melpaPackages; [
+    expand-region # ; <C-x => repeadly to mark regions
+    # status : https://github.com/magnars/expand-region.el/issues/202
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97
     prodigy # ; manage external services from within Emacs
