@@ -58,6 +58,7 @@ emacsWithPackages ((with melpaStablePackages; [
     camcorder # ; record emacs sessions M-x camcorder-record
     company-tern #; tern backend for company mode
     counsel # ; various completions using ivy
+    csharp-mode # ; C# major mode
     dash # ; list library
     define-word # ; get definition of a common word
     diff-hl # ; shows git status in buffer's fringe
