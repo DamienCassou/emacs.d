@@ -1190,6 +1190,11 @@ Designed to be called before `message-send-and-exit'."
      :token (auth-pass-get "token" "ftgp/slack.com")
      :subscribed-channels '(general development french_fuckers stockholm-food teamcity))))
 
+(use-package diff-hl
+  :init
+  (progn
+    (add-hook 'prog-mode-hook #'diff-hl-mode)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)

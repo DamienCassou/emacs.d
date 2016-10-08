@@ -59,6 +59,7 @@ emacsWithPackages ((with melpaStablePackages; [
     counsel # ; various completions using ivy
     dash # ; list library
     define-word # ; get definition of a common word
+    diff-hl # ; shows git status in buffer's fringe
     diminish # ; Shorter mode names in the modeline
     dired-imenu # ; integrates imenu in dired
     dired-toggle-sudo # ; <C-x s> to toggle sudo state of buffer
