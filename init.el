@@ -532,37 +532,6 @@ are visible."
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))
 
-    (defvar fuzz-factor 1.0e-3)
-    (defun approx-equal (x y)
-      (or (= x y)
-          (< (/ (abs (- x y))
-                (max (abs x) (abs y)))
-             fuzz-factor)))
-
-    (defvar my:gisele-service 192)
-    (defun my:calc-gisele (other tp)
-      (let (new-other new-tp)
-        (if (< other 192)
-            (progn
-              (setq new-tp (max 0 (- tp (- my:gisele-service other))))
-              (setq new-other (min my:gisele-service (+ other tp))))
-          (setq new-tp (/ tp 2.0))
-          (setq new-other (+ other (/ tp 2.0))))
-        (+ new-other (* new-tp (/ 2.0 3)))))
-
-    ;; When service is complete without TP:
-    ;; 15h TP counts for 50% at 1 and for 50% at 2/3
-    ;; 196.5 + (15/2) + (15/2 * 2/3)
-    (cl-assert (approx-equal (my:calc-gisele 196.5 15) 209))
-
-    ;; When service requires TP to be complete:
-    ;; 15h TP first completes 180.5 to attain 192. The rest
-    ;; 15-(192-180.5) counts for 2/3
-    (cl-assert (approx-equal (my:calc-gisele 180.5 15) 194.33))
-
-    ;; When service + TP is still not complete: (untested with Gisele)
-    (cl-assert (approx-equal (my:calc-gisele 100 15) 115))
-
     (use-package ox-twbs)))
 
 (use-package calc
