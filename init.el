@@ -1195,6 +1195,12 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'prog-mode-hook #'diff-hl-mode)))
 
+(use-package yasnippet
+  :config
+  (progn
+    (add-to-list 'yas-snippet-dirs (expand-file-name "packages/yasnippet-snippets" user-emacs-directory))
+    (yas-reload-all)))
+
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
