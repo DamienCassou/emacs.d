@@ -1160,31 +1160,16 @@ Designed to be called before `message-send-and-exit'."
    ("C-. j o" . jabber-send-default-presence)
    ("C-. j x" . jabber-send-xa-presence)
    ("C-. j p" . jabber-send-presence))
-  :init
-  (progn
-    ;; Rreplace existing function to make sure password can be a lisp form.
-    (defun jabber-sasl-read-passphrase-closure (jc remember)
-      "Return a lambda function suitable for `sasl-read-passphrase' for JC.
-Call REMEMBER with the password.  REMEMBER is expected to return it as well."
-      (lexical-let ((password (plist-get (fsm-get-state-data jc) :password))
-                    (bare-jid (jabber-connection-bare-jid jc))
-                    (remember remember))
-        (if password
-            (lambda (prompt) (funcall remember (copy-sequence
-                                           ;; MY CHANGES
-                                           (cond ((stringp password) password)
-                                                 ((listp password) (eval password)))
-                                           ;; /MY CHANGES
-                                           )))
-          (lambda (prompt) (funcall remember (jabber-read-password bare-jid))))))
-
-    (setq jabber-account-list
-          `(("damien@cassou.me"
-             (:password . (password-store-get "ldn-fai.net"))))))
   :config
   (progn
+    (setq jabber-account-list
+          `(("damien@cassou.me"
+             (:password . ,(password-store-get "ldn-fai.net")))))
     (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
-    (add-hook 'jabber-chat-mode-hook #'flyspell-mode)))
+    (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
+
+    ;;; Override jabber.el global key
+    (bind-key "C-x C-j" #'dired-jump)))
 
 (use-package erc)
 
