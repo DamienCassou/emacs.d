@@ -29,8 +29,8 @@ let
   baseEmacs = pkgs.emacs25;
   myEmacs = pkgs.lib.overrideDerivation (baseEmacs.override {
     # Use gtk3 instead of the default gtk2
-    withGTK3 = true;
-    withGTK2 = false;
+    withGTK3 = false;
+    withGTK2 = true;
     # Make sure imagemagick is a dependency because I regularly
     # look at pictures from Emacs
     imagemagick = pkgs.imagemagickBig;
