@@ -50,6 +50,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        dabbrev-expand
         end-of-buffer
         orgtbl-self-insert-command
         ))
