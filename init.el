@@ -24,6 +24,7 @@
  '(dired-recursive-deletes (quote always))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(electric-pair-mode t)
  '(enable-local-variables :all)
  '(enable-recursive-minibuffers t)
  '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#nixos"))))
