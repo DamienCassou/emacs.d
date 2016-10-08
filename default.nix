@@ -40,6 +40,7 @@ let
     postInstall = attrs.postInstall + ''
       rm $out/share/applications/emacs.desktop
     '';
+    CFLAGS = "-Og -g3";
   });
   myEmacsPackagesNg = pkgs.emacsPackagesNgGen myEmacs;
 in
