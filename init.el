@@ -970,9 +970,6 @@ Designed to be called before `message-send-and-exit'."
     (helm-descbinds-mode)
     (helm-mode 1)))
 
-(use-package youtube
-  :load-path "packages")
-
 (use-package wgrep
   :init
   (progn
