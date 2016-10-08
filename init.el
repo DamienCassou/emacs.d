@@ -859,13 +859,12 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (global-paren-face-mode)))
 
-(use-package find-func
-  :config
-  (progn
-    (define-key 'help-command (kbd "C-l") 'find-library)
-    (define-key 'help-command (kbd "C-f") 'find-function)
-    (define-key 'help-command (kbd "C-k") 'find-function-on-key)
-    (define-key 'help-command (kbd "C-v") 'find-variable)))
+(use-package help
+  :bind (:map help-map
+              ("C-v" . find-variable)
+              ("C-k" . find-function-on-key)
+              ("C-f" . find-function)
+              ("C-l" . find-library)))
 
 (use-package git-timemachine)
 
