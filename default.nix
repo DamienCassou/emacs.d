@@ -109,6 +109,7 @@ emacsWithPackages ((with melpaStablePackages; [
     runner # ; Associate external applications to file extensions
     s # ; string library
     skeletor # ; facilitates the creation of new project
+    slack  # ; slack.com client for Emacs
     smartscan # ; <M-n> <M-p> to move between same symbol in buffer
     use-package # ; to structure my init.el file
     tern # ; Javascript code analyzer
