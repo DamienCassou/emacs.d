@@ -885,12 +885,7 @@ Designed to be called before `message-send-and-exit'."
     (setq password-store-password-length 16)))
 
 (use-package ace-window
-  :demand t
-  :bind (("M-o" . ace-window))
-  :init
-  (progn
-    ;; force this binding even if another mode tries to use it
-    (bind-key* "M-o" #'ace-window))
+  :bind* (("M-o" . ace-window))
   :config
   (progn
     ;; Use same keys for both ace-window and avy
