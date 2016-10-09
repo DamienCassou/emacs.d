@@ -939,15 +939,12 @@ Designed to be called before `message-send-and-exit'."
         (my:import-ics-buffer-to-org)))))
 
 (use-package avy
-  :bind (("C-," . avy-goto-char-2)
-         ("M-g g" . avy-goto-line))
+  :bind* (("C-," . avy-goto-char-2)
+          ("M-g g" . avy-goto-line))
   :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq avy-keys '(?a ?s  ?d  ?f  ?j  ?k  ?l  59 32))
-
-    ;; forces this binding even if another mode tries to use it
-    (bind-key* "C-," #'avy-goto-char-2)))
+    (setq avy-keys '(?a ?s  ?d  ?f  ?j  ?k  ?l  59 32))))
 
 (use-package outline
   :diminish outline-minor-mode)
