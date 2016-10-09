@@ -799,9 +799,6 @@ Designed to be called before `message-send-and-exit'."
   :bind (("C-c RET" . pp-macroexpand-last-sexp))
   :config
   (progn
-    (with-eval-after-load "yasnippet"
-      (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode))
-
     (use-package paredit
       :diminish paredit-mode
       :config
@@ -1134,9 +1131,11 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'prog-mode-hook #'diff-hl-mode)))
 
 (use-package yasnippet
+  :diminish yas-minor-mode
   :config
   (progn
     (add-to-list 'yas-snippet-dirs (expand-file-name "packages/yasnippet-snippets" user-emacs-directory))
+    (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
     (yas-reload-all)))
 
 (use-package json-mode
