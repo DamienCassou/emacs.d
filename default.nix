@@ -111,7 +111,6 @@ emacsWithPackages ((with melpaStablePackages; [
     skeletor # ; facilitates the creation of new project
     slack  # ; slack.com client for Emacs
     smartscan # ; <M-n> <M-p> to move between same symbol in buffer
-    use-package # ; to structure my init.el file
     tern # ; Javascript code analyzer
     visible-mark # ; show the current mark
     web-mode # ; Major mode for editing HTML files and templates
@@ -131,6 +130,8 @@ emacsWithPackages ((with melpaStablePackages; [
     # status : https://github.com/rejeep/prodigy.el/issues/89
     undo-tree # ; <C-x u> to show the undo tree
     # status: wait for nix update
+    use-package # ; to structure my init.el file
+    # status : https://github.com/jwiegley/use-package/issues/392
     zoom-frm # ; increase/decrease font size for all buffers <C-x C-+>
     # status: ABANDONED email sent (code is on emacs wiki)
   ]) ++ (with elpaPackages; [
