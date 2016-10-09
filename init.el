@@ -887,25 +887,22 @@ Designed to be called before `message-send-and-exit'."
          ("C-x b"   . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("C-x d"   . helm-find-files)
-         ("M-i"     . helm-semantic-or-imenu)
+         ("M-i"     . helm-imenu)
          ("C-h SPC" . helm-all-mark-rings)
-         ("C-:"     . helm-eval-expression-with-eldoc))
+         ("C-:"     . helm-eval-expression-with-eldoc)
+         :map helm-map
+         ("<tab>"   . helm-execute-persistent-action)
+         ("C-i"     . helm-execute-persistent-action)
+         ("C-z"     . helm-select-action)
+         ("<S-left>"  . helm-beginning-of-buffer)
+         ("<S-right>" . helm-end-of-buffer)
+         :map dired-mode-map ;; helm-imenu doesn't work with dired
+         ("M-i"     . imenu))
   :init
   (progn
     (require 'helm-config))
   :config
   (progn
-    (bind-key "<S-left>" #'helm-beginning-of-buffer helm-map)
-    (bind-key "<S-right>" #'helm-end-of-buffer helm-map)
-
-
-    (define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
-    (define-key helm-map (kbd "C-i")   #'helm-execute-persistent-action)
-    (define-key helm-map (kbd "C-z")   #'helm-select-action)
-
-    (when (executable-find "curl")
-      (setq helm-google-suggest-use-curl-p t))
-
     (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
           helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
           helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
