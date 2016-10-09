@@ -1063,7 +1063,7 @@ Designed to be called before `message-send-and-exit'."
   :diminish yas-minor-mode
   :config
   (progn
-    (add-to-list 'yas-snippet-dirs (expand-file-name "packages/yasnippet-snippets" user-emacs-directory))
+    (add-to-list 'yas-snippet-dirs "~/.emacs.d/packages/yasnippet-snippets")
     (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
     (yas-reload-all)))
 
