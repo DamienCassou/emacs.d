@@ -1010,6 +1010,7 @@ Designed to be called before `message-send-and-exit'."
   :load-path "packages/ftgp")
 
 (use-package jabber
+  :demand t
   :bind
   (("C-. j c" . jabber-connect-all)
    ("C-. j d" . jabber-disconnect)
@@ -1029,7 +1030,10 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
 
     ;;; Override jabber.el global key
-    (bind-key "C-x C-j" #'dired-jump)))
+    (bind-key "C-x C-j" #'dired-jump)
+
+    (run-at-time "5 sec" nil
+                 #'jabber-connect-all)))
 
 (use-package erc)
 
