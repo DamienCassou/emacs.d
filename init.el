@@ -780,44 +780,18 @@ Designed to be called before `message-send-and-exit'."
   :config
   (imagemagick-register-types))
 
-(use-package diminish
+(use-package paredit
+  :diminish paredit-mode
   :config
   (progn
-    (eval-after-load "simple"
-      `(progn
-         (diminish 'overwrite-mode)))))
-
-;; Fix for issue
-;; https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
-(use-package iso-transl)
-
-(use-package lisp-mode
-  :defer t
-  :bind (("C-c RET" . pp-macroexpand-last-sexp))
-  :config
-  (progn
-    (use-package paredit
-      :diminish paredit-mode
-      :config
-      (progn
-        (use-package eldoc)
-        (eldoc-add-command 'paredit-backward-delete 'paredit-close-round)))
-
     (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-    (add-hook 'lisp-mode-hook #'enable-paredit-mode)))
+    (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+    (with-eval-after-load "eldoc"
+      (eldoc-add-command 'paredit-backward-delete 'paredit-close-round))))
 
 (use-package autorevert
   :defer t
   :diminish auto-revert-mode)
-
-(use-package git-auto-commit-mode
-  :diminish git-auto-commit-mode)
-
-(use-package pos-tip
-  :disabled)
-
-(use-package skeletor
-  :commands (skeletor-create-project))
 
 (use-package smartscan
   :defer t
