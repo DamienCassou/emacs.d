@@ -449,14 +449,9 @@ are visible."
   :diminish text-scale-mode)
 
 (use-package flycheck
-  :defer t
+  :ensure t
   :diminish flycheck-mode
-  :config
-  (progn
-    (use-package flycheck-cask
-      :config
-      (progn
-        (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))))
+  :init (global-flycheck-mode))
 
 (use-package org
   :defer t
@@ -948,11 +943,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package outline
   :diminish outline-minor-mode)
-
-(use-package flycheck-package
-  :init
-  (with-eval-after-load "flycheck"
-    (flycheck-package-setup)))
 
 (use-package beginend
   :diminish (beginend-dired-mode beginend-message-mode)
