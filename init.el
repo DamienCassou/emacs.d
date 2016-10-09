@@ -148,7 +148,6 @@
  '(visible-bell t)
  '(visible-mark-faces (quote (visible-mark-face1 visible-mark-face2)))
  '(visible-mark-max 2)
- '(wgrep-auto-save-buffer t)
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
  '(zoom-frame/buffer (quote frame)))
 
@@ -925,20 +924,8 @@ Designed to be called before `message-send-and-exit'."
 
     (require 'helm-descbinds)
 
-    (add-hook 'helm-grep-mode-hook #'(lambda () (use-package "wgrep")))
-
     (helm-descbinds-mode)
     (helm-mode 1)))
-
-(use-package wgrep
-  :init
-  (progn
-    (with-eval-after-load "helm-grep"
-      (bind-key  "C-x C-q" #'wgrep-change-to-wgrep-mode helm-grep-mode-map)
-      (bind-key "C-c C-c" #'wgrep-finish-edit helm-grep-mode-map))
-    (with-eval-after-load "helm-ag"
-      (bind-key  "C-x C-q" #'wgrep-change-to-wgrep-mode helm-ag-mode-map)
-      (bind-key "C-c C-c" #'wgrep-finish-edit helm-ag-mode-map))))
 
 (use-package password-store
   :config
