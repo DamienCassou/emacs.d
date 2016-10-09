@@ -884,6 +884,13 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setq password-store-password-length 16)))
 
+(use-package auth-password-store
+  :demand t
+  :load-path "packages/auth-password-store"
+  :init
+  (progn
+    (setq auth-sources '(password-store))))
+
 (use-package ace-window
   :bind* (("M-o" . ace-window))
   :config
@@ -949,13 +956,6 @@ Designed to be called before `message-send-and-exit'."
 (use-package vdirel
   :load-path "packages/vdirel"
   :bind (("C-. c" . vdirel-helm-select-email)))
-
-(use-package auth-password-store
-  :demand t
-  :load-path "packages/auth-password-store"
-  :init
-  (progn
-    (setq auth-sources '(password-store))))
 
 (use-package help
   :defer t
