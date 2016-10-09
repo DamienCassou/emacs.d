@@ -990,10 +990,15 @@ Designed to be called before `message-send-and-exit'."
 (use-package subword
   :diminish subword-mode)
 
+(use-package company
+  :diminish company-mode)
+
 (use-package widgetjs
+  :diminish widgetjs-mode
   :load-path "packages/emacs-js/widgetjs")
 
 (use-package emacs-js
+  :diminish (js2-refactor-mode js2-minor-mode amd-mode js-lint-mode tern-mode)
   :load-path "packages/emacs-js"
   :config
   (progn
