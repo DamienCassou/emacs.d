@@ -986,33 +986,6 @@ Designed to be called before `message-send-and-exit'."
   (interactive)
   (occur "[^[:ascii:]]"))
 
-(require 'beacon)
-;; https://github.com/Malabarba/beacon/pull/50
-(defun beacon--color-range ()
-  "Return a list of background colors for the beacon."
-  (let* ((default-bg (or (save-excursion
-                           (unless (eobp)
-                             (forward-line 1)
-                             (unless (or (bobp) (not (bolp)))
-                               (forward-char -1)))
-                           (background-color-at-point))
-                         (face-background 'default)))
-         (bg (color-values (if (or (not (stringp default-bg))
-                                   (string-match "\\`unspecified-" default-bg))
-                               (face-attribute 'beacon-fallback-background :background)
-                             default-bg)))
-         (fg (cond
-              ((stringp beacon-color) (color-values beacon-color))
-              ((and (stringp bg)
-                    (< (color-distance "black" bg)
-                       (color-distance "white" bg)))
-               (make-list 3 (* beacon-color 65535)))
-              (t (make-list 3 (* (- 1 beacon-color) 65535))))))
-    (when bg
-      (apply #'seq-mapn (lambda (r g b) (format "#%04x%04x%04x" r g b))
-             (mapcar (lambda (n) (butlast (beacon--int-range (elt fg n) (elt bg n))))
-                     [0 1 2])))))
-
 (use-package beacon
   :diminish beacon-mode
   :init
