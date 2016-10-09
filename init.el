@@ -27,6 +27,7 @@
  '(electric-pair-mode t)
  '(enable-local-variables :all)
  '(enable-recursive-minibuffers t)
+ '(epg-gpg-program "/home/cassou/.nix-profile/bin/gpg2")
  '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#nixos"))))
  '(erc-nick "DamienCassou")
  '(eval-expression-print-length 20)
@@ -774,11 +775,6 @@ Designed to be called before `message-send-and-exit'."
     (advice-add #'message-send-and-exit
                 :before
                 #'my:message-send-and-exit)))
-
-(use-package epg-config
-  :init
-  (progn
-    (setq epg-gpg-program (executable-find "gpg2"))))
 
 (use-package image
   :config
