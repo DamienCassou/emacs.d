@@ -639,10 +639,11 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package notmuch
   :if notmuch-command
-  :load-path (lambda () (and notmuch-command
-                        (list (expand-file-name
-                               "../../share/emacs/site-lisp"
-                               (file-symlink-p notmuch-command)))))
+  :load-path (lambda ()
+               (and notmuch-command
+                    (list (expand-file-name
+                           "../../share/emacs/site-lisp"
+                           (file-symlink-p notmuch-command)))))
   :bind (("C-. m" . notmuch))
   :config
   (progn
