@@ -952,9 +952,6 @@ Designed to be called before `message-send-and-exit'."
 (use-package outline
   :diminish outline-minor-mode)
 
-(use-package define-word
-  :bind (("C-. D" . define-word-at-point)))
-
 (use-package flycheck-package
   :init
   (with-eval-after-load "flycheck"
