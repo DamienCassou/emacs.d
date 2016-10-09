@@ -981,6 +981,7 @@ Designed to be called before `message-send-and-exit'."
               help-mode-map)))
 
 (use-package nameless
+  :diminish nameless-mode
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook #'nameless-mode)))
@@ -1018,9 +1019,13 @@ Designed to be called before `message-send-and-exit'."
                      [0 1 2])))))
 
 (use-package beacon
+  :diminish beacon-mode
   :init
   (progn
     (beacon-mode)))
+
+(use-package subword
+  :diminish subword-mode)
 
 (use-package widgetjs
   :load-path "packages/emacs-js/widgetjs")
