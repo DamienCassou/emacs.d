@@ -860,8 +860,6 @@ Designed to be called before `message-send-and-exit'."
               ("C-f" . find-function)
               ("C-l" . find-library)))
 
-(use-package git-timemachine)
-
 (use-package anzu
   :diminish anzu-mode
   :init
