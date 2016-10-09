@@ -344,6 +344,10 @@ are visible."
          (add-to-list 'eshell-visual-commands "karma")
          (add-to-list 'eshell-visual-commands "bower")))))
 
+(use-package esh-mode
+  :bind (:map eshell-mode-map
+              ("C-c C-l" . helm-eshell-history)))
+
 (use-package ediff
   :defer t
   :config
@@ -910,14 +914,7 @@ Designed to be called before `message-send-and-exit'."
           helm-ff-file-name-history-use-recentf t)
 
     (with-eval-after-load "eshell"
-      (require 'helm-eshell)
-
-      (add-hook 'eshell-mode-hook
-                #'(lambda ()
-                    (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history))))
-
-    (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
-    (define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
+      (require 'helm-eshell))
 
     (with-eval-after-load "projectile"
       (require 'helm-projectile))
