@@ -151,15 +151,6 @@
  '(wgrep-auto-save-buffer t)
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
  '(zoom-frame/buffer (quote frame)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(anzu-mode-line ((t (:foreground "black" :weight bold))))
- '(aw-leading-char-face ((t (:height 6.0 :underline nil :foreground "red"))))
- '(hl-line ((t (:underline t))))
- '(pillar-description-data-face ((t (:foreground "gainsboro" :slant italic)))))
 
 (package-initialize)
 
