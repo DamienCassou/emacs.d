@@ -837,10 +837,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package visible-mark
   :config
   (progn
-    (global-visible-mark-mode 1)
-    (defface visible-mark-active
-      '((((type tty) (class mono)))
-        (t (:background "magenta"))) "")))
+    (global-visible-mark-mode 1)))
 
 (use-package paren-face
   :init
