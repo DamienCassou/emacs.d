@@ -946,11 +946,6 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (beginend-setup-all)))
 
-(use-package avy-zap
-  :disabled t
-  :bind (("M-z" . avy-zap-to-char-dwim)
-         ("M-Z" . avy-zap-up-to-char-dwim)))
-
 (use-package vdirel
   :load-path "packages/vdirel"
   :bind (("C-. c" . vdirel-helm-select-email)))
