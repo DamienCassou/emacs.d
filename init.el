@@ -264,7 +264,9 @@ are visible."
 (use-package undo-tree
   :init
   (progn
-    (global-undo-tree-mode)
+    (global-undo-tree-mode))
+  :config
+  (progn
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package ethan-wspace
