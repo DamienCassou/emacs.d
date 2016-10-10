@@ -1001,6 +1001,8 @@ Designed to be called before `message-send-and-exit'."
   :diminish widgetjs-mode
   :load-path "packages/emacs-js/widgetjs")
 
+(add-to-list 'load-path "~/.emacs.d/packages/amd-mode")
+
 (use-package emacs-js
   :diminish (js2-refactor-mode js2-minor-mode amd-mode js-lint-mode tern-mode)
   :load-path "packages/emacs-js"

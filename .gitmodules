@@ -34,3 +34,6 @@
 [submodule "packages/yasnippet-snippets"]
 	path = packages/yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+[submodule "packages/amd-mode"]
+	path = packages/amd-mode
+	url = https://DamienCassou@github.com/NicolasPetton/amd-mode.el.git

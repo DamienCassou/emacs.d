@@ -51,7 +51,6 @@ emacsWithPackages ((with melpaStablePackages; [
     ag # ; search using the 'ag' command (better grep)
     aggressive-indent # ; indent code automatically while typing
     all-the-icons # ; library with many icons
-    amd-mode # ; handles javascript AMD module requirements
     anzu # ; more interactive query-replace
     avy # ; move fast in buffer with <C-,>
     bind-key # ; to simplify definition of shortcuts
