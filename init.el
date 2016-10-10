@@ -814,6 +814,8 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package paredit
   :diminish paredit-mode
+  :bind (:map paredit-mode-map
+              ("M-s" . nil))
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
