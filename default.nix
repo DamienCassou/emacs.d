@@ -80,6 +80,7 @@ emacsWithPackages ((with melpaStablePackages; [
     gulp-task-runner # ; run gulp from Emacs (Javascript)
     haskell-mode # ; to edit Haskell files
     helm # ; selection/completion interface for everything
+    helm-ag # ; use ag from helm
     helm-descbinds # ; integrate helm and describe-bindings <any-prefix C-h>
     helm-projectile # ; integrate projectile and helm <C-. p h>
     hydra # ; easy definition of repeatable shortcuts
@@ -121,8 +122,6 @@ emacsWithPackages ((with melpaStablePackages; [
     ]) ++ (with melpaPackages; [
     expand-region # ; <C-x => repeadly to mark regions
     # status : https://github.com/magnars/expand-region.el/issues/202
-    helm-ag # ; use ag from helm
-    # status : https://github.com/syohex/emacs-helm-ag/issues/276
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97
     prodigy # ; manage external services from within Emacs
