@@ -820,10 +820,12 @@ Designed to be called before `message-send-and-exit'."
   :diminish paredit-mode
   :bind (:map paredit-mode-map
               ("M-s" . nil))
-  :config
+  :init
   (progn
     (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-    (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+    (add-hook 'lisp-mode-hook #'enable-paredit-mode))
+  :config
+  (progn
     (with-eval-after-load "eldoc"
       (eldoc-add-command 'paredit-backward-delete 'paredit-close-round))))
 
