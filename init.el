@@ -451,9 +451,11 @@ are visible."
   :diminish text-scale-mode)
 
 (use-package flycheck
-  :ensure t
   :diminish flycheck-mode
-  :init (global-flycheck-mode))
+  :init
+  (progn
+    (add-hook 'js-mode-hook #'flycheck-mode)
+    (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)))
 
 (use-package org
   :defer t
@@ -1082,4 +1084,5 @@ Designed to be called before `message-send-and-exit'."
 ;;; Emacs Configuration
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
+;; eval: (flycheck-mode -1)
 ;; End:
