@@ -944,8 +944,10 @@ Designed to be called before `message-send-and-exit'."
     (setq aw-keys avy-keys)))
 
 (use-package avy
-  :bind* (("C-," . avy-goto-char-2)
-          ("M-g g" . avy-goto-line))
+  :bind* (("C-," . avy-goto-char-2))
+  ;; dont :bind* this as this would override `M-g` in Projectile
+  ;; (helm-projectile-vc):
+  :bind (("M-g g" . avy-goto-line))
   :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
