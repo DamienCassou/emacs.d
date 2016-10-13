@@ -99,6 +99,7 @@ emacsWithPackages ((with melpaStablePackages; [
     ox-twbs # ; use twitter bootstrap to export org files to HTML
     paredit # ; edit lisp AST instead of characters
     paren-face # ; hide parenthesis in elisp code
+    pass # ; Nicolas' major mode for password-store
     password-store # ; get passwords from the 'pass' command
     powerline # ; required by zerodark theme
     pdf-tools # to view PDF files inside Emacs
@@ -135,6 +136,7 @@ emacsWithPackages ((with melpaStablePackages; [
   ]) ++ (with elpaPackages; [
     auctex # ; LaTeX mode
     beacon # ; highlight my cursor when scrolling
+    debbugs # ; SOAP library to access debbugs servers
     nameless # ; hide current package name everywhere in elisp code
     seq # ; sequence-manipulation libraryy
   ]) ++ [
