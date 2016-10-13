@@ -454,7 +454,6 @@ are visible."
   :diminish flycheck-mode
   :init
   (progn
-    (add-hook 'js-mode-hook #'flycheck-mode)
     (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)))
 
 (use-package org
