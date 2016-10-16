@@ -100,7 +100,6 @@ emacsWithPackages ((with melpaStablePackages; [
     paredit # ; edit lisp AST instead of characters
     paren-face # ; hide parenthesis in elisp code
     pass # ; Nicolas' major mode for password-store
-    password-store # ; get passwords from the 'pass' command
     powerline # ; required by zerodark theme
     pdf-tools # to view PDF files inside Emacs
     pillar # ; Major mode for pier/pillar-formatted text files
@@ -125,6 +124,8 @@ emacsWithPackages ((with melpaStablePackages; [
     # status : https://github.com/magnars/expand-region.el/issues/202
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97
+    password-store # ; get passwords from the 'pass' command
+    # status : email sent to mailing list
     prodigy # ; manage external services from within Emacs
     # status : https://github.com/rejeep/prodigy.el/issues/89
     undo-tree # ; <C-x u> to show the undo tree
