@@ -88,6 +88,7 @@ emacsWithPackages ((with melpaStablePackages; [
     js2-mode # ; Improved Javascript editing mode
     js2-refactor # ; A Javascript refactoring library
     json-mode # ; Major mode to edit JSON files
+    less-css-mode # ; Major mode to edit .less files
     magit # ; Integrate git <C-x g>
     magithub # ; Integrate magit and github (needs http://hub.github.com/)
     markdown-mode # ; Major mode for markdown format
