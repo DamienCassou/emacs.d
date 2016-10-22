@@ -270,6 +270,7 @@ are visible."
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package ethan-wspace
+  :disabled t
   :diminish ethan-wspace-mode
   :demand t
   :config
@@ -879,8 +880,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-    (add-hook 'lisp-mode-hook #'aggressive-indent-mode)
-    (add-hook 'css-mode-hook #'aggressive-indent-mode)))
+    (add-hook 'lisp-mode-hook #'aggressive-indent-mode)))
 
 (use-package helm
   :diminish helm-mode
@@ -1083,6 +1083,17 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setq indent-tabs-mode nil)
     (setq json-reformat:indent-width 2)))
+
+(use-package ws-butler
+  :init
+  (progn
+    (add-hook 'prog-mode-hook #'ws-butler-mode)))
+
+(use-package editorconfig
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook (editorconfig-mode 1))
+  (add-hook 'text-mode-hook (editorconfig-mode 1)))
 
 ;;; Emacs Configuration
 ;; Local Variables:
