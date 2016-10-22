@@ -734,7 +734,8 @@ able to type <C-c left left left> to undo 3 times whereas it was
         (setq notmuch-saved-searches
               `((:name "inbox" :query ,(profile-inbox-query) :key "i")
                 (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
-                (:name "ftgp" :query "damien.cassou@foretagsplatsen.se AND tag:inbox" :key "f")
+                (:name "ftgp" :query "(foretagsplatsen OR ftgp) AND tag:inbox" :key "f")
+                (:name "ignored" :query "tag:inbox AND (no-reply@slack.com OR to:support@foretagsplatsen.se OR (to:current@foretagsplatsen.se AND subject:FATAL) OR subject:production-ftgp OR subject:\"master Error\")" :key "g")
                 (:name "unread" :query "tag:unread" :key "u")
                 (:name "sent" :query ,(profile-sent-query) :key "s"))))
       :config
@@ -779,7 +780,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
            ("damien.cassou@lifl.fr" "cassou@inria.fr"
             "damien.cassou@laposte.net" "damien@foretagsplatsen.se")))
     (setq profile-noisy-query
-          "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\"")))
+          "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\" OR to:\"emacs-devel\"")))
 
 (use-package mml
   :defer t
