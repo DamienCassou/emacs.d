@@ -102,10 +102,10 @@ emacsWithPackages ((with melpaStablePackages; [
     paredit # ; edit lisp AST instead of characters
     paren-face # ; hide parenthesis in elisp code
     pass # ; Nicolas' major mode for password-store
-    powerline # ; required by zerodark theme
     pdf-tools # to view PDF files inside Emacs
     pillar # ; Major mode for pier/pillar-formatted text files
     pos-tip # ; make tool-tips appear nicely
+    powerline # ; required by zerodark theme
     prodigy # ; manage external services from within Emacs
     projectile # ; many functions on projects
     refine #; edit list interactively
@@ -123,14 +123,13 @@ emacsWithPackages ((with melpaStablePackages; [
     xref-js2 # ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
     yaml-mode # ; to edit *.yml files (including .travis.yml)
     yasnippet # ; expand snippets of text
-    xref-js2 # ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
     ]) ++ (with melpaPackages; [
     org-caldav # ; sync between org and caldav
     # status: https://github.com/dengste/org-caldav/issues/97
     password-store # ; get passwords from the 'pass' command
     # status : email sent to mailing list
     use-package # ; to structure my init.el file
-    # status : https://github.com/jwiegley/use-package/issues/392
+    # status : https://github.com/jwiegley/use-package/issues/395
     zoom-frm # ; increase/decrease font size for all buffers <C-x C-+>
     # status: ABANDONED email sent (code is on emacs wiki)
   ]) ++ (with elpaPackages; [
