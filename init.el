@@ -1025,7 +1025,6 @@ Designed to be called before `message-send-and-exit'."
   :load-path "packages/ftgp")
 
 (use-package jabber
-  :demand t
   :bind
   (("C-. j c" . jabber-connect-all)
    ("C-. j d" . jabber-disconnect)
@@ -1036,19 +1035,21 @@ Designed to be called before `message-send-and-exit'."
    ("C-. j o" . jabber-send-default-presence)
    ("C-. j x" . jabber-send-xa-presence)
    ("C-. j p" . jabber-send-presence))
-  :config
+  :init
   (progn
-    (setq jabber-account-list
-          `(("damien@cassou.me"
-             (:password . ,(password-store-get "ldn-fai.net")))))
-    (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
-    (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
+    (defun my/jabber-start ()
+      (interactive)
+      (require 'jabber)
+      (setq jabber-account-list
+            `(("damien@cassou.me"
+               (:password . ,(password-store-get "ldn-fai.net")))))
+      (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
+      (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
 
-    ;;; Override jabber.el global key
-    (bind-key "C-x C-j" #'dired-jump)
+      ;; Override jabber.el global key
+      (bind-key "C-x C-j" #'dired-jump)
 
-    (run-at-time "5 sec" nil
-                 #'jabber-connect-all)))
+      (jabber-connect-all))))
 
 (use-package erc)
 
