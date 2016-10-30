@@ -1090,6 +1090,7 @@ Designed to be called before `message-send-and-exit'."
     (setq json-reformat:indent-width 2)))
 
 (use-package ws-butler
+  :diminish ws-butler-mode
   :init
   (progn
     (add-hook 'prog-mode-hook #'ws-butler-mode)))
