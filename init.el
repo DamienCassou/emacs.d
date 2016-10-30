@@ -146,7 +146,7 @@
  '(vc-follow-symlinks nil)
  '(vdirel-repository "~/Documents/configuration/contacts")
  '(version-control t)
- '(visible-bell t)
+ '(visible-bell nil)
  '(visible-mark-faces (quote (visible-mark-face1 visible-mark-face2)))
  '(visible-mark-max 2)
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
