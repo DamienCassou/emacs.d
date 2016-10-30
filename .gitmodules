@@ -37,3 +37,6 @@
 [submodule "packages/amd-mode"]
 	path = packages/amd-mode
 	url = https://DamienCassou@github.com/NicolasPetton/amd-mode.el.git
+[submodule "packages/gulp-task-runner"]
+	path = packages/gulp-task-runner
+	url = https://DamienCassou@github.com/NicolasPetton/gulp-task-runner.git

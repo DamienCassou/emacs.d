@@ -78,7 +78,6 @@ emacsWithPackages ((with melpaStablePackages; [
     git-timemachine # ; view history of a file with M-x git-timemachine
     grunt # ; glue for grunt files (Javascript)
     guide-key # ; help you learn emacs
-    gulp-task-runner # ; run gulp from Emacs (Javascript)
     haskell-mode # ; to edit Haskell files
     helm # ; selection/completion interface for everything
     helm-ag # ; use ag from helm
