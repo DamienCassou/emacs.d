@@ -1095,6 +1095,29 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'prog-mode-hook #'ws-butler-mode)))
 
+(use-package workflow
+  :demand t
+  :init
+  (progn
+    (defun my/mount-backup-disk (&optional unmount)
+      "Mount backup disk.  Unmount if UNMOUNT is t.
+Interactively, unmount when prefix argument."
+      (interactive "P")
+      (let ((script (expand-file-name "~/Documents/configuration/scripts/lacie-mount.sh")))
+        (require 'em-term)
+        (if unmount
+            (eshell-exec-visual script "-1")
+          (eshell-exec-visual script))))
+
+    (defun my/unmount-backup-disk ()
+      "Unmount backup disk."
+      (interactive)
+      (my/mount-backup-disk t)))
+  :config
+  (progn
+    (add-hook 'workflow-hello-hook #'my/mount-backup-disk)
+    (add-hook 'workflow-goodbye-hook #'my/unmount-backup-disk)))
+
 (use-package editorconfig
   :ensure t
   :init
