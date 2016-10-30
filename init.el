@@ -1098,8 +1098,8 @@ Designed to be called before `message-send-and-exit'."
 (use-package editorconfig
   :ensure t
   :init
-  (add-hook 'prog-mode-hook (editorconfig-mode 1))
-  (add-hook 'text-mode-hook (editorconfig-mode 1)))
+  (add-hook 'prog-mode-hook #'editorconfig-mode)
+  (add-hook 'text-mode-hook #'editorconfig-mode))
 
 ;;; Emacs Configuration
 ;; Local Variables:
