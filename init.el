@@ -114,7 +114,6 @@
  '(scheme-program-name "petite")
  '(scroll-bar-mode nil)
  '(send-mail-function (quote smtpmail-send-it))
- '(sentence-end-double-space nil)
  '(sh-indent-comment t)
  '(shell-switcher-ask-before-creating-new t)
  '(shell-switcher-mode t)
