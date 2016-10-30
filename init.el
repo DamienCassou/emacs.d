@@ -1001,7 +1001,10 @@ Designed to be called before `message-send-and-exit'."
   :diminish subword-mode)
 
 (use-package company
-  :diminish company-mode)
+  :diminish company-mode
+  :init
+  (progn
+    (add-hook 'emacs-lisp-mode-hook #'company-mode)))
 
 (use-package widgetjs
   :diminish widgetjs-mode
