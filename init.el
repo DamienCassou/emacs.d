@@ -109,6 +109,7 @@
  '(recentf-save-file "~/.emacs.d/recentf")
  '(report-emacs-bug-no-explanations t)
  '(runner-run-in-background t)
+ '(save-interprogram-paste-before-kill t)
  '(save-place t nil (saveplace))
  '(save-place-file "~/.emacs.d/places")
  '(scheme-program-name "petite")
