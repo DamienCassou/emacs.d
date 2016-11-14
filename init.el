@@ -996,7 +996,11 @@ Designed to be called before `message-send-and-exit'."
   :diminish beacon-mode
   :init
   (progn
-    (beacon-mode)))
+    (beacon-mode))
+  :config
+  (progn
+    ;; don't blink in notmuch-search, it's both slow and ugly
+    (add-to-list 'beacon-dont-blink-commands #'notmuch-search)))
 
 (use-package subword
   :diminish subword-mode)
