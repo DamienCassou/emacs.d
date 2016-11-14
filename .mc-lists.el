@@ -29,11 +29,14 @@
         org-self-insert-command
         org-transpose-words
         org-yank
+        paredit-backward
         paredit-backward-kill-word
+        paredit-backward-slurp-sexp
         paredit-doublequote
         paredit-forward-delete
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
+        paredit-kill
         paredit-open-round
         paredit-splice-sexp-killing-backward
         paredit-wrap-round
@@ -50,6 +53,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        anzu-query-replace
         dabbrev-expand
         end-of-buffer
         orgtbl-self-insert-command
