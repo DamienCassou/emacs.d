@@ -50,6 +50,7 @@ emacsWithPackages ((with melpaStablePackages; [
     aggressive-indent # ; indent code automatically while typing
     all-the-icons # ; library with many icons
     anzu # ; more interactive query-replace
+    assess # ; library to facilitate test writing
     avy # ; move fast in buffer with <C-,>
     bind-key # ; to simplify definition of shortcuts
     camcorder # ; record emacs sessions M-x camcorder-record
