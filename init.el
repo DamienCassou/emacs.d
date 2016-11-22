@@ -1185,6 +1185,18 @@ Interactively, unmount when prefix argument."
   (add-hook 'prog-mode-hook #'editorconfig-mode)
   (add-hook 'text-mode-hook #'editorconfig-mode))
 
+(use-package compile
+  :defer t
+  :config
+  (progn
+    ;; http://stackoverflow.com/questions/13397737
+    (defun my/colorize-compilation-buffer ()
+      (require 'ansi-color)
+      (toggle-read-only)
+      (ansi-color-apply-on-region compilation-filter-start (point))
+      (toggle-read-only))
+    (add-hook 'compilation-filter-hook #'my/colorize-compilation-buffer)))
+
 ;;; Emacs Configuration
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
