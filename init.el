@@ -360,15 +360,6 @@ are visible."
   (progn
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
-(use-package ethan-wspace
-  :disabled t
-  :diminish ethan-wspace-mode
-  :demand t
-  :config
-  (progn
-    (setq mode-require-final-newline nil) ;; superseded
-    (global-ethan-wspace-mode)))
-
 (use-package dired
   :defer t
   :bind (("C-x C-j" . dired-jump))
