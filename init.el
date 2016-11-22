@@ -365,10 +365,6 @@ are visible."
   :bind (("C-x C-j" . dired-jump))
   :config
   (progn
-    (use-package runner)
-    (use-package dired-x)
-    (use-package dired-imenu :demand t)
-
     (add-hook 'dired-mode-hook #'turn-on-gnus-dired-mode)
 
     (bind-key ")" 'dired-omit-mode dired-mode-map)
@@ -387,6 +383,15 @@ are visible."
 
     (define-key dired-mode-map
       (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)))
+
+(use-package runner
+  :after dired)
+
+(use-package dired-x
+  :after dired)
+
+(use-package dired-imenu
+  :after dired)
 
 (use-package recentf
   :defer t
