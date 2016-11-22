@@ -733,9 +733,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   (progn
     (global-discover-mode 1)))
 
-(use-package pillar
-  :mode ("\\.\\(pier\\|pillar\\)\\'" . pillar-mode))
-
 (use-package projectile
   :diminish projectile-mode
   :init
