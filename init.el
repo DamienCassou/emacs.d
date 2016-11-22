@@ -995,7 +995,7 @@ Designed to be called before `message-send-and-exit'."
     (with-eval-after-load "projectile"
       (require 'helm-projectile))
 
-    (require 'helm-descbinds)
+    (use-package helm-descbinds)
 
     (helm-descbinds-mode)
     (helm-mode 1)))
