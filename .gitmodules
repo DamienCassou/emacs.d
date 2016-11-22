@@ -1,6 +1,3 @@
-[submodule "packages/use-package"]
-	path = packages/use-package
-	url = https://github.com/jwiegley/use-package.git
 [submodule "packages/beginend"]
 	path = packages/beginend
 	url = https://DamienCassou@github.com/DamienCassou/beginend.git
@@ -27,16 +24,16 @@
 	url = https://DamienCassou@github.com/foretagsplatsen/emacs-js.git
 [submodule "packages/ftgp"]
 	path = packages/ftgp
-	url = https://DamienCassou@gitlab.com/ftgp/emacs.git
+	url = https://DamienCassou@petton.fr/git/ftgp/emacs.git
 [submodule "packages/zerodark-theme"]
 	path = packages/zerodark-theme
-	url = https://DamienCassou@github.com/NicolasPetton/zerodark-theme.git
+	url = https://DamienCassou@petton.fr/git/nico/zerodark-theme.git
 [submodule "packages/yasnippet-snippets"]
 	path = packages/yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
 [submodule "packages/amd-mode"]
 	path = packages/amd-mode
-	url = https://DamienCassou@github.com/NicolasPetton/amd-mode.el.git
+	url = https://DamienCassou@petton.fr/git/nico/amd-mode.el.git
 [submodule "packages/gulp-task-runner"]
 	path = packages/gulp-task-runner
-	url = https://DamienCassou@github.com/NicolasPetton/gulp-task-runner.git
+	url = https://DamienCassou@petton.fr/git/nico/gulp-task-runner.git
