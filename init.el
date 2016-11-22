@@ -1075,7 +1075,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     ;; don't blink in notmuch-search, it's both slow and ugly
-    (add-to-list 'beacon-dont-blink-commands #'notmuch-search)))
+    (add-to-list 'beacon-dont-blink-major-modes #'notmuch-search-mode)))
 
 (use-package subword
   :diminish subword-mode)
