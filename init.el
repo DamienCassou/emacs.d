@@ -1098,7 +1098,6 @@ Designed to be called before `message-send-and-exit'."
   :load-path "packages/emacs-js"
   :config
   (progn
-    (use-package monitor-setup)
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
 
