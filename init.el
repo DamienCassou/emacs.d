@@ -1185,10 +1185,11 @@ Interactively, unmount when prefix argument."
     (add-hook 'workflow-goodbye-hook #'my/unmount-backup-disk)))
 
 (use-package editorconfig
-  :ensure t
+  :commands (editorconfig-mode)
   :init
-  (add-hook 'prog-mode-hook #'editorconfig-mode)
-  (add-hook 'text-mode-hook #'editorconfig-mode))
+  (progn
+    (add-hook 'prog-mode-hook #'editorconfig-mode)
+    (add-hook 'text-mode-hook #'editorconfig-mode)))
 
 (use-package compile
   :defer t
