@@ -1131,8 +1131,6 @@ Designed to be called before `message-send-and-exit'."
 
       (jabber-connect-all))))
 
-(use-package erc)
-
 (use-package slack
   :commands (slack-start)
   :init
