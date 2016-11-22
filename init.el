@@ -1040,6 +1040,8 @@ Designed to be called before `message-send-and-exit'."
 (use-package beginend
   :diminish (beginend-dired-mode beginend-message-mode)
   :load-path "packages/beginend"
+  :defer t
+  :after (dired message)
   :config
   (progn
     (beginend-setup-all)))
