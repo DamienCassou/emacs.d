@@ -1094,7 +1094,7 @@ Designed to be called before `message-send-and-exit'."
 (add-to-list 'load-path "~/.emacs.d/packages/gulp-task-runner")
 
 (use-package emacs-js
-  :diminish (js2-refactor-mode js2-minor-mode amd-mode js-lint-mode tern-mode)
+  :diminish (js2-refactor-mode js2-minor-mode amd-mode js-lint-mode tern-mode jade-interaction-mode)
   :load-path "packages/emacs-js"
   :config
   (progn
