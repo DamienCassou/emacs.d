@@ -528,7 +528,12 @@ are visible."
   :diminish flycheck-mode
   :init
   (progn
-    (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)))
+    (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
+    (use-package flycheck-cask
+      :if (package-installed-p 'flycheck-cask)
+      :init
+      (progn
+        (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))))
 
 (use-package org
   :defer t
