@@ -410,15 +410,6 @@ are visible."
           (recentf-add-file cur-dir-no-slash))))
     (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))
 
-(use-package image-dired
-  :defer t
-  :config
-  (progn
-    (setq image-dired-cmd-create-thumbnail-options
-          (replace-regexp-in-string "-strip" "-auto-orient -strip" image-dired-cmd-create-thumbnail-options)
-          image-dired-cmd-create-temp-image-options
-          (replace-regexp-in-string "-strip" "-auto-orient -strip" image-dired-cmd-create-temp-image-options))))
-
 (use-package em-term
   :defer t
   :init
