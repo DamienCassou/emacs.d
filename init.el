@@ -143,6 +143,8 @@
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
  '(use-package-always-pin "melpa-stable")
  '(use-package-enable-imenu-support t)
+ '(use-package-minimum-reported-time 0)
+ '(use-package-verbose t)
  '(user-full-name "Damien Cassou")
  '(user-mail-address "damien.cassou@gmail.com")
  '(vc-follow-symlinks nil)
