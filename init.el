@@ -720,7 +720,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :diminish guide-key-mode
   :config
   (progn
-    (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t" "C-x RET"))
+    (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t" "C-x RET" "C-c ^"))
     (add-to-list 'guide-key/guide-key-sequence endless/toggle-prefix)
 
     (with-eval-after-load "helm-config"
