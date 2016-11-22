@@ -94,6 +94,7 @@
  '(org-table-use-standard-references nil)
  '(org-time-stamp-rounding-minutes (quote (10 10)))
  '(org-use-speed-commands t)
+ '(package-archive-priorities (quote (("melpa-stable" . 10))))
  '(powerline-display-buffer-size nil)
  '(proced-filter (quote all))
  '(projectile-cache-file "/home/cassou/.emacs.d/cache/projectile.cache")
@@ -140,6 +141,7 @@
  '(undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/.undo-tree/"))))
  '(undo-tree-mode-lighter "")
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
+ '(use-package-always-pin "melpa-stable")
  '(use-package-enable-imenu-support t)
  '(user-full-name "Damien Cassou")
  '(user-mail-address "damien.cassou@gmail.com")
@@ -152,11 +154,100 @@
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
  '(zoom-frame/buffer (quote frame)))
 
+(setq package-selected-packages
+      '(
+        ace-link ; type o in help-mode to go to a link
+        ace-window ; manage windows with ace-like behavior
+        ag ; search using the 'ag' command (better grep)
+        aggressive-indent ; indent code automatically while typing
+        all-the-icons ; library with many icons (zerodark dependency)
+        anzu ; more interactive query-replace
+        assess ; library to facilitate test writing
+        avy ; move fast in buffer with <C-,>
+        bind-key ; to simplify definition of shortcuts
+        camcorder ; record emacs sessions M-x camcorder-record
+        company-tern ; tern backend for company mode
+        csharp-mode ; C# major mode
+        dash ; list library
+        diff-hl ; shows git status in buffer's fringe
+        diminish ; Shorter mode names in the modeline
+        dired-imenu ; integrates imenu in dired
+        dired-toggle-sudo ; <C-x s> to toggle sudo state of buffer
+        discover ; popus for some features
+        drag-stuff ; use <M-arrow> to move things around
+        editorconfig ; handle .editorconfig files automatically
+        expand-region ; <C-x => repeadly to mark regions
+        f ; file manipulation library
+        feature-mode ; major mode for editing feature files
+        flycheck ; flycheck to check files on the fly
+        flycheck-cask ; use Cask when present for dependencies
+        flycheck-package ; checks elisp package metadata
+        git-timemachine ; history of a file with M-x git-timemachine
+        grunt ; glue for grunt files (Javascript)
+        guide-key ; help you learn emacs
+        helm ; selection/completion interface for everything
+        helm-ag ; use ag from helm
+        helm-descbinds ; list available bindings through helm
+        helm-projectile ; integrate projectile and helm <C-. p h>
+        jabber ; instant messaging
+        jade ; JS development environment
+        js2-mode ; Improved Javascript editing mode
+        js2-refactor ; A Javascript refactoring library
+        json-mode ; Major mode to edit JSON files
+        less-css-mode ; Major mode to edit .less files
+        magit ; Integrate git <C-x g>
+        markdown-mode ; Major mode for markdown format
+        multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
+        org-vcard ; used by vdirel
+        orgtbl-show-header ; show header of column in minibuffer
+        ox-twbs ; use twitter bootstrap to export org files to HTML
+        paredit ; edit lisp AST instead of characters
+        paren-face ; hide parenthesis in elisp code
+        pass ; Nicolas' major mode for password-store
+        pos-tip ; make tool-tips appear nicely
+        powerline ; required by zerodark theme
+        prodigy ; manage external services from within Emacs
+        projectile ; add notion of projects
+        refine ; edit list interactively
+        runner ; Associate external applications to file extensions
+        s ; string library
+        skeletor ; facilitates the creation of new project
+        ;; slack  ; slack.com client for Emacs
+        smartscan ; <M-n> <M-p> to move between same symbol in buffer
+        tern ; Javascript code analyzer
+        undo-tree ; <C-x u> to show the undo tree
+        visible-mark ; show the current mark
+        ws-butler ; trim whitespace only in edited lines
+        xref-js2 ; Jump to references/definitions using ag &
+                                        ; js2-mode's AST (JavaScript)
+        yaml-mode ; to edit *.yml files (including .travis.yml)
+        yasnippet ; expand snippets of text
+        org-caldav ; sync between org and caldav
+        password-store ; get passwords from the 'pass' command
+        use-package ; to structure my init.el file
+        zoom-frm ; change font size for all buffers <C-x C-+>
+        beacon ; highlight my cursor when scrolling
+        debbugs ; SOAP library to access debbugs servers
+        nameless ; hide current package name everywhere in elisp code
+        ))
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
+
 (package-initialize)
 
-(eval-when-compile
-  (require 'use-package)
-  (setq use-package-verbose (null byte-compile-current-file)))
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+;; Do that when you want to install packages of
+;; `package-selected-packages':
+;;
+;; (package-install-selected-packages)
+
+(require 'diminish)
+(require 'use-package)
 
 (defun set-selected-frame-dark ()
   (interactive)
