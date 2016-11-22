@@ -1131,23 +1131,6 @@ Designed to be called before `message-send-and-exit'."
 
       (jabber-connect-all))))
 
-(use-package slack
-  :commands (slack-start)
-  :init
-  (progn
-    (setq slack-buffer-emojify t)
-    (setq slack-prefer-current-team t))
-  :config
-  (progn
-    (require 'auth-password-store)
-    (slack-register-team
-     :name "foretagsplatsen"
-     :default t
-     :client-id (auth-pass-get "client-id" "ftgp/slack.com")
-     :client-secret (auth-pass-get "client-secret" "ftgp/slack.com")
-     :token (auth-pass-get "token" "ftgp/slack.com")
-     :subscribed-channels '(general development french_fuckers stockholm-food teamcity))))
-
 (use-package diff-hl
   :init
   (progn
