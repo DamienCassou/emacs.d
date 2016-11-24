@@ -37,3 +37,6 @@
 [submodule "packages/jade"]
 	path = packages/jade
 	url = https://DamienCassou@petton.fr/git/nico/jade.git
+[submodule "packages/org-caldav"]
+	path = packages/org-caldav
+	url = https://DamienCassou@github.com/DamienCassou/org-caldav.git
