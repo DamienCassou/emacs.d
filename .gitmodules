@@ -37,3 +37,6 @@
 [submodule "packages/gulp-task-runner"]
 	path = packages/gulp-task-runner
 	url = https://DamienCassou@petton.fr/git/nico/gulp-task-runner.git
+[submodule "packages/jade"]
+	path = packages/jade
+	url = https://DamienCassou@petton.fr/git/nico/jade.git
