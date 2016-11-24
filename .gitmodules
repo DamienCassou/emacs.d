@@ -1,9 +1,6 @@
 [submodule "packages/beginend"]
 	path = packages/beginend
 	url = https://DamienCassou@github.com/DamienCassou/beginend.git
-[submodule "packages/org-caldav"]
-	path = packages/org-caldav
-	url = https://DamienCassou@github.com/DamienCassou/org-caldav.git
 [submodule "packages/auth-password-store"]
 	path = packages/auth-password-store
 	url = https://DamienCassou@github.com/DamienCassou/auth-password-store.git
