@@ -532,8 +532,8 @@
     (helm-projectile-on)))
 
 (use-package unify-opening
-  :load-path "packages/unify-opening"
-  :demand t)
+  :demand t
+  :load-path "packages/unify-opening")
 
 (eval-and-compile
   (setq-default notmuch-command (executable-find "notmuch")))
