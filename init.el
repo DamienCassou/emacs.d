@@ -853,13 +853,11 @@ Designed to be called before `message-send-and-exit'."
 (use-package beacon
   :demand t
   :diminish beacon-mode
-  :init
-  (progn
-    (beacon-mode))
   :config
   (progn
     ;; don't blink in notmuch-search, it's both slow and ugly
-    (add-to-list 'beacon-dont-blink-major-modes #'notmuch-search-mode)))
+    (add-to-list 'beacon-dont-blink-major-modes #'notmuch-search-mode)
+    (beacon-mode)))
 
 (use-package subword
   :diminish subword-mode)
