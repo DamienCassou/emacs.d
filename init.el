@@ -208,7 +208,6 @@
         paren-face ; hide parenthesis in elisp code
         pass ; Nicolas' major mode for password-store
         pos-tip ; make tool-tips appear nicely
-        powerline ; required by zerodark theme
         prodigy ; manage external services from within Emacs
         projectile ; add notion of projects
         refine ; edit list interactively
