@@ -713,8 +713,8 @@ Designed to be called before `message-send-and-exit'."
     (global-visible-mark-mode 1)))
 
 (use-package paren-face
-  :init
   :demand t
+  :config
   (progn
     (global-paren-face-mode)))
 
