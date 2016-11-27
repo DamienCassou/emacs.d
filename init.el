@@ -548,6 +548,8 @@
   :bind (("C-. m" . notmuch))
   :config
   (progn
+    (setq notmuch-archive-tags '("-inbox" "-unread"))
+
     (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
 
     (defun my:mm-ics-to-org-part (handle &optional prompt)
@@ -556,7 +558,7 @@
         (mm-insert-part handle)
         (mm-add-meta-html-tag handle)
         (require 'org-caldav)
-        (my:import-ics-buffer-to-org)))
+        (org-caldav-import-ics-buffer-to-org)))
 
     (defun my:notmuch-show-ics-to-org-part ()
       "Save the .ics MIME part containing point to an org file."
@@ -569,48 +571,10 @@
       (bind-key "r" #'notmuch-search-reply-to-thread notmuch-search-mode-map)
       (bind-key "R" #'notmuch-search-reply-to-thread-sender notmuch-search-mode-map)
       (bind-key "r" #'notmuch-show-reply notmuch-show-mode-map)
-      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))
-
-    (use-package profile
-      :demand t
-      :init
-      (progn
-        (defun my:notmuch-build-identity (&optional email)
-          "Return a string of the form \"name <EMAIL>\"."
-          (let ((email (or email user-mail-address)))
-            (format "%s <%s>" (notmuch-user-name) email)))
-
-        (setq notmuch-identities
-              (mapcar #'my:notmuch-build-identity
-                      (profile-email-addresses)))
-
-        (defun my:notmuch-prompt-for-sender ()
-          "Prompt for a sender using `profile-binding-alist'."
-          (profile-set-profile)
-          (my:notmuch-build-identity))
-
-        (advice-add #'notmuch-mua-prompt-for-sender
-                    :override
-                    #'my:notmuch-prompt-for-sender)
-
-        (setq notmuch-archive-tags '("-inbox" "-unread"))
-
-        (setq notmuch-saved-searches
-              `((:name "inbox" :query ,(profile-inbox-query) :key "i")
-                (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
-                (:name "ftgp" :query "(foretagsplatsen OR ftgp) AND tag:inbox" :key "f")
-                (:name "ignored" :query "tag:inbox AND (no-reply@slack.com OR to:support@foretagsplatsen.se OR (to:current@foretagsplatsen.se AND subject:FATAL) OR subject:production-ftgp OR subject:\"master Error\" OR subject:\"ben Error\" OR to:info@foretagsplatsen.se)" :key "g")
-                (:name "unread" :query "tag:unread" :key "u")
-                (:name "sent" :query ,(profile-sent-query) :key "s"))))
-      :config
-      (progn
-        (with-eval-after-load "notmuch-hello"
-          (add-to-list 'notmuch-hello-sections
-                       #'profile-queue-insert-section
-                       t))))))
+      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))))
 
 (use-package profile
-  :demand t
+  :after (notmuch)
   :load-path "packages/profile"
   :init
   (progn
@@ -644,10 +608,40 @@
            ("damien.cassou@lifl.fr" "cassou@inria.fr"
             "damien.cassou@laposte.net" "damien@foretagsplatsen.se")))
     (setq profile-noisy-query
-          "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\" OR to:\"emacs-devel\"")))
+          "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\" OR to:\"emacs-devel\"")
+
+    (defun my:notmuch-build-identity (&optional email)
+      "Return a string of the form \"name <EMAIL>\"."
+      (let ((email (or email user-mail-address)))
+        (format "%s <%s>" (notmuch-user-name) email)))
+
+    (setq notmuch-identities
+          (mapcar #'my:notmuch-build-identity
+                  (profile-email-addresses)))
+
+    (defun my:notmuch-prompt-for-sender ()
+      "Prompt for a sender using `profile-binding-alist'."
+      (profile-set-profile)
+      (my:notmuch-build-identity))
+
+    (advice-add #'notmuch-mua-prompt-for-sender
+                :override
+                #'my:notmuch-prompt-for-sender)
+
+    (setq notmuch-saved-searches
+          `((:name "inbox" :query ,(profile-inbox-query) :key "i")
+            (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
+            (:name "ftgp" :query "(foretagsplatsen OR ftgp) AND tag:inbox" :key "f")
+            (:name "ignored" :query "tag:inbox AND (no-reply@slack.com OR to:support@foretagsplatsen.se OR (to:current@foretagsplatsen.se AND subject:FATAL) OR subject:production-ftgp OR subject:\"master Error\" OR subject:\"ben Error\" OR to:info@foretagsplatsen.se)" :key "g")
+            (:name "unread" :query "tag:unread" :key "u")
+            (:name "sent" :query ,(profile-sent-query) :key "s")))
+
+    (add-to-list 'notmuch-hello-sections
+                   #'profile-queue-insert-section
+                   t)))
 
 (use-package mml
-  :init
+  :config
   (progn
     ;; http://mbork.pl/2015-11-28_Fixing_mml-attach-file_using_advice
     (defun my:mml-attach-file--go-to-eob (orig-fun &rest args)
@@ -670,6 +664,7 @@
     (defun my:message-send-and-exit (&optional arg)
       "Set profile according to From field.
 Designed to be called before `message-send-and-exit'."
+      (require 'profile)
       (profile-set-profile-from-message-from-field))
     (advice-add #'message-send-and-exit
                 :before
