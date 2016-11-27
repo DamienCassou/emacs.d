@@ -947,6 +947,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package ws-butler
   :diminish ws-butler-mode
+  :commands (ws-butler-mode)
   :init
   (progn
     (add-hook 'prog-mode-hook #'ws-butler-mode)))
