@@ -512,8 +512,8 @@
     (guide-key-mode 1)))
 
 (use-package discover
-  :init
   :demand t
+  :config
   (progn
     (global-discover-mode 1)))
 
