@@ -869,20 +869,33 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'emacs-lisp-mode-hook #'company-mode)))
 
-(use-package widgetjs
-  :diminish widgetjs-mode
-  :load-path "packages/emacs-js/widgetjs")
-
-(add-to-list 'load-path "~/.emacs.d/packages/amd-mode")
-(add-to-list 'load-path "~/.emacs.d/packages/gulp-task-runner")
-
 (use-package emacs-js
-  :diminish (js2-refactor-mode js2-minor-mode amd-mode js-lint-mode tern-mode jade-interaction-mode)
+  :diminish (js2-refactor-mode js2-minor-mode js-lint-mode tern-mode)
   :load-path "packages/emacs-js"
+  :commands (setup-js-buffer)
+  :init
+  (progn
+    (add-hook 'js-mode-hook #'setup-js-buffer))
   :config
   (progn
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
+
+(use-package widgetjs
+  :load-path "packages/emacs-js/widgetjs"
+  :diminish widgetjs-mode)
+
+(use-package amd-mode
+  :load-path "packages/amd-mode"
+  :diminish amd-mode)
+
+(use-package jade
+  :load-path "packages/jade"
+  :diminish jade-interaction-mode)
+
+(use-package gulp-task-runner
+  :commands (gulp)
+  :load-path "packages/gulp-task-runner")
 
 (use-package ftgp
   :demand t
