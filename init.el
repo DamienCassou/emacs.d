@@ -50,6 +50,7 @@
  '(jabber-avatar-cache-directory "~/.emacs.d/cache/jabber-avatar-cache")
  '(jabber-backlog-days 30)
  '(jabber-backlog-number 100)
+ '(jabber-history-dir "~/.emacs.d/.cache/jabber-history")
  '(jabber-history-enabled t)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk t)
@@ -918,21 +919,16 @@ Designed to be called before `message-send-and-exit'."
    ("C-. j o" . jabber-send-default-presence)
    ("C-. j x" . jabber-send-xa-presence)
    ("C-. j p" . jabber-send-presence))
-  :init
+  :config
   (progn
-    (defun my/jabber-start ()
-      (interactive)
-      (require 'jabber)
-      (setq jabber-account-list
-            `(("damien@cassou.me"
-               (:password . ,(password-store-get "ldn-fai.net")))))
-      (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
-      (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
+    (setq jabber-account-list
+          `(("damien@cassou.me"
+             (:password . ,(password-store-get "ldn-fai.net")))))
+    (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
+    (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
 
-      ;; Override jabber.el global key
-      (bind-key "C-x C-j" #'dired-jump)
-
-      (jabber-connect-all))))
+    ;; Override jabber.el global key
+    (bind-key "C-x C-j" #'dired-jump)))
 
 (use-package diff-hl
   :commands (diff-hl-mode)
