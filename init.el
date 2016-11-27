@@ -870,6 +870,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package company
   :diminish company-mode
   :commands (company-mode)
+  :bind ("C-. /" . company-complete)
   :init
   (progn
     (add-hook 'emacs-lisp-mode-hook #'company-mode)))
