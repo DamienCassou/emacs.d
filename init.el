@@ -252,6 +252,10 @@
 (require 'diminish)
 (require 'use-package)
 
+(use-package my-misc
+  :demand t
+  :load-path "lisp")
+
 (use-package undo-tree
   :demand t
   :config

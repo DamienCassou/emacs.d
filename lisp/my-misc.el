@@ -1,4 +1,4 @@
-;;; misc.el --- misc stuff                           -*- lexical-binding: t; -*-
+;;; my-misc.el --- misc stuff                           -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016  Damien Cassou
 
@@ -158,5 +158,5 @@ Interactively, unmount when prefix argument."
   (interactive)
   (my/mount-backup-disk t))
 
-(provide 'misc)
-;;; misc.el ends here
+(provide 'my-misc)
+;;; my-misc.el ends here
