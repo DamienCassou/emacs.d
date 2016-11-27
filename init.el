@@ -337,9 +337,8 @@
   :bind
   (("C-. d b" . ispell-buffer)
    ("C-. d f" . ispell-change-dictionary-to-french)
-   ("C-. d e" . ispell-change-dictionary-to-english)
-   ("C-. d ?" . ispell-change-dictionary))
-  :init
+   ("C-. d e" . ispell-change-dictionary-to-english))
+  :config
   (progn
     (defun ispell-set-dictionary (dict)
       (save-excursion
@@ -357,22 +356,15 @@
       (ispell-change-dictionary "english")
       (when arg
         (ispell-set-dictionary "english"))
-      (flyspell-buffer))
-
-    (defun flyspell-toggle ()
-      (interactive)
-      (let ((mode-value (if flyspell-mode -1 1)))
-        (save-excursion
-          (add-file-local-variable 'eval `(flyspell-mode ,mode-value)))
-        (flyspell-mode mode-value)))))
+      (flyspell-buffer))))
 
 (use-package flyspell
   :diminish flyspell-mode
-  :bind (("C-. f b" . flyspell-buffer)
-         ("C-. f m" . flyspell-toggle))
+  :bind (("C-. f b" . flyspell-buffer))
+  :commands (flyspell-mode)
   :init
   (progn
-    (add-hook 'text-mode-hook 'flyspell-mode))
+    (add-hook 'text-mode-hook #'flyspell-mode))
   :config
   (progn
     (unbind-key "C-." flyspell-mode-map)))
