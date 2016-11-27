@@ -312,11 +312,8 @@
     (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))
 
 (use-package em-term
-(use-package ediff
-  :defer t
   :config
   (progn
-    (setq-default ediff-auto-refine 'on)))
     (add-to-list 'eshell-visual-commands "htop")
     (add-to-list 'eshell-visual-commands "journalctl")
     (add-to-list 'eshell-visual-commands "karma")
