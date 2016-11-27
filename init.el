@@ -834,16 +834,14 @@ Designed to be called before `message-send-and-exit'."
   :bind (("C-. c" . vdirel-helm-select-email)))
 
 (use-package help
+  :bind (:map help-mode-map
+              ("g" . my:revert-buffer-no-confirm))
   :config
   (progn
     (defun my:revert-buffer-no-confirm (&optional ignore-auto)
       "Revert current buffer without asking."
       (interactive (list (not current-prefix-arg)))
-      (revert-buffer ignore-auto t nil))
-    ;; Make sure `g' reverts buffer without confirmation
-    (bind-key (vector 'remap 'revert-buffer)
-              #'my:revert-buffer-no-confirm
-              help-mode-map)))
+      (revert-buffer ignore-auto t nil))))
 
 (use-package nameless
   :diminish nameless-mode
