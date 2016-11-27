@@ -728,11 +728,11 @@ Designed to be called before `message-send-and-exit'."
 (use-package anzu
   :demand t
   :diminish anzu-mode
-  :init
+  :bind (("M-%" . anzu-query-replace)
+         ("C-M-%" . anzu-query-replace-regexp))
+  :config
   (progn
     (global-anzu-mode +1)
-    (global-set-key [remap query-replace] 'anzu-query-replace)
-    (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
     (define-key isearch-mode-map [remap isearch-query-replace] #'anzu-isearch-query-replace)
     (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)))
 
