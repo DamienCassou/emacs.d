@@ -27,7 +27,6 @@
  '(electric-pair-mode t)
  '(enable-local-variables :all)
  '(enable-recursive-minibuffers t)
- '(epg-gpg-program "/home/cassou/.nix-profile/bin/gpg2")
  '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#nixos"))))
  '(erc-nick "DamienCassou")
  '(eval-expression-print-length 20)
