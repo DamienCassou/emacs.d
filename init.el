@@ -738,7 +738,8 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package aggressive-indent
   :diminish aggressive-indent-mode
-  :config
+  :commands aggressive-indent-mode
+  :init
   (progn
     (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
     (add-hook 'lisp-mode-hook #'aggressive-indent-mode)))
