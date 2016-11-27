@@ -479,55 +479,6 @@
           org-caldav-save-directory "~/.emacs.d/cache/org-caldav"
           org-caldav-sync-changes-to-org 'all)))
 
-(use-package calc
-  :defer t
-  :config
-  (progn
-    (defmath vwsum (vec1 vec2)
-      "Weighted sum: VEC1 are marks and VEC2 are coefficients."
-      (+ (* vec1 vec2)))
-
-    (defun my:round-to-half (num)
-      (let* ((decimal (- num (ftruncate num))))
-        (cond
-         ((or (zerop decimal) (= 0.5 decimal)) num)
-         ((< decimal 0.5) (+ 0.5 (ftruncate num)))
-         ((> decimal 0.5) (1+ (ftruncate num))))))))
-
-(use-package winner
-  :defer t
-  :init
-  (progn
-    (defun winner:undo-again ()
-      (interactive)
-      (setq this-command 'winner-undo)
-      (winner-undo))
-
-    (defun winner:redo-again ()
-      (interactive)
-      (setq this-command 'winner-undo)
-      (winner-redo))
-
-    (defun winner:prepare-for-futher-undo ()
-      "Let one undo more by just pressing the last key.
-Using standard configuration and this function, the user will be
-able to type <C-c left left left> to undo 3 times whereas it was
-<C-c left C-c left C-c left> before."
-      (set-temporary-overlay-map
-       (let ((map (make-sparse-keymap)))
-         (define-key map (kbd "<left>") 'winner:undo-again)
-         (define-key map (kbd "<right>") 'winner:redo-again)
-         map) t)
-      (message "Type <left>/<right> to continue switching"))
-
-    (defun winner:initial-undo ()
-      (interactive)
-      (setq this-command 'winner-undo)
-      (winner-undo)
-      (winner:prepare-for-futher-undo))
-
-    (bind-key "C-c <left>" 'winner:initial-undo  winner-mode-map)))
-
 (use-package drag-stuff
   :demand t
   :diminish drag-stuff-mode
@@ -974,12 +925,6 @@ Designed to be called before `message-send-and-exit'."
     (add-to-list 'yas-snippet-dirs "~/.emacs.d/packages/yasnippet-snippets")
     (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
     (yas-reload-all)))
-
-(use-package json-mode
-  :config
-  (progn
-    (setq indent-tabs-mode nil)
-    (setq json-reformat:indent-width 2)))
 
 (use-package ws-butler
   :diminish ws-butler-mode
