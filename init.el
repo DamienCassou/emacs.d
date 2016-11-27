@@ -141,6 +141,7 @@
  '(undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/.undo-tree/"))))
  '(undo-tree-mode-lighter "")
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
+ '(use-package-always-defer t)
  '(use-package-always-pin "melpa-stable")
  '(use-package-enable-imenu-support t)
  '(use-package-minimum-reported-time 0)
@@ -355,13 +356,13 @@ are visible."
 (unbind-key "M->")
 
 (use-package undo-tree
+  :demand t
   :config
   (progn
     (global-undo-tree-mode)
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package dired
-  :defer t
   :bind (("C-x C-j" . dired-jump))
   :config
   (progn
@@ -394,7 +395,6 @@ are visible."
   :after dired)
 
 (use-package recentf
-  :defer t
   :config
   (progn
     (defun recentf-track-dired-buffers ()
@@ -522,11 +522,9 @@ are visible."
     (add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)))
 
 (use-package checkdoc
-  :defer t
   :diminish checkdoc-minor-mode)
 
 (use-package face-remap
-  :defer t
   :diminish text-scale-mode)
 
 (use-package flycheck
@@ -541,7 +539,6 @@ are visible."
         (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))))
 
 (use-package org
-  :defer t
   :bind
   (("C-. o t"   . org-capture)
    ("C-. o a"   . org-agenda)
@@ -672,6 +669,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (bind-key "C-c <left>" 'winner:initial-undo  winner-mode-map)))
 
 (use-package drag-stuff
+  :demand t
   :diminish drag-stuff-mode
   :init
   (progn
@@ -696,6 +694,7 @@ able to type <C-c left left left> to undo 3 times whereas it was
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window)))
 
 (use-package guide-key
+  :demand t
   :diminish guide-key-mode
   :config
   (progn
@@ -703,10 +702,12 @@ able to type <C-c left left left> to undo 3 times whereas it was
 
 (use-package discover
   :init
+  :demand t
   (progn
     (global-discover-mode 1)))
 
 (use-package projectile
+  :demand t
   :diminish projectile-mode
   :init
   (progn
@@ -832,7 +833,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
           "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\" OR to:\"emacs-devel\"")))
 
 (use-package mml
-  :defer t
   :init
   (progn
     ;; http://mbork.pl/2015-11-28_Fixing_mml-attach-file_using_advice
@@ -847,7 +847,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
     (advice-add 'mml-attach-file :around #'my:mml-attach-file--go-to-eob)))
 
 (use-package message
-  :defer t
   :config
   (progn
     ;;; The following make sure to use the right profile when sending
@@ -880,11 +879,9 @@ Designed to be called before `message-send-and-exit'."
       (eldoc-add-command 'paredit-backward-delete 'paredit-close-round))))
 
 (use-package autorevert
-  :defer t
   :diminish auto-revert-mode)
 
 (use-package smartscan
-  :defer t
   :init
   (progn
     (add-hook 'prog-mode-hook 'smartscan-mode)
@@ -899,12 +896,14 @@ Designed to be called before `message-send-and-exit'."
          ("<C-mouse-5>" . zoom-out)))
 
 (use-package visible-mark
+  :demand t
   :config
   (progn
     (global-visible-mark-mode 1)))
 
 (use-package paren-face
   :init
+  :demand t
   (progn
     (global-paren-face-mode)))
 
@@ -916,6 +915,7 @@ Designed to be called before `message-send-and-exit'."
               ("C-l" . find-library)))
 
 (use-package anzu
+  :demand t
   :diminish anzu-mode
   :init
   (progn
@@ -933,6 +933,7 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'lisp-mode-hook #'aggressive-indent-mode)))
 
 (use-package helm
+  :demand t
   :diminish helm-mode
   :bind (("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
@@ -1008,7 +1009,6 @@ Designed to be called before `message-send-and-exit'."
 (use-package beginend
   :diminish (beginend-dired-mode beginend-message-mode)
   :load-path "packages/beginend"
-  :defer t
   :after (dired message)
   :config
   (progn
@@ -1019,7 +1019,6 @@ Designed to be called before `message-send-and-exit'."
   :bind (("C-. c" . vdirel-helm-select-email)))
 
 (use-package help
-  :defer t
   :config
   (progn
     (defun my:revert-buffer-no-confirm (&optional ignore-auto)
@@ -1043,6 +1042,7 @@ Designed to be called before `message-send-and-exit'."
   (occur "[^[:ascii:]]"))
 
 (use-package beacon
+  :demand t
   :diminish beacon-mode
   :init
   (progn
@@ -1077,6 +1077,7 @@ Designed to be called before `message-send-and-exit'."
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
 
 (use-package ftgp
+  :demand t
   :load-path "packages/ftgp")
 
 (use-package jabber
@@ -1162,7 +1163,6 @@ Interactively, unmount when prefix argument."
     (add-hook 'text-mode-hook #'editorconfig-mode)))
 
 (use-package compile
-  :defer t
   :config
   (progn
     ;; http://stackoverflow.com/questions/13397737
