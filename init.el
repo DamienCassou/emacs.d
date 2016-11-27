@@ -805,15 +805,15 @@ Designed to be called before `message-send-and-exit'."
   :bind* (("M-o" . ace-window))
   :config
   (progn
-    ;; Use same keys for both ace-window and avy
-    (setq aw-keys avy-keys)))
+    ;; keys under my fingers (blue keys on my Kinesis Advantage)
+    (setq aw-keys '(?a ?s  ?d  ?f  ?j  ?k  ?l  59 32))))
 
 (use-package avy
   :bind* (("C-," . avy-goto-char-2))
   ;; dont :bind* this as this would override `M-g` in Projectile
   ;; (helm-projectile-vc):
   :bind (("M-g g" . avy-goto-line))
-  :init
+  :config
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
     (setq avy-keys '(?a ?s  ?d  ?f  ?j  ?k  ?l  59 32))))
