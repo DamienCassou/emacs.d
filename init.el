@@ -385,14 +385,17 @@
 
 (use-package flycheck
   :diminish flycheck-mode
+  :commands (flycheck-mode)
   :init
   (progn
-    (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
-    (use-package flycheck-cask
-      :if (package-installed-p 'flycheck-cask)
-      :init
-      (progn
-        (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))))
+    (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)))
+
+(use-package flycheck-cask
+  :after flycheck
+  :commands (flycheck-cask-setup)
+  :init
+  (progn
+    (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))
 
 (use-package org
   :bind
