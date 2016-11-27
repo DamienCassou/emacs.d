@@ -404,16 +404,15 @@
    ("C-. o l"   . org-store-link)
    ("C-. o w"   . my:org-move-to-refile-target)
    ("C-. o s"   . org-save-all-org-buffers))
-  :init
+  :config
   (progn
     (setq org-modules '(org-protocol org-capture ox-beamer))
 
     (defun my:org-move-to-refile-target (&optional last)
       (interactive "p")
       (require 'org)
-      (org-refile (if (= last 4) '(16) '(4)))))
-  :config
-  (progn
+      (org-refile (if (= last 4) '(16) '(4))))
+
     (bind-key "<S-left>" #'beginning-of-buffer org-mode-map)
     (bind-key "<S-right>" #'end-of-buffer org-mode-map)
 
@@ -463,9 +462,10 @@
 
     (unbind-key "C-'" org-mode-map)
 
-    (add-to-list 'org-file-apps '("\\.png\\'" . default))
+    (add-to-list 'org-file-apps '("\\.png\\'" . default))))
 
-    (use-package ox-twbs)))
+(use-package ox-twbs
+  :after org)
 
 (use-package org-caldav
   :bind (("C-. o S"   . org-caldav-sync))
@@ -477,6 +477,7 @@
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
           org-caldav-save-directory "~/.emacs.d/cache/org-caldav"
+          org-caldav-sync-changes-to-org 'all)))
 
 (use-package calc
   :defer t
