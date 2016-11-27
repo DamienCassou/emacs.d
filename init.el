@@ -39,6 +39,7 @@
  '(global-prettify-symbols-mode t)
  '(global-subword-mode t)
  '(global-undo-tree-mode t)
+ '(guide-key/guide-key-sequence t)
  '(imenu-auto-rescan t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -698,12 +699,6 @@ able to type <C-c left left left> to undo 3 times whereas it was
   :diminish guide-key-mode
   :config
   (progn
-    (setq guide-key/guide-key-sequence '("C-x 4" "C-c @" "C-. p" "C-. t" "C-x RET" "C-c ^"))
-    (add-to-list 'guide-key/guide-key-sequence endless/toggle-prefix)
-
-    (with-eval-after-load "helm-config"
-      (add-to-list 'guide-key/guide-key-sequence helm-command-prefix-key))
-
     (guide-key-mode 1)))
 
 (use-package discover
