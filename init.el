@@ -482,7 +482,7 @@
 (use-package drag-stuff
   :demand t
   :diminish drag-stuff-mode
-  :init
+  :config
   (progn
     (drag-stuff-global-mode t)
     (add-to-list 'drag-stuff-except-modes 'org-mode)
