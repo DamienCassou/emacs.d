@@ -200,6 +200,7 @@
         magit ; Integrate git <C-x g>
         markdown-mode ; Major mode for markdown format
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
+        notmuch ; email client
         org-vcard ; used by vdirel
         orgtbl-show-header ; show header of column in minibuffer
         ox-twbs ; use twitter bootstrap to export org files to HTML
