@@ -312,25 +312,15 @@
     (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))
 
 (use-package em-term
-  :defer t
-  :init
-  (progn
-    (eval-after-load "em-term"
-      '(progn
-         (add-to-list 'eshell-visual-commands "htop")
-         (add-to-list 'eshell-visual-commands "journalctl")
-         (add-to-list 'eshell-visual-commands "karma")
-         (add-to-list 'eshell-visual-commands "bower")))))
-
-(use-package esh-mode
-  :bind (:map eshell-mode-map
-              ("C-c C-l" . helm-eshell-history)))
-
 (use-package ediff
   :defer t
   :config
   (progn
     (setq-default ediff-auto-refine 'on)))
+    (add-to-list 'eshell-visual-commands "htop")
+    (add-to-list 'eshell-visual-commands "journalctl")
+    (add-to-list 'eshell-visual-commands "karma")
+    (add-to-list 'eshell-visual-commands "bower")))
 
 (use-package magit
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
