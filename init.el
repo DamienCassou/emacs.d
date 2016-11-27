@@ -193,7 +193,6 @@
         helm-descbinds ; list available bindings through helm
         helm-projectile ; integrate projectile and helm <C-. p h>
         jabber ; instant messaging
-        jade ; JS development environment
         js2-mode ; Improved Javascript editing mode
         js2-refactor ; A Javascript refactoring library
         json-mode ; Major mode to edit JSON files
