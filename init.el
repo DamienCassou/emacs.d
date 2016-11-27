@@ -692,10 +692,11 @@ Designed to be called before `message-send-and-exit'."
   :diminish auto-revert-mode)
 
 (use-package smartscan
+  :commands (smartscan-mode)
   :init
   (progn
-    (add-hook 'prog-mode-hook 'smartscan-mode)
-    (add-hook 'pillar-mode-hook 'smartscan-mode)))
+    (add-hook 'prog-mode-hook #'smartscan-mode)
+    (add-hook 'pillar-mode-hook #'smartscan-mode)))
 
 (use-package zoom-frm
   :bind (("C-x C-+" . zoom-in/out)
