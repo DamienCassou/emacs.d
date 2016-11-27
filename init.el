@@ -72,6 +72,8 @@
  '(notmuch-hello-sections (quote (notmuch-hello-insert-saved-searches)))
  '(notmuch-labeler-hide-known-labels t)
  '(notmuch-search-oldest-first nil)
+ '(nsm-save-host-names t)
+ '(nsm-settings-file "/home/cassou/.emacs.d/cache/network-security.data")
  '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t) (python . t))))
  '(org-catch-invisible-edits (quote error))
  '(org-clock-clocked-in-display nil)
