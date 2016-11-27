@@ -251,109 +251,6 @@
 (require 'diminish)
 (require 'use-package)
 
-(defun set-selected-frame-dark ()
-  (interactive)
-  (let ((frame-name (cdr (assq 'name (frame-parameters (selected-frame))))))
-    (call-process-shell-command
-     (format
-      "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
-      frame-name))))
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/packages/zerodark-theme")
-
-(defun my:setup-frame ()
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (when (window-system)
-    (ignore-errors
-      (load-theme 'zerodark)
-      (zerodark-setup-modeline-format-alt))
-    (set-selected-frame-dark)
-    (set-face-attribute 'default nil :height 115 :family "Fira Mono")))
-
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (select-frame frame)
-                (my:setup-frame)))
-  (my:setup-frame))
-
-(defun suspend-on-tty-only ()
-  (interactive)
-  (unless window-system
-    (suspend-frame)))
-
-(bind-key "C-x C-z" 'suspend-on-tty-only)
-
-(add-to-list 'default-frame-alist '(cursor-type bar . 3))
-
-;; Make all "yes or no" prompts show "y or n" instead
-(fset 'yes-or-no-p 'y-or-n-p)
-
-(bind-key "<f5>" 'comment-region)
-
-;; Replace `just-one-space' by the more advanced `cycle-spacing'.
-(bind-key "M-SPC" #'cycle-spacing)
-
-(defun my-join-line ()
-  (interactive)
-  (join-line -1))
-
-(bind-key "M-j" 'my-join-line)
-
-(bind-key "C-x k" #'kill-this-buffer)
-
-(defun toggle-window-split ()
-  "Swap between horizontal and vertical separation when 2 frames
-are visible."
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-                                         (car next-win-edges))
-                                     (<= (cadr this-win-edges)
-                                         (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-                     (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
-        (delete-other-windows)
-        (let ((first-win (selected-window)))
-          (funcall splitter)
-          (if this-win-2nd (other-window 1))
-          (set-window-buffer (selected-window) this-win-buffer)
-          (set-window-buffer (next-window) next-win-buffer)
-          (select-window first-win)
-          (if this-win-2nd (other-window 1))))))
-
-(define-key ctl-x-4-map "t" 'toggle-window-split)
-
-(define-prefix-command 'endless/toggle-map)
-(setq endless/toggle-prefix "C-. t")
-(bind-key endless/toggle-prefix 'endless/toggle-map)
-
-(bind-key "d" 'toggle-debug-on-error endless/toggle-map)
-
-(bind-key "C-x 8 <S-right>" (lambda () (interactive) (insert-char ?→))) ; rightwards arrow
-(bind-key "C-x 8 <right>" (lambda () (interactive) (insert-char ?⇒))) ; rightwards double arrow
-
-(bind-key "C-x 8 <S-left>" (lambda () (interactive) (insert-char ?←))) ; leftwards arrow
-(bind-key "C-x 8 <left>" (lambda () (interactive) (insert-char ?⇐))) ; leftwards double arrow
-
-(bind-key "C-x 8 <S-up>" (lambda () (interactive) (insert-char ?↑))) ; upwards arrow
-(bind-key "C-x 8 <up>" (lambda () (interactive) (insert-char ?⇑))) ; upwards double arrow
-
-(bind-key "C-x 8 <S-down>" (lambda () (interactive) (insert-char ?↓))) ; downwards arrow
-(bind-key "C-x 8 <down>" (lambda () (interactive) (insert-char ?⇓))) ; rightwards double arrow
-
-(bind-key "<S-left>" #'beginning-of-buffer)
-(bind-key "<S-right>" #'end-of-buffer)
-(unbind-key "M-<")
-(unbind-key "M->")
-
 (use-package undo-tree
   :demand t
   :config
@@ -1035,11 +932,6 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'emacs-lisp-mode-hook #'nameless-mode)))
 
-(defun occur-non-ascii ()
-  "Find any non-ascii characters in the current buffer."
-  (interactive)
-  (occur "[^[:ascii:]]"))
-
 (use-package beacon
   :demand t
   :diminish beacon-mode
@@ -1130,29 +1022,6 @@ Designed to be called before `message-send-and-exit'."
   :init
   (progn
     (add-hook 'prog-mode-hook #'ws-butler-mode)))
-
-(use-package workflow
-  :demand t
-  :init
-  (progn
-    (defun my/mount-backup-disk (&optional unmount)
-      "Mount backup disk.  Unmount if UNMOUNT is t.
-Interactively, unmount when prefix argument."
-      (interactive "P")
-      (let ((script (expand-file-name "~/Documents/configuration/scripts/lacie-mount.sh")))
-        (require 'em-term)
-        (if unmount
-            (eshell-exec-visual script "-1")
-          (eshell-exec-visual script))))
-
-    (defun my/unmount-backup-disk ()
-      "Unmount backup disk."
-      (interactive)
-      (my/mount-backup-disk t)))
-  :config
-  (progn
-    (add-hook 'workflow-hello-hook #'my/mount-backup-disk)
-    (add-hook 'workflow-goodbye-hook #'my/unmount-backup-disk)))
 
 (use-package editorconfig
   :commands (editorconfig-mode)
