@@ -676,6 +676,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package paredit
   :diminish paredit-mode
+  :commands (enable-paredit-mode)
   :bind (:map paredit-mode-map
               ("M-s" . nil))
   :init
@@ -685,7 +686,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (with-eval-after-load "eldoc"
-      (eldoc-add-command 'paredit-backward-delete 'paredit-close-round))))
+      (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
 (use-package autorevert
   :diminish auto-revert-mode)
