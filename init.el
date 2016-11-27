@@ -929,6 +929,7 @@ Designed to be called before `message-send-and-exit'."
       (jabber-connect-all))))
 
 (use-package diff-hl
+  :commands (diff-hl-mode)
   :init
   (progn
     (add-hook 'prog-mode-hook #'diff-hl-mode)))
