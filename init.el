@@ -371,10 +371,11 @@
 
 (use-package eldoc
   :diminish eldoc-mode
-  :config
+  :commands (eldoc-mode)
+  :init
   (progn
-    (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-    (add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)))
+    (add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
+    (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)))
 
 (use-package checkdoc
   :diminish checkdoc-minor-mode)
