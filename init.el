@@ -144,7 +144,6 @@
  '(undo-tree-mode-lighter "")
  '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
  '(use-package-always-defer t)
- '(use-package-always-pin "melpa-stable")
  '(use-package-enable-imenu-support t)
  '(use-package-minimum-reported-time 0)
  '(use-package-verbose t)
