@@ -520,13 +520,16 @@
 (use-package projectile
   :demand t
   :diminish projectile-mode
-  :init
+  :config
   (progn
-    (projectile-global-mode)
-    (use-package helm-projectile
-      :init
-      (progn
-        (helm-projectile-on)))))
+    (projectile-global-mode)))
+
+(use-package helm-projectile
+  :demand t
+  :after projectile
+  :config
+  (progn
+    (helm-projectile-on)))
 
 (use-package unify-opening
   :load-path "packages/unify-opening"
