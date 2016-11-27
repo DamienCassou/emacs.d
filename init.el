@@ -864,6 +864,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package company
   :diminish company-mode
+  :commands (company-mode)
   :init
   (progn
     (add-hook 'emacs-lisp-mode-hook #'company-mode)))
