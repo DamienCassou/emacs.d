@@ -936,10 +936,13 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package yasnippet
   :diminish yas-minor-mode
+  :commands (yas-minor-mode)
+  :init
+  (progn
+    (add-hook 'emacs-lisp-mode-hook #'yas-minor-mode))
   :config
   (progn
     (add-to-list 'yas-snippet-dirs "~/.emacs.d/packages/yasnippet-snippets")
-    (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
     (yas-reload-all)))
 
 (use-package ws-butler
