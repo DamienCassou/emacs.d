@@ -324,29 +324,8 @@
   :bind (("C-x g" . magit-status) ("C-x G" . magit-dispatch-popup))
   :config
   (progn
-    (when magit-wip-before-change-mode
-      (add-to-list 'magit-no-confirm #'safe-with-wip))
-
-    ;; prevents magit from showing ugly passphrase dialog
-    (setenv "SSH_ASKPASS" nil)))
-
-(use-package info
-  :bind ("C-h i" . my:info-other-window)
-  :config
-  (progn
-    ;; Redefines info-other-window to use features of `info'
-    (defun my:info-other-window (&optional file-or-node buffer)
-      "Like `info' but show the Info buffer in another window."
-      (interactive
-       (list
-        (if (and current-prefix-arg
-                 (not (numberp current-prefix-arg)))
-            (read-file-name "Info file name: " nil nil t))
-        (if (numberp current-prefix-arg)
-            (format "*info*<%s>" current-prefix-arg))))
-      (info-setup
-       file-or-node
-       (switch-to-buffer-other-window (or buffer "*info*"))))))
+    ;; Enable magit-clean
+    (put 'magit-clean 'disabled nil)))
 
 (use-package ace-link
   :init
