@@ -797,7 +797,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package auth-password-store
   :demand t
   :load-path "packages/auth-password-store"
-  :init
+  :config
   (progn
     (setq auth-sources '(password-store))))
 
