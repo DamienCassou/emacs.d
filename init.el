@@ -328,7 +328,8 @@
     (put 'magit-clean 'disabled nil)))
 
 (use-package ace-link
-  :init
+  :demand t
+  :config
   (progn
     (ace-link-setup-default)))
 
