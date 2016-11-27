@@ -845,7 +845,8 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package nameless
   :diminish nameless-mode
-  :config
+  :commands (nameless-mode)
+  :init
   (progn
     (add-hook 'emacs-lisp-mode-hook #'nameless-mode)))
 
