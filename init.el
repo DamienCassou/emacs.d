@@ -781,10 +781,13 @@ Designed to be called before `message-send-and-exit'."
     (with-eval-after-load "projectile"
       (require 'helm-projectile))
 
-    (use-package helm-descbinds)
-
-    (helm-descbinds-mode)
     (helm-mode 1)))
+
+(use-package helm-descbinds
+  :after helm
+  :config
+  (progn
+    (helm-descbinds-mode)))
 
 (use-package password-store
   :config
