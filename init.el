@@ -596,6 +596,7 @@
              (profile-maildir . "/Perso")
              (notmuch-fcc-dirs . "Perso/Sent")
              (user-mail-address . "damien@cassou.me")
+             (message-signature . t)
              (smtpmail-queue-dir . "~/Mail/Perso/queued-mail/")
              (smtpmail-local-domain . nil)
              (smtpmail-smtp-user . "damien@cassou.me")
@@ -605,6 +606,7 @@
             ("Ftgp"
              (profile-maildir . "/Ftgp")
              (user-mail-address . "damien.cassou@foretagsplatsen.se")
+             (message-signature . "Damien Cassou\nFöretagsplatsen AB\nPhone/Fax: +46 (0)8 774 63 00\nMobile: +33 (0)6 80 50 18 91\nAddress: Skeppsbron 26, 4tr, SE-111 30 Stockholm\nWeb: www.foretagsplatsen.se\n")
              (smtpmail-queue-dir . "~/Mail/Ftgp/queued-mail/")
              (smtpmail-local-domain . nil)
              (smtpmail-smtp-user . "damien.cassou@foretagsplatsen.se")
