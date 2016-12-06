@@ -50,7 +50,7 @@
  '(jabber-avatar-cache-directory "~/.emacs.d/cache/jabber-avatar-cache")
  '(jabber-backlog-days 30)
  '(jabber-backlog-number 100)
- '(jabber-history-dir "~/.emacs.d/.cache/jabber-history")
+ '(jabber-history-dir "~/.emacs.d/cache/jabber-history")
  '(jabber-history-enabled t)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk t)
