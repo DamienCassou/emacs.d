@@ -650,8 +650,8 @@
             (:name "sent" :query ,(profile-sent-query) :key "s")))
 
     (add-to-list 'notmuch-hello-sections
-                   #'profile-queue-insert-section
-                   t)))
+                 #'profile-queue-insert-section
+                 t)))
 
 (use-package mml
   :config
