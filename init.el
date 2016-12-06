@@ -171,6 +171,7 @@
         avy ; move fast in buffer with <C-,>
         bind-key ; to simplify definition of shortcuts
         camcorder ; record emacs sessions M-x camcorder-record
+        company-restclient ; provides completion for restclient
         company-tern ; tern backend for company mode
         csharp-mode ; C# major mode
         dash ; list library
@@ -213,6 +214,8 @@
         prodigy ; manage external services from within Emacs
         projectile ; add notion of projects
         refine ; edit list interactively
+        restclient ; test REST queries
+        restclient-helm ; helm interface for restclient
         runner ; Associate external applications to file extensions
         s ; string library
         skeletor ; facilitates the creation of new project
