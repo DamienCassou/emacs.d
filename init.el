@@ -641,7 +641,8 @@
                 #'my:notmuch-prompt-for-sender)
 
     (setq notmuch-saved-searches
-          `((:name "inbox" :query ,(profile-inbox-query) :key "i")
+          `((:name "inbox" :query ,(format "(folder:\"Perso/INBOX\") AND (NOT (%s) OR recip:damien*)"
+                                           profile-noisy-query) :key "i")
             (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
             (:name "ftgp" :query "(foretagsplatsen OR ftgp) AND tag:inbox" :key "f")
             (:name "ignored" :query "tag:inbox AND (no-reply@slack.com OR to:support@foretagsplatsen.se OR (to:current@foretagsplatsen.se AND subject:FATAL) OR subject:production-ftgp OR subject:\"master Error\" OR subject:\"ben Error\" OR to:info@foretagsplatsen.se)" :key "g")
