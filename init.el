@@ -224,14 +224,12 @@
         runner ; Associate external applications to file extensions
         s ; string library
         skeletor ; facilitates the creation of new project
-        ;; slack  ; slack.com client for Emacs
         smartscan ; <M-n> <M-p> to move between same symbol in buffer
         tern ; Javascript code analyzer
         undo-tree ; <C-x u> to show the undo tree
         visible-mark ; show the current mark
         ws-butler ; trim whitespace only in edited lines
-        xref-js2 ; Jump to references/definitions using ag &
-                                        ; js2-mode's AST (JavaScript)
+        xref-js2 ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
         yaml-mode ; to edit *.yml files (including .travis.yml)
         yasnippet ; expand snippets of text
         org-caldav ; sync between org and caldav
