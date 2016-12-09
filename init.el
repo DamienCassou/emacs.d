@@ -174,12 +174,14 @@
         anzu ; more interactive query-replace
         assess ; library to facilitate test writing
         avy ; move fast in buffer with <C-,>
+        beacon ; highlight my cursor when scrolling
         bind-key ; to simplify definition of shortcuts
         camcorder ; record emacs sessions M-x camcorder-record
         company-restclient ; provides completion for restclient
         company-tern ; tern backend for company mode
         csharp-mode ; C# major mode
         dash ; list library
+        debbugs ; SOAP library to access debbugs servers
         diff-hl ; shows git status in buffer's fringe
         diminish ; Shorter mode names in the modeline
         dired-imenu ; integrates imenu in dired
@@ -208,13 +210,16 @@
         magit ; Integrate git <C-x g>
         markdown-mode ; Major mode for markdown format
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
+        nameless ; hide current package name everywhere in elisp code
         notmuch ; email client
+        org-caldav ; sync between org and caldav
         org-vcard ; used by vdirel
         orgtbl-show-header ; show header of column in minibuffer
         ox-twbs ; use twitter bootstrap to export org files to HTML
         paredit ; edit lisp AST instead of characters
         paren-face ; hide parenthesis in elisp code
         pass ; Nicolas' major mode for password-store
+        password-store ; get passwords from the 'pass' command
         pos-tip ; make tool-tips appear nicely
         prodigy ; manage external services from within Emacs
         projectile ; add notion of projects
@@ -227,18 +232,13 @@
         smartscan ; <M-n> <M-p> to move between same symbol in buffer
         tern ; Javascript code analyzer
         undo-tree ; <C-x u> to show the undo tree
+        use-package ; to structure my init.el file
         visible-mark ; show the current mark
         ws-butler ; trim whitespace only in edited lines
         xref-js2 ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
         yaml-mode ; to edit *.yml files (including .travis.yml)
         yasnippet ; expand snippets of text
-        org-caldav ; sync between org and caldav
-        password-store ; get passwords from the 'pass' command
-        use-package ; to structure my init.el file
         zoom-frm ; change font size for all buffers <C-x C-+>
-        beacon ; highlight my cursor when scrolling
-        debbugs ; SOAP library to access debbugs servers
-        nameless ; hide current package name everywhere in elisp code
         ))
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
