@@ -234,6 +234,7 @@
         undo-tree ; <C-x u> to show the undo tree
         use-package ; to structure my init.el file
         visible-mark ; show the current mark
+        websocket ; dependency of jade
         ws-butler ; trim whitespace only in edited lines
         xref-js2 ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
         yaml-mode ; to edit *.yml files (including .travis.yml)
