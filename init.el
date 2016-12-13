@@ -497,9 +497,10 @@
   :config
   (progn
     (drag-stuff-global-mode t)
+    (drag-stuff-define-keys)
     (add-to-list 'drag-stuff-except-modes 'org-mode)
-    (add-to-list 'drag-stuff-except-modes 'js-mode)
-    (add-to-list 'drag-stuff-except-modes 'rebase-mode)))
+    (add-to-list 'drag-stuff-except-modes 'rebase-mode)
+    (add-to-list 'drag-stuff-except-modes 'emacs-lisp-mode)))
 
 (use-package expand-region
   :bind ("C-x =" . er/expand-region))
