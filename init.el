@@ -186,6 +186,7 @@
         dired-toggle-sudo ; <C-x s> to toggle sudo state of buffer
         discover ; popus for some features
         drag-stuff ; use <M-arrow> to move things around
+        duplicate-thing ; M-D to duplicate thing at point
         editorconfig ; handle .editorconfig files automatically
         expand-region ; <C-x => repeadly to mark regions
         f ; file manipulation library
@@ -980,6 +981,9 @@ Designed to be called before `message-send-and-exit'."
       (ansi-color-apply-on-region compilation-filter-start (point))
       (toggle-read-only))
     (add-hook 'compilation-filter-hook #'my/colorize-compilation-buffer)))
+
+(use-package duplicate-thing
+  :bind (("M-D" . duplicate-thing)))
 
 ;;; Emacs Configuration
 (custom-set-faces
