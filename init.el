@@ -53,7 +53,7 @@
  '(jabber-history-dir "~/.emacs.d/cache/jabber-history")
  '(jabber-history-enabled t)
  '(load-prefer-newer t)
- '(magit-diff-refine-hunk t)
+ '(magit-diff-refine-hunk (quote all))
  '(magit-process-find-password-functions (quote (magit-process-password-auth-source)))
  '(magit-wip-after-apply-mode nil)
  '(magit-wip-after-save-mode nil)
