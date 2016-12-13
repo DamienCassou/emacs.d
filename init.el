@@ -79,7 +79,7 @@
  '(org-catch-invisible-edits (quote error))
  '(org-clock-clocked-in-display nil)
  '(org-completion-use-ido t)
- '(org-default-notes-file "refile.org")
+ '(org-default-notes-file "~/Documents/configuration/org/refile.org")
  '(org-directory "~/Documents/configuration/org")
  '(org-ellipsis "⤵")
  '(org-export-allow-bind-keywords t)
