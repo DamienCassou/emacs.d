@@ -604,8 +604,9 @@
              (message-signature . t)
              (smtpmail-queue-dir . "~/Mail/Perso/queued-mail/")
              (smtpmail-local-domain . nil)
+             (smtpmail-auth-supported . '(cram-md5 plain login))
              (smtpmail-smtp-user . "damien@cassou.me")
-             (smtpmail-smtp-server . "choca.pics")
+             (smtpmail-smtp-server . "mail.choca.pics")
              (smtpmail-stream-type . ssl)
              (smtpmail-smtp-service . 465))
             ("Ftgp"
@@ -615,6 +616,7 @@
              (message-signature . "Damien Cassou\nFöretagsplatsen AB\nPhone/Fax: +46 (0)8 774 63 00\nMobile: +33 (0)6 80 50 18 91\nAddress: Skeppsbron 26, 4tr, SE-111 30 Stockholm\nWeb: www.foretagsplatsen.se\n")
              (smtpmail-queue-dir . "~/Mail/Ftgp/queued-mail/")
              (smtpmail-local-domain . nil)
+             (smtpmail-auth-supported . '(plain))
              (smtpmail-smtp-user . "damien.cassou@foretagsplatsen.se")
              (smtpmail-smtp-server . "smtp.office365.com")
              (smtpmail-stream-type . starttls)
