@@ -559,7 +559,8 @@
                     (list (expand-file-name
                            "../../share/emacs/site-lisp"
                            (file-symlink-p notmuch-command)))))
-  :bind (("C-. m" . notmuch))
+  :bind (("C-. m" . notmuch)
+         ("C-. M" . notmuch-mua-new-mail))
   :config
   (progn
     (setq notmuch-archive-tags '("-inbox" "-unread"))
