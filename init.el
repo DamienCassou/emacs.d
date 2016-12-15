@@ -188,6 +188,7 @@
         drag-stuff ; use <M-arrow> to move things around
         duplicate-thing ; M-D to duplicate thing at point
         editorconfig ; handle .editorconfig files automatically
+        embrace ; wrap/unwrap/change wrapping for quote, braces, ...
         expand-region ; <C-x => repeadly to mark regions
         f ; file manipulation library
         feature-mode ; major mode for editing feature files
@@ -985,6 +986,9 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package duplicate-thing
   :bind (("M-D" . duplicate-thing)))
+
+(use-package embrace
+  :bind (("C-. ," . embrace-commander)))
 
 ;;; Emacs Configuration
 (custom-set-faces
