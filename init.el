@@ -212,7 +212,7 @@
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
         nameless ; hide current package name everywhere in elisp code
         notmuch ; email client
-        org-caldav ; sync between org and caldav
+        ;; I need my packages/org-caldav instead ; org ↔ caldav
         org-vcard ; used by vdirel
         orgtbl-show-header ; show header of column in minibuffer
         ox-twbs ; use twitter bootstrap to export org files to HTML
@@ -481,6 +481,7 @@
   :after org)
 
 (use-package org-caldav
+  :load-path "packages/org-caldav"
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
