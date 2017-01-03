@@ -158,5 +158,7 @@ Interactively, unmount when prefix argument."
   (interactive)
   (my/mount-backup-disk t))
 
+(put 'narrow-to-region 'disabled nil)
+
 (provide 'my-misc)
 ;;; my-misc.el ends here
