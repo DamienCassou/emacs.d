@@ -652,7 +652,7 @@
                                            profile-noisy-query) :key "i")
             (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
             (:name "ftgp" :query "(foretagsplatsen OR ftgp) AND tag:inbox" :key "f")
-            (:name "ignored" :query "tag:inbox AND (no-reply@slack.com OR to:support@foretagsplatsen.se OR (to:current@foretagsplatsen.se AND subject:FATAL) OR subject:production-ftgp OR subject:\"master Error\" OR subject:\"ben Error\" OR subject:\"production-pwc Error\" OR subject:\"acceptance-pwc Error\" OR to:info@foretagsplatsen.se OR from:\"Cron Daemon\")" :key "g")
+            (:name "ignored" :query "tag:inbox AND (no-reply@slack.com OR to:support@foretagsplatsen.se OR (to:current@foretagsplatsen.se AND subject:FATAL) OR subject:production-ftgp OR subject:\"master Error\" OR subject:\"ben Error\" OR subject:\"production-pwc Error\" OR subject:\"acceptance-pwc Error\" OR subject:\"ftgp-test Error\" OR to:info@foretagsplatsen.se OR from:\"Cron Daemon\")" :key "g")
             (:name "unread" :query "tag:unread" :key "u")
             (:name "sent" :query ,(profile-sent-query) :key "s")))
 
