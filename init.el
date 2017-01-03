@@ -27,7 +27,7 @@
  '(electric-pair-mode t)
  '(enable-local-variables :all)
  '(enable-recursive-minibuffers t)
- '(erc-autojoin-channels-alist (quote (("freenode.net" "#fedora" "#emacs"))))
+ '(erc-autojoin-channels-alist (quote (("freenode.net"))))
  '(erc-nick "DamienCassou")
  '(eval-expression-print-length 20)
  '(eval-expression-print-level nil)
