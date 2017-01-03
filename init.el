@@ -920,7 +920,12 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package ftgp
   :demand t
-  :load-path "packages/ftgp")
+  :load-path "packages/ftgp"
+  :config
+  (progn
+    (require 'bookmark)
+    (setq ftgp-monitor-root-location
+          (expand-file-name (bookmark-location "ftgp-monitor-root")))))
 
 (use-package jabber
   :bind
