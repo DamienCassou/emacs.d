@@ -486,13 +486,15 @@
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
-    (setq org-caldav-url "https://cassou.me/baikal/cal.php/calendars/damien"
-          org-caldav-calendar-id "default"
-          org-caldav-inbox org-default-calendar-file
-          org-caldav-files '()
-          org-icalendar-timezone "Europe/Berlin"
-          org-caldav-save-directory "~/.emacs.d/cache/org-caldav"
-          org-caldav-sync-changes-to-org 'all)))
+    (setq org-caldav-save-directory "~/.emacs.d/cache/org-caldav"
+          org-caldav-sync-changes-to-org 'all)
+    (setq org-caldav-calendars
+          `((:calendar-id "default" :inbox ,org-default-calendar-file
+                          :url "https://cassou.me/baikal/cal.php/calendars/damien"
+                          )
+            ;; (:calendar-id "ftgp-main" :inbox "~/Documents/configuration/org/ftgp-main.org"
+            ;;               :url "http://localhost:1080")
+            ))))
 
 (use-package drag-stuff
   :demand t
