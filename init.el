@@ -337,6 +337,7 @@
   :bind (("C-x g" . magit-status) ("C-x G" . magit-dispatch-popup))
   :config
   (progn
+    (global-magit-file-mode)
     ;; Enable magit-clean
     (put 'magit-clean 'disabled nil)))
 
