@@ -40,3 +40,6 @@
 [submodule "packages/org-caldav"]
 	path = packages/org-caldav
 	url = https://DamienCassou@github.com/DamienCassou/org-caldav.git
+[submodule "packages/helm-projectile"]
+	path = packages/helm-projectile
+	url = https://DamienCassou@github.com/bbatsov/helm-projectile.git
