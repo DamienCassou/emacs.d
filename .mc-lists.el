@@ -17,6 +17,7 @@
         hungry-delete-backward
         hungry-delete-forward
         indent-for-tab-command
+        keyboard-escape-quit
         kill-region
         message-beginning-of-line
         my-join-line
@@ -54,6 +55,7 @@
 (setq mc/cmds-to-run-once
       '(
         anzu-query-replace
+        beginend-message-goto-end
         dabbrev-expand
         end-of-buffer
         orgtbl-self-insert-command
