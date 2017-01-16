@@ -160,5 +160,8 @@ Interactively, unmount when prefix argument."
 
 (put 'narrow-to-region 'disabled nil)
 
+(unless (or (daemonp) (server-running-p))
+  (server-start))
+
 (provide 'my-misc)
 ;;; my-misc.el ends here
