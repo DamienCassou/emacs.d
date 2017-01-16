@@ -75,6 +75,7 @@
  '(notmuch-search-oldest-first nil)
  '(nsm-save-host-names t)
  '(nsm-settings-file "/home/cassou/.emacs.d/cache/network-security.data")
+ '(offlineimap-command "offlineimap -u machineui")
  '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t) (python . t))))
  '(org-catch-invisible-edits (quote error))
  '(org-clock-clocked-in-display nil)
@@ -212,6 +213,7 @@
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
         nameless ; hide current package name everywhere in elisp code
         notmuch ; email client
+        offlineimap
         ;; I need my packages/org-caldav instead ; org ↔ caldav
         org-vcard ; used by vdirel
         orgtbl-show-header ; show header of column in minibuffer
@@ -996,6 +998,16 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package embrace
   :bind (("C-. ," . embrace-commander)))
+
+(use-package offlineimap
+  :commands (offlineimap)
+  :config
+  (progn
+    (defun my/offlineimap-message-when-done (message-type &optional action)
+      (if (string-match "^finished" message-type)
+          (message "Offlineimap finished")
+        (message "Offlineimap in progress")))
+    (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done)))
 
 ;;; Emacs Configuration
 (custom-set-faces
