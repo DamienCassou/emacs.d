@@ -543,11 +543,18 @@
     (projectile-global-mode)))
 
 (use-package helm-projectile
+  :load-path "packages/helm-projectile"
   :demand t
   :after projectile
+  :bind (:map helm-projectile-projects-map
+              ("M-s"     . my/helm-open-external-terminal))
   :config
   (progn
-    (helm-projectile-on)))
+    (helm-projectile-on)
+    (add-to-list 'helm-source-projectile-projects-actions
+                 (cons "Open in external terminal `M-s'"
+                       #'my/open-external-terminal)
+                 t)))
 
 (use-package unify-opening
   :demand t
@@ -784,7 +791,9 @@ Designed to be called before `message-send-and-exit'."
          ("<S-left>"  . helm-beginning-of-buffer)
          ("<S-right>" . helm-end-of-buffer)
          :map dired-mode-map ;; helm-imenu doesn't work with dired
-         ("M-i"     . imenu))
+         ("M-i"     . imenu)
+         :map helm-find-files-map
+         ("M-s"     . my/helm-open-external-terminal))
   :init
   (progn
     (require 'helm-config))
@@ -803,7 +812,25 @@ Designed to be called before `message-send-and-exit'."
     (with-eval-after-load "projectile"
       (require 'helm-projectile))
 
-    (helm-mode 1)))
+    (helm-mode 1)
+
+    (defun my/helm-open-external-terminal ()
+      (interactive)
+      (with-helm-alive-p
+        (helm-exit-and-execute-action
+         #'my/open-external-terminal)))
+
+    (defun my/open-external-terminal (file)
+      (interactive)
+      (async-shell-command
+       (concat "cd "
+               (file-name-directory file)
+               " && gnome-terminal")))
+
+    (add-to-list 'helm-find-files-actions
+                 (cons "Open in external terminal `M-s'"
+                       #'my/open-external-terminal)
+                 t)))
 
 (use-package helm-descbinds
   :after helm
