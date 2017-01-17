@@ -47,10 +47,8 @@
  '(initial-major-mode (quote text-mode))
  '(initial-scratch-message nil)
  '(jabber-auto-reconnect t)
- '(jabber-avatar-cache-directory "~/.emacs.d/cache/jabber-avatar-cache")
  '(jabber-backlog-days 30)
  '(jabber-backlog-number 100)
- '(jabber-history-dir "~/.emacs.d/cache/jabber-history")
  '(jabber-history-enabled t)
  '(load-prefer-newer t)
  '(magit-diff-refine-hunk (quote all))
@@ -74,7 +72,6 @@
  '(notmuch-labeler-hide-known-labels t)
  '(notmuch-search-oldest-first nil)
  '(nsm-save-host-names t)
- '(nsm-settings-file "/home/cassou/.emacs.d/cache/network-security.data")
  '(offlineimap-command "offlineimap -u machineui")
  '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t) (python . t))))
  '(org-catch-invisible-edits (quote error))
@@ -101,17 +98,14 @@
  '(package-archive-priorities (quote (("melpa-stable" . 10))))
  '(powerline-display-buffer-size nil)
  '(proced-filter (quote all))
- '(projectile-cache-file "/home/cassou/.emacs.d/cache/projectile.cache")
  '(projectile-completion-system (quote helm))
  '(projectile-keymap-prefix (kbd "C-. p"))
- '(projectile-known-projects-file "/home/cassou/.emacs.d/cache/projectile-bookmarks.eld")
  '(projectile-require-project-root nil)
  '(read-file-name-completion-ignore-case t)
  '(recentf-auto-cleanup 300)
  '(recentf-exclude (quote ("~$" "\\.log$")))
  '(recentf-max-saved-items 4000)
  '(recentf-mode t)
- '(recentf-save-file "~/.emacs.d/recentf")
  '(report-emacs-bug-no-explanations t)
  '(runner-run-in-background t)
  '(safe-local-variable-values
@@ -258,6 +252,10 @@
 ;; `package-selected-packages':
 ;;
 ;; (package-install-selected-packages)
+
+(add-to-list 'load-path "~/.emacs.d/packages/no-littering")
+(require 'no-littering)
+(setq trash-directory nil) ;; https://github.com/tarsius/no-littering/issues/31
 
 (require 'diminish)
 (require 'use-package)
@@ -493,7 +491,6 @@
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
-          org-caldav-save-directory "~/.emacs.d/cache/org-caldav"
           org-caldav-sync-changes-to-org 'all)))
 
 (use-package drag-stuff
