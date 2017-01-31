@@ -107,7 +107,6 @@
  '(recentf-auto-cleanup 300)
  '(recentf-exclude (quote ("~$" "\\.log$")))
  '(recentf-max-saved-items 4000)
- '(recentf-mode t)
  '(report-emacs-bug-no-explanations t)
  '(runner-run-in-background t)
  '(safe-local-variable-values
@@ -307,6 +306,7 @@
   :after dired)
 
 (use-package recentf
+  :demand t
   :config
   (progn
     (defun recentf-track-dired-buffers ()
@@ -325,7 +325,8 @@
                        (not (tramp-tramp-file-p cur-dir-no-slash))))
           ;; recentf does not play well with file ending with a slash
           (recentf-add-file cur-dir-no-slash))))
-    (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)))
+    (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)
+    (recentf-mode)))
 
 (use-package em-term
   :config
