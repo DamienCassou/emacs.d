@@ -156,6 +156,9 @@
  '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
  '(zoom-frame/buffer (quote frame)))
 
+(add-to-list 'load-path "~/.emacs.d/packages/no-littering")
+(require 'no-littering)
+
 (setq package-selected-packages
       '(
         ace-link ; type o in help-mode to go to a link
@@ -252,10 +255,6 @@
 ;; `package-selected-packages':
 ;;
 ;; (package-install-selected-packages)
-
-(add-to-list 'load-path "~/.emacs.d/packages/no-littering")
-(require 'no-littering)
-(setq trash-directory nil) ;; https://github.com/tarsius/no-littering/issues/31
 
 (require 'diminish)
 (require 'use-package)
