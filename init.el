@@ -39,6 +39,8 @@
  '(global-prettify-symbols-mode t)
  '(global-subword-mode t)
  '(global-undo-tree-mode t)
+ '(google-translate-default-source-language "sv")
+ '(google-translate-default-target-language "en")
  '(guide-key/guide-key-sequence t)
  '(imenu-auto-rescan t)
  '(indent-tabs-mode nil)
@@ -190,6 +192,7 @@
         flycheck ; flycheck to check files on the fly
         flycheck-cask ; use Cask when present for dependencies
         flycheck-package ; checks elisp package metadata
+        google-translate ; to translate current region and more
         git-timemachine ; history of a file with M-x git-timemachine
         grunt ; glue for grunt files (Javascript)
         guide-key ; help you learn emacs
@@ -1032,6 +1035,8 @@ Designed to be called before `message-send-and-exit'."
           (message "Offlineimap finished")
         (message "Offlineimap in progress")))
     (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done)))
+
+(use-package google-translate)
 
 ;;; Emacs Configuration
 (custom-set-faces
