@@ -8,6 +8,7 @@
         TeX-insert-backslash
         amd-kill-line
         avy-zap-to-char-dwim
+        c-electric-delete-forward
         clipboard-kill-region
         cycle-spacing
         dired-toggle-read-only
