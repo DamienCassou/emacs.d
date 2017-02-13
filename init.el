@@ -196,6 +196,7 @@
         google-translate ; to translate current region and more
         git-timemachine ; history of a file with M-x git-timemachine
         grunt ; glue for grunt files (Javascript)
+        guess-language ; automatic language detection
         guide-key ; help you learn emacs
         helm ; selection/completion interface for everything
         helm-ag ; use ag from helm
@@ -975,6 +976,8 @@ Designed to be called before `message-send-and-exit'."
              (:password . ,(password-store-get "ldn-fai.net")))))
     (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
     (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
+    (with-eval-after-load "guess-language"
+      (add-hook 'jabber-chat-mode-hook #'guess-language-mode))
 
     ;; Override jabber.el global key
     (bind-key "C-x C-j" #'dired-jump)))
@@ -1045,6 +1048,15 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (add-to-list 'org-babel-load-languages (cons 'nim t))))
+
+(use-package guess-language
+  :diminish guess-language-mode
+  :init
+  (progn
+    (add-hook 'text-mode-hook #'guess-language-mode))
+  :config
+  (progn
+    (setq guess-language-languages '(en fr))))
 
 ;;; Emacs Configuration
 (custom-set-faces
