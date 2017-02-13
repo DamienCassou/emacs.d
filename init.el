@@ -192,6 +192,7 @@
         flycheck ; flycheck to check files on the fly
         flycheck-cask ; use Cask when present for dependencies
         flycheck-package ; checks elisp package metadata
+        flycheck-nim ; checks programs written in Nim
         google-translate ; to translate current region and more
         git-timemachine ; history of a file with M-x git-timemachine
         grunt ; glue for grunt files (Javascript)
@@ -209,7 +210,9 @@
         markdown-mode ; Major mode for markdown format
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
         nameless ; hide current package name everywhere in elisp code
+        nim-mode ; major mode for the Nim programming language
         notmuch ; email client
+        ob-nim ; org babel functions for the Nim programming language
         offlineimap
         ;; I need my packages/org-caldav instead ; org ↔ caldav
         org-vcard ; used by vdirel
@@ -1036,6 +1039,12 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done)))
 
 (use-package google-translate)
+
+(use-package ob-nim
+  :after org
+  :config
+  (progn
+    (add-to-list 'org-babel-load-languages (cons 'nim t))))
 
 ;;; Emacs Configuration
 (custom-set-faces
