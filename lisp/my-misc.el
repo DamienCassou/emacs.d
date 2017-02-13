@@ -160,6 +160,7 @@ Interactively, unmount when prefix argument."
 
 (put 'narrow-to-region 'disabled nil)
 
+(require 'server)
 (unless (or (daemonp) (server-running-p))
   (server-start))
 
