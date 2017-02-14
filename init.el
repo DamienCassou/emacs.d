@@ -261,10 +261,6 @@
 (require 'diminish)
 (require 'use-package)
 
-(use-package my-misc
-  :demand t
-  :load-path "lisp")
-
 (use-package undo-tree
   :demand t
   :config
@@ -1048,6 +1044,9 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (setq guess-language-languages '(en fr))))
+(use-package my-misc
+  :demand t
+  :load-path "lisp")
 
 ;;; Emacs Configuration
 (custom-set-faces
