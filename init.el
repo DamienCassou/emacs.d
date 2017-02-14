@@ -1043,7 +1043,10 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'text-mode-hook #'guess-language-mode))
   :config
   (progn
-    (setq guess-language-languages '(en fr))))
+    (setq guess-language-languages '(en fr))
+    (setq guess-language-langcodes
+          '((en . ("en_US" "English"))
+            (fr . ("francais" "French"))))))
 (use-package my-misc
   :demand t
   :load-path "lisp")
