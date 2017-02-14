@@ -40,7 +40,6 @@
  '(global-subword-mode t)
  '(google-translate-default-source-language "sv")
  '(google-translate-default-target-language "en")
- '(guide-key/guide-key-sequence t)
  '(imenu-auto-rescan t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -181,7 +180,6 @@
         diminish ; Shorter mode names in the modeline
         dired-imenu ; integrates imenu in dired
         dired-toggle-sudo ; <C-x s> to toggle sudo state of buffer
-        discover ; popus for some features
         drag-stuff ; use <M-arrow> to move things around
         duplicate-thing ; M-D to duplicate thing at point
         editorconfig ; handle .editorconfig files automatically
@@ -197,7 +195,6 @@
         git-timemachine ; history of a file with M-x git-timemachine
         grunt ; glue for grunt files (Javascript)
         guess-language ; automatic language detection
-        guide-key ; help you learn emacs
         helm ; selection/completion interface for everything
         helm-ag ; use ag from helm
         helm-descbinds ; list available bindings through helm
@@ -238,6 +235,7 @@
         use-package ; to structure my init.el file
         visible-mark ; show the current mark
         websocket ; dependency of jade
+        which-key ; displays bindings after a short break in a key sequence
         ws-butler ; trim whitespace only in edited lines
         xref-js2 ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
         yaml-mode ; to edit *.yml files (including .travis.yml)
@@ -524,18 +522,11 @@
          ("C-'"     . shell-switcher-switch-buffer)
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window)))
 
-(use-package guide-key
-  :demand t
-  :diminish guide-key-mode
-  :config
-  (progn
-    (guide-key-mode 1)))
-
-(use-package discover
+(use-package which-key
   :demand t
   :config
   (progn
-    (global-discover-mode 1)))
+    (which-key-mode)))
 
 (use-package projectile
   :demand t
