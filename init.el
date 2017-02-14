@@ -198,6 +198,7 @@
         helm ; selection/completion interface for everything
         helm-ag ; use ag from helm
         helm-descbinds ; list available bindings through helm
+        helm-flyspell ; use helm for flyspell suggestions
         helm-projectile ; integrate projectile and helm <C-. p h>
         jabber ; instant messaging
         js2-mode ; Improved Javascript editing mode
@@ -1047,6 +1048,10 @@ Designed to be called before `message-send-and-exit'."
     (setq guess-language-langcodes
           '((en . ("en_US" "English"))
             (fr . ("francais" "French"))))))
+
+(use-package helm-flyspell
+  :bind (("M-$" . helm-flyspell-correct)))
+
 (use-package my-misc
   :demand t
   :load-path "lisp")
