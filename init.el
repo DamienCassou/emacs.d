@@ -1040,6 +1040,7 @@ Designed to be called before `message-send-and-exit'."
     (add-to-list 'org-babel-load-languages (cons 'nim t))))
 
 (use-package guess-language
+  :disabled t
   :diminish guess-language-mode
   :init
   (progn
