@@ -522,6 +522,7 @@
 
 (use-package which-key
   :demand t
+  :diminish which-key-mode
   :config
   (progn
     (which-key-mode)))
