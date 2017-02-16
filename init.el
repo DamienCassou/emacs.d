@@ -334,7 +334,8 @@
 
 (use-package magit
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
-  :bind (("C-x g" . magit-status) ("C-x G" . magit-dispatch-popup))
+  :bind (("C-x g" . magit-status)
+         ("C-x G" . magit-dispatch-popup))
   :config
   (progn
     (global-magit-file-mode)
