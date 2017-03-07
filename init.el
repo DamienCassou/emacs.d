@@ -1004,7 +1004,7 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'prog-mode-hook #'ws-butler-mode)))
 
 (use-package editorconfig
-  :commands (editorconfig-mode)
+  :diminish editorconfig-mode
   :init
   (progn
     (add-hook 'prog-mode-hook #'editorconfig-mode)
