@@ -193,6 +193,8 @@
         flycheck-package ; checks elisp package metadata
         flycheck-nim ; checks programs written in Nim
         google-translate ; to translate current region and more
+        gitattributes-mode ; major mode for editing .gitattributes files
+        gitconfig-mode ; major mode for editing .gitconfig files.
         git-timemachine ; history of a file with M-x git-timemachine
         grunt ; glue for grunt files (Javascript)
         guess-language ; automatic language detection
