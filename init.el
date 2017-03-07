@@ -209,6 +209,7 @@
         json-mode ; Major mode to edit JSON files
         less-css-mode ; Major mode to edit .less files
         magit ; Integrate git <C-x g>
+        makey ; required by widgetjs and amd
         markdown-mode ; Major mode for markdown format
         messages-are-flowing ; Visual indication of hard newlines
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
