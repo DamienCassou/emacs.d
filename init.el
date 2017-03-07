@@ -184,6 +184,7 @@
         duplicate-thing ; M-D to duplicate thing at point
         editorconfig ; handle .editorconfig files automatically
         embrace ; wrap/unwrap/change wrapping for quote, braces, ...
+        eslintd-fix ; Automatically fix javascript with eslint_d
         expand-region ; <C-x => repeadly to mark regions
         f ; file manipulation library
         feature-mode ; major mode for editing feature files
