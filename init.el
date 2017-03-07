@@ -210,6 +210,7 @@
         less-css-mode ; Major mode to edit .less files
         magit ; Integrate git <C-x g>
         markdown-mode ; Major mode for markdown format
+        messages-are-flowing ; Visual indication of hard newlines
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
         nameless ; hide current package name everywhere in elisp code
         nim-mode ; major mode for the Nim programming language
@@ -1061,6 +1062,13 @@ Designed to be called before `message-send-and-exit'."
 (use-package my-misc
   :demand t
   :load-path "lisp")
+
+(use-package messages-are-flowing
+  :demand t
+  :config
+  (progn
+    (add-hook 'message-mode-hook
+              #'messages-are-flowing-use-and-mark-hard-newlines)))
 
 ;;; Emacs Configuration
 (custom-set-faces
