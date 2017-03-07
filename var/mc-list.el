@@ -13,6 +13,7 @@
         cycle-spacing
         dired-toggle-read-only
         dired-unmark-all-files
+        embrace-commander
         forward-sexp
         helm-show-kill-ring
         hungry-delete-backward
