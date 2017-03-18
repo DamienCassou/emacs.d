@@ -210,6 +210,7 @@
         json-mode ; Major mode to edit JSON files
         less-css-mode ; Major mode to edit .less files
         magit ; Integrate git <C-x g>
+        make-it-so ; Transform files with Makefile recipes
         makey ; required by widgetjs and amd
         markdown-mode ; Major mode for markdown format
         messages-are-flowing ; Visual indication of hard newlines
@@ -1072,6 +1073,8 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'message-mode-hook
               #'messages-are-flowing-use-and-mark-hard-newlines)))
+
+(use-package make-it-so)
 
 ;;; Emacs Configuration
 (custom-set-faces
