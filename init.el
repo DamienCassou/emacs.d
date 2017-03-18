@@ -221,7 +221,6 @@
         ob-nim ; org babel functions for the Nim programming language
         offlineimap
         ;; I need my packages/org-caldav instead ; org ↔ caldav
-        org-plus-contrib ; for org-notmuch
         org-vcard ; used by vdirel
         orgtbl-show-header ; show header of column in minibuffer
         ox-twbs ; use twitter bootstrap to export org files to HTML
