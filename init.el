@@ -122,7 +122,7 @@
  '(sh-indent-comment t)
  '(shell-switcher-ask-before-creating-new t)
  '(shell-switcher-mode t)
- '(shell-switcher-new-shell-function (quote shell-switcher-make-eshell))
+ '(shell-switcher-new-shell-function (quote shell-switcher-make-shell))
  '(show-paren-mode t)
  '(skeletor-project-directory "/home/cassou/.emacs.d/packages/")
  '(skeletor-show-project-command (quote magit-status))
