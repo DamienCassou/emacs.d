@@ -486,6 +486,10 @@
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))))
 
+(use-package org-notmuch
+  :load-path "lisp"
+  :after org)
+
 (use-package ox-twbs
   :after org)
 
