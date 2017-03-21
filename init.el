@@ -90,7 +90,6 @@
  '(org-imenu-depth 2)
  '(org-log-done (quote time))
  '(org-outline-path-complete-in-steps nil)
- '(org-refile-use-outline-path (quote full-file-path))
  '(org-special-ctrl-a/e t)
  '(org-startup-align-all-tables t)
  '(org-table-use-standard-references nil)
