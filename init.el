@@ -439,36 +439,24 @@
 
     ;; Custom agenda command definitions
     (setq org-agenda-custom-commands
-          (quote (("l" "Logbook" nico/org-agenda-log ""
-                   ((org-agenda-overriding-header "Logbook")))
-                  (" " "Agenda"
+          (quote ((" " "Agenda"
                    ((agenda "" nil)
                     (tags "REFILE"
                           ((org-agenda-overriding-header "Tasks to Refile")
                            (org-tags-match-list-sublevels nil))))
                    nil))))
 
-    (defun nico/org-agenda-log (arg)
-      (let ((org-agenda-files org-agenda-files))
-        (add-to-list 'org-agenda-files "~/Documents/configuration/org/tasks.org_archive")
-        (add-to-list 'org-agenda-files "~/Documents/configuration/org/someday.org_archive")
-        (org-agenda-list arg)
-        (org-agenda-log-mode)
-        (org-agenda-earlier 1)))
+    (setq org-default-calendar-file "~/Documents/configuration/org/schplaf.org")
 
-    (setq org-default-calendar-file
-          "~/Documents/configuration/org/schplaf.org")
+    (add-to-list 'org-agenda-files "~/Documents/configuration/org/refile.org")
+    (add-to-list 'org-agenda-files "~/Documents/configuration/org/tasks.org")
+    (add-to-list 'org-agenda-files "~/Documents/configuration/org/repeating.org")
+    (add-to-list 'org-agenda-files org-default-calendar-file)
 
-    (setq org-agenda-files
-          `("~/Documents/configuration/org/refile.org"
-            "~/Documents/configuration/org/tasks.org"
-            "~/Documents/configuration/org/someday.org"
-            "~/Documents/configuration/org/repeating.org"
-            ,org-default-calendar-file))
-
-    (setq org-refile-targets `(("~/Documents/configuration/org/tasks.org"      :maxlevel . 2)
-                               ("~/Documents/configuration/org/someday.org"    :maxlevel . 2)
-                               ("~/Documents/configuration/org/repeating.org"  :maxlevel . 2)))
+    (setq org-refile-targets `((("~/Documents/configuration/org/repeating.org"
+                                 "~/Documents/configuration/org/someday.org"
+                                 "~/Documents/configuration/org/tasks.org")
+                                :maxlevel . 2)))
 
     (setq org-todo-keywords
           '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")))
