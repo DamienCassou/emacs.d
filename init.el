@@ -65,6 +65,7 @@
  '(message-send-mail-function (quote message-smtpmail-send-it))
  '(message-signature t)
  '(message-signature-file "~/.signature")
+ '(nameless-prefix "名")
  '(next-screen-context-lines 5)
  '(notmuch-always-prompt-for-sender t)
  '(notmuch-archive-tags (quote ("-inbox" "-unread")))
@@ -160,6 +161,7 @@
 
 (setq package-selected-packages
       '(
+        4clojure ; learn clojure
         ace-link ; type o in help-mode to go to a link
         ace-window ; manage windows with ace-like behavior
         ag ; search using the 'ag' command (better grep)
@@ -237,6 +239,7 @@
         s ; string library
         skeletor ; facilitates the creation of new project
         smartscan ; <M-n> <M-p> to move between same symbol in buffer
+        snapshot-timemachine-rsnapshot ; rsnapshot backend for snapshot-timemachine
         tern ; Javascript code analyzer
         undo-tree ; <C-x u> to show the undo tree
         use-package ; to structure my init.el file
@@ -587,7 +590,15 @@
       (bind-key "r" #'notmuch-search-reply-to-thread notmuch-search-mode-map)
       (bind-key "R" #'notmuch-search-reply-to-thread-sender notmuch-search-mode-map)
       (bind-key "r" #'notmuch-show-reply notmuch-show-mode-map)
-      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))))
+      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))
+
+    ;; (add-hook 'notmuch-show-insert-text/plain-hook #'my/notmuch-wash-merge-lines-in-format=flowed)
+    ))
+
+;; (defun my/notmuch-wash-merge-lines-in-format=flowed (msg depth)
+;;   "Must be executed before `notmuch-wash-wrap-long-lines'."
+;;   (save-excursion
+;;     (goto-char (point-min))))
 
 (use-package profile
   :after (notmuch)
@@ -862,7 +873,7 @@ Designed to be called before `message-send-and-exit'."
   :diminish outline-minor-mode)
 
 (use-package beginend
-  :diminish (beginend-dired-mode beginend-message-mode)
+  :diminish (beginend-dired-mode beginend-message-mode beginend-notmuch-search-mode)
   :load-path "packages/beginend"
   :after (dired message)
   :config
@@ -1066,6 +1077,14 @@ Designed to be called before `message-send-and-exit'."
               #'messages-are-flowing-use-and-mark-hard-newlines)))
 
 (use-package make-it-so)
+
+(use-package snapshot-timemachine-rsnapshot
+  :config
+  (progn
+    (setq snapshot-timemachine-rsnapshot-backup-dir
+          (expand-file-name
+           "rsnapshot"
+           (bookmark-get-filename "Lacie")))))
 
 ;;; Emacs Configuration
 (custom-set-faces
