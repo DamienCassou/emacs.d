@@ -46,3 +46,6 @@
 [submodule "packages/no-littering"]
 	path = packages/no-littering
 	url = https://DamienCassou@github.com/tarsius/no-littering.git
+[submodule "packages/hierarchy"]
+	path = packages/hierarchy
+	url = https://DamienCassou@github.com/DamienCassou/hierarchy.git
