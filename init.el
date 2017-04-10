@@ -48,6 +48,7 @@
  '(initial-buffer-choice t)
  '(initial-major-mode (quote text-mode))
  '(initial-scratch-message nil)
+ '(ispell-dictionary "english")
  '(ispell-program-name "/usr/bin/hunspell")
  '(jabber-auto-reconnect t)
  '(jabber-backlog-days 30)
