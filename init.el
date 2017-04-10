@@ -68,6 +68,7 @@
  '(message-send-mail-function (quote message-smtpmail-send-it))
  '(message-signature t)
  '(message-signature-file "~/.signature")
+ '(nameless-affect-indentation-and-filling nil)
  '(nameless-prefix "名")
  '(next-screen-context-lines 5)
  '(notmuch-always-prompt-for-sender t)
