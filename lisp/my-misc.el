@@ -193,6 +193,22 @@ Interactively, unmount when prefix argument."
 
 (define-key dired-mode-map "Y" 'ora-dired-rsync)
 
+(defun my/youtube-dl ()
+  (interactive)
+  (let* ((str (current-kill 0))
+         (default-directory "/tmp")
+         (proc (get-buffer-process (ansi-term "/bin/bash"))))
+    (term-send-string
+     proc
+     (concat "cd /tmp && youtube-dl " str "\n"))))
+
+(defun my/swap-last-buffers ()
+  "Replace currently visible buffer by last one."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer))))
+
+(bind-key "C-x B" #'my/swap-last-buffers)
+
 (require 'server)
 (unless (or (daemonp) (server-running-p))
   (server-start))
