@@ -844,6 +844,17 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (helm-descbinds-mode)))
 
+(use-package helm-bookmark
+  :bind (("C-x r b" . helm-filtered-bookmarks)
+         :map helm-bookmark-map
+         ("M-s" . my/helm-open-external-terminal))
+  :config
+  (progn
+    (add-to-list 'helm-type-bookmark-actions
+                 (cons "Open in external terminal `M-s'"
+                       #'my/open-external-terminal)
+                 t)))
+
 (use-package password-store
   :config
   (progn
