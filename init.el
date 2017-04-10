@@ -14,6 +14,8 @@
  '(calendar-week-start-day 1)
  '(checkdoc-spellcheck-documentation-flag t)
  '(column-number-mode t)
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case nil)
  '(confirm-kill-emacs (quote y-or-n-p))
  '(current-language-environment "UTF-8")
  '(custom-safe-themes t)
