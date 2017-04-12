@@ -19,6 +19,7 @@
  '(confirm-kill-emacs (quote y-or-n-p))
  '(current-language-environment "UTF-8")
  '(custom-safe-themes t)
+ '(debbugs-gnu-trunk-directory "~/Documents/projects/emacs/")
  '(delete-active-region nil)
  '(delete-by-moving-to-trash t)
  '(dired-dwim-target t)
