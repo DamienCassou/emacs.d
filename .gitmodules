@@ -49,3 +49,6 @@
 [submodule "packages/hierarchy"]
 	path = packages/hierarchy
 	url = https://DamienCassou@github.com/DamienCassou/hierarchy.git
+[submodule "packages/embrace"]
+	path = packages/embrace
+	url = https://DamienCassou@github.com/cute-jumper/embrace.el.git
