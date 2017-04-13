@@ -426,6 +426,12 @@
   (progn
     (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))
 
+(use-package flycheck-package
+  :after flycheck
+  :config
+  (progn
+    (flycheck-package-setup)))
+
 (use-package org
   :bind
   (("C-. o t"   . org-capture)
