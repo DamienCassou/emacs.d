@@ -1051,7 +1051,10 @@ Designed to be called before `message-send-and-exit'."
   :bind (("M-D" . duplicate-thing)))
 
 (use-package embrace
-  :bind (("C-. ," . embrace-commander)))
+  :bind (("C-. ," . embrace-commander))
+  :init
+  (progn
+    (add-hook 'emacs-lisp-mode-hook 'embrace-emacs-lisp-mode-hook)))
 
 (use-package offlineimap
   :commands (offlineimap)
