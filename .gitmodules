@@ -58,3 +58,6 @@
 [submodule "packages/indium"]
 	path = packages/indium
 	url = https://DamienCassou@petton.fr/git/nico/Indium.git
+[submodule "packages/klassified"]
+	path = packages/klassified
+	url = https://DamienCassou@github.com/DamienCassou/klassified.el.git

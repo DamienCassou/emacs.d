@@ -1121,6 +1121,9 @@ Designed to be called before `message-send-and-exit'."
 (use-package hierarchy
   :load-path "~/.emacs.d/packages/hierarchy")
 
+(use-package klassified
+  :load-path "~/.emacs.d/packages/klassified")
+
 ;;; Emacs Configuration
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
