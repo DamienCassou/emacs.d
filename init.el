@@ -1111,6 +1111,13 @@ Designed to be called before `message-send-and-exit'."
            "rsnapshot"
            (bookmark-get-filename "Lacie")))))
 
+(use-package skeletor
+  :load-path "~/.emacs.d/packages/skeletor"
+  :commands (skeletor-create-project))
+
+(use-package buttercup
+  :load-path "~/.emacs.d/packages/buttercup")
+
 ;;; Emacs Configuration
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
