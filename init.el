@@ -1118,6 +1118,9 @@ Designed to be called before `message-send-and-exit'."
 (use-package buttercup
   :load-path "~/.emacs.d/packages/buttercup")
 
+(use-package hierarchy
+  :load-path "~/.emacs.d/packages/hierarchy")
+
 ;;; Emacs Configuration
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
