@@ -34,9 +34,6 @@
 [submodule "packages/gulp-task-runner"]
 	path = packages/gulp-task-runner
 	url = https://DamienCassou@petton.fr/git/nico/gulp-task-runner.git
-[submodule "packages/jade"]
-	path = packages/jade
-	url = https://DamienCassou@petton.fr/git/nico/jade.git
 [submodule "packages/org-caldav"]
 	path = packages/org-caldav
 	url = https://DamienCassou@github.com/DamienCassou/org-caldav.git
@@ -58,3 +55,6 @@
 [submodule "packages/buttercup"]
 	path = packages/buttercup
 	url = https://DamienCassou@github.com/jorgenschaefer/emacs-buttercup.git
+[submodule "packages/indium"]
+	path = packages/indium
+	url = https://DamienCassou@petton.fr/git/nico/Indium.git

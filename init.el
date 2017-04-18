@@ -963,9 +963,9 @@ Designed to be called before `message-send-and-exit'."
   :load-path "packages/amd-mode"
   :diminish amd-mode)
 
-(use-package jade
-  :load-path "packages/jade"
-  :diminish jade-interaction-mode)
+(use-package indium
+  :load-path "packages/indium"
+  :diminish indium-interaction-mode)
 
 (use-package gulp-task-runner
   :commands (gulp)
