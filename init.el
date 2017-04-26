@@ -1122,7 +1122,11 @@ Designed to be called before `message-send-and-exit'."
   :load-path "~/.emacs.d/packages/hierarchy")
 
 (use-package klassified
-  :load-path "~/.emacs.d/packages/klassified")
+  :load-path "~/.emacs.d/packages/klassified"
+  :commands (klassified-js-mode)
+  :init
+  (progn
+    (add-hook 'js-mode-hook #'klassified-js-mode)))
 
 ;;; Emacs Configuration
 (custom-set-faces
