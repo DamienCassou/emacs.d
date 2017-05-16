@@ -151,7 +151,7 @@
  '(use-package-minimum-reported-time 0)
  '(use-package-verbose t)
  '(user-full-name "Damien Cassou")
- '(user-mail-address "damien.cassou@gmail.com")
+ '(user-mail-address "damien@cassou.me")
  '(vc-follow-symlinks nil)
  '(vdirel-repository "~/Documents/configuration/contacts")
  '(version-control t)
