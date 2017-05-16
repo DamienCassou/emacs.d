@@ -1111,6 +1111,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package make-it-so)
 
 (use-package snapshot-timemachine-rsnapshot
+  :after snapshot-timemachine
   :config
   (progn
     (setq snapshot-timemachine-rsnapshot-backup-dir
