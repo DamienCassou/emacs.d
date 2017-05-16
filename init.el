@@ -601,10 +601,17 @@
       (bind-key "r" #'notmuch-search-reply-to-thread notmuch-search-mode-map)
       (bind-key "R" #'notmuch-search-reply-to-thread-sender notmuch-search-mode-map)
       (bind-key "r" #'notmuch-show-reply notmuch-show-mode-map)
-      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map))
+      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map)
+      (bind-key "a" #'nico-notmuch-git-am-patch notmuch-show-part-map))
 
-    ;; (add-hook 'notmuch-show-insert-text/plain-hook #'my/notmuch-wash-merge-lines-in-format=flowed)
-    ))
+    (defun nico-notmuch-git-am-patch ()
+      "Apply the MIME part at point as a git patch using `git am'."
+      (interactive)
+      (notmuch-show-apply-to-current-part-handle #'nico-notmuch-git-am-part))
+
+    (defun nico-notmuch-git-am-part (handle)
+      (let ((dir (read-directory-name "Git directory: ")))
+        (mm-pipe-part handle (format "cd %s; git am" (expand-file-name dir)))))))
 
 ;; (defun my/notmuch-wash-merge-lines-in-format=flowed (msg depth)
 ;;   "Must be executed before `notmuch-wash-wrap-long-lines'."
