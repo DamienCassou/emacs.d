@@ -1131,10 +1131,10 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package klassified
   :load-path "~/.emacs.d/packages/klassified"
-  :commands (klassified-js-mode)
+  :commands (klassified-interaction-js-mode)
   :init
   (progn
-    (add-hook 'js-mode-hook #'klassified-js-mode)))
+    (add-hook 'js-mode-hook #'klassified-interaction-js-mode)))
 
 ;;; Emacs Configuration
 (custom-set-faces
