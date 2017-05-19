@@ -180,6 +180,7 @@
         camcorder ; record emacs sessions M-x camcorder-record
         company-restclient ; provides completion for restclient
         company-tern ; tern backend for company mode
+        counsel ; Various completion functions using Ivy
         csharp-mode ; C# major mode
         dash ; list library
         debbugs ; SOAP library to access debbugs servers
@@ -801,7 +802,6 @@ Designed to be called before `message-send-and-exit'."
          ("C-x b"   . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("C-x d"   . helm-find-files)
-         ("M-i"     . helm-imenu)
          ("C-h SPC" . helm-all-mark-rings)
          ("C-:"     . helm-eval-expression-with-eldoc)
          :map helm-map
@@ -810,8 +810,6 @@ Designed to be called before `message-send-and-exit'."
          ("C-z"     . helm-select-action)
          ("<S-left>"  . helm-beginning-of-buffer)
          ("<S-right>" . helm-end-of-buffer)
-         :map dired-mode-map ;; helm-imenu doesn't work with dired
-         ("M-i"     . imenu)
          :map helm-find-files-map
          ("M-s"     . my/helm-open-external-terminal))
   :init
@@ -868,6 +866,9 @@ Designed to be called before `message-send-and-exit'."
                  (cons "Open in external terminal `M-s'"
                        #'my/open-external-terminal)
                  t)))
+
+(use-package counsel
+  :bind (("M-i" . counsel-imenu)))
 
 (use-package password-store
   :config
