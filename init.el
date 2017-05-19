@@ -348,6 +348,7 @@
     (add-to-list 'eshell-visual-commands "bower")))
 
 (use-package magit
+  :load-path "~/.emacs.d/packages/magit/lisp"
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-dispatch-popup))
