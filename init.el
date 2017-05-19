@@ -9,6 +9,7 @@
  '(avy-style (quote at-full))
  '(aw-scope (quote frame))
  '(beacon-blink-when-focused t)
+ '(beginend-global-mode t)
  '(bookmark-save-flag 1)
  '(calendar-date-style (quote european))
  '(calendar-week-start-day 1)
@@ -904,12 +905,8 @@ Designed to be called before `message-send-and-exit'."
   :diminish outline-minor-mode)
 
 (use-package beginend
-  :diminish (beginend-dired-mode beginend-message-mode beginend-notmuch-search-mode)
-  :load-path "packages/beginend"
-  :after (dired message)
-  :config
-  (progn
-    (beginend-setup-all)))
+  :demand t
+  :load-path "packages/beginend")
 
 (use-package vdirel
   :load-path "packages/vdirel"
