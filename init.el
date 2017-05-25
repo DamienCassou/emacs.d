@@ -907,6 +907,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package beginend
   :demand t
+  :diminish (beginend-global-mode)
   :load-path "packages/beginend")
 
 (use-package vdirel
