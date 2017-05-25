@@ -45,6 +45,7 @@
  '(google-translate-default-source-language "sv")
  '(google-translate-default-target-language "en")
  '(imenu-auto-rescan t)
+ '(imenu-max-item-length 200)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
