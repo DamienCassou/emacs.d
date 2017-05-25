@@ -33,6 +33,7 @@
         org-self-insert-command
         org-transpose-words
         org-yank
+        paredit-backslash
         paredit-backward
         paredit-backward-kill-word
         paredit-backward-slurp-sexp
@@ -61,5 +62,6 @@
         beginend-message-goto-end
         dabbrev-expand
         end-of-buffer
+        markdown-exdent-or-delete
         orgtbl-self-insert-command
         ))
