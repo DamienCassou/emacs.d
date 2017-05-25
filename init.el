@@ -40,7 +40,7 @@
  '(gc-cons-threshold 20000000)
  '(global-font-lock-mode t)
  '(global-pair-mode t)
- '(global-prettify-symbols-mode t)
+ '(global-prettify-symbols-mode nil nil nil "Affects indentation...")
  '(global-subword-mode t)
  '(google-translate-default-source-language "sv")
  '(google-translate-default-target-language "en")
