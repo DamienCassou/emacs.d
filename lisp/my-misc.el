@@ -76,7 +76,9 @@
 
 (bind-key "M-j" 'my-join-line)
 
-(bind-key "C-x k" #'kill-this-buffer)
+;; Use kill-buffer instead of kill-this-buffer because the latter's
+;; docstring says it is unreliable
+(bind-key "C-x k" (lambda () (interactive) (kill-buffer (current-buffer))))
 
 (defun toggle-window-split ()
   "Swap between horizontal and vertical separation when 2 frames
