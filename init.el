@@ -195,6 +195,7 @@
         editorconfig ; handle .editorconfig files automatically
         embrace ; wrap/unwrap/change wrapping for quote, braces, ...
         eslintd-fix ; Automatically fix javascript with eslint_d
+        exec-path-from-shell ; For indium
         expand-region ; <C-x => repeadly to mark regions
         f ; file manipulation library
         feature-mode ; major mode for editing feature files
