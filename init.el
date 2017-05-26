@@ -219,6 +219,7 @@
         js2-refactor ; A Javascript refactoring library
         json-mode ; Major mode to edit JSON files
         less-css-mode ; Major mode to edit .less files
+        macrostep ; Interactively expand macros
         magit ; Integrate git <C-x g>
         make-it-so ; Transform files with Makefile recipes
         makey ; required by widgetjs and amd
