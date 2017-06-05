@@ -25,6 +25,7 @@
  '(delete-by-moving-to-trash t)
  '(dired-dwim-target t)
  '(dired-listing-switches "-alh")
+ '(dired-omit-verbose nil)
  '(dired-recursive-deletes (quote always))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
