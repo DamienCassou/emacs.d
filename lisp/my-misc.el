@@ -218,11 +218,12 @@ Interactively, unmount when prefix argument."
 (define-minor-mode screencast-mode
   "Activate/deactivate some modes to facilitate screencasting."
   :lighter ""
+  :global t
   (if screencast-mode
       (progn
         (beacon-mode -1)
         (blink-cursor-mode -1)
-        (visible-mark-mode -1))))
+        (global-visible-mark-mode -1))))
 
 (provide 'my-misc)
 ;;; my-misc.el ends here
