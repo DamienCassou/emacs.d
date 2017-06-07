@@ -21,19 +21,19 @@
 	url = https://DamienCassou@github.com/foretagsplatsen/emacs-js.git
 [submodule "packages/ftgp"]
 	path = packages/ftgp
-	url = https://DamienCassou@petton.fr/git/ftgp/emacs.git
+	url = https://DamienCassou@gitlab.petton.fr/ftgp/emacs.git
 [submodule "packages/zerodark-theme"]
 	path = packages/zerodark-theme
-	url = https://DamienCassou@petton.fr/git/nico/zerodark-theme.git
+	url = https://github.com/NicolasPetton/zerodark-theme.git
 [submodule "packages/yasnippet-snippets"]
 	path = packages/yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
 [submodule "packages/amd-mode"]
 	path = packages/amd-mode
-	url = https://DamienCassou@petton.fr/git/nico/amd-mode.el.git
+	url = https://github.com/NicolasPetton/amd-mode.el.git
 [submodule "packages/gulp-task-runner"]
 	path = packages/gulp-task-runner
-	url = https://DamienCassou@petton.fr/git/nico/gulp-task-runner.git
+	url = https://github.com/NicolasPetton/gulp-task-runner.git
 [submodule "packages/org-caldav"]
 	path = packages/org-caldav
 	url = https://DamienCassou@github.com/DamienCassou/org-caldav.git
@@ -57,7 +57,7 @@
 	url = https://DamienCassou@github.com/jorgenschaefer/emacs-buttercup.git
 [submodule "packages/indium"]
 	path = packages/indium
-	url = https://DamienCassou@petton.fr/git/nico/Indium.git
+	url = https://DamienCassou@gitlab.petton.fr/nico/Indium.git
 [submodule "packages/klassified"]
 	path = packages/klassified
 	url = https://DamienCassou@github.com/DamienCassou/klassified.el.git
