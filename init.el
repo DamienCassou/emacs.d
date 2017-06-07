@@ -455,9 +455,6 @@
       (require 'org)
       (org-refile (if (= last 4) '(16) '(4))))
 
-    (bind-key "<S-left>" #'beginning-of-buffer org-mode-map)
-    (bind-key "<S-right>" #'end-of-buffer org-mode-map)
-
     ;; Custom agenda command definitions
     (setq org-agenda-custom-commands
           (quote ((" " "Agenda"
@@ -490,7 +487,11 @@
              (file org-default-calendar-file)
              "* %?\n%^T")))
 
+    ;; This is my `shell-switcher-switch-buffer':
     (unbind-key "C-'" org-mode-map)
+    ;; Those are my `beginning-of-buffer' and `end-of-buffer':
+    (unbind-key "<S-left>" org-agenda-mode-map)
+    (unbind-key "<S-right>" org-agenda-mode-map)
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))))
 
