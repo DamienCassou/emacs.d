@@ -48,6 +48,7 @@
  '(imenu-auto-rescan t)
  '(imenu-max-item-length 200)
  '(indent-tabs-mode nil)
+ '(indium-update-script-on-save t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice t)
  '(initial-major-mode (quote text-mode))
