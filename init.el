@@ -250,6 +250,7 @@
         skeletor ; facilitates the creation of new project
         smartscan ; <M-n> <M-p> to move between same symbol in buffer
         snapshot-timemachine-rsnapshot ; rsnapshot backend for snapshot-timemachine
+        systemd ; facilitate edition of systemd unit files
         tern ; Javascript code analyzer
         undo-tree ; <C-x u> to show the undo tree
         use-package ; to structure my init.el file
