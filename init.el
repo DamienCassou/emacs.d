@@ -156,7 +156,7 @@
  '(user-full-name "Damien Cassou")
  '(user-mail-address "damien@cassou.me")
  '(vc-follow-symlinks nil)
- '(vdirel-repository "~/Documents/configuration/contacts")
+ '(vdirel-repository "~/Documents/configuration/contacts/contacts")
  '(version-control t)
  '(visible-bell nil)
  '(visible-mark-faces (quote (visible-mark-face1 visible-mark-face2)))
