@@ -949,7 +949,8 @@ Designed to be called before `message-send-and-exit'."
   :bind ("C-. /" . company-complete)
   :init
   (progn
-    (add-hook 'emacs-lisp-mode-hook #'company-mode)))
+    (add-hook 'emacs-lisp-mode-hook #'company-mode)
+    (add-hook 'css-mode-hook #'company-mode)))
 
 (use-package emacs-js
   :diminish (js2-refactor-mode js2-minor-mode js-lint-mode tern-mode)
