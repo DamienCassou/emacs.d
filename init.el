@@ -891,7 +891,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq aw-keys '(?a ?s  ?d  ?f  ?j  ?k  ?l  59 32))))
+    (setq aw-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o 59 32))))
 
 (use-package avy
   :bind* (("C-," . avy-goto-char-2))
@@ -901,7 +901,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq avy-keys '(?a ?s  ?d  ?f  ?j  ?k  ?l  59 32))))
+    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o 59 32))))
 
 (use-package outline
   :diminish outline-minor-mode)
