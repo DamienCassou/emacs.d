@@ -508,8 +508,8 @@
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
-    (setq org-caldav-url "https://cassou.me/baikal/cal.php/calendars/damien"
-          org-caldav-calendar-id "default"
+    (setq org-caldav-url "https://petton.fr/nextcloud/remote.php/dav/calendars/damien"
+          org-caldav-calendar-id "personal"
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
