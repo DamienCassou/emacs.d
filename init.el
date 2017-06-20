@@ -686,7 +686,6 @@
                                            profile-noisy-query) :key "i")
             (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
             (:name "ftgp" :query "folder:\"Ftgp/INBOX\" AND tag:inbox" :key "f")
-            (:name "unread" :query "tag:unread" :key "u")
             (:name "sent" :query ,(profile-sent-query) :key "s")))
 
     (add-to-list 'notmuch-hello-sections
