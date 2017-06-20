@@ -229,7 +229,6 @@
         multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
         nameless ; hide current package name everywhere in elisp code
         nim-mode ; major mode for the Nim programming language
-        notmuch ; email client
         ob-nim ; org babel functions for the Nim programming language
         offlineimap
         ;; I need my packages/org-caldav instead ; org ↔ caldav
@@ -577,11 +576,7 @@
 
 (use-package notmuch
   :if notmuch-command
-  :load-path (lambda ()
-               (and notmuch-command
-                    (list (expand-file-name
-                           "../../share/emacs/site-lisp"
-                           (file-symlink-p notmuch-command)))))
+  :load-path "packages/notmuch/emacs"
   :bind (("C-. m" . notmuch)
          ("C-. M" . notmuch-mua-new-mail))
   :config

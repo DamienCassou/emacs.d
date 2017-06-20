@@ -61,3 +61,6 @@
 [submodule "packages/klassified"]
 	path = packages/klassified
 	url = https://DamienCassou@github.com/DamienCassou/klassified.el.git
+[submodule "packages/notmuch"]
+	path = packages/notmuch
+	url = git://git.notmuchmail.org/git/notmuch
