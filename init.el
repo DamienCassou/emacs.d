@@ -1138,6 +1138,10 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'js-mode-hook #'klassified-interaction-js-mode)))
 
+(use-package json-navigator
+  :load-path "~/.emacs.d/packages/json-navigator"
+  :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
+
 ;;; Emacs Configuration
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
