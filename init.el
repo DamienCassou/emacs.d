@@ -1,138 +1,32 @@
 ;;; init.el --- user-init-file                    -*- lexical-binding: t -*-
 
-(add-to-list 'load-path "~/.emacs.d/packages/no-littering")
-(require 'no-littering)
+(setq package-enable-at-startup nil)
 
-(setq package-selected-packages
-      '(
-        ace-link ; type o in help-mode to go to a link
-        ace-window ; manage windows with ace-like behavior
-        ag ; search using the 'ag' command (better grep)
-        aggressive-indent ; indent code automatically while typing
-        all-the-icons ; library with many icons (zerodark dependency)
-        anzu ; more interactive query-replace
-        assess ; library to facilitate test writing
-        auto-compile ; automatically compile Emacs Lisp libraries
-        avy ; move fast in buffer with <C-,>
-        beacon ; highlight my cursor when scrolling
-        bind-key ; to simplify definition of shortcuts
-        camcorder ; record emacs sessions M-x camcorder-record
-        company-restclient ; provides completion for restclient
-        company-tern ; tern backend for company mode
-        counsel ; Various completion functions using Ivy
-        csharp-mode ; C# major mode
-        dash ; list library
-        debbugs ; SOAP library to access debbugs servers
-        diff-hl ; shows git status in buffer's fringe
-        diminish ; Shorter mode names in the modeline
-        dired-imenu ; integrates imenu in dired
-        dired-toggle-sudo ; <C-x s> to toggle sudo state of buffer
-        drag-stuff ; use <M-arrow> to move things around
-        duplicate-thing ; M-D to duplicate thing at point
-        editorconfig ; handle .editorconfig files automatically
-        embrace ; wrap/unwrap/change wrapping for quote, braces, ...
-        epkg ; browse the emacs mirror
-        eslintd-fix ; Automatically fix javascript with eslint_d
-        exec-path-from-shell ; For indium
-        expand-region ; <C-x => repeadly to mark regions
-        f ; file manipulation library
-        feature-mode ; major mode for editing feature files
-        flycheck ; flycheck to check files on the fly
-        flycheck-cask ; use Cask when present for dependencies
-        flycheck-package ; checks elisp package metadata
-        flycheck-nim ; checks programs written in Nim
-        google-translate ; to translate current region and more
-        gitattributes-mode ; major mode for editing .gitattributes files
-        gitconfig-mode ; major mode for editing .gitconfig files.
-        git-timemachine ; history of a file with M-x git-timemachine
-        grunt ; glue for grunt files (Javascript)
-        guess-language ; automatic language detection
-        helm ; selection/completion interface for everything
-        helm-ag ; use ag from helm
-        helm-descbinds ; list available bindings through helm
-        helm-flyspell ; use helm for flyspell suggestions
-        helm-projectile ; integrate projectile and helm <C-. p h>
-        jabber ; instant messaging
-        js2-mode ; Improved Javascript editing mode
-        js2-refactor ; A Javascript refactoring library
-        json-mode ; Major mode to edit JSON files
-        less-css-mode ; Major mode to edit .less files
-        macrostep ; Interactively expand macros
-        magit ; Integrate git <C-x g>
-        make-it-so ; Transform files with Makefile recipes
-        makey ; required by widgetjs and amd
-        markdown-mode ; Major mode for markdown format
-        messages-are-flowing ; Visual indication of hard newlines
-        multiple-cursors ; Control multiple cursors with <C-S-c C-S-c>
-        nameless ; hide current package name everywhere in elisp code
-        nim-mode ; major mode for the Nim programming language
-        ob-nim ; org babel functions for the Nim programming language
-        offlineimap
-        ;; I need my packages/org-caldav instead ; org ↔ caldav
-        org-vcard ; used by vdirel
-        orgtbl-show-header ; show header of column in minibuffer
-        ox-twbs ; use twitter bootstrap to export org files to HTML
-        paredit ; edit lisp AST instead of characters
-        paren-face ; hide parenthesis in elisp code
-        pass ; Nicolas' major mode for password-store
-        password-store ; get passwords from the 'pass' command
-        pos-tip ; make tool-tips appear nicely
-        prodigy ; manage external services from within Emacs
-        projectile ; add notion of projects
-        refine ; edit list interactively
-        restclient ; test REST queries
-        restclient-helm ; helm interface for restclient
-        runner ; Associate external applications to file extensions
-        s ; string library
-        skeletor ; facilitates the creation of new project
-        smartscan ; <M-n> <M-p> to move between same symbol in buffer
-        snapshot-timemachine-rsnapshot ; rsnapshot backend for snapshot-timemachine
-        systemd ; facilitate edition of systemd unit files
-        tern ; Javascript code analyzer
-        undo-tree ; <C-x u> to show the undo tree
-        use-package ; to structure my init.el file
-        visible-mark ; show the current mark
-        websocket ; dependency of jade
-        which-key ; displays bindings after a short break in a key sequence
-        ws-butler ; trim whitespace only in edited lines
-        xref-js2 ; Jump to references/definitions using ag & js2-mode's AST (JavaScript)
-        yaml-mode ; to edit *.yml files (including .travis.yml)
-        yasnippet ; expand snippets of text
-        zoom-frm ; change font size for all buffers <C-x C-+>
-        ))
-
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
-
-(package-initialize)
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-;; Do that when you want to install packages of
-;; `package-selected-packages':
-;;
-;; (package-install-selected-packages)
+(progn ;    `borg'
+  (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
+  (require  'borg)
+  (borg-initialize))
 
 (require 'diminish)
 
-(progn ; use-package
+(progn ; `use-package'
   (setq use-package-always-defer t)
   (setq use-package-enable-imenu-support t)
   (setq use-package-minimum-reported-time 0)
   (setq use-package-verbose t)
   (require 'use-package))
 
-(progn ; startup
+(use-package no-littering
+  :demand t)
+
+(progn ; `startup'
   (setq inhibit-startup-screen t)
   (setq initial-buffer-choice t)
   (setq initial-major-mode 'text-mode)
   (setq initial-scratch-message nil)
   (setq user-mail-address "damien@cassou.me"))
 
-(progn ; files
+(progn ; `files'
   (setq confirm-kill-emacs 'y-or-n-p)
   (setq make-backup-files nil)
   (setq version-control t))
@@ -153,11 +47,11 @@
   :demand t
   :init
   (progn
-    (customize-set-variable 'auto-compile-display-buffer nil)
-    (customize-set-variable 'auto-compile-mode-line-counter t)
-    (customize-set-variable 'auto-compile-source-recreate-deletes-dest t)
-    (customize-set-variable 'auto-compile-toggle-deletes-nonlib-dest t)
-    (customize-set-variable 'auto-compile-update-autoloads t))
+    (setq auto-compile-display-buffer nil)
+    (setq auto-compile-mode-line-counter t)
+    (setq auto-compile-source-recreate-deletes-dest t)
+    (setq auto-compile-toggle-deletes-nonlib-dest t)
+    (setq auto-compile-update-autoloads t))
   :config
   (progn
     (auto-compile-on-load-mode)
@@ -177,7 +71,7 @@
   (progn
     (customize-set-variable
      'custom-safe-themes
-     '("cf879b57d42dc932c5068cb1297379b116445c11e62426e30b6911f1c6e42cf2"
+     '("5a603291fd17c6e27fa16f644e23091ac40b3802c292e4e8fd6632f3f9c5d0de"
        default)))
   :config
   (progn
@@ -367,7 +261,6 @@
     (add-to-list 'eshell-visual-commands "bower")))
 
 (use-package magit
-  :load-path "~/.emacs.d/packages/magit/lisp"
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-dispatch-popup))
@@ -586,7 +479,6 @@
   :after org)
 
 (use-package org-caldav
-  :load-path "packages/org-caldav"
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
@@ -624,7 +516,6 @@
          ("C-c C-<" . mc/mark-all-like-this)))
 
 (use-package shell-switcher
-  :load-path "packages/shell-switcher"
   :bind (("C-M-'"   . shell-switcher-new-shell)
          ("C-'"     . shell-switcher-switch-buffer)
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window))
@@ -656,7 +547,6 @@
     (projectile-global-mode)))
 
 (use-package helm-projectile
-  :load-path "packages/helm-projectile"
   :demand t
   :after projectile
   :bind (:map helm-projectile-projects-map
@@ -670,15 +560,13 @@
                  t)))
 
 (use-package unify-opening
-  :demand t
-  :load-path "packages/unify-opening")
+  :demand t)
 
 (eval-and-compile
   (setq-default notmuch-command (executable-find "notmuch")))
 
 (use-package notmuch
   :if notmuch-command
-  :load-path "packages/notmuch/emacs"
   :bind (("C-. m" . notmuch)
          ("C-. M" . notmuch-mua-new-mail))
   :init
@@ -734,7 +622,6 @@
 
 (use-package profile
   :after (notmuch)
-  :load-path "packages/profile"
   :init
   (progn
     (with-eval-after-load "message"
@@ -1019,7 +906,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package auth-password-store
   :after auth-source
-  :load-path "packages/auth-password-store"
   :init
   (progn
     (setq auth-sources '(password-store))))
@@ -1049,13 +935,11 @@ Designed to be called before `message-send-and-exit'."
 (use-package beginend
   :demand t
   :diminish beginend-global-mode
-  :load-path "packages/beginend"
   :config
   (progn
     (beginend-global-mode)))
 
 (use-package vdirel
-  :load-path "packages/vdirel"
   :bind (("C-. c" . vdirel-helm-select-email))
   :init
   (progn
@@ -1124,19 +1008,17 @@ Designed to be called before `message-send-and-exit'."
   :diminish widgetjs-mode)
 
 (use-package amd-mode
-  :load-path "packages/amd-mode"
   :diminish amd-mode)
 
 (use-package indium
-  :load-path "packages/indium"
   :diminish indium-interaction-mode
   :init
   (progn
-    (setq indium-update-script-on-save t)))
+    (setq indium-update-script-on-save t)
+    (setq indium-workspace-file (no-littering-expand-var-file-name "indium-workspaces.el"))))
 
 (use-package gulp-task-runner
-  :commands (gulp)
-  :load-path "packages/gulp-task-runner")
+  :commands (gulp))
 
 (use-package ftgp
   :demand t
@@ -1148,6 +1030,7 @@ Designed to be called before `message-send-and-exit'."
           (expand-file-name (bookmark-location "ftgp-monitor-root")))))
 
 (use-package jabber
+  :disabled t
   :bind
   (("C-. j c" . jabber-connect-all)
    ("C-. j d" . jabber-disconnect)
@@ -1274,12 +1157,6 @@ Designed to be called before `message-send-and-exit'."
     (setq google-translate-default-source-language "sv")
     (setq google-translate-default-target-language "en")))
 
-(use-package ob-nim
-  :after org
-  :config
-  (progn
-    (add-to-list 'org-babel-load-languages (cons 'nim t))))
-
 (use-package guess-language
   :disabled t
   :diminish guess-language-mode
@@ -1319,18 +1196,15 @@ Designed to be called before `message-send-and-exit'."
            (bookmark-get-filename "Lacie")))))
 
 (use-package skeletor
-  :load-path "~/.emacs.d/packages/skeletor"
   :commands (skeletor-create-project)
   :init
   (progn
     (setq skeletor-project-directory "/home/cassou/.emacs.d/packages/")
     (setq skeletor-show-project-command 'magit-status)))
 
-(use-package buttercup
-  :load-path "~/.emacs.d/packages/buttercup")
+(use-package buttercup)
 
-(use-package hierarchy
-  :load-path "~/.emacs.d/packages/hierarchy")
+(use-package hierarchy)
 
 (use-package klassified
   :load-path "~/.emacs.d/packages/klassified"
@@ -1340,10 +1214,9 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'js-mode-hook #'klassified-interaction-js-mode)))
 
 (use-package json-navigator
-  :load-path "~/.emacs.d/packages/json-navigator"
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
 
-(use-package markdown
+(use-package markdown-mode
   :init
   (progn
     (setq markdown-command "Markdown.pl")))

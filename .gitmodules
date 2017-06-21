@@ -1,66 +1,435 @@
-[submodule "packages/beginend"]
-	path = packages/beginend
-	url = https://DamienCassou@github.com/DamienCassou/beginend.git
-[submodule "packages/auth-password-store"]
-	path = packages/auth-password-store
-	url = https://DamienCassou@github.com/DamienCassou/auth-password-store.git
-[submodule "packages/profile"]
-	path = packages/profile
-	url = https://DamienCassou@github.com/DamienCassou/profile.git
-[submodule "packages/shell-switcher"]
-	path = packages/shell-switcher
-	url = https://DamienCassou@github.com/DamienCassou/shell-switcher.git
-[submodule "packages/unify-opening"]
-	path = packages/unify-opening
-	url = https://DamienCassou@github.com/DamienCassou/unify-opening.git
-[submodule "packages/vdirel"]
-	path = packages/vdirel
-	url = https://DamienCassou@github.com/DamienCassou/vdirel.git
-[submodule "packages/emacs-js"]
-	path = packages/emacs-js
+[borg]
+	pushDefault = DamienCassou
+[submodule "ace-link"] # type o in help-mode to go to a link
+	path = lib/ace-link
+	url = git@github.com:abo-abo/ace-link.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/ace-link.git"
+[submodule "ace-window"] # manage windows with ace-like behavior
+	path = lib/ace-window
+	url = git@github.com:abo-abo/ace-window.git
+[submodule "ag"]
+	path = lib/ag
+	url = git@github.com:Wilfred/ag.el.git
+[submodule "aggressive-indent"] # indent code automatically while typing
+	path = lib/aggressive-indent
+	url = git@github.com:Malabarba/aggressive-indent-mode.git
+[submodule "all-the-icons"] # library with many icons (zerodark dependency)
+	path = lib/all-the-icons
+	url = git@github.com:domtronn/all-the-icons.el.git
+[submodule "amd-mode"]
+	path = lib/amd-mode
+	url = git@github.com:NicolasPetton/amd-mode.el.git
+[submodule "anzu"] # more interactive query-replace
+	path = lib/anzu
+	url = git@github.com:syohex/emacs-anzu.git
+[submodule "apiwrap"]
+	path = lib/apiwrap
+	url = git@github.com:vermiculus/apiwrap.el.git
+[submodule "assess"] # library to facilitate test writing
+	path = lib/assess
+	url = git@github.com:phillord/assess.git
+[submodule "ascii-art-to-unicode"]
+	path = lib/ascii-art-to-unicode
+	url = git@github.com:emacsmirror/ascii-art-to-unicode.git
+[submodule "async"]
+	path = lib/async
+	url = git@github.com:jwiegley/emacs-async.git
+[submodule "auto-compile"] # automatically compile Emacs Lisp libraries
+	path = lib/auto-compile
+	url = git@github.com:tarsius/auto-compile.git
+[submodule "avy"] # move fast in buffer with <C-,>
+	path = lib/avy
+	url = git@github.com:abo-abo/avy.git
+[submodule "beacon"] # highlight my cursor when scrolling
+	path = lib/beacon
+	url = git@github.com:Malabarba/beacon.git
+[submodule "auth-password-store"]
+	path = lib/auth-password-store
+	url = git@github.com:DamienCassou/auth-password-store.git
+[submodule "beginend"]
+	path = lib/beginend
+	url = git@github.com:DamienCassou/beginend.git
+[submodule "borg"]
+	path = lib/borg
+	url = git@github.com:emacscollective/borg.git
+[submodule "buttercup"]
+	path = lib/buttercup
+	url = git@github.com:jorgenschaefer/emacs-buttercup.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/emacs-buttercup.git"
+[submodule "cache"]
+	path = lib/cache
+	url = git@github.com:nflath/cache.git
+[submodule "cdlatex"]
+	path = lib/cdlatex
+	url = git@github.com:cdominik/cdlatex.git
+[submodule "closql"]
+	path = lib/closql
+	url = git@github.com:emacscollective/closql.git
+[submodule "company-restclient"] # provides completion for restclient
+	path = lib/company-restclient
+	url = git@github.com:iquiw/company-restclient.git
+[submodule "company-tern"] # tern backend for company mode
+	path = lib/company-tern
+	url = git@github.com:proofit404/company-tern.git
+[submodule "csharp-mode"] # C# major mode
+	path = lib/csharp-mode
+	url = git@github.com:josteink/csharp-mode.git
+[submodule "company"]
+	path = lib/company
+	url = git@github.com:company-mode/company-mode.git
+[submodule "dash"] # list library
+	path = lib/dash
+	url = git@github.com:magnars/dash.el.git
+	no-makeinfo = dash-template.texi
+[submodule "debbugs"] # SOAP library to access debbugs servers
+	path = lib/debbugs
+	url = git@github.com:emacsmirror/debbugs.git
+[submodule "diff-hl"] # shows git status in buffer's fringe
+	path = lib/diff-hl
+	url = git@github.com:dgutov/diff-hl.git
+[submodule "diminish"] # Shorter mode names in the modeline
+	path = lib/diminish
+	url = git@github.com:myrjola/diminish.el.git
+[submodule "dired-imenu"] # integrates imenu in dired
+	path = lib/dired-imenu
+	url = git@github.com:DamienCassou/dired-imenu.git
+[submodule "dired-toggle-sudo"] # <C-x s> to toggle sudo state of buffer
+	path = lib/dired-toggle-sudo
+	url = git@github.com:renard/dired-toggle-sudo.git
+[submodule "drag-stuff"] # use <M-arrow> to move things around
+	path = lib/drag-stuff
+	url = git@github.com:rejeep/drag-stuff.el.git
+[submodule "duplicate-thing"] # M-D to duplicate thing at point
+	path = lib/duplicate-thing
+	url = git@github.com:ongaeshi/duplicate-thing.git
+[submodule "editorconfig"] # handle .editorconfig files automatically
+	path = lib/editorconfig
+	url = git@github.com:editorconfig/editorconfig-emacs.git
+[submodule "css-eldoc"]
+	path = lib/css-eldoc
+	url = git@github.com:zenozeng/css-eldoc.git
+[submodule "emacs-js"]
+	path = lib/emacs-js
 	url = https://DamienCassou@github.com/foretagsplatsen/emacs-js.git
-[submodule "packages/ftgp"]
-	path = packages/ftgp
+	load-path = .
+	load-path = widgetjs
+[submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
+	path = lib/embrace
+	url = git@github.com:cute-jumper/embrace.el.git
+[submodule "epkg"] # browse the emacs mirror
+	path = lib/epkg
+	url = git@github.com:emacscollective/epkg.git
+[submodule "emacsql"]
+	path = lib/emacsql
+	url = git@github.com:skeeto/emacsql.git
+	no-byte-compile = emacsql-pg.el
+[submodule "eslintd-fix"] # Automatically fix javascript with eslint_d
+	path = lib/eslintd-fix
+	url = git@github.com:aaronjensen/eslintd-fix.git
+[submodule "expand-region"] # <C-x => repeadly to mark regions
+	path = lib/expand-region
+	url = git@github.com:magnars/expand-region.el.git
+[submodule "f"] # <C-x => repeadly to mark regions
+	path = lib/f
+	url = git@github.com:rejeep/f.el.git
+[submodule "feature-mode"] # major mode for editing feature files
+	path = lib/feature-mode
+	url = git@github.com:michaelklishin/cucumber.el.git
+[submodule "epl"]
+	path = lib/epl
+	url = git@github.com:cask/epl.git
+[submodule "flycheck"] # flycheck to check files on the fly
+	path = lib/flycheck
+	url = git@github.com:flycheck/flycheck.git
+[submodule "flycheck-cask"] # use Cask when present for dependencies
+	path = lib/flycheck-cask
+	url = git@github.com:flycheck/flycheck-cask.git
+[submodule "finalize"]
+	path = lib/finalize
+	url = git@github.com:skeeto/elisp-finalize.git
+[submodule "flycheck-package"] # checks elisp package metadata
+	path = lib/flycheck-package
+	url = git@github.com:purcell/flycheck-package.git
+[submodule "flycheck-nim"]
+	path = lib/flycheck-nim
+	url = git@github.com:ALSchwalm/flycheck-nim.git
+[submodule "font-lock+"]
+	path = lib/font-lock+
+	url = git@github.com:emacsmirror/font-lock-plus.git
+[submodule "frame-cmds"]
+	path = lib/frame-cmds
+	url = git@github.com:emacsmirror/frame-cmds.git
+[submodule "frame-fns"]
+	path = lib/frame-fns
+	url = git@github.com:emacsmirror/frame-fns.git
+[submodule "git-timemachine"] # history of a file with M-x git-timemachine
+	path = lib/git-timemachine
+	url = git@github.com:pidu/git-timemachine.git
+[submodule "google-translate"] # to translate current region and more
+	path = lib/google-translate
+	url = git@github.com:atykhonov/google-translate.git
+[submodule "ftgp"]
+	path = lib/ftgp
 	url = https://DamienCassou@gitlab.petton.fr/ftgp/emacs.git
-[submodule "packages/zerodark-theme"]
-	path = packages/zerodark-theme
-	url = https://github.com/NicolasPetton/zerodark-theme.git
-[submodule "packages/yasnippet-snippets"]
-	path = packages/yasnippet-snippets
-	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
-[submodule "packages/amd-mode"]
-	path = packages/amd-mode
-	url = https://github.com/NicolasPetton/amd-mode.el.git
-[submodule "packages/gulp-task-runner"]
-	path = packages/gulp-task-runner
-	url = https://github.com/NicolasPetton/gulp-task-runner.git
-[submodule "packages/org-caldav"]
-	path = packages/org-caldav
-	url = https://DamienCassou@github.com/DamienCassou/org-caldav.git
-[submodule "packages/helm-projectile"]
-	path = packages/helm-projectile
-	url = https://DamienCassou@github.com/bbatsov/helm-projectile.git
-[submodule "packages/no-littering"]
-	path = packages/no-littering
-	url = https://DamienCassou@github.com/tarsius/no-littering.git
-[submodule "packages/hierarchy"]
-	path = packages/hierarchy
-	url = https://DamienCassou@github.com/DamienCassou/hierarchy.git
-[submodule "packages/embrace"]
-	path = packages/embrace
-	url = https://DamienCassou@github.com/cute-jumper/embrace.el.git
-[submodule "packages/skeletor"]
-	path = packages/skeletor
-	url = https://DamienCassou@github.com/chrisbarrett/skeletor.el.git
-[submodule "packages/buttercup"]
-	path = packages/buttercup
-	url = https://DamienCassou@github.com/jorgenschaefer/emacs-buttercup.git
-[submodule "packages/indium"]
-	path = packages/indium
-	url = https://DamienCassou@gitlab.petton.fr/nico/Indium.git
-[submodule "packages/klassified"]
-	path = packages/klassified
+[submodule "ghub"]
+	path = lib/ghub
+	url = git@github.com:tarsius/ghub.git
+[submodule "helm"] # selection/completion interface for everything
+	path = lib/helm
+	url = git@github.com:emacs-helm/helm.git
+[submodule "helm-ag"] # use ag from helm
+	path = lib/helm-ag
+	url = git@github.com:syohex/emacs-helm-ag.git
+[submodule "helm-descbinds"] # list available bindings through helm
+	path = lib/helm-descbinds
+	url = git@github.com:emacs-helm/helm-descbinds.git
+[submodule "helm-flyspell"] # use helm for flyspell suggestions
+	path = lib/helm-flyspell
+	url = git@github.com:pronobis/helm-flyspell.git
+[submodule "ghub+"]
+	path = lib/ghub+
+	url = git@github.com:vermiculus/ghub-plus.git
+[submodule "helm-projectile"] # integrate projectile and helm <C-. p h>
+	path = lib/helm-projectile
+	url = git@github.com:bbatsov/helm-projectile.git
+[submodule "git-modes"]
+	path = lib/git-modes
+	url = git@github.com:magit/git-modes.git
+[submodule "grunt"]
+	path = lib/grunt
+	url = git@github.com:gempesaw/grunt.el.git
+[submodule "gulp-task-runner"]
+	path = lib/gulp-task-runner
+	url = git@github.com:NicolasPetton/gulp-task-runner.git
+[submodule "helm-ls-git"]
+	path = lib/helm-ls-git
+	url = git@github.com:emacs-helm/helm-ls-git.git
+[submodule "js2-mode"] # Improved Javascript editing mode
+	path = lib/js2-mode
+	url = git@github.com:mooz/js2-mode.git
+[submodule "js2-refactor"] # A Javascript refactoring library
+	path = lib/js2-refactor
+	url = git@github.com:magnars/js2-refactor.el.git
+[submodule "json-mode"] # Major mode to edit JSON files
+	path = lib/json-mode
+	url = git@github.com:joshwnj/json-mode.git
+[submodule "hierarchy"]
+	path = lib/hierarchy
+	url = git@github.com:DamienCassou/hierarchy.git
+[submodule "hydra"]
+	path = lib/hydra
+	url = git@github.com:abo-abo/hydra.git
+[submodule "indium"]
+	path = lib/indium
+	url = git@github.com:NicolasPetton/Indium.git
+	remote = "DamienCassou https://DamienCassou@gitlab.petton.fr/DamienCassou/Indium.git"
+[submodule "ivy"]
+	path = lib/ivy
+	url = git@github.com:abo-abo/swiper.git
+[submodule "json-navigator"]
+	path = lib/json-navigator
+	url = git@github.com:DamienCassou/json-navigator.git
+[submodule "less-css-mode"] # Major mode to edit .less files
+	path = lib/less-css-mode
+	url = git@github.com:purcell/less-css-mode.git
+[submodule "json-reformat"]
+	path = lib/json-reformat
+	url = git@github.com:gongo/json-reformat.git
+[submodule "json-snatcher"]
+	path = lib/json-snatcher
+	url = git@github.com:Sterlingg/json-snatcher.git
+[submodule "klassified"]
+	path = lib/klassified
 	url = https://DamienCassou@github.com/DamienCassou/klassified.el.git
-[submodule "packages/notmuch"]
-	path = packages/notmuch
-	url = git://git.notmuchmail.org/git/notmuch
+[submodule "macrostep"] # Interactively expand macros
+	path = lib/macrostep
+	url = git@github.com:joddie/macrostep.git
+[submodule "magit"] # Integrate git <C-x g>
+	path = lib/magit
+	url = git@github.com:magit/magit.git
+	info-path = Documentation
+[submodule "make-it-so"] # Transform files with Makefile recipes
+	path = lib/make-it-so
+	url = git@github.com:abo-abo/make-it-so.git
+[submodule "makey"] # required by widgetjs and amd
+	path = lib/makey
+	url = git@github.com:mickeynp/makey.git
+[submodule "markdown-mode"] # Major mode for markdown format
+	path = lib/markdown-mode
+	url = git@github.com:jrblevin/markdown-mode.git
+[submodule "know-your-http-well"]
+	path = lib/know-your-http-well
+	url = git@github.com:for-GET/know-your-http-well.git
+[submodule "messages-are-flowing"] # Visual indication of hard newlines
+	path = lib/messages-are-flowing
+	url = git@github.com:legoscia/messages-are-flowing.git
+[submodule "multiple-cursors"] # Control multiple cursors with <C-S-c C-S-c>
+	path = lib/multiple-cursors
+	url = git@github.com:magnars/multiple-cursors.el.git
+[submodule "nameless"] # hide current package name everywhere in elisp code
+	path = lib/nameless
+	url = git@github.com:Malabarba/Nameless.git
+[submodule "list-utils"]
+	path = lib/list-utils
+	url = git@github.com:rolandwalker/list-utils.git
+[submodule "loop"]
+	path = lib/loop
+	url = git@github.com:Wilfred/loop.el.git
+[submodule "m-buffer"]
+	path = lib/m-buffer
+	url = git@github.com:phillord/m-buffer-el.git
+[submodule "org-vcard"] # used by vdirel
+	path = lib/org-vcard
+	url = git@github.com:flexibeast/org-vcard.git
+[submodule "orgtbl-show-header"] # show header of column in minibuffer
+	path = lib/orgtbl-show-header
+	url = git@github.com:DamienCassou/orgtbl-show-header.git
+[submodule "ox-twbs"] # use twitter bootstrap to export org files to HTML
+	path = lib/ox-twbs
+	url = git@github.com:marsmining/ox-twbs.git
+[submodule "memoize"]
+	path = lib/memoize
+	url = git@github.com:skeeto/emacs-memoize.git
+[submodule "no-littering"]
+	path = lib/no-littering
+	url = git@github.com:tarsius/no-littering.git
+[submodule "paredit"] # edit lisp AST instead of characters
+	path = lib/paredit
+	url = http://mumble.net/~campbell/git/paredit.git
+[submodule "paren-face"] # hide parenthesis in elisp code
+	path = lib/paren-face
+	url = git@github.com:tarsius/paren-face.git
+[submodule "pass"] # Nicolas' major mode for password-store
+	path = lib/pass
+	url = git@github.com:NicolasPetton/pass.git
+[submodule "password-store"] # get passwords from the 'pass' command
+	path = lib/password-store
+	url = git@github.com:emacsmirror/password-store.git
+[submodule "notmuch"]
+	path = lib/notmuch
+	url = git://notmuchmail.org/git/notmuch
+	load-path = emacs
+	info-path = doc/_build/texinfo
+	build-step = ./configure
+	build-step = make
+	build-step = make sphinx-texinfo
+	build-step = "(borg-makeinfo \"notmuch\")"
+[submodule "oauth2"]
+	path = lib/oauth2
+	url = git@github.com:emacsmirror/oauth2.git
+[submodule "pos-tip"] # make tool-tips appear nicely
+	path = lib/pos-tip
+	url = git@github.com:pitkali/pos-tip.git
+[submodule "prodigy"] # manage external services from within Emacs
+	path = lib/prodigy
+	url = git@github.com:rejeep/prodigy.el.git
+[submodule "offlineimap"]
+	path = lib/offlineimap
+	url = git@github.com:jd/offlineimap.el.git
+[submodule "projectile"] # add notion of projects
+	path = lib/projectile
+	url = git@github.com:bbatsov/projectile.git
+[submodule "refine"] # edit list interactively
+	path = lib/refine
+	url = git@github.com:Wilfred/refine.git
+[submodule "restclient"] # test REST queries
+	path = lib/restclient
+	url = git@github.com:pashky/restclient.el.git
+[submodule "runner"] # Associate external applications to file extensions
+	path = lib/runner
+	url = git@github.com:thamer/runner.git
+[submodule "s"] # Associate external applications to file extensions
+	path = lib/s
+	url = git@github.com:magnars/s.el.git
+[submodule "org-caldav"]
+	path = lib/org-caldav
+	url = git@github.com:dengste/org-caldav.git
+[submodule "package-lint"]
+	path = lib/package-lint
+	url = git@github.com:purcell/package-lint.git
+[submodule "skeletor"] # facilitates the creation of new project
+	path = lib/skeletor
+	url = git@github.com:chrisbarrett/skeletor.el.git
+[submodule "smartscan"] # <M-n> <M-p> to move between same symbol in buffer
+	path = lib/smartscan
+	url = git@github.com:mickeynp/smart-scan.git
+[submodule "packed"]
+	path = lib/packed
+	url = git@github.com:tarsius/packed.git
+[submodule "snapshot-timemachine-rsnapshot"] # rsnapshot backend for snapshot-timemachine
+	path = lib/snapshot-timemachine-rsnapshot
+	url = git@github.com:NicolasPetton/snapshot-timemachine-rsnapshot.git
+[submodule "systemd"] # facilitate edition of systemd unit files
+	path = lib/systemd
+	url = git@github.com:holomorph/systemd-mode.git
+[submodule "tern"] # Javascript code analyzer
+	path = lib/tern
+	url = git@github.com:ternjs/tern.git
+	load-path = emacs
+	build-step = npm install
+[submodule "undo-tree"] # <C-x u> to show the undo tree
+	path = lib/undo-tree
+	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "pkg-info"]
+	path = lib/pkg-info
+	url = git@github.com:lunaryorn/pkg-info.el.git
+[submodule "use-package"] # to structure my init.el file
+	path = lib/use-package
+	url = git@github.com:jwiegley/use-package.git
+[submodule "popup"]
+	path = lib/popup
+	url = git@github.com:auto-complete/popup-el.git
+[submodule "visible-mark"] # show the current mark
+	path = lib/visible-mark
+	url = git@gitlab.com:iankelling/visible-mark.git
+[submodule "websocket"] # dependency of jade
+	path = lib/websocket
+	url = git@github.com:ahyatt/emacs-websocket.git
+[submodule "profile"]
+	path = lib/profile
+	url = https://DamienCassou@github.com/DamienCassou/profile.git
+[submodule "which-key"] # displays bindings after a short break in a key sequence
+	path = lib/which-key
+	url = git@github.com:justbur/emacs-which-key.git
+[submodule "seq"]
+	path = lib/seq
+	url = git@github.com:emacsmirror/seq.git
+[submodule "ws-butler"] # trim whitespace only in edited lines
+	path = lib/ws-butler
+	url = git@github.com:lewang/ws-butler.git
+[submodule "xref-js2"] # Jump to references/definitions using ag & js2-mode's AST (JavaScript)
+	path = lib/xref-js2
+	url = git@github.com:NicolasPetton/xref-js2.git
+[submodule "yaml-mode"] # to edit *.yml files (including .travis.yml)
+	path = lib/yaml-mode
+	url = git@github.com:yoshiki/yaml-mode.git
+[submodule "yasnippet"] # expand snippets of text
+	path = lib/yasnippet
+	url = git@github.com:joaotavora/yasnippet.git
+[submodule "zerodark-theme"] # the best theme ever
+	path = lib/zerodark-theme
+	url = git@github.com:NicolasPetton/zerodark-theme.git
+[submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
+	path = lib/zoom-frm
+	url = git@github.com:emacsmirror/zoom-frm.git
+[submodule "shell-switcher"]
+	path = lib/shell-switcher
+	url = git@github.com:DamienCassou/shell-switcher.git
+[submodule "snapshot-timemachine"]
+	path = lib/snapshot-timemachine
+	url = git@github.com:mrBliss/snapshot-timemachine.git
+[submodule "undercover"]
+	path = lib/undercover
+	url = git@github.com:sviridov/undercover.el.git
+[submodule "unify-opening"]
+	path = lib/unify-opening
+	url = git@github.com:DamienCassou/unify-opening.git
+[submodule "vdirel"]
+	path = lib/vdirel
+	url = git@github.com:DamienCassou/vdirel.git
+[submodule "wgrep"]
+	path = lib/wgrep
+	url = git@github.com:mhayashi1120/Emacs-wgrep.git
+[submodule "with-editor"]
+	path = lib/with-editor
+	url = git@github.com:magit/with-editor.git
