@@ -185,6 +185,12 @@
     (when (file-exists-p custom-file)
       (load custom-file))))
 
+(use-package server
+  :config
+  (progn
+    (unless (or (daemonp) (server-running-p))
+      (server-start))))
+
 (use-package font-core
   :demand t
   :config

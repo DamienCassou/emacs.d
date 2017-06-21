@@ -211,10 +211,6 @@ Interactively, unmount when prefix argument."
 
 (bind-key "C-x B" #'my/swap-last-buffers)
 
-(require 'server)
-(unless (or (daemonp) (server-running-p))
-  (server-start))
-
 (define-minor-mode screencast-mode
   "Activate/deactivate some modes to facilitate screencasting."
   :lighter ""
