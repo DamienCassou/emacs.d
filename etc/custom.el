@@ -24,6 +24,7 @@
      (eval add-to-list
            (quote grep-find-ignored-files)
            "archive-contents"))))
+ '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)

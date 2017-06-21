@@ -113,11 +113,6 @@
   (progn
     (save-place-mode)))
 
-(use-package scroll-bar
-  :init
-  (progn
-    (setq scroll-bar-mode nil)))
-
 (use-package uniquify
   :init
   (progn
