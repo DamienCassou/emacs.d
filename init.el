@@ -1173,10 +1173,12 @@ Designed to be called before `message-send-and-exit'."
            :password (password-store-get "freenode.net")))))
 
 (use-package diff-hl
-  :commands (diff-hl-mode)
+  :commands (diff-hl-mode diff-hl-magit-post-refresh)
   :init
   (progn
-    (add-hook 'prog-mode-hook #'diff-hl-mode)))
+    (add-hook 'prog-mode-hook #'diff-hl-mode)
+    (with-eval-after-load 'magit
+      (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh t))))
 
 (use-package yasnippet
   :diminish yas-minor-mode
