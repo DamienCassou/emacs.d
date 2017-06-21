@@ -12,6 +12,7 @@
         all-the-icons ; library with many icons (zerodark dependency)
         anzu ; more interactive query-replace
         assess ; library to facilitate test writing
+        auto-compile ; automatically compile Emacs Lisp libraries
         avy ; move fast in buffer with <C-,>
         beacon ; highlight my cursor when scrolling
         bind-key ; to simplify definition of shortcuts
@@ -30,6 +31,7 @@
         duplicate-thing ; M-D to duplicate thing at point
         editorconfig ; handle .editorconfig files automatically
         embrace ; wrap/unwrap/change wrapping for quote, braces, ...
+        epkg ; browse the emacs mirror
         eslintd-fix ; Automatically fix javascript with eslint_d
         exec-path-from-shell ; For indium
         expand-region ; <C-x => repeadly to mark regions
@@ -146,6 +148,28 @@
   :config
   (progn
     (column-number-mode)))
+
+(use-package auto-compile
+  :demand t
+  :init
+  (progn
+    (customize-set-variable 'auto-compile-display-buffer nil)
+    (customize-set-variable 'auto-compile-mode-line-counter t)
+    (customize-set-variable 'auto-compile-source-recreate-deletes-dest t)
+    (customize-set-variable 'auto-compile-toggle-deletes-nonlib-dest t)
+    (customize-set-variable 'auto-compile-update-autoloads t))
+  :config
+  (progn
+    (auto-compile-on-load-mode)
+    (auto-compile-on-save-mode)
+    (add-hook 'auto-compile-inhibit-compile-hook
+              'auto-compile-inhibit-compile-detached-git-head)))
+
+(use-package epkg
+  :init
+  (progn
+    (setq epkg-repository
+          (no-littering-expand-var-file-name "epkgs"))))
 
 (use-package custom
   :demand t
