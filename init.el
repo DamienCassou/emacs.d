@@ -1,176 +1,10 @@
-;;; -*- Mode: Emacs-Lisp -*-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(auth-source-debug t)
- '(auth-source-do-cache nil nil nil "Don't save as I'm doing experiments with gnupg")
- '(avy-style (quote at-full))
- '(aw-scope (quote frame))
- '(beacon-blink-when-focused t)
- '(beginend-global-mode t)
- '(bookmark-save-flag 1)
- '(calendar-date-style (quote european))
- '(calendar-week-start-day 1)
- '(checkdoc-spellcheck-documentation-flag t)
- '(column-number-mode t)
- '(company-dabbrev-downcase nil)
- '(company-dabbrev-ignore-case nil)
- '(confirm-kill-emacs (quote y-or-n-p))
- '(current-language-environment "UTF-8")
- '(custom-safe-themes t)
- '(debbugs-gnu-trunk-directory "~/Documents/projects/emacs/")
- '(delete-active-region nil)
- '(delete-by-moving-to-trash t)
- '(dired-dwim-target t)
- '(dired-listing-switches "-alh")
- '(dired-omit-verbose nil)
- '(dired-recursive-deletes (quote always))
- '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
- '(electric-pair-mode t)
- '(enable-local-variables :all)
- '(enable-recursive-minibuffers t)
- '(erc-autojoin-channels-alist (quote (("freenode.net"))))
- '(erc-nick "DamienCassou")
- '(eval-expression-print-length 20)
- '(eval-expression-print-level nil)
- '(flyspell-use-meta-tab nil)
- '(frame-title-format "Emacs: %b" t)
- '(gc-cons-threshold 20000000)
- '(global-font-lock-mode t)
- '(global-pair-mode t)
- '(global-prettify-symbols-mode nil nil nil "Affects indentation...")
- '(global-subword-mode t)
- '(google-translate-default-source-language "sv")
- '(google-translate-default-target-language "en")
- '(imenu-auto-rescan t)
- '(imenu-max-item-length 200)
- '(indent-tabs-mode nil)
- '(indium-update-script-on-save t)
- '(inhibit-startup-screen t)
- '(initial-buffer-choice t)
- '(initial-major-mode (quote text-mode))
- '(initial-scratch-message nil)
- '(ispell-dictionary "english")
- '(ispell-program-name "/usr/bin/hunspell")
- '(jabber-auto-reconnect t)
- '(jabber-backlog-days 30)
- '(jabber-backlog-number 100)
- '(jabber-history-enabled t)
- '(load-prefer-newer t)
- '(magit-diff-refine-hunk (quote all))
- '(magit-process-find-password-functions (quote (magit-process-password-auth-source)))
- '(magit-wip-after-apply-mode nil)
- '(magit-wip-after-save-mode nil)
- '(magit-wip-before-change-mode nil)
- '(make-backup-files nil)
- '(markdown-command "Markdown.pl")
- '(menu-bar-mode nil)
- '(message-default-charset (quote utf-8))
- '(message-log-max t)
- '(message-send-mail-function (quote message-smtpmail-send-it))
- '(message-signature t)
- '(message-signature-file "~/.signature")
- '(nameless-affect-indentation-and-filling nil)
- '(nameless-prefix "名")
- '(next-screen-context-lines 5)
- '(notmuch-always-prompt-for-sender t)
- '(notmuch-archive-tags (quote ("-inbox" "-unread")))
- '(notmuch-crypto-process-mime t)
- '(notmuch-hello-sections (quote (notmuch-hello-insert-saved-searches)))
- '(notmuch-labeler-hide-known-labels t)
- '(notmuch-search-oldest-first nil)
- '(nsm-save-host-names t)
- '(offlineimap-command "offlineimap -u machineui")
- '(org-babel-load-languages (quote ((sh . t) (emacs-lisp . t) (java . t) (python . t))))
- '(org-catch-invisible-edits (quote error))
- '(org-clock-clocked-in-display nil)
- '(org-completion-use-ido t)
- '(org-default-notes-file "~/Documents/configuration/org/refile.org")
- '(org-directory "~/Documents/configuration/org")
- '(org-ellipsis "⤵")
- '(org-export-allow-bind-keywords t)
- '(org-export-creator-string "")
- '(org-export-with-toc nil)
- '(org-fontify-done-headline t)
- '(org-hide-leading-stars t)
- '(org-html-postamble nil)
- '(org-imenu-depth 2)
- '(org-log-done (quote time))
- '(org-outline-path-complete-in-steps nil)
- '(org-special-ctrl-a/e t)
- '(org-startup-align-all-tables t)
- '(org-table-use-standard-references nil)
- '(org-time-stamp-rounding-minutes (quote (10 10)))
- '(org-use-speed-commands t)
- '(package-archive-priorities (quote (("melpa-stable" . 10))))
- '(powerline-display-buffer-size nil)
- '(proced-filter (quote all))
- '(projectile-completion-system (quote helm))
- '(projectile-keymap-prefix (kbd "C-. p"))
- '(projectile-require-project-root nil)
- '(read-file-name-completion-ignore-case t)
- '(recentf-auto-cleanup 300)
- '(recentf-exclude (quote ("~$" "\\.log$")))
- '(recentf-max-saved-items 4000)
- '(report-emacs-bug-no-explanations t)
- '(runner-run-in-background t)
- '(safe-local-variable-values
-   (quote
-    ((eval add-to-list
-           (quote grep-find-ignored-files)
-           "archive-contents"))))
- '(save-interprogram-paste-before-kill t)
- '(save-place t nil (saveplace))
- '(save-place-file "~/.emacs.d/places")
- '(scheme-program-name "petite")
- '(scroll-bar-mode nil)
- '(send-mail-function (quote smtpmail-send-it))
- '(sh-indent-comment t)
- '(shell-switcher-ask-before-creating-new t)
- '(shell-switcher-mode t)
- '(shell-switcher-new-shell-function (quote shell-switcher-make-shell))
- '(show-paren-mode t)
- '(skeletor-project-directory "/home/cassou/.emacs.d/packages/")
- '(skeletor-show-project-command (quote magit-status))
- '(smart-tab-completion-functions-alist nil)
- '(smart-tab-using-hippie-expand t)
- '(smtpmail-debug-info t)
- '(smtpmail-debug-verb t)
- '(smtpmail-queue-mail nil)
- '(smtpmail-stream-type (quote starttls))
- '(tool-bar-mode nil)
- '(tooltip-mode nil)
- '(truncate-partial-width-windows nil)
- '(undo-limit 5000000)
- '(undo-outer-limit 200000000)
- '(undo-strong-limit 10000000)
- '(undo-tree-auto-save-history t)
- '(undo-tree-mode-lighter "")
- '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
- '(use-package-always-defer t)
- '(use-package-enable-imenu-support t)
- '(use-package-minimum-reported-time 0)
- '(use-package-verbose t)
- '(user-full-name "Damien Cassou")
- '(user-mail-address "damien@cassou.me")
- '(vc-follow-symlinks nil)
- '(vdirel-repository "~/Documents/configuration/contacts/contacts")
- '(version-control t)
- '(visible-bell nil)
- '(visible-mark-faces (quote (visible-mark-face1 visible-mark-face2)))
- '(visible-mark-max 2)
- '(winner-mode t nil (winner) "Use C-c <left|right> to go back to previous windows configuration")
- '(zoom-frame/buffer (quote frame)))
+;;; init.el --- user-init-file                    -*- lexical-binding: t -*-
 
 (add-to-list 'load-path "~/.emacs.d/packages/no-littering")
 (require 'no-littering)
 
 (setq package-selected-packages
       '(
-        4clojure ; learn clojure
         ace-link ; type o in help-mode to go to a link
         ace-window ; manage windows with ace-like behavior
         ag ; search using the 'ag' command (better grep)
@@ -281,10 +115,143 @@
 ;; (package-install-selected-packages)
 
 (require 'diminish)
-(require 'use-package)
+
+(progn ; use-package
+  (setq use-package-always-defer t)
+  (setq use-package-enable-imenu-support t)
+  (setq use-package-minimum-reported-time 0)
+  (setq use-package-verbose t)
+  (require 'use-package))
+
+(progn ; startup
+  (setq inhibit-startup-screen t)
+  (setq initial-buffer-choice t)
+  (setq initial-major-mode 'text-mode)
+  (setq initial-scratch-message nil)
+  (setq user-mail-address "damien@cassou.me"))
+
+(progn ; files
+  (setq confirm-kill-emacs 'y-or-n-p)
+  (setq make-backup-files nil)
+  (setq version-control t))
+
+(use-package simple
+  :demand t
+  :init
+  (progn
+    (setq delete-active-region nil)
+    (setq eval-expression-print-length 20)
+    (setq eval-expression-print-level nil)
+    (setq save-interprogram-paste-before-kill t))
+  :config
+  (progn
+    (column-number-mode)))
+
+(use-package custom
+  :demand t
+  :init
+  (progn
+    (customize-set-variable
+     'custom-safe-themes
+     '("cf879b57d42dc932c5068cb1297379b116445c11e62426e30b6911f1c6e42cf2"
+       default)))
+  :config
+  (progn
+    (setq custom-file (no-littering-expand-etc-file-name "custom.el"))
+    (when (file-exists-p custom-file)
+      (load custom-file))))
+
+(use-package font-core
+  :demand t
+  :config
+  (progn
+    (global-font-lock-mode)))
+
+(use-package minibuffer
+  :init
+  (progn
+    (setq read-file-name-completion-ignore-case t)))
+
+(use-package elec-pair
+  :demand t
+  :config
+  (progn
+    (electric-pair-mode)))
+
+(use-package prog-mode
+  :demand t
+  :config
+  (global-prettify-symbols-mode))
+
+(use-package saveplace
+  :demand t
+  :config
+  (progn
+    (save-place-mode)))
+
+(use-package scroll-bar
+  :init
+  (progn
+    (setq scroll-bar-mode nil)))
+
+(use-package uniquify
+  :init
+  (progn
+    (setq uniquify-buffer-name-style 'post-forward-angle-brackets)))
+
+(use-package tooltip
+  :demand t
+  :config
+  (progn
+    (tooltip-mode -1)))
+
+(use-package winner
+  :demand t
+  :config
+  (progn
+    (winner-mode)))
+
+(use-package nsm ;; network security
+  :init
+  (progn
+    (setq nsm-save-host-names t)))
+
+(use-package subword
+  :config
+  (global-subword-mode))
+
+(use-package imenu
+  :init
+  (progn
+    (setq imenu-auto-rescan t)
+    (setq imenu-max-item-length 200)))
+
+(use-package package
+  :init
+  (progn
+    (setq package-archive-priorities '(("melpa-stable" . 10)))))
+
+(use-package proced
+  :init
+  (progn
+    (setq proced-filter 'all)))
+
+(use-package emacsbug
+  :init
+  (progn
+    (setq report-emacs-bug-no-explanations t)))
+
+(use-package debbugs-gnu
+  :init
+  (progn
+    (setq debbugs-gnu-trunk-directory "~/Documents/projects/emacs/emacs-src")))
 
 (use-package undo-tree
   :demand t
+  :diminish undo-tree-mode
+  :init
+  (progn
+    (setq undo-tree-auto-save-history t))
   :config
   (progn
     (global-undo-tree-mode)
@@ -292,6 +259,11 @@
 
 (use-package dired
   :bind (("C-x C-j" . dired-jump))
+  :init
+  (progn
+    (setq dired-dwim-target t)
+    (setq dired-listing-switches "-alh")
+    (setq dired-recursive-deletes 'always))
   :config
   (progn
     (add-hook 'dired-mode-hook #'turn-on-gnus-dired-mode)
@@ -314,16 +286,27 @@
       (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)))
 
 (use-package runner
-  :after dired)
+  :after dired
+  :init
+  (progn
+    (setq runner-run-in-background t)))
 
 (use-package dired-x
-  :after dired)
+  :after dired
+  :init
+  (progn
+    (setq dired-omit-verbose nil)))
 
 (use-package dired-imenu
   :after dired)
 
 (use-package recentf
   :demand t
+  :init
+  (progn
+    (setq recentf-auto-cleanup 300)
+    (setq recentf-exclude '("~$" "\\.log$"))
+    (setq recentf-max-saved-items 4000))
   :config
   (progn
     (defun recentf-track-dired-buffers ()
@@ -358,11 +341,29 @@
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-dispatch-popup))
+  :init
+  (progn
+    (setq magit-diff-refine-hunk 'all)
+    (setq magit-process-find-password-functions '(magit-process-password-auth-source))
+    (setq magit-wip-after-apply-mode nil)
+    (setq magit-wip-after-save-mode nil)
+    (setq magit-wip-before-change-mode nil))
   :config
   (progn
     (global-magit-file-mode)
     ;; Enable magit-clean
     (put 'magit-clean 'disabled nil)))
+
+(use-package vc-hooks
+  :init
+  (progn
+    (setq vc-follow-symlinks nil)))
+
+(use-package ediff-wind
+  :init
+  (progn
+    (setq ediff-split-window-function 'split-window-horizontally)
+    (setq ediff-window-setup-function 'ediff-setup-windows-plain)))
 
 (use-package ace-link
   :demand t
@@ -375,6 +376,10 @@
   (("C-. d b" . ispell-buffer)
    ("C-. d f" . ispell-change-dictionary-to-french)
    ("C-. d e" . ispell-change-dictionary-to-english))
+  :init
+  (progn
+    (setq ispell-dictionary "english")
+    (setq ispell-program-name (executable-find "hunspell")))
   :config
   (progn
     (defun ispell-set-dictionary (dict)
@@ -401,6 +406,7 @@
   :commands (flyspell-mode)
   :init
   (progn
+    (setq flyspell-use-meta-tab nil)
     (add-hook 'text-mode-hook #'flyspell-mode))
   :config
   (progn
@@ -415,7 +421,10 @@
     (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)))
 
 (use-package checkdoc
-  :diminish checkdoc-minor-mode)
+  :diminish checkdoc-minor-mode
+  :init
+  (progn
+    (setq checkdoc-spellcheck-documentation-flag t)))
 
 (use-package face-remap
   :diminish text-scale-mode)
@@ -447,6 +456,29 @@
    ("C-. o l"   . org-store-link)
    ("C-. o w"   . my:org-move-to-refile-target)
    ("C-. o s"   . org-save-all-org-buffers))
+  :init
+  (progn
+    (setq org-babel-load-languages '((sh . t) (emacs-lisp . t) (java . t) (python . t)))
+    (setq org-catch-invisible-edits 'error)
+    (setq org-clock-clocked-in-display nil)
+    (setq org-completion-use-ido t)
+    (setq org-directory "~/Documents/configuration/org")
+    (setq org-default-notes-file (expand-file-name "refile.org" org-directory))
+    (setq org-ellipsis "⤵")
+    (setq org-export-allow-bind-keywords t)
+    (setq org-export-creator-string "")
+    (setq org-export-with-toc nil)
+    (setq org-fontify-done-headline t)
+    (setq org-hide-leading-stars t)
+    (setq org-html-postamble nil)
+    (setq org-imenu-depth 2)
+    (setq org-log-done 'time)
+    (setq org-outline-path-complete-in-steps nil)
+    (setq org-special-ctrl-a/e t)
+    (setq org-startup-align-all-tables t)
+    (setq org-table-use-standard-references nil)
+    (setq org-time-stamp-rounding-minutes '(10 10))
+    (setq org-use-speed-commands t))
   :config
   (progn
     (setq org-modules '(org-protocol org-capture ox-beamer))
@@ -458,12 +490,12 @@
 
     ;; Custom agenda command definitions
     (setq org-agenda-custom-commands
-          (quote ((" " "Agenda"
-                   ((agenda "" nil)
-                    (tags "REFILE"
-                          ((org-agenda-overriding-header "Tasks to Refile")
-                           (org-tags-match-list-sublevels nil))))
-                   nil))))
+          '((" " "Agenda"
+             ((agenda "" nil)
+              (tags "REFILE"
+                    ((org-agenda-overriding-header "Tasks to Refile")
+                     (org-tags-match-list-sublevels nil))))
+             nil)))
 
     (setq org-default-calendar-file "~/Documents/configuration/org/schplaf.org")
 
@@ -490,9 +522,13 @@
 
     ;; This is my `shell-switcher-switch-buffer':
     (unbind-key "C-'" org-mode-map)
-    ;; Those are my `beginning-of-buffer' and `end-of-buffer':
-    (unbind-key "<S-left>" org-agenda-mode-map)
-    (unbind-key "<S-right>" org-agenda-mode-map)
+
+    (with-eval-after-load "org-agenda-mode-map" ;; Those are my `beginning-of-buffer' and `end-of-buffer':
+      (unbind-key "<S-left>" org-agenda-mode-map)
+      (unbind-key "<S-right>" org-agenda-mode-map))
+
+    (unbind-key "<S-left>" org-mode-map)
+    (unbind-key "<S-right>" org-mode-map)
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))))
 
@@ -514,6 +550,12 @@
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
           org-caldav-sync-changes-to-org 'all)))
+
+(use-package calendar
+  :init
+  (progn
+    (setq calendar-date-style 'european)
+    (setq calendar-week-start-day 1)))
 
 (use-package drag-stuff
   :demand t
@@ -539,7 +581,14 @@
   :load-path "packages/shell-switcher"
   :bind (("C-M-'"   . shell-switcher-new-shell)
          ("C-'"     . shell-switcher-switch-buffer)
-         ("C-x 4 '" . shell-switcher-switch-buffer-other-window)))
+         ("C-x 4 '" . shell-switcher-switch-buffer-other-window))
+  :init
+  (progn
+    (setq shell-switcher-ask-before-creating-new t)
+    (setq shell-switcher-new-shell-function 'shell-switcher-make-shell))
+  :config
+  (progn
+    (shell-switcher-mode)))
 
 (use-package which-key
   :demand t
@@ -551,6 +600,11 @@
 (use-package projectile
   :demand t
   :diminish projectile-mode
+  :init
+  (progn
+    (setq projectile-completion-system 'helm)
+    (setq projectile-keymap-prefix (kbd "C-. p"))
+    (setq projectile-require-project-root nil))
   :config
   (progn
     (projectile-global-mode)))
@@ -581,6 +635,15 @@
   :load-path "packages/notmuch/emacs"
   :bind (("C-. m" . notmuch)
          ("C-. M" . notmuch-mua-new-mail))
+  :init
+  (progn
+    (setq notmuch-always-prompt-for-sender t)
+    (setq notmuch-archive-tags '("-inbox" "-unread"))
+    (setq notmuch-crypto-process-mime t)
+    (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
+    (setq notmuch-labeler-hide-known-labels t)
+    (setq notmuch-search-oldest-first nil)
+    (setq notmuch-show-imenu-indent t))
   :config
   (progn
     (setq notmuch-archive-tags '("-inbox" "-unread"))
@@ -657,9 +720,8 @@
              (smtpmail-smtp-service . 587))))
     (profile-set-profile-from-name "Perso")
     (setq profile-extra-email-addresses
-          (quote
-           ("damien.cassou@lifl.fr" "cassou@inria.fr"
-            "damien.cassou@laposte.net" "damien@foretagsplatsen.se")))
+          '("damien.cassou@lifl.fr" "cassou@inria.fr"
+            "damien.cassou@laposte.net" "damien@foretagsplatsen.se"))
     (setq profile-noisy-query
           "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\" OR to:\"emacs-devel\"")
 
@@ -707,6 +769,13 @@
     (advice-add 'mml-attach-file :around #'my:mml-attach-file--go-to-eob)))
 
 (use-package message
+  :init
+  (progn
+    (setq message-default-charset 'utf-8)
+    (setq message-log-max t)
+    (setq message-send-mail-function 'message-smtpmail-send-it)
+    (setq message-signature t)
+    (setq message-signature-file "~/.signature"))
   :config
   (progn
     ;;; The following make sure to use the right profile when sending
@@ -757,13 +826,26 @@ Designed to be called before `message-send-and-exit'."
          ("C-x C-=" . zoom-in/out)
          ("C-x C-0" . zoom-in/out)
          ("<C-mouse-4>" . zoom-in)
-         ("<C-mouse-5>" . zoom-out)))
+         ("<C-mouse-5>" . zoom-out))
+  :init
+  (progn
+    (setq zoom-frame/buffer 'frame)))
 
 (use-package visible-mark
   :demand t
+  :init
+  (progn
+    (setq visible-mark-faces '(visible-mark-face1 visible-mark-face2))
+    (setq visible-mark-max 2))
   :config
   (progn
-    (global-visible-mark-mode 1)))
+    (global-visible-mark-mode)))
+
+(use-package paren
+  :demand t
+  :config
+  (progn
+    (show-paren-mode)))
 
 (use-package paren-face
   :demand t
@@ -859,6 +941,11 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (helm-descbinds-mode)))
 
+(use-package bookmark
+  :init
+  (progn
+    (customize-save-variable 'bookmark-save-flag 1)))
+
 (use-package helm-bookmark
   :bind (("C-x r b" . helm-filtered-bookmarks)
          :map helm-bookmark-map
@@ -878,29 +965,37 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setq password-store-password-length 16)))
 
+(use-package auth-source
+  :init
+  (progn
+    (setq auth-source-debug t)
+    (setq auth-source-do-cache nil)))
+
 (use-package auth-password-store
-  :demand t
+  :after auth-source
   :load-path "packages/auth-password-store"
-  :config
+  :init
   (progn
     (setq auth-sources '(password-store))))
 
 (use-package ace-window
   :bind* (("M-o" . ace-window))
-  :config
+  :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq aw-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o 59 32))))
+    (setq aw-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o 59 32))
+    (setq aw-scope 'frame)))
 
 (use-package avy
   :bind* (("C-," . avy-goto-char-2))
   ;; dont :bind* this as this would override `M-g` in Projectile
   ;; (helm-projectile-vc):
   :bind (("M-g g" . avy-goto-line))
-  :config
+  :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o 59 32))))
+    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o 59 32))
+    (setq avy-style 'at-full)))
 
 (use-package outline
   :diminish outline-minor-mode)
@@ -908,11 +1003,18 @@ Designed to be called before `message-send-and-exit'."
 (use-package beginend
   :demand t
   :diminish beginend-global-mode
-  :load-path "packages/beginend")
+  :load-path "packages/beginend"
+  :config
+  (progn
+    (beginend-global-mode)))
 
 (use-package vdirel
   :load-path "packages/vdirel"
-  :bind (("C-. c" . vdirel-helm-select-email)))
+  :bind (("C-. c" . vdirel-helm-select-email))
+  :init
+  (progn
+    (setq vdirel-repository
+                            "~/Documents/configuration/contacts/contacts")))
 
 (use-package help
   :bind (:map help-mode-map
@@ -929,11 +1031,16 @@ Designed to be called before `message-send-and-exit'."
   :commands (nameless-mode)
   :init
   (progn
+    (setq nameless-affect-indentation-and-filling nil)
+    (setq nameless-prefix "…")
     (add-hook 'emacs-lisp-mode-hook #'nameless-mode)))
 
 (use-package beacon
   :demand t
   :diminish beacon-mode
+  :init
+  (progn
+    (setq beacon-blink-when-focused t))
   :config
   (progn
     ;; don't blink in notmuch-search, it's both slow and ugly
@@ -949,6 +1056,8 @@ Designed to be called before `message-send-and-exit'."
   :bind ("C-. /" . company-complete)
   :init
   (progn
+    (setq company-dabbrev-downcase nil)
+    (setq company-dabbrev-ignore-case nil)
     (add-hook 'emacs-lisp-mode-hook #'company-mode)
     (add-hook 'css-mode-hook #'company-mode)))
 
@@ -974,7 +1083,10 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package indium
   :load-path "packages/indium"
-  :diminish indium-interaction-mode)
+  :diminish indium-interaction-mode
+  :init
+  (progn
+    (setq indium-update-script-on-save t)))
 
 (use-package gulp-task-runner
   :commands (gulp)
@@ -1000,6 +1112,12 @@ Designed to be called before `message-send-and-exit'."
    ("C-. j o" . jabber-send-default-presence)
    ("C-. j x" . jabber-send-xa-presence)
    ("C-. j p" . jabber-send-presence))
+  :init
+  (progn
+    (setq jabber-auto-reconnect t)
+    (setq jabber-backlog-days 30)
+    (setq jabber-backlog-number 100)
+    (setq jabber-history-enabled t))
   :config
   (progn
     (setq jabber-account-list
@@ -1012,6 +1130,17 @@ Designed to be called before `message-send-and-exit'."
 
     ;; Override jabber.el global key
     (bind-key "C-x C-j" #'dired-jump)))
+
+(use-package erc
+  :init
+  (progn
+    (setq erc-autojoin-channels-alist '(("freenode.net")))
+    (setq erc-nick "DamienCassou")
+
+    (defun my/irc ()
+      (interactive)
+      (erc :server "irc.freenode.net"
+           :password (password-store-get "freenode.net")))))
 
 (use-package diff-hl
   :commands (diff-hl-mode)
@@ -1067,6 +1196,9 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package offlineimap
   :commands (offlineimap)
+  :init
+  (progn
+    (setq offlineimap-command "offlineimap -u machineui"))
   :config
   (progn
     (defun my/offlineimap-message-when-done (message-type &optional action)
@@ -1075,7 +1207,24 @@ Designed to be called before `message-send-and-exit'."
         (message "Offlineimap in progress")))
     (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done)))
 
-(use-package google-translate)
+(use-package smtpmail
+  :init
+  (progn
+    (setq smtpmail-debug-info t)
+    (setq smtpmail-debug-verb t)
+    (setq smtpmail-queue-mail nil)
+    (setq smtpmail-stream-type 'starttls)))
+
+(use-package sendmail
+  :init
+  (progn
+    (setq send-mail-function 'smtpmail-send-it)))
+
+(use-package google-translate
+  :init
+  (progn
+    (setq google-translate-default-source-language "sv")
+    (setq google-translate-default-target-language "en")))
 
 (use-package ob-nim
   :after org
@@ -1123,7 +1272,11 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package skeletor
   :load-path "~/.emacs.d/packages/skeletor"
-  :commands (skeletor-create-project))
+  :commands (skeletor-create-project)
+  :init
+  (progn
+    (setq skeletor-project-directory "/home/cassou/.emacs.d/packages/")
+    (setq skeletor-show-project-command 'magit-status)))
 
 (use-package buttercup
   :load-path "~/.emacs.d/packages/buttercup")
@@ -1142,13 +1295,11 @@ Designed to be called before `message-send-and-exit'."
   :load-path "~/.emacs.d/packages/json-navigator"
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
 
-;;; Emacs Configuration
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package markdown
+  :init
+  (progn
+    (setq markdown-command "Markdown.pl")))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
