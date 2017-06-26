@@ -263,6 +263,7 @@
 [submodule "know-your-http-well"]
 	path = lib/know-your-http-well
 	url = git@github.com:for-GET/know-your-http-well.git
+	load-path = emacs
 [submodule "messages-are-flowing"] # Visual indication of hard newlines
 	path = lib/messages-are-flowing
 	url = git@github.com:legoscia/messages-are-flowing.git
