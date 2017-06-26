@@ -20,7 +20,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((ispell-dictionary . "french")
+    ((eval flycheck-cask-setup)
+     (ispell-dictionary . "french")
      (eval add-to-list
            (quote grep-find-ignored-files)
            "archive-contents"))))
