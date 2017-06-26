@@ -418,6 +418,9 @@
 [submodule "shell-switcher"]
 	path = lib/shell-switcher
 	url = git@github.com:DamienCassou/shell-switcher.git
+[submodule "shut-up"]
+	path = lib/shut-up
+	url = git@github.com:cask/shut-up.git
 [submodule "snapshot-timemachine"]
 	path = lib/snapshot-timemachine
 	url = git@github.com:mrBliss/snapshot-timemachine.git
