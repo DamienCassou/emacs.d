@@ -453,7 +453,7 @@
     ;; This is my `shell-switcher-switch-buffer':
     (unbind-key "C-'" org-mode-map)
 
-    (with-eval-after-load "org-agenda-mode-map" ;; Those are my `beginning-of-buffer' and `end-of-buffer':
+    (with-eval-after-load 'org-agenda ;; Those are my `beginning-of-buffer' and `end-of-buffer':
       (unbind-key "<S-left>" org-agenda-mode-map)
       (unbind-key "<S-right>" org-agenda-mode-map))
 
