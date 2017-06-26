@@ -135,10 +135,6 @@
   (progn
     (setq nsm-save-host-names t)))
 
-(use-package subword
-  :config
-  (global-subword-mode))
-
 (use-package imenu
   :init
   (progn
@@ -973,7 +969,10 @@ Designed to be called before `message-send-and-exit'."
     (beacon-mode)))
 
 (use-package subword
-  :diminish subword-mode)
+  :diminish subword-mode
+  :init
+  (progn
+    (global-subword-mode)))
 
 (use-package company
   :diminish company-mode
