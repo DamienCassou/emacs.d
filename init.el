@@ -1057,7 +1057,12 @@ Designed to be called before `message-send-and-exit'."
     (setq erc-autojoin-channels-alist '(("freenode.net")))
     (setq erc-nick "DamienCassou")
 
-    (defun my/irc ()
+    (defun my/irc-mozilla ()
+      (interactive)
+      (erc :server "irc.mozilla.org"
+           :password (password-store-get "irc.mozilla.org")))
+
+    (defun my/irc-freenode ()
       (interactive)
       (erc :server "irc.freenode.net"
            :password (password-store-get "freenode.net")))))
