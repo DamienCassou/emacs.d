@@ -279,9 +279,6 @@
                             'magit-insert-unpulled-from-upstream)
     (magit-add-section-hook 'magit-status-sections-hook
                             'magit-insert-modules-unpushed-to-pushremote
-                            'magit-insert-unpulled-from-upstream)
-    (magit-add-section-hook 'magit-status-sections-hook
-                            'magit-insert-submodules
                             'magit-insert-unpulled-from-upstream)))
 
 (use-package vc-hooks
