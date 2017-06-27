@@ -425,6 +425,9 @@
 [submodule "snapshot-timemachine"]
 	path = lib/snapshot-timemachine
 	url = git@github.com:mrBliss/snapshot-timemachine.git
+[submodule "stream"]
+	path = lib/stream
+	url = git@github.com:emacsmirror/stream.git
 [submodule "undercover"]
 	path = lib/undercover
 	url = git@github.com:sviridov/undercover.el.git
