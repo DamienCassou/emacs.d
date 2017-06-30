@@ -147,9 +147,6 @@
 [submodule "flycheck-cask"] # use Cask when present for dependencies
 	path = lib/flycheck-cask
 	url = git@github.com:flycheck/flycheck-cask.git
-[submodule "flycheck-nim"]
-	path = lib/flycheck-nim
-	url = git@github.com:ALSchwalm/flycheck-nim.git
 [submodule "flycheck-package"] # checks elisp package metadata
 	path = lib/flycheck-package
 	url = git@github.com:purcell/flycheck-package.git
