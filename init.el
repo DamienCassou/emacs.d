@@ -1174,6 +1174,7 @@ Designed to be called before `message-send-and-exit'."
   :load-path "lisp")
 
 (use-package messages-are-flowing
+  :disabled t
   :demand t
   :config
   (progn

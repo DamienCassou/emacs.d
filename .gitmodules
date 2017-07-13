@@ -162,12 +162,6 @@
 [submodule "ftgp"]
 	path = lib/ftgp
 	url = https://DamienCassou@gitlab.petton.fr/ftgp/emacs.git
-[submodule "ghub"]
-	path = lib/ghub
-	url = git@github.com:tarsius/ghub.git
-[submodule "ghub+"]
-	path = lib/ghub+
-	url = git@github.com:vermiculus/ghub-plus.git
 [submodule "git-modes"]
 	path = lib/git-modes
 	url = git@github.com:magit/git-modes.git
@@ -273,9 +267,6 @@
 [submodule "memoize"]
 	path = lib/memoize
 	url = git@github.com:skeeto/emacs-memoize.git
-[submodule "messages-are-flowing"] # Visual indication of hard newlines
-	path = lib/messages-are-flowing
-	url = git@github.com:legoscia/messages-are-flowing.git
 [submodule "multiple-cursors"] # Control multiple cursors with <C-S-c C-S-c>
 	path = lib/multiple-cursors
 	url = git@github.com:magnars/multiple-cursors.el.git
