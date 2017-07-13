@@ -10,6 +10,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bookmark-save-flag 1)
+ '(custom-safe-themes
+   (quote
+    ("c585d7d6cf87aa58df504e5a6cb56cc1ab9b6f122364656b678671d6ba459be7" "5a603291fd17c6e27fa16f644e23091ac40b3802c292e4e8fd6632f3f9c5d0de" default)))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
@@ -20,7 +23,9 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((eval flycheck-cask-setup)
+    ((js2-missing-semi-one-line-override . t)
+     (js2-strict-missing-semi-warning)
+     (eval flycheck-cask-setup)
      (ispell-dictionary . "french")
      (eval add-to-list
            (quote grep-find-ignored-files)
