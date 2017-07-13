@@ -644,7 +644,7 @@
           '("damien.cassou@lifl.fr" "cassou@inria.fr"
             "damien.cassou@laposte.net" "damien@foretagsplatsen.se"))
     (setq profile-noisy-query
-          "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR list:\"nix-dev\" OR to:\"emacs-devel\"")
+          "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR to:\"emacs-devel\" OR to:\"dev-addons@mozilla.org\" OR to:\"gnupg-users@gnupg.org\"")
 
     (defun my:notmuch-build-identity (&optional email)
       "Return a string of the form \"name <EMAIL>\"."
