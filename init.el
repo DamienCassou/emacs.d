@@ -279,9 +279,6 @@
                             'magit-insert-modules-unpulled-from-upstream
                             'magit-insert-unpulled-from-upstream)
     (magit-add-section-hook 'magit-status-sections-hook
-                            'magit-insert-modules-unpulled-from-pushremote
-                            'magit-insert-unpulled-from-upstream)
-    (magit-add-section-hook 'magit-status-sections-hook
                             'magit-insert-modules-unpushed-to-upstream
                             'magit-insert-unpulled-from-upstream)
     (magit-add-section-hook 'magit-status-sections-hook
