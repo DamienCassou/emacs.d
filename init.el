@@ -441,7 +441,7 @@
                                 :maxlevel . 2)))
 
     (setq org-todo-keywords
-          '((sequence "TODO(t)"    "|" "DONE(d)" "CANCELLED(c)")))
+          '((sequence "TODO(t)" "WAIT(w)"   "|" "DONE(d)" "CANCELLED(c)")))
 
     (setq org-capture-templates
           '(("t" "Todo" entry
