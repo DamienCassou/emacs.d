@@ -372,6 +372,9 @@
 [submodule "snapshot-timemachine-rsnapshot"] # rsnapshot backend for snapshot-timemachine
 	path = lib/snapshot-timemachine-rsnapshot
 	url = git@github.com:NicolasPetton/snapshot-timemachine-rsnapshot.git
+[submodule "sourcemap"]
+	path = lib/sourcemap
+	url = git@github.com:syohex/emacs-sourcemap.git
 [submodule "stream"]
 	path = lib/stream
 	url = git@github.com:emacsmirror/stream.git
