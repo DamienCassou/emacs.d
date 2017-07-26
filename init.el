@@ -1009,7 +1009,7 @@ Designed to be called before `message-send-and-exit'."
   :diminish indium-interaction-mode
   :init
   (progn
-    (setq indium-update-script-on-save t)
+    (setq indium-update-script-on-save nil)
     (setq indium-workspace-file (no-littering-expand-var-file-name "indium-workspaces.el"))))
 
 (use-package gulp-task-runner
