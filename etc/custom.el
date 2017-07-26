@@ -23,7 +23,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((js2-missing-semi-one-line-override . t)
+    ((flycheck-javascript-eslint-executable . "/home/cassou/Documents/projects/ftgp/widgetjs/node_modules/.bin/eslint")
+     (js2-missing-semi-one-line-override . t)
      (js2-strict-missing-semi-warning)
      (eval flycheck-cask-setup)
      (ispell-dictionary . "french")
