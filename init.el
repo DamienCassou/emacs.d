@@ -1222,6 +1222,15 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setq markdown-command "Markdown.pl")))
 
+(use-package hydra
+  :init
+  (progn
+    (defhydra hydra-window (global-map "C-. w")
+      "zoom"
+      ("+" zoom-frm-in "in")
+      ("-" zoom-frm-out "out")
+      ("=" zoom-frm-unzoom "reset"))))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
