@@ -2,3 +2,4 @@
 /session.*
 /.cask
 /elpa
+.pass-secrets-sync.el
