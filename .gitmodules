@@ -291,6 +291,12 @@
 [submodule "offlineimap"]
 	path = lib/offlineimap
 	url = git@github.com:jd/offlineimap.el.git
+[submodule "org"]
+	path = lib/org
+	url = git://orgmode.org/org-mode.git
+	load-path = lisp
+	info-path = doc
+	build-step = make compile autoloads info ORG_ADD_CONTRIB="org-notmuch"
 [submodule "org-caldav"]
 	path = lib/org-caldav
 	url = git@github.com:dengste/org-caldav.git
