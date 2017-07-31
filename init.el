@@ -1230,6 +1230,9 @@ Designed to be called before `message-send-and-exit'."
       ("-" zoom-frm-out "out")
       ("=" zoom-frm-unzoom "reset"))))
 
+(use-package devdocs
+  :commands (devdocs-search))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)

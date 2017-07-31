@@ -87,6 +87,9 @@
 [submodule "debbugs"] # SOAP library to access debbugs servers
 	path = lib/debbugs
 	url = git@github.com:emacsmirror/debbugs.git
+[submodule "devdocs"]
+	path = lib/devdocs
+	url = git@github.com:xuchunyang/devdocs.el.git
 [submodule "diff-hl"] # shows git status in buffer's fringe
 	path = lib/diff-hl
 	url = git@github.com:dgutov/diff-hl.git
