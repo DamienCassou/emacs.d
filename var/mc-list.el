@@ -45,6 +45,7 @@
         paredit-open-round
         paredit-splice-sexp-killing-backward
         paredit-wrap-round
+        sgml-slash
         skeleton-pair-insert-maybe
         smex
         transpose-words
