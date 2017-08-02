@@ -1219,7 +1219,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package markdown-mode
   :init
   (progn
-    (setq markdown-command "Markdown.pl")))
+    (setq markdown-command "kramdown")))
 
 (use-package hydra
   :init
