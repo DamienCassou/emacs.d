@@ -315,6 +315,7 @@
 [submodule "package-lint"]
 	path = lib/package-lint
 	url = git@github.com:purcell/package-lint.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/package-lint.git"
 [submodule "packed"]
 	path = lib/packed
 	url = git@github.com:tarsius/packed.git
