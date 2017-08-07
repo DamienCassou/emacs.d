@@ -1233,6 +1233,11 @@ Designed to be called before `message-send-and-exit'."
 (use-package devdocs
   :commands (devdocs-search))
 
+(use-package websocket
+  :config
+  (progn
+    (setq websocket-callback-debug-on-error t)))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
