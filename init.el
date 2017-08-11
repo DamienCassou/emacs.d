@@ -476,7 +476,7 @@
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
-    (setq org-caldav-url "https://petton.fr/nextcloud/remote.php/dav/calendars/damien"
+    (setq org-caldav-url "https://damien@petton.fr/nextcloud/remote.php/dav/calendars/damien"
           org-caldav-calendar-id "personal"
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
