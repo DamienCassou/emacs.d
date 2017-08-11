@@ -47,7 +47,9 @@
         paredit-wrap-round
         sgml-slash
         skeleton-pair-insert-maybe
+        smartscan-symbol-go-backward
         smex
+        tern-get-type
         transpose-words
         wdired-downcase-word
         wdired-finish-edit
