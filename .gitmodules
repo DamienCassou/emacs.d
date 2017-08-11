@@ -347,6 +347,7 @@
 [submodule "prodigy"] # manage external services from within Emacs
 	path = lib/prodigy
 	url = git@github.com:rejeep/prodigy.el.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/prodigy.el.git"
 [submodule "profile"]
 	path = lib/profile
 	url = https://DamienCassou@github.com/DamienCassou/profile.git
