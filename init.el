@@ -411,7 +411,8 @@
     (setq org-startup-align-all-tables t)
     (setq org-table-use-standard-references nil)
     (setq org-time-stamp-rounding-minutes '(10 10))
-    (setq org-use-speed-commands t))
+    (setq org-use-speed-commands t)
+    (setq org-email-link-description-format "%s"))
   :config
   (progn
     (setq org-modules '(org-protocol org-capture ox-beamer))
