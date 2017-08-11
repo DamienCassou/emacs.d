@@ -268,7 +268,9 @@
     (setq magit-process-find-password-functions '(magit-process-password-auth-source))
     (setq magit-wip-after-apply-mode nil)
     (setq magit-wip-after-save-mode nil)
-    (setq magit-wip-before-change-mode nil))
+    (setq magit-wip-before-change-mode nil)
+    (setq magit-branch-prefer-remote-upstream '("master"))
+    (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master"))))
   :config
   (progn
     (global-magit-file-mode)
