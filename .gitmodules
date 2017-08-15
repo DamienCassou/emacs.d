@@ -13,6 +13,9 @@
 [submodule "aggressive-indent"] # indent code automatically while typing
 	path = lib/aggressive-indent
 	url = git@github.com:Malabarba/aggressive-indent-mode.git
+[submodule "alert"]
+	path = lib/alert
+	url = git@github.com:jwiegley/alert.git
 [submodule "all-the-icons"] # library with many icons (zerodark dependency)
 	path = lib/all-the-icons
 	url = git@github.com:domtronn/all-the-icons.el.git
@@ -62,6 +65,12 @@
 [submodule "cdlatex"]
 	path = lib/cdlatex
 	url = git@github.com:cdominik/cdlatex.git
+[submodule "circe"]
+	path = lib/circe
+	url = git@github.com:jorgenschaefer/circe.git
+[submodule "circe-notifications"]
+	path = lib/circe-notifications
+	url = git@github.com:eqyiel/circe-notifications.git
 [submodule "closql"]
 	path = lib/closql
 	url = git@github.com:emacscollective/closql.git

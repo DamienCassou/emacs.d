@@ -1057,21 +1057,94 @@ Designed to be called before `message-send-and-exit'."
     ;; Override jabber.el global key
     (bind-key "C-x C-j" #'dired-jump)))
 
-(use-package erc
+(use-package lui
+  :config
+  (progn
+    (setq lui-flyspell-p t)
+    (setq lui-flyspell-alist '((".*" "american")))
+
+    (setq lui-time-stamp-position 'right-margin)
+    (setq lui-fill-type nil)
+    (setq lui-time-stamp-format "%H:%M")
+
+    (defun my/lui-setup ()
+      (setq right-margin-width 5)
+      (setq fringes-outside-margins t)
+      (setq word-wrap t)
+      (setq wrap-prefix "    "))
+    (add-hook 'lui-mode-hook 'my/lui-setup)))
+
+(use-package lui-logging
+  :after lui
+  :config
+  (progn
+    (enable-lui-logging-globally)))
+
+(use-package tracking
+  :bind (("C-. ." . tracking-next-buffer))
+  :config
+  (progn
+    (setq tracking-mode-map (make-sparse-keymap))))
+
+(use-package circe
+  ;; Install gnutls-utils if circe is stuck "Connecting..."
+  ;; https://github.com/jorgenschaefer/circe/issues/287
   :init
   (progn
-    (setq erc-autojoin-channels-alist '(("freenode.net")))
-    (setq erc-nick "DamienCassou")
+    (defun my/get-password (host &optional user)
+      "Return password for HOST and USER."
+      (when-let ((entry (auth-pass--find-match host user)))
+        (auth-pass-get 'secret entry))))
+  :config
+  (progn
+    (setq circe-default-nick "DamienCassou")
+    (setq circe-reduce-lurker-spam t)
+    (setq-default circe-sasl-username "DamienCassou")
+    (setq-default circe-nickserv-nick "DamienCassou")
+    (setq-default circe-sasl-password #'my/get-password)
+    (setq-default circe-nickserv-password #'my/get-password)
+    (setq circe-format-say "{nick:-16s} {body}")
 
-    (defun my/irc-mozilla ()
-      (interactive)
-      (erc :server "irc.mozilla.org"
-           :password (password-store-get "irc.mozilla.org")))
+    (add-to-list 'circe-network-defaults
+                 '("Mozilla"
+                   :host "irc.mozilla.org" :port (6667 . 6697)
+                   :tls t
+                   :nickserv-mask "^NickServ!NickServ@services\\.$"
+                   :nickserv-identify-challenge "This nickname is registered and protected."
+                   :nickserv-identify-command "PRIVMSG NickServ IDENTIFY {password}"
+                   :nickserv-identify-confirmation "^You are now identified for .*\\.$"
+                   :nickserv-ghost-command "PRIVMSG NickServ :GHOST {nick} {password}"
+                   :nickserv-ghost-confirmation "has been ghosted\\.$\\|is not online\\.$"))
+    (setq circe-network-options
+          '(("Freenode"
+             :server-buffer-name "fn"
+             :channels (:after-auth "#emacs" "#emacs-circe"))
+            ("Mozilla"
+             :server-buffer-name "moz"
+             :channels (:after-auth "#webextensions" "#nightly"))
+            ("Bitlbee"
+             :server-buffer-name "bitlbee"
+             :nick "DamienCassou"
+             :password nil
+             :sasl-username nil
+             :sasl-password nil)))))
 
-    (defun my/irc-freenode ()
-      (interactive)
-      (erc :server "irc.freenode.net"
-           :password (password-store-get "freenode.net")))))
+(use-package circe-notifications
+  :disabled t
+  :after circe
+  :config
+  (progn
+    (add-hook 'circe-server-connected-hook 'enable-circe-notifications)))
+
+(use-package alert
+  :config
+  (progn
+    (setq alert-user-configuration '((nil notifications nil)))))
+
+(use-package erc-track
+  :init
+  (progn
+    (setq erc-track-enable-keybindings nil)))
 
 (use-package diff-hl
   :commands (diff-hl-mode diff-hl-magit-post-refresh)
