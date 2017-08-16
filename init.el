@@ -276,15 +276,8 @@
     (global-magit-file-mode)
     ;; Enable magit-clean
     (put 'magit-clean 'disabled nil)
-
     (magit-add-section-hook 'magit-status-sections-hook
-                            'magit-insert-modules-unpulled-from-upstream
-                            'magit-insert-unpulled-from-upstream)
-    (magit-add-section-hook 'magit-status-sections-hook
-                            'magit-insert-modules-unpushed-to-upstream
-                            'magit-insert-unpulled-from-upstream)
-    (magit-add-section-hook 'magit-status-sections-hook
-                            'magit-insert-modules-unpushed-to-pushremote
+                            'magit-insert-modules
                             'magit-insert-unpulled-from-upstream)))
 
 (use-package vc-hooks
