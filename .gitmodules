@@ -7,6 +7,9 @@
 [submodule "ace-window"] # manage windows with ace-like behavior
 	path = lib/ace-window
 	url = git@github.com:abo-abo/ace-window.git
+[submodule "adoc-mode"]
+	path = lib/adoc-mode
+	url = git@github.com:sensorflo/adoc-mode.git
 [submodule "ag"]
 	path = lib/ag
 	url = git@github.com:Wilfred/ag.el.git
@@ -31,6 +34,9 @@
 [submodule "ascii-art-to-unicode"]
 	path = lib/ascii-art-to-unicode
 	url = git@github.com:emacsmirror/ascii-art-to-unicode.git
+[submodule "asciidoc"]
+	path = lib/asciidoc
+	url = git@github.com:metaperl/asciidoc-el.git
 [submodule "assess"] # library to facilitate test writing
 	path = lib/assess
 	url = git@github.com:phillord/assess.git
@@ -276,6 +282,9 @@
 [submodule "markdown-mode"] # Major mode for markdown format
 	path = lib/markdown-mode
 	url = git@github.com:jrblevin/markdown-mode.git
+[submodule "markup-faces"]
+	path = lib/markup-faces
+	url = git@github.com:sensorflo/markup-faces.git
 [submodule "memoize"]
 	path = lib/memoize
 	url = git@github.com:skeeto/emacs-memoize.git
