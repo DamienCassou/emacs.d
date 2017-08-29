@@ -127,6 +127,8 @@ are visible."
 (bind-key "C-x 8 <S-down>" (lambda () (interactive) (insert-char ?↓))) ; downwards arrow
 (bind-key "C-x 8 <down>" (lambda () (interactive) (insert-char ?⇓))) ; rightwards double arrow
 
+(bind-key "C-x 8 ," (lambda () (interactive) (insert-char ?…))) ; horizontal ellipsis
+
 (bind-key "<S-left>" #'beginning-of-buffer)
 (bind-key "<S-right>" #'end-of-buffer)
 (unbind-key "M-<")
