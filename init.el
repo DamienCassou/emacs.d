@@ -780,6 +780,9 @@ Designed to be called before `message-send-and-exit'."
               ("C-f" . find-function)
               ("C-l" . find-library)))
 
+(use-package helpful
+  :bind (("C-h f" . helpful-function)))
+
 (use-package anzu
   :demand t
   :diminish anzu-mode

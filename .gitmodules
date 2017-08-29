@@ -126,6 +126,9 @@
 [submodule "editorconfig"] # handle .editorconfig files automatically
 	path = lib/editorconfig
 	url = git@github.com:editorconfig/editorconfig-emacs.git
+[submodule "elisp-refs"]
+	path = lib/elisp-refs
+	url = git@github.com:Wilfred/refs.el.git
 [submodule "emacs-js"]
 	path = lib/emacs-js
 	url = https://DamienCassou@github.com/foretagsplatsen/emacs-js.git
@@ -213,6 +216,9 @@
 [submodule "helm-projectile"] # integrate projectile and helm <C-. p h>
 	path = lib/helm-projectile
 	url = git@github.com:bbatsov/helm-projectile.git
+[submodule "helpful"]
+	path = lib/helpful
+	url = git@github.com:Wilfred/helpful.git
 [submodule "hierarchy"]
 	path = lib/hierarchy
 	url = git@github.com:DamienCassou/hierarchy.git
