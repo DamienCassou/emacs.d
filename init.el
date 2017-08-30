@@ -1123,19 +1123,16 @@ Designed to be called before `message-send-and-exit'."
                    :nickserv-identify-confirmation "^You are now identified for .*\\.$"
                    :nickserv-ghost-command "PRIVMSG NickServ :GHOST {nick} {password}"
                    :nickserv-ghost-confirmation "has been ghosted\\.$\\|is not online\\.$"))
-    (setq circe-network-options
-          '(("Freenode"
-             :server-buffer-name "fn"
-             :channels (:after-auth "#emacs" "#emacs-circe"))
-            ("Mozilla"
-             :server-buffer-name "moz"
-             :channels (:after-auth "#webextensions" "#nightly"))
-            ("Bitlbee"
-             :server-buffer-name "bitlbee"
-             :nick "DamienCassou"
-             :password nil
-             :sasl-username nil
-             :sasl-password nil)))))
+    (add-to-list 'circe-network-defaults
+                 '("Gnome"
+                   :host "irc.gnome.org" :port (6667 . 6697)
+                   :tls t
+                   :nickserv-mask "^NickServ!NickServ@services\\.$"
+                   :nickserv-identify-challenge "This nickname is registered and protected."
+                   :nickserv-identify-command "MSG NickServ IDENTIFY {password}"
+                   :nickserv-identify-confirmation "^You are now identified for .*\\.$"
+                   :nickserv-ghost-command "PRIVMSG NickServ :GHOST {nick} {password}"
+                   :nickserv-ghost-confirmation "has been ghosted\\.$\\|is not online\\.$"))))
 
 (use-package circe-notifications
   :disabled t
