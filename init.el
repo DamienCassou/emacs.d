@@ -792,7 +792,15 @@ Designed to be called before `message-send-and-exit'."
               ("C-v" . find-variable)
               ("C-k" . find-function-on-key)
               ("C-f" . find-function)
-              ("C-l" . find-library)))
+              ("C-l" . find-library)
+              :map help-mode-map
+              ("g" . my:revert-buffer-no-confirm))
+  :config
+  (progn
+    (defun my:revert-buffer-no-confirm (&optional ignore-auto)
+      "Revert current buffer without asking."
+      (interactive (list (not current-prefix-arg)))
+      (revert-buffer ignore-auto t nil))))
 
 (use-package helpful
   :bind (("C-h f" . helpful-function)))
@@ -948,17 +956,7 @@ Designed to be called before `message-send-and-exit'."
   :init
   (progn
     (setq vdirel-repository
-                            "~/Documents/configuration/contacts/contacts")))
-
-(use-package help
-  :bind (:map help-mode-map
-              ("g" . my:revert-buffer-no-confirm))
-  :config
-  (progn
-    (defun my:revert-buffer-no-confirm (&optional ignore-auto)
-      "Revert current buffer without asking."
-      (interactive (list (not current-prefix-arg)))
-      (revert-buffer ignore-auto t nil))))
+          "~/Documents/configuration/contacts/contacts")))
 
 (use-package nameless
   :diminish nameless-mode
