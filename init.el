@@ -908,7 +908,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package password-store
   :config
   (progn
-    (setq password-store-password-length 16)))
+    (setq password-store-password-length 30)))
 
 (use-package auth-source
   :init
