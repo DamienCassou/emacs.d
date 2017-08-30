@@ -1317,7 +1317,8 @@ Designed to be called before `message-send-and-exit'."
 (use-package websocket
   :config
   (progn
-    (setq websocket-callback-debug-on-error t)))
+    (setq websocket-callback-debug-on-error t)
+    (setq websocket-debug t)))
 
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
