@@ -472,6 +472,7 @@
 [submodule "zerodark-theme"] # the best theme ever
 	path = lib/zerodark-theme
 	url = git@github.com:NicolasPetton/zerodark-theme.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/zerodark-theme.git"
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
