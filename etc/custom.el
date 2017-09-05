@@ -12,7 +12,7 @@
  '(bookmark-save-flag 1)
  '(custom-safe-themes
    (quote
-    ("d0ef31755ffdd424b5362a138cf42a2d215cc614964b8709117df5ab8f6e7386")))
+    ("9eaca843eb74d29ea97cbeea9f6d4f63159700c496cc78efc43e1baf57355934")))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
@@ -23,7 +23,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((projectile-project-type quote passwe)
+    ((org-ascii-text-width . 200000000)
+     (projectile-project-type quote passwe)
      (sh-shell . "sh")
      (js2-missing-semi-one-line-override)
      (flycheck-javascript-eslint-executable . "/home/cassou/Documents/projects/ftgp/widgetjs/node_modules/.bin/eslint")
