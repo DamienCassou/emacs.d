@@ -803,7 +803,8 @@ Designed to be called before `message-send-and-exit'."
       (revert-buffer ignore-auto t nil))))
 
 (use-package helpful
-  :bind (("C-h f" . helpful-function)))
+  :bind (("C-h f" . helpful-callable)
+         ("C-h k" . helpful-key)))
 
 (use-package anzu
   :demand t
