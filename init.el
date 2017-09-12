@@ -1352,6 +1352,9 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'prog-mode-hook #'firestarter-mode)
     (setq firestarter-default-type 'finished)))
 
+(use-package adoc-mode
+  :mode "\\.adoc\\'")
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
