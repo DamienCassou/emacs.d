@@ -23,7 +23,14 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((org-ascii-text-width . 200000000)
+    ((ispell-dictionary . "francais")
+     (org-export-coding-system . iso-8859-15)
+     (firestarter let
+                  ((compilation-read-command nil))
+                  (projectile-test-project nil))
+     (firestarter . "npm test")
+     (firestarter . "gulp css")
+     (org-ascii-text-width . 200000000)
      (projectile-project-type quote passwe)
      (sh-shell . "sh")
      (js2-missing-semi-one-line-override)
