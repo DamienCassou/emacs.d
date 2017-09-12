@@ -162,6 +162,9 @@
 [submodule "finalize"]
 	path = lib/finalize
 	url = git@github.com:skeeto/elisp-finalize.git
+[submodule "firestarter"]
+	path = lib/firestarter
+	url = git@github.com:wasamasa/firestarter.git
 [submodule "flycheck"] # flycheck to check files on the fly
 	path = lib/flycheck
 	url = git@github.com:flycheck/flycheck.git
@@ -361,6 +364,9 @@
 	path = lib/password-store
 	url = git@github.com:emacsmirror/password-store.git
 	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/password-store.el.git"
+[submodule "password-store-otp"]
+	path = lib/password-store-otp
+	url = https://DamienCassou@github.com/volrath/password-store-otp.el.git
 [submodule "pkg-info"]
 	path = lib/pkg-info
 	url = git@github.com:lunaryorn/pkg-info.el.git

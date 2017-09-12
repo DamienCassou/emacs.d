@@ -1321,6 +1321,13 @@ Designed to be called before `message-send-and-exit'."
     (setq websocket-callback-debug-on-error t)
     (setq websocket-debug t)))
 
+(use-package firestarter
+  :demand t
+  :config
+  (progn
+    (add-hook 'prog-mode-hook #'firestarter-mode)
+    (setq firestarter-default-type 'finished)))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
