@@ -911,6 +911,30 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setq password-store-password-length 30)))
 
+(use-package pass
+  :commands pass
+  :init
+  (progn
+    (defun my/pass-insert-generated (entry)
+      "Same as pass-insert-generated but with my own template."
+      (interactive (list (read-string "Password entry: ")))
+      (when (or (not (seq-contains (password-store-list) entry))
+                (yes-or-no-p "Erase existing entry with same name? "))
+        (let ((password (shell-command-to-string
+                         (format "pwgen --secure --symbols %s"
+                                 password-store-password-length))))
+          (password-store-insert
+           entry
+           (format "%s--\nusername: %s\nurl: https://%s\n"
+                   password
+                   user-mail-address
+                   entry))
+          (password-store-edit entry)
+          (pass-update-buffer)))))
+  :config
+  (progn
+    (advice-add #'pass-insert-generated :override #'my/pass-insert-generated)))
+
 (use-package auth-source
   :init
   (progn
