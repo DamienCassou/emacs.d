@@ -1348,6 +1348,12 @@ Designed to be called before `message-send-and-exit'."
 (use-package adoc-mode
   :mode "\\.adoc\\'")
 
+(use-package bash-completion
+  :init
+  (progn
+    (add-hook 'shell-dynamic-complete-functions
+              #'bash-completion-dynamic-complete)))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
