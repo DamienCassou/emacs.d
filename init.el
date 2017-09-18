@@ -501,7 +501,7 @@
   :init
   (progn
     (setq shell-switcher-ask-before-creating-new t)
-    (setq shell-switcher-new-shell-function 'shell-switcher-make-shell))
+    (setq shell-switcher-new-shell-function 'shell-switcher-make-eshell))
   :config
   (progn
     (shell-switcher-mode)))
@@ -1353,6 +1353,54 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'shell-dynamic-complete-functions
               #'bash-completion-dynamic-complete)))
+
+(use-package eshell
+  :commands (eshell eshell-command)
+  :preface
+  (progn
+    (defun my/eshell-prompt ()
+      (let ((path (abbreviate-file-name (eshell/pwd))))
+        (let* ((background "#3d4a41") (foreground "#abb2bf"))
+          (concat
+           (format
+            (propertize "%s\n>"
+                        'face `(:foreground "#98be65" :background ,background :weight bold))
+            (propertize path
+                        'face `(:foreground ,foreground :background ,background)))
+           " "))))
+
+    (defun eshell-bash-completion ()
+      (while (pcomplete-here
+              (nth 2 (bash-completion-dynamic-complete-nocomint
+                      (save-excursion (eshell-bol) (point))
+                      (point)))))))
+  :config
+  (progn
+    ;; Inspired from
+    ;; https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp/init-eshell.el
+    (setq eshell-history-size 1024)
+    (setq eshell-hist-ignoredups t)
+    (setq eshell-prompt-function #'my/eshell-prompt)
+
+    ;; If the prompt spans over multiple lines, the regexp should match
+    ;; last line only.
+    (setq-default eshell-prompt-regexp "^> ")
+
+    (use-package em-term
+      :config
+      (progn
+        (nconc eshell-visual-commands
+               '("htop" "pinentry-curses" "watch"))
+        (nconc eshell-visual-subcommands
+               '(("git" "log" "diff" "show")
+                 ("npm" "install")))))
+
+    (add-hook 'eshell-mode-hook 'eshell-cmpl-initialize)
+
+    (use-package bash-completion
+      :init
+      (progn
+        (setq eshell-default-completion-function 'eshell-bash-completion)))))
 
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
