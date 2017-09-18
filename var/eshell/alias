@@ -1,0 +1,2 @@
+alias sudo /usr/bin/sudo --askpass $*
+alias nil  $*

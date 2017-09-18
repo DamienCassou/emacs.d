@@ -52,6 +52,9 @@
 [submodule "avy"] # move fast in buffer with <C-,>
 	path = lib/avy
 	url = git@github.com:abo-abo/avy.git
+[submodule "bash-completion"]
+	path = lib/bash-completion
+	url = git@github.com:szermatt/emacs-bash-completion.git
 [submodule "beacon"] # highlight my cursor when scrolling
 	path = lib/beacon
 	url = git@github.com:Malabarba/beacon.git
