@@ -250,14 +250,6 @@
     (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)
     (recentf-mode)))
 
-(use-package em-term
-  :config
-  (progn
-    (add-to-list 'eshell-visual-commands "htop")
-    (add-to-list 'eshell-visual-commands "journalctl")
-    (add-to-list 'eshell-visual-commands "karma")
-    (add-to-list 'eshell-visual-commands "bower")))
-
 (use-package magit
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
   :bind (("C-x g" . magit-status)
@@ -1056,6 +1048,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (require 'bookmark)
+    (setq ftgp-atlassian-pass-entry "ftgp/id.atlassian.com_(API)")
     (setq ftgp-monitor-root-location
           (expand-file-name (bookmark-location "ftgp-monitor-root")))))
 
