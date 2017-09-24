@@ -381,7 +381,7 @@
    ("C-. o s"   . org-save-all-org-buffers))
   :init
   (progn
-    (setq org-babel-load-languages '((sh . t) (emacs-lisp . t) (java . t) (python . t)))
+    (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (java . t) (python . t)))
     (setq org-catch-invisible-edits 'error)
     (setq org-clock-clocked-in-display nil)
     (setq org-completion-use-ido t)
