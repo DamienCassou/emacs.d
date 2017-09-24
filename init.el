@@ -674,6 +674,13 @@
                 :override
                 #'my:notmuch-prompt-for-sender)
 
+    ;; https://notmuchmail.org/pipermail/notmuch/2017/025320.html
+    (defun my:notmuch-mua-new-reply (arguments)
+      "Always set PROMPT-FOR-SENDER to t when using `notmuch-mua-new-reply'."
+      (list (cl-first arguments) t (cl-third arguments)))
+
+    (advice-add #'notmuch-mua-new-reply :filter-args #'my:notmuch-mua-new-reply)
+
     (setq notmuch-saved-searches
           `((:name "inbox" :query ,(format "(folder:\"Perso/INBOX\") AND (NOT (%s) OR recip:damien*)"
                                            profile-noisy-query) :key "i")
