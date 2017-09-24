@@ -1372,7 +1372,12 @@ Designed to be called before `message-send-and-exit'."
       (while (pcomplete-here
               (nth 2 (bash-completion-dynamic-complete-nocomint
                       (save-excursion (eshell-bol) (point))
-                      (point)))))))
+                      (point))))))
+
+    (defun my/eshell-mode-configure ()
+      (eshell-cmpl-initialize)
+      (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
+      (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
   :config
   (progn
     ;; Inspired from
@@ -1392,9 +1397,10 @@ Designed to be called before `message-send-and-exit'."
                '("htop" "pinentry-curses" "watch"))
         (nconc eshell-visual-subcommands
                '(("git" "log" "diff" "show")
-                 ("npm" "install")))))
+                 ("npm" "install")
+                 ("docker" "build")))))
 
-    (add-hook 'eshell-mode-hook 'eshell-cmpl-initialize)
+    (add-hook 'eshell-mode-hook #'my/eshell-mode-configure)
 
     (use-package bash-completion
       :init
