@@ -44,7 +44,6 @@
            "archive-contents"))))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
- '(tramp-syntax (quote default) nil (tramp))
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)
  '(undo-outer-limit 200000000)
