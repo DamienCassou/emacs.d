@@ -64,6 +64,9 @@
 [submodule "borg"]
 	path = lib/borg
 	url = git@github.com:emacscollective/borg.git
+[submodule "borg-queen"]
+	path = lib/borg-queen
+	url = git@github.com:thblt/borg-queen.git
 [submodule "buttercup"]
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
@@ -198,6 +201,9 @@
 [submodule "git-timemachine"] # history of a file with M-x git-timemachine
 	path = lib/git-timemachine
 	url = git@github.com:pidu/git-timemachine.git
+[submodule "go-mode"]
+	path = lib/go-mode
+	url = git@github.com:dominikh/go-mode.el.git
 [submodule "google-translate"] # to translate current region and more
 	path = lib/google-translate
 	url = git@github.com:atykhonov/google-translate.git

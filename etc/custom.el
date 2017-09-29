@@ -12,7 +12,7 @@
  '(bookmark-save-flag 1)
  '(custom-safe-themes
    (quote
-    ("9eaca843eb74d29ea97cbeea9f6d4f63159700c496cc78efc43e1baf57355934")))
+    ("5f2d18d9625952148afab1f5d545e1d54c016083e03ec4fffe68729bd3dfb095")))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
@@ -23,7 +23,9 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((ispell-dictionary . "francais")
+    ((TeX-master . "cv-esthetique")
+     (TeX-PDF-mode . t)
+     (ispell-dictionary . "francais")
      (org-export-coding-system . iso-8859-15)
      (firestarter let
                   ((compilation-read-command nil))
