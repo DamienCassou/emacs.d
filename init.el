@@ -575,7 +575,8 @@
     (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
     (setq notmuch-labeler-hide-known-labels t)
     (setq notmuch-search-oldest-first nil)
-    (setq notmuch-show-imenu-indent t))
+    (setq notmuch-show-imenu-indent t)
+    (setq notmuch-draft-save-plaintext t))
   :config
   (progn
     (setq notmuch-archive-tags '("-inbox" "-unread"))
