@@ -1370,6 +1370,7 @@ Designed to be called before `message-send-and-exit'."
            " "))))
 
     (defun eshell-bash-completion ()
+      (require 'bash-completion)
       (while (pcomplete-here
               (nth 2 (bash-completion-dynamic-complete-nocomint
                       (save-excursion (eshell-bol) (point))
