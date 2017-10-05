@@ -176,9 +176,6 @@
 (use-package undo-tree
   :demand t
   :diminish undo-tree-mode
-  :init
-  (progn
-    (setq undo-tree-auto-save-history t))
   :config
   (progn
     (global-undo-tree-mode)
