@@ -1378,7 +1378,8 @@ Designed to be called before `message-send-and-exit'."
     (defun my/eshell-mode-configure ()
       (eshell-cmpl-initialize)
       (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
-      (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
+      (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
+      (eshell-smart-initialize)))
   :config
   (progn
     ;; Inspired from
@@ -1401,6 +1402,7 @@ Designed to be called before `message-send-and-exit'."
                  ("npm" "install")
                  ("docker" "build")))))
 
+    (require 'em-smart)
     (add-hook 'eshell-mode-hook #'my/eshell-mode-configure)
 
     (use-package bash-completion
