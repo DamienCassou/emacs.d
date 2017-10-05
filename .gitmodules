@@ -207,6 +207,11 @@
 [submodule "google-translate"] # to translate current region and more
 	path = lib/google-translate
 	url = git@github.com:atykhonov/google-translate.git
+[submodule "graphviz-dot-mode"]
+	path = lib/graphviz-dot-mode
+	url = git@github.com:ppareit/graphviz-dot-mode.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/graphviz-dot-mode.git"
+	info-path = texinfo
 [submodule "grunt"]
 	path = lib/grunt
 	url = git@github.com:gempesaw/grunt.el.git

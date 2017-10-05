@@ -381,7 +381,7 @@
    ("C-. o s"   . org-save-all-org-buffers))
   :init
   (progn
-    (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (java . t) (python . t)))
+    (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
     (setq org-catch-invisible-edits 'error)
     (setq org-clock-clocked-in-display nil)
     (setq org-completion-use-ido t)
@@ -406,6 +406,8 @@
   :config
   (progn
     (setq org-modules '(org-protocol org-capture ox-beamer))
+
+    (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
     (defun my:org-move-to-refile-target (&optional last)
       (interactive "p")
@@ -1408,6 +1410,8 @@ Designed to be called before `message-send-and-exit'."
       :init
       (progn
         (setq eshell-default-completion-function 'eshell-bash-completion)))))
+
+(use-package graphviz-dot-mode)
 
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
