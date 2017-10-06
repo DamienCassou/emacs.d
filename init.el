@@ -1404,6 +1404,7 @@ Designed to be called before `message-send-and-exit'."
 
     (require 'em-smart)
     (add-hook 'eshell-mode-hook #'my/eshell-mode-configure)
+    (add-to-list 'eshell-smart-display-navigate-list #'helm-eshell-history)
 
     (use-package bash-completion
       :init
