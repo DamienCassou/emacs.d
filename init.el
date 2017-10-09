@@ -1413,6 +1413,22 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package graphviz-dot-mode)
 
+(use-package omnisharp
+  :after csharp-mode
+  :preface
+  (progn
+    (defun my/configure-omnisharp ()
+      (omnisharp-mode)
+      (add-to-list 'company-backends #'company-omnisharp)
+      (company-mode)
+      (local-set-key (kbd "C-c C-c") #'recompile)))
+  :init
+  (progn
+    (add-hook 'csharp-mode-hook #'my/configure-omnisharp))
+  :config
+  (progn
+    (bind-key "C-c r r" #'omnisharp-run-code-action-refactoring omnisharp-mode-map)))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)

@@ -341,6 +341,9 @@
 [submodule "offlineimap"]
 	path = lib/offlineimap
 	url = git@github.com:jd/offlineimap.el.git
+[submodule "omnisharp"]
+	path = lib/omnisharp
+	url = git@github.com:OmniSharp/omnisharp-emacs.git
 [submodule "org"]
 	path = lib/org
 	url = git://orgmode.org/org-mode.git
