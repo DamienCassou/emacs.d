@@ -1396,7 +1396,7 @@ Designed to be called before `message-send-and-exit'."
       :config
       (progn
         (nconc eshell-visual-commands
-               '("htop" "pinentry-curses" "watch"))
+               '("htop" "pinentry-curses" "watch" "ncdu"))
         (nconc eshell-visual-subcommands
                '(("git" "log" "diff" "show")
                  ("npm" "install")
