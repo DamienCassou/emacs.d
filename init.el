@@ -359,6 +359,7 @@
   :commands (flycheck-mode)
   :init
   (progn
+    (setq flycheck-emacs-lisp-check-declare t)
     (add-hook 'prog-mode-hook #'flycheck-mode)))
 
 (use-package flycheck-cask
