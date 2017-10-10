@@ -23,7 +23,26 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((TeX-master . "cv-esthetique")
+    ((org-src-preserve-indentation)
+     (eval and
+           (featurep
+            (quote ox-extra))
+           (ox-extras-activate
+            (quote
+             (ignore-headlines))))
+     (eval require
+           (quote ox-texinfo+)
+           nil t)
+     (eval require
+           (quote ox-extra)
+           nil t)
+     (eval require
+           (quote org-man)
+           nil t)
+     (eval require
+           (quote magit-utils)
+           nil t)
+     (TeX-master . "cv-esthetique")
      (TeX-PDF-mode . t)
      (ispell-dictionary . "francais")
      (org-export-coding-system . iso-8859-15)
