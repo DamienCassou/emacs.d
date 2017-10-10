@@ -1435,6 +1435,9 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (add-hook 'omnisharp-mode-hook #'my/configure-omnisharp)))
 
+(use-package webpaste
+  :commands (webpaste-paste-buffer webpaste-paste-region))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)

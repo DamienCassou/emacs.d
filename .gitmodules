@@ -412,6 +412,9 @@
 [submodule "refine"] # edit list interactively
 	path = lib/refine
 	url = git@github.com:Wilfred/refine.git
+[submodule "request"]
+	path = lib/request
+	url = git@github.com:tkf/emacs-request.git
 [submodule "restclient"] # test REST queries
 	path = lib/restclient
 	url = git@github.com:pashky/restclient.el.git
@@ -477,6 +480,9 @@
 [submodule "visible-mark"] # show the current mark
 	path = lib/visible-mark
 	url = git@gitlab.com:iankelling/visible-mark.git
+[submodule "webpaste"]
+	path = lib/webpaste
+	url = git@github.com:etu/webpaste.el.git
 [submodule "websocket"] # dependency of jade
 	path = lib/websocket
 	url = git@github.com:ahyatt/emacs-websocket.git
