@@ -272,7 +272,12 @@
     (put 'magit-clean 'disabled nil)
     (magit-add-section-hook 'magit-status-sections-hook
                             'magit-insert-modules
-                            'magit-insert-unpulled-from-upstream)))
+                            'magit-insert-unpulled-from-upstream)
+
+    (magit-remove-popup-key 'magit-branch-popup :action ?b)
+    (magit-define-popup-action 'magit-branch-popup
+      ?b "Checkout" 'magit-branch-or-checkout
+      'magit-branch t)))
 
 (use-package vc-hooks
   :init
