@@ -433,6 +433,9 @@
 [submodule "skeletor"] # facilitates the creation of new project
 	path = lib/skeletor
 	url = git@github.com:chrisbarrett/skeletor.el.git
+[submodule "slack"]
+	path = lib/slack
+	url = git@github.com:yuya373/emacs-slack.git
 [submodule "smartscan"] # <M-n> <M-p> to move between same symbol in buffer
 	path = lib/smartscan
 	url = git@github.com:mickeynp/smart-scan.git
