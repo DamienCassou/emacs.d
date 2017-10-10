@@ -1029,7 +1029,8 @@ Designed to be called before `message-send-and-exit'."
     (setq company-dabbrev-downcase nil)
     (setq company-dabbrev-ignore-case nil)
     (add-hook 'emacs-lisp-mode-hook #'company-mode)
-    (add-hook 'css-mode-hook #'company-mode)))
+    (add-hook 'css-mode-hook #'company-mode)
+    (add-hook 'csharp-mode-hook #'company-mode)))
 
 (use-package emacs-js
   :diminish (js2-refactor-mode js2-minor-mode js-lint-mode tern-mode)
