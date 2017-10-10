@@ -1187,6 +1187,61 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setq erc-track-enable-keybindings nil)))
 
+(use-package slack
+  :commands (slack-start)
+  :bind (("C-. s u" . slack-select-unread-rooms)
+         ("C-. s b" . slack-select-rooms)
+         :map slack-mode-map
+         ("C-c e" . slack-message-edit)
+         ("C-c k" . slack-message-delete)
+         ("C-c C-k" . slack-channel-leave)
+         ("@" . slack-message-embed-mention)
+         ("#" . slack-message-embed-channel))
+  :preface
+  (progn
+    (defun my/slack-user-status (id team)
+      "Don't display user status."
+      "")
+
+    (defun my/configure-slack-mode ()
+      (cond
+       ((string= (slack-team-name slack-current-team) "Företagsplatsen")
+        (require 'ftgp)
+        (ftgp-setup-bug-reference)))))
+  :config
+  (progn
+    (require 'auth-password-store)
+
+    (slack-register-team
+     :name "foretagsplatsen"
+     :default t
+     :client-id (auth-pass-get "client-id" "ftgp/foretagsplatsen.slack.com")
+     :client-secret (auth-pass-get "client-secret" "ftgp/foretagsplatsen.slack.com")
+     :token (auth-pass-get "token" "ftgp/foretagsplatsen.slack.com")
+     :subscribed-channels '(general development stockholm-food report-editor))
+
+    (slack-register-team
+     :name "omnisharp"
+     :default nil
+     :client-id (auth-pass-get "client-id" "ftgp/omnisharp.slack.com")
+     :client-secret (auth-pass-get "client-secret" "ftgp/omnisharp.slack.com")
+     :token (auth-pass-get "token" "ftgp/omnisharp.slack.com")
+     :subscribed-channels '(emacs))
+
+    (slack-register-team
+     :name "zfrenchfuckers"
+     :default nil
+     :client-id (auth-pass-get "client-id" "frenchfuckers.slack.com")
+     :client-secret (auth-pass-get "client-secret" "frenchfuckers.slack.com")
+     :token (auth-pass-get "token" "frenchfuckers.slack.com")
+     :subscribed-channels '(general))
+
+    (advice-add #'slack-user-status :override #'my/slack-user-status)
+    (add-hook 'slack-mode-hook #'my/configure-slack-mode)
+
+    (setq slack-prefer-current-team t)
+    (setq slack-buffer-create-on-notify t)))
+
 (use-package diff-hl
   :commands (diff-hl-mode diff-hl-magit-post-refresh)
   :init
