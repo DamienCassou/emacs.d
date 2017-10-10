@@ -1148,7 +1148,6 @@ Designed to be called before `message-send-and-exit'."
     (setq-default circe-nickserv-nick "DamienCassou")
     (setq-default circe-sasl-password #'my/get-password)
     (setq-default circe-nickserv-password #'my/get-password)
-    (setq circe-format-say "{nick:-16s} {body}")
 
     (add-to-list 'circe-network-defaults
                  '("Mozilla"
