@@ -480,6 +480,9 @@
 [submodule "visible-mark"] # show the current mark
 	path = lib/visible-mark
 	url = git@gitlab.com:iankelling/visible-mark.git
+[submodule "vlf"]
+	path = lib/vlf
+	url = git@github.com:m00natic/vlfi.git
 [submodule "webpaste"]
 	path = lib/webpaste
 	url = git@github.com:etu/webpaste.el.git

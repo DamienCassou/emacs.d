@@ -1492,6 +1492,9 @@ Designed to be called before `message-send-and-exit'."
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
 
+(use-package vlf
+  :demand t)
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
