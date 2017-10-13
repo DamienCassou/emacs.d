@@ -1125,6 +1125,12 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (enable-lui-logging-globally)))
 
+(use-package lui-track-bar
+  :after lui
+  :config
+  (progn
+    (enable-lui-track-bar)))
+
 (use-package tracking
   :bind (("C-. ." . tracking-next-buffer))
   :config
