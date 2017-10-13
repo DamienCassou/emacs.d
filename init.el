@@ -1483,7 +1483,8 @@ Designed to be called before `message-send-and-exit'."
 (use-package omnisharp
   :after csharp-mode
   :bind (:map omnisharp-mode-map
-              ("C-c r r" . omnisharp-run-code-action-refactoring))
+              ("C-c r r" . omnisharp-run-code-action-refactoring)
+              ("C-c n i" . omnisharp-find-implementations))
   :preface
   (progn
     (defun my/configure-omnisharp ()
@@ -1493,7 +1494,8 @@ Designed to be called before `message-send-and-exit'."
             (local-set-key (kbd "C-c C-c") #'recompile)))))
   :init
   (progn
-    (add-hook 'omnisharp-mode-hook #'my/configure-omnisharp)))
+    (add-hook 'omnisharp-mode-hook #'my/configure-omnisharp)
+    (add-hook 'csharp-mode-hook #'omnisharp-mode)))
 
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
