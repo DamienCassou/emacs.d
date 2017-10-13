@@ -359,7 +359,7 @@
   :commands (flycheck-mode)
   :init
   (progn
-    (setq flycheck-emacs-lisp-check-declare t)
+    (setq flycheck-emacs-lisp-check-declare nil) ;; does not work
     (add-hook 'prog-mode-hook #'flycheck-mode)))
 
 (use-package flycheck-cask
