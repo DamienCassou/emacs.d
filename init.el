@@ -1113,6 +1113,9 @@ Designed to be called before `message-send-and-exit'."
     (setq lui-fill-type nil)
     (setq lui-time-stamp-format "%H:%M")
 
+
+    (setq my/lui-prompt-string (format "%s " (propertize "moi>" 'face `(:foreground "#c678dd" :background "#48384c" :weight bold :box 1))))
+
     (defun my/lui-setup ()
       (setq right-margin-width 5)
       (setq fringes-outside-margins t)
@@ -1155,6 +1158,8 @@ Designed to be called before `message-send-and-exit'."
     (setq-default circe-nickserv-nick "DamienCassou")
     (setq-default circe-sasl-password #'my/get-password)
     (setq-default circe-nickserv-password #'my/get-password)
+
+    (setq circe-prompt-string my/lui-prompt-string)
 
     (add-to-list 'circe-network-defaults
                  '("Mozilla"
@@ -1247,7 +1252,10 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'slack-mode-hook #'my/configure-slack-mode)
 
     (setq slack-prefer-current-team t)
-    (setq slack-buffer-create-on-notify t)))
+    (setq slack-buffer-create-on-notify t)
+
+    ;; This variable is defined in slack-thread, not lui!
+    (setq lui-prompt-string my/lui-prompt-string)))
 
 (use-package diff-hl
   :commands (diff-hl-mode diff-hl-magit-post-refresh)
