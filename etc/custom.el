@@ -12,7 +12,7 @@
  '(bookmark-save-flag 1)
  '(custom-safe-themes
    (quote
-    ("5f2d18d9625952148afab1f5d545e1d54c016083e03ec4fffe68729bd3dfb095")))
+    ("70c8833f6a7c1ab4838fc1b92b52d3e125d4d620d70453ce7ea8afc306014029" "5f2d18d9625952148afab1f5d545e1d54c016083e03ec4fffe68729bd3dfb095")))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
