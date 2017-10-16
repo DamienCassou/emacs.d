@@ -9,7 +9,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bookmark-save-flag 1)
+ '(bookmark-save-flag 1 t)
  '(custom-safe-themes
    (quote
     ("70c8833f6a7c1ab4838fc1b92b52d3e125d4d620d70453ce7ea8afc306014029" "5f2d18d9625952148afab1f5d545e1d54c016083e03ec4fffe68729bd3dfb095")))
@@ -65,6 +65,7 @@
            "archive-contents"))))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
+ '(tramp-syntax (quote default) nil (tramp))
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)
  '(undo-outer-limit 200000000)
