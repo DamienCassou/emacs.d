@@ -261,6 +261,7 @@
 [submodule "js2-refactor"] # A Javascript refactoring library
 	path = lib/js2-refactor
 	url = git@github.com:magnars/js2-refactor.el.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/js2-refactor.el.git"
 [submodule "json-mode"] # Major mode to edit JSON files
 	path = lib/json-mode
 	url = git@github.com:joshwnj/json-mode.git
@@ -326,6 +327,7 @@
 [submodule "no-littering"]
 	path = lib/no-littering
 	url = git@github.com:tarsius/no-littering.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/no-littering.git"
 [submodule "notmuch"]
 	path = lib/notmuch
 	url = git://notmuchmail.org/git/notmuch
