@@ -1202,6 +1202,7 @@ Designed to be called before `message-send-and-exit'."
   :commands (slack-start)
   :bind (("C-. s u" . slack-select-unread-rooms)
          ("C-. s b" . slack-select-rooms)
+         ("C-. s t" . slack-change-current-team)
          :map slack-mode-map
          ("C-c e" . slack-message-edit)
          ("C-c k" . slack-message-delete)
