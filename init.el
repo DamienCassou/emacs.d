@@ -1411,7 +1411,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (setq websocket-callback-debug-on-error t)
-    (setq websocket-debug t)))
+    (setq websocket-debug nil)))
 
 (use-package firestarter
   :demand t
