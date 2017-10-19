@@ -1241,7 +1241,7 @@ Designed to be called before `message-send-and-exit'."
      :subscribed-channels '(emacs))
 
     (slack-register-team
-     :name "zfrenchfuckers"
+     :name "frenchfuckers"
      :default nil
      :client-id (auth-pass-get "client-id" "frenchfuckers.slack.com")
      :client-secret (auth-pass-get "client-secret" "frenchfuckers.slack.com")
