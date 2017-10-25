@@ -1215,11 +1215,30 @@ Designed to be called before `message-send-and-exit'."
       "Don't display user status."
       "")
 
+    (defun my/slack-ftgp-configure-browser ()
+      (make-local-variable 'browse-url-browser-function)
+      (let ((chromium-pair (cons "https://foretagsplatsen.slack.com" #'browse-url-chromium)))
+        (if (listp browse-url-browser-function)
+            (add-to-list 'browse-url-browser-function chromium-pair)
+          (setq browse-url-browser-function (list chromium-pair
+                                                  (cons "." browse-url-browser-function))))))
+
+    (defun my/slack-configure-language (team)
+      (let ((room (slack-room-name (slack-room-find slack-current-room-id slack-current-team))))
+        (if (and (string= team "Företagsplatsen")
+                 (seq-contains '("camille" "nico") room))
+            (lui-flyspell-change-dictionary "francais")
+          (lui-flyspell-change-dictionary "english"))))
+
     (defun my/configure-slack-mode ()
-      (cond
-       ((string= (slack-team-name slack-current-team) "Företagsplatsen")
-        (require 'ftgp)
-        (ftgp-setup-bug-reference)))))
+      (let ((team (slack-team-name slack-current-team)))
+        (cond
+         ((string= team "Företagsplatsen")
+          (require 'ftgp)
+          (ftgp-setup-bug-reference)
+          (my/slack-ftgp-configure-browser)
+          ;; (my/slack-configure-language team)
+          )))))
   :config
   (progn
     (require 'auth-password-store)
