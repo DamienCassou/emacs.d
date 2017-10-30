@@ -1199,6 +1199,7 @@ Designed to be called before `message-send-and-exit'."
     (setq erc-track-enable-keybindings nil)))
 
 (use-package slack
+  :disabled t
   :commands (slack-start)
   :bind (("C-. s u" . slack-select-unread-rooms)
          ("C-. s b" . slack-select-rooms)
