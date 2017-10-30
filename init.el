@@ -1531,6 +1531,12 @@ Designed to be called before `message-send-and-exit'."
 (use-package vlf
   :demand t)
 
+(use-package pdf-tools
+  :demand t
+  :config
+  (progn
+    (pdf-tools-install)))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
