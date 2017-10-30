@@ -1464,13 +1464,6 @@ Designed to be called before `message-send-and-exit'."
                         'face `(:foreground ,foreground :background ,background)))
            " "))))
 
-    (defun eshell-bash-completion ()
-      (require 'bash-completion)
-      (while (pcomplete-here
-              (nth 2 (bash-completion-dynamic-complete-nocomint
-                      (save-excursion (eshell-bol) (point))
-                      (point))))))
-
     (defun my/eshell-mode-configure ()
       (eshell-cmpl-initialize)
       (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
@@ -1500,12 +1493,7 @@ Designed to be called before `message-send-and-exit'."
 
     (require 'em-smart)
     (add-hook 'eshell-mode-hook #'my/eshell-mode-configure)
-    (add-to-list 'eshell-smart-display-navigate-list #'helm-eshell-history)
-
-    (use-package bash-completion
-      :init
-      (progn
-        (setq eshell-default-completion-function 'eshell-bash-completion)))))
+    (add-to-list 'eshell-smart-display-navigate-list #'helm-eshell-history)))
 
 (use-package graphviz-dot-mode)
 
