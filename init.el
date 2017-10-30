@@ -1485,11 +1485,12 @@ Designed to be called before `message-send-and-exit'."
       :config
       (progn
         (nconc eshell-visual-commands
-               '("htop" "pinentry-curses" "watch" "ncdu"))
+               '("htop" "pinentry-curses" "watch" "ncdu" "jest"))
         (nconc eshell-visual-subcommands
                '(("git" "log" "diff" "show")
                  ("npm" "install")
-                 ("docker" "build")))))
+                 ("docker" "build")
+                 ("yarn" "init")))))
 
     (require 'em-smart)
     (add-hook 'eshell-mode-hook #'my/eshell-mode-configure)
