@@ -265,7 +265,7 @@
     (setq magit-wip-before-change-mode nil)
     (setq magit-branch-prefer-remote-upstream '("master"))
     (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
-    (setq  magit-branch-arguments nil))
+    (setq magit-branch-arguments nil))
   :config
   (progn
     (global-magit-file-mode)
