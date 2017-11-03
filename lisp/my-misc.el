@@ -147,21 +147,6 @@ are visible."
   (interactive)
   (occur "[^[:ascii:]]"))
 
-(defun my/mount-backup-disk (&optional unmount)
-  "Mount backup disk.  Unmount if UNMOUNT is t.
-Interactively, unmount when prefix argument."
-  (interactive "P")
-  (let ((script (expand-file-name "~/Documents/configuration/scripts/lacie-mount.sh")))
-    (require 'em-term)
-    (if unmount
-        (eshell-exec-visual script "-1")
-      (eshell-exec-visual script))))
-
-(defun my/unmount-backup-disk ()
-  "Unmount backup disk."
-  (interactive)
-  (my/mount-backup-disk t))
-
 (put 'narrow-to-region 'disabled nil)
 
 ;; https://oremacs.com/2016/02/24/dired-rsync/
