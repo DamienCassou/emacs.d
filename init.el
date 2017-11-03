@@ -816,7 +816,8 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package helpful
   :bind (("C-h f" . helpful-callable)
-         ("C-h k" . helpful-key)))
+         ("C-h k" . helpful-key)
+         ("C-h v" . helpful-variable)))
 
 (use-package anzu
   :demand t
