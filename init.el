@@ -529,7 +529,7 @@
   :diminish projectile-mode
   :init
   (progn
-    (setq projectile-completion-system 'helm)
+    (setq projectile-completion-system 'ivy)
     (setq projectile-keymap-prefix (kbd "C-. p"))
     (setq projectile-require-project-root nil))
   :config
@@ -551,6 +551,7 @@
      :test-suffix "-tests")))
 
 (use-package helm-projectile
+  :disabled t
   :demand t
   :after projectile
   :bind (:map helm-projectile-projects-map
@@ -837,6 +838,7 @@ Designed to be called before `message-send-and-exit'."
     (add-hook 'lisp-mode-hook #'aggressive-indent-mode)))
 
 (use-package helm
+  :disabled t
   :demand t
   :diminish helm-mode
   :bind (("M-x"     . helm-M-x)
@@ -904,6 +906,7 @@ Designed to be called before `message-send-and-exit'."
     (customize-save-variable 'bookmark-save-flag 1)))
 
 (use-package helm-bookmark
+  :disabled t
   :bind (("C-x r b" . helm-filtered-bookmarks)
          :map helm-bookmark-map
          ("M-s" . my/helm-open-external-terminal))
@@ -915,7 +918,47 @@ Designed to be called before `message-send-and-exit'."
                  t)))
 
 (use-package counsel
-  :bind (("M-i" . counsel-imenu)))
+  :demand t
+  :diminish counsel-mode
+  :bind (("M-i" . counsel-imenu)
+         ("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("C-h C-l" . counsel-find-library)
+         ("C-x 8 RET" . counsel-unicode-char))
+  :config
+  (progn
+    (counsel-mode)))
+
+(use-package ivy
+  :demand t
+  :diminish ivy-mode
+  :bind (("C-. i" . ivy-resume)
+         :map ivy-minibuffer-map
+         ("C-l" . ivy-backward-delete-char)
+         ("M-e" . ivy-avy)
+         ("M-n" . ivy-alt-done)
+         ("C-M-n" . ivy-immediate-done))
+  :init
+  (progn
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-count-format "(%d/%d) "))
+  :config
+  (progn
+    (ivy-mode)))
+
+(use-package counsel-projectile
+  :after projectile
+  :init
+  (progn
+    (counsel-projectile-on)
+    (setq projectile-switch-project-action #'projectile-vc)))
+
+(use-package smex) ;; used by counsel-M-x
+
+(use-package flx) ;; used by ivy
+
+(use-package swiper
+  :bind (("C-s" . swiper)))
 
 (use-package password-store
   :config
