@@ -897,9 +897,12 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package helm-descbinds
   :after helm
-  :config
+  :init
   (progn
-    (helm-descbinds-mode)))
+    ;; Instead of using the `helm-descbinds-mode', I'm trying to copy
+    ;; its content in the :init section above. This should avoid
+    ;; installing helm on startup.  (helm-descbinds-mode)
+    (advice-add 'describe-bindings :override #'helm-descbinds)))
 
 (use-package bookmark
   :init
