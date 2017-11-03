@@ -1029,7 +1029,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package beginend
   :demand t
-  :diminish beginend-global-mode
+  :diminish (beginend-global-mode beginend-prog-mode beginend-dired-mode beginend-notmuch-search-mode)
   :config
   (progn
     (beginend-global-mode)))
