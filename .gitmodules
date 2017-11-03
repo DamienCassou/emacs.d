@@ -397,6 +397,8 @@
 	url = git@github.com:politza/pdf-tools.git
 	# build-step = sudo dnf install make automake autoconf gcc gcc-c++ ImageMagick libpng-devel zlib-devel poppler-glib-devel
 	build-step = make
+	build-step = borg-byte-compile
+	build-step = borg-update-autoloads
 [submodule "pkg-info"]
 	path = lib/pkg-info
 	url = git@github.com:lunaryorn/pkg-info.el.git
