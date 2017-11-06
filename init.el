@@ -950,6 +950,16 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (ivy-mode)))
 
+(use-package ivy-rich
+  :commands ivy-switch-buffer
+  :init
+  (progn
+    (setq ivy-rich-abbreviate-paths t)
+    (setq ivy-rich-switch-buffer-name-max-length 50))
+  :config
+  (progn
+    (ivy-set-display-transformer #'ivy-switch-buffer #'ivy-rich-switch-buffer-transformer)))
+
 (use-package counsel-projectile
   :after projectile
   :init
