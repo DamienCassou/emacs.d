@@ -1396,9 +1396,8 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (defun my/offlineimap-message-when-done (message-type &optional action)
-      (if (string-match "^finished" message-type)
-          (message "Offlineimap finished")
-        (message "Offlineimap in progress")))
+      (when (string-match "^finished" message-type)
+          (message "Offlineimap finished")))
     (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done)))
 
 (use-package smtpmail
