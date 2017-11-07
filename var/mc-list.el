@@ -23,6 +23,7 @@
         keyboard-escape-quit
         kill-region
         message-beginning-of-line
+        message-tab
         my-join-line
         org-beginning-of-line
         org-ctrl-c-ctrl-c
