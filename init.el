@@ -951,7 +951,7 @@ Designed to be called before `message-send-and-exit'."
     (ivy-mode)))
 
 (use-package ivy-rich
-  :commands ivy-switch-buffer
+  :after ivy
   :init
   (progn
     (setq ivy-rich-abbreviate-paths t)
