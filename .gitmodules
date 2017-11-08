@@ -7,6 +7,7 @@
 [submodule "ace-window"] # manage windows with ace-like behavior
 	path = lib/ace-window
 	url = git@github.com:abo-abo/ace-window.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/ace-window.git"
 [submodule "adoc-mode"]
 	path = lib/adoc-mode
 	url = git@github.com:sensorflo/adoc-mode.git
