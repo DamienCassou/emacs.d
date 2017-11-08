@@ -1573,7 +1573,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
 
-(use-package vlf
+(use-package vlf ;; handle large/big files
   :demand t)
 
 (use-package pdf-tools
