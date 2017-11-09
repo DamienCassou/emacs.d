@@ -972,7 +972,10 @@ Designed to be called before `message-send-and-exit'."
 (use-package flx) ;; used by ivy
 
 (use-package swiper
-  :bind (("C-s" . swiper)))
+  :bind (("C-s" . swiper))
+  :init
+  (progn
+    (unbind-key "C-r")))
 
 (use-package password-store
   :config
