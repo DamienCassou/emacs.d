@@ -490,9 +490,6 @@
 	url = git@github.com:ternjs/tern.git
 	load-path = emacs
 	build-step = npm install
-[submodule "typescript-mode"]
-	path = lib/typescript-mode
-	url = git@github.com:ananthakumaran/typescript.el.git
 [submodule "undercover"]
 	path = lib/undercover
 	url = git@github.com:sviridov/undercover.el.git
