@@ -1514,14 +1514,11 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (defun my/eshell-prompt ()
       (let ((path (abbreviate-file-name (eshell/pwd))))
-        (let* ((background "#3d4a41") (foreground "#abb2bf"))
-          (concat
-           (format
-            (propertize "%s\n>"
-                        'face `(:foreground "#98be65" :background ,background :weight bold))
-            (propertize path
-                        'face `(:foreground ,foreground :background ,background)))
-           " "))))
+        (concat
+         (propertize
+          (format "%s\n>" path)
+          'face `(:foreground "#98be65" :background "#3d4a41" :weight bold))
+         " ")))
 
     (defun my/eshell-mode-configure ()
       (eshell-cmpl-initialize)
