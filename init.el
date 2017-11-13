@@ -940,6 +940,9 @@ Designed to be called before `message-send-and-exit'."
          ("C-x C-f" . counsel-find-file)
          ("C-h C-l" . counsel-find-library)
          ("C-x 8 RET" . counsel-unicode-char))
+  :init
+  (progn
+    (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map))
   :config
   (progn
     (counsel-mode)))
