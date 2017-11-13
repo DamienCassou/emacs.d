@@ -265,7 +265,8 @@
     (setq magit-wip-before-change-mode nil)
     (setq magit-branch-prefer-remote-upstream '("master"))
     (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
-    (setq magit-branch-arguments nil))
+    (setq magit-branch-arguments nil)
+    (setq magit-module-sections-nested nil))
   :config
   (progn
     (global-magit-file-mode)
@@ -274,6 +275,13 @@
     (magit-add-section-hook 'magit-status-sections-hook
                             'magit-insert-modules
                             'magit-insert-unpulled-from-upstream)
+
+    ;; Only show the module sections I'm interested in
+    (with-eval-after-load "magit-submodule"
+      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-overview)
+      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpulled-from-pushremote)
+      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-upstream)
+      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-pushremote))
 
     (magit-remove-popup-key 'magit-branch-popup :action ?b)
     (magit-define-popup-action 'magit-branch-popup
