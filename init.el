@@ -338,6 +338,9 @@
   (progn
     (unbind-key "C-." flyspell-mode-map)))
 
+(use-package flyspell-correct-ivy
+  :bind (("M-$" . flyspell-correct-word-generic)))
+
 (use-package eldoc
   :diminish eldoc-mode
   :commands (eldoc-mode)
@@ -1423,6 +1426,7 @@ Designed to be called before `message-send-and-exit'."
     (setq google-translate-default-target-language "en")))
 
 (use-package helm-flyspell
+  :disabled t
   :bind (("M-$" . helm-flyspell-correct)))
 
 (use-package my-misc

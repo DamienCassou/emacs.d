@@ -190,6 +190,9 @@
 [submodule "flycheck-package"] # checks elisp package metadata
 	path = lib/flycheck-package
 	url = git@github.com:purcell/flycheck-package.git
+[submodule "flyspell-correct"]
+	path = lib/flyspell-correct
+	url = git@github.com:d12frosted/flyspell-correct.git
 [submodule "font-lock+"]
 	path = lib/font-lock+
 	url = git@github.com:emacsmirror/font-lock-plus.git
