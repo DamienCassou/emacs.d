@@ -449,9 +449,6 @@
 [submodule "s"] # Associate external applications to file extensions
 	path = lib/s
 	url = git@github.com:magnars/s.el.git
-[submodule "seq"]
-	path = lib/seq
-	url = git@github.com:emacsmirror/seq.git
 [submodule "shell-switcher"]
 	path = lib/shell-switcher
 	url = git@github.com:DamienCassou/shell-switcher.git
