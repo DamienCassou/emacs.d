@@ -316,6 +316,9 @@
 	path = lib/magit
 	url = git@github.com:magit/magit.git
 	info-path = Documentation
+[submodule "magit-popup"]
+	path = lib/magit-popup
+	url = https://DamienCassou@github.com/magit/magit-popup.git
 [submodule "make-it-so"] # Transform files with Makefile recipes
 	path = lib/make-it-so
 	url = git@github.com:abo-abo/make-it-so.git
