@@ -1573,7 +1573,8 @@ Designed to be called before `message-send-and-exit'."
   :after csharp-mode
   :bind (:map omnisharp-mode-map
               ("C-c r r" . omnisharp-run-code-action-refactoring)
-              ("C-c n i" . omnisharp-find-implementations))
+              ("C-c n i" . omnisharp-find-implementations)
+              ("C-c n u" . omnisharp-find-usages))
   :preface
   (progn
     (defun my/configure-omnisharp ()
