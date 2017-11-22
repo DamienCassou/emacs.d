@@ -283,6 +283,7 @@
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-upstream)
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-pushremote))
 
+    ;; bind `b b' to #'magit-branch-or-checkout instead of #'magit-checkout
     (magit-remove-popup-key 'magit-branch-popup :action ?b)
     (magit-define-popup-action 'magit-branch-popup
       ?b "Checkout" 'magit-branch-or-checkout
