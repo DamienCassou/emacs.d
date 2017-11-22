@@ -87,6 +87,9 @@
 [submodule "closql"]
 	path = lib/closql
 	url = git@github.com:emacscollective/closql.git
+[submodule "commit-msg-prefix"]
+	path = lib/commit-msg-prefix
+	url = https://DamienCassou@github.com/kidd/commit-msg-prefix.git
 [submodule "company"]
 	path = lib/company
 	url = git@github.com:company-mode/company-mode.git
@@ -193,6 +196,7 @@
 [submodule "flyspell-correct"]
 	path = lib/flyspell-correct
 	url = git@github.com:d12frosted/flyspell-correct.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/flyspell-correct.git"
 [submodule "font-lock+"]
 	path = lib/font-lock+
 	url = git@github.com:emacsmirror/font-lock-plus.git

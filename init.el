@@ -1222,7 +1222,7 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (defun my/get-password (host &optional user)
       "Return password for HOST and USER."
-      (when-let ((entry (auth-pass--find-match host user)))
+      (when-let ((entry (auth-pass--find-match host user nil)))
         (auth-pass-get 'secret entry))))
   :config
   (progn
