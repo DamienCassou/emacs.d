@@ -958,7 +958,6 @@ Designed to be called before `message-send-and-exit'."
   :diminish ivy-mode
   :bind (("C-. i" . ivy-resume)
          :map ivy-minibuffer-map
-         ("C-o" . ivy-dispatching-done)
          ("C-l" . ivy-backward-delete-char))
   :init
   (progn
@@ -1051,7 +1050,7 @@ Designed to be called before `message-send-and-exit'."
     (setq auth-sources '(password-store))))
 
 (use-package ace-window
-  :bind* (("M-o" . ace-window))
+  :bind* (("C-x o" . ace-window))
   :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
