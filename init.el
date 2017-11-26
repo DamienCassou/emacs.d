@@ -390,8 +390,7 @@
 
 (use-package org
   :bind
-  (("C-. o t"   . org-capture)
-   ("C-. o a"   . org-agenda)
+  (("C-. o a"   . org-agenda)
    ("C-. o l"   . org-store-link)
    ("C-. o w"   . my:org-move-to-refile-target)
    ("C-. o s"   . org-save-all-org-buffers))
@@ -827,9 +826,12 @@ Designed to be called before `message-send-and-exit'."
       (revert-buffer ignore-auto t nil))))
 
 (use-package helpful
-  :bind (("C-h f" . helpful-callable)
-         ("C-h k" . helpful-key)
-         ("C-h v" . helpful-variable)))
+  :bind (("C-h k" . helpful-key))
+  :init
+  (progn
+    (with-eval-after-load "counsel"
+      (setq counsel-describe-function-function #'helpful-callable)
+      (setq counsel-describe-variable-function #'helpful-variable))))
 
 (use-package anzu
   :demand t
@@ -940,7 +942,10 @@ Designed to be called before `message-send-and-exit'."
          ("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-h C-l" . counsel-find-library)
-         ("C-x 8 RET" . counsel-unicode-char))
+         ("C-h f" .   counsel-describe-function)
+         ("C-h v" .   counsel-describe-variable)
+         ("C-x 8 RET" . counsel-unicode-char)
+         ("C-. o t"   . counsel-org-capture))
   :init
   (progn
     (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map))
@@ -953,10 +958,8 @@ Designed to be called before `message-send-and-exit'."
   :diminish ivy-mode
   :bind (("C-. i" . ivy-resume)
          :map ivy-minibuffer-map
-         ("C-l" . ivy-backward-delete-char)
-         ("M-e" . ivy-avy)
-         ("M-n" . ivy-alt-done)
-         ("C-M-n" . ivy-immediate-done))
+         ("C-o" . ivy-dispatching-done)
+         ("C-l" . ivy-backward-delete-char))
   :init
   (progn
     (setq ivy-use-virtual-buffers t)
@@ -1552,7 +1555,7 @@ Designed to be called before `message-send-and-exit'."
 
     (defun my/eshell-mode-configure ()
       (eshell-cmpl-initialize)
-      (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
+      (define-key eshell-mode-map (kbd "M-p") 'counsel-esh-history)
       (eshell-smart-initialize)))
   :config
   (progn
