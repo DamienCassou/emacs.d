@@ -139,7 +139,8 @@ are visible."
   (interactive)
   (seq-do #'load-file
           (seq-filter (lambda (filename)
-                        (string-suffix-p ".el" filename))
+                        (and (string-suffix-p ".el" filename)
+                             (not (string= filename ".dir-locals.el"))))
                       (directory-files "."))))
 
 (defun occur-non-ascii ()
