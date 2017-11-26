@@ -90,6 +90,9 @@
 [submodule "company"]
 	path = lib/company
 	url = git@github.com:company-mode/company-mode.git
+[submodule "company-quickhelp"]
+	path = lib/company-quickhelp
+	url = git@github.com:expez/company-quickhelp.git
 [submodule "company-restclient"] # provides completion for restclient
 	path = lib/company-restclient
 	url = git@github.com:iquiw/company-restclient.git
@@ -207,6 +210,9 @@
 [submodule "frame-fns"]
 	path = lib/frame-fns
 	url = git@github.com:emacsmirror/frame-fns.git
+[submodule "fsharp-mode"]
+	path = lib/fsharp-mode
+	url = git@github.com:rneatherway/emacs-fsharp-mode-bin.git
 [submodule "ftgp"]
 	path = lib/ftgp
 	url = https://DamienCassou@gitlab.petton.fr/ftgp/emacs.git
