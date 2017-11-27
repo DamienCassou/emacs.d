@@ -173,6 +173,12 @@
   ;; https://src.fedoraproject.org/rpms/emacs/blob/f27/f/default.el
   (setq smime-CA-directory "/etc/ssl/certs"))
 
+(use-package abbrev
+  :diminish abbrev-mode
+  :init
+  (progn
+    (setq-default abbrev-mode t)))
+
 (use-package undo-tree
   :demand t
   :diminish undo-tree-mode
