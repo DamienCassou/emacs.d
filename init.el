@@ -179,6 +179,11 @@
   (progn
     (setq-default abbrev-mode t)))
 
+(use-package facemenu
+  :config
+  (progn
+    (unbind-key "M-o")))
+
 (use-package undo-tree
   :demand t
   :diminish undo-tree-mode
