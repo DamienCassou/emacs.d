@@ -339,8 +339,7 @@
 
 (use-package eldoc
   :diminish
-  :hook ((emacs-lisp-mode . eldoc-mode)
-         (eval-expression-minibuffer-setup- . eldoc-mode)))
+  :hook ((emacs-lisp-mode eval-expression-minibuffer-setup) . eldoc-mode))
 
 (use-package checkdoc
   :diminish
@@ -444,14 +443,18 @@
     ;; This is my `shell-switcher-switch-buffer':
     (unbind-key "C-'" org-mode-map)
 
-    (with-eval-after-load 'org-agenda ;; Those are my `beginning-of-buffer' and `end-of-buffer':
-      (unbind-key "<S-left>" org-agenda-mode-map)
-      (unbind-key "<S-right>" org-agenda-mode-map))
-
+    ;; Those are my `beginning-of-buffer' and `end-of-buffer':
     (unbind-key "<S-left>" org-mode-map)
     (unbind-key "<S-right>" org-mode-map)
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))))
+
+(use-package org-agenda
+  :config
+  (progn
+    ;; Those are my `beginning-of-buffer' and `end-of-buffer':
+    (unbind-key "<S-left>" org-agenda-mode-map)
+    (unbind-key "<S-right>" org-agenda-mode-map)))
 
 (use-package org-notmuch
   :after org)
@@ -561,7 +564,11 @@
 (use-package notmuch
   :preface (setq-default notmuch-command (executable-find "notmuch"))
   :if notmuch-command
-  :bind (("C-. m" . notmuch))
+  :bind (("C-. m" . notmuch)
+         :map notmuch-search-mode-map
+         ;; bind 'r' to reply-all, and 'R' to reply
+         ("r" . notmuch-search-reply-to-thread)
+         ("R" . notmuch-search-reply-to-thread-sender))
   :init
   (progn
     (setq notmuch-always-prompt-for-sender t)
@@ -569,22 +576,13 @@
     (setq notmuch-crypto-process-mime t)
     (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
     (setq notmuch-labeler-hide-known-labels t)
+    (setq notmuch-search-oldest-first nil)
     (setq notmuch-draft-save-plaintext t))
   :config
   (progn
     (setq notmuch-archive-tags '("-inbox" "-unread"))
 
     (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))))
-
-(use-package notmuch-search
-  :bind (
-         :map notmuch-search-mode-map
-         ;; bind 'r' to reply-all, and 'R' to reply
-         ("r" . notmuch-search-reply-to-thread)
-         ("R" . notmuch-search-reply-to-thread-sender))
-  :init
-  (progn
-    (setq notmuch-search-oldest-first nil)))
 
 (use-package notmuch-show
   :bind (
@@ -610,6 +608,7 @@
 
     (defun my/mm-ics-to-org-part (handle &optional prompt)
       "Add message part HANDLE to org."
+      (ignore prompt)
       (mm-with-unibyte-buffer
         (mm-insert-part handle)
         (mm-add-meta-html-tag handle)
@@ -620,6 +619,20 @@
       "Save the .ics MIME part containing point to an org file."
       (interactive)
       (notmuch-show-apply-to-current-part-handle #'my/mm-ics-to-org-part))))
+
+(use-package mml
+  :config
+  (progn
+    ;; http://mbork.pl/2015-11-28_Fixing_mml-attach-file_using_advice
+    (defun my:mml-attach-file--go-to-eob (orig-fun &rest args)
+      "Go to the end of buffer before attaching files."
+      (save-excursion
+        (save-restriction
+          (widen)
+          (goto-char (point-max))
+          (apply orig-fun args))))
+
+    (advice-add 'mml-attach-file :around #'my:mml-attach-file--go-to-eob)))
 
 (use-package profile
   :after (notmuch)
@@ -695,24 +708,9 @@
                  #'profile-queue-insert-section
                  t)))
 
-(use-package mml
-  :config
-  (progn
-    ;; http://mbork.pl/2015-11-28_Fixing_mml-attach-file_using_advice
-    (defun my:mml-attach-file--go-to-eob (orig-fun &rest args)
-      "Go to the end of buffer before attaching files."
-      (save-excursion
-        (save-restriction
-          (widen)
-          (goto-char (point-max))
-          (apply orig-fun args))))
-
-    (advice-add 'mml-attach-file :around #'my:mml-attach-file--go-to-eob)))
-
 (use-package message
   :init
   (progn
-    (setq message-default-charset 'utf-8)
     (setq message-log-max t)
     (setq message-send-mail-function 'message-smtpmail-send-it)
     (setq message-signature t)
@@ -726,6 +724,7 @@
     (defun my:message-send-and-exit (&optional arg)
       "Set profile according to From field.
 Designed to be called before `message-send-and-exit'."
+      (ignore arg)
       (require 'profile)
       (profile-set-profile-from-message-from-field))
     (advice-add #'message-send-and-exit
@@ -734,32 +733,22 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package image
   :config
-  (imagemagick-register-types))
+  (progn
+    (imagemagick-register-types)))
 
 (use-package paredit
-  :diminish paredit-mode
-  :commands (enable-paredit-mode)
-  :bind (:map paredit-mode-map
-              ("M-s" . nil))
-  :init
-  (progn
-    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-    (add-hook 'lisp-mode-hook #'enable-paredit-mode)
-    (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode))
+  :diminish
+  :hook ((emacs-lisp-mode lisp-mode eval-expression-minibuffer-setup) . enable-paredit-mode)
   :config
   (progn
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
 (use-package autorevert
-  :diminish auto-revert-mode)
+  :diminish)
 
 (use-package smartscan
-  :commands (smartscan-mode)
-  :init
-  (progn
-    (add-hook 'prog-mode-hook #'smartscan-mode)
-    (add-hook 'pillar-mode-hook #'smartscan-mode)))
+  :hook (prog-mode . smartscan-mode))
 
 (use-package zoom-frm
   :bind (("C-x C-+" . zoom-in/out)
@@ -795,13 +784,14 @@ Designed to be called before `message-send-and-exit'."
     (global-paren-face-mode)))
 
 (use-package help
-  :bind (:map help-map
-              ("C-v" . find-variable)
-              ("C-k" . find-function-on-key)
-              ("C-f" . find-function)
-              ("C-l" . find-library)
-              :map help-mode-map
-              ("g" . my:revert-buffer-no-confirm))
+  :bind (
+         :map help-map
+         ("C-v" . find-variable)
+         ("C-k" . find-function-on-key)
+         ("C-f" . find-function)
+         ("C-l" . find-library)
+         :map help-mode-map
+         ("g" . my:revert-buffer-no-confirm))
   :config
   (progn
     (defun my:revert-buffer-no-confirm (&optional ignore-auto)
@@ -818,8 +808,9 @@ Designed to be called before `message-send-and-exit'."
       (setq counsel-describe-variable-function #'helpful-variable))))
 
 (use-package anzu
+  :disabled
   :demand t
-  :diminish anzu-mode
+  :diminish
   :bind (("M-%" . anzu-query-replace)
          ("C-M-%" . anzu-query-replace-regexp))
   :config
@@ -829,99 +820,17 @@ Designed to be called before `message-send-and-exit'."
     (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)))
 
 (use-package aggressive-indent
-  :diminish aggressive-indent-mode
-  :commands aggressive-indent-mode
-  :init
-  (progn
-    (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-    (add-hook 'lisp-mode-hook #'aggressive-indent-mode)))
-
-(use-package helm
-  :disabled t
-  :demand t
-  :diminish helm-mode
-  :bind (("M-x"     . helm-M-x)
-         ("M-y"     . helm-show-kill-ring)
-         ("C-x b"   . helm-mini)
-         ("C-x C-f" . helm-find-files)
-         ("C-x d"   . helm-find-files)
-         ("C-h SPC" . helm-all-mark-rings)
-         ("C-:"     . helm-eval-expression-with-eldoc)
-         :map helm-map
-         ("<tab>"   . helm-execute-persistent-action)
-         ("C-i"     . helm-execute-persistent-action)
-         ("C-z"     . helm-select-action)
-         ("<S-left>"  . helm-beginning-of-buffer)
-         ("<S-right>" . helm-end-of-buffer)
-         :map helm-find-files-map
-         ("M-s"     . my/helm-open-external-terminal))
-  :init
-  (progn
-    (require 'helm-config))
-  :config
-  (progn
-    (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-          helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
-          helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-          helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-          helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-          helm-ff-file-name-history-use-recentf t)
-
-    (with-eval-after-load "eshell"
-      (require 'helm-eshell))
-
-    (with-eval-after-load "projectile"
-      (require 'helm-projectile))
-
-    (helm-mode 1)
-
-    (defun my/helm-open-external-terminal ()
-      (interactive)
-      (with-helm-alive-p
-        (helm-exit-and-execute-action
-         #'my/open-external-terminal)))
-
-    (defun my/open-external-terminal (file)
-      (interactive)
-      (async-shell-command
-       (concat "cd "
-               (file-name-directory file)
-               " && gnome-terminal")))
-
-    (add-to-list 'helm-find-files-actions
-                 (cons "Open in external terminal `M-s'"
-                       #'my/open-external-terminal)
-                 t)))
-
-(use-package helm-descbinds
-  :after helm
-  :init
-  (progn
-    ;; Instead of using the `helm-descbinds-mode', I'm trying to copy
-    ;; its content in the :init section above. This should avoid
-    ;; installing helm on startup.  (helm-descbinds-mode)
-    (advice-add 'describe-bindings :override #'helm-descbinds)))
+  :diminish
+  :hook ((lisp-mode emacs-lisp-mode) . aggressive-indent-mode))
 
 (use-package bookmark
   :init
   (progn
     (customize-save-variable 'bookmark-save-flag 1)))
 
-(use-package helm-bookmark
-  :disabled t
-  :bind (("C-x r b" . helm-filtered-bookmarks)
-         :map helm-bookmark-map
-         ("M-s" . my/helm-open-external-terminal))
-  :config
-  (progn
-    (add-to-list 'helm-type-bookmark-actions
-                 (cons "Open in external terminal `M-s'"
-                       #'my/open-external-terminal)
-                 t)))
-
 (use-package counsel
   :demand t
-  :diminish counsel-mode
+  :diminish
   :bind (("M-i" . counsel-imenu)
          ("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
@@ -939,7 +848,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package ivy
   :demand t
-  :diminish ivy-mode
+  :diminish
   :bind (("C-. i" . ivy-resume)
          :map ivy-minibuffer-map
          ("C-l" . ivy-backward-delete-char))
@@ -979,8 +888,10 @@ Designed to be called before `message-send-and-exit'."
   :after projectile
   :init
   (progn
-    (counsel-projectile-on)
-    (setq projectile-switch-project-action #'projectile-vc)))
+    (setq projectile-switch-project-action #'projectile-vc))
+  :config
+  (progn
+    (counsel-projectile-on)))
 
 (use-package smex) ;; used by counsel-M-x
 
@@ -990,6 +901,7 @@ Designed to be called before `message-send-and-exit'."
   :bind (("C-s" . swiper))
   :init
   (progn
+    ;; To help me stop using it
     (unbind-key "C-r")))
 
 (use-package password-store
@@ -999,7 +911,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package pass
   :commands pass
-  :init
+  :config
   (progn
     (defun my/pass-insert-generated (entry)
       "Same as pass-insert-generated but with my own template."
@@ -1016,9 +928,8 @@ Designed to be called before `message-send-and-exit'."
                    user-mail-address
                    entry))
           (password-store-edit entry)
-          (pass-update-buffer)))))
-  :config
-  (progn
+          (pass-update-buffer))))
+
     (advice-add #'pass-insert-generated :override #'my/pass-insert-generated)))
 
 (use-package auth-source
@@ -1043,8 +954,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package avy
   :bind* (("C-," . avy-goto-char-2))
-  ;; dont :bind* this as this would override `M-g` in Projectile
-  ;; (helm-projectile-vc):
   :bind (("M-g g" . avy-goto-line))
   :init
   (progn
@@ -1053,7 +962,7 @@ Designed to be called before `message-send-and-exit'."
     (setq avy-style 'at-full)))
 
 (use-package outline
-  :diminish outline-minor-mode)
+  :diminish)
 
 (use-package beginend
   :demand t
@@ -1070,17 +979,16 @@ Designed to be called before `message-send-and-exit'."
           "~/Documents/configuration/contacts/contacts")))
 
 (use-package nameless
-  :diminish nameless-mode
-  :commands (nameless-mode)
+  :diminish
+  :hook (emacs-lisp-mode . nameless-mode)
   :init
   (progn
     (setq nameless-affect-indentation-and-filling nil)
-    (setq nameless-prefix "…")
-    (add-hook 'emacs-lisp-mode-hook #'nameless-mode)))
+    (setq nameless-prefix "…")))
 
 (use-package beacon
   :demand t
-  :diminish beacon-mode
+  :diminish
   :init
   (progn
     (setq beacon-blink-when-focused t))
@@ -1091,41 +999,33 @@ Designed to be called before `message-send-and-exit'."
     (beacon-mode)))
 
 (use-package subword
-  :diminish subword-mode
+  :diminish
   :init
   (progn
     (global-subword-mode)))
 
 (use-package company
-  :diminish company-mode
-  :commands (company-mode)
+  :diminish
   :bind ("C-. /" . company-complete)
+  :hook ((emacs-lisp-mode css-mode csharp-mode) . company-mode)
   :init
   (progn
     (setq company-dabbrev-downcase nil)
-    (setq company-dabbrev-ignore-case nil)
-    (add-hook 'emacs-lisp-mode-hook #'company-mode)
-    (add-hook 'css-mode-hook #'company-mode)
-    (add-hook 'csharp-mode-hook #'company-mode)))
+    (setq company-dabbrev-ignore-case nil)))
 
 (use-package emacs-js
   :diminish (js2-refactor-mode js2-minor-mode js-lint-mode tern-mode)
-  :load-path "packages/emacs-js"
-  :commands (setup-js-buffer)
-  :init
-  (progn
-    (add-hook 'js-mode-hook #'setup-js-buffer))
+  :hook (js-mode . setup-js-buffer)
   :config
   (progn
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
 
 (use-package widgetjs
-  :load-path "packages/emacs-js/widgetjs"
-  :diminish widgetjs-mode)
+  :diminish)
 
 (use-package amd-mode
-  :diminish amd-mode)
+  :diminish)
 
 (use-package indium
   :diminish indium-interaction-mode
@@ -1138,7 +1038,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package ftgp
   :demand t
-  :load-path "packages/ftgp"
   :config
   (progn
     (require 'bookmark)
@@ -1178,7 +1077,8 @@ Designed to be called before `message-send-and-exit'."
     (bind-key "C-x C-j" #'dired-jump)))
 
 (use-package lui
-  :config
+  :hook (lui-mode . my/lui-setup)
+  :init
   (progn
     (setq lui-flyspell-p t)
     (setq lui-flyspell-alist '((".*" "american")))
@@ -1187,15 +1087,20 @@ Designed to be called before `message-send-and-exit'."
     (setq lui-fill-type nil)
     (setq lui-time-stamp-format "%H:%M")
 
-
-    (setq my/lui-prompt-string (format "%s " (propertize "moi>" 'face `(:foreground "#c678dd" :background "#48384c" :weight bold :box 1))))
-
+    (setq my/lui-prompt-string
+          (format "%s " (propertize "moi>"
+                                    'face `(
+                                            :foreground "#c678dd"
+                                            :background "#48384c"
+                                            :weight bold
+                                            :box 1)))))
+  :config
+  (progn
     (defun my/lui-setup ()
       (setq right-margin-width 5)
       (setq fringes-outside-margins t)
       (setq word-wrap t)
-      (setq wrap-prefix "    "))
-    (add-hook 'lui-mode-hook 'my/lui-setup)))
+      (setq wrap-prefix "    "))))
 
 (use-package lui-logging
   :after lui
@@ -1218,11 +1123,11 @@ Designed to be called before `message-send-and-exit'."
 (use-package circe
   ;; Install gnutls-utils if circe is stuck "Connecting..."
   ;; https://github.com/jorgenschaefer/circe/issues/287
-  :init
+  :preface
   (progn
-    (defun my/get-password (host &optional user)
+    (defun my/circe-get-password (host &optional user)
       "Return password for HOST and USER."
-      (when-let ((entry (auth-pass--find-match host user nil)))
+      (when-let* ((entry (auth-pass--find-match host user nil)))
         (auth-pass-get 'secret entry))))
   :config
   (progn
@@ -1230,8 +1135,8 @@ Designed to be called before `message-send-and-exit'."
     (setq circe-reduce-lurker-spam t)
     (setq-default circe-sasl-username "DamienCassou")
     (setq-default circe-nickserv-nick "DamienCassou")
-    (setq-default circe-sasl-password #'my/get-password)
-    (setq-default circe-nickserv-password #'my/get-password)
+    (setq-default circe-sasl-password #'my/circe-get-password)
+    (setq-default circe-nickserv-password #'my/circe-get-password)
 
     (setq circe-prompt-string my/lui-prompt-string)
 
@@ -1353,19 +1258,12 @@ Designed to be called before `message-send-and-exit'."
     (setq lui-prompt-string my/lui-prompt-string)))
 
 (use-package diff-hl
-  :commands (diff-hl-mode diff-hl-magit-post-refresh)
-  :init
-  (progn
-    (add-hook 'prog-mode-hook #'diff-hl-mode)
-    (with-eval-after-load 'magit
-      (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh t))))
+  :hook ((prog-mode . diff-hl-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package yasnippet
-  :diminish yas-minor-mode
-  :commands (yas-minor-mode)
-  :init
-  (progn
-    (add-hook 'emacs-lisp-mode-hook #'yas-minor-mode))
+  :diminish
+  :hook (emacs-lisp-mode . yas-minor-mode)
   :config
   (progn
     (delq 'yas-installed-snippets-dir yas-snippet-dirs)
@@ -1373,50 +1271,42 @@ Designed to be called before `message-send-and-exit'."
     (yas-reload-all)))
 
 (use-package ws-butler
-  :diminish ws-butler-mode
-  :commands (ws-butler-mode)
-  :init
-  (progn
-    (add-hook 'prog-mode-hook #'ws-butler-mode)))
+  :diminish
+  :hook (prog-mode . ws-butler-mode))
 
 (use-package editorconfig
-  :diminish editorconfig-mode
-  :init
-  (progn
-    (add-hook 'prog-mode-hook #'editorconfig-mode)
-    (add-hook 'text-mode-hook #'editorconfig-mode)))
+  :diminish
+  :hook ((prog-mode text-mode) . editorconfig-mode))
 
 (use-package compile
+  :hook (compilation-filter . my/colorize-compilation-buffer)
   :config
   (progn
     ;; http://stackoverflow.com/questions/13397737
     (defun my/colorize-compilation-buffer ()
       (require 'ansi-color)
-      (toggle-read-only)
+      (read-only-mode)
       (ansi-color-apply-on-region compilation-filter-start (point))
-      (toggle-read-only))
-    (add-hook 'compilation-filter-hook #'my/colorize-compilation-buffer)))
+      (read-only-mode))))
 
 (use-package duplicate-thing
   :bind (("M-D" . duplicate-thing)))
 
 (use-package embrace
   :bind (("C-. ," . embrace-commander))
-  :init
-  (progn
-    (add-hook 'emacs-lisp-mode-hook 'embrace-emacs-lisp-mode-hook)))
+  :hook (emacs-lisp-mode . embrace-emacs-lisp-mode-hook))
 
 (use-package offlineimap
-  :commands (offlineimap)
+  :commands (offlineimap my/offlineimap-message-when-done)
   :init
   (progn
-    (setq offlineimap-command "offlineimap -u machineui"))
+    (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done))
   :config
   (progn
     (defun my/offlineimap-message-when-done (message-type &optional action)
+      (ignore action)
       (when (string-match "^finished" message-type)
-          (message "Offlineimap finished")))
-    (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done)))
+        (message "Offlineimap finished")))))
 
 (use-package smtpmail
   :init
@@ -1437,32 +1327,11 @@ Designed to be called before `message-send-and-exit'."
     (setq google-translate-default-source-language "sv")
     (setq google-translate-default-target-language "en")))
 
-(use-package helm-flyspell
-  :disabled t
-  :bind (("M-$" . helm-flyspell-correct)))
-
 (use-package my-misc
   :demand t
   :load-path "lisp")
 
-(use-package messages-are-flowing
-  :disabled t
-  :demand t
-  :config
-  (progn
-    (add-hook 'message-mode-hook
-              #'messages-are-flowing-use-and-mark-hard-newlines)))
-
 (use-package make-it-so)
-
-(use-package snapshot-timemachine-rsnapshot
-  :after snapshot-timemachine
-  :config
-  (progn
-    (setq snapshot-timemachine-rsnapshot-backup-dir
-          (expand-file-name
-           "rsnapshot"
-           (bookmark-get-filename "Lacie")))))
 
 (use-package skeletor
   :commands (skeletor-create-project)
@@ -1471,16 +1340,8 @@ Designed to be called before `message-send-and-exit'."
     (setq skeletor-project-directory "/home/cassou/.emacs.d/packages/")
     (setq skeletor-show-project-command 'magit-status)))
 
-(use-package buttercup)
-
-(use-package hierarchy)
-
 (use-package klassified
-  :load-path "~/.emacs.d/packages/klassified"
-  :commands (klassified-interaction-js-mode)
-  :init
-  (progn
-    (add-hook 'js-mode-hook #'klassified-interaction-js-mode)))
+  :hook (js-mode . klassified-interaction-js-mode))
 
 (use-package json-navigator
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
@@ -1490,29 +1351,19 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setq markdown-command "kramdown")))
 
-(use-package hydra
-  :init
-  (progn
-    (defhydra hydra-window (global-map "C-. w")
-      "zoom"
-      ("+" zoom-frm-in "in")
-      ("-" zoom-frm-out "out")
-      ("=" zoom-frm-unzoom "reset"))))
-
 (use-package devdocs
   :commands (devdocs-search))
 
 (use-package websocket
-  :config
+  :init
   (progn
     (setq websocket-callback-debug-on-error t)
     (setq websocket-debug nil)))
 
 (use-package firestarter
-  :demand t
-  :config
+  :hook (prog-mode . firestarter-mode)
+  :init
   (progn
-    (add-hook 'prog-mode-hook #'firestarter-mode)
     (setq firestarter-default-type 'finished)))
 
 (use-package adoc-mode
@@ -1528,19 +1379,17 @@ Designed to be called before `message-send-and-exit'."
   :commands (eshell eshell-command)
   :preface
   (progn
+    (eval-when-compile
+      (declare-function eshell/pwd "em-dirs"))
+
     (defun my/eshell-prompt ()
       (let ((path (abbreviate-file-name (eshell/pwd))))
         (concat
          (propertize
           (format "%s\n>" path)
           'face `(:foreground "#98be65" :background "#3d4a41" :weight bold))
-         " ")))
-
-    (defun my/eshell-mode-configure ()
-      (eshell-cmpl-initialize)
-      (define-key eshell-mode-map (kbd "M-p") 'counsel-esh-history)
-      (eshell-smart-initialize)))
-  :config
+         " "))))
+  :init
   (progn
     ;; Inspired from
     ;; https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp/init-eshell.el
@@ -1550,42 +1399,53 @@ Designed to be called before `message-send-and-exit'."
 
     ;; If the prompt spans over multiple lines, the regexp should match
     ;; last line only.
-    (setq-default eshell-prompt-regexp "^> ")
+    (setq-default eshell-prompt-regexp "^> ")))
 
-    (use-package em-term
-      :config
-      (progn
-        (nconc eshell-visual-commands
-               '("htop" "pinentry-curses" "watch" "ncdu" "jest"))
-        (nconc eshell-visual-subcommands
-               '(("git" "log" "diff" "show")
-                 ("npm" "install")
-                 ("docker" "build")
-                 ("yarn" "init")))))
+(use-package esh-mode
+  :hook (eshell-mode . my/configure-esh-mode)
+  :config
+  (progn
+    ;; We can't use use-package's :bind here as eshell insists on
+    ;; recreating a fresh eshell-mode-map for each new eshell buffer.
+    (defun my/configure-esh-mode ()
+      (bind-key "M-p" #'counsel-esh-history eshell-mode-map))))
 
-    (require 'em-smart)
-    (add-hook 'eshell-mode-hook #'my/eshell-mode-configure)
-    (add-to-list 'eshell-smart-display-navigate-list #'helm-eshell-history)))
+(use-package em-cmpl
+  :hook (eshell-mode . eshell-cmpl-initialize))
 
-(use-package graphviz-dot-mode)
+(use-package em-smart
+  :hook (eshell-mode . eshell-smart-initialize)
+  :config
+  (progn
+    (add-to-list 'eshell-smart-display-navigate-list #'counsel-esh-history)))
+
+(use-package em-term
+  :config
+  (progn
+    (nconc eshell-visual-commands
+           '("htop" "pinentry-curses" "watch" "ncdu" "jest"))
+    (nconc eshell-visual-subcommands
+           '(("git" "log" "diff" "show")
+             ("npm" "install")
+             ("docker" "build")
+             ("yarn" "init")))))
 
 (use-package omnisharp
   :after csharp-mode
-  :bind (:map omnisharp-mode-map
-              ("C-c r r" . omnisharp-run-code-action-refactoring)
-              ("C-c n i" . omnisharp-find-implementations)
-              ("C-c n u" . omnisharp-find-usages))
-  :preface
+  :bind (
+         :map omnisharp-mode-map
+         ("C-c r r" . omnisharp-run-code-action-refactoring)
+         ("C-c n i" . omnisharp-find-implementations)
+         ("C-c n u" . omnisharp-find-usages))
+  :hook ((omnisharp-mode . my/configure-omnisharp)
+         (csharp-mode . omnisharp-mode))
+  :config
   (progn
     (defun my/configure-omnisharp ()
       (if omnisharp-mode
           (progn
             (add-to-list 'company-backends #'company-omnisharp)
-            (local-set-key (kbd "C-c C-c") #'recompile)))))
-  :init
-  (progn
-    (add-hook 'omnisharp-mode-hook #'my/configure-omnisharp)
-    (add-hook 'csharp-mode-hook #'omnisharp-mode)))
+            (local-set-key (kbd "C-c C-c") #'recompile))))))
 
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
