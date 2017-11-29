@@ -59,12 +59,11 @@
     (setq auto-compile-source-recreate-deletes-dest t)
     (setq auto-compile-toggle-deletes-nonlib-dest t)
     (setq auto-compile-update-autoloads t))
+  :hook (auto-compile-inhibit-compile . auto-compile-inhibit-compile-detached-git-head)
   :config
   (progn
     (auto-compile-on-load-mode)
-    (auto-compile-on-save-mode)
-    (add-hook 'auto-compile-inhibit-compile-hook
-              'auto-compile-inhibit-compile-detached-git-head)))
+    (auto-compile-on-save-mode)))
 
 (use-package epkg
   :init
@@ -174,7 +173,7 @@
   (setq smime-CA-directory "/etc/ssl/certs"))
 
 (use-package abbrev
-  :diminish abbrev-mode
+  :diminish
   :init
   (progn
     (setq-default abbrev-mode t)))
@@ -186,39 +185,32 @@
 
 (use-package undo-tree
   :demand t
-  :diminish undo-tree-mode
+  :diminish
   :config
   (progn
     (global-undo-tree-mode)
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package dired
-  :bind (("C-x C-j" . dired-jump))
+  :bind (("C-x C-j" . dired-jump)
+         :map dired-mode-map
+         ("C-a" . my/dired-move-beginning-of-line))
+  :hook (dired-mode . dired-hide-details-mode)
   :init
   (progn
     (setq dired-dwim-target t)
     (setq dired-listing-switches "-alh")
-    (setq dired-recursive-deletes 'always))
-  :config
-  (progn
-    (add-hook 'dired-mode-hook #'turn-on-gnus-dired-mode)
+    (setq dired-recursive-deletes 'always)
 
-    (bind-key ")" 'dired-omit-mode dired-mode-map)
-
-    (add-hook 'dired-mode-hook
-              (lambda ()
-                (dired-omit-mode)
-                (dired-hide-details-mode 1)))
-
-    (defun dired-move-beginning-of-line ()
+    (defun my/dired-move-beginning-of-line ()
       (interactive)
       (let ((point (point)))
         (dired-move-to-filename)
         (when (= point (point))
-          (move-beginning-of-line nil))))
+          (move-beginning-of-line nil))))))
 
-    (define-key dired-mode-map
-      (vector 'remap 'move-beginning-of-line) 'dired-move-beginning-of-line)))
+(use-package gnus-dired
+  :hook (dired-mode . turn-on-gnus-dired-mode))
 
 (use-package runner
   :after dired
@@ -228,6 +220,9 @@
 
 (use-package dired-x
   :after dired
+  :bind (:map dired-mode-map
+              (")" . dired-omit-mode))
+  :hook (dired-mode . dired-omit-mode)
   :init
   (progn
     (setq dired-omit-verbose nil)))
@@ -244,23 +239,6 @@
     (setq recentf-max-saved-items 4000))
   :config
   (progn
-    (defun recentf-track-dired-buffers ()
-      "I want the dired buffers to be tracked by recentf"
-      (let ((cur-dir-no-slash (substring ; removes trailing slash
-                               (expand-file-name default-directory)
-                               0 -1)))
-        (when (and (file-directory-p cur-dir-no-slash)
-                   ;; because of recentf limitations,
-                   ;; - we can't store the filesystem root
-                   (not (zerop (length cur-dir-no-slash)))
-                   ;; - we can't store a TRAMP root
-                   (not (string-equal ":" (substring cur-dir-no-slash -1)))
-                   ;; And I prefer not storing TRAMP files
-                   (or (not (featurep 'tramp))
-                       (not (tramp-tramp-file-p cur-dir-no-slash))))
-          ;; recentf does not play well with file ending with a slash
-          (recentf-add-file cur-dir-no-slash))))
-    (add-hook 'dired-mode-hook 'recentf-track-dired-buffers t)
     (recentf-mode)))
 
 (use-package magit
@@ -325,9 +303,8 @@
   :init
   (progn
     (setq ispell-dictionary "english")
-    (setq ispell-program-name (executable-find "hunspell")))
-  :config
-  (progn
+    (setq ispell-program-name (executable-find "hunspell"))
+
     (defun ispell-set-dictionary (dict)
       (save-excursion
         (add-file-local-variable 'ispell-local-dictionary dict)))
@@ -347,13 +324,12 @@
       (flyspell-buffer))))
 
 (use-package flyspell
-  :diminish flyspell-mode
+  :diminish
   :bind (("C-. f b" . flyspell-buffer))
-  :commands (flyspell-mode)
+  :hook (text-mode . flyspell-mode)
   :init
   (progn
-    (setq flyspell-use-meta-tab nil)
-    (add-hook 'text-mode-hook #'flyspell-mode))
+    (setq flyspell-use-meta-tab nil))
   :config
   (progn
     (unbind-key "C-." flyspell-mode-map)))
@@ -362,15 +338,12 @@
   :bind (("M-$" . flyspell-correct-word-generic)))
 
 (use-package eldoc
-  :diminish eldoc-mode
-  :commands (eldoc-mode)
-  :init
-  (progn
-    (add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
-    (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)))
+  :diminish
+  :hook ((emacs-lisp-mode . eldoc-mode)
+         (eval-expression-minibuffer-setup- . eldoc-mode)))
 
 (use-package checkdoc
-  :diminish checkdoc-minor-mode
+  :diminish
   :init
   (progn
     (setq checkdoc-spellcheck-documentation-flag t)))
@@ -379,19 +352,15 @@
   :diminish text-scale-mode)
 
 (use-package flycheck
-  :diminish flycheck-mode
-  :commands (flycheck-mode)
+  :diminish
+  :hook (prog-mode . flycheck-mode)
   :init
   (progn
-    (setq flycheck-emacs-lisp-check-declare nil) ;; does not work
-    (add-hook 'prog-mode-hook #'flycheck-mode)))
+    (setq flycheck-emacs-lisp-check-declare nil)))  ;; does not work
 
 (use-package flycheck-cask
   :after flycheck
-  :commands (flycheck-cask-setup)
-  :init
-  (progn
-    (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)))
+  :hook (flycheck-mode . flycheck-cask-setup))
 
 (use-package flycheck-package
   :after flycheck
@@ -509,7 +478,7 @@
 
 (use-package drag-stuff
   :demand t
-  :diminish drag-stuff-mode
+  :diminish
   :config
   (progn
     (drag-stuff-global-mode t)
@@ -541,7 +510,7 @@
 
 (use-package which-key
   :demand t
-  :diminish which-key-mode
+  :diminish
   :config
   (progn
     (which-key-mode)))
@@ -589,13 +558,10 @@
 (use-package unify-opening
   :demand t)
 
-(eval-and-compile
-  (setq-default notmuch-command (executable-find "notmuch")))
-
 (use-package notmuch
+  :preface (setq-default notmuch-command (executable-find "notmuch"))
   :if notmuch-command
-  :bind (("C-. m" . notmuch)
-         ("C-. M" . notmuch-mua-new-mail))
+  :bind (("C-. m" . notmuch))
   :init
   (progn
     (setq notmuch-always-prompt-for-sender t)
@@ -603,16 +569,46 @@
     (setq notmuch-crypto-process-mime t)
     (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
     (setq notmuch-labeler-hide-known-labels t)
-    (setq notmuch-search-oldest-first nil)
-    (setq notmuch-show-imenu-indent t)
     (setq notmuch-draft-save-plaintext t))
   :config
   (progn
     (setq notmuch-archive-tags '("-inbox" "-unread"))
 
-    (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
+    (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))))
 
-    (defun my:mm-ics-to-org-part (handle &optional prompt)
+(use-package notmuch-search
+  :bind (
+         :map notmuch-search-mode-map
+         ;; bind 'r' to reply-all, and 'R' to reply
+         ("r" . notmuch-search-reply-to-thread)
+         ("R" . notmuch-search-reply-to-thread-sender))
+  :init
+  (progn
+    (setq notmuch-search-oldest-first nil)))
+
+(use-package notmuch-show
+  :bind (
+         :map notmuch-show-mode-map
+         ("d" . my:notmuch-show-ics-to-org-part)
+         ;; bind 'r' to reply-all, and 'R' to reply
+         ("r" . notmuch-show-reply)
+         ("R" . notmuch-show-reply-sender)
+         :map notmuch-show-part-map
+         ("a" . nico-notmuch-git-am-patch))
+  :init
+  (progn
+    (setq notmuch-show-imenu-indent t)
+
+    (defun nico-notmuch-git-am-part (handle)
+      (let ((dir (read-directory-name "Git directory: ")))
+        (mm-pipe-part handle (format "cd %s; git am" (expand-file-name dir)))))
+
+    (defun nico-notmuch-git-am-patch ()
+      "Apply the MIME part at point as a git patch using `git am'."
+      (interactive)
+      (notmuch-show-apply-to-current-part-handle #'nico-notmuch-git-am-part))
+
+    (defun my/mm-ics-to-org-part (handle &optional prompt)
       "Add message part HANDLE to org."
       (mm-with-unibyte-buffer
         (mm-insert-part handle)
@@ -620,33 +616,10 @@
         (require 'org-caldav)
         (org-caldav-import-ics-buffer-to-org)))
 
-    (defun my:notmuch-show-ics-to-org-part ()
+    (defun my/notmuch-show-ics-to-org-part ()
       "Save the .ics MIME part containing point to an org file."
       (interactive)
-      (notmuch-show-apply-to-current-part-handle #'my:mm-ics-to-org-part))
-
-    (with-eval-after-load "notmuch-show"
-      (bind-key "d" #'my:notmuch-show-ics-to-org-part notmuch-show-part-map)
-      ;; bind 'r' to reply-all, and 'R' to reply
-      (bind-key "r" #'notmuch-search-reply-to-thread notmuch-search-mode-map)
-      (bind-key "R" #'notmuch-search-reply-to-thread-sender notmuch-search-mode-map)
-      (bind-key "r" #'notmuch-show-reply notmuch-show-mode-map)
-      (bind-key "R" #'notmuch-show-reply-sender notmuch-show-mode-map)
-      (bind-key "a" #'nico-notmuch-git-am-patch notmuch-show-part-map))
-
-    (defun nico-notmuch-git-am-patch ()
-      "Apply the MIME part at point as a git patch using `git am'."
-      (interactive)
-      (notmuch-show-apply-to-current-part-handle #'nico-notmuch-git-am-part))
-
-    (defun nico-notmuch-git-am-part (handle)
-      (let ((dir (read-directory-name "Git directory: ")))
-        (mm-pipe-part handle (format "cd %s; git am" (expand-file-name dir)))))))
-
-;; (defun my/notmuch-wash-merge-lines-in-format=flowed (msg depth)
-;;   "Must be executed before `notmuch-wash-wrap-long-lines'."
-;;   (save-excursion
-;;     (goto-char (point-min))))
+      (notmuch-show-apply-to-current-part-handle #'my/mm-ics-to-org-part))))
 
 (use-package profile
   :after (notmuch)
