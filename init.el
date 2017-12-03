@@ -36,10 +36,123 @@
 (progn ; `files'
   (setq confirm-kill-emacs 'y-or-n-p)
   (setq make-backup-files nil)
-  (setq version-control t))
+  (setq version-control t)
+
+  (defun my/force-reload-files ()
+    "Force reload all elisp files in the current directory."
+    (interactive)
+    (seq-do #'load-file
+            (seq-filter (lambda (filename)
+                          (and (string-suffix-p ".el" filename)
+                               (not (string= filename ".dir-locals.el"))))
+                        (directory-files ".")))))
+
+(progn ; `window'
+  (defun my/swap-last-buffers ()
+    "Replace currently visible buffer by last one."
+    (interactive)
+    (switch-to-buffer (other-buffer (current-buffer))))
+
+  (bind-key "C-x B" #'my/swap-last-buffers)
+
+  (defun my/kill-this-buffer ()
+    "Kill current buffer.
+Better version of `kill-this-buffer' whose docstring says it is
+unreliable."
+    (interactive)
+    (kill-buffer (current-buffer)))
+
+  (bind-key "C-x k" #'my/kill-this-buffer)
+
+  (defun my/toggle-window-split ()
+    "Swap between horizontal and vertical separation when 2 frames
+are visible."
+    (interactive)
+    (if (= (count-windows) 2)
+        (let* ((this-win-buffer (window-buffer))
+               (next-win-buffer (window-buffer (next-window)))
+               (this-win-edges (window-edges (selected-window)))
+               (next-win-edges (window-edges (next-window)))
+               (this-win-2nd (not (and (<= (car this-win-edges)
+                                           (car next-win-edges))
+                                       (<= (cadr this-win-edges)
+                                           (cadr next-win-edges)))))
+               (splitter
+                (if (= (car this-win-edges)
+                       (car (window-edges (next-window))))
+                    'split-window-horizontally
+                  'split-window-vertically)))
+          (delete-other-windows)
+          (let ((first-win (selected-window)))
+            (funcall splitter)
+            (if this-win-2nd (other-window 1))
+            (set-window-buffer (selected-window) this-win-buffer)
+            (set-window-buffer (next-window) next-win-buffer)
+            (select-window first-win)
+            (if this-win-2nd (other-window 1))))))
+
+  (define-key ctl-x-4-map "t" #'my/toggle-window-split))
+
+(use-package custom
+  :demand t
+  :init
+  (progn
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/packages/zerodark-theme"))
+  :config
+  (progn
+    (setq custom-file (no-littering-expand-etc-file-name "custom.el"))
+    (when (file-exists-p custom-file)
+      (load custom-file))))
+
+(use-package frame
+  :bind (("C-x C-z" . my/suspend-on-tty-only))
+  :config
+  (progn
+    (defun my/suspend-on-tty-only ()
+      "Suspend Emacs, but only if in tty mode."
+      (interactive)
+      (unless window-system
+        (suspend-frame)))
+
+    (defun my/set-selected-frame-dark ()
+      "Make current frame use GTK dark theme."
+      (interactive)
+      (let ((frame-name (cdr (assq 'name (frame-parameters (selected-frame))))))
+        (call-process-shell-command
+         (format
+          "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
+          frame-name))))
+
+    (defun my/setup-frame (&optional frame)
+      "Configure look of FRAME.
+
+If FRAME is nil, configure current frame. If non-nil, make FRAME
+current."
+      (when frame (select-frame frame))
+      (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+      (when (window-system)
+        (ignore-errors
+          (load-theme 'zerodark)
+          (zerodark-setup-modeline-format))
+        (my/set-selected-frame-dark)
+        (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
+
+    (add-to-list 'default-frame-alist '(cursor-type bar . 3))
+
+    (if (daemonp)
+        (add-hook 'after-make-frame-functions #'my/setup-frame)
+      (my/setup-frame))))
+
+(use-package menu-bar
+  :bind (("C-. t d" . toggle-debug-on-error)))
 
 (use-package simple
   :demand t
+  :bind (("M-j" . my/join-line)
+         ;; Replace `just-one-space' by the more advanced `cycle-spacing'.
+         ("M-SPC" . cycle-spacing)
+         ("<S-left>" . beginning-of-buffer)
+         ("<S-right>" . end-of-buffer))
   :init
   (progn
     (setq delete-active-region nil)
@@ -48,7 +161,15 @@
     (setq save-interprogram-paste-before-kill t))
   :config
   (progn
+    (defun my/join-line ()
+      "Join current line and the next."
+      (interactive)
+      (join-line -1))
+
     (column-number-mode)))
+
+(use-package newcomment
+  :bind (("<f5>" . comment-region)))
 
 (use-package auto-compile
   :demand t
@@ -70,20 +191,6 @@
   (progn
     (setq epkg-repository
           (no-littering-expand-var-file-name "epkgs"))))
-
-(use-package custom
-  :demand t
-  :init
-  (progn
-    (customize-set-variable
-     'custom-safe-themes
-     '("5a603291fd17c6e27fa16f644e23091ac40b3802c292e4e8fd6632f3f9c5d0de"
-       default)))
-  :config
-  (progn
-    (setq custom-file (no-littering-expand-etc-file-name "custom.el"))
-    (when (file-exists-p custom-file)
-      (load custom-file))))
 
 (use-package server
   :config
@@ -207,7 +314,41 @@
       (let ((point (point)))
         (dired-move-to-filename)
         (when (= point (point))
-          (move-beginning-of-line nil))))))
+          (move-beginning-of-line nil)))))
+  :config
+  (progn
+    ;; https://oremacs.com/2016/02/24/dired-rsync/
+    ;; https://github.com/abo-abo/oremacs/blob/github/auto.el
+    (defun ora-dired-rsync (dest)
+      "Copy files with rsync."
+      (interactive
+       (list (expand-file-name
+              (read-file-name "Rsync to:" (dired-dwim-target-directory)))))
+      ;; store all selected files into "files" list
+      (let ((files (dired-get-marked-files nil current-prefix-arg))
+            ;; the rsync command
+            (tmtxt/rsync-command "rsync -arvz --progress "))
+        ;; add all selected file names as arguments to the rsync command
+        (dolist (file files)
+          (setq tmtxt/rsync-command
+                (concat tmtxt/rsync-command
+                        (if (string-match "^/ssh:\\(.*:\\)\\(.*\\)$" file)
+                            (concat " -e ssh "
+                                    (match-string 1 file)
+                                    (shell-quote-argument (match-string 2 file)))
+                          (shell-quote-argument file)) " ")))
+        ;; append the destination
+        (setq tmtxt/rsync-command
+              (concat tmtxt/rsync-command
+                      (if (string-match "^/ssh:\\(.*\\)$" dest)
+                          (format " -e ssh %s" (match-string 1 dest))
+                        (shell-quote-argument dest))))
+        ;; run the async shell command
+        (let ((default-directory (expand-file-name "~")))
+          (async-shell-command tmtxt/rsync-command))
+        (message tmtxt/rsync-command)
+        ;; finally, switch to that window
+        (other-window 1)))))
 
 (use-package gnus-dired
   :hook (dired-mode . turn-on-gnus-dired-mode))
@@ -1327,10 +1468,6 @@ Designed to be called before `message-send-and-exit'."
     (setq google-translate-default-source-language "sv")
     (setq google-translate-default-target-language "en")))
 
-(use-package my-misc
-  :demand t
-  :load-path "lisp")
-
 (use-package make-it-so)
 
 (use-package skeletor
@@ -1458,6 +1595,42 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (pdf-tools-install)))
+
+(defun my/youtube-dl ()
+  "Download a video in the kill ring from youtube. "
+  (interactive)
+  (let* ((str (current-kill 0))
+         (default-directory "/tmp")
+         (proc (get-buffer-process (ansi-term "/bin/bash"))))
+    (term-send-string
+     proc
+     (concat "cd /tmp && youtube-dl " str "\n"))))
+
+(put 'narrow-to-region 'disabled nil)
+
+;; Make all "yes or no" prompts show "y or n" instead
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(defmacro my/insert-char-fn (char)
+  "Create an anonymous command inserting CHAR."
+  `(lambda ()
+     (interactive)
+     (insert-char ,char)))
+
+;; double arrows
+(bind-key "C-x 8 <up>" (my/insert-char-fn ?⇑))
+(bind-key "C-x 8 <down>" (my/insert-char-fn ?⇓))
+(bind-key "C-x 8 <left>" (my/insert-char-fn ?⇐))
+(bind-key "C-x 8 <right>" (my/insert-char-fn ?⇒))
+
+;; simple arrows
+(bind-key "C-x 8 <S-up>" (my/insert-char-fn ?↑))
+(bind-key "C-x 8 <S-down>" (my/insert-char-fn ?↓))
+(bind-key "C-x 8 <S-left>" (my/insert-char-fn ?←))
+(bind-key "C-x 8 <S-right>" (my/insert-char-fn ?→))
+
+;; horizontal ellipsis
+(bind-key "C-x 8 ," (my/insert-char-fn ?…))
 
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
