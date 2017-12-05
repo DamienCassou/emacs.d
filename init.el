@@ -1590,14 +1590,7 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package company-eshell-autosuggest
   :after eshell
-  :hook (eshell-mode . my/configure-company-eshell-autosuggest)
-  :config
-  (progn
-    (defun my/configure-company-eshell-autosuggest ()
-      (company-mode)
-      (with-eval-after-load 'company
-        (setq-local company-backends '(company-eshell-autosuggest))
-        (setq-local company-frontends '(company-preview-frontend))))))
+  :hook (eshell-mode . company-eshell-autosuggest-mode))
 
 (use-package omnisharp
   :after csharp-mode
