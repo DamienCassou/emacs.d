@@ -728,11 +728,11 @@ current."
 (use-package notmuch-show
   :bind (
          :map notmuch-show-mode-map
-         ("d" . my:notmuch-show-ics-to-org-part)
          ;; bind 'r' to reply-all, and 'R' to reply
          ("r" . notmuch-show-reply)
          ("R" . notmuch-show-reply-sender)
          :map notmuch-show-part-map
+         ("d" . my/notmuch-show-ics-to-org-part)
          ("a" . nico-notmuch-git-am-patch))
   :init
   (progn
