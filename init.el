@@ -987,6 +987,27 @@ Designed to be called before `message-send-and-exit'."
     (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map))
   :config
   (progn
+    (defun my/counsel-open-in-external-terminal (file)
+      "Open FILE in external terminal."
+      (interactive "FFile: ")
+      (let ((default-directory (if (file-directory-p file)
+                                   file
+                                 (file-name-directory file))))
+        (call-process "gnome-terminal")))
+
+    (defun my/counsel-open-in-eshell (file)
+      "Open FILE in eshell."
+      (interactive "FFile: ")
+      (let ((default-directory (if (file-directory-p file)
+                                   file
+                                 (file-name-directory file))))
+        (shell-switcher-new-shell)))
+
+    (ivy-add-actions
+     'counsel-find-file
+     '(("t" my/counsel-open-in-external-terminal "open terminal")
+       ("s" my/counsel-open-in-eshell "eshell")))
+
     (counsel-mode)))
 
 (use-package ivy
