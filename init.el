@@ -979,7 +979,9 @@ Designed to be called before `message-send-and-exit'."
          ("C-h f" .   counsel-describe-function)
          ("C-h v" .   counsel-describe-variable)
          ("C-x 8 RET" . counsel-unicode-char)
-         ("C-. o t"   . counsel-org-capture))
+         ("C-. o t"   . counsel-org-capture)
+         :map counsel-find-file-map
+         ("C-l" . counsel-up-directory))
   :init
   (progn
     (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map))
@@ -990,9 +992,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package ivy
   :demand t
   :diminish
-  :bind (("C-. i" . ivy-resume)
-         :map ivy-minibuffer-map
-         ("C-l" . ivy-backward-delete-char))
+  :bind (("C-. i" . ivy-resume))
   :init
   (progn
     (setq ivy-use-virtual-buffers t)
