@@ -1424,7 +1424,7 @@ Designed to be called before `message-send-and-exit'."
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package yasnippet
-  :diminish
+  :diminish yas-minor-mode
   :hook (emacs-lisp-mode . yas-minor-mode)
   :config
   (progn
