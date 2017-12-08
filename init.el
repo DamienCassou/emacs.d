@@ -36,16 +36,7 @@
 (progn ; `files'
   (setq confirm-kill-emacs 'y-or-n-p)
   (setq make-backup-files nil)
-  (setq version-control t)
-
-  (defun my/force-reload-files ()
-    "Force reload all elisp files in the current directory."
-    (interactive)
-    (seq-do #'load-file
-            (seq-filter (lambda (filename)
-                          (and (string-suffix-p ".el" filename)
-                               (not (string= filename ".dir-locals.el"))))
-                        (directory-files ".")))))
+  (setq version-control t))
 
 (progn ; `window'
   (defun my/swap-last-buffers ()
