@@ -345,6 +345,7 @@ current."
   :hook (dired-mode . turn-on-gnus-dired-mode))
 
 (use-package runner
+  :demand t
   :after dired
   :init
   (progn
@@ -360,6 +361,7 @@ current."
     (setq dired-omit-verbose nil)))
 
 (use-package dired-imenu
+  :demand t
   :after dired)
 
 (use-package recentf
@@ -490,10 +492,10 @@ current."
     (setq flycheck-emacs-lisp-check-declare nil)))  ;; does not work
 
 (use-package flycheck-cask
-  :after flycheck
   :hook (flycheck-mode . flycheck-cask-setup))
 
 (use-package flycheck-package
+  :demand t
   :after flycheck
   :config
   (progn
@@ -589,9 +591,11 @@ current."
     (unbind-key "<S-right>" org-agenda-mode-map)))
 
 (use-package org-notmuch
-  :after org)
+  :demand t
+  :after (:any org notmuch))
 
 (use-package ox-twbs
+  :demand t
   :after org)
 
 (use-package org-caldav
@@ -767,7 +771,8 @@ current."
     (advice-add 'mml-attach-file :around #'my:mml-attach-file--go-to-eob)))
 
 (use-package profile
-  :after (notmuch)
+  :demand t
+  :after notmuch
   :init
   (progn
     (with-eval-after-load "message"
@@ -1015,6 +1020,7 @@ Designed to be called before `message-send-and-exit'."
     (ivy-mode)))
 
 (use-package ivy-rich
+  :demand t
   :after ivy
   :init
   (progn
@@ -1038,6 +1044,7 @@ Designed to be called before `message-send-and-exit'."
                 #'my/ivy-rich-switch-buffer-format)))
 
 (use-package counsel-projectile
+  :demand t
   :after projectile
   :init
   (progn
@@ -1092,6 +1099,7 @@ Designed to be called before `message-send-and-exit'."
     (setq auth-source-do-cache nil)))
 
 (use-package auth-password-store
+  :demand t
   :after auth-source
   :init
   (progn
@@ -1256,12 +1264,14 @@ Designed to be called before `message-send-and-exit'."
       (setq wrap-prefix "    "))))
 
 (use-package lui-logging
+  :demand t
   :after lui
   :config
   (progn
     (enable-lui-logging-globally)))
 
 (use-package lui-track-bar
+  :demand t
   :after lui
   :config
   (progn
@@ -1580,7 +1590,6 @@ Designed to be called before `message-send-and-exit'."
              ("yarn" "init")))))
 
 (use-package company-eshell-autosuggest
-  :after eshell
   :hook (eshell-mode . company-eshell-autosuggest-mode))
 
 (use-package omnisharp
