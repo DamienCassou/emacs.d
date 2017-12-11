@@ -1619,7 +1619,7 @@ Designed to be called before `message-send-and-exit'."
   :demand t)
 
 (use-package pdf-tools
-  :demand t
+  :magic ("%PDF" . pdf-view-mode)
   :config
   (progn
     (pdf-tools-install)))
