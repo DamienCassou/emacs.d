@@ -494,6 +494,7 @@ current."
     (setq flycheck-emacs-lisp-check-declare nil)))  ;; does not work
 
 (use-package flycheck-cask
+  :after flycheck
   :hook (flycheck-mode . flycheck-cask-setup))
 
 (use-package flycheck-package
