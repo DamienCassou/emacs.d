@@ -958,13 +958,7 @@ Designed to be called before `message-send-and-exit'."
   :demand t
   :diminish
   :bind (("M-i" . counsel-imenu)
-         ("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)
-         ("C-h C-l" . counsel-find-library)
-         ("C-h f" .   counsel-describe-function)
-         ("C-h v" .   counsel-describe-variable)
          ("C-x 8 RET" . counsel-unicode-char)
-         ("C-. o t"   . counsel-org-capture)
          :map counsel-find-file-map
          ("C-l" . counsel-up-directory))
   :init
@@ -1593,10 +1587,8 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (defun my/configure-omnisharp ()
-      (if omnisharp-mode
-          (progn
-            (add-to-list 'company-backends #'company-omnisharp)
-            (local-set-key (kbd "C-c C-c") #'recompile))))))
+      (add-to-list 'company-backends #'company-omnisharp)
+      (local-set-key (kbd "C-c C-c") #'recompile))))
 
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
