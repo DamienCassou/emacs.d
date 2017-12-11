@@ -683,20 +683,6 @@ current."
      :test "cd monitor/Monitor.Web.Ui/Client && gulp karma"
      :test-suffix "-tests")))
 
-(use-package helm-projectile
-  :disabled t
-  :demand t
-  :after projectile
-  :bind (:map helm-projectile-projects-map
-              ("M-s"     . my/helm-open-external-terminal))
-  :config
-  (progn
-    (helm-projectile-on)
-    (add-to-list 'helm-source-projectile-projects-actions
-                 (cons "Open in external terminal `M-s'"
-                       #'my/open-external-terminal)
-                 t)))
-
 (use-package unify-opening
   :demand t)
 
