@@ -9,6 +9,8 @@
 
 (setq package-enable-at-startup nil)
 
+(setq load-prefer-newer t)
+
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
   (require  'borg)
@@ -22,6 +24,21 @@
   (setq use-package-minimum-reported-time 0)
   (setq use-package-verbose t)
   (require 'use-package))
+
+(use-package auto-compile
+  :demand t
+  :init
+  (progn
+    (setq auto-compile-display-buffer nil)
+    (setq auto-compile-mode-line-counter t)
+    (setq auto-compile-source-recreate-deletes-dest t)
+    (setq auto-compile-toggle-deletes-nonlib-dest t)
+    (setq auto-compile-update-autoloads t))
+  :hook (auto-compile-inhibit-compile . auto-compile-inhibit-compile-detached-git-head)
+  :config
+  (progn
+    (auto-compile-on-load-mode)
+    (auto-compile-on-save-mode)))
 
 (use-package no-littering
   :demand t)
@@ -161,21 +178,6 @@ current."
 
 (use-package newcomment
   :bind (("<f5>" . comment-region)))
-
-(use-package auto-compile
-  :demand t
-  :init
-  (progn
-    (setq auto-compile-display-buffer nil)
-    (setq auto-compile-mode-line-counter t)
-    (setq auto-compile-source-recreate-deletes-dest t)
-    (setq auto-compile-toggle-deletes-nonlib-dest t)
-    (setq auto-compile-update-autoloads t))
-  :hook (auto-compile-inhibit-compile . auto-compile-inhibit-compile-detached-git-head)
-  :config
-  (progn
-    (auto-compile-on-load-mode)
-    (auto-compile-on-save-mode)))
 
 (use-package epkg
   :init
@@ -1660,4 +1662,5 @@ Designed to be called before `message-send-and-exit'."
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
+;; no-byte-compile: t
 ;; End:
