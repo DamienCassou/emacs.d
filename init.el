@@ -338,7 +338,7 @@ current."
                         (shell-quote-argument dest))))
         ;; run the async shell command
         (let ((default-directory (expand-file-name "~")))
-          (async-shell-command tmtxt/rsync-command))
+          (async-shell-command tmtxt/rsync-command "*ora-dired-rsync output*"))
         (message tmtxt/rsync-command)
         ;; finally, switch to that window
         (other-window 1)))))
