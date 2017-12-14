@@ -518,7 +518,7 @@ current."
     (setq org-completion-use-ido t)
     (setq org-directory "~/Documents/configuration/org")
     (setq org-default-notes-file (expand-file-name "refile.org" org-directory))
-    (setq org-ellipsis "⤵")
+    (setq org-ellipsis "…")
     (setq org-export-allow-bind-keywords t)
     (setq org-export-creator-string "")
     (setq org-export-with-toc nil)
