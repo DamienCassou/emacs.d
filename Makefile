@@ -6,7 +6,7 @@
 .PHONY: all help build build-init quick bootstrap
 .FORCE:
 
-all: build
+all: build build-init
 
 help:
 	$(info )
