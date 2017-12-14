@@ -283,6 +283,14 @@ current."
   (progn
     (unbind-key "M-o")))
 
+(use-package display-line-numbers
+  :hook ((prog-mode text-mode) . my/display-line-numbers)
+  :config
+  (progn
+    (defun my/display-line-numbers ()
+      (when buffer-file-name
+        (display-line-numbers-mode)))))
+
 (use-package undo-tree
   :demand t
   :diminish
