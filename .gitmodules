@@ -384,7 +384,7 @@
 	url = git@github.com:OmniSharp/omnisharp-emacs.git
 [submodule "org"]
 	path = lib/org
-	url = git://orgmode.org/org-mode.git
+	url = http://orgmode.org/org-mode.git
 	load-path = lisp
 	info-path = doc
 	build-step = make compile autoloads info ORG_ADD_CONTRIB="org-notmuch"
