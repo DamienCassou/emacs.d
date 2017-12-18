@@ -53,7 +53,7 @@
 (progn ; `files'
   (setq confirm-kill-emacs 'y-or-n-p)
   (setq make-backup-files nil)
-  (setq version-control t))
+  (setq version-control 'never))
 
 (progn ; `window'
   (defun my/swap-last-buffers ()
