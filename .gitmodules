@@ -65,6 +65,7 @@
 [submodule "borg"]
 	path = lib/borg
 	url = git@github.com:emacscollective/borg.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/borg.git"
 [submodule "borg-queen"]
 	path = lib/borg-queen
 	url = git@github.com:thblt/borg-queen.git
