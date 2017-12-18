@@ -160,6 +160,10 @@
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
+[submodule "emms"]
+	path = lib/emms
+	url = git://git.savannah.gnu.org/emms.git
+	info-path = doc
 [submodule "epkg"] # browse the emacs mirror
 	path = lib/epkg
 	url = git@github.com:emacscollective/epkg.git
@@ -354,6 +358,9 @@
 [submodule "message-templ"]
 	path = lib/message-templ
 	url = git://pivot.cs.unb.ca/message-templ.git
+[submodule "mpdel"]
+	path = lib/mpdel
+	url = https://DamienCassou@github.com/DamienCassou/mpdel.git
 [submodule "multiple-cursors"] # Control multiple cursors with <C-S-c C-S-c>
 	path = lib/multiple-cursors
 	url = git@github.com:magnars/multiple-cursors.el.git
