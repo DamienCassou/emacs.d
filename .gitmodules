@@ -187,9 +187,6 @@
 [submodule "feature-mode"] # major mode for editing feature files
 	path = lib/feature-mode
 	url = git@github.com:michaelklishin/cucumber.el.git
-[submodule "finalize"]
-	path = lib/finalize
-	url = git@github.com:skeeto/elisp-finalize.git
 [submodule "firestarter"]
 	path = lib/firestarter
 	url = git@github.com:wasamasa/firestarter.git
