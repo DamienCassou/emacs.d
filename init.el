@@ -247,7 +247,8 @@ current."
 (use-package package
   :init
   (progn
-    (setq package-archive-priorities '(("melpa-stable" . 10)))))
+    (setq package-archive-priorities '(("melpa-stable" . 10)))
+    (setq package-user-dir (expand-file-name (file-relative-name "lib" user-emacs-directory)))))
 
 (use-package proced
   :init
