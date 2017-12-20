@@ -877,6 +877,12 @@ Designed to be called before `message-send-and-exit'."
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
+(use-package smartparens
+  :disabled t)
+
+(use-package smartparens-config
+  :after smartparens)
+
 (use-package autorevert
   :diminish)
 
