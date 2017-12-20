@@ -103,9 +103,6 @@ are visible."
 
 (use-package custom
   :demand t
-  :init
-  (progn
-    (add-to-list 'custom-theme-load-path "~/.emacs.d/packages/zerodark-theme"))
   :config
   (progn
     (setq custom-file (no-littering-expand-etc-file-name "custom.el"))
@@ -140,7 +137,7 @@ current."
       (setq frame-title-format '(buffer-file-name "%f" ("%b")))
       (when (window-system)
         (ignore-errors
-          (load-theme 'zerodark)
+          (load-theme 'zerodark t)
           (zerodark-setup-modeline-format))
         (my/set-selected-frame-dark)
         (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
@@ -1181,10 +1178,7 @@ Designed to be called before `message-send-and-exit'."
   :diminish)
 
 (use-package indium
-  :diminish indium-interaction-mode
-  :init
-  (progn
-    (setq indium-workspace-file (no-littering-expand-var-file-name "indium-workspaces.el"))))
+  :diminish indium-interaction-mode)
 
 (use-package gulp-task-runner
   :commands (gulp))
