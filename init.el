@@ -1164,7 +1164,7 @@ Designed to be called before `message-send-and-exit'."
 (use-package company
   :diminish
   :bind ("C-. /" . company-complete)
-  :hook ((emacs-lisp-mode css-mode csharp-mode) . company-mode)
+  :hook (prog-mode . company-mode)
   :init
   (progn
     (setq company-dabbrev-downcase nil)
