@@ -1042,12 +1042,15 @@ Designed to be called before `message-send-and-exit'."
 (use-package counsel-projectile
   :demand t
   :after projectile
-  :init
-  (progn
-    (setq projectile-switch-project-action #'projectile-vc))
   :config
   (progn
-    (counsel-projectile-on)))
+    (counsel-projectile-mode)
+
+    (setcar
+     counsel-projectile-switch-project-action
+     (1+ (cl-position #'counsel-projectile-switch-project-action-vc
+                      (cdr counsel-projectile-switch-project-action)
+                      :key #'cadr)))))
 
 (use-package smex) ;; used by counsel-M-x
 
