@@ -972,6 +972,7 @@ Designed to be called before `message-send-and-exit'."
   :diminish
   :bind (("M-i" . counsel-imenu)
          ("C-x 8 RET" . counsel-unicode-char)
+         ("C-x r b" . counsel-bookmark)
          :map counsel-find-file-map
          ("C-l" . counsel-up-directory))
   :init
@@ -999,6 +1000,17 @@ Designed to be called before `message-send-and-exit'."
      'counsel-find-file
      '(("t" my/counsel-open-in-external-terminal "open terminal")
        ("s" my/counsel-open-in-eshell "eshell")))
+
+    (defun my/apply-bookmark-fn (fn)
+      "Return a function applyinig FN to a bookmark's location."
+      (lambda (bookmark)
+        (funcall fn (bookmark-location bookmark))))
+
+    (ivy-add-actions
+     'counsel-bookmark
+     `(("t" ,(my/apply-bookmark-fn #'my/counsel-open-in-external-terminal) "open terminal")
+       ("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")
+       ("x" ,(my/apply-bookmark-fn #'counsel-find-file-extern) "open externally")))
 
     (counsel-mode)))
 
