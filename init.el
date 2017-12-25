@@ -1597,8 +1597,8 @@ Designed to be called before `message-send-and-exit'."
              ("docker" "build")
              ("yarn" "init")))))
 
-(use-package company-eshell-autosuggest
-  :hook (eshell-mode . company-eshell-autosuggest-mode))
+(use-package esh-autosuggest
+  :hook (eshell-mode . esh-autosuggest-mode))
 
 (use-package omnisharp
   :after csharp-mode
