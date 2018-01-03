@@ -1623,6 +1623,17 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (pdf-tools-install)))
 
+(use-package libmpdel
+  :bind (("C-. z SPC" . libmpdel-playback-play-pause)
+         ("C-. z n" . libmpdel-playback-next)
+         ("C-. z p" . libmpdel-playback-previous)))
+
+(use-package mpdel-playlist
+  :bind (("C-. z p" . mpdel-playlist-open)))
+
+(use-package ivy-mpdel
+  :bind (("C-. z a" . ivy-mpdel-artists)))
+
 (defun my/youtube-dl ()
   "Download a video in the kill ring from youtube. "
   (interactive)
