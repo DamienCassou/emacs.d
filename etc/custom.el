@@ -23,7 +23,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((org-src-preserve-indentation)
+    ((electric-quote-mode . t)
+     (org-src-preserve-indentation)
      (eval and
            (featurep
             (quote ox-extra))
