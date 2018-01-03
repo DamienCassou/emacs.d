@@ -972,7 +972,6 @@ Designed to be called before `message-send-and-exit'."
   :diminish
   :bind (("M-i" . counsel-imenu)
          ("C-x 8 RET" . counsel-unicode-char)
-         ("C-x r b" . counsel-bookmark)
          :map counsel-find-file-map
          ("C-l" . counsel-up-directory))
   :init
@@ -1009,8 +1008,7 @@ Designed to be called before `message-send-and-exit'."
     (ivy-add-actions
      'counsel-bookmark
      `(("t" ,(my/apply-bookmark-fn #'my/counsel-open-in-external-terminal) "open terminal")
-       ("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")
-       ("x" ,(my/apply-bookmark-fn #'counsel-find-file-extern) "open externally")))
+       ("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")))
 
     (counsel-mode)))
 
@@ -1058,11 +1056,9 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (counsel-projectile-mode)
 
-    (setcar
-     counsel-projectile-switch-project-action
-     (1+ (cl-position #'counsel-projectile-switch-project-action-vc
-                      (cdr counsel-projectile-switch-project-action)
-                      :key #'cadr)))))
+    (counsel-projectile-modify-action
+     'counsel-projectile-switch-project-action
+     '((default counsel-projectile-switch-project-action-vc)))))
 
 (use-package smex) ;; used by counsel-M-x
 
