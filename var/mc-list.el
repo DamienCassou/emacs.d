@@ -66,6 +66,7 @@
         beginend-message-goto-end
         dabbrev-expand
         end-of-buffer
+        ivy-switch-buffer
         markdown-exdent-or-delete
         orgtbl-self-insert-command
         ))
