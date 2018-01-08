@@ -1434,8 +1434,6 @@ Designed to be called before `message-send-and-exit'."
   :hook (emacs-lisp-mode . yas-minor-mode)
   :config
   (progn
-    (delq 'yas-installed-snippets-dir yas-snippet-dirs)
-    (add-to-list 'yas-snippet-dirs "~/.emacs.d/packages/yasnippet-snippets")
     (yas-reload-all)))
 
 (use-package ws-butler
