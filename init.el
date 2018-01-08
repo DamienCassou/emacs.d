@@ -634,7 +634,8 @@ current."
     (drag-stuff-define-keys)
     (add-to-list 'drag-stuff-except-modes 'org-mode)
     (add-to-list 'drag-stuff-except-modes 'rebase-mode)
-    (add-to-list 'drag-stuff-except-modes 'emacs-lisp-mode)))
+    (add-to-list 'drag-stuff-except-modes 'emacs-lisp-mode)
+    (add-to-list 'drag-stuff-except-modes 'mpdel-playlist-mode)))
 
 (use-package expand-region
   :bind ("C-x =" . er/expand-region))
@@ -1625,14 +1626,20 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package libmpdel
   :bind (("C-. z SPC" . libmpdel-playback-play-pause)
-         ("C-. z n" . libmpdel-playback-next)
-         ("C-. z p" . libmpdel-playback-previous)))
+         ("C-. z ]" . libmpdel-playback-next)
+         ("C-. z [" . libmpdel-playback-previous)
+         ("C-. z c" . libmpdel--connect)))
 
 (use-package mpdel-playlist
-  :bind (("C-. z p" . mpdel-playlist-open)))
+  :bind (("C-. z p" . mpdel-playlist-open))
+  :config
+  (progn
+    (bind-key "a" #'ivy-mpdel-artists mpdel-playlist-mode-map)
+    (bind-key "l" #'ivy-mpdel-stored-playlists mpdel-playlist-mode-map)))
 
 (use-package ivy-mpdel
-  :bind (("C-. z a" . ivy-mpdel-artists)))
+  :bind (("C-. z a" . ivy-mpdel-artists)
+         ("C-. z l" . ivy-mpdel-stored-playlists)))
 
 (defun my/youtube-dl ()
   "Download a video in the kill ring from youtube. "
