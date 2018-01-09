@@ -497,7 +497,8 @@ current."
   :hook (prog-mode . flycheck-mode)
   :init
   (progn
-    (setq flycheck-emacs-lisp-check-declare nil)))  ;; does not work
+    (setq flycheck-emacs-lisp-check-declare t)
+    (setq flycheck-emacs-lisp-load-path 'inherit)))
 
 (use-package flycheck-cask
   :after flycheck
