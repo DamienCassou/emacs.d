@@ -265,6 +265,11 @@ current."
   (progn
     (setq debbugs-gnu-trunk-directory "~/Documents/projects/emacs/emacs-src")))
 
+(use-package bug-reference
+  :bind ((
+          :map bug-reference-map
+          ("C-c C-o" . bug-reference-push-button))))
+
 (use-package smime
   :config
   ;; https://src.fedoraproject.org/rpms/emacs/blob/f27/f/default.el
