@@ -1451,9 +1451,8 @@ Designed to be called before `message-send-and-exit'."
     ;; http://stackoverflow.com/questions/13397737
     (defun my/colorize-compilation-buffer ()
       (require 'ansi-color)
-      (read-only-mode)
-      (ansi-color-apply-on-region compilation-filter-start (point))
-      (read-only-mode))))
+      (let ((inhibit-read-only t))
+        (ansi-color-apply-on-region compilation-filter-start (point))))))
 
 (use-package duplicate-thing
   :bind (("M-D" . duplicate-thing)))
