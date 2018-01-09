@@ -644,7 +644,7 @@ current."
     (add-to-list 'drag-stuff-except-modes 'mpdel-playlist-mode)))
 
 (use-package expand-region
-  :bind ("C-x =" . er/expand-region))
+  :bind ("C-=" . er/expand-region))
 
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
