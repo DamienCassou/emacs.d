@@ -272,6 +272,7 @@ current."
 
 (use-package smime
   :config
+  ;; foo
   ;; https://src.fedoraproject.org/rpms/emacs/blob/f27/f/default.el
   (setq smime-CA-directory "/etc/ssl/certs"))
 
