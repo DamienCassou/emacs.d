@@ -1508,6 +1508,7 @@ Designed to be called before `message-send-and-exit'."
     (setq skeletor-show-project-command 'magit-status)))
 
 (use-package klassified
+  :diminish klassified-interaction-js-mode
   :hook (js-mode . klassified-interaction-js-mode))
 
 (use-package json-navigator
