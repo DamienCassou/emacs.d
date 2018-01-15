@@ -1681,6 +1681,8 @@ Designed to be called before `message-send-and-exit'."
 ;; horizontal ellipsis
 (bind-key "C-x 8 ," (my/insert-char-fn ?…))
 
+(load (expand-file-name "init-exwm.el" user-emacs-directory))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)

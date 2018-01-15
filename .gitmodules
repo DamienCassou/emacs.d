@@ -69,6 +69,9 @@
 [submodule "borg-queen"]
 	path = lib/borg-queen
 	url = git@github.com:thblt/borg-queen.git
+[submodule "buffer-move"]
+	path = lib/buffer-move
+	url = git@github.com:lukhas/buffer-move.git
 [submodule "buttercup"]
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
@@ -181,6 +184,9 @@
 [submodule "expand-region"] # <C-x => repeadly to mark regions
 	path = lib/expand-region
 	url = git@github.com:magnars/expand-region.el.git
+[submodule "exwm"]
+	path = lib/exwm
+	url = git@github.com:ch11ng/exwm.git
 [submodule "f"] # <C-x => repeadly to mark regions
 	path = lib/f
 	url = git@github.com:rejeep/f.el.git
@@ -560,6 +566,9 @@
 [submodule "ws-butler"] # trim whitespace only in edited lines
 	path = lib/ws-butler
 	url = git@github.com:lewang/ws-butler.git
+[submodule "xelb"]
+	path = lib/xelb
+	url = git@github.com:ch11ng/xelb.git
 [submodule "xref-js2"] # Jump to references/definitions using ag & js2-mode's AST (JavaScript)
 	path = lib/xref-js2
 	url = git@github.com:NicolasPetton/xref-js2.git
