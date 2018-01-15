@@ -984,6 +984,7 @@ Designed to be called before `message-send-and-exit'."
   :diminish
   :bind (("M-i" . counsel-imenu)
          ("C-x 8 RET" . counsel-unicode-char)
+         ("s-!" . counsel-linux-app)
          :map counsel-find-file-map
          ("C-l" . counsel-up-directory))
   :init
@@ -1021,6 +1022,8 @@ Designed to be called before `message-send-and-exit'."
      'counsel-bookmark
      `(("t" ,(my/apply-bookmark-fn #'my/counsel-open-in-external-terminal) "open terminal")
        ("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")))
+
+    (setq counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
 
     (counsel-mode)))
 
