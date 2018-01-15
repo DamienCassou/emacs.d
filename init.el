@@ -233,6 +233,11 @@ current."
   (progn
     (winner-mode)))
 
+(use-package time
+  :init
+  (progn
+    (setq display-time-24hr-format t)))
+
 (use-package nsm ;; network security
   :init
   (progn
