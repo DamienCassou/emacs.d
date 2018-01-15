@@ -1647,11 +1647,15 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (bind-key "a" #'ivy-mpdel-artists mpdel-playlist-mode-map)
-    (bind-key "l" #'ivy-mpdel-stored-playlists mpdel-playlist-mode-map)))
+    (bind-key "l" #'ivy-mpdel-stored-playlists mpdel-playlist-mode-map)
+    (bind-key "S" #'mpdel-song-open mpdel-playlist-mode-map)))
 
 (use-package ivy-mpdel
   :bind (("C-. z a" . ivy-mpdel-artists)
          ("C-. z l" . ivy-mpdel-stored-playlists)))
+
+(use-package mpdel-song
+  :bind (("C-. z S" . mpdel-song-open)))
 
 (defun my/youtube-dl ()
   "Download a video in the kill ring from youtube. "
