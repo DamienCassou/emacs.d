@@ -1,4 +1,3 @@
 alias dnf-list dnf repoquery -l $*
 alias dnf-provides dnf repoquery -f $*
-alias nil  $*
 alias sudo /usr/bin/sudo --askpass $*
