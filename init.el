@@ -990,7 +990,8 @@ Designed to be called before `message-send-and-exit'."
          ("C-l" . counsel-up-directory))
   :init
   (progn
-    (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map))
+    (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map)
+    (setq counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only))
   :config
   (progn
     (defun my/counsel-open-in-external-terminal (file)
@@ -1023,8 +1024,6 @@ Designed to be called before `message-send-and-exit'."
      'counsel-bookmark
      `(("t" ,(my/apply-bookmark-fn #'my/counsel-open-in-external-terminal) "open terminal")
        ("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")))
-
-    (setq counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
 
     (counsel-mode)))
 
