@@ -999,7 +999,7 @@ Designed to be called before `message-send-and-exit'."
       (let ((default-directory (if (file-directory-p file)
                                    file
                                  (file-name-directory file))))
-        (call-process "gnome-terminal")))
+        (call-process "xterm")))
 
     (defun my/counsel-open-in-eshell (file)
       "Open FILE in eshell."
@@ -1658,6 +1658,250 @@ Designed to be called before `message-send-and-exit'."
 (use-package mpdel-song
   :bind (("C-. z S" . mpdel-song-open)))
 
+(use-package exwm
+  :demand t
+  :preface
+  (progn
+    (defun my/start-clipboard-manager ()
+      "Start a clipboard manager, performing `kill-new' from xclip."
+      (interactive)
+      (start-process-shell-command
+       "clipboard-manager"
+       nil
+       (locate-user-emacs-file "bin/clipboard-manager.sh")))
+
+    (defun my/exwm-reliable-class-p ()
+      "Return t if application's class is suitable for naming."
+      (and (not (string-prefix-p "sun-awt-X11-" exwm-instance-name))
+           ;; gimp has several windows with the same class:
+           (not (string= "gimp" exwm-instance-name))))
+
+    (defun my/exwm-class-updated ()
+      "Use class names if `my/exwm-reliable-class-p'."
+      (when (my/exwm-reliable-class-p)
+        (exwm-workspace-rename-buffer exwm-class-name)))
+
+    (defun my/exwm-title-updated ()
+      "Use title unless `my/exwm-reliable-class-p'."
+      (unless (my/exwm-reliable-class-p)
+        (exwm-workspace-rename-buffer exwm-class-name))))
+
+  :hook ((exwm-init . my/start-clipboard-manager)
+         (exwm-init . display-battery-mode)
+         (exwm-init . display-time-mode)
+         (exwm-update-class . my/exwm-class-updated)
+         (exwm-update-title . my/exwm-title-updated)))
+
+(use-package exwm-config
+  :after exwm
+  :demand t)
+
+(use-package exwm-input
+  :after exwm
+  :demand t
+  :preface
+  (progn
+    (defmacro my/switch-workspace (i)
+      "Return a command switching to workspace number I."
+      `(lambda () (interactive) (exwm-workspace-switch-create ,i)))
+
+    (defun my/exwm-start-command (command)
+      "Start external COMMAND. Interactively, ask for COMMAND."
+      (interactive (list (read-shell-command "$ ")))
+      (start-process-shell-command command nil command))
+
+    (defun my/brightness-get ()
+      "Return a string representing current brightness level."
+      (let ((output (shell-command-to-string "brightnessctl")))
+        (save-match-data
+          (string-match "\\([0-9]+%\\)" output)
+          (match-string 0 output))))
+
+    (defun my/adjust-brightness (delta)
+      "Adjust screen brightness by DELTA."
+      (shell-command-to-string (format "brightnessctl s %s" delta))
+      (message "Backlight: %s" (my/brightness-get)))
+
+    (defmacro my/brightness-command (delta)
+      "Return a command modifying brightness by DELTA."
+      `(lambda () (interactive) (my/adjust-brightness ,delta)))
+
+    (defun my/volume-get ()
+      "Return a string representing current sound volume."
+      (let ((output (shell-command-to-string "amixer get Master")))
+        (string-match "\\([0-9]+%\\)" output)
+        (match-string 0 output)))
+
+    (defun my/adjust-volume (delta)
+      "Adjust sound volume by DELTA."
+      (shell-command-to-string (format "amixer set Master %s" delta))
+      (message "Volume: %s" (my/volume-get)))
+
+    (defmacro my/volume-command (delta)
+      "Return a command modifying sound volume by DELTA."
+      `(lambda () (interactive) (my/adjust-volume ,delta)))
+
+    (defun my/toggle-mute ()
+      "Toggle between muted and un-muted."
+      (interactive)
+      (message "%s"
+               (shell-command-to-string "amixer set Master toggle")))
+
+    (defun my/toggle-capture-mute ()
+      "Toggle microphone between muted and un-muted."
+      (interactive)
+      (message "%s"
+               (shell-command-to-string "amixer set Capture toggle")))
+
+    (defun my/screenshot ()
+      "Take a screenshot of the screen."
+      (interactive)
+      (let ((default-directory (expand-file-name "~/Pictures")))
+        (start-process-shell-command "scrot" nil "scrot")))
+
+    (defun my/screenshot-part ()
+      "Take a screenshot of a screen's part."
+      (interactive)
+      (let ((default-directory (expand-file-name "~/Pictures")))
+        (start-process-shell-command "scrot -s" nil "scrot -s")))
+
+    (defun my/lock-screen ()
+      "Lock screen and ask for user's password."
+      (interactive)
+      (shell-command-to-string "slock"))
+
+    (defun my/list-all-windows ()
+      "Return the list of all Emacs windows."
+      (seq-mapcat (lambda (frame) (window-list frame)) (frame-list)))
+
+    (defun my/switch-to-window (bufname)
+      "Switch to the window displaying BUFNAME, a buffer name.
+Interactively, select BUFNAME from the list of all windows."
+      (interactive (list (completing-read
+                          "Select window: "
+                          (seq-map (lambda (window) (buffer-name (window-buffer window)))
+                                   (my/list-all-windows))
+                          t)))
+      (when-let ((window (seq-find (lambda (window)
+                                     (string= (buffer-name (window-buffer window))
+                                              bufname))
+                                   (my/list-all-windows))))
+        (select-window window))))
+
+  :config
+  (progn
+    ;; Key bindings accessible from everywhere:
+    (exwm-input-set-key (kbd "s-r") #'exwm-reset)
+    (exwm-input-set-key (kbd "s-w") #'exwm-workspace-switch)
+    (exwm-input-set-key (kbd "s-0") (my/switch-workspace 0))
+    (exwm-input-set-key (kbd "s-1") (my/switch-workspace 1))
+    (exwm-input-set-key (kbd "s-2") (my/switch-workspace 2))
+    (exwm-input-set-key (kbd "s-3") (my/switch-workspace 3))
+    (exwm-input-set-key (kbd "s-4") (my/switch-workspace 4))
+    (exwm-input-set-key (kbd "s-5") (my/switch-workspace 5))
+    (exwm-input-set-key (kbd "s-6") (my/switch-workspace 6))
+    (exwm-input-set-key (kbd "s-7") (my/switch-workspace 7))
+    (exwm-input-set-key (kbd "s-8") (my/switch-workspace 8))
+    (exwm-input-set-key (kbd "s-9") (my/switch-workspace 9))
+    (exwm-input-set-key (kbd "s-&") #'my/exwm-start-command)
+    (exwm-input-set-key (kbd "<XF86MonBrightnessUp>") (my/brightness-command "10%+"))
+    (exwm-input-set-key (kbd "S-<XF86MonBrightnessUp>") (my/brightness-command "1%+"))
+    (exwm-input-set-key (kbd "<XF86MonBrightnessDown>") (my/brightness-command "10%-"))
+    (exwm-input-set-key (kbd "S-<XF86MonBrightnessDown>") (my/brightness-command "1%-"))
+    (exwm-input-set-key (kbd "<XF86AudioRaiseVolume>") (my/volume-command "5%+"))
+    (exwm-input-set-key (kbd "S-<XF86AudioRaiseVolume>") (my/volume-command "1%+"))
+    (exwm-input-set-key (kbd "<XF86AudioLowerVolume>") (my/volume-command "5%-"))
+    (exwm-input-set-key (kbd "S-<XF86AudioLowerVolume>") (my/volume-command "1%-"))
+    (exwm-input-set-key (kbd "<XF86AudioMute>") #'my/toggle-mute)
+    (exwm-input-set-key (kbd "<XF86AudioMicMute>") #'my/toggle-capture-mute)5
+    (exwm-input-set-key (kbd "<print>") #'my/screenshot)
+    (exwm-input-set-key (kbd "S-<print>") #'my/screenshot-part)
+    (exwm-input-set-key (kbd "C-x w") #'my/switch-to-window)
+    (exwm-input-set-key (kbd "s-!") #'counsel-linux-app)
+
+    ;; Bind C-q so that the next key is sent literally to the
+    ;; application
+    (push ?\C-q exwm-input-prefix-keys)
+    (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
+
+    (exwm-input-set-simulation-keys
+     `(
+       ;; movement
+       ([?\C-b] . left)
+       ([?\M-b] . C-left)
+       ([?\C-f] . right)
+       ([?\M-f] . C-right)
+       ([?\C-p] . up)
+       ([?\C-n] . down)
+       ([?\C-a] . home)
+       ([S-left] . C-home)
+       ([S-right] . C-end)
+       ([?\C-e] . end)
+       ([?\M-v] . prior)
+       ([?\C-v] . next)
+       ([?\C-d] . delete)
+       ([?\C-k] . (S-end delete))
+       ;; cut/paste, selection
+       ([?\C-w] . ?\C-x)
+       ([?\M-w] . ?\C-c)
+       ([?\C-y] . ?\C-v)
+       ;; search
+       ([?\C-s] . ?\C-f)
+       ;; escape
+       ([?\C-g] . escape)))))
+
+(use-package buffer-move
+  :after exwm-input
+  :demand t
+  :config
+  (progn
+    (exwm-input-set-key (kbd "<s-up>") #'buf-move-up)
+    (exwm-input-set-key (kbd "<s-down>") #'buf-move-down)
+    (exwm-input-set-key (kbd "<s-left>") #'buf-move-left)
+    (exwm-input-set-key (kbd "<s-right>") #'buf-move-right)))
+
+(use-package exwm-randr
+  :after exwm
+  :demand t
+  :preface
+  (progn
+    (defun my/exwm-xrandr ()
+      "Configure screen with xrandr."
+      (start-process-shell-command
+       "xrandr" nil "xrandr --output DP-1 --right-of eDP-1 --auto")))
+
+  :hook (exwm-randr-screen-change . my/exwm-xrandr)
+  :init
+  (progn
+    (setq exwm-randr-workspace-output-plist '(1 "eDP-1" 2 "DP-1")))
+  :config
+  (progn
+    (exwm-randr-enable)))
+
+(use-package exwm-systemtray
+  :after exwm
+  :demand t
+  :config
+  (progn
+    (exwm-systemtray-enable)))
+
+(use-package exwm-workspace
+  :after exwm
+  :demand t
+  :init
+  (progn
+    (setq exwm-workspace-number 2)
+    (setq exwm-workspace-show-all-buffers t)
+    (setq exwm-layout-show-all-buffers t)))
+
+(use-package pinentry
+  :after exwm
+  :load-path "~/.emacs.d/pinentry"
+  :demand t
+  :config
+  (progn
+    (pinentry-start)))
+
 (defun my/youtube-dl ()
   "Download a video in the kill ring from youtube. "
   (interactive)
@@ -1693,8 +1937,6 @@ Designed to be called before `message-send-and-exit'."
 
 ;; horizontal ellipsis
 (bind-key "C-x 8 ," (my/insert-char-fn ?…))
-
-(load (expand-file-name "init-exwm.el" user-emacs-directory))
 
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
