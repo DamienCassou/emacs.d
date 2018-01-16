@@ -447,6 +447,10 @@
 	build-step = make
 	build-step = borg-byte-compile
 	build-step = borg-update-autoloads
+[submodule "pinentry"]
+	path = lib/pinentry
+	url = git@github.com:ueno/pinentry-el.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/pinentry-el.git"
 [submodule "pkg-info"]
 	path = lib/pkg-info
 	url = git@github.com:lunaryorn/pkg-info.el.git

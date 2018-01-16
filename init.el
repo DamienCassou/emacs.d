@@ -1897,7 +1897,6 @@ Interactively, select BUFNAME from the list of all windows."
 
 (use-package pinentry
   :after exwm
-  :load-path "~/.emacs.d/pinentry"
   :demand t
   :config
   (progn
