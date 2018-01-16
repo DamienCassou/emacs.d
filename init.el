@@ -1820,8 +1820,10 @@ Interactively, select BUFNAME from the list of all windows."
 
     ;; Bind C-q so that the next key is sent literally to the
     ;; application
-    (push ?\C-q exwm-input-prefix-keys)
+    (add-to-list 'exwm-input-prefix-keys ?\C-q)
     (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
+
+    (add-to-list 'exwm-input-prefix-keys ?\C-.)
 
     (exwm-input-set-simulation-keys
      `(
