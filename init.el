@@ -1849,6 +1849,8 @@ Interactively, select BUFNAME from the list of all windows."
        ([?\C-w] . ?\C-x)
        ([?\M-w] . ?\C-c)
        ([?\C-y] . ?\C-v)
+       ([?\M-d] . (C-S-right ?\C-x))
+       ([M-backspace] . (C-S-left ?\C-x))
        ;; search
        ([?\C-s] . ?\C-f)
        ;; escape
