@@ -26,9 +26,6 @@
 [submodule "amd-mode"]
 	path = lib/amd-mode
 	url = git@github.com:NicolasPetton/amd-mode.el.git
-[submodule "anzu"] # more interactive query-replace
-	path = lib/anzu
-	url = git@github.com:syohex/emacs-anzu.git
 [submodule "apiwrap"]
 	path = lib/apiwrap
 	url = git@github.com:vermiculus/apiwrap.el.git

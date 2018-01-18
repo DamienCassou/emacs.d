@@ -959,18 +959,6 @@ Designed to be called before `message-send-and-exit'."
       (setq counsel-describe-function-function #'helpful-callable)
       (setq counsel-describe-variable-function #'helpful-variable))))
 
-(use-package anzu
-  :disabled
-  :demand t
-  :diminish
-  :bind (("M-%" . anzu-query-replace)
-         ("C-M-%" . anzu-query-replace-regexp))
-  :config
-  (progn
-    (global-anzu-mode +1)
-    (define-key isearch-mode-map [remap isearch-query-replace] #'anzu-isearch-query-replace)
-    (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)))
-
 (use-package aggressive-indent
   :diminish
   :hook ((lisp-mode emacs-lisp-mode) . aggressive-indent-mode))
