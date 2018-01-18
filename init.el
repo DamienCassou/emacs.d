@@ -1817,6 +1817,9 @@ Interactively, select BUFNAME from the list of all windows."
     (exwm-input-set-key (kbd "S-<print>") #'my/screenshot-part)
     (exwm-input-set-key (kbd "C-x w") #'my/switch-to-window)
     (exwm-input-set-key (kbd "s-!") #'counsel-linux-app)
+    (exwm-input-set-key (kbd "s-l") #'my/lock-screen)
+    (exwm-input-set-key (kbd "C-M-'") #'shell-switcher-new-shell)
+    (exwm-input-set-key (kbd "C-'") #'shell-switcher-switch-buffer)
 
     ;; Bind C-q so that the next key is sent literally to the
     ;; application
