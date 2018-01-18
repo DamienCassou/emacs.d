@@ -1812,7 +1812,7 @@ Interactively, select BUFNAME from the list of all windows."
     (exwm-input-set-key (kbd "<XF86AudioLowerVolume>") (my/volume-command "5%-"))
     (exwm-input-set-key (kbd "S-<XF86AudioLowerVolume>") (my/volume-command "1%-"))
     (exwm-input-set-key (kbd "<XF86AudioMute>") #'my/toggle-mute)
-    (exwm-input-set-key (kbd "<XF86AudioMicMute>") #'my/toggle-capture-mute)5
+    (exwm-input-set-key (kbd "<XF86AudioMicMute>") #'my/toggle-capture-mute)
     (exwm-input-set-key (kbd "<print>") #'my/screenshot)
     (exwm-input-set-key (kbd "S-<print>") #'my/screenshot-part)
     (exwm-input-set-key (kbd "C-x w") #'my/switch-to-window)
