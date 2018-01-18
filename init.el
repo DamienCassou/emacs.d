@@ -1844,7 +1844,7 @@ Interactively, select BUFNAME from the list of all windows."
        ([?\M-v] . prior)
        ([?\C-v] . next)
        ([?\C-d] . delete)
-       ([?\C-k] . (S-end delete))
+       ([?\C-k] . (S-end ?\C-x))
        ;; cut/paste, selection
        ([?\C-w] . ?\C-x)
        ([?\M-w] . ?\C-c)
