@@ -526,6 +526,9 @@
 	url = git@github.com:ternjs/tern.git
 	load-path = emacs
 	build-step = npm install
+[submodule "transmission"]
+	path = lib/transmission
+	url = git@github.com:holomorph/transmission.git
 [submodule "undercover"]
 	path = lib/undercover
 	url = git@github.com:sviridov/undercover.el.git
