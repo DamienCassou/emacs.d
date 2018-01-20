@@ -408,7 +408,8 @@ current."
     (setq magit-branch-prefer-remote-upstream '("master"))
     (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
     (setq magit-branch-arguments nil)
-    (setq magit-module-sections-nested nil))
+    (setq magit-module-sections-nested nil)
+    (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
   :config
   (progn
     (global-magit-file-mode)
