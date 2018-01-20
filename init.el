@@ -1600,6 +1600,21 @@ Designed to be called before `message-send-and-exit'."
 (use-package esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
 
+(use-package term
+  :bind (
+         :map term-mode-map
+         ("C-c C-t" . my/term-toggle-line-mode)
+         :map term-raw-map
+         ("C-c C-t" . my/term-toggle-line-mode))
+  :init
+  (progn
+    (defun my/term-toggle-line-mode ()
+      "Toggle between char and line modes."
+      (interactive)
+      (if (term-in-char-mode)
+          (term-line-mode)
+        (term-char-mode)))))
+
 (use-package omnisharp
   :after csharp-mode
   :bind (
