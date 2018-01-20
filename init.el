@@ -1587,13 +1587,15 @@ Designed to be called before `message-send-and-exit'."
 (use-package em-term
   :config
   (progn
-    (nconc eshell-visual-commands
-           '("htop" "pinentry-curses" "watch" "ncdu" "jest"))
-    (nconc eshell-visual-subcommands
-           '(("git" "log" "diff" "show")
-             ("npm" "install")
-             ("docker" "build")
-             ("yarn" "init")))))
+    (setq eshell-visual-commands
+          '("bower" "htop" "jest" "less" "more" "ncdu" "npm" "pinentry-curses" "ssh" "tail" "top" "vim" "watch" "yarn"))
+    (setq eshell-visual-subcommands '(("docker" "build")))
+
+    (add-to-list 'eshell-command-completions-alist '("gunzip" "gz\\'"))
+    (add-to-list 'eshell-command-completions-alist '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))
+
+    (setenv "PAGER" "cat") ;; should be unset in .bashrc
+    (setenv "SUDO_ASKPASS" (executable-find "pass-root-password.sh"))))
 
 (use-package esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
