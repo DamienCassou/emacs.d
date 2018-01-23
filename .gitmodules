@@ -193,7 +193,7 @@
 [submodule "firestarter"]
 	path = lib/firestarter
 	url = git@github.com:wasamasa/firestarter.git
-[submodule "flx"]
+[submodule "flx"] # used by ivy
 	path = lib/flx
 	url = git@github.com:lewang/flx.git
 [submodule "flycheck"] # flycheck to check files on the fly
@@ -500,7 +500,7 @@
 [submodule "smartscan"] # <M-n> <M-p> to move between same symbol in buffer
 	path = lib/smartscan
 	url = git@github.com:mickeynp/smart-scan.git
-[submodule "smex"]
+[submodule "smex"]  # used by counsel-M-x
 	path = lib/smex
 	url = git@github.com:nonsequitur/smex.git
 [submodule "snapshot-timemachine"]

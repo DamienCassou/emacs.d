@@ -1068,10 +1068,6 @@ Designed to be called before `message-send-and-exit'."
      'counsel-projectile-switch-project-action
      '((default counsel-projectile-switch-project-action-vc)))))
 
-(use-package smex) ;; used by counsel-M-x
-
-(use-package flx) ;; used by ivy
-
 (use-package swiper
   :bind (("C-s" . swiper))
   :init
