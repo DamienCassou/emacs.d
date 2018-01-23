@@ -1121,8 +1121,7 @@ Designed to be called before `message-send-and-exit'."
   :init
   (progn
     ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq aw-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
-    (setq aw-scope 'frame)))
+    (setq aw-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))))
 
 (use-package avy
   :bind* (("C-," . avy-goto-char-2))
