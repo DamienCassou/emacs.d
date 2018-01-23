@@ -9,7 +9,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bookmark-save-flag 1 t)
+ '(bookmark-save-flag 1)
  '(custom-safe-themes
    (quote
     ("de0c2b8761eecf8f310b4b1873e4542abe107a83f573ba4690faee11aadcea8b")))
