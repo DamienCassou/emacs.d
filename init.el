@@ -155,6 +155,7 @@ current."
 
 (use-package simple
   :demand t
+  :diminish (auto-fill-mode)
   :bind (("M-j" . my/join-line)
          ;; Replace `just-one-space' by the more advanced `cycle-spacing'.
          ("M-SPC" . cycle-spacing)
@@ -393,6 +394,9 @@ current."
   :config
   (progn
     (recentf-mode)))
+
+(use-package with-editor
+  :diminish)
 
 (use-package magit
   :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
@@ -898,7 +902,7 @@ Designed to be called before `message-send-and-exit'."
   :after smartparens)
 
 (use-package autorevert
-  :diminish)
+  :diminish auto-revert-mode)
 
 (use-package smartscan
   :hook (prog-mode . smartscan-mode))
@@ -1134,7 +1138,7 @@ Designed to be called before `message-send-and-exit'."
     (setq avy-style 'at-full)))
 
 (use-package outline
-  :diminish)
+  :diminish outline-minor-mode)
 
 (use-package beginend
   :demand t
@@ -1192,6 +1196,9 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
+
+(use-package eslintd-fix
+  :diminish eslintd-fix-mode)
 
 (use-package widgetjs
   :diminish)
