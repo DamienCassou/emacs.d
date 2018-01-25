@@ -9,7 +9,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bookmark-save-flag 1)
+ '(bookmark-save-flag 1 t)
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
