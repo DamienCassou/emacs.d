@@ -1137,7 +1137,12 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package beginend
   :demand t
-  :diminish (beginend-global-mode beginend-prog-mode beginend-dired-mode beginend-notmuch-search-mode)
+  :diminish (beginend-global-mode
+             beginend-prog-mode
+             beginend-dired-mode
+             beginend-notmuch-search-mode
+             beginend-magit-status-mode
+             beginend-compilation-mode)
   :config
   (progn
     (beginend-global-mode)))
@@ -1835,6 +1840,7 @@ Interactively, select BUFNAME from the list of all windows."
     (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
 
     (add-to-list 'exwm-input-prefix-keys ?\C-.)
+    (add-to-list 'exwm-input-prefix-keys ?\C-,)
 
     (exwm-input-set-simulation-keys
      `(
