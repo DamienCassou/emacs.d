@@ -1656,7 +1656,8 @@ Designed to be called before `message-send-and-exit'."
          ("C-. z c" . libmpdel--connect)))
 
 (use-package mpdel-playlist
-  :bind (("C-. z p" . mpdel-playlist-open))
+  :bind (("C-. z p" . mpdel-playlist-open)
+         ("C-. z P" . mpdel-playlist-open-stored-playlist))
   :config
   (progn
     (bind-key "a" #'ivy-mpdel-artists mpdel-playlist-mode-map)
