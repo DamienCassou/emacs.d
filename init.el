@@ -143,7 +143,6 @@ current."
         (my/set-selected-frame-dark)
         (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
 
-    (add-to-list 'default-frame-alist '(cursor-type bar . 3))
     (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
     (if (daemonp)
