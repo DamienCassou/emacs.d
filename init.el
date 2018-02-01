@@ -1921,6 +1921,19 @@ Interactively, select BUFNAME from the list of all windows."
   (progn
     (pinentry-start)))
 
+(use-package elbank
+  :init
+  (progn
+    (setq elbank-saved-monthly-reports
+          '(("Income Statement" "" category amount (date label amount) nil)
+            ("Expenses per day" "" date date (label category account amount) t)
+            ("Expenses per category" "" category amount (label account amount) nil)))
+    (setq elbank-saved-yearly-reports
+          '(("Receivables" "Receivables" nil date (date label amount) nil))))
+  :config
+  (progn
+    (load-file (no-littering-expand-etc-file-name "elbank.el"))))
+
 (defun my/youtube-dl ()
   "Download a video in the kill ring from youtube. "
   (interactive)

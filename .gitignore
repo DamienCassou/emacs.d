@@ -3,3 +3,4 @@
 /.cask
 /elpa
 .pass-secrets-sync.el
+/etc/elbank.el
