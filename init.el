@@ -596,6 +596,8 @@ current."
     (add-to-list 'org-agenda-files "~/Documents/configuration/org/refile.org")
     (add-to-list 'org-agenda-files "~/Documents/configuration/org/tasks.org")
     (add-to-list 'org-agenda-files "~/Documents/configuration/org/repeating.org")
+    (add-to-list 'org-agenda-files "~/Documents/configuration/org/orgzly/paiements-cash.org")
+
     (add-to-list 'org-agenda-files org-default-calendar-file)
 
     (setq org-refile-targets `((("~/Documents/configuration/org/repeating.org"
