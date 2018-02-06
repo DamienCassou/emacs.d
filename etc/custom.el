@@ -22,6 +22,10 @@
    (quote
     ((eval add-hook
            (quote before-save-hook)
+           (function time-stamp)
+           nil t)
+     (eval add-hook
+           (quote before-save-hook)
            (function time-stamp-target)
            nil t)
      (electric-quote-mode . t)
