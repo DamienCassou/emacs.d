@@ -20,7 +20,11 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((electric-quote-mode . t)
+    ((eval add-hook
+           (quote before-save-hook)
+           (function time-stamp-target)
+           nil t)
+     (electric-quote-mode . t)
      (org-src-preserve-indentation)
      (eval and
            (featurep
