@@ -65,6 +65,7 @@
       '(
         anzu-query-replace
         beginend-message-goto-end
+        counsel-projectile-find-file
         dabbrev-expand
         end-of-buffer
         ivy-switch-buffer
