@@ -240,6 +240,20 @@ current."
   (progn
     (setq display-time-24hr-format t)))
 
+(use-package time-stamp
+  :init (progn
+          (defvar-local time-stamp-target nil
+            "File in which time-stamps should be written.")
+
+          (put 'time-stamp-target 'safe-local-variable 'string-or-null-p)
+
+          (defun time-stamp-target ()
+            "Update the time-stamp in `time-stamp-target' if non-nil."
+            (when (and time-stamp-target
+                       (file-exists-p time-stamp-target))
+              (with-current-buffer (find-file-noselect time-stamp-target)
+                (time-stamp))))))
+
 (use-package nsm ;; network security
   :init
   (progn
