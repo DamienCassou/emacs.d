@@ -71,6 +71,7 @@
            "archive-contents"))))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
+ '(transmission-rpc-auth (quote (:username "transmission")))
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)
  '(undo-outer-limit 200000000)
