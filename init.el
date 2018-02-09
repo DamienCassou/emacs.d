@@ -1610,7 +1610,7 @@ Designed to be called before `message-send-and-exit'."
   :config
   (progn
     (setq eshell-visual-commands
-          '("bower" "htop" "jest" "less" "more" "ncdu" "npm" "pinentry-curses" "ssh" "tail" "top" "vim" "watch" "yarn"))
+          '("bower" "bluetoothctl" "htop" "jest" "less" "more" "ncdu" "npm" "pinentry-curses" "ssh" "tail" "top" "vim" "watch" "yarn"))
     (setq eshell-visual-subcommands '(("docker" "build")))
 
     (add-to-list 'eshell-command-completions-alist '("gunzip" "gz\\'"))
