@@ -934,6 +934,7 @@ Designed to be called before `message-send-and-exit'."
     (setq zoom-frame/buffer 'frame)))
 
 (use-package visible-mark
+  :disabled t
   :demand t
   :init
   (progn
