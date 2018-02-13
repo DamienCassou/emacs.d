@@ -1678,7 +1678,9 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (bind-key "a" #'ivy-mpdel-artists mpdel-playlist-mode-map)
     (bind-key "l" #'ivy-mpdel-stored-playlists mpdel-playlist-mode-map)
-    (bind-key "S" #'mpdel-song-open mpdel-playlist-mode-map)))
+    (bind-key "S" #'mpdel-song-open mpdel-playlist-mode-map)
+    (bind-key "i" (lambda () (interactive) (mpdel-song-open (mpdel-playlist--song-at-point)))
+              mpdel-playlist-mode-map)))
 
 (use-package ivy-mpdel
   :bind (("C-. z a" . ivy-mpdel-artists)
