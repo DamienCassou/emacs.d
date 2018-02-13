@@ -1123,7 +1123,7 @@ Designed to be called before `message-send-and-exit'."
   :init
   (progn
     (setq auth-source-debug t)
-    (setq auth-source-do-cache nil)))
+    (setq auth-source-do-cache t)))
 
 (use-package auth-password-store
   :demand t
