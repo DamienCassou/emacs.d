@@ -268,6 +268,10 @@ current."
 (use-package package
   :init
   (progn
+    ;; the following is useful for package-lint
+    (push '("melpa" . "http://melpa.org/packages/") package-archives)
+    (package-initialize)
+    (package-refresh-contents)
     (setq package-user-dir (expand-file-name (expand-file-name "lib" user-emacs-directory)))))
 
 (use-package proced
