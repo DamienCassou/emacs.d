@@ -1665,29 +1665,16 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (pdf-tools-install)))
 
-(use-package libmpdel
-  :bind (("C-. z SPC" . libmpdel-playback-play-pause)
-         ("C-. z ]" . libmpdel-playback-next)
-         ("C-. z [" . libmpdel-playback-previous)
-         ("C-. z c" . libmpdel--connect)))
-
-(use-package mpdel-playlist
-  :bind (("C-. z p" . mpdel-playlist-open)
-         ("C-. z P" . mpdel-playlist-open-stored-playlist))
+(use-package mpdel
+  :demand t
+  :diminish
+  :init
+  (progn
+    (setq mpdel-prefix-key (kbd "C-. z")))
   :config
   (progn
-    (bind-key "a" #'ivy-mpdel-artists mpdel-playlist-mode-map)
-    (bind-key "l" #'ivy-mpdel-stored-playlists mpdel-playlist-mode-map)
-    (bind-key "S" #'mpdel-song-open mpdel-playlist-mode-map)
-    (bind-key "i" (lambda () (interactive) (mpdel-song-open (mpdel-playlist--song-at-point)))
-              mpdel-playlist-mode-map)))
-
-(use-package ivy-mpdel
-  :bind (("C-. z a" . ivy-mpdel-artists)
-         ("C-. z l" . ivy-mpdel-stored-playlists)))
-
-(use-package mpdel-song
-  :bind (("C-. z S" . mpdel-song-open)))
+    (mpdel-mode)
+    (mpdel-setup)))
 
 (use-package exwm
   :demand t
