@@ -1096,9 +1096,14 @@ Designed to be called before `message-send-and-exit'."
     (unbind-key "C-r")))
 
 (use-package password-store
+  :init
+  (progn
+    (defun my/password-length ()
+      "Return a random number suitable for a password length."
+      (+ 30 (random 10))))
   :config
   (progn
-    (setq password-store-password-length 30)))
+    (setq password-store-password-length (my/password-length))))
 
 (use-package pass
   :commands pass
@@ -1110,8 +1115,8 @@ Designed to be called before `message-send-and-exit'."
       (when (or (not (seq-contains (password-store-list) entry))
                 (yes-or-no-p "Erase existing entry with same name? "))
         (let ((password (shell-command-to-string
-                         (format "pwgen --secure --symbols %s"
-                                 password-store-password-length))))
+                         (format "pwgen --secure %s"
+                                 (my/password-length)))))
           (password-store-insert
            entry
            (format "%s--\nusername: %s\nurl: https://%s\n"
