@@ -1047,7 +1047,7 @@ Designed to be called before `message-send-and-exit'."
   :init
   (progn
     (setq ivy-use-virtual-buffers t)
-    (setq ivy-virtual-abbreviate 'full)
+    (setq ivy-virtual-abbreviate 'abbreviate)
     (setq ivy-count-format "(%d/%d) "))
   :config
   (progn
