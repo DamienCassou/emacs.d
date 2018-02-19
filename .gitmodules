@@ -316,6 +316,9 @@
 [submodule "less-css-mode"] # Major mode to edit .less files
 	path = lib/less-css-mode
 	url = git@github.com:purcell/less-css-mode.git
+[submodule "libmpdel"]
+	path = lib/libmpdel
+	url = https://DamienCassou@github.com/mpdel/libmpdel.git
 [submodule "list-utils"]
 	path = lib/list-utils
 	url = git@github.com:rolandwalker/list-utils.git
