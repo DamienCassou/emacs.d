@@ -269,10 +269,11 @@ current."
   :init
   (progn
     ;; the following is useful for package-lint
-    (push '("melpa" . "http://melpa.org/packages/") package-archives)
+    (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
     (package-initialize)
-    (package-refresh-contents)
-    (setq package-user-dir (expand-file-name (expand-file-name "lib" user-emacs-directory)))))
+    (unless (file-directory-p package-user-dir)
+      ;; only contact elpa repositories if we don't have anything yet
+      (package-refresh-contents))))
 
 (use-package proced
   :init
