@@ -283,6 +283,10 @@
 	url = git@github.com:abo-abo/swiper.git
 	info-path = doc
 	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/swiper.git"
+[submodule "ivy-mpdel"]
+	path = lib/ivy-mpdel
+	url = https://DamienCassou@gitlab.petton.fr/mpdel/ivy-mpdel.git
+	remote = "github https://DamienCassou@github.com/DamienCassou/ivy-mpdel.git"
 [submodule "ivy-rich"]
 	path = lib/ivy-rich
 	url = git@github.com:yevgnen/ivy-rich.git
@@ -318,7 +322,8 @@
 	url = git@github.com:purcell/less-css-mode.git
 [submodule "libmpdel"]
 	path = lib/libmpdel
-	url = https://DamienCassou@github.com/mpdel/libmpdel.git
+	url = https://DamienCassou@gitlab.petton.fr/mpdel/libmpdel.git
+	remote = "github https://DamienCassou@github.com/DamienCassou/libmpdel.git"
 [submodule "list-utils"]
 	path = lib/list-utils
 	url = git@github.com:rolandwalker/list-utils.git
@@ -358,7 +363,8 @@
 	url = git://pivot.cs.unb.ca/message-templ.git
 [submodule "mpdel"]
 	path = lib/mpdel
-	url = https://DamienCassou@github.com/DamienCassou/mpdel.git
+	url = https://DamienCassou@gitlab.petton.fr/mpdel/mpdel.git
+	remote = "github https://DamienCassou@github.com/DamienCassou/mpdel.git"
 [submodule "multiple-cursors"] # Control multiple cursors with <C-S-c C-S-c>
 	path = lib/multiple-cursors
 	url = git@github.com:magnars/multiple-cursors.el.git
