@@ -528,7 +528,6 @@ current."
 
 (use-package flycheck
   :diminish
-  :hook (prog-mode . flycheck-mode)
   :init
   (progn
     (setq flycheck-emacs-lisp-check-declare t)
