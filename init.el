@@ -266,7 +266,8 @@ current."
     (setq imenu-max-item-length 200)))
 
 (use-package package
-  :init
+  :after package-lint
+  :config
   (progn
     ;; the following is useful for package-lint
     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
