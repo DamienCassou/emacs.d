@@ -1858,33 +1858,33 @@ Interactively, select BUFNAME from the list of all windows."
     (add-to-list 'exwm-input-prefix-keys ?\C-.)
     (add-to-list 'exwm-input-prefix-keys ?\C-,)
 
-    (exwm-input-set-simulation-keys
-     `(
-       ;; movement
-       ([?\C-b] . left)
-       ([?\M-b] . C-left)
-       ([?\C-f] . right)
-       ([?\M-f] . C-right)
-       ([?\C-p] . up)
-       ([?\C-n] . down)
-       ([?\C-a] . home)
-       ([S-left] . C-home)
-       ([S-right] . C-end)
-       ([?\C-e] . end)
-       ([?\M-v] . prior)
-       ([?\C-v] . next)
-       ([?\C-d] . delete)
-       ([?\C-k] . (S-end ?\C-x))
-       ;; cut/paste, selection
-       ([?\C-w] . ?\C-x)
-       ([?\M-w] . ?\C-c)
-       ([?\C-y] . ?\C-v)
-       ([?\M-d] . (C-S-right ?\C-x))
-       ([M-backspace] . (C-S-left ?\C-x))
-       ;; search
-       ([?\C-s] . ?\C-f)
-       ;; escape
-       ([?\C-g] . escape)))))
+    (setq exwm-input-simulation-keys
+          `(
+            ;; movement
+            ([?\C-b] . [left])
+            ([?\M-b] . [C-left])
+            ([?\C-f] . [right])
+            ([?\M-f] . [C-right])
+            ([?\C-p] . [up])
+            ([?\C-n] . [down])
+            ([?\C-a] . [home])
+            ([S-left] . [C-home])
+            ([S-right] . [C-end])
+            ([?\C-e] . [end])
+            ([?\M-v] . [prior])
+            ([?\C-v] . [next])
+            ([?\C-d] . [delete])
+            ([?\C-k] . [S-end ?\C-x])
+            ;; cut/paste, selection
+            ([?\C-w] . [?\C-x])
+            ([?\M-w] . [?\C-c])
+            ([?\C-y] . [?\C-v])
+            ([?\M-d] . [C-S-right ?\C-x])
+            ([M-backspace] . [C-S-left ?\C-x])
+            ;; search
+            ([?\C-s] . [?\C-f])
+            ;; escape
+            ([?\C-g] . [escape])))))
 
 (use-package buffer-move
   :after exwm-input
