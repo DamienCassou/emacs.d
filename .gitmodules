@@ -131,6 +131,9 @@
 [submodule "dired-imenu"] # integrates imenu in dired
 	path = lib/dired-imenu
 	url = git@github.com:DamienCassou/dired-imenu.git
+[submodule "dockerfile-mode"]
+	path = lib/dockerfile-mode
+	url = git@github.com:spotify/dockerfile-mode.git
 [submodule "drag-stuff"] # use <M-arrow> to move things around
 	path = lib/drag-stuff
 	url = git@github.com:rejeep/drag-stuff.el.git
