@@ -261,9 +261,6 @@
 [submodule "helm-ls-git"]
 	path = lib/helm-ls-git
 	url = git@github.com:emacs-helm/helm-ls-git.git
-[submodule "helm-projectile"] # integrate projectile and helm <C-. p h>
-	path = lib/helm-projectile
-	url = git@github.com:bbatsov/helm-projectile.git
 [submodule "helpful"]
 	path = lib/helpful
 	url = git@github.com:Wilfred/helpful.git
