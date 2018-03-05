@@ -1683,8 +1683,11 @@ Designed to be called before `message-send-and-exit'."
     (setq mpdel-prefix-key (kbd "C-. z")))
   :config
   (progn
-    (mpdel-mode)
-    (mpdel-setup)))
+    (mpdel-mode)))
+
+(use-package ivy-mpdel
+  :after mpdel
+  :demand t)
 
 (use-package exwm
   :demand t
