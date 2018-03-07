@@ -536,7 +536,7 @@
 	url = git@github.com:sviridov/undercover.el.git
 [submodule "undo-tree"] # <C-x u> to show the undo tree
 	path = lib/undo-tree
-	url = http://www.dr-qubit.org/git/undo-tree.git
+	url = git@github.com:emacsmirror/undo-tree.git
 [submodule "unify-opening"]
 	path = lib/unify-opening
 	url = git@github.com:DamienCassou/unify-opening.git
