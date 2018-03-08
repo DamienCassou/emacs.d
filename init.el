@@ -1138,7 +1138,7 @@ Designed to be called before `message-send-and-exit'."
     (setq auth-source-debug t)
     (setq auth-source-do-cache t)))
 
-(use-package auth-password-store
+(use-package auth-source-pass
   :demand t
   :after auth-source
   :init
@@ -1334,8 +1334,8 @@ Designed to be called before `message-send-and-exit'."
   (progn
     (defun my/circe-get-password (host &optional user)
       "Return password for HOST and USER."
-      (when-let* ((entry (auth-pass--find-match host user nil)))
-        (auth-pass-get 'secret entry))))
+      (when-let* ((entry (auth-source-pass--find-match host user nil)))
+        (auth-source-pass-get 'secret entry))))
   :config
   (progn
     (setq circe-default-nick "DamienCassou")
@@ -1429,30 +1429,30 @@ Designed to be called before `message-send-and-exit'."
           )))))
   :config
   (progn
-    (require 'auth-password-store)
+    (require 'auth-source-pass)
 
     (slack-register-team
      :name "foretagsplatsen"
      :default t
-     :client-id (auth-pass-get "client-id" "ftgp/foretagsplatsen.slack.com")
-     :client-secret (auth-pass-get "client-secret" "ftgp/foretagsplatsen.slack.com")
-     :token (auth-pass-get "token" "ftgp/foretagsplatsen.slack.com")
+     :client-id (auth-source-pass-get "client-id" "ftgp/foretagsplatsen.slack.com")
+     :client-secret (auth-source-pass-get "client-secret" "ftgp/foretagsplatsen.slack.com")
+     :token (auth-source-pass-get "token" "ftgp/foretagsplatsen.slack.com")
      :subscribed-channels '(general development stockholm-food report-editor))
 
     (slack-register-team
      :name "omnisharp"
      :default nil
-     :client-id (auth-pass-get "client-id" "ftgp/omnisharp.slack.com")
-     :client-secret (auth-pass-get "client-secret" "ftgp/omnisharp.slack.com")
-     :token (auth-pass-get "token" "ftgp/omnisharp.slack.com")
+     :client-id (auth-source-pass-get "client-id" "ftgp/omnisharp.slack.com")
+     :client-secret (auth-source-pass-get "client-secret" "ftgp/omnisharp.slack.com")
+     :token (auth-source-pass-get "token" "ftgp/omnisharp.slack.com")
      :subscribed-channels '(emacs))
 
     (slack-register-team
      :name "frenchfuckers"
      :default nil
-     :client-id (auth-pass-get "client-id" "frenchfuckers.slack.com")
-     :client-secret (auth-pass-get "client-secret" "frenchfuckers.slack.com")
-     :token (auth-pass-get "token" "frenchfuckers.slack.com")
+     :client-id (auth-source-pass-get "client-id" "frenchfuckers.slack.com")
+     :client-secret (auth-source-pass-get "client-secret" "frenchfuckers.slack.com")
+     :token (auth-source-pass-get "token" "frenchfuckers.slack.com")
      :subscribed-channels '(general))
 
     (advice-add #'slack-user-status :override #'my/slack-user-status)
