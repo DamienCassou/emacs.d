@@ -1956,7 +1956,7 @@ Interactively, select BUFNAME from the list of all windows."
             ("Expenses per day" "" date date (label category account amount) t)
             ("Expenses per category" "" category amount (label account amount) nil)))
     (setq elbank-saved-yearly-reports
-          '(("ZeroBalance" "ZeroBalance" category date (date label amount) nil))))
+          '(("ZeroBalance" "ZeroBalance" category date (date label amount) t))))
   :config
   (progn
     (load-file (no-littering-expand-etc-file-name "elbank.el"))))
