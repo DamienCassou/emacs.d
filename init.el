@@ -468,6 +468,9 @@ current."
 
 (use-package ace-link
   :demand t
+  :init
+  (progn
+    (setq ace-link-fallback-function #'ace-link-help))
   :config
   (progn
     (ace-link-setup-default)))
@@ -1941,6 +1944,11 @@ Interactively, select BUFNAME from the list of all windows."
     (pinentry-start)))
 
 (use-package elbank
+  :bind (
+         :map elbank-overview-mode-map
+         ("o" . ace-link)
+         :map elbank-report-mode-map
+         ("o" . ace-link))
   :init
   (progn
     (setq elbank-saved-monthly-reports
