@@ -543,6 +543,7 @@
 [submodule "use-package"] # to structure my init.el file
 	path = lib/use-package
 	url = git@github.com:jwiegley/use-package.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/use-package"
 [submodule "vdirel"]
 	path = lib/vdirel
 	url = git@github.com:DamienCassou/vdirel.git
