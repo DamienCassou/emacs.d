@@ -468,6 +468,7 @@ current."
 
 (use-package ace-link
   :demand t
+  :after (:any elbank helpful info)
   :config
   (progn
     (ace-link-setup-default)))
