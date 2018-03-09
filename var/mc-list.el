@@ -11,6 +11,8 @@
         backward-sexp
         c-electric-delete-forward
         clipboard-kill-region
+        counsel-M-x
+        counsel-yank-pop
         cycle-spacing
         dired-toggle-read-only
         dired-unmark-all-files
@@ -26,6 +28,7 @@
         message-beginning-of-line
         message-tab
         my-join-line
+        nameless-insert-name
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
@@ -57,6 +60,7 @@
         wdired-finish-edit
         wdired-upcase-word
         wgrep-finish-edit
+        yaml-electric-backspace
         yaml-electric-dash-and-dot
         yas-expand
         ))
