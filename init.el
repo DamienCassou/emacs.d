@@ -1699,7 +1699,7 @@ Designed to be called before `message-send-and-exit'."
       (interactive)
       (start-process-shell-command
        "clipboard-manager"
-       nil
+       "*clipboard-manager*"
        (locate-user-emacs-file "bin/clipboard-manager.sh")))
 
     (defun my/exwm-reliable-class-p ()
