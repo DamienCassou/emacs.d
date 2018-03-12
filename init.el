@@ -1955,6 +1955,9 @@ Interactively, select BUFNAME from the list of all windows."
   (progn
     (load-file (no-littering-expand-etc-file-name "elbank.el"))))
 
+(use-package nov
+  :mode ("\\.epub\\'" . nov-mode))
+
 (defun my/youtube-dl ()
   "Download a video in the kill ring from youtube. "
   (interactive)
