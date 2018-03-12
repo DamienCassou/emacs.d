@@ -16,8 +16,6 @@
   (require  'borg)
   (borg-initialize))
 
-(require 'diminish)
-
 (progn ; `use-package'
   (setq use-package-always-defer t)
   (setq use-package-enable-imenu-support t)
@@ -155,7 +153,6 @@ current."
 
 (use-package simple
   :demand t
-  :diminish (auto-fill-mode)
   :bind (("M-j" . my/join-line)
          ;; Replace `just-one-space' by the more advanced `cycle-spacing'.
          ("M-SPC" . cycle-spacing)
@@ -303,7 +300,6 @@ current."
   (setq smime-CA-directory "/etc/ssl/certs"))
 
 (use-package abbrev
-  :diminish
   :init
   (progn
     (setq-default abbrev-mode t)))
@@ -323,7 +319,6 @@ current."
 
 (use-package undo-tree
   :demand t
-  :diminish
   :config
   (progn
     (global-undo-tree-mode)
@@ -415,11 +410,7 @@ current."
   (progn
     (recentf-mode)))
 
-(use-package with-editor
-  :diminish)
-
 (use-package magit
-  :diminish (magit-auto-revert-mode magit-wip-after-save-mode magit-wip-after-apply-mode magit-wip-affter-change)
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-dispatch-popup))
   :init
@@ -503,7 +494,6 @@ current."
       (flyspell-buffer))))
 
 (use-package flyspell
-  :diminish
   :bind (("C-. f b" . flyspell-buffer))
   :hook (text-mode . flyspell-mode)
   :init
@@ -517,20 +507,14 @@ current."
   :bind (("M-$" . flyspell-correct-word-generic)))
 
 (use-package eldoc
-  :diminish
   :hook ((emacs-lisp-mode eval-expression-minibuffer-setup) . eldoc-mode))
 
 (use-package checkdoc
-  :diminish
   :init
   (progn
     (setq checkdoc-spellcheck-documentation-flag t)))
 
-(use-package face-remap
-  :diminish text-scale-mode)
-
 (use-package flycheck
-  :diminish
   :init
   (progn
     (setq flycheck-emacs-lisp-check-declare t)
@@ -666,7 +650,6 @@ current."
 
 (use-package drag-stuff
   :demand t
-  :diminish
   :config
   (progn
     (drag-stuff-global-mode t)
@@ -699,14 +682,12 @@ current."
 
 (use-package which-key
   :demand t
-  :diminish
   :config
   (progn
     (which-key-mode)))
 
 (use-package projectile
   :demand t
-  :diminish projectile-mode
   :init
   (progn
     (setq projectile-completion-system 'ivy)
@@ -910,7 +891,6 @@ Designed to be called before `message-send-and-exit'."
     (imagemagick-register-types)))
 
 (use-package paredit
-  :diminish
   :hook ((emacs-lisp-mode lisp-mode eval-expression-minibuffer-setup) . enable-paredit-mode)
   :config
   (progn
@@ -922,9 +902,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package smartparens-config
   :after smartparens)
-
-(use-package autorevert
-  :diminish auto-revert-mode)
 
 (use-package smartscan
   :hook (prog-mode . smartscan-mode))
@@ -988,7 +965,6 @@ Designed to be called before `message-send-and-exit'."
       (setq counsel-describe-variable-function #'helpful-variable))))
 
 (use-package aggressive-indent
-  :diminish
   :hook ((lisp-mode emacs-lisp-mode) . aggressive-indent-mode))
 
 (use-package bookmark
@@ -998,7 +974,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package counsel
   :demand t
-  :diminish
   :bind (("M-i" . counsel-imenu)
          ("C-x 8 RET" . counsel-unicode-char)
          ("s-!" . counsel-linux-app)
@@ -1045,7 +1020,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package ivy
   :demand t
-  :diminish
   :bind (("C-. i" . ivy-resume))
   :init
   (progn
@@ -1160,17 +1134,8 @@ Designed to be called before `message-send-and-exit'."
     (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
     (setq avy-style 'at-full)))
 
-(use-package outline
-  :diminish outline-minor-mode)
-
 (use-package beginend
   :demand t
-  :diminish (beginend-global-mode
-             beginend-prog-mode
-             beginend-dired-mode
-             beginend-notmuch-search-mode
-             beginend-magit-status-mode
-             beginend-compilation-mode)
   :config
   (progn
     (beginend-global-mode)))
@@ -1183,7 +1148,6 @@ Designed to be called before `message-send-and-exit'."
           "~/Documents/configuration/contacts/contacts")))
 
 (use-package nameless
-  :diminish
   :hook (emacs-lisp-mode . nameless-mode)
   :init
   (progn
@@ -1192,7 +1156,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package beacon
   :demand t
-  :diminish
   :init
   (progn
     (setq beacon-blink-when-focused t))
@@ -1203,13 +1166,11 @@ Designed to be called before `message-send-and-exit'."
     (beacon-mode)))
 
 (use-package subword
-  :diminish
   :init
   (progn
     (global-subword-mode)))
 
 (use-package company
-  :diminish
   :bind ("C-. /" . company-complete)
   :hook (prog-mode . company-mode)
   :init
@@ -1218,24 +1179,11 @@ Designed to be called before `message-send-and-exit'."
     (setq company-dabbrev-ignore-case nil)))
 
 (use-package emacs-js
-  :diminish (js2-refactor-mode js2-minor-mode js-lint-mode tern-mode)
   :hook (js-mode . setup-js-buffer)
   :config
   (progn
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
-
-(use-package eslintd-fix
-  :diminish eslintd-fix-mode)
-
-(use-package widgetjs
-  :diminish)
-
-(use-package amd-mode
-  :diminish)
-
-(use-package indium
-  :diminish indium-interaction-mode)
 
 (use-package gulp-task-runner
   :commands (gulp))
@@ -1468,18 +1416,15 @@ Designed to be called before `message-send-and-exit'."
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package yasnippet
-  :diminish yas-minor-mode
   :hook (emacs-lisp-mode . yas-minor-mode)
   :config
   (progn
     (yas-reload-all)))
 
 (use-package ws-butler
-  :diminish
   :hook (prog-mode . ws-butler-mode))
 
 (use-package editorconfig
-  :diminish
   :hook ((prog-mode text-mode) . editorconfig-mode))
 
 (use-package compile
@@ -1540,7 +1485,6 @@ Designed to be called before `message-send-and-exit'."
     (setq skeletor-show-project-command 'magit-status)))
 
 (use-package klassified
-  :diminish klassified-interaction-js-mode
   :hook (js-mode . klassified-interaction-js-mode))
 
 (use-package json-navigator
@@ -1679,7 +1623,6 @@ Designed to be called before `message-send-and-exit'."
 
 (use-package mpdel
   :demand t
-  :diminish
   :init
   (progn
     (setq mpdel-prefix-key (kbd "C-. z")))
@@ -1957,6 +1900,12 @@ Interactively, select BUFNAME from the list of all windows."
 
 (use-package nov
   :mode ("\\.epub\\'" . nov-mode))
+
+(use-package minions
+  :demand t
+  :config
+  (progn
+    (minions-mode)))
 
 (defun my/youtube-dl ()
   "Download a video in the kill ring from youtube. "

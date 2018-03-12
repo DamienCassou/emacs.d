@@ -125,9 +125,6 @@
 [submodule "diff-hl"] # shows git status in buffer's fringe
 	path = lib/diff-hl
 	url = git@github.com:dgutov/diff-hl.git
-[submodule "diminish"] # Shorter mode names in the modeline
-	path = lib/diminish
-	url = git@github.com:myrjola/diminish.el.git
 [submodule "dired-imenu"] # integrates imenu in dired
 	path = lib/dired-imenu
 	url = git@github.com:DamienCassou/dired-imenu.git
@@ -364,6 +361,9 @@
 [submodule "message-templ"]
 	path = lib/message-templ
 	url = git://pivot.cs.unb.ca/message-templ.git
+[submodule "minions"]
+	path = lib/minions
+	url = git@github.com:tarsius/minions.git
 [submodule "mpdel"]
 	path = lib/mpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/mpdel.git
