@@ -1797,6 +1797,7 @@ Interactively, select BUFNAME from the list of all windows."
     (exwm-input-set-key (kbd "s-l") #'my/lock-screen)
     (exwm-input-set-key (kbd "C-M-'") #'shell-switcher-new-shell)
     (exwm-input-set-key (kbd "C-'") #'shell-switcher-switch-buffer)
+    (exwm-input-set-key (kbd "C-M-v") #'scroll-other-window)
 
     ;; Bind C-q so that the next key is sent literally to the
     ;; application
