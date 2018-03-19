@@ -269,6 +269,7 @@ current."
   (progn
     ;; the following is useful for package-lint
     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+    (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
     (package-initialize)
     (unless (file-directory-p package-user-dir)
       ;; only contact elpa repositories if we don't have anything yet
