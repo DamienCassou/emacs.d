@@ -358,9 +358,6 @@
 [submodule "memoize"]
 	path = lib/memoize
 	url = git@github.com:skeeto/emacs-memoize.git
-[submodule "message-templ"]
-	path = lib/message-templ
-	url = git://pivot.cs.unb.ca/message-templ.git
 [submodule "minions"]
 	path = lib/minions
 	url = git@github.com:tarsius/minions.git
