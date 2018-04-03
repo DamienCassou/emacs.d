@@ -1055,6 +1055,7 @@ I.e., the keyring has a public key for each recipient."
     (ivy-mode)))
 
 (use-package ivy-rich
+  :disabled t
   :demand t
   :after ivy
   :init
