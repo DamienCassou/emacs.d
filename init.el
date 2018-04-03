@@ -565,7 +565,7 @@ current."
     (setq org-email-link-description-format "%s"))
   :config
   (progn
-    (setq org-modules '(org-protocol org-capture ox-beamer org-info))
+    (setq org-modules '(org-protocol org-capture ox-beamer org-info org-tempo))
 
     (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
