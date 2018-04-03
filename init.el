@@ -882,9 +882,32 @@ Designed to be called before `message-send-and-exit'."
       (ignore arg)
       (require 'profile)
       (profile-set-profile-from-message-from-field))
+
     (advice-add #'message-send-and-exit
                 :before
-                #'my:message-send-and-exit)))
+                #'my:message-send-and-exit)
+
+    (defun my/can-encrypt-message-p ()
+      "Return non-nil if current message can be encrypted.
+I.e., the keyring has a public key for each recipient."
+      (let ((recipients (seq-map #'cadr
+                                 (seq-mapcat (lambda (header)
+                                               (let ((header-value (message-fetch-field header)))
+                                                 (and
+                                                  header-value
+                                                  (mail-extract-address-components header-value t))))
+                                             '("To" "CC" "BCC"))))
+            (context (epg-make-context epa-protocol)))
+        (seq-every-p (lambda (recipient)
+                       (not (seq-empty-p (epg-list-keys context recipient))))
+                     recipients)))
+
+    (defun my/add-encryption-mark-if-possible ()
+      "Add MML tag to encrypt message when there is a key for each recipient."
+      (when (my/can-encrypt-message-p)
+        (mml-secure-message-sign-encrypt)))
+
+    (add-hook 'message-send-hook #'my/add-encryption-mark-if-possible)))
 
 (use-package image
   :config
