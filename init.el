@@ -1382,7 +1382,6 @@ I.e., the keyring has a public key for each recipient."
             (add-to-list 'browse-url-browser-function chromium-pair)
           (setq browse-url-browser-function (list chromium-pair
                                                   (cons "." browse-url-browser-function))))))
-
     (defun my/slack-configure-language (team)
       (let ((room (slack-room-name (slack-room-find slack-current-room-id slack-current-team))))
         (if (and (string= team "Företagsplatsen")
@@ -1412,20 +1411,12 @@ I.e., the keyring has a public key for each recipient."
      :subscribed-channels '(general development stockholm-food report-editor))
 
     (slack-register-team
-     :name "omnisharp"
+     :name "andaolvras"
      :default nil
-     :client-id (auth-source-pass-get "client-id" "ftgp/omnisharp.slack.com")
-     :client-secret (auth-source-pass-get "client-secret" "ftgp/omnisharp.slack.com")
-     :token (auth-source-pass-get "token" "ftgp/omnisharp.slack.com")
-     :subscribed-channels '(emacs))
-
-    (slack-register-team
-     :name "frenchfuckers"
-     :default nil
-     :client-id (auth-source-pass-get "client-id" "frenchfuckers.slack.com")
-     :client-secret (auth-source-pass-get "client-secret" "frenchfuckers.slack.com")
-     :token (auth-source-pass-get "token" "frenchfuckers.slack.com")
-     :subscribed-channels '(general))
+     :client-id (auth-source-pass-get "client-id" "ftgp/andaolvras.slack.com")
+     :client-secret (auth-source-pass-get "client-secret" "ftgp/andaolvras.slack.com")
+     :token (auth-source-pass-get "token" "ftgp/andaolvras.slack.com")
+     :subscribed-channels '(general actus-cantine dev presentation))
 
     (advice-add #'slack-user-status :override #'my/slack-user-status)
     (add-hook 'slack-mode-hook #'my/configure-slack-mode)
