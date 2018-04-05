@@ -1659,8 +1659,11 @@ I.e., the keyring has a public key for each recipient."
 Delete gpaste clipboard."
       (let ((content (list)))
         (while (not (zerop (string-to-number (shell-command-to-string "gpaste-client history-size"))))
-          (push (shell-command-to-string "gpaste-client get 0") content)
+          (let ((new-paste (shell-command-to-string "gpaste-client get 0")))
+            (unless (string-equal new-paste (car kill-ring))
+              (push new-paste content)))
           (shell-command-to-string "gpaste-client delete 0"))
+        (message "my/gpaste-extract-content: %S" content)
         (reverse content)))
 
     (defun my/start-clipboard-manager ()
