@@ -1802,7 +1802,8 @@ Interactively, select BUFNAME from the list of all windows."
       "Same as counsel-yank-pop and paste into exwm buffer."
       (interactive)
       (call-interactively #'counsel-yank-pop)
-      (exwm-input--fake-key ?\C-v)))
+      (when (derived-mode-p 'exwm-mode)
+        (exwm-input--fake-key ?\C-v))))
 
   :config
   (progn
