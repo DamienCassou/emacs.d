@@ -162,8 +162,7 @@ current."
   (progn
     (setq delete-active-region nil)
     (setq eval-expression-print-length 20)
-    (setq eval-expression-print-level nil)
-    (setq save-interprogram-paste-before-kill t))
+    (setq eval-expression-print-level nil))
   :config
   (progn
     (defun my/join-line ()
@@ -1006,7 +1005,8 @@ I.e., the keyring has a public key for each recipient."
   :init
   (progn
     (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map)
-    (setq counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only))
+    (setq counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
+    (setq counsel-yank-pop-preselect-last t))
   :config
   (progn
     (defun my/counsel-open-in-external-terminal (file)
@@ -1654,13 +1654,28 @@ I.e., the keyring has a public key for each recipient."
   :demand t
   :preface
   (progn
+    (defun my/gpaste-extract-content ()
+      "Move the clipboard content from gpaste to kill-ring.
+Delete gpaste clipboard."
+      (let ((content (list)))
+        (while (not (zerop (string-to-number (shell-command-to-string "gpaste-client history-size"))))
+          (push (shell-command-to-string "gpaste-client get 0") content)
+          (shell-command-to-string "gpaste-client delete 0"))
+        (reverse content)))
+
     (defun my/start-clipboard-manager ()
-      "Start a clipboard manager, performing `kill-new' from xclip."
+      "Start a clipboard manager."
       (interactive)
-      (start-process-shell-command
-       "clipboard-manager"
-       "*clipboard-manager*"
-       (locate-user-emacs-file "bin/clipboard-manager.sh")))
+      (when (zerop (condition-case nil
+                       (call-process "gpaste-client" nil nil nil "daemon-reexec")
+                     (error 1))) ;; ⇐ should be a non-zero number
+        (setq interprogram-paste-function #'my/gpaste-extract-content)
+        ;; There is no need to save the system clipboard before
+        ;; killing in Emacs because we will get the clipboard content
+        ;; from gpaste anyway:
+        (setq save-interprogram-paste-before-kill nil)
+        ;; Make sure we send selected yank-pop candidate to clipboard:
+        (setq yank-pop-change-selection t)))
 
     (defun my/exwm-reliable-class-p ()
       "Return t if application's class is suitable for naming."
@@ -1778,7 +1793,13 @@ Interactively, select BUFNAME from the list of all windows."
                                      (string= (buffer-name (window-buffer window))
                                               bufname))
                                    (my/list-all-windows))))
-        (select-window window))))
+        (select-window window)))
+
+    (defun my/exwm-counsel-yank-pop ()
+      "Same as counsel-yank-pop and paste into exwm buffer."
+      (interactive)
+      (call-interactively #'counsel-yank-pop)
+      (exwm-input--fake-key ?\C-v)))
 
   :config
   (progn
@@ -1814,6 +1835,7 @@ Interactively, select BUFNAME from the list of all windows."
     (exwm-input-set-key (kbd "C-M-'") #'shell-switcher-new-shell)
     (exwm-input-set-key (kbd "C-'") #'shell-switcher-switch-buffer)
     (exwm-input-set-key (kbd "C-M-v") #'scroll-other-window)
+    (exwm-input-set-key (kbd "M-y") #'my/exwm-counsel-yank-pop)
 
     ;; Bind C-q so that the next key is sent literally to the
     ;; application
