@@ -1663,7 +1663,6 @@ Delete gpaste clipboard."
             (unless (string-equal new-paste (car kill-ring))
               (push new-paste content)))
           (shell-command-to-string "gpaste-client delete 0"))
-        (message "my/gpaste-extract-content: %S" content)
         (reverse content)))
 
     (defun my/start-clipboard-manager ()
@@ -1673,12 +1672,21 @@ Delete gpaste clipboard."
                        (call-process "gpaste-client" nil nil nil "daemon-reexec")
                      (error 1))) ;; ⇐ should be a non-zero number
         (setq interprogram-paste-function #'my/gpaste-extract-content)
+        (add-hook 'buffer-list-update-hook #'my/refresh-kill-ring)
+        ;; (add-hook 'focus-in-hook #'my/refresh-kill-ring)
+        ;; (advice-add 'select-window :after #'my/refresh-kill-ring)
+        ;; (advice-add 'select-frame  :after #'my/refresh-kill-ring)
         ;; There is no need to save the system clipboard before
         ;; killing in Emacs because we will get the clipboard content
         ;; from gpaste anyway:
         (setq save-interprogram-paste-before-kill nil)
         ;; Make sure we send selected yank-pop candidate to clipboard:
         (setq yank-pop-change-selection t)))
+
+    (defun my/refresh-kill-ring (&rest _)
+      "Make sure `interprogram-paste-function' is executed."
+      (when kill-ring
+	(current-kill 0)))
 
     (defun my/exwm-reliable-class-p ()
       "Return t if application's class is suitable for naming."
