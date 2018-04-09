@@ -143,6 +143,9 @@
 [submodule "elbank"]
 	path = lib/elbank
 	url = https://DamienCassou@gitlab.petton.fr/nico/elbank
+[submodule "elisp-lint"]
+	path = lib/elisp-lint
+	url = git@github.com:gonewest818/elisp-lint.git
 [submodule "elisp-refs"]
 	path = lib/elisp-refs
 	url = git@github.com:Wilfred/refs.el.git
