@@ -130,7 +130,7 @@
 	url = git@github.com:DamienCassou/dired-imenu.git
 [submodule "dired-rsync"]
 	path = lib/dired-rsync
-	url = https://DamienCassou@github.com/DamienCassou/emacs.d
+	url = https://DamienCassou@github.com/stsquad/dired-rsync.git
 [submodule "dockerfile-mode"]
 	path = lib/dockerfile-mode
 	url = git@github.com:spotify/dockerfile-mode.git
