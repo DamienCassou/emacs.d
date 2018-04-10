@@ -128,6 +128,9 @@
 [submodule "dired-imenu"] # integrates imenu in dired
 	path = lib/dired-imenu
 	url = git@github.com:DamienCassou/dired-imenu.git
+[submodule "dired-rsync"]
+	path = lib/dired-rsync
+	url = https://DamienCassou@github.com/DamienCassou/emacs.d
 [submodule "dockerfile-mode"]
 	path = lib/dockerfile-mode
 	url = git@github.com:spotify/dockerfile-mode.git

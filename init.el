@@ -1652,11 +1652,13 @@ I.e., the keyring has a public key for each recipient."
 
 (defvar my/refreshing-kill-ring nil
   "Non-nil while the `kill-ring' is being refreshed.
-This avoids recursive calls.")
+This avoids recursive calls while executing
+`my/refreshing-kill-ring'.")
 
-(defvar my/refreshing-last-time (float-time (current-time)))
-
-(defvar my/call-counts 0)
+(defvar my/refreshing-last-time 0.0
+  "Time at which last `my/gpaste-extract-content' was executed.
+This avoids calling the function too often in a small amount of
+time.")
 
 (use-package exwm
   :demand t
@@ -1666,18 +1668,22 @@ This avoids recursive calls.")
       "Move the clipboard content from gpaste to kill-ring.
 Delete gpaste clipboard."
       (let ((time (float-time (current-time))))
-        (when (> (- time my/refreshing-last-time) 0.5)
+        (when (and
+               ;; avoid calling too often in a row
+               (> (- time my/refreshing-last-time) 0.5)
+               ;; avoid calling recursively (e.g.,
+               ;; `shell-command-to-string' might trigger a hook
+               ;; triggering us)
+               (not my/refreshing-kill-ring))
           (setq my/refreshing-last-time time)
-          (cl-incf my/call-counts)
-          (unless my/refreshing-kill-ring
-            (let ((content (list))
-                  (my/refreshing-kill-ring t))
-              (while (not (zerop (string-to-number (shell-command-to-string "gpaste-client history-size"))))
-                (let ((new-paste (shell-command-to-string "gpaste-client get 0")))
-                  (unless (string-equal new-paste (car kill-ring))
-                    (push new-paste content)))
-                (shell-command-to-string "gpaste-client delete 0"))
-              (reverse content))))))
+          (let ((content (list))
+                (my/refreshing-kill-ring t))
+            (while (not (zerop (string-to-number (shell-command-to-string "gpaste-client history-size"))))
+              (let ((new-paste (shell-command-to-string "gpaste-client get 0")))
+                (unless (string-equal new-paste (car kill-ring))
+                  (push new-paste content)))
+              (shell-command-to-string "gpaste-client delete 0"))
+            (reverse content)))))
 
     (defun my/start-clipboard-manager ()
       "Start a clipboard manager."
