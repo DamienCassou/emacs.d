@@ -1650,6 +1650,14 @@ I.e., the keyring has a public key for each recipient."
   :after mpdel
   :demand t)
 
+(defvar my/refreshing-kill-ring nil
+  "Non-nil while the `kill-ring' is being refreshed.
+This avoids recursive calls.")
+
+(defvar my/refreshing-last-time (float-time (current-time)))
+
+(defvar my/call-counts 0)
+
 (use-package exwm
   :demand t
   :preface
@@ -1657,13 +1665,19 @@ I.e., the keyring has a public key for each recipient."
     (defun my/gpaste-extract-content ()
       "Move the clipboard content from gpaste to kill-ring.
 Delete gpaste clipboard."
-      (let ((content (list)))
-        (while (not (zerop (string-to-number (shell-command-to-string "gpaste-client history-size"))))
-          (let ((new-paste (shell-command-to-string "gpaste-client get 0")))
-            (unless (string-equal new-paste (car kill-ring))
-              (push new-paste content)))
-          (shell-command-to-string "gpaste-client delete 0"))
-        (reverse content)))
+      (let ((time (float-time (current-time))))
+        (when (> (- time my/refreshing-last-time) 0.5)
+          (setq my/refreshing-last-time time)
+          (cl-incf my/call-counts)
+          (unless my/refreshing-kill-ring
+            (let ((content (list))
+                  (my/refreshing-kill-ring t))
+              (while (not (zerop (string-to-number (shell-command-to-string "gpaste-client history-size"))))
+                (let ((new-paste (shell-command-to-string "gpaste-client get 0")))
+                  (unless (string-equal new-paste (car kill-ring))
+                    (push new-paste content)))
+                (shell-command-to-string "gpaste-client delete 0"))
+              (reverse content))))))
 
     (defun my/start-clipboard-manager ()
       "Start a clipboard manager."
@@ -1673,9 +1687,9 @@ Delete gpaste clipboard."
                      (error 1))) ;; ⇐ should be a non-zero number
         (setq interprogram-paste-function #'my/gpaste-extract-content)
         (add-hook 'buffer-list-update-hook #'my/refresh-kill-ring)
-        ;; (add-hook 'focus-in-hook #'my/refresh-kill-ring)
-        ;; (advice-add 'select-window :after #'my/refresh-kill-ring)
-        ;; (advice-add 'select-frame  :after #'my/refresh-kill-ring)
+        ;; (remove-hook 'focus-in-hook #'my/refresh-kill-ring)
+        ;; (advice-remove 'select-window #'my/refresh-kill-ring)
+        ;; (advice-remove 'select-frame  #'my/refresh-kill-ring)
         ;; There is no need to save the system clipboard before
         ;; killing in Emacs because we will get the clipboard content
         ;; from gpaste anyway:
@@ -1685,7 +1699,7 @@ Delete gpaste clipboard."
 
     (defun my/refresh-kill-ring (&rest _)
       "Make sure `interprogram-paste-function' is executed."
-      (when kill-ring
+      (when (and kill-ring (not my/refreshing-kill-ring))
 	(current-kill 0)))
 
     (defun my/exwm-reliable-class-p ()
@@ -1809,7 +1823,8 @@ Interactively, select BUFNAME from the list of all windows."
     (defun my/exwm-counsel-yank-pop ()
       "Same as counsel-yank-pop and paste into exwm buffer."
       (interactive)
-      (call-interactively #'counsel-yank-pop)
+      (let ((inhibit-read-only t))
+        (call-interactively #'counsel-yank-pop))
       (when (derived-mode-p 'exwm-mode)
         (exwm-input--fake-key ?\C-v))))
 
