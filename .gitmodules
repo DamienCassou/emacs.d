@@ -608,3 +608,6 @@
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
+[submodule "khardel"]
+	path = lib/khardel
+	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/khardel.git
