@@ -281,7 +281,7 @@
 	url = git@github.com:abo-abo/hydra.git
 [submodule "indium"]
 	path = lib/indium
-	url = https://gitlab.petton.fr/NicolasPetton/Indium.git
+	url = https://DamienCassou@gitlab.petton.fr/NicolasPetton/Indium.git
 	remote = "DamienCassou https://DamienCassou@gitlab.petton.fr/DamienCassou/Indium.git"
 	info-path = doc
 [submodule "ivy"]
