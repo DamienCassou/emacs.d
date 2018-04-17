@@ -614,3 +614,6 @@
 [submodule "desktop-environment"]
 	path = lib/desktop-environment
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/desktop-environment.git
+[submodule "gpastel"]
+	path = lib/gpastel
+	url = https://DamienCassou@github.com/DamienCassou/gpastel.git
