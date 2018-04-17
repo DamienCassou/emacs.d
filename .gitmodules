@@ -119,6 +119,9 @@
 [submodule "debbugs"] # SOAP library to access debbugs servers
 	path = lib/debbugs
 	url = git@github.com:emacsmirror/debbugs.git
+[submodule "desktop-environment"]
+	path = lib/desktop-environment
+	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/desktop-environment.git
 [submodule "devdocs"]
 	path = lib/devdocs
 	url = git@github.com:xuchunyang/devdocs.el.git
@@ -241,6 +244,9 @@
 [submodule "google-translate"] # to translate current region and more
 	path = lib/google-translate
 	url = git@github.com:atykhonov/google-translate.git
+[submodule "gpastel"]
+	path = lib/gpastel
+	url = https://DamienCassou@github.com/DamienCassou/gpastel.git
 [submodule "graphviz-dot-mode"]
 	path = lib/graphviz-dot-mode
 	url = git@github.com:ppareit/graphviz-dot-mode.git
@@ -316,6 +322,9 @@
 [submodule "json-snatcher"]
 	path = lib/json-snatcher
 	url = git@github.com:Sterlingg/json-snatcher.git
+[submodule "khardel"]
+	path = lib/khardel
+	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/khardel.git
 [submodule "klassified"]
 	path = lib/klassified
 	url = https://DamienCassou@github.com/DamienCassou/klassified.el.git
@@ -608,12 +617,3 @@
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
-[submodule "khardel"]
-	path = lib/khardel
-	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/khardel.git
-[submodule "desktop-environment"]
-	path = lib/desktop-environment
-	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/desktop-environment.git
-[submodule "gpastel"]
-	path = lib/gpastel
-	url = https://DamienCassou@github.com/DamienCassou/gpastel.git
