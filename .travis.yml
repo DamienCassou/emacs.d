@@ -1,15 +1,21 @@
 language: generic
 sudo: false
 
+git:
+  # We will fetch submodules ourselves:
+  submodules: false
+
 before_install:
+  # Use sed to replace the SSH URL with the public URL, then initialize submodules
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules Makefile
+  - git submodule init
   - curl -fsSkL https://gist.github.com/rejeep/ebcd57c3af83b049833b/raw > x.sh && source ./x.sh
   - evm install $EVM_EMACS --use --skip
-  - cask emacs --version
 
 env:
   - EVM_EMACS=emacs-26-pretest-travis
 
 script:
-  - make boostrap-borg
-  - make boostrap
+  - make bootstrap-borg
+  - make bootstrap
   - make
