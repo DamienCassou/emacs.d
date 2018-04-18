@@ -1650,63 +1650,63 @@ I.e., the keyring has a public key for each recipient."
   :after mpdel
   :demand t)
 
-(defvar my/refreshing-kill-ring nil
-  "Non-nil while the `kill-ring' is being refreshed.
-This avoids recursive calls while executing
-`my/refreshing-kill-ring'.")
-
-(defvar my/refreshing-last-time 0.0
-  "Time at which last `my/gpaste-extract-content' was executed.
-This avoids calling the function too often in a small amount of
-time.")
+(defvar my/gpaste-dbus-object nil
+  "D-Bus object remembering the return value of `dbus-register-signal'.
+This can be (manually) used to unregister from the signal.")
 
 (use-package exwm
   :demand t
   :preface
   (progn
-    (defun my/gpaste-extract-content ()
-      "Move the clipboard content from gpaste to kill-ring.
-Delete gpaste clipboard."
-      (let ((time (float-time (current-time))))
-        (when (and
-               ;; avoid calling too often in a row
-               (> (- time my/refreshing-last-time) 0.5)
-               ;; avoid calling recursively (e.g.,
-               ;; `shell-command-to-string' might trigger a hook
-               ;; triggering us)
-               (not my/refreshing-kill-ring))
-          (setq my/refreshing-last-time time)
-          (let ((content (list))
-                (my/refreshing-kill-ring t))
-            (while (not (zerop (string-to-number (shell-command-to-string "gpaste-client history-size"))))
-              (let ((new-paste (shell-command-to-string "gpaste-client get 0")))
-                (unless (string-equal new-paste (car kill-ring))
-                  (push new-paste content)))
-              (shell-command-to-string "gpaste-client delete 0"))
-            (reverse content)))))
+    (defun my/gpaste-update-handler (action target index)
+      "A gpaste ACTION happened on a TARGET clipboard at INDEX.
+If this event represents"
+      (with-current-buffer (get-buffer-create "*gpaste*")
+        (goto-char (point-max))
+        (insert (format "gpaste %s\n  action: %s\n  target: %s\n  index: %s\n"
+                        (format-time-string "%T")
+                        action target index)))
+      (when (and (string= action "REPLACE") (= index 0))
+        ;; Don't send the new kill back to system clipboard as that
+        ;; would start infinite recursion:
+        (let ((interprogram-cut-function nil)
+              (copied-text (dbus-call-method :session
+                                             "org.gnome.GPaste"
+                                             "/org/gnome/GPaste"
+                                             "org.gnome.GPaste1"
+                                             "GetElement"
+                                             :uint64 0)))
+          ;; Prevent killed text from Emacs that have been sent to the
+          ;; system clipboard with `interprogram-cut-function' to be
+          ;; saved again to the `kill-ring':
+          (unless (string= copied-text (car kill-ring))
+            (kill-new copied-text)))))
 
     (defun my/start-clipboard-manager ()
       "Start a clipboard manager."
       (interactive)
       (when (zerop (condition-case nil
                        (call-process "gpaste-client" nil nil nil "daemon-reexec")
-                     (error 1))) ;; ⇐ should be a non-zero number
-        (setq interprogram-paste-function #'my/gpaste-extract-content)
-        (add-hook 'buffer-list-update-hook #'my/refresh-kill-ring)
-        ;; (remove-hook 'focus-in-hook #'my/refresh-kill-ring)
-        ;; (advice-remove 'select-window #'my/refresh-kill-ring)
-        ;; (advice-remove 'select-frame  #'my/refresh-kill-ring)
-        ;; There is no need to save the system clipboard before
-        ;; killing in Emacs because we will get the clipboard content
-        ;; from gpaste anyway:
+                     (error 1))) ;; ⇐ should be a non-zero number No
+        ;; No need for `interprogram-paste-function' because gpaste will
+        ;; tell us as soon as text is added to clipboard:
+        (setq interprogram-paste-function nil)
+        ;; No need to save the system clipboard before killing in
+        ;; Emacs because Emacs already knows about it:
         (setq save-interprogram-paste-before-kill nil)
         ;; Make sure we send selected yank-pop candidate to clipboard:
-        (setq yank-pop-change-selection t)))
-
-    (defun my/refresh-kill-ring (&rest _)
-      "Make sure `interprogram-paste-function' is executed."
-      (when (and kill-ring (not my/refreshing-kill-ring))
-	(current-kill 0)))
+        (setq yank-pop-change-selection t)
+        ;; Register an handler for clipboard update signals so we can
+        ;; immediately update the `kill-ring':
+        (require 'dbus)
+        (setq my/gpaste-dbus-object
+              (dbus-register-signal
+               :session
+               "org.gnome.GPaste"
+               "/org/gnome/GPaste"
+               "org.gnome.GPaste1"
+               "Update"
+               #'my/gpaste-update-handler))))
 
     (defun my/exwm-reliable-class-p ()
       "Return t if application's class is suitable for naming."
