@@ -43,6 +43,7 @@
         paredit-backward-kill-word
         paredit-backward-slurp-sexp
         paredit-doublequote
+        paredit-forward
         paredit-forward-delete
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
@@ -74,5 +75,6 @@
         end-of-buffer
         ivy-switch-buffer
         markdown-exdent-or-delete
+        org-capture
         orgtbl-self-insert-command
         ))
