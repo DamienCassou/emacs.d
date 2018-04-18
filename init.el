@@ -1743,71 +1743,6 @@ If this event represents"
       "Return a command switching to workspace number I."
       `(lambda () (interactive) (exwm-workspace-switch-create ,i)))
 
-    (defun my/exwm-start-command (command)
-      "Start external COMMAND. Interactively, ask for COMMAND."
-      (interactive (list (read-shell-command "$ ")))
-      (start-process-shell-command command nil command))
-
-    (defun my/brightness-get ()
-      "Return a string representing current brightness level."
-      (let ((output (shell-command-to-string "brightnessctl")))
-        (save-match-data
-          (string-match "\\([0-9]+%\\)" output)
-          (match-string 0 output))))
-
-    (defun my/adjust-brightness (delta)
-      "Adjust screen brightness by DELTA."
-      (shell-command-to-string (format "brightnessctl s %s" delta))
-      (message "Backlight: %s" (my/brightness-get)))
-
-    (defmacro my/brightness-command (delta)
-      "Return a command modifying brightness by DELTA."
-      `(lambda () (interactive) (my/adjust-brightness ,delta)))
-
-    (defun my/volume-get ()
-      "Return a string representing current sound volume."
-      (let ((output (shell-command-to-string "amixer get Master")))
-        (string-match "\\([0-9]+%\\)" output)
-        (match-string 0 output)))
-
-    (defun my/adjust-volume (delta)
-      "Adjust sound volume by DELTA."
-      (shell-command-to-string (format "amixer set Master %s" delta))
-      (message "Volume: %s" (my/volume-get)))
-
-    (defmacro my/volume-command (delta)
-      "Return a command modifying sound volume by DELTA."
-      `(lambda () (interactive) (my/adjust-volume ,delta)))
-
-    (defun my/toggle-mute ()
-      "Toggle between muted and un-muted."
-      (interactive)
-      (message "%s"
-               (shell-command-to-string "amixer set Master toggle")))
-
-    (defun my/toggle-capture-mute ()
-      "Toggle microphone between muted and un-muted."
-      (interactive)
-      (message "%s"
-               (shell-command-to-string "amixer set Capture toggle")))
-
-    (defun my/screenshot ()
-      "Take a screenshot of the screen."
-      (interactive)
-      (let ((default-directory (expand-file-name "~/Pictures")))
-        (start-process-shell-command "scrot" nil "scrot")))
-
-    (defun my/screenshot-part ()
-      "Take a screenshot of a screen's part."
-      (interactive)
-      (let ((default-directory (expand-file-name "~/Pictures")))
-        (start-process-shell-command "scrot -s" nil "scrot -s")))
-
-    (defun my/lock-screen ()
-      "Lock screen and ask for user's password."
-      (interactive)
-      (shell-command-to-string "slock"))
-
     (defun my/list-all-windows ()
       "Return the list of all Emacs windows."
       (seq-mapcat (lambda (frame) (window-list frame)) (frame-list)))
@@ -1849,22 +1784,9 @@ Interactively, select BUFNAME from the list of all windows."
     (exwm-input-set-key (kbd "s-7") (my/switch-workspace 7))
     (exwm-input-set-key (kbd "s-8") (my/switch-workspace 8))
     (exwm-input-set-key (kbd "s-9") (my/switch-workspace 9))
-    (exwm-input-set-key (kbd "s-&") #'my/exwm-start-command)
-    (exwm-input-set-key (kbd "<XF86MonBrightnessUp>") (my/brightness-command "10%+"))
-    (exwm-input-set-key (kbd "S-<XF86MonBrightnessUp>") (my/brightness-command "1%+"))
-    (exwm-input-set-key (kbd "<XF86MonBrightnessDown>") (my/brightness-command "10%-"))
-    (exwm-input-set-key (kbd "S-<XF86MonBrightnessDown>") (my/brightness-command "1%-"))
-    (exwm-input-set-key (kbd "<XF86AudioRaiseVolume>") (my/volume-command "5%+"))
-    (exwm-input-set-key (kbd "S-<XF86AudioRaiseVolume>") (my/volume-command "1%+"))
-    (exwm-input-set-key (kbd "<XF86AudioLowerVolume>") (my/volume-command "5%-"))
-    (exwm-input-set-key (kbd "S-<XF86AudioLowerVolume>") (my/volume-command "1%-"))
-    (exwm-input-set-key (kbd "<XF86AudioMute>") #'my/toggle-mute)
-    (exwm-input-set-key (kbd "<XF86AudioMicMute>") #'my/toggle-capture-mute)
-    (exwm-input-set-key (kbd "<print>") #'my/screenshot)
-    (exwm-input-set-key (kbd "S-<print>") #'my/screenshot-part)
+
     (exwm-input-set-key (kbd "C-x w") #'my/switch-to-window)
     (exwm-input-set-key (kbd "s-!") #'counsel-linux-app)
-    (exwm-input-set-key (kbd "s-l") #'my/lock-screen)
     (exwm-input-set-key (kbd "C-M-'") #'shell-switcher-new-shell)
     (exwm-input-set-key (kbd "C-'") #'shell-switcher-switch-buffer)
     (exwm-input-set-key (kbd "C-M-v") #'scroll-other-window)
@@ -1905,6 +1827,13 @@ Interactively, select BUFNAME from the list of all windows."
             ([?\C-s] . [?\C-f])
             ;; escape
             ([?\C-g] . [escape])))))
+
+(use-package desktop-environment
+  :demand t
+  :after exwm-input
+  :config
+  (progn
+    (desktop-environment-mode)))
 
 (use-package buffer-move
   :after exwm-input
