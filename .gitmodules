@@ -147,6 +147,7 @@
 	path = lib/editorconfig
 	url = git@github.com:editorconfig/editorconfig-emacs.git
 [submodule "elbank"]
+	branch = structs
 	path = lib/elbank
 	url = https://DamienCassou@gitlab.petton.fr/nico/elbank
 [submodule "elisp-lint"]
