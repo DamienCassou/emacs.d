@@ -6,8 +6,10 @@ git:
   submodules: false
 
 before_install:
-  # Use sed to replace the SSH URL with the public URL, then initialize submodules
-  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules Makefile
+  # Use sed to replace the SSH URL with the public URL
+  - sed -i 'sXgit@github.com:Xhttps:\/\/github.com\/X' .gitmodules Makefile
+  # Replace use of private repositories by a (random) public one
+  - sed -i 'sXgitlab.petton.fr/ftgp/emacsXgithub.com/etu/webpaste.elX' .gitmodules
   - git submodule init
   - curl -fsSkL https://gist.github.com/rejeep/ebcd57c3af83b049833b/raw > x.sh && source ./x.sh
   - evm install $EVM_EMACS --use --skip
