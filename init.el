@@ -1861,16 +1861,6 @@ Interactively, select BUFNAME from the list of all windows."
   (progn
     (minions-mode)))
 
-(defun my/youtube-dl ()
-  "Download a video in the kill ring from youtube. "
-  (interactive)
-  (let* ((str (current-kill 0))
-         (default-directory "/tmp")
-         (proc (get-buffer-process (ansi-term "/bin/bash"))))
-    (term-send-string
-     proc
-     (concat "cd /tmp && youtube-dl " str "\n"))))
-
 (put 'narrow-to-region 'disabled nil)
 
 ;; Make all "yes or no" prompts show "y or n" instead

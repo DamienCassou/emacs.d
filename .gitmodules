@@ -611,6 +611,9 @@
 [submodule "yasnippet"] # expand snippets of text
 	path = lib/yasnippet
 	url = git@github.com:joaotavora/yasnippet.git
+[submodule "youtube-dl"]
+	path = lib/youtube-dl
+	url = https://DamienCassou@github.com/skeeto/youtube-dl-emacs.git
 [submodule "zerodark-theme"] # the best theme ever
 	path = lib/zerodark-theme
 	url = git@github.com:NicolasPetton/zerodark-theme.git
