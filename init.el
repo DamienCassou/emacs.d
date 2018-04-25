@@ -908,6 +908,12 @@ I.e., the keyring has a public key for each recipient."
 
     (add-hook 'message-send-hook #'my/add-encryption-mark-if-possible)))
 
+(use-package elfeed
+  :init
+  (progn
+    (setq elfeed-feeds '("https://emacs.stackexchange.com/feeds"))
+    (setq elfeed-sort-order 'ascending)))
+
 (use-package image
   :config
   (progn
