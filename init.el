@@ -1452,7 +1452,7 @@ I.e., the keyring has a public key for each recipient."
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package yasnippet
-  :hook (emacs-lisp-mode . yas-minor-mode)
+  :hook (org-mode . yas-minor-mode)
   :config
   (progn
     (yas-reload-all)))
