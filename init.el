@@ -543,9 +543,98 @@ current."
     (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
     (setq org-catch-invisible-edits 'error)
     (setq org-clock-clocked-in-display nil)
-    (setq org-completion-use-ido t)
+
     (setq org-directory "~/Documents/configuration/org")
-    (setq org-default-notes-file (expand-file-name "refile.org" org-directory))
+    (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
+    (setq org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
+    (setq org-default-gtd-file (expand-file-name "gtd.org" org-directory))
+    (setq org-default-someday-file (expand-file-name "someday.org" org-directory))
+    (setq org-default-tickler-file (expand-file-name "tickler.org" org-directory))
+    (setq org-agenda-files `(,org-default-notes-file
+                             ,org-default-calendar-file
+                             ,org-default-gtd-file
+                             ,org-default-tickler-file))
+    (setq org-refile-targets `((,org-default-notes-file :maxlevel . 1)
+                               (,org-default-calendar-file :level . 1)
+                               (,org-default-gtd-file :maxlevel . 3)
+                               (,org-default-someday-file :level . 1)
+                               (,org-default-tickler-file :maxlevel . 2)))
+
+    (setq org-capture-templates
+          '(("t" "Todo" entry (file org-default-notes-file) "* TODO %?%i")
+            ("l" "Todo + link" entry (file org-default-notes-file) "* TODO %? %a")
+            ("p" "Appt" entry (file org-default-calendar-file) "* %?\n%^T")
+            ("T" "Tickler" entry (file+headline org-default-tickler-file "Tickler") "* %i%? \nSCHEDULED: %^t")))
+
+    (setq org-todo-keywords
+          '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
+            (sequence "WAITING(w!)" "|" "DONE(d)")))
+
+    (defun my/org-agenda-skip-all-siblings-but-first ()
+      (let (should-skip-entry)
+        (unless (my/org-current-is-todo)
+          (setq should-skip-entry t))
+        (save-excursion
+          (while (and (not should-skip-entry) (org-goto-sibling t))
+            (when (my/org-current-is-todo)
+              (setq should-skip-entry t))))
+        (when should-skip-entry
+          (or (outline-next-heading)
+              (goto-char (point-max))))))
+
+    (defun my/org-current-is-todo ()
+      (string= "TODO" (org-get-todo-state)))
+
+    (defun org-agenda-format-parent (n)
+      (save-excursion
+        (save-restriction
+          (widen)
+          (org-up-heading-safe)
+          (s-truncate n (org-get-heading t t)))))
+
+    (setq org-agenda-custom-commands
+          '(("a" "Agenda for the current week" ((agenda "" nil)) nil nil)
+            ("w" . "TODOs")
+            ("d" "30 days deadlines" agenda ""
+             ((org-agenda-entry-types '(:deadline))
+              (org-agenda-overriding-header "Month deadlines")
+              (org-agenda-span 'month)
+              (org-agenda-overriding-header "")))
+            ("n" "Next actions"
+             ((alltodo ""
+		       ((org-agenda-overriding-header "Next actions")
+		        (org-agenda-tag-filter-preset nil)
+		        (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
+		        (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")
+		        (org-agenda-todo-keyword-format "%-4s")
+		        (org-agenda-files (list org-default-gtd-file)))))
+             nil nil)
+            ("@" "Contexts"
+             ((tags "ftgp"
+	            ((org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
+	             (org-agenda-overriding-header "FTGP next actions")))
+              (tags "emacs"
+	            ((org-agenda-overriding-header "Emacs next actions")
+	             (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)))
+              (tags-todo "@phone"
+		         ((org-agenda-overriding-header "Phone calls")
+		          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))))
+              (todo "WAITING"
+	            ((org-agenda-overriding-header "Waiting")))
+              (tags-todo "@work"
+		         ((org-agenda-overriding-header "At work")
+		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)))
+              (tags-todo "@stockholm"
+		         ((org-agenda-overriding-header "At Stockholm")
+		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)))
+              (tags-todo "@home"
+		         ((org-agenda-overriding-header "At Home")
+		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first))))
+             nil nil)))
+
+    (setq org-agenda-show-future-repeats nil)
+    (setq org-enforce-todo-dependencies t)
+    (setq org-enforce-todo-checkbox-dependencies t)
     (setq org-ellipsis "…")
     (setq org-export-allow-bind-keywords t)
     (setq org-export-creator-string "")
@@ -572,40 +661,6 @@ current."
       (interactive "p")
       (require 'org)
       (org-refile (if (= last 4) '(16) '(4))))
-
-    ;; Custom agenda command definitions
-    (setq org-agenda-custom-commands
-          '((" " "Agenda"
-             ((agenda "" nil)
-              (tags "REFILE"
-                    ((org-agenda-overriding-header "Tasks to Refile")
-                     (org-tags-match-list-sublevels nil))))
-             nil)))
-
-    (setq org-default-calendar-file "~/Documents/configuration/org/schplaf.org")
-
-    (add-to-list 'org-agenda-files "~/Documents/configuration/org/refile.org")
-    (add-to-list 'org-agenda-files "~/Documents/configuration/org/tasks.org")
-    (add-to-list 'org-agenda-files "~/Documents/configuration/org/repeating.org")
-    (add-to-list 'org-agenda-files "~/Documents/configuration/org/orgzly/paiements-cash.org")
-
-    (add-to-list 'org-agenda-files org-default-calendar-file)
-
-    (setq org-refile-targets `((("~/Documents/configuration/org/repeating.org"
-                                 "~/Documents/configuration/org/someday.org"
-                                 "~/Documents/configuration/org/tasks.org")
-                                :maxlevel . 2)))
-
-    (setq org-todo-keywords
-          '((sequence "TODO(t)" "WAIT(w)"   "|" "DONE(d)" "CANCELLED(c)")))
-
-    (setq org-capture-templates
-          '(("t" "Todo" entry
-             (file org-default-notes-file)
-             "* TODO %?%i")
-            ("s" "Schedule" entry
-             (file org-default-calendar-file)
-             "* %?\n%^T")))
 
     ;; This is my `shell-switcher-switch-buffer':
     (unbind-key "C-'" org-mode-map)
