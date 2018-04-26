@@ -150,6 +150,9 @@
 	branch = structs
 	path = lib/elbank
 	url = https://DamienCassou@gitlab.petton.fr/nico/elbank
+[submodule "elcouch"]
+	path = lib/elcouch
+	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
 [submodule "elfeed"]
 	path = lib/elfeed
 	url = git@github.com:skeeto/elfeed.git
