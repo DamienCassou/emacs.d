@@ -554,15 +554,16 @@ current."
                              ,org-default-calendar-file
                              ,org-default-gtd-file
                              ,org-default-tickler-file))
-    (setq org-refile-targets `((,org-default-notes-file :maxlevel . 1)
+
+    (setq org-refile-targets `((,org-default-notes-file :level . 1)
                                (,org-default-calendar-file :level . 1)
                                (,org-default-gtd-file :maxlevel . 3)
                                (,org-default-someday-file :level . 1)
                                (,org-default-tickler-file :maxlevel . 2)))
 
     (setq org-capture-templates
-          '(("t" "Todo" entry (file org-default-notes-file) "* TODO %?%i")
-            ("l" "Todo + link" entry (file org-default-notes-file) "* TODO %? %a")
+          '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox") "* TODO %?%i")
+            ("l" "Todo + link" entry (file+headline org-default-notes-file "Inbox") "* TODO %? %a")
             ("p" "Appt" entry (file org-default-calendar-file) "* %?\n%^T")
             ("T" "Tickler" entry (file+headline org-default-tickler-file "Tickler") "* %i%? \nSCHEDULED: %^t")))
 
@@ -603,7 +604,7 @@ current."
             ("n" "Next actions"
              ((alltodo ""
 		       ((org-agenda-overriding-header "Next actions")
-		        (org-agenda-tag-filter-preset nil)
+		        (org-agenda-category-filter-preset '("+projects"))
 		        (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
 		        (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")
 		        (org-agenda-todo-keyword-format "%-4s")
