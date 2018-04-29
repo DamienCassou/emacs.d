@@ -145,6 +145,7 @@
 	url = git@github.com:ongaeshi/duplicate-thing.git
 [submodule "editorconfig"] # handle .editorconfig files automatically
 	path = lib/editorconfig
+	info-path = doc
 	url = git@github.com:editorconfig/editorconfig-emacs.git
 [submodule "elbank"]
 	branch = structs
