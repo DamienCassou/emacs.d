@@ -556,7 +556,6 @@ current."
                              ,org-default-tickler-file))
 
     (setq org-refile-targets `((,org-default-notes-file :level . 1)
-                               (,org-default-calendar-file :level . 1)
                                (,org-default-gtd-file :maxlevel . 3)
                                (,org-default-someday-file :level . 1)
                                (,org-default-tickler-file :maxlevel . 2)))
