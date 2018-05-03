@@ -343,6 +343,9 @@
 [submodule "less-css-mode"] # Major mode to edit .less files
 	path = lib/less-css-mode
 	url = git@github.com:purcell/less-css-mode.git
+[submodule "libelcouch"]
+	path = lib/libelcouch
+	url = https://DamienCassou@gitlab.petton.fr/elcouch/libelcouch.git
 [submodule "libmpdel"]
 	path = lib/libmpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/libmpdel.git
