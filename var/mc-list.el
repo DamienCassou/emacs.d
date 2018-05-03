@@ -51,6 +51,7 @@
         paredit-open-round
         paredit-splice-sexp-killing-backward
         paredit-wrap-round
+        save-some-buffers
         sgml-slash
         skeleton-pair-insert-maybe
         smartscan-symbol-go-backward
@@ -75,6 +76,7 @@
         end-of-buffer
         ivy-switch-buffer
         markdown-exdent-or-delete
+        my/swap-last-buffers
         org-capture
         orgtbl-self-insert-command
         ))
