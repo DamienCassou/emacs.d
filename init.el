@@ -1936,6 +1936,11 @@ Interactively, select BUFNAME from the list of all windows."
   (progn
     (minions-mode)))
 
+(use-package youtube-dl
+  :init
+  (progn
+    (setq youtube-dl-directory (expand-file-name "~/Downloads/"))))
+
 (put 'narrow-to-region 'disabled nil)
 
 ;; Make all "yes or no" prompts show "y or n" instead
