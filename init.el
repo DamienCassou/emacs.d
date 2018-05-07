@@ -1791,6 +1791,7 @@ Interactively, select BUFNAME from the list of all windows."
             (yank-pop-change-selection t))
         (call-interactively #'counsel-yank-pop))
       (when (derived-mode-p 'exwm-mode)
+        (exwm-input--set-focus (exwm--buffer->id (window-buffer (selected-window))))
         (exwm-input--fake-key ?\C-v))))
 
   :config
