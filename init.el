@@ -427,7 +427,6 @@ current."
     (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
   :config
   (progn
-    (global-magit-file-mode)
     ;; Enable magit-clean
     (put 'magit-clean 'disabled nil)
     (magit-add-section-hook 'magit-status-sections-hook
