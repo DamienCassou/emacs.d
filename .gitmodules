@@ -576,6 +576,9 @@
 [submodule "undo-tree"] # <C-x u> to show the undo tree
 	path = lib/undo-tree
 	url = git@github.com:emacsmirror/undo-tree.git
+[submodule "unfill"]
+	path = lib/unfill
+	url = git@github.com:purcell/unfill.git
 [submodule "unify-opening"]
 	path = lib/unify-opening
 	url = git@github.com:DamienCassou/unify-opening.git
