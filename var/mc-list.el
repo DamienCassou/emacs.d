@@ -22,6 +22,7 @@
         helm-show-kill-ring
         hungry-delete-backward
         hungry-delete-forward
+        ignore
         indent-for-tab-command
         keyboard-escape-quit
         kill-region
