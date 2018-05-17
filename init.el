@@ -611,10 +611,6 @@ current."
 	            ((org-agenda-overriding-header "Emacs next actions")
 	             (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
                      (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
-              (tags-todo "@phone"
-		         ((org-agenda-overriding-header "Phone calls")
-		          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
               (todo "WAITING"
 	            ((org-agenda-overriding-header "Waiting")
                      (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
