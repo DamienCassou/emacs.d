@@ -605,24 +605,31 @@ current."
             ("@" "Contexts"
              ((tags "ftgp"
 	            ((org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
-	             (org-agenda-overriding-header "FTGP next actions")))
+	             (org-agenda-overriding-header "FTGP next actions")
+                     (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
               (tags "emacs"
 	            ((org-agenda-overriding-header "Emacs next actions")
-	             (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)))
+	             (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
+                     (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
               (tags-todo "@phone"
 		         ((org-agenda-overriding-header "Phone calls")
-		          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))))
+		          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
               (todo "WAITING"
-	            ((org-agenda-overriding-header "Waiting")))
+	            ((org-agenda-overriding-header "Waiting")
+                     (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
               (tags-todo "@work"
 		         ((org-agenda-overriding-header "At work")
-		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)))
+		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
+                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
               (tags-todo "@stockholm"
 		         ((org-agenda-overriding-header "At Stockholm")
-		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)))
+		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
+                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
               (tags-todo "@home"
 		         ((org-agenda-overriding-header "At Home")
-		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first))))
+		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
+                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)"))))
              nil nil)))
 
     (setq org-agenda-show-future-repeats nil)
