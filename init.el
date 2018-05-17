@@ -153,7 +153,8 @@ current."
 
 (use-package simple
   :demand t
-  :bind (;; Replace `just-one-space' by the more advanced `cycle-spacing'.
+  :bind (("M-j" . my/join-line)
+         ;; Replace `just-one-space' by the more advanced `cycle-spacing'.
          ("M-SPC" . cycle-spacing)
          ("<S-left>" . beginning-of-buffer)
          ("<S-right>" . end-of-buffer))
@@ -164,6 +165,11 @@ current."
     (setq eval-expression-print-level nil))
   :config
   (progn
+    (defun my/join-line ()
+      "Join current line and the next."
+      (interactive)
+      (join-line -1))
+
     (column-number-mode)))
 
 (use-package newcomment
