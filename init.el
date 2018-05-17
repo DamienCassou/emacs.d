@@ -561,7 +561,7 @@ current."
 
     (setq org-todo-keywords
           '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
-            (sequence "WAITING(w!)" "|" "DONE(d)")))
+            (sequence "WAITING(w)" "|" "DONE(d)")))
 
     (defun my/org-agenda-skip-all-siblings-but-first ()
       (let (should-skip-entry)
