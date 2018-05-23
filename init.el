@@ -1712,7 +1712,8 @@ I.e., the keyring has a public key for each recipient."
   :magic ("%PDF" . pdf-view-mode)
   :config
   (progn
-    (pdf-tools-install)))
+    (pdf-tools-install)
+    (require 'pdf-occur)))
 
 (use-package mpdel
   :demand t
