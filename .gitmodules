@@ -172,6 +172,10 @@
 	path = lib/emacsql
 	url = git@github.com:skeeto/emacsql.git
 	no-byte-compile = emacsql-pg.el
+[submodule "emake"]
+	path = lib/emake
+	url = https://github.com/vermiculus/emake.el.git
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/emake.el.git"
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
