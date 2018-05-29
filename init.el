@@ -427,7 +427,8 @@ current."
     (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
     (setq magit-branch-arguments nil)
     (setq magit-module-sections-nested nil)
-    (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+    (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+    (setq magit-no-confirm '(amend-published)))
   :config
   (progn
     ;; Enable magit-clean
