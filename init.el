@@ -100,6 +100,9 @@ are visible."
 
   (define-key ctl-x-4-map "t" #'my/toggle-window-split))
 
+(progn ; `eval'
+  (setq debugger-stack-frame-as-list t))
+
 (use-package custom
   :demand t
   :config
