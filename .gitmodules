@@ -373,6 +373,9 @@
 [submodule "magit-popup"]
 	path = lib/magit-popup
 	url = https://DamienCassou@github.com/magit/magit-popup.git
+[submodule "magit-tbdiff"]
+	path = lib/magit-tbdiff
+	url = git@github.com:magit/magit-tbdiff.git
 [submodule "make-it-so"] # Transform files with Makefile recipes
 	path = lib/make-it-so
 	url = git@github.com:abo-abo/make-it-so.git
@@ -642,3 +645,6 @@
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
+[submodule "tbdiff"]
+	path = lib/tbdiff
+	url = https://github.com/trast/tbdiff.git
