@@ -448,7 +448,10 @@ current."
     (magit-remove-popup-key 'magit-branch-popup :action ?b)
     (magit-define-popup-action 'magit-branch-popup
       ?b "Checkout" 'magit-branch-or-checkout
-      'magit-branch t)))
+      'magit-branch t)
+
+    (magit-define-popup-action 'magit-tag-popup
+      ?r "Release" #'magit-tag-release)))
 
 (use-package vc-hooks
   :init
