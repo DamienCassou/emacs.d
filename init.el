@@ -55,6 +55,9 @@
   (setq version-control 'never))
 
 (progn ; `window'
+  (bind-key "C-;" #'other-window)
+  (unbind-key "C-x o")
+
   (defun my/swap-last-buffers ()
     "Replace currently visible buffer by last one."
     (interactive)
@@ -1228,6 +1231,7 @@ I.e., the keyring has a public key for each recipient."
     (setq auth-sources '(password-store))))
 
 (use-package ace-window
+  :disabled t
   :bind* (("C-x o" . ace-window))
   :init
   (progn
@@ -1822,6 +1826,7 @@ Interactively, select BUFNAME from the list of all windows."
     (exwm-input-set-key (kbd "s-9") (my/switch-workspace 9))
 
     (exwm-input-set-key (kbd "C-x w") #'my/switch-to-window)
+    (exwm-input-set-key (kbd "C-;") #'other-window)
     (exwm-input-set-key (kbd "s-!") #'counsel-linux-app)
     (exwm-input-set-key (kbd "C-M-'") #'shell-switcher-new-shell)
     (exwm-input-set-key (kbd "C-'") #'shell-switcher-switch-buffer)
