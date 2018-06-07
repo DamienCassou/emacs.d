@@ -1774,10 +1774,6 @@ I.e., the keyring has a public key for each recipient."
   :demand t
   :preface
   (progn
-    (defmacro my/switch-workspace (i)
-      "Return a command switching to workspace number I."
-      `(lambda () (interactive) (exwm-workspace-switch-create ,i)))
-
     (defun my/list-all-windows ()
       "Return the list of all Emacs windows."
       (seq-mapcat (lambda (frame) (window-list frame)) (frame-list)))
@@ -1814,16 +1810,7 @@ Interactively, select BUFNAME from the list of all windows."
     ;; Key bindings accessible from everywhere:
     (exwm-input-set-key (kbd "s-r") #'exwm-reset)
     (exwm-input-set-key (kbd "s-w") #'exwm-workspace-switch)
-    (exwm-input-set-key (kbd "s-0") (my/switch-workspace 0))
-    (exwm-input-set-key (kbd "s-1") (my/switch-workspace 1))
-    (exwm-input-set-key (kbd "s-2") (my/switch-workspace 2))
-    (exwm-input-set-key (kbd "s-3") (my/switch-workspace 3))
-    (exwm-input-set-key (kbd "s-4") (my/switch-workspace 4))
-    (exwm-input-set-key (kbd "s-5") (my/switch-workspace 5))
-    (exwm-input-set-key (kbd "s-6") (my/switch-workspace 6))
-    (exwm-input-set-key (kbd "s-7") (my/switch-workspace 7))
-    (exwm-input-set-key (kbd "s-8") (my/switch-workspace 8))
-    (exwm-input-set-key (kbd "s-9") (my/switch-workspace 9))
+    (exwm-input-set-key (kbd "s-;") #'other-frame)
 
     (exwm-input-set-key (kbd "C-x w") #'my/switch-to-window)
     (exwm-input-set-key (kbd "C-;") #'other-window)
