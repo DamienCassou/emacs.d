@@ -178,9 +178,6 @@ current."
 
     (column-number-mode)))
 
-(use-package newcomment
-  :bind (("<f5>" . comment-region)))
-
 (use-package epkg
   :init
   (progn
