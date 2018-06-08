@@ -530,6 +530,9 @@ current."
   :after flycheck
   :hook (flycheck-mode . flycheck-cask-setup))
 
+(use-package flycheck-ledger
+  :hook (ledger-mode . flycheck-mode))
+
 (use-package flycheck-package
   :demand t
   :after flycheck

@@ -219,6 +219,9 @@
 [submodule "flycheck-cask"] # use Cask when present for dependencies
 	path = lib/flycheck-cask
 	url = git@github.com:flycheck/flycheck-cask.git
+[submodule "flycheck-ledger"]
+	path = lib/flycheck-ledger
+	url = git@github.com:purcell/flycheck-ledger.git
 [submodule "flycheck-package"] # checks elisp package metadata
 	path = lib/flycheck-package
 	url = git@github.com:purcell/flycheck-package.git
@@ -344,6 +347,10 @@
 	path = lib/know-your-http-well
 	url = git@github.com:for-GET/know-your-http-well.git
 	load-path = emacs
+[submodule "ledger-mode"]
+	path = lib/ledger-mode
+	url = git@github.com:ledger/ledger-mode.git
+	info-path = doc
 [submodule "less-css-mode"] # Major mode to edit .less files
 	path = lib/less-css-mode
 	url = git@github.com:purcell/less-css-mode.git
