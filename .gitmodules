@@ -576,6 +576,9 @@
 [submodule "tablist"]
 	path = lib/tablist
 	url = git@github.com:politza/tablist.git
+[submodule "tbdiff"]
+	path = lib/tbdiff
+	url = https://github.com/trast/tbdiff.git
 [submodule "tern"] # Javascript code analyzer
 	path = lib/tern
 	url = git@github.com:ternjs/tern.git
@@ -652,6 +655,3 @@
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
-[submodule "tbdiff"]
-	path = lib/tbdiff
-	url = https://github.com/trast/tbdiff.git
