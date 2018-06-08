@@ -507,7 +507,8 @@ current."
     (setq flyspell-use-meta-tab nil))
   :config
   (progn
-    (unbind-key "C-." flyspell-mode-map)))
+    (unbind-key "C-." flyspell-mode-map)
+    (unbind-key "C-;" flyspell-mode-map)))
 
 (use-package flyspell-correct-ivy
   :bind (("M-$" . flyspell-correct-word-generic)))
