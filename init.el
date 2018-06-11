@@ -528,7 +528,12 @@ current."
     (setq flycheck-emacs-lisp-load-path 'inherit)))
 
 (use-package flycheck-ledger
-  :hook (ledger-mode . flycheck-mode))
+  :after (flycheck ledger-mode)
+  :demand t
+  :init
+  (progn
+    (setq flycheck-ledger-pedantic 'check-payees)
+    (setq flycheck-ledger-explicit t)))
 
 (use-package flycheck-package
   :demand t
