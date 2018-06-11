@@ -542,6 +542,38 @@ current."
   (progn
     (flycheck-package-setup)))
 
+(use-package ledger
+  :hook (ledger-mode . company-mode)
+  :init
+  (progn
+    (setq ledger-reconcile-default-commodity "EUR")
+
+    (defvar boobank-ledger-file nil "Path to the ledger file.")
+
+    (defun boobank-ledger-import ()
+      "Import transactions from boobank in Ledger format using \"ledger-autosync\"."
+      (require 'ledger-mode)
+      (interactive)
+      (let ((fid "42")
+            (ofx-dir (expand-file-name "~/.cache/fetch-ofx")))
+        (switch-to-buffer (get-buffer-create "*ledger sync*"))
+        (erase-buffer)
+        (ledger-mode)
+        (dolist (file (directory-files ofx-dir t "\\.ofx$"))
+          (let ((account (file-name-nondirectory (file-name-sans-extension file))))
+            (goto-char (point-max))
+            (shell-command
+             (format "ledger-autosync --ledger %s --account %s --fid %s --assertions %s"
+                     boobank-ledger-file
+                     account
+                     fid
+                     file)
+             t))))))
+
+  :config
+  (progn
+    (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))))
+
 (use-package org
   :bind
   (("C-. o a"   . org-agenda)
