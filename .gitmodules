@@ -351,6 +351,7 @@
 	path = lib/ledger-mode
 	url = git@github.com:ledger/ledger-mode.git
 	info-path = doc
+	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/ledger-mode.git"
 [submodule "less-css-mode"] # Major mode to edit .less files
 	path = lib/less-css-mode
 	url = git@github.com:purcell/less-css-mode.git
