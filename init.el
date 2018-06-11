@@ -527,10 +527,6 @@ current."
     (setq flycheck-emacs-lisp-check-declare t)
     (setq flycheck-emacs-lisp-load-path 'inherit)))
 
-(use-package flycheck-cask
-  :after flycheck
-  :hook (flycheck-mode . flycheck-cask-setup))
-
 (use-package flycheck-ledger
   :hook (ledger-mode . flycheck-mode))
 

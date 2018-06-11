@@ -219,9 +219,6 @@
 [submodule "flycheck"] # flycheck to check files on the fly
 	path = lib/flycheck
 	url = git@github.com:flycheck/flycheck.git
-[submodule "flycheck-cask"] # use Cask when present for dependencies
-	path = lib/flycheck-cask
-	url = git@github.com:flycheck/flycheck-cask.git
 [submodule "flycheck-ledger"]
 	path = lib/flycheck-ledger
 	url = git@github.com:purcell/flycheck-ledger.git
