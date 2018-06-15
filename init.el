@@ -542,7 +542,7 @@ current."
   (progn
     (flycheck-package-setup)))
 
-(use-package ledger
+(use-package ledger-mode
   :hook (ledger-mode . company-mode)
   :init
   (progn
@@ -552,8 +552,8 @@ current."
 
     (defun boobank-ledger-import ()
       "Import transactions from boobank in Ledger format using \"ledger-autosync\"."
-      (require 'ledger-mode)
       (interactive)
+      (require 'ledger-mode)
       (let ((fid "42")
             (ofx-dir (expand-file-name "~/.cache/fetch-ofx")))
         (switch-to-buffer (get-buffer-create "*ledger sync*"))
