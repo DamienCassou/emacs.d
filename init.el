@@ -265,6 +265,11 @@ current."
     (setq imenu-auto-rescan t)
     (setq imenu-max-item-length 200)))
 
+(use-package url-vars
+  :init
+  (progn
+    (setq url-privacy-level 'paranoid)))
+
 (use-package package
   :after package-lint
   :config
