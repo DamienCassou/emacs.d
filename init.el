@@ -1735,6 +1735,9 @@ I.e., the keyring has a public key for each recipient."
          ("C-c C-t" . my/term-toggle-line-mode))
   :init
   (progn
+    ;; Avoids checking at runtime if my Emacs is recent enough (it is)
+    (setq term--bash-needs-EMACS-status 0)
+
     (defun my/term-toggle-line-mode ()
       "Toggle between char and line modes."
       (interactive)
