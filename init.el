@@ -1179,7 +1179,8 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq ivy-use-virtual-buffers t)
     (setq ivy-virtual-abbreviate 'abbreviate)
-    (setq ivy-count-format "(%d/%d) "))
+    (setq ivy-count-format "(%d/%d) ")
+    (setq ivy-use-selectable-prompt t))
   :config
   (progn
     (ivy-mode)))
