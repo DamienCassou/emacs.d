@@ -555,6 +555,9 @@ current."
 
     (defvar boobank-ledger-file nil "Path to the ledger file.")
 
+    (defvar boobank-ledger-accounts nil
+      "Alist of (BOOBANK-ACCOUNT . LEDGER-ACCOUNT) used when importing from Boobank.")
+
     (defun boobank-ledger-import ()
       "Import transactions from boobank in Ledger format using \"ledger-autosync\"."
       (interactive)
@@ -565,7 +568,8 @@ current."
         (erase-buffer)
         (ledger-mode)
         (dolist (file (directory-files ofx-dir t "\\.ofx$"))
-          (let ((account (file-name-nondirectory (file-name-sans-extension file))))
+          (let* ((boobank-account (file-name-nondirectory (file-name-sans-extension file)))
+                 (ledger-account (map-elt boobank-le)))
             (goto-char (point-max))
             (shell-command
              (format "ledger-autosync --ledger %s --account %s --fid %s --assertions %s"
