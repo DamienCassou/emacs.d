@@ -6,7 +6,12 @@
 :PROPERTIES:
 :ORDERED:  t
 :END:
+*** References
+- the `defcustom`s following a `defgroup` don't have to specify the `:group` because the group is inferred
+- please add `-*- lexical-binding: t; -*-` at the end of the first line
+- Please run linters specified in CONTRIBUTING.md. They would have told you about:
+- prefix function names with #' instead of just ' to tell the compiler this is a function reference. E.g., `(mapcar #'rebinder-toggle-ctrl map)`
 *** TODO Faire le tour du fichier $0
 *** TODO Relire le contenu du commit
-*** TOOD Relire le message de commit
+*** TODO Relire le message de commit
 *** TODO Rebase & Merge
