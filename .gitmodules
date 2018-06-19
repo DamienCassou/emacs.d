@@ -342,7 +342,8 @@
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/khardel.git
 [submodule "klassified"]
 	path = lib/klassified
-	url = https://DamienCassou@github.com/DamienCassou/klassified.el.git
+	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/klassified.git
+	remote = "github https://DamienCassou@github.com/DamienCassou/klassified.el.git"
 [submodule "know-your-http-well"]
 	path = lib/know-your-http-well
 	url = git@github.com:for-GET/know-your-http-well.git
