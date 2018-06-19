@@ -569,16 +569,15 @@ current."
         (ledger-mode)
         (dolist (file (directory-files ofx-dir t "\\.ofx$"))
           (let* ((boobank-account (file-name-nondirectory (file-name-sans-extension file)))
-                 (ledger-account (map-elt boobank-le)))
+                 (ledger-account (map-elt boobank-ledger-accounts boobank-account nil #'string=)))
             (goto-char (point-max))
             (shell-command
              (format "ledger-autosync --ledger %s --account %s --fid %s --assertions %s"
                      boobank-ledger-file
-                     account
+                     ledger-account
                      fid
                      file)
              t))))))
-
   :config
   (progn
     (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))))
