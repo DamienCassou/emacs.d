@@ -143,7 +143,7 @@ current."
       (when (window-system)
         (ignore-errors
           (load-theme 'zerodark t)
-          (setq zerodark-theme-display-vc-status t)
+          (setq zerodark-theme-display-vc-status 'full)
           (zerodark-setup-modeline-format))
         (my/set-selected-frame-dark)
         (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
