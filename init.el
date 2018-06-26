@@ -144,6 +144,16 @@ current."
         (ignore-errors
           (load-theme 'zerodark t)
           (setq zerodark-theme-display-vc-status 'full)
+          (setq zerodark-modeline-vc
+                '(vc-mode ("   "
+                           (:eval (all-the-icons-faicon "code-fork"
+                                                        :height 0.9
+                                                        :v-adjust 0
+                                                        :face (when (zerodark--active-window-p)
+                                                                (zerodark-git-face))))
+                           (:eval (propertize (truncate-string-to-width vc-mode 15 nil nil "…")
+                                              'face (when (zerodark--active-window-p)
+                                                      (zerodark-git-face)))))))
           (zerodark-setup-modeline-format))
         (my/set-selected-frame-dark)
         (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
