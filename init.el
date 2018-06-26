@@ -582,6 +582,9 @@ current."
   (progn
     (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))))
 
+(use-package hledger-mode
+  :mode "\\.ledger\\'")
+
 (use-package org
   :bind
   (("C-. o a"   . org-agenda)

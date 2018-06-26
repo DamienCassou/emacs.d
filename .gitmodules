@@ -294,6 +294,9 @@
 [submodule "hierarchy"]
 	path = lib/hierarchy
 	url = git@github.com:DamienCassou/hierarchy.git
+[submodule "hledger-mode"]
+	path = lib/hledger-mode
+	url = git@github.com:narendraj9/hledger-mode.git
 [submodule "htmlize"]
 	path = lib/htmlize
 	url = git@github.com:hniksic/emacs-htmlize.git
