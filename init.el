@@ -561,7 +561,22 @@ current."
   :hook (ledger-mode . company-mode)
   :init
   (progn
+    (setq ledger-reports
+          '(("AOM days" "ledger --explicit --pedantic --real --related --invert [[ledger-mode-flags]] reg ^expenses -f %(ledger-file) -S -d -X EUR")
+            ("Monthly cash flow" "ledger --explicit --pedantic --real [[ledger-mode-flags]] reg ^assets:bank -f %(ledger-file) --monthly --collapse -X EUR")
+            ("Monthly balance" "ledger --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) reg  ^assets ^liabilities ^equity --monthly --collapse -X EUR")
+            ("Cash Flow" "%(binary) --explicit --pedantic --real --related --invert [[ledger-mode-flags]] reg ^assets:bank -f %(ledger-file) -p \"this month\" -X EUR")
+            ("Vacations" "%(binary) --explicit --pedantic [[ledger-mode-flags]] reg -f %(ledger-file) ^Assets:Vacation -X EUR")
+            ("Income statement" "%(binary) --explicit --pedantic --invert --real -S T [[ledger-mode-flags]] -f %(ledger-file) bal ^income ^expenses -p \"this month\" -X EUR")
+            ("Balance sheet" "%(binary) --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) bal ^assets ^liabilities ^equity")
+            ("Account statement" "%(binary) reg --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) ^%(account) -X EUR")
+            ("Equity" "%(binary) --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) equity -X EUR")))
+
     (setq ledger-reconcile-default-commodity "EUR")
+    (setq ledger-report-links-in-register t)
+    (setq ledger-report-use-header-line t)
+    (setq ledger-report-use-native-highlighting t)
+    (setq ledger-report-auto-refresh-sticky-cursor t)
 
     (defvar boobank-ledger-file nil "Path to the ledger file.")
 
