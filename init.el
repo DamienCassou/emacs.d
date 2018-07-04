@@ -1754,6 +1754,7 @@ I.e., the keyring has a public key for each recipient."
     (setenv "SUDO_ASKPASS" (executable-find "pass-root-password.sh"))))
 
 (use-package esh-autosuggest
+  :disabled t
   :hook (eshell-mode . esh-autosuggest-mode))
 
 (use-package term
