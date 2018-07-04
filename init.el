@@ -590,10 +590,12 @@ current."
              t))))))
   :config
   (progn
-    (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))))
+    (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
 
-(use-package hledger-mode
-  :mode "\\.ledger\\'")
+    ;; Fill boobank-ledger-accounts:
+    (let ((file (expand-file-name "~/.password-store/Secure_Notes/ledger-accounts.gpg")))
+      (when (file-exists-p file)
+        (load file t)))))
 
 (use-package org
   :bind
