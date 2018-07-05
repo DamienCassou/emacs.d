@@ -562,15 +562,23 @@ current."
   :init
   (progn
     (setq ledger-reports
-          '(("AOM days" "ledger --explicit --pedantic --real --related --invert [[ledger-mode-flags]] reg ^expenses -f %(ledger-file) -S -d -X EUR")
-            ("Monthly cash flow" "ledger --explicit --pedantic --real [[ledger-mode-flags]] reg ^assets:bank -f %(ledger-file) --monthly --collapse -X EUR")
-            ("Monthly balance" "ledger --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) reg  ^assets ^liabilities ^equity --monthly --collapse -X EUR")
-            ("Cash Flow" "%(binary) --explicit --pedantic --real --related --invert [[ledger-mode-flags]] reg ^assets:bank -f %(ledger-file) -p \"this month\" -X EUR")
-            ("Vacations" "%(binary) --explicit --pedantic [[ledger-mode-flags]] reg -f %(ledger-file) ^Assets:Vacation -X EUR")
-            ("Income statement" "%(binary) --explicit --pedantic --invert --real -S T [[ledger-mode-flags]] -f %(ledger-file) bal ^income ^expenses -p \"this month\" -X EUR")
-            ("Balance sheet" "%(binary) --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) bal ^assets ^liabilities ^equity")
-            ("Account statement" "%(binary) reg --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) ^%(account) -X EUR")
-            ("Equity" "%(binary) --explicit --pedantic --real [[ledger-mode-flags]] -f %(ledger-file) equity -X EUR")))
+          (mapcar
+           (lambda (pair)
+             (list (car pair)
+                   (format "%s %s"
+                           "%(binary) -f %(ledger-file)"
+                           (cdr pair))))
+           '(("AOM days"          . "register --real --exchange EUR --related --invert --sort -d ^Expenses")
+             ("Cash Flow"         . "register --real --exchange EUR --related --invert --period \"this month\" ^Assets:Current")
+             ("Monthly cash flow" . "register --real --exchange EUR --monthly --collapse ^Assets:Current")
+             ("Monthly balance"   . "register --real --monthly --collapse ^Assets ^Liabilities ^Equity")
+             ("Account statement" . "register --real --exchange EUR ^%(account)")
+             ("Vacations"         . "register ^Assets:Vacation")
+
+             ("Income statement"  . "balance --real --exchange EUR --period \"this month\" --invert --sort T ^Income ^Expenses")
+             ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
+
+             ("Equity"            . "equity --real --exchange EUR"))))
 
     (setq ledger-reconcile-default-commodity "EUR")
     (setq ledger-report-links-in-register t)
