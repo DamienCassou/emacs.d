@@ -585,6 +585,7 @@ current."
     (setq ledger-report-use-header-line t)
     (setq ledger-report-use-native-highlighting t)
     (setq ledger-report-auto-refresh-sticky-cursor t)
+    (setq ledger-report-use-strict t)
 
     (defvar boobank-ledger-file nil "Path to the ledger file.")
 
