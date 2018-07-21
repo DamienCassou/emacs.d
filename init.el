@@ -572,13 +572,12 @@ current."
              ("Cash Flow"         . "register --real --exchange EUR --related --invert --period %(month) ^Assets:Current")
              ("Monthly cash flow" . "register --real --exchange EUR --monthly --collapse ^Assets:Current")
              ("Monthly balance"   . "register --real --monthly --collapse ^Assets ^Liabilities ^Equity")
-             ("Account statement" . "register --real --exchange EUR ^%(account)")
-             ("Vacations"         . "register ^Assets:Vacation")
+             ("Account statement" . "register --exchange EUR ^%(account)")
 
              ("Income statement"  . "balance --real --exchange EUR --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
 
-             ("Equity"            . "equity --real --exchange EUR"))))
+             ("Equity"            . "equity --real"))))
 
     (setq ledger-reconcile-default-commodity "EUR")
     (setq ledger-report-links-in-register t)
