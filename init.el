@@ -576,7 +576,7 @@ current."
 
              ("Income statement"  . "balance --real --exchange EUR --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
-             ("Budget"            . "balance --empty --sort -T ^Assets:Budget")
+             ("Budget"            . "balance --empty --exchange EUR --sort -T ^Assets:Budget")
 
              ("Equity"            . "equity --real"))))
 
@@ -611,86 +611,7 @@ current."
                      ledger-account
                      fid
                      file)
-             t)))))
-
-    (defun my/ledger-amount ()
-      "Return amount and commodity of current line."
-      (save-excursion
-        (save-match-data
-          (goto-char (line-beginning-position))
-          (search-forward-regexp ledger-amount-regex)
-          (let ((match (string-trim (match-string-no-properties 0))))
-            (if (string-match "\\`\\(.*\\)\\(=\\|@\\)" match)
-                ;; if there is an = or @, only keep what is before it
-                (string-trim (match-string 1 match))
-              match)))))
-
-    (defun my/ledger-goto-last-transaction-line ()
-      "Move point to the end of the last line in the current transaction."
-      (goto-char (cadr (ledger-navigate-find-xact-extents (point)))))
-
-    (defun my/ledger-dimensions ()
-      "Return a list of dimensions in the ledger-files."
-      (save-excursion
-        (save-match-data
-          (goto-char (point-min))
-          (cl-loop
-           while (search-forward-regexp "^account \\(Dimensions:[^;\n]*\\)" nil t)
-           collect (string-trim (match-string-no-properties 1))))))
-
-    (defun my/ledger-next-posting ()
-      "Move point at the beginning of next posting in current transaction.
-
-Return non-nil iff a posting was found."
-      (save-restriction
-        (let ((extents (ledger-navigate-find-xact-extents (point)))
-              (point (point)))
-          (narrow-to-region (car extents) (cadr extents))
-          (ledger-next-account)
-          (unless (= point (point))
-            (if (looking-at ";")
-                (or (my/ledger-next-posting)
-                    (progn
-                      (goto-char point)
-                      nil))
-              t)))))
-
-    (defun my/ledger-amounts ()
-      "Return all amounts of postings in transaction at point."
-      (save-excursion
-        (ledger-navigate-beginning-of-xact)
-        (cl-loop
-         while (my/ledger-next-posting)
-         collect (my/ledger-amount))))
-
-    (defun my/ledger-positive-amounts ()
-      "Return absolute values of what `my/ledger-amounts' returns."
-      (cl-remove-duplicates
-       (mapcar (lambda (amount)
-                 (if (string-prefix-p "-" amount)
-                     (substring amount 1)
-                   amount))
-               (my/ledger-amounts))
-       :test #'string=))
-
-    (defun my/ledger-add-dimension (dimension amount)
-      "Add DIMENSION with AMOUNT to current transaction.
-
-AMOUNT should be positive."
-      (interactive
-       (list
-        (completing-read "Dimension? " (my/ledger-dimensions))
-        (let ((amounts (my/ledger-positive-amounts)))
-          (if (= 1 (length amounts))
-              (car amounts)
-            (completing-read "Amount?" amounts)))))
-      (save-excursion
-        (ledger-navigate-end-of-xact)
-        (newline-and-indent)
-        (insert (format "[%s]  -%s" dimension amount))
-        (newline-and-indent)
-        (insert (format "[Dimensions:Equity]  %s" amount))
-        (ledger-post-align-xact (point)))))
+             t))))))
   :config
   (progn
     (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
