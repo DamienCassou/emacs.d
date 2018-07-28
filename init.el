@@ -1392,37 +1392,6 @@ I.e., the keyring has a public key for each recipient."
     (setq ftgp-monitor-root-location
           (expand-file-name (bookmark-location "ftgp-monitor-root")))))
 
-(use-package jabber
-  :disabled t
-  :bind
-  (("C-. j c" . jabber-connect-all)
-   ("C-. j d" . jabber-disconnect)
-   ("C-. j r" . jabber-switch-to-roster-buffer)
-   ("C-. j j" . jabber-chat-with)
-   ("C-. j l" . jabber-activity-switch-to)
-   ("C-. j a" . jabber-send-away-presence)
-   ("C-. j o" . jabber-send-default-presence)
-   ("C-. j x" . jabber-send-xa-presence)
-   ("C-. j p" . jabber-send-presence))
-  :init
-  (progn
-    (setq jabber-auto-reconnect t)
-    (setq jabber-backlog-days 30)
-    (setq jabber-backlog-number 100)
-    (setq jabber-history-enabled t))
-  :config
-  (progn
-    (setq jabber-account-list
-          `(("damien@cassou.me"
-             (:password . ,(password-store-get "ldn-fai.net")))))
-    (add-hook 'jabber-post-connect-hooks #'jabber-autoaway-start)
-    (add-hook 'jabber-chat-mode-hook #'flyspell-mode)
-    (with-eval-after-load "guess-language"
-      (add-hook 'jabber-chat-mode-hook #'guess-language-mode))
-
-    ;; Override jabber.el global key
-    (bind-key "C-x C-j" #'dired-jump)))
-
 (use-package lui
   :hook (lui-mode . my/lui-setup)
   :init
