@@ -173,7 +173,9 @@ current."
          ;; Replace `just-one-space' by the more advanced `cycle-spacing'.
          ("M-SPC" . cycle-spacing)
          ("<S-left>" . beginning-of-buffer)
-         ("<S-right>" . end-of-buffer))
+         ("<S-right>" . end-of-buffer)
+         :map process-menu-mode-map
+         ("k" . process-menu-delete-process))
   :init
   (progn
     (setq delete-active-region nil)
@@ -2002,6 +2004,11 @@ Interactively, select BUFNAME from the list of all windows."
 
 (use-package unfill
   :bind ([remap fill-paragraph] . unfill-toggle))
+
+(use-package transmission
+  :bind (
+         :map transmission-mode-map
+         ("k" . transmission-remove)))
 
 (put 'narrow-to-region 'disabled nil)
 
