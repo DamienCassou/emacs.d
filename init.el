@@ -613,7 +613,20 @@ current."
                      ledger-account
                      fid
                      file)
-             t))))))
+             t)))))
+
+    (defun my/ledger-remove-sek ()
+      "Replace amounts in SEK by their equivalent in EUR."
+      (save-match-data
+        (save-excursion
+          (goto-char (point-min))
+          (while (re-search-forward "[ =] \\(?1:-?[\\.[:digit:]]+\\) SEK @ \\(?2:[\\.[:digit:]]+\\) EUR$" nil t)
+            (let* ((amount-sek (string-to-number (match-string 1)))
+                   (rate (string-to-number (match-string 2)))
+                   (amount-eur (* amount-sek rate)))
+              (goto-char (match-beginning 1))
+              (insert (format "%.2f EUR ; " (/ (round amount-eur 0.01) 100.0)))
+              (goto-char (line-end-position))))))))
   :config
   (progn
     (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
