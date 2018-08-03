@@ -570,15 +570,15 @@ current."
                    (format "%s %s"
                            "%(binary) -f %(ledger-file)"
                            (cdr pair))))
-           '(("AOM days"          . "register --real --exchange EUR --related --invert --sort -d ^Expenses")
-             ("Cash Flow"         . "register --real --exchange EUR --related --invert --period %(month) ^Assets:Current")
-             ("Monthly cash flow" . "register --real --exchange EUR --monthly --collapse ^Assets:Current")
+           '(("AOM days"          . "register --real --related --invert --sort -date ^Expenses")
+             ("Cash Flow"         . "register --real --related --invert --period %(month) ^Assets:Current")
+             ("Monthly cash flow" . "register --real --monthly --collapse ^Assets:Current")
              ("Monthly balance"   . "register --real --monthly --collapse ^Assets ^Liabilities ^Equity")
-             ("Account statement" . "register --exchange EUR ^%(account)")
+             ("Account statement" . "register ^%(account)")
 
-             ("Income statement"  . "balance --real --exchange EUR --period %(month) --invert --sort T ^Income ^Expenses")
+             ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
-             ("Budget"            . "balance --empty --exchange EUR --sort -T ^Assets:Budget")
+             ("Budget"            . "balance --empty --sort account ^Assets:Budget")
 
              ("Equity"            . "equity --real"))))
 
