@@ -20,7 +20,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((eval when
+    ((git-commit-major-mode . git-commit-elisp-text-mode)
+     (eval when
            (and
             (buffer-file-name)
             (file-regular-p
