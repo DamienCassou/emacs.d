@@ -347,7 +347,8 @@ current."
 (use-package dired
   :bind (("C-x C-j" . dired-jump)
          :map dired-mode-map
-         ("C-a" . my/dired-move-beginning-of-line))
+         ("C-a" . my/dired-move-beginning-of-line)
+         ("k" . dired-do-delete))
   :hook (dired-mode . dired-hide-details-mode)
   :init
   (progn
@@ -1372,6 +1373,11 @@ I.e., the keyring has a public key for each recipient."
     (setq ftgp-atlassian-pass-entry "ftgp/id.atlassian.com_(API)")
     (setq ftgp-monitor-root-location
           (expand-file-name (bookmark-location "ftgp-monitor-root")))))
+
+(use-package prodigy
+  :bind (
+         :map prodigy-mode-map
+         ("k" . (lambda () (interactive) (prodigy-stop t)))))
 
 (use-package lui
   :hook (lui-mode . my/lui-setup)
