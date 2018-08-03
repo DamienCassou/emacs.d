@@ -360,41 +360,7 @@ current."
       (let ((point (point)))
         (dired-move-to-filename)
         (when (= point (point))
-          (move-beginning-of-line nil)))))
-  :config
-  (progn
-    ;; https://oremacs.com/2016/02/24/dired-rsync/
-    ;; https://github.com/abo-abo/oremacs/blob/github/auto.el
-    (defun ora-dired-rsync (dest)
-      "Copy files with rsync."
-      (interactive
-       (list (expand-file-name
-              (read-file-name "Rsync to:" (dired-dwim-target-directory)))))
-      ;; store all selected files into "files" list
-      (let ((files (dired-get-marked-files nil current-prefix-arg))
-            ;; the rsync command
-            (tmtxt/rsync-command "rsync -arvz --progress "))
-        ;; add all selected file names as arguments to the rsync command
-        (dolist (file files)
-          (setq tmtxt/rsync-command
-                (concat tmtxt/rsync-command
-                        (if (string-match "^/ssh:\\(.*:\\)\\(.*\\)$" file)
-                            (concat " -e ssh "
-                                    (match-string 1 file)
-                                    (shell-quote-argument (match-string 2 file)))
-                          (shell-quote-argument file)) " ")))
-        ;; append the destination
-        (setq tmtxt/rsync-command
-              (concat tmtxt/rsync-command
-                      (if (string-match "^/ssh:\\(.*\\)$" dest)
-                          (format " -e ssh %s" (match-string 1 dest))
-                        (shell-quote-argument dest))))
-        ;; run the async shell command
-        (let ((default-directory (expand-file-name "~")))
-          (async-shell-command tmtxt/rsync-command "*ora-dired-rsync output*"))
-        (message tmtxt/rsync-command)
-        ;; finally, switch to that window
-        (other-window 1)))))
+          (move-beginning-of-line nil))))))
 
 (use-package gnus-dired
   :hook (dired-mode . turn-on-gnus-dired-mode))
