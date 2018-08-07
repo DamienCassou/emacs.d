@@ -1332,6 +1332,7 @@ I.e., the keyring has a public key for each recipient."
     (setq nameless-prefix "…")))
 
 (use-package beacon
+  :disabled t
   :demand t
   :init
   (progn
