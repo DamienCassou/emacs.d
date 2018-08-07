@@ -20,7 +20,10 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((git-commit-major-mode . git-commit-elisp-text-mode)
+    ((ledger-post-amount-alignment-column . 42)
+     (ledger-post-account-alignment-column . 2)
+     (flycheck-ledger-pedantic . t)
+     (git-commit-major-mode . git-commit-elisp-text-mode)
      (eval when
            (and
             (buffer-file-name)
