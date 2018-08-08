@@ -575,7 +575,7 @@ current."
                  (ledger-account (map-elt boobank-ledger-accounts boobank-account nil #'string=)))
             (goto-char (point-max))
             (shell-command
-             (format "ledger-autosync --ledger %s --account %s --fid %s --assertions %s"
+             (format "ledger-autosync --ledger %s --payee-format \"{payee}\" --account %s --fid %s --assertions %s"
                      boobank-ledger-file
                      ledger-account
                      fid
