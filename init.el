@@ -556,13 +556,13 @@ current."
     (setq ledger-report-auto-refresh-sticky-cursor t)
     (setq ledger-report-use-strict t)
 
-    (defvar boobank-ledger-file nil "Path to the ledger file.")
+    (defvar my/ledger-file nil "Path to the ledger file.")
 
-    (defvar boobank-ledger-accounts nil
-      "Alist of (BOOBANK-ACCOUNT . LEDGER-ACCOUNT) used when importing from Boobank.")
+    (defvar my/ledger-ofx-accounts nil
+      "Alist of (OFX-ACCOUNT . LEDGER-ACCOUNT) used when importing an ofx file.")
 
-    (defun boobank-ledger-import ()
-      "Import transactions from boobank in Ledger format using \"ledger-autosync\"."
+    (defun my/ledger-ofx-import ()
+      "Import transactions from ofx to Ledger format using \"ledger-autosync\"."
       (interactive)
       (require 'ledger-mode)
       (let ((fid "42")
@@ -571,12 +571,12 @@ current."
         (erase-buffer)
         (ledger-mode)
         (dolist (file (directory-files ofx-dir t "\\.ofx$"))
-          (let* ((boobank-account (file-name-nondirectory (file-name-sans-extension file)))
-                 (ledger-account (map-elt boobank-ledger-accounts boobank-account nil #'string=)))
+          (let* ((ofx-account (file-name-nondirectory (file-name-sans-extension file)))
+                 (ledger-account (map-elt my/ledger-ofx-accounts ofx-account nil #'string=)))
             (goto-char (point-max))
             (shell-command
              (format "ledger-autosync --ledger %s --payee-format \"{payee}\" --account %s --fid %s --assertions %s"
-                     boobank-ledger-file
+                     my/ledger-file
                      ledger-account
                      fid
                      file)
@@ -596,9 +596,9 @@ current."
               (goto-char (line-end-position))))))))
   :config
   (progn
-    (setq boobank-ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
+    (setq my/ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
 
-    ;; Fill boobank-ledger-accounts:
+    ;; Fill my/ledger-ofx-accounts:
     (let ((file (expand-file-name "~/.password-store/Secure_Notes/ledger-accounts.gpg")))
       (when (file-exists-p file)
         (load file t)))))
