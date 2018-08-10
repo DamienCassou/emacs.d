@@ -435,7 +435,10 @@ current."
       'magit-branch t)
 
     (magit-define-popup-action 'magit-tag-popup
-      ?r "Release" #'magit-tag-release)))
+      ?r "Release" #'magit-tag-release)
+
+    (magit-define-popup-action 'magit-commit-popup
+      ?x "Absorb" #'magit-commit-absorb-popup)))
 
 (use-package vc-hooks
   :init
