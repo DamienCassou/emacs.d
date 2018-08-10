@@ -219,9 +219,11 @@
 [submodule "flycheck"] # flycheck to check files on the fly
 	path = lib/flycheck
 	url = git@github.com:flycheck/flycheck.git
+	remote = "DamienCassou git@github.com:DamienCassou/flycheck.git"
 [submodule "flycheck-ledger"]
 	path = lib/flycheck-ledger
 	url = git@github.com:purcell/flycheck-ledger.git
+	remote = "DamienCassou git@github.com:DamienCassou/flycheck-ledger.git"
 [submodule "flycheck-package"] # checks elisp package metadata
 	path = lib/flycheck-package
 	url = git@github.com:purcell/flycheck-package.git
