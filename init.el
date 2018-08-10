@@ -520,7 +520,11 @@ current."
   :init
   (progn
     (setq flycheck-ledger-pedantic 'check-payees)
-    (setq flycheck-ledger-explicit t)))
+    (setq flycheck-ledger-explicit t)
+    (setq flycheck-ledger-zero-accounts
+          '("^Assets:Budget:Available"
+            "^Assets:Budget:Taxes:Source"
+            "^Assets:Budget:Unbudgeted"))))
 
 (use-package flycheck-package
   :demand t
