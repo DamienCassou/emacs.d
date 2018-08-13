@@ -489,6 +489,7 @@
 [submodule "password-store-otp"]
 	path = lib/password-store-otp
 	url = https://DamienCassou@github.com/volrath/password-store-otp.el.git
+	remote = "DamienCassou git@github.com:DamienCassou/password-store-otp.el.git"
 [submodule "pdf-tools"]
 	path = lib/pdf-tools
 	url = git@github.com:politza/pdf-tools.git
