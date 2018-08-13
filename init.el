@@ -1963,6 +1963,10 @@ Interactively, select BUFNAME from the list of all windows."
     (setq exwm-workspace-show-all-buffers t)
     (setq exwm-layout-show-all-buffers t)))
 
+(use-package exwm-edit
+  :after exwm
+  :demand t)
+
 (use-package pinentry
   :after exwm
   :demand t
