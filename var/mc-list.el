@@ -12,6 +12,7 @@
         c-electric-delete-forward
         clipboard-kill-region
         counsel-M-x
+        counsel-unicode-char
         counsel-yank-pop
         cycle-spacing
         dired-toggle-read-only
