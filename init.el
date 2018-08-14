@@ -587,7 +587,8 @@ current."
                      ledger-account
                      fid
                      file)
-             t)))))
+             t)))
+        (ledger-mode-clean-buffer)))
 
     (defun my/ledger-remove-sek ()
       "Replace amounts in SEK by their equivalent in EUR."
