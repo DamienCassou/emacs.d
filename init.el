@@ -337,6 +337,12 @@ current."
       (when buffer-file-name
         (display-line-numbers-mode)))))
 
+(use-package reveal
+  :demand t
+  :config
+  (progn
+    (global-reveal-mode)))
+
 (use-package undo-tree
   :demand t
   :config
