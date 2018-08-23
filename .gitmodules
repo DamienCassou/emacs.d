@@ -150,10 +150,6 @@
 	path = lib/editorconfig
 	info-path = doc
 	url = git@github.com:editorconfig/editorconfig-emacs.git
-[submodule "elbank"]
-	branch = structs
-	path = lib/elbank
-	url = https://DamienCassou@gitlab.petton.fr/nico/elbank
 [submodule "elcouch"]
 	path = lib/elcouch
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
