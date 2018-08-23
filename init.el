@@ -558,7 +558,7 @@ current."
 
              ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities")
-             ("Budget"            . "balance --empty --sort account ^Assets:Budget")
+             ("Budget"            . "balance --empty --sort account ^Assets:Budget and not \\(Available or Unbudgeted\\)")
              ("Expense accounts"  . "balance --empty --sort account ^Expense")
 
              ("Equity"            . "equity --real"))))
@@ -596,18 +596,36 @@ current."
                      file)
              t)))))
 
-    (defun my/ledger-remove-sek ()
-      "Replace amounts in SEK by their equivalent in EUR."
+    (defun my/ledger-get-sek-value (date)
+      "Return value of a SEK (Swedish Crown) in EUR at DATE."
+      (interactive (list
+                    (let ((default-date (format-time-string "%F")))
+                      (read-string
+                       (format "Date (%s): " default-date) nil nil default-date))))
       (save-match-data
-        (save-excursion
+        (with-current-buffer
+            (url-retrieve-synchronously "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml")
           (goto-char (point-min))
-          (while (re-search-forward "[ =] \\(?1:-?[\\.[:digit:]]+\\) SEK @ \\(?2:[\\.[:digit:]]+\\) EUR$" nil t)
-            (let* ((amount-sek (string-to-number (match-string 1)))
-                   (rate (string-to-number (match-string 2)))
-                   (amount-eur (* amount-sek rate)))
-              (goto-char (match-beginning 1))
-              (insert (format "%.2f EUR ; " (/ (round amount-eur 0.01) 100.0)))
-              (goto-char (line-end-position))))))))
+          (re-search-forward (format "time=%S" date))
+          (re-search-forward "Cube currency=\"SEK\" rate=\"\\([.[:digit:]]*\\)\"")
+          (/ 1 (string-to-number (match-string-no-properties 1))))))
+
+    (defvar my/ledger-rate-history (list)
+      "Keeps track of entered SEK/EUR rates.")
+
+    (defun my/ledger-insert-sek-eur (sek rate)
+      "Insert amount in eur corresponding to SEK * RATE."
+      (interactive
+       (list (string-to-number (read-string "Amount in SEK: "))
+             (string-to-number (read-string "EUR/SEK Rate: " nil 'my/ledger-rate-history my/ledger-rate-history))))
+      (if (> rate 1)
+          (my/ledger-insert-sek-eur sek (/ 1.0 rate))
+        (insert
+         (format
+          "%.2f EUR ; %s SEK @ %.5f EUR"
+          (* sek rate)
+          sek
+          rate)))))
   :config
   (progn
     (setq my/ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
