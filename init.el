@@ -622,9 +622,9 @@ current."
           (my/ledger-insert-sek-eur sek (/ 1.0 rate))
         (insert
          (format
-          "%.2f EUR ; %s SEK @ %.5f EUR"
+          "%.2f EUR\n    ; %s SEK @ %.5f EUR\n"
           (* sek rate)
-          sek
+          (abs sek)
           rate)))))
   :config
   (progn
