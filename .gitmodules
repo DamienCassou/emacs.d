@@ -321,10 +321,6 @@
 	path = lib/ivy-mpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/ivy-mpdel.git
 	remote = "github https://DamienCassou@github.com/DamienCassou/ivy-mpdel.git"
-[submodule "ivy-rich"]
-	path = lib/ivy-rich
-	url = git@github.com:yevgnen/ivy-rich.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/ivy-rich.git"
 [submodule "js2-mode"] # Improved Javascript editing mode
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git

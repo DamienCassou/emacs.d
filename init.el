@@ -1237,31 +1237,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (ivy-mode)))
 
-(use-package ivy-rich
-  :disabled t
-  :demand t
-  :after ivy
-  :init
-  (progn
-    (setq ivy-rich-path-style 'abbreviate)
-    (setq ivy-rich-switch-buffer-name-max-length 50)
-    (setq ivy-rich-switch-buffer-align-virtual-buffer t))
-  :config
-  (progn
-    (ivy-set-display-transformer #'ivy-switch-buffer #'ivy-rich-switch-buffer-transformer)
-
-    (defun my/ivy-rich-switch-buffer-format (args)
-      "Remove buffer size from line."
-      (list
-       (let ((columns (car args)))
-         (if (>= (length columns) 6)
-             (cons (car columns) (cddr columns))
-           columns))))
-
-    (advice-add #'ivy-rich-switch-buffer-format
-                :filter-args
-                #'my/ivy-rich-switch-buffer-format)))
-
 (use-package counsel-projectile
   :demand t
   :after projectile
