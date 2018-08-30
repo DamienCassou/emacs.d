@@ -641,7 +641,9 @@ current."
    ("C-. o l"   . org-store-link)
    ("C-. o w"   . my:org-move-to-refile-target)
    ("C-. o s"   . org-save-all-org-buffers)
-   ("C-. o t"   . org-capture))
+   ("C-. o t"   . org-capture)
+   :map org-agenda-mode-map
+   ("k"         . org-agenda-kill))
   :init
   (progn
     (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
