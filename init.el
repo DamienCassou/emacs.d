@@ -642,9 +642,7 @@ current."
    ("C-. o l"   . org-store-link)
    ("C-. o w"   . my:org-move-to-refile-target)
    ("C-. o s"   . org-save-all-org-buffers)
-   ("C-. o t"   . org-capture)
-   :map org-agenda-mode-map
-   ("k"         . org-agenda-kill))
+   ("C-. o t"   . org-capture))
   :init
   (progn
     (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
@@ -782,6 +780,9 @@ current."
     (add-to-list 'org-file-apps '("\\.png\\'" . default))))
 
 (use-package org-agenda
+  :bind (
+         :map org-agenda-mode-map
+         ("k"         . org-agenda-kill))
   :config
   (progn
     ;; Those are my `beginning-of-buffer' and `end-of-buffer':
