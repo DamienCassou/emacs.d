@@ -625,7 +625,24 @@ current."
           "%.2f EUR\n    ; %s SEK @ %.5f EUR\n"
           (* sek rate)
           (abs sek)
-          rate)))))
+          rate))))
+
+    (defun my/ledger-clean-buffer ()
+      "Same as `ledger-mode-clean-buffer' but limited to transactions.
+
+Only transactions are ordered and formatted.
+
+This is useful because the beginning of my buffer is formatted by
+hand."
+      (interactive)
+      (let ((transactions-start (save-excursion
+                                  (goto-char (point-min))
+                                  (re-search-forward "^* Transactions$")
+                                  (line-beginning-position)))
+            (transactions-end (point-max)))
+        (save-restriction
+          (narrow-to-region transactions-start transactions-end)
+          (ledger-mode-clean-buffer)))))
   :config
   (progn
     (setq my/ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
