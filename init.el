@@ -558,8 +558,7 @@ current."
 
              ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities")
-             ("Budget"            . "balance --empty --sort account --flat --truncate leading --balance-format '%24.24(account()) %10(ansify_if(justify(scrub(display_total), 13, -1, true, color), bold if should_bold)) %(ansify_if(note, yellow if color))
-' ^Assets:Budget and not \\(Available or Unbudgeted\\)")
+             ("Budget"            . "balance --empty --sort account ^Assets:Budget and not \\(Available or Unbudgeted\\)")
              ("Expense accounts"  . "balance --empty --sort account ^Expense")
 
              ("Equity"            . "equity --real"))))
