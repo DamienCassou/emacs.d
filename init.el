@@ -642,7 +642,80 @@ hand."
             (transactions-end (point-max)))
         (save-restriction
           (narrow-to-region transactions-start transactions-end)
-          (ledger-mode-clean-buffer)))))
+          (ledger-mode-clean-buffer))))
+
+    (defvar my/ledger-number-regexp
+      (rx
+       (+ (any digit ","))
+       (optional "." (+ digit))))
+
+    (defvar my/ledger-budget-format "%(account())\t%(display_total)\t%(note)\n")
+
+    (defvar my/ledger-budget-regexp
+      (rx-to-string
+       `(and
+         line-start
+         ;; account
+         "Assets:Budget:" (group-n 1 (* (not (any "\t"))))
+         "\t"
+         ;; account's amount
+         (group-n 2 (regexp ,my/ledger-number-regexp))
+         ;; amount's currency and spaces
+         (* (not (any "\t")))
+         "\t"
+         ;; note's contribution
+         (optional "🗓" (+ " ") (group-n 3 (regexp ,my/ledger-number-regexp)))
+         ;; note's contribution unit
+         (* (not (any "📆" "🞋" "\n")))
+         ;; note's target
+         (optional "🞋" (+ " ") (group-n 4 (regexp ,my/ledger-number-regexp)))
+         ;; note's target unit
+         (* (not (any "📆" "\n")))
+         ;; note's deadline
+         (optional "📆" (+ " ") (group-n 5 (* not-newline)))
+         line-end)))
+
+    (defun my/ledger-budget-sentinel (process event)
+      (let ((buffer (process-buffer process)))
+        (when (not (string= event "finished\n"))
+          (error (format "ledger-budget: %s" event)))
+        (when (not (buffer-name buffer)) ; (info "(elisp) Sentinels")
+          (error (format "ledger-budget: process buffer is dead")))
+        (with-current-buffer buffer
+          (goto-char (point-min))
+          (let* ((accounts (cl-loop
+                            while (re-search-forward my/ledger-budget-regexp nil t)
+                            collect `((:name . ,(match-string 1))
+                                      (:amount . ,(match-string 2))
+                                      (:contribution . ,(match-string 3))
+                                      (:target . ,(match-string 4))
+                                      (:deadline . ,(match-string 5)))))
+                 (available (seq-find (lambda (account) (string= "Available" (map-elt account :name))) accounts)))
+            (delete-region (point-min) (point-max))
+            (font-lock-mode)
+            (when available
+              (insert "Left to assign: "
+                      (map-elt available :amount)
+                      "\n\n"))
+            (dolist (account (seq-filter (lambda (account) (not (eq account available))) accounts))
+              (let ((name (map-elt account :name))
+                    (amount (map-elt account :amount))
+                    (contribution (map-elt account :contribution))
+                    (target (map-elt account :target))
+                    (deadline (map-elt account :deadline)))
+                (insert name "\t" amount "\t" (or contribution "") "\n"))))
+          (pop-to-buffer buffer))))
+
+    (defun my/ledger-budget ()
+      (interactive)
+      (make-process
+       :name "ledger-budget"
+       :buffer (generate-new-buffer "*ledger-budget*")
+       :command `("ledger" "balance" "--empty" "--sort" "account" "--flat"
+                  "--format" ,my/ledger-budget-format
+                  "^Assets:Budget")
+       :connection-type 'pipe
+       :sentinel #'my/ledger-budget-sentinel)))
   :config
   (progn
     (setq my/ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
