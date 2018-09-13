@@ -999,12 +999,7 @@ hand."
     (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
     (setq notmuch-labeler-hide-known-labels t)
     (setq notmuch-search-oldest-first nil)
-    (setq notmuch-draft-save-plaintext t))
-  :config
-  (progn
-    (setq notmuch-archive-tags '("-inbox" "-unread"))
-
-    (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))))
+    (setq notmuch-draft-save-plaintext t)))
 
 (use-package notmuch-show
   :bind (
@@ -1018,6 +1013,7 @@ hand."
   :init
   (progn
     (setq notmuch-show-imenu-indent t)
+    (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
 
     (defun nico-notmuch-git-am-part (handle)
       (let ((dir (read-directory-name "Git directory: ")))
