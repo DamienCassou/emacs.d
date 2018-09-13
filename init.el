@@ -1822,9 +1822,9 @@ I.e., the keyring has a public key for each recipient."
 (use-package term
   :bind (
          :map term-mode-map
-         ("C-c C-t" . my/term-toggle-line-mode)
+         ("M-j" . my/term-toggle-line-mode)
          :map term-raw-map
-         ("C-c C-t" . my/term-toggle-line-mode))
+         ("M-j" . my/term-toggle-line-mode))
   :init
   (progn
     ;; Avoids checking at runtime if my Emacs is recent enough (it is)
