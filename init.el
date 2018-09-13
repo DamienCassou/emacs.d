@@ -2061,7 +2061,15 @@ Interactively, select BUFNAME from the list of all windows."
   :demand t
   :config
   (progn
-    (pinentry-start)))
+    (pinentry-start)
+
+    (defun my/pinentry-restart ()
+      "Kill and restart gpg-agent and pinentry."
+      (interactive)
+      (delete-process "pinentry")
+      (shell-command "gpgconf --kill gpg-agent")
+      (pinentry-start)
+      (message "gpg-agent and pinentry restarted successfully."))))
 
 (use-package nov
   :mode ("\\.epub\\'" . nov-mode))
