@@ -266,6 +266,9 @@
 [submodule "gpastel"]
 	path = lib/gpastel
 	url = https://DamienCassou@github.com/DamienCassou/gpastel.git
+[submodule "graphql"]
+	path = lib/graphql
+	url = git@github.com:vermiculus/graphql.el.git
 [submodule "graphviz-dot-mode"]
 	path = lib/graphviz-dot-mode
 	url = git@github.com:ppareit/graphviz-dot-mode.git
@@ -590,6 +593,9 @@
 [submodule "transmission"]
 	path = lib/transmission
 	url = git@github.com:holomorph/transmission.git
+[submodule "treepy"]
+	path = lib/treepy
+	url = git@github.com:volrath/treepy.el.git
 [submodule "undercover"]
 	path = lib/undercover
 	url = git@github.com:sviridov/undercover.el.git
