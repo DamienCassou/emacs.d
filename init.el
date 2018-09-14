@@ -1769,7 +1769,7 @@ I.e., the keyring has a public key for each recipient."
       (let ((path (abbreviate-file-name (eshell/pwd))))
         (concat
          (propertize
-          (format "%s\n>" path)
+          (format "%s\n$" path)
           'face `(:foreground "#98be65" :background "#3d4a41" :weight bold))
          " "))))
   :init
