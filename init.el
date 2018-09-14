@@ -1788,13 +1788,34 @@ I.e., the keyring has a public key for each recipient."
   :hook (eshell-mode . my/configure-esh-mode)
   :config
   (progn
+    (defun my/esh-mode-completion-at-point ()
+      "Same as `completion-at-point' except for some commands."
+      (interactive)
+      ;; unbinding pcomplete/make gives a chance to `bash-completion'
+      ;; to complete make rules. Bash-completion is indeed more
+      ;; powerfull than `pcomplete-make'.
+      (cl-letf (((symbol-function 'pcomplete/make) nil))
+        (completion-at-point)))
+
     ;; We can't use use-package's :bind here as eshell insists on
     ;; recreating a fresh eshell-mode-map for each new eshell buffer.
     (defun my/configure-esh-mode ()
-      (bind-key "M-p" #'counsel-esh-history eshell-mode-map))))
+      (bind-key "M-p" #'counsel-esh-history eshell-mode-map)
+      (bind-key "<tab>" #'my/esh-mode-completion-at-point eshell-mode-map))))
 
 (use-package em-cmpl
-  :hook (eshell-mode . eshell-cmpl-initialize))
+  :hook (eshell-mode . eshell-cmpl-initialize)
+  :init
+  (progn
+    (defun my/eshell-bash-completion ()
+      (let ((bash-completion-nospace t))
+        (while (pcomplete-here
+                (nth 2 (bash-completion-dynamic-complete-nocomint
+                        (save-excursion (eshell-bol) (point))
+                        (point)))))))
+
+    (when (require 'bash-completion nil t)
+      (setq eshell-default-completion-function #'my/eshell-bash-completion))))
 
 (use-package em-smart
   :hook (eshell-mode . eshell-smart-initialize)
