@@ -3,11 +3,11 @@
 [submodule "ace-link"] # type o in help-mode to go to a link
 	path = lib/ace-link
 	url = git@github.com:abo-abo/ace-link.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/ace-link.git"
+	remote = "DamienCassou git@github.com:DamienCassou/ace-link.git"
 [submodule "ace-window"] # manage windows with ace-like behavior
 	path = lib/ace-window
 	url = git@github.com:abo-abo/ace-window.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/ace-window.git"
+	remote = "DamienCassou git@github.com:DamienCassou/ace-window.git"
 [submodule "adoc-mode"]
 	path = lib/adoc-mode
 	url = git@github.com:sensorflo/adoc-mode.git
@@ -65,7 +65,7 @@
 [submodule "borg"]
 	path = lib/borg
 	url = git@github.com:emacscollective/borg.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/borg.git"
+	remote = "DamienCassou git@github.com:DamienCassou/borg.git"
 [submodule "borg-queen"]
 	path = lib/borg-queen
 	url = git@github.com:thblt/borg-queen.git
@@ -75,7 +75,7 @@
 [submodule "buttercup"]
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/emacs-buttercup.git"
+	remote = "DamienCassou git@github.com:DamienCassou/emacs-buttercup.git"
 [submodule "cache"]
 	path = lib/cache
 	url = git@github.com:nflath/cache.git
@@ -136,7 +136,7 @@
 	url = git@github.com:DamienCassou/dired-imenu.git
 [submodule "dired-rsync"]
 	path = lib/dired-rsync
-	url = https://DamienCassou@github.com/stsquad/dired-rsync.git
+	url = git@github.com:stsquad/dired-rsync.git
 [submodule "dockerfile-mode"]
 	path = lib/dockerfile-mode
 	url = git@github.com:spotify/dockerfile-mode.git
@@ -164,7 +164,7 @@
 	url = git@github.com:Wilfred/refs.el.git
 [submodule "emacs-js"]
 	path = lib/emacs-js
-	url = https://DamienCassou@github.com/foretagsplatsen/emacs-js.git
+	url = git@github.com:foretagsplatsen/emacs-js.git
 	load-path = .
 	load-path = widgetjs
 [submodule "emacsql"]
@@ -174,7 +174,7 @@
 [submodule "emake"]
 	path = lib/emake
 	url = https://github.com/vermiculus/emake.el.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/emake.el.git"
+	remote = "DamienCassou git@github.com:DamienCassou/emake.el.git"
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
@@ -190,7 +190,7 @@
 [submodule "eslintd-fix"] # Automatically fix javascript with eslint_d
 	path = lib/eslintd-fix
 	url = git@github.com:aaronjensen/eslintd-fix.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/eslintd-fix.git"
+	remote = "DamienCassou git@github.com:DamienCassou/eslintd-fix.git"
 [submodule "esxml"]
 	path = lib/esxml
 	url = git@github.com:tali713/esxml.git
@@ -229,7 +229,7 @@
 [submodule "flyspell-correct"]
 	path = lib/flyspell-correct
 	url = git@github.com:d12frosted/flyspell-correct.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/flyspell-correct.git"
+	remote = "DamienCassou git@github.com:DamienCassou/flyspell-correct.git"
 [submodule "font-lock+"]
 	path = lib/font-lock+
 	url = git@github.com:emacsmirror/font-lock-plus.git
@@ -265,14 +265,14 @@
 	url = git@github.com:atykhonov/google-translate.git
 [submodule "gpastel"]
 	path = lib/gpastel
-	url = https://DamienCassou@github.com/DamienCassou/gpastel.git
+	url = git@github.com:DamienCassou/gpastel.git
 [submodule "graphql"]
 	path = lib/graphql
 	url = git@github.com:vermiculus/graphql.el.git
 [submodule "graphviz-dot-mode"]
 	path = lib/graphviz-dot-mode
 	url = git@github.com:ppareit/graphviz-dot-mode.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/graphviz-dot-mode.git"
+	remote = "DamienCassou git@github.com:DamienCassou/graphviz-dot-mode.git"
 	info-path = texinfo
 [submodule "grunt"]
 	path = lib/grunt
@@ -319,18 +319,18 @@
 	path = lib/ivy
 	url = git@github.com:abo-abo/swiper.git
 	info-path = doc
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/swiper.git"
+	remote = "DamienCassou git@github.com:DamienCassou/swiper.git"
 [submodule "ivy-mpdel"]
 	path = lib/ivy-mpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/ivy-mpdel.git
-	remote = "github https://DamienCassou@github.com/DamienCassou/ivy-mpdel.git"
+	remote = "github git@github.com:DamienCassou/ivy-mpdel.git"
 [submodule "js2-mode"] # Improved Javascript editing mode
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git
 [submodule "js2-refactor"] # A Javascript refactoring library
 	path = lib/js2-refactor
 	url = git@github.com:magnars/js2-refactor.el.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/js2-refactor.el.git"
+	remote = "DamienCassou git@github.com:DamienCassou/js2-refactor.el.git"
 [submodule "json-mode"] # Major mode to edit JSON files
 	path = lib/json-mode
 	url = git@github.com:joshwnj/json-mode.git
@@ -349,7 +349,7 @@
 [submodule "klassified"]
 	path = lib/klassified
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/klassified.git
-	remote = "github https://DamienCassou@github.com/DamienCassou/klassified.el.git"
+	remote = "github git@github.com:DamienCassou/klassified.el.git"
 [submodule "know-your-http-well"]
 	path = lib/know-your-http-well
 	url = git@github.com:for-GET/know-your-http-well.git
@@ -358,7 +358,7 @@
 	path = lib/ledger-mode
 	url = git@github.com:ledger/ledger-mode.git
 	info-path = doc
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/ledger-mode.git"
+	remote = "DamienCassou git@github.com:DamienCassou/ledger-mode.git"
 [submodule "less-css-mode"] # Major mode to edit .less files
 	path = lib/less-css-mode
 	url = git@github.com:purcell/less-css-mode.git
@@ -368,7 +368,7 @@
 [submodule "libmpdel"]
 	path = lib/libmpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/libmpdel.git
-	remote = "github https://DamienCassou@github.com/DamienCassou/libmpdel.git"
+	remote = "github git@github.com:DamienCassou/libmpdel.git"
 [submodule "list-utils"]
 	path = lib/list-utils
 	url = git@github.com:rolandwalker/list-utils.git
@@ -387,7 +387,7 @@
 	info-path = Documentation
 [submodule "magit-popup"]
 	path = lib/magit-popup
-	url = https://DamienCassou@github.com/magit/magit-popup.git
+	url = git@github.com:magit/magit-popup.git
 [submodule "magit-tbdiff"]
 	path = lib/magit-tbdiff
 	url = git@github.com:magit/magit-tbdiff.git
@@ -412,7 +412,7 @@
 [submodule "mpdel"]
 	path = lib/mpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/mpdel.git
-	remote = "github https://DamienCassou@github.com/DamienCassou/mpdel.git"
+	remote = "github git@github.com:DamienCassou/mpdel.git"
 [submodule "multiple-cursors"] # Control multiple cursors with <C-S-c C-S-c>
 	path = lib/multiple-cursors
 	url = git@github.com:magnars/multiple-cursors.el.git
@@ -422,7 +422,7 @@
 [submodule "no-littering"]
 	path = lib/no-littering
 	url = git@github.com:tarsius/no-littering.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/no-littering.git"
+	remote = "DamienCassou git@github.com:DamienCassou/no-littering.git"
 [submodule "notmuch"]
 	path = lib/notmuch
 	url = git://notmuchmail.org/git/notmuch
@@ -465,7 +465,7 @@
 [submodule "package-lint"]
 	path = lib/package-lint
 	url = git@github.com:purcell/package-lint.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/package-lint.git"
+	remote = "DamienCassou git@github.com:DamienCassou/package-lint.git"
 [submodule "packed"]
 	path = lib/packed
 	url = git@github.com:tarsius/packed.git
@@ -486,10 +486,10 @@
 [submodule "password-store"] # get passwords from the 'pass' command
 	path = lib/password-store
 	url = git@github.com:emacsmirror/password-store.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/password-store.el.git"
+	remote = "DamienCassou git@github.com:DamienCassou/password-store.el.git"
 [submodule "password-store-otp"]
 	path = lib/password-store-otp
-	url = https://DamienCassou@github.com/volrath/password-store-otp.el.git
+	url = git@github.com:volrath/password-store-otp.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/password-store-otp.el.git"
 [submodule "pdf-tools"]
 	path = lib/pdf-tools
@@ -501,7 +501,7 @@
 [submodule "pinentry"]
 	path = lib/pinentry
 	url = git@github.com:ueno/pinentry-el.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/pinentry-el.git"
+	remote = "DamienCassou git@github.com:DamienCassou/pinentry-el.git"
 [submodule "pkg-info"]
 	path = lib/pkg-info
 	url = git@github.com:lunaryorn/pkg-info.el.git
@@ -514,10 +514,10 @@
 [submodule "prodigy"] # manage external services from within Emacs
 	path = lib/prodigy
 	url = git@github.com:rejeep/prodigy.el.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/prodigy.el.git"
+	remote = "DamienCassou git@github.com:DamienCassou/prodigy.el.git"
 [submodule "profile"]
 	path = lib/profile
-	url = https://DamienCassou@github.com/DamienCassou/profile.git
+	url = git@github.com:DamienCassou/profile.git
 [submodule "projectile"] # add notion of projects
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
@@ -527,7 +527,7 @@
 [submodule "request"]
 	path = lib/request
 	url = git@github.com:tkf/emacs-request.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/emacs-request.git"
+	remote = "DamienCassou git@github.com:DamienCassou/emacs-request.git"
 [submodule "restclient"] # test REST queries
 	path = lib/restclient
 	url = git@github.com:pashky/restclient.el.git
@@ -611,7 +611,7 @@
 [submodule "use-package"] # to structure my init.el file
 	path = lib/use-package
 	url = git@github.com:jwiegley/use-package.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/use-package"
+	remote = "DamienCassou git@github.com:DamienCassou/use-package"
 [submodule "vdirel"]
 	path = lib/vdirel
 	url = git@github.com:DamienCassou/vdirel.git
@@ -656,11 +656,11 @@
 	url = git@github.com:joaotavora/yasnippet.git
 [submodule "youtube-dl"]
 	path = lib/youtube-dl
-	url = https://DamienCassou@github.com/skeeto/youtube-dl-emacs.git
+	url = git@github.com:skeeto/youtube-dl-emacs.git
 [submodule "zerodark-theme"] # the best theme ever
 	path = lib/zerodark-theme
 	url = git@github.com:NicolasPetton/zerodark-theme.git
-	remote = "DamienCassou https://DamienCassou@github.com/DamienCassou/zerodark-theme.git"
+	remote = "DamienCassou git@github.com:DamienCassou/zerodark-theme.git"
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
