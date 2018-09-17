@@ -1782,7 +1782,7 @@ I.e., the keyring has a public key for each recipient."
 
     ;; If the prompt spans over multiple lines, the regexp should match
     ;; last line only.
-    (setq-default eshell-prompt-regexp "^> ")))
+    (setq-default eshell-prompt-regexp "^$ ")))
 
 (use-package esh-mode
   :hook (eshell-mode . my/configure-esh-mode)
