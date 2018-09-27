@@ -15,6 +15,7 @@
         counsel-unicode-char
         counsel-yank-pop
         cycle-spacing
+        dabbrev-expand
         dired-toggle-read-only
         dired-unmark-all-files
         electric-pair-delete-pair
@@ -25,6 +26,7 @@
         hungry-delete-forward
         ignore
         indent-for-tab-command
+        ivy-wgrep-change-to-wgrep-mode
         keyboard-escape-quit
         kill-region
         message-beginning-of-line
@@ -75,7 +77,6 @@
         anzu-query-replace
         beginend-message-goto-end
         counsel-projectile-find-file
-        dabbrev-expand
         end-of-buffer
         ivy-switch-buffer
         markdown-exdent-or-delete
