@@ -1564,11 +1564,11 @@ I.e., the keyring has a public key for each recipient."
                    :nickserv-ghost-confirmation "has been ghosted\\.$\\|is not online\\.$"))))
 
 (use-package circe-notifications
-  :disabled t
   :after circe
-  :config
+  :hook ((circe-server-connected . enable-circe-notifications))
+  :init
   (progn
-    (add-hook 'circe-server-connected-hook 'enable-circe-notifications)))
+    (setq circe-notifications-watch-strings '("DamienCassou" "[Dd]amien"))))
 
 (use-package alert
   :demand t
