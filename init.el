@@ -1571,9 +1571,15 @@ I.e., the keyring has a public key for each recipient."
     (add-hook 'circe-server-connected-hook 'enable-circe-notifications)))
 
 (use-package alert
-  :config
+  :demand t
+  :init
   (progn
-    (setq alert-user-configuration '((nil notifications nil)))))
+    (setq alert-default-style 'notifications)
+    (setq alert-user-configuration
+          '(;; throw away eshell notifications if buffer is visible:
+            (((:status selected visible)
+              (:mode . "\\`eshell-mode\\'"))
+             ignore nil)))))
 
 (use-package erc-track
   :init
@@ -1839,6 +1845,33 @@ I.e., the keyring has a public key for each recipient."
 (use-package esh-autosuggest
   :disabled t
   :hook (eshell-mode . esh-autosuggest-mode))
+
+(use-package esh-proc
+  :hook ((eshell-kill . my/eshell-command-alert))
+  :config
+  (progn
+    (defun my/eshell-command-alert-cleanup (command)
+      "Transforms the list of strings COMMAND into a string for notification."
+      (if (string-suffix-p "/bin/bash" (car command))
+          (my/eshell-command-alert-cleanup (cdr command))
+        (let ((binary (file-name-nondirectory (car command)))
+              (arguments (cdr command)))
+          (mapconcat #'identity (cons binary arguments) " "))))
+
+    ;; https://blog.hoetzel.info/post/eshell-notifications/
+    (defun my/eshell-command-alert (process status)
+      "Send `alert' with severity based on STATUS when PROCESS finished."
+      (let* ((command (my/eshell-command-alert-cleanup (process-command process)))
+             (buffer (process-buffer process)))
+        (if (string-prefix-p "finished" status)
+            (alert command
+                   :buffer buffer
+                   :severity 'normal
+                   :title "Command completed")
+          (alert (format "%s\n%s" command (upcase status))
+                 :buffer buffer
+                 :severity 'urgent
+                 :title "Command failed"))))))
 
 (use-package term
   :bind (
