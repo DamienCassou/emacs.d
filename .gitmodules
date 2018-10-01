@@ -439,9 +439,6 @@
 	build-step = make
 	build-step = make sphinx-texinfo
 	build-step = borg-makeinfo
-[submodule "nov"]
-	path = lib/nov
-	url = git@github.com:wasamasa/nov.el.git
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git

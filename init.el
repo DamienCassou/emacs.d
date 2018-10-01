@@ -2125,9 +2125,6 @@ Interactively, select BUFNAME from the list of all windows."
       (pinentry-start)
       (message "gpg-agent and pinentry restarted successfully."))))
 
-(use-package nov
-  :mode ("\\.epub\\'" . nov-mode))
-
 (use-package minions
   :demand t
   :config
