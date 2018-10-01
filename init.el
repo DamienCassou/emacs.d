@@ -1414,11 +1414,15 @@ I.e., the keyring has a public key for each recipient."
     (beginend-global-mode)))
 
 (use-package vdirel
+  :disabled t
   :bind (("C-. c" . vdirel-helm-select-email))
   :init
   (progn
     (setq vdirel-repository
           "~/Documents/configuration/contacts/contacts")))
+
+(use-package khardel
+  :bind (("C-. c" . khardel-insert-email)))
 
 (use-package nameless
   :hook (emacs-lisp-mode . nameless-mode)
