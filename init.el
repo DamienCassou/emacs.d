@@ -1856,7 +1856,13 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (defun my/eshell-command-alert-cleanup (command)
       "Transforms the list of strings COMMAND into a string for notification."
-      (if (string-suffix-p "/bin/bash" (car command))
+      ;; remove first element if we don't care about it:
+      (if (or (string-suffix-p "bash" (car command))
+              (string-suffix-p "/bin/env" (car command))
+              (string-suffix-p "/bin/sh" (car command))
+              (string-match-p "bin/python[23]?" (car command)))
+          ;; call recursively in case we don't care about the second
+          ;; one either (e.g., /usr/bin/env bash foo ⇒ foo)
           (my/eshell-command-alert-cleanup (cdr command))
         (let ((binary (file-name-nondirectory (car command)))
               (arguments (cdr command)))
