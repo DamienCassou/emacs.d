@@ -525,6 +525,7 @@
 [submodule "projectile"] # add notion of projects
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
+	remote = "DamienCassou git@github.com:DamienCassou/projectile.git"
 [submodule "refine"] # edit list interactively
 	path = lib/refine
 	url = git@github.com:Wilfred/refine.git
