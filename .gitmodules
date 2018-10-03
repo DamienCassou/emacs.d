@@ -401,6 +401,9 @@
 [submodule "make-it-so"] # Transform files with Makefile recipes
 	path = lib/make-it-so
 	url = git@github.com:abo-abo/make-it-so.git
+[submodule "makel"]
+	path = lib/makel
+	url = git@gitlab.petton.fr:DamienCassou/makel.git
 [submodule "makey"] # required by widgetjs and amd
 	path = lib/makey
 	url = git@github.com:mickeynp/makey.git
