@@ -153,6 +153,7 @@
 [submodule "elcouch"]
 	path = lib/elcouch
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
+	remote = "github git@github.com:DamienCassou/elcouch.git"
 [submodule "elfeed"]
 	path = lib/elfeed
 	url = git@github.com:skeeto/elfeed.git
@@ -369,6 +370,7 @@
 [submodule "libelcouch"]
 	path = lib/libelcouch
 	url = https://DamienCassou@gitlab.petton.fr/elcouch/libelcouch.git
+	remote = "github git@github.com:DamienCassou/libelcouch.git"
 [submodule "libmpdel"]
 	path = lib/libmpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/libmpdel.git
