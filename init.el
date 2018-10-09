@@ -1844,7 +1844,7 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (setq eshell-visual-commands
-          '("bower" "bluetoothctl" "htop" "jest" "less" "more" "ncdu" "npm" "pinentry-curses" "ssh" "tail" "top" "vim" "watch" "yarn"))
+          '("bower" "bluetoothctl" "htop" "jest" "less" "more" "ncdu" "nmtui" "npm" "pinentry-curses" "ssh" "tail" "top" "vim" "watch" "yarn"))
     (setq eshell-visual-subcommands '(("docker" "build" "pull")))
 
     (add-to-list 'eshell-command-completions-alist '("gunzip" "gz\\'"))
