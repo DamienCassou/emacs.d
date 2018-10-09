@@ -2092,16 +2092,16 @@ Interactively, select BUFNAME from the list of all windows."
       "Configure screen with xrandr."
       (start-process-shell-command
        "xrandr" nil
-       "xrandr --output DP-2-2 --primary --right-of eDP-1 --auto"
+       ;; "xrandr --output DP-2-2 --primary --right-of eDP-1 --auto"
        ;; Stokholm:
-       ;; "xrandr --output DP-1-8 --right-of eDP-1 --auto"
+       "xrandr --output DP-1-8 --primaty --right-of eDP-1 --auto"
        )))
 
   :hook (exwm-randr-screen-change . my/exwm-xrandr)
   :init
   (progn
-    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "DP-2-2"))
-    ;; (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "DP-1-8"))
+    ;; (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "DP-2-2"))
+    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "DP-1-8"))
     )
   :config
   (progn
