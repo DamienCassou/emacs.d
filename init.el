@@ -1694,16 +1694,23 @@ I.e., the keyring has a public key for each recipient."
   :hook (emacs-lisp-mode . embrace-emacs-lisp-mode-hook))
 
 (use-package offlineimap
-  :commands (offlineimap my/offlineimap-message-when-done)
+  :commands offlineimap
   :init
   (progn
     (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done))
-  :config
+  :init
   (progn
     (defun my/offlineimap-message-when-done (message-type &optional action)
       (ignore action)
       (when (string-match "^finished" message-type)
-        (message "Offlineimap finished")))))
+        (let ((count (offlineimap-new-email-count)))
+          (alert (cond
+                  ((= count 0) "No new email")
+                  ((= count 1) "1 new email")
+                  ((> count 1) (format "%s new emails" count)))
+                 :severity 'low
+                 :title "Offlineimap"
+                 :icon (expand-file-name "offlineimap.png" (expand-file-name "media" user-emacs-directory))))))))
 
 (use-package smtpmail
   :init
