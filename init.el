@@ -1710,7 +1710,9 @@ I.e., the keyring has a public key for each recipient."
                   ((> count 1) (format "%s new emails" count)))
                  :severity 'low
                  :title "Offlineimap"
-                 :icon (expand-file-name "offlineimap.png" (expand-file-name "media" user-emacs-directory))))))))
+                 :icon (if (zerop count)
+                           nil
+                         (expand-file-name "email.png" (expand-file-name "media" user-emacs-directory)))))))))
 
 (use-package smtpmail
   :init
