@@ -20,7 +20,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((ledger-post-amount-alignment-column . 42)
+    ((ledger-post-amount-alignment-column . 20)
+     (ledger-post-amount-alignment-column . 42)
      (ledger-post-account-alignment-column . 2)
      (flycheck-ledger-pedantic . t)
      (git-commit-major-mode . git-commit-elisp-text-mode)
