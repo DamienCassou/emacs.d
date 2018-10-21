@@ -556,6 +556,7 @@ current."
              ("Monthly cash flow" . "register --real --monthly --collapse ^Assets:Current")
              ("Monthly balance"   . "register --real --monthly --collapse ^Assets ^Liabilities ^Equity")
              ("Account statement" . "register ^%(account)")
+             ("Checks"            . "register --group-by=payee --payee=code --sort=payee --uncleared ^Assets:Check")
 
              ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities")
