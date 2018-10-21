@@ -2026,6 +2026,7 @@ Interactively, select BUFNAME from the list of all windows."
     (exwm-input-set-key (kbd "s-w") #'exwm-workspace-switch)
     (exwm-input-set-key (kbd "s-;") #'other-frame)
 
+    (exwm-input-set-key (kbd "<s-tab>") #'my/swap-last-buffers)
     (exwm-input-set-key (kbd "C-x w") #'my/switch-to-window)
     (exwm-input-set-key (kbd "C-;") #'other-window)
     (exwm-input-set-key (kbd "s-!") #'counsel-linux-app)
