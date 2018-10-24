@@ -54,6 +54,7 @@
         paredit-forward-slurp-sexp
         paredit-kill
         paredit-open-round
+        paredit-semicolon
         paredit-splice-sexp-killing-backward
         paredit-wrap-round
         save-some-buffers
