@@ -1085,6 +1085,17 @@ hand."
              (smtpmail-smtp-user . "damien.cassou@foretagsplatsen.se")
              (smtpmail-smtp-server . "smtp.office365.com")
              (smtpmail-stream-type . starttls)
+             (smtpmail-smtp-service . 587))
+            ("WK"
+             (profile-maildir . "/WK")
+             (notmuch-fcc-dirs . "WK/Sent")
+             (user-mail-address . "damien.cassou@wolterskluwer.com")
+             (message-signature . "Damien Cassou\nFöretagsplatsen AB\nPhone/Fax: +46 (0)8 774 63 00\nMobile: +33 (0)6 80 50 18 91\nAddress: Skeppsbron 26, 4tr, SE-111 30 Stockholm\nWeb: www.foretagsplatsen.se\n")
+             (smtpmail-queue-dir . "~/Mail/WK/queued-mail/")
+             (smtpmail-local-domain . nil)
+             (smtpmail-smtp-user . "damien.cassou@wolterskluwer.com")
+             (smtpmail-smtp-server . "smtp.office365.com")
+             (smtpmail-stream-type . starttls)
              (smtpmail-smtp-service . 587))))
     (profile-set-profile-from-name "Perso")
     (setq profile-extra-email-addresses
