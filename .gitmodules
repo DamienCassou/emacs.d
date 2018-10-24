@@ -163,6 +163,9 @@
 [submodule "elisp-refs"]
 	path = lib/elisp-refs
 	url = git@github.com:Wilfred/refs.el.git
+[submodule "elsa"]
+	path = lib/elsa
+	url = git@github.com:emacs-elsa/Elsa.git
 [submodule "emacs-js"]
 	path = lib/emacs-js
 	url = git@github.com:foretagsplatsen/emacs-js.git
@@ -220,6 +223,9 @@
 	path = lib/flycheck
 	url = git@github.com:flycheck/flycheck.git
 	remote = "DamienCassou git@github.com:DamienCassou/flycheck.git"
+[submodule "flycheck-elsa"]
+	path = lib/flycheck-elsa
+	url = git@github.com:emacs-elsa/flycheck-elsa.git
 [submodule "flycheck-ledger"]
 	path = lib/flycheck-ledger
 	url = git@github.com:purcell/flycheck-ledger.git
@@ -606,6 +612,9 @@
 [submodule "treepy"]
 	path = lib/treepy
 	url = git@github.com:volrath/treepy.el.git
+[submodule "trinary"]
+	path = lib/trinary
+	url = git@github.com:emacs-elsa/trinary-logic.git
 [submodule "undercover"]
 	path = lib/undercover
 	url = git@github.com:sviridov/undercover.el.git
