@@ -634,9 +634,6 @@
 [submodule "vdirel"]
 	path = lib/vdirel
 	url = git@github.com:DamienCassou/vdirel.git
-[submodule "visible-mark"] # show the current mark
-	path = lib/visible-mark
-	url = git@gitlab.com:iankelling/visible-mark.git
 [submodule "vlf"]
 	path = lib/vlf
 	url = git@github.com:m00natic/vlfi.git

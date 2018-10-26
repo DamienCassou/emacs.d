@@ -1225,17 +1225,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq zoom-frame/buffer 'frame)))
 
-(use-package visible-mark
-  :disabled t
-  :demand t
-  :init
-  (progn
-    (setq visible-mark-faces '(visible-mark-face1 visible-mark-face2))
-    (setq visible-mark-max 2))
-  :config
-  (progn
-    (global-visible-mark-mode)))
-
 (use-package paren
   :demand t
   :config
