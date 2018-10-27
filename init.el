@@ -106,6 +106,11 @@ are visible."
 (progn ; `eval'
   (setq debugger-stack-frame-as-list t))
 
+(progn ; `map-ynp'
+  ;; Make all "yes or no" prompts show "y or n" instead
+  (setq read-answer-short t)
+  (fset 'yes-or-no-p 'y-or-n-p))
+
 (use-package custom
   :demand t
   :config
@@ -2168,9 +2173,6 @@ Interactively, select BUFNAME from the list of all windows."
          ("k" . transmission-remove)))
 
 (put 'narrow-to-region 'disabled nil)
-
-;; Make all "yes or no" prompts show "y or n" instead
-(fset 'yes-or-no-p 'y-or-n-p)
 
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
