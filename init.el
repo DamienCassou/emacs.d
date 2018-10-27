@@ -111,6 +111,9 @@ are visible."
   (setq read-answer-short t)
   (fset 'yes-or-no-p 'y-or-n-p))
 
+(progn ; `editfns'
+  (put 'narrow-to-region 'disabled nil))
+
 (use-package custom
   :demand t
   :config
@@ -2171,8 +2174,6 @@ Interactively, select BUFNAME from the list of all windows."
   :bind (
          :map transmission-mode-map
          ("k" . transmission-remove)))
-
-(put 'narrow-to-region 'disabled nil)
 
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
