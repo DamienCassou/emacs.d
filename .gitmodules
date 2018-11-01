@@ -166,6 +166,7 @@
 [submodule "elsa"]
 	path = lib/elsa
 	url = git@github.com:emacs-elsa/Elsa.git
+	remote = "DamienCassou git@github.com:DamienCassou/elcouch.git"
 [submodule "emacs-js"]
 	path = lib/emacs-js
 	url = git@github.com:foretagsplatsen/emacs-js.git
@@ -175,6 +176,7 @@
 	path = lib/emacsql
 	url = git@github.com:skeeto/emacsql.git
 	no-byte-compile = emacsql-pg.el
+	remote = "DamienCassou git@github.com:DamienCassou/emacsql.git"
 [submodule "emake"]
 	path = lib/emake
 	url = https://github.com/vermiculus/emake.el.git
@@ -439,7 +441,7 @@
 	url = git@github.com:Malabarba/Nameless.git
 [submodule "no-littering"]
 	path = lib/no-littering
-	url = git@github.com:tarsius/no-littering.git
+	url = git@github.com:emacscollective/no-littering.git
 	remote = "DamienCassou git@github.com:DamienCassou/no-littering.git"
 [submodule "notmuch"]
 	path = lib/notmuch
