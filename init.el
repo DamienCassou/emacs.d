@@ -277,6 +277,7 @@ current."
 (use-package nsm ;; network security
   :init
   (progn
+    (setq network-security-level 'high)
     (setq nsm-save-host-names t)))
 
 (use-package imenu
