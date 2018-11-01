@@ -167,6 +167,7 @@
 	path = lib/elsa
 	url = git@github.com:emacs-elsa/Elsa.git
 	remote = "DamienCassou git@github.com:DamienCassou/elcouch.git"
+	build-step = echo "Don't build elsa as it prevents it from running (issue #111)"
 [submodule "emacs-js"]
 	path = lib/emacs-js
 	url = git@github.com:foretagsplatsen/emacs-js.git
