@@ -1642,58 +1642,18 @@ I.e., the keyring has a public key for each recipient."
          ("C-c C-k" . slack-channel-leave)
          ("@" . slack-message-embed-mention)
          ("#" . slack-message-embed-channel))
-  :preface
-  (progn
-    (defun my/slack-user-status (id team)
-      "Don't display user status."
-      "")
-
-    (defun my/slack-ftgp-configure-browser ()
-      (make-local-variable 'browse-url-browser-function)
-      (let ((chromium-pair (cons "https://foretagsplatsen.slack.com" #'browse-url-chromium)))
-        (if (listp browse-url-browser-function)
-            (add-to-list 'browse-url-browser-function chromium-pair)
-          (setq browse-url-browser-function (list chromium-pair
-                                                  (cons "." browse-url-browser-function))))))
-    (defun my/slack-configure-language (team)
-      (let ((room (slack-room-name (slack-room-find slack-current-room-id slack-current-team))))
-        (if (and (string= team "Företagsplatsen")
-                 (seq-contains '("camille" "nico") room))
-            (lui-flyspell-change-dictionary "francais")
-          (lui-flyspell-change-dictionary "english"))))
-
-    (defun my/configure-slack-mode ()
-      (let ((team (slack-team-name slack-current-team)))
-        (cond
-         ((string= team "Företagsplatsen")
-          (require 'ftgp)
-          (ftgp-setup-bug-reference)
-          (my/slack-ftgp-configure-browser)
-          ;; (my/slack-configure-language team)
-          )))))
   :config
   (progn
-    (require 'auth-source-pass)
+    (setq slack-teams
+          (list
+           (slack-team
+            :name "foretagsplatsen"
+            :client-id (auth-source-pass-get "client-id" "ftgp/foretagsplatsen.slack.com")
+            :client-secret (auth-source-pass-get "client-secret" "ftgp/foretagsplatsen.slack.com")
+            :token (auth-source-pass-get "token" "ftgp/foretagsplatsen.slack.com")
+            :subscribed-channels '(general development))))
 
-    (slack-register-team
-     :name "foretagsplatsen"
-     :default t
-     :client-id (auth-source-pass-get "client-id" "ftgp/foretagsplatsen.slack.com")
-     :client-secret (auth-source-pass-get "client-secret" "ftgp/foretagsplatsen.slack.com")
-     :token (auth-source-pass-get "token" "ftgp/foretagsplatsen.slack.com")
-     :subscribed-channels '(general development stockholm-food report-editor))
-
-    (slack-register-team
-     :name "andaolvras"
-     :default nil
-     :client-id (auth-source-pass-get "client-id" "ftgp/andaolvras.slack.com")
-     :client-secret (auth-source-pass-get "client-secret" "ftgp/andaolvras.slack.com")
-     :token (auth-source-pass-get "token" "ftgp/andaolvras.slack.com")
-     :subscribed-channels '(general actus-cantine dev presentation))
-
-    (advice-add #'slack-user-status :override #'my/slack-user-status)
-    (add-hook 'slack-mode-hook #'my/configure-slack-mode)
-
+    (setq slack-current-team (car slack-teams))
     (setq slack-prefer-current-team t)
     (setq slack-buffer-create-on-notify t)
 
