@@ -79,6 +79,9 @@
 [submodule "cache"]
 	path = lib/cache
 	url = git@github.com:nflath/cache.git
+[submodule "cask"]
+	path = lib/cask
+	url = git@github.com:cask/cask.git
 [submodule "cdlatex"]
 	path = lib/cdlatex
 	url = git@github.com:cdominik/cdlatex.git
