@@ -587,26 +587,54 @@ current."
     (defvar my/ledger-ofx-accounts nil
       "Alist of (OFX-ACCOUNT . LEDGER-ACCOUNT) used when importing an ofx file.")
 
+    (defun my/ledger-ofx-import-file (file fid callback)
+      "Import ofx FILE with ledger-autosync.
+Display result in current buffer and execute CALLBACK when done.
+
+Pass FID as argument to ledger-autosync."
+      (let* ((ofx-account (file-name-nondirectory (file-name-sans-extension file)))
+             (ledger-account (map-elt my/ledger-ofx-accounts ofx-account nil #'string=))
+             (command `("ledger-autosync" "--assertions"
+                        "--ledger" ,my/ledger-file
+                        "--payee-format" "{payee}"
+                        "--account" ,ledger-account
+                        "--fid" ,fid
+                        ,file)))
+        (message "Importing %s" file)
+        (make-process
+         :name "ledger-autosync"
+         :buffer (current-buffer)
+         :command command
+         :sentinel (lambda (process event)
+                     (when (string= event "finished\n")
+                       (funcall callback))))))
+
+    (defun my/ledger-ofx-import-files (files fid callback)
+      "Import each file from FILES using `my/ledger-ofx-import-file'.
+Execute CALLBACK when done.
+
+Pass FID as argument to ledger-autosync."
+      (if (null files)
+          (funcall callback)
+        (my/ledger-ofx-import-file
+         (car files)
+         fid
+         (lambda () (my/ledger-ofx-import-files (cdr files) fid callback)))))
+
     (defun my/ledger-ofx-import ()
       "Import transactions from ofx to Ledger format using \"ledger-autosync\"."
       (interactive)
       (require 'ledger-mode)
       (let ((fid "42")
-            (ofx-dir (expand-file-name "~/.cache/fetch-ofx")))
-        (switch-to-buffer (get-buffer-create "*ledger sync*"))
-        (erase-buffer)
-        (ledger-mode)
-        (dolist (file (directory-files ofx-dir t "\\.ofx$"))
-          (let* ((ofx-account (file-name-nondirectory (file-name-sans-extension file)))
-                 (ledger-account (map-elt my/ledger-ofx-accounts ofx-account nil #'string=)))
-            (goto-char (point-max))
-            (shell-command
-             (format "ledger-autosync --ledger %s --payee-format \"{payee}\" --account %s --fid %s --assertions %s"
-                     my/ledger-file
-                     ledger-account
-                     fid
-                     file)
-             t)))))
+            (ofx-dir (expand-file-name "~/.cache/fetch-ofx"))
+            (buffer (get-buffer-create "*ledger sync*")))
+        (with-current-buffer buffer
+          (erase-buffer)
+          (my/ledger-ofx-import-files
+           (directory-files ofx-dir t "\\.ofx$")
+           fid
+           (lambda ()
+             (pop-to-buffer-same-window (current-buffer)))))))
 
     (defun my/ledger-get-sek-value (date)
       "Return value of a SEK (Swedish Crown) in EUR at DATE."
