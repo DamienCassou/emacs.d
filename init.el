@@ -1,4 +1,4 @@
-;;; init.el --- user-init-file                    -*- lexical-binding: t -*-
+;;; init.el --- user-init-file                    -*- lexical-binding: t; -*-
 
 
 ;; Added by Package.el.  This must come before configurations of
@@ -582,74 +582,6 @@ current."
     (setq ledger-report-auto-refresh-sticky-cursor t)
     (setq ledger-report-use-strict t)
 
-    (defvar my/ledger-file nil "Path to the ledger file.")
-
-    (defvar my/ledger-ofx-accounts nil
-      "Alist of (OFX-ACCOUNT . LEDGER-ACCOUNT) used when importing an ofx file.")
-
-    (defun my/ledger-ofx-import-file (file fid callback)
-      "Import ofx FILE with ledger-autosync.
-Display result in current buffer and execute CALLBACK when done.
-
-Pass FID as argument to ledger-autosync."
-      (let* ((ofx-account (file-name-nondirectory (file-name-sans-extension file)))
-             (ledger-account (map-elt my/ledger-ofx-accounts ofx-account nil #'string=))
-             (command `("ledger-autosync" "--assertions"
-                        "--ledger" ,my/ledger-file
-                        "--payee-format" "{payee}"
-                        "--account" ,ledger-account
-                        "--fid" ,fid
-                        ,file)))
-        (message "Importing %s" file)
-        (make-process
-         :name "ledger-autosync"
-         :buffer (current-buffer)
-         :command command
-         :sentinel (lambda (process event)
-                     (when (string= event "finished\n")
-                       (funcall callback))))))
-
-    (defun my/ledger-ofx-import-files (files fid callback)
-      "Import each file from FILES using `my/ledger-ofx-import-file'.
-Execute CALLBACK when done.
-
-Pass FID as argument to ledger-autosync."
-      (if (null files)
-          (funcall callback)
-        (my/ledger-ofx-import-file
-         (car files)
-         fid
-         (lambda () (my/ledger-ofx-import-files (cdr files) fid callback)))))
-
-    (defun my/ledger-ofx-import ()
-      "Import transactions from ofx to Ledger format using \"ledger-autosync\"."
-      (interactive)
-      (require 'ledger-mode)
-      (let ((fid "42")
-            (ofx-dir (expand-file-name "~/.cache/fetch-ofx"))
-            (buffer (get-buffer-create "*ledger sync*")))
-        (with-current-buffer buffer
-          (erase-buffer)
-          (my/ledger-ofx-import-files
-           (directory-files ofx-dir t "\\.ofx$")
-           fid
-           (lambda ()
-             (pop-to-buffer-same-window (current-buffer)))))))
-
-    (defun my/ledger-get-sek-value (date)
-      "Return value of a SEK (Swedish Crown) in EUR at DATE."
-      (interactive (list
-                    (let ((default-date (format-time-string "%F")))
-                      (read-string
-                       (format "Date (%s): " default-date) nil nil default-date))))
-      (save-match-data
-        (with-current-buffer
-            (url-retrieve-synchronously "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml")
-          (goto-char (point-min))
-          (re-search-forward (format "time=%S" date))
-          (re-search-forward "Cube currency=\"SEK\" rate=\"\\([.[:digit:]]*\\)\"")
-          (/ 1 (string-to-number (match-string-no-properties 1))))))
-
     (defvar my/ledger-rate-history (list)
       "Keeps track of entered SEK/EUR rates.")
 
@@ -682,88 +614,28 @@ hand."
             (transactions-end (point-max)))
         (save-restriction
           (narrow-to-region transactions-start transactions-end)
-          (ledger-mode-clean-buffer))))
+          (ledger-mode-clean-buffer))))))
 
-    (defvar my/ledger-number-regexp
-      (rx
-       (+ (any digit ","))
-       (optional "." (+ digit))))
-
-    (defvar my/ledger-budget-format "%(account())\t%(display_total)\t%(note)\n")
-
-    (defvar my/ledger-budget-regexp
-      (rx-to-string
-       `(and
-         line-start
-         ;; account
-         "Assets:Budget:" (group-n 1 (* (not (any "\t"))))
-         "\t"
-         ;; account's amount
-         (group-n 2 (regexp ,my/ledger-number-regexp))
-         ;; amount's currency and spaces
-         (* (not (any "\t")))
-         "\t"
-         ;; note's contribution
-         (optional "🗓" (+ " ") (group-n 3 (regexp ,my/ledger-number-regexp)))
-         ;; note's contribution unit
-         (* (not (any "📆" "🞋" "\n")))
-         ;; note's target
-         (optional "🞋" (+ " ") (group-n 4 (regexp ,my/ledger-number-regexp)))
-         ;; note's target unit
-         (* (not (any "📆" "\n")))
-         ;; note's deadline
-         (optional "📆" (+ " ") (group-n 5 (* not-newline)))
-         line-end)))
-
-    (defun my/ledger-budget-sentinel (process event)
-      (let ((buffer (process-buffer process)))
-        (when (not (string= event "finished\n"))
-          (error (format "ledger-budget: %s" event)))
-        (when (not (buffer-name buffer)) ; (info "(elisp) Sentinels")
-          (error (format "ledger-budget: process buffer is dead")))
-        (with-current-buffer buffer
-          (goto-char (point-min))
-          (let* ((accounts (cl-loop
-                            while (re-search-forward my/ledger-budget-regexp nil t)
-                            collect `((:name . ,(match-string 1))
-                                      (:amount . ,(match-string 2))
-                                      (:contribution . ,(match-string 3))
-                                      (:target . ,(match-string 4))
-                                      (:deadline . ,(match-string 5)))))
-                 (available (seq-find (lambda (account) (string= "Available" (map-elt account :name))) accounts)))
-            (delete-region (point-min) (point-max))
-            (font-lock-mode)
-            (when available
-              (insert "Left to assign: "
-                      (map-elt available :amount)
-                      "\n\n"))
-            (dolist (account (seq-filter (lambda (account) (not (eq account available))) accounts))
-              (let ((name (map-elt account :name))
-                    (amount (map-elt account :amount))
-                    (contribution (map-elt account :contribution))
-                    (target (map-elt account :target))
-                    (deadline (map-elt account :deadline)))
-                (insert name "\t" amount "\t" (or contribution "") "\n"))))
-          (pop-to-buffer buffer))))
-
-    (defun my/ledger-budget ()
-      (interactive)
-      (make-process
-       :name "ledger-budget"
-       :buffer (generate-new-buffer "*ledger-budget*")
-       :command `("ledger" "balance" "--empty" "--sort" "account" "--flat"
-                  "--format" ,my/ledger-budget-format
-                  "^Assets:Budget")
-       :connection-type 'pipe
-       :sentinel #'my/ledger-budget-sentinel)))
-  :config
+(use-package ledger-import
+  :hook ((ledger-import-finished . my/ledger-import-alert))
+  :init
   (progn
-    (setq my/ledger-file (expand-file-name "~/Documents/configuration/ledger/accounting.ledger"))
+    (setq ledger-import-autosync-command
+          '("ledger-autosync" "--assertions"
+            "--payee-format" "{payee}"))
+    (setq ledger-import-boobank-command
+          '("boobank" "--backends=Jenny,Damien"))
 
-    ;; Fill my/ledger-ofx-accounts:
+    ;; Fill ledger-import-accounts
     (let ((file (expand-file-name "~/.password-store/Secure_Notes/ledger-accounts.gpg")))
       (when (file-exists-p file)
-        (load file t)))))
+        (load file t)))
+
+    (defun my/ledger-import-alert ()
+      "Notify the user that import is finished."
+      (alert "Finished"
+             :title "Ledger-autosync"
+             :buffer (ledger-import-buffer)))))
 
 (use-package org
   :bind
