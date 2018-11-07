@@ -2025,6 +2025,9 @@ Interactively, select BUFNAME from the list of all windows."
     (minions-mode)))
 
 (use-package youtube-dl
+  :bind (
+         :map youtube-dl-list-mode-map
+         ("k" . youtube-dl-list-kill))
   :init
   (progn
     (setq youtube-dl-directory (expand-file-name "~/Downloads/"))))
