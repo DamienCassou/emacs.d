@@ -457,6 +457,10 @@ current."
     (magit-define-popup-action 'magit-commit-popup
       ?x "Absorb" #'magit-commit-absorb-popup)))
 
+(use-package magit-tbdiff
+  :demand t
+  :after magit)
+
 (use-package vc-hooks
   :init
   (progn
