@@ -554,6 +554,11 @@ current."
   (progn
     (flycheck-package-setup)))
 
+(use-package flycheck-elsa
+  :init
+  (progn
+    (setq flycheck-elsa-command 'host)))
+
 (use-package ledger-mode
   :hook (ledger-mode . company-mode)
   :init
