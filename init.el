@@ -1600,6 +1600,7 @@ I.e., the keyring has a public key for each recipient."
                   ((> count 1) (format "%s new emails" count)))
                  :severity 'low
                  :title "Offlineimap"
+                 :buffer (get-buffer "*notmuch-hello*")
                  :icon (if (zerop count)
                            nil
                          (expand-file-name "email.png" (expand-file-name "media" user-emacs-directory)))))))))
