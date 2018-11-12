@@ -626,8 +626,7 @@ hand."
           (ledger-mode-clean-buffer))))))
 
 (use-package ledger-import
-  :hook ((ledger-import-finished . my/ledger-import-alert)
-         (ledger-import-fetched . my/ledger-import-rewrite))
+  :hook ((ledger-import-finished . my/ledger-import-alert))
   :init
   (progn
     (setq ledger-import-autosync-command
@@ -636,26 +635,14 @@ hand."
     (setq ledger-import-boobank-command
           '("boobank" "--backends=Jenny,Damien"))
 
-    (defvar my/ledger-import-rewrite-regexps nil
-      "List of replacements for an OFX file.")
-
     (defun my/ledger-import-alert ()
       "Notify the user that import is finished."
       (alert "Finished"
              :title "Ledger-autosync"
-             :buffer (current-buffer)))
-
-    (defun my/ledger-import-rewrite ()
-      "Apply replacement regexps from `my/ledger-import-rewrite-regexps'.
-The current buffer should be in the OFX format."
-      (save-match-data
-        (dolist (pair my/ledger-import-rewrite-regexps)
-          (goto-char (point-min))
-          (while (re-search-forward (car pair) nil t)
-            (replace-match (cdr pair) t))))))
+             :buffer (current-buffer))))
   :config
   (progn
-    ;; Fill ledger-import-accounts and my/ledger-import-rewrite-regexps
+    ;; Fill `ledger-import-accounts' and `ledger-import-ofx-rewrite-rules':
     (let ((file (expand-file-name "~/.password-store/Secure_Notes/ledger-accounts.gpg")))
       (when (file-exists-p file)
         (load file t)))))
