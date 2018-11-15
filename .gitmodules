@@ -372,6 +372,9 @@
 	path = lib/know-your-http-well
 	url = git@github.com:for-GET/know-your-http-well.git
 	load-path = emacs
+[submodule "ledger-import"]
+	path = lib/ledger-import
+	url = git@gitlab.petton.fr:DamienCassou/ledger-import.git
 [submodule "ledger-mode"]
 	path = lib/ledger-mode
 	url = git@github.com:ledger/ledger-mode.git
