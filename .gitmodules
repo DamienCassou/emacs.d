@@ -247,6 +247,9 @@
 [submodule "font-lock+"]
 	path = lib/font-lock+
 	url = git@github.com:emacsmirror/font-lock-plus.git
+[submodule "forge"]
+	path = lib/forge
+	url = git@github.com:magit/forge.git
 [submodule "frame-cmds"]
 	path = lib/frame-cmds
 	url = git@github.com:emacsmirror/frame-cmds.git
@@ -613,6 +616,9 @@
 	url = git@github.com:ternjs/tern.git
 	load-path = emacs
 	build-step = npm install
+[submodule "transient"]
+	path = lib/transient
+	url = git@github.com:magit/transient.git
 [submodule "transmission"]
 	path = lib/transmission
 	url = git@github.com:holomorph/transmission.git
