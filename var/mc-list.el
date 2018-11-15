@@ -33,6 +33,7 @@
         message-tab
         my-join-line
         my/exwm-counsel-yank-pop
+        my/join-line
         nameless-insert-name
         org-beginning-of-line
         org-ctrl-c-ctrl-c
