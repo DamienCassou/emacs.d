@@ -388,6 +388,9 @@
 	path = lib/libmpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/libmpdel.git
 	remote = "github git@github.com:DamienCassou/libmpdel.git"
+[submodule "libnetmacs"]
+	path = lib/libnetmacs
+	url = git@gitlab.petton.fr:netmacs/libnetmacs.git
 [submodule "list-utils"]
 	path = lib/list-utils
 	url = git@github.com:rolandwalker/list-utils.git
@@ -444,6 +447,9 @@
 [submodule "nameless"] # hide current package name everywhere in elisp code
 	path = lib/nameless
 	url = git@github.com:Malabarba/Nameless.git
+[submodule "netmacs"]
+	path = lib/netmacs
+	url = git@gitlab.petton.fr:netmacs/netmacs.git
 [submodule "no-littering"]
 	path = lib/no-littering
 	url = git@github.com:emacscollective/no-littering.git
