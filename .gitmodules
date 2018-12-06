@@ -153,6 +153,9 @@
 	path = lib/editorconfig
 	info-path = doc
 	url = git@github.com:editorconfig/editorconfig-emacs.git
+[submodule "ejira"]
+	path = lib/ejira
+	url = git@github.com:nyyManni/ejira.git
 [submodule "elcouch"]
 	path = lib/elcouch
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
@@ -487,6 +490,9 @@
 [submodule "orgtbl-show-header"] # show header of column in minibuffer
 	path = lib/orgtbl-show-header
 	url = git@github.com:DamienCassou/orgtbl-show-header.git
+[submodule "ox-jira"]
+	path = lib/ox-jira
+	url = git@github.com:stig/ox-jira.el.git
 [submodule "ox-twbs"] # use twitter bootstrap to export org files to HTML
 	path = lib/ox-twbs
 	url = git@github.com:marsmining/ox-twbs.git
