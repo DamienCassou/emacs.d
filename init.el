@@ -1731,7 +1731,7 @@ I.e., the keyring has a public key for each recipient."
     (setq eshell-visual-commands
           '("bower" "bluetoothctl" "htop" "jest" "less" "more" "ncdu" "nmtui" "npm" "pinentry-curses" "ssh" "tail" "top" "vim" "watch"))
     (setq eshell-visual-subcommands '(("docker" "build" "pull")
-                                      ("yarn" "install")))
+                                      ("yarn" "install" "upgrade-interactive")))
 
     (add-to-list 'eshell-command-completions-alist '("gunzip" "gz\\'"))
     (add-to-list 'eshell-command-completions-alist '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))
