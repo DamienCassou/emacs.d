@@ -2014,6 +2014,9 @@ Interactively, select BUFNAME from the list of all windows."
   :after exwm
   :demand t)
 
+(use-package netmacs
+  :demand t)
+
 (use-package pinentry
   :after exwm
   :demand t
