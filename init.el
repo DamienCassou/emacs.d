@@ -1855,7 +1855,7 @@ I.e., the keyring has a public key for each recipient."
       (unless (my/exwm-reliable-class-p)
         (exwm-workspace-rename-buffer exwm-class-name))))
 
-  :hook ((exwm-init . gpastel-start-listening)
+  :hook ((exwm-init . gpastel-mode)
          (exwm-init . display-battery-mode)
          (exwm-init . display-time-mode)
          (exwm-update-class . my/exwm-class-updated)
