@@ -1987,7 +1987,7 @@ Interactively, select BUFNAME from the list of all windows."
   :hook (exwm-randr-screen-change . my/exwm-xrandr)
   :init
   (progn
-    (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "DP-2-2"))
+    (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1" 1 "DP-2-2"))
     ;; (setq exwm-randr-workspace-output-plist '(0 "eDP-1" 1 "DP-1-8"))
     )
   :config
