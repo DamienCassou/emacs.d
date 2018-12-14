@@ -623,12 +623,14 @@ hand."
             (transactions-end (point-max)))
         (save-restriction
           (narrow-to-region transactions-start transactions-end)
-          (ledger-mode-clean-buffer))))))
+          (ledger-mode-clean-buffer)
+          (whitespace-cleanup))))))
 
 (use-package ledger-import
   :hook ((ledger-import-finished . my/ledger-import-alert))
   :init
   (progn
+    (setq ledger-import-boobank-import-from-date "2018-12-01")
     (setq ledger-import-autosync-command
           '("ledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
