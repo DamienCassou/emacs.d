@@ -2016,8 +2016,10 @@ Interactively, select BUFNAME from the list of all windows."
   :after exwm
   :demand t)
 
-(use-package netmacs
-  :demand t)
+(use-package libnetmacs
+  :config
+  (progn
+    (libnetmacs-secretagent-mode)))
 
 (use-package pinentry
   :after exwm
