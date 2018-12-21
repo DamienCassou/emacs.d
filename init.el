@@ -2058,6 +2058,20 @@ Interactively, select BUFNAME from the list of all windows."
          :map transmission-mode-map
          ("k" . transmission-remove)))
 
+(use-package enh-ruby-mode
+  :mode "\\.rb\\'"
+  :interpreter "ruby")
+
+(use-package inf-ruby
+  :hook (enh-ruby-mode . inf-ruby-minor-mode)
+  :config
+  (progn
+    (with-eval-after-load "company"
+      (add-to-list 'company-backends #'company-robe))))
+
+(use-package robe
+  :hook (enh-ruby-mode . robe-mode))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
