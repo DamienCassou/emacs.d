@@ -461,6 +461,16 @@ current."
   :demand t
   :after magit)
 
+(use-package forge
+  :after magit
+  :config
+  (progn
+    (add-to-list 'forge-alist
+                 '("gitlab.petton.fr"
+                   "gitlab.petton.fr/api/v4"
+                   "gitlab.petton.fr"
+                   forge-gitlab-repository))))
+
 (use-package vc-hooks
   :init
   (progn
