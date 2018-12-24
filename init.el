@@ -289,7 +289,7 @@ current."
 (use-package url-vars
   :init
   (progn
-    (setq url-privacy-level 'paranoid)))
+    (setq url-privacy-level 'high)))
 
 (use-package package
   :after package-lint
