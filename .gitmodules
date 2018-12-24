@@ -256,6 +256,8 @@
 [submodule "forge"]
 	path = lib/forge
 	url = git@github.com:magit/forge.git
+	info-path = docs
+	load-path = lisp
 [submodule "frame-cmds"]
 	path = lib/frame-cmds
 	url = git@github.com:emacsmirror/frame-cmds.git
