@@ -1554,6 +1554,17 @@ I.e., the keyring has a public key for each recipient."
     ;; This variable is defined in slack-thread, not lui!
     (setq lui-prompt-string my/lui-prompt-string)))
 
+(use-package matrix-client
+  :config
+  (progn
+    (defun my/matrix-client-connect ()
+      "Connect to the Matrix server."
+      (interactive)
+      (matrix-login (matrix-session :user (auth-source-pass-get 'user "matrix.org")
+                                    :server nil
+                                    :initial-sync-p t)
+                    (password-store-get "matrix.org")))))
+
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
          (magit-post-refresh . diff-hl-magit-post-refresh)))

@@ -1,5 +1,8 @@
 [borg]
 	pushDefault = DamienCassou
+[submodule "a"]
+	path = lib/a
+	url = git@github.com:plexus/a.el.git
 [submodule "ace-link"] # type o in help-mode to go to a link
 	path = lib/ace-link
 	url = git@github.com:abo-abo/ace-link.git
@@ -264,6 +267,9 @@
 [submodule "frame-fns"]
 	path = lib/frame-fns
 	url = git@github.com:emacsmirror/frame-fns.git
+[submodule "frame-purpose"]
+	path = lib/frame-purpose
+	url = git@github.com:alphapapa/frame-purpose.el.git
 [submodule "fsharp-mode"]
 	path = lib/fsharp-mode
 	url = git@github.com:rneatherway/emacs-fsharp-mode-bin.git
@@ -333,6 +339,9 @@
 [submodule "hledger-mode"]
 	path = lib/hledger-mode
 	url = git@github.com:narendraj9/hledger-mode.git
+[submodule "ht"]
+	path = lib/ht
+	url = git@github.com:Wilfred/ht.el.git
 [submodule "htmlize"]
 	path = lib/htmlize
 	url = git@github.com:hniksic/emacs-htmlize.git
@@ -445,6 +454,9 @@
 [submodule "markup-faces"]
 	path = lib/markup-faces
 	url = git@github.com:sensorflo/markup-faces.git
+[submodule "matrix-client"]
+	path = lib/matrix-client
+	url = git@github.com:jgkamat/matrix-client-el.git
 [submodule "memoize"]
 	path = lib/memoize
 	url = git@github.com:skeeto/emacs-memoize.git
@@ -501,6 +513,9 @@
 [submodule "orgtbl-show-header"] # show header of column in minibuffer
 	path = lib/orgtbl-show-header
 	url = git@github.com:DamienCassou/orgtbl-show-header.git
+[submodule "ov"]
+	path = lib/ov
+	url = git@github.com:ShingoFukuyama/ov.el.git
 [submodule "ox-jira"]
 	path = lib/ox-jira
 	url = git@github.com:stig/ox-jira.el.git
@@ -567,6 +582,9 @@
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
 	remote = "DamienCassou git@github.com:DamienCassou/projectile.git"
+[submodule "rainbow-identifiers"]
+	path = lib/rainbow-identifiers
+	url = git@github.com:Fanael/rainbow-identifiers.git
 [submodule "refine"] # edit list interactively
 	path = lib/refine
 	url = git@github.com:Wilfred/refine.git
