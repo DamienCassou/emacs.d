@@ -831,6 +831,9 @@ hand."
           org-icalendar-timezone "Europe/Berlin"
           org-caldav-sync-changes-to-org 'all)))
 
+(use-package outshine
+  :hook ((emacs-lisp-mode ledger-mode) . outshine-mode))
+
 (use-package calendar
   :init
   (progn

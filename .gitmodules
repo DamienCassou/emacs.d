@@ -473,6 +473,10 @@
 [submodule "nameless"] # hide current package name everywhere in elisp code
 	path = lib/nameless
 	url = git@github.com:Malabarba/Nameless.git
+[submodule "navi-mode"]
+	path = lib/navi-mode
+	url = git@github.com:alphapapa/navi.git
+	remote = "DamienCassou git@github.com:DamienCassou/navi.git"
 [submodule "netmacs"]
 	path = lib/netmacs
 	url = git@gitlab.petton.fr:netmacs/netmacs.git
@@ -513,6 +517,13 @@
 [submodule "orgtbl-show-header"] # show header of column in minibuffer
 	path = lib/orgtbl-show-header
 	url = git@github.com:DamienCassou/orgtbl-show-header.git
+[submodule "outorg"]
+	path = lib/outorg
+	url = git@github.com:alphapapa/outorg.git
+[submodule "outshine"]
+	path = lib/outshine
+	url = git@github.com:alphapapa/outshine.git
+	remote = "DamienCassou git@github.com:DamienCassou/outshine.git"
 [submodule "ov"]
 	path = lib/ov
 	url = git@github.com:ShingoFukuyama/ov.el.git
