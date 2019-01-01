@@ -628,7 +628,7 @@ hand."
       (interactive)
       (let ((transactions-start (save-excursion
                                   (goto-char (point-min))
-                                  (re-search-forward "^* Transactions$")
+                                  (re-search-forward "^; \\* Transactions$")
                                   (line-beginning-position)))
             (transactions-end (point-max)))
         (save-restriction
