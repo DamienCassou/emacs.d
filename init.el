@@ -1368,18 +1368,6 @@ I.e., the keyring has a public key for each recipient."
     (setq nameless-affect-indentation-and-filling nil)
     (setq nameless-prefix "…")))
 
-(use-package beacon
-  :disabled t
-  :demand t
-  :init
-  (progn
-    (setq beacon-blink-when-focused t))
-  :config
-  (progn
-    ;; don't blink in notmuch-search, it's both slow and ugly
-    (add-to-list 'beacon-dont-blink-major-modes #'notmuch-search-mode)
-    (beacon-mode)))
-
 (use-package subword
   :init
   (progn
