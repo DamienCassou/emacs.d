@@ -465,6 +465,7 @@ current."
   :after magit)
 
 (use-package forge
+  :demand t
   :after magit
   :config
   (progn
