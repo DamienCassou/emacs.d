@@ -591,7 +591,7 @@ current."
              ("Checks"            . "register --group-by=payee --payee=code --sort=payee --uncleared :Check")
 
              ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
-             ("Balance sheet"     . "balance --real ^Assets ^Liabilities")
+             ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
              ("Budget"            . "balance --empty --sort account ^Assets:Budget and not \\(Available or Unbudgeted\\)")
              ("Expense accounts"  . "balance --empty --sort account ^Expense")
 
