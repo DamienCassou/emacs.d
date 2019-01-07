@@ -1550,6 +1550,11 @@ I.e., the keyring has a public key for each recipient."
     (setq lui-prompt-string my/lui-prompt-string)))
 
 (use-package matrix-client
+  :commands my/matrix-client-connect
+  :init
+  (progn
+    (setq matrix-client-use-tracking t)
+    (setq matrix-log t))
   :config
   (progn
     (defun my/matrix-client-connect ()
@@ -1558,7 +1563,13 @@ I.e., the keyring has a public key for each recipient."
       (matrix-login (matrix-session :user (auth-source-pass-get 'user "matrix.org")
                                     :server nil
                                     :initial-sync-p t)
-                    (password-store-get "matrix.org")))))
+                    (password-store-get "matrix.org"))
+      (message "Matrix ready"))
+
+    (defun my/matrix-refresh ()
+      "Refresh all Matrix buffers."
+      (interactive)
+      (matrix-sync (car matrix-client-sessions)))))
 
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
