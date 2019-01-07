@@ -457,6 +457,7 @@
 [submodule "matrix-client"]
 	path = lib/matrix-client
 	url = git@github.com:jgkamat/matrix-client-el.git
+	remote = "DamienCassou git@github.com:DamienCassou/matrix-client-el.git"
 [submodule "memoize"]
 	path = lib/memoize
 	url = git@github.com:skeeto/emacs-memoize.git
