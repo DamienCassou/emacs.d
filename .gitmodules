@@ -32,6 +32,9 @@
 [submodule "amx"]
 	path = lib/amx
 	url = git@github.com:DarwinAwardWinner/amx.git
+[submodule "anaphora"]
+	path = lib/anaphora
+	url = git@github.com:rolandwalker/anaphora.git
 [submodule "apiwrap"]
 	path = lib/apiwrap
 	url = git@github.com:vermiculus/apiwrap.el.git
