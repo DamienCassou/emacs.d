@@ -346,6 +346,9 @@ current."
       (when buffer-file-name
         (display-line-numbers-mode)))))
 
+(use-package hl-line
+  :hook (tabulated-list-mode . hl-line-mode))
+
 (use-package reveal
   :demand t
   :config
