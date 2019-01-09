@@ -2049,6 +2049,13 @@ Interactively, select BUFNAME from the list of all windows."
 (use-package pinentry
   :after exwm
   :demand t
+  :init
+  (progn
+    ;; Use gpg as ssh agent (for this to work in shells, also set the
+    ;; ENV var in $HOME/.profile or similar.
+    (setenv "SSH_AUTH_SOCK"
+            (string-trim
+             (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
   :config
   (progn
     (pinentry-start)
