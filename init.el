@@ -1560,11 +1560,9 @@ I.e., the keyring has a public key for each recipient."
     (defun my/matrix-client-connect ()
       "Connect to the Matrix server."
       (interactive)
-      (matrix-login (matrix-session :user (auth-source-pass-get 'user "matrix.org")
-                                    :server nil
-                                    :initial-sync-p t)
-                    (password-store-get "matrix.org"))
-      (message "Matrix ready"))
+      (matrix-client-connect
+       (auth-source-pass-get 'user "matrix.org")
+       (password-store-get "matrix.org")))
 
     (defun my/matrix-refresh ()
       "Refresh all Matrix buffers."
