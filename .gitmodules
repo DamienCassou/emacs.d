@@ -456,7 +456,7 @@
 	url = git@github.com:sensorflo/markup-faces.git
 [submodule "matrix-client"]
 	path = lib/matrix-client
-	url = git@github.com:jgkamat/matrix-client-el.git
+	url = git@github.com:alphapapa/matrix-client-el.git
 	remote = "DamienCassou git@github.com:DamienCassou/matrix-client-el.git"
 [submodule "memoize"]
 	path = lib/memoize
