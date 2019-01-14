@@ -1071,6 +1071,7 @@ hand."
                                            profile-noisy-query) :key "i")
             (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
             (:name "ftgp" :query "folder:\"Ftgp/INBOX\" AND tag:inbox" :key "f")
+            (:name "wk" :query "folder:\"WK/INBOX\" AND tag:inbox" :key "w")
             (:name "sent" :query ,(profile-sent-query) :key "s")))
 
     (add-to-list 'notmuch-hello-sections
