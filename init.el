@@ -535,9 +535,6 @@ current."
 (use-package flyspell-correct-ivy
   :bind (("M-$" . flyspell-correct-at-point)))
 
-(use-package eldoc
-  :hook ((emacs-lisp-mode eval-expression-minibuffer-setup) . eldoc-mode))
-
 (use-package checkdoc
   :init
   (progn
