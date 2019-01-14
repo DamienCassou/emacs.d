@@ -591,6 +591,7 @@ current."
              ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
              ("Budget"            . "balance --empty --sort account ^Assets:Budget and not \\(Available or Unbudgeted\\)")
+             ("Check Budget"      . "balance --depth 1 ^Assets ^Liabilities ^Equity:Budget")
              ("Expense accounts"  . "balance --empty --sort account ^Expense")
 
              ("Equity"            . "equity --real"))))
