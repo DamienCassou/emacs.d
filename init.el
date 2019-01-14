@@ -1031,9 +1031,9 @@ hand."
              (smtpmail-queue-dir . "~/Mail/WK/queued-mail/")
              (smtpmail-local-domain . nil)
              (smtpmail-smtp-user . "damien.cassou@wolterskluwer.com")
-             (smtpmail-smtp-server . "smtp.office365.com")
-             (smtpmail-stream-type . starttls)
-             (smtpmail-smtp-service . 587))))
+             (smtpmail-smtp-server . "localhost")
+             (smtpmail-stream-type . plain)
+             (smtpmail-smtp-service . 10025))))
     (profile-set-profile-from-name "Perso")
     (setq profile-extra-email-addresses
           '("damien.cassou@lifl.fr" "cassou@inria.fr"
