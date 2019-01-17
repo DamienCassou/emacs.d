@@ -769,7 +769,7 @@ hand."
     (setq org-enforce-todo-dependencies t)
     (setq org-enforce-todo-checkbox-dependencies t)
     (setq org-ellipsis "…")
-    (setq org-export-allow-bind-keywords t)
+    (setq org-export-allow-bind-keywords nil)
     (setq org-export-creator-string "")
     (setq org-export-with-toc nil)
     (setq org-fontify-done-headline t)
