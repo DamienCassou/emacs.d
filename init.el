@@ -1555,6 +1555,9 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package matrix-client
   :commands my/matrix-client-connect
+  :bind (("C-. x l" . matrix-client-room-list)
+         :map matrix-client-mode-map
+         ("C-c C-a" . matrix-client-upload))
   :init
   (progn
     (setq matrix-client-use-tracking t)
