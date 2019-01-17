@@ -1683,7 +1683,7 @@ I.e., the keyring has a public key for each recipient."
   :hook (prog-mode . firestarter-mode)
   :init
   (progn
-    (setq firestarter-default-type 'finished)))
+    (setq firestarter-default-type 'failure)))
 
 (use-package adoc-mode
   :mode "\\.adoc\\'")
