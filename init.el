@@ -1217,7 +1217,9 @@ I.e., the keyring has a public key for each recipient."
          ("C-x 8 RET" . counsel-unicode-char)
          ("s-!" . counsel-linux-app)
          :map counsel-find-file-map
-         ("C-l" . counsel-up-directory))
+         ("C-l" . counsel-up-directory)
+         ("<right>" . counsel-down-directory)
+         ("<left>" . counsel-up-directory))
   :init
   (progn
     (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map)
