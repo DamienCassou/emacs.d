@@ -1569,7 +1569,9 @@ I.e., the keyring has a public key for each recipient."
       (interactive)
       (matrix-client-connect
        (auth-source-pass-get 'user "matrix.org")
-       (password-store-get "matrix.org")))
+       (password-store-get "matrix.org")
+       nil
+       "matrix.org"))
 
     (defun my/matrix-refresh ()
       "Refresh all Matrix buffers."
