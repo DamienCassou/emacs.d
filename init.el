@@ -647,7 +647,9 @@ hand."
           '("ledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
     (setq ledger-import-boobank-command
-          '("boobank" "--backends=Jenny,Damien"))
+          '("~/Documents/projects/weboob/tools/local_run.sh"
+            "boobank"
+            "--backends=Jenny,Damien,nef"))
 
     (defun my/ledger-import-alert ()
       "Notify the user that import is finished."
