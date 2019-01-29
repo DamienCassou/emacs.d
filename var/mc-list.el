@@ -44,6 +44,7 @@
         org-self-insert-command
         org-transpose-words
         org-yank
+        outshine-self-insert-command
         paredit-backslash
         paredit-backward
         paredit-backward-kill-word
