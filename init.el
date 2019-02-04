@@ -2021,7 +2021,7 @@ Interactively, select BUFNAME from the list of all windows."
        "xrandr" nil
        "xrandr --output DP-2-2 --primary --right-of eDP-1 --auto"
        ;; Stokholm:
-       ;; "xrandr --output DP-1-8 --primary --right-of eDP-1 --auto"
+       ;; "xrandr --output DP-1-8 --primary --above eDP-1 --auto"
        )))
 
   :hook (exwm-randr-screen-change . my/exwm-xrandr)
