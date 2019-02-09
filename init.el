@@ -1339,14 +1339,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq auth-sources '(password-store))))
 
-(use-package ace-window
-  :disabled t
-  :bind* (("C-x o" . ace-window))
-  :init
-  (progn
-    ;; keys under my fingers (blue keys on my Kinesis Advantage)
-    (setq aw-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))))
-
 (use-package avy
   :bind* (("C-," . avy-goto-char-2))
   :bind (("M-g g" . avy-goto-line))
