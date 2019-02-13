@@ -1218,6 +1218,7 @@ I.e., the keyring has a public key for each recipient."
   :bind (("M-i" . counsel-imenu)
          ("C-x 8 RET" . counsel-unicode-char)
          ("s-!" . counsel-linux-app)
+         ("C-x b" . counsel-switch-buffer)
          :map counsel-find-file-map
          ("C-l" . counsel-up-directory)
          ("<right>" . counsel-down-directory)
