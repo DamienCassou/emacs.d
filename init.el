@@ -647,7 +647,7 @@ hand."
           '("ledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
     (setq ledger-import-boobank-command
-          '("~/Documents/projects/weboob/tools/local_run.sh"
+          '("~/Documents/projects/weboob/weboob/tools/local_run.sh"
             "boobank"
             "--backends=Jenny,Damien,nef"))
 
