@@ -648,8 +648,7 @@ hand."
             "--payee-format" "{payee}"))
     (setq ledger-import-boobank-command
           '("~/Documents/projects/weboob/weboob/tools/local_run.sh"
-            "boobank"
-            "--backends=Jenny,Damien,nef"))
+            "boobank"))
 
     (defun my/ledger-import-alert ()
       "Notify the user that import is finished."
@@ -1218,7 +1217,6 @@ I.e., the keyring has a public key for each recipient."
   :bind (("M-i" . counsel-imenu)
          ("C-x 8 RET" . counsel-unicode-char)
          ("s-!" . counsel-linux-app)
-         ("C-x b" . counsel-switch-buffer)
          :map counsel-find-file-map
          ("C-l" . counsel-up-directory)
          ("<right>" . counsel-down-directory)
@@ -2095,20 +2093,6 @@ Interactively, select BUFNAME from the list of all windows."
   :bind (
          :map transmission-mode-map
          ("k" . transmission-remove)))
-
-(use-package enh-ruby-mode
-  :mode "\\.rb\\'"
-  :interpreter "ruby")
-
-(use-package inf-ruby
-  :hook (enh-ruby-mode . inf-ruby-minor-mode)
-  :config
-  (progn
-    (with-eval-after-load "company"
-      (add-to-list 'company-backends #'company-robe))))
-
-(use-package robe
-  :hook (enh-ruby-mode . robe-mode))
 
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."

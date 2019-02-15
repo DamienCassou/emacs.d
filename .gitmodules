@@ -190,9 +190,6 @@
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
-[submodule "enh-ruby-mode"]
-	path = lib/enh-ruby-mode
-	url = git@github.com:zenspider/enhanced-ruby-mode.git
 [submodule "epkg"] # browse the emacs mirror
 	path = lib/epkg
 	url = git@github.com:emacscollective/epkg.git
@@ -349,9 +346,6 @@
 	url = git@github.com/NicolasPetton/Indium.git
 	remote = "DamienCassou git@github.com/DamienCassou/Indium.git"
 	info-path = doc
-[submodule "inf-ruby"]
-	path = lib/inf-ruby
-	url = git@github.com:nonsequitur/inf-ruby.git
 [submodule "ivy"]
 	path = lib/ivy
 	url = git@github.com:abo-abo/swiper.git
@@ -612,9 +606,6 @@
 [submodule "rjsx-mode"]
 	path = lib/rjsx-mode
 	url = git@github.com:felipeochoa/rjsx-mode.git
-[submodule "robe"]
-	path = lib/robe
-	url = git@github.com:dgutov/robe.git
 [submodule "runner"] # Associate external applications to file extensions
 	path = lib/runner
 	url = git@github.com:thamer/runner.git
