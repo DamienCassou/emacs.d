@@ -446,19 +446,7 @@ current."
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-overview)
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpulled-from-pushremote)
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-upstream)
-      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-pushremote))
-
-    ;; bind `b b' to #'magit-branch-or-checkout instead of #'magit-checkout
-    (magit-remove-popup-key 'magit-branch-popup :action ?b)
-    (magit-define-popup-action 'magit-branch-popup
-      ?b "Checkout" 'magit-branch-or-checkout
-      'magit-branch t)
-
-    (magit-define-popup-action 'magit-tag-popup
-      ?r "Release" #'magit-tag-release)
-
-    (magit-define-popup-action 'magit-commit-popup
-      ?x "Absorb" #'magit-commit-absorb-popup)))
+      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-pushremote))))
 
 (use-package magit-tbdiff
   :demand t
