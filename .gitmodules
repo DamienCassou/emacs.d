@@ -665,6 +665,7 @@
 [submodule "transient"]
 	path = lib/transient
 	url = git@github.com:magit/transient.git
+	info-path = docs
 [submodule "transmission"]
 	path = lib/transmission
 	url = git@github.com:holomorph/transmission.git
