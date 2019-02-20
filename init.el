@@ -1664,6 +1664,14 @@ I.e., the keyring has a public key for each recipient."
     (setq websocket-callback-debug-on-error t)
     (setq websocket-debug nil)))
 
+(use-package restclient
+  :hook (restclient-response-loaded . my/restclient-use-json-mode)
+  :init
+  (progn
+    (defun my/restclient-use-json-mode ()
+      (if (eq major-mode 'js-mode)
+          (json-mode)))))
+
 (use-package firestarter
   :hook (prog-mode . firestarter-mode)
   :init
