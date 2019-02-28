@@ -541,10 +541,6 @@
 	path = lib/pass
 	url = git@github.com:NicolasPetton/pass.git
 	remote = "DamienCassou https://DamienCassou@gitlab.petton.fr/nico/pass.git"
-[submodule "pass-secrets"]
-	path = lib/pass-secrets
-	url = https://gitlab.petton.fr/nico/pass-secrets.el.git
-	remote = "DamienCassou https://DamienCassou@gitlab.petton.fr/DamienCassou/pass-secrets.el.git"
 [submodule "password-store"] # get passwords from the 'pass' command
 	path = lib/password-store
 	url = git@github.com:emacsmirror/password-store.git
