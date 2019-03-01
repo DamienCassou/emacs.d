@@ -1290,6 +1290,15 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq password-store-password-length (my/password-length))))
 
+(defun my/slack-copy-credentials ()
+  "Copy Slack credentials to the kill ring."
+  (interactive)
+  (require 'password-store-otp)
+  (require 'auth-source-pass)
+  (password-store-otp-token-copy "ftgp/foretagsplatsen.slack.com")
+  (kill-new (auth-source-pass-get 'secret "ftgp/foretagsplatsen.slack.com"))
+  (kill-new (auth-source-pass-get "username" "ftgp/foretagsplatsen.slack.com")))
+
 (use-package pass
   :commands pass
   :config
