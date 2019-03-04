@@ -822,6 +822,11 @@ hand."
           org-icalendar-timezone "Europe/Berlin"
           org-caldav-sync-changes-to-org 'all)))
 
+(use-package org-reveal
+  :init
+  (progn
+    (setq org-re-reveal-root (concat "file://" (expand-file-name "~/.emacs.d/lib/reveal")))))
+
 (use-package outshine
   :hook ((emacs-lisp-mode ledger-mode) . outshine-mode)
   :config
