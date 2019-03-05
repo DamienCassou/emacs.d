@@ -29,6 +29,7 @@
         ivy-wgrep-change-to-wgrep-mode
         keyboard-escape-quit
         kill-region
+        markdown-outdent-or-delete
         message-beginning-of-line
         message-tab
         my-join-line
