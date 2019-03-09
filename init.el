@@ -1860,7 +1860,7 @@ I.e., the keyring has a public key for each recipient."
   :magic ("%PDF" . pdf-view-mode)
   :config
   (progn
-    (pdf-tools-install)
+    (pdf-tools-install :no-query)
     (require 'pdf-occur)))
 
 (use-package mpdel
