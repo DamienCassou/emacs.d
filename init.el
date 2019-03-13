@@ -347,7 +347,9 @@ current."
         (display-line-numbers-mode)))))
 
 (use-package hl-line
-  :hook ((ledger-report-mode tabulated-list-mode compilation-mode) . hl-line-mode))
+  :hook ((ledger-report-mode tabulated-list-mode compilation-mode org-agenda-mode)
+         .
+         hl-line-mode))
 
 (use-package reveal
   :demand t
