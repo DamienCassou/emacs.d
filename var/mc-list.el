@@ -9,11 +9,13 @@
         amd-kill-line
         avy-zap-to-char-dwim
         backward-sexp
+        c-electric-brace
         c-electric-delete-forward
         clipboard-kill-region
         counsel-M-x
         counsel-unicode-char
         counsel-yank-pop
+        csharp-maybe-insert-codedoc
         cycle-spacing
         dabbrev-expand
         dired-toggle-read-only
