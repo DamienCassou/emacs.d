@@ -620,9 +620,6 @@
 [submodule "skeletor"] # facilitates the creation of new project
 	path = lib/skeletor
 	url = git@github.com:chrisbarrett/skeletor.el.git
-[submodule "slack"]
-	path = lib/slack
-	url = git@github.com:yuya373/emacs-slack.git
 [submodule "smartparens"]
 	path = lib/smartparens
 	url = git@github.com:Fuco1/smartparens.git

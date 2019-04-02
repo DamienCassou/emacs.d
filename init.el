@@ -1511,36 +1511,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq erc-track-enable-keybindings nil)))
 
-(use-package slack
-  :disabled t
-  :commands (slack-start)
-  :bind (("C-. s u" . slack-select-unread-rooms)
-         ("C-. s b" . slack-select-rooms)
-         ("C-. s t" . slack-change-current-team)
-         :map slack-mode-map
-         ("C-c e" . slack-message-edit)
-         ("C-c k" . slack-message-delete)
-         ("C-c C-k" . slack-channel-leave)
-         ("@" . slack-message-embed-mention)
-         ("#" . slack-message-embed-channel))
-  :config
-  (progn
-    (setq slack-teams
-          (list
-           (slack-team
-            :name "foretagsplatsen"
-            :client-id (auth-source-pass-get "client-id" "ftgp/foretagsplatsen.slack.com")
-            :client-secret (auth-source-pass-get "client-secret" "ftgp/foretagsplatsen.slack.com")
-            :token (auth-source-pass-get "token" "ftgp/foretagsplatsen.slack.com")
-            :subscribed-channels '(general development))))
-
-    (setq slack-current-team (car slack-teams))
-    (setq slack-prefer-current-team t)
-    (setq slack-buffer-create-on-notify t)
-
-    ;; This variable is defined in slack-thread, not lui!
-    (setq lui-prompt-string my/lui-prompt-string)))
-
 (use-package matrix-client
   :commands my/matrix-client-connect
   :bind (("C-. x l" . matrix-client-room-list)
