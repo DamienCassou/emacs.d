@@ -351,12 +351,6 @@ current."
          .
          hl-line-mode))
 
-(use-package reveal
-  :demand t
-  :config
-  (progn
-    (global-reveal-mode)))
-
 (use-package undo-tree
   :demand t
   :config
