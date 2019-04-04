@@ -11,6 +11,8 @@
         backward-sexp
         c-electric-brace
         c-electric-delete-forward
+        c-electric-paren
+        c-indent-line-or-region
         clipboard-kill-region
         counsel-M-x
         counsel-unicode-char
