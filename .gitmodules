@@ -159,9 +159,6 @@
 	path = lib/elcouch
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
 	remote = "github git@github.com:DamienCassou/elcouch.git"
-[submodule "elfeed"]
-	path = lib/elfeed
-	url = git@github.com:skeeto/elfeed.git
 [submodule "elisp-lint"]
 	path = lib/elisp-lint
 	url = git@github.com:gonewest818/elisp-lint.git
