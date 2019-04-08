@@ -1276,7 +1276,7 @@ I.e., the keyring has a public key for each recipient."
      '((default counsel-projectile-switch-project-action-vc)))))
 
 (use-package swiper
-  :bind (("C-s" . swiper))
+  :bind (("C-s" . swiper-isearch))
   :init
   (progn
     ;; To help me stop using it
