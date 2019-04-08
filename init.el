@@ -797,7 +797,12 @@ hand."
   (progn
     ;; Those are my `beginning-of-buffer' and `end-of-buffer':
     (unbind-key "<S-left>" org-agenda-mode-map)
-    (unbind-key "<S-right>" org-agenda-mode-map)))
+    (unbind-key "<S-right>" org-agenda-mode-map)
+
+    (defun my/org-agenda-to-appt ()
+      (interactive)
+      (let ((org-agenda-files (list org-default-calendar-file)))
+        (org-agenda-to-appt t)))))
 
 (use-package org-notmuch
   :demand t
