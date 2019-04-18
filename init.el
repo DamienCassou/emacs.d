@@ -1878,24 +1878,6 @@ I.e., the keyring has a public key for each recipient."
   :demand t
   :preface
   (progn
-    (defun my/list-all-windows ()
-      "Return the list of all Emacs windows."
-      (seq-mapcat (lambda (frame) (window-list frame)) (frame-list)))
-
-    (defun my/switch-to-window (bufname)
-      "Switch to the window displaying BUFNAME, a buffer name.
-Interactively, select BUFNAME from the list of all windows."
-      (interactive (list (completing-read
-                          "Select window: "
-                          (seq-map (lambda (window) (buffer-name (window-buffer window)))
-                                   (my/list-all-windows))
-                          t)))
-      (when-let ((window (seq-find (lambda (window)
-                                     (string= (buffer-name (window-buffer window))
-                                              bufname))
-                                   (my/list-all-windows))))
-        (select-window window)))
-
     (defun my/exwm-counsel-yank-pop ()
       "Same as counsel-yank-pop and paste into exwm buffer."
       (interactive)
