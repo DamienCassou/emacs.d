@@ -1889,7 +1889,61 @@ I.e., the keyring has a public key for each recipient."
       (when (derived-mode-p 'exwm-mode)
         ;; https://github.com/ch11ng/exwm/issues/413#issuecomment-386858496
         (exwm-input--set-focus (exwm--buffer->id (window-buffer (selected-window))))
-        (exwm-input--fake-key ?\C-v))))
+        (exwm-input--fake-key ?\C-v)))
+
+    (defconst my/exwm-applications
+      (let ((map (make-hash-table)))
+        (setf (map-elt map 'firefox)
+              (cons "Firefox"
+                    (lambda () (my/exwm-launch-desktop "firefox.desktop"))))
+        (setf (map-elt map 'chromium)
+              (cons "Chromium-browser"
+                    (lambda () (start-process
+                           "chromium-browser"
+                           (generate-new-buffer "chromium-process")
+                           "chromium-browser"
+                           "--remote-debugging-port=9222"))))
+        (setf (map-elt map 'pulseaudio)
+              (cons "Pavucontrol"
+                    (lambda () (my/exwm-launch-desktop "pavucontrol.desktop"))))
+        (setf (map-elt map 'vbox)
+              (cons "VirtualBox Machine"
+                    (lambda () (start-process
+                           "virtualbox"
+                           (generate-new-buffer "virtualbox")
+                           "VBoxManage"
+                           "startvm"
+                           "Windows 10 (v4)"))))
+        (setf (map-elt map 'slack)
+              (cons "Slack"
+                    (lambda () (my/exwm-launch-desktop "com.slack.Slack.desktop"))))
+        (setf (map-elt map 'riot)
+              (cons "Riot"
+                    (lambda () (my/exwm-launch-desktop "riot.desktop"))))
+        map)
+      "Maps an application name symbol to a pair (BUFFER-NAME . DESKTOP-FILENAME).")
+
+    (defun my/exwm-launch-desktop (desktop-filename)
+      "Launch the application pointed to by DESKTOP-FILENAME."
+      (call-process "gtk-launch" nil 0 nil desktop-filename))
+
+    (defun my/exwm-app-switch/launch (name)
+      "Switch to application NAME if already started, start it otherwise.
+NAME is a key of `my/exwm-applications'."
+      (interactive (list (intern (completing-read "Application" (map-keys my/exwm-applications) nil t))))
+      (let* ((application (map-elt my/exwm-applications name))
+             (buffer-name (car application))
+             (start-application (cdr application)))
+        (if-let* ((buffer (get-buffer buffer-name)))
+            (switch-to-buffer buffer)
+          (funcall start-application))))
+
+    (bind-key  "C-. s f" (lambda () (interactive) (my/exwm-app-switch/launch 'firefox)))
+    (bind-key  "C-. s c" (lambda () (interactive) (my/exwm-app-switch/launch 'chromium)))
+    (bind-key  "C-. s p" (lambda () (interactive) (my/exwm-app-switch/launch 'pulseaudio)))
+    (bind-key  "C-. s v" (lambda () (interactive) (my/exwm-app-switch/launch 'vbox)))
+    (bind-key  "C-. s k" (lambda () (interactive) (my/exwm-app-switch/launch 'slack)))
+    (bind-key  "C-. s r" (lambda () (interactive) (my/exwm-app-switch/launch 'riot))))
 
   :config
   (progn
