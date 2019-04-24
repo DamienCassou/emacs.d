@@ -1935,8 +1935,12 @@ NAME is a key of `my/exwm-applications'."
              (buffer-name (car application))
              (start-application (cdr application)))
         (if-let* ((buffer (get-buffer buffer-name)))
-            (switch-to-buffer buffer)
-          (funcall start-application))))
+            (pop-to-buffer buffer
+                           (cons
+                            #'display-buffer-reuse-window
+                            '((reusable-frames . visible))))
+          (when (y-or-n-p (format "%s not started yet. Start it?" buffer-name))
+            (funcall start-application)))))
 
     (bind-key  "C-. s f" (lambda () (interactive) (my/exwm-app-switch/launch 'firefox)))
     (bind-key  "C-. s c" (lambda () (interactive) (my/exwm-app-switch/launch 'chromium)))
