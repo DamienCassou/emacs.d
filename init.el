@@ -860,7 +860,8 @@ hand."
     (add-to-list 'drag-stuff-except-modes 'org-mode)
     (add-to-list 'drag-stuff-except-modes 'rebase-mode)
     (add-to-list 'drag-stuff-except-modes 'emacs-lisp-mode)
-    (add-to-list 'drag-stuff-except-modes 'mpdel-playlist-mode)))
+    (add-to-list 'drag-stuff-except-modes 'mpdel-playlist-mode)
+    (add-to-list 'drag-stuff-except-modes 'js2-mode)))
 
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
@@ -1385,6 +1386,10 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package emacs-js
   :hook (js-mode . setup-js-buffer)
+  :bind (
+         :map js2-refactor-mode-map
+         ("<M-up>" . js2r-move-line-up)
+         ("<M-down>" . js2r-move-line-down))
   :config
   (progn
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
