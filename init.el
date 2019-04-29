@@ -626,7 +626,7 @@ hand."
   :hook ((ledger-import-finished . my/ledger-import-alert))
   :init
   (progn
-    (setq ledger-import-boobank-import-from-date "2018-12-01")
+    (setq ledger-import-boobank-import-from-date "2019-04-15")
     (setq ledger-import-autosync-command
           '("ledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
