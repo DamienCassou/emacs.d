@@ -1942,10 +1942,12 @@ NAME is a key of `my/exwm-applications'."
              (buffer-name (car application))
              (start-application (cdr application)))
         (if-let* ((buffer (get-buffer buffer-name)))
-            (pop-to-buffer buffer
-                           (cons
-                            #'display-buffer-reuse-window
-                            '((reusable-frames . visible))))
+            (if (display-buffer-reuse-window buffer '((reusable-frames . visible)))
+                (pop-to-buffer buffer
+                               (cons
+                                #'display-buffer-reuse-window
+                                '((reusable-frames . visible))))
+              (switch-to-buffer buffer))
           (when (y-or-n-p (format "%s not started yet. Start it?" buffer-name))
             (funcall start-application)))))
 
