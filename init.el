@@ -1903,22 +1903,24 @@ I.e., the keyring has a public key for each recipient."
                     (lambda () (my/exwm-launch-desktop "firefox.desktop"))))
         (setf (map-elt map 'chromium)
               (cons "Chromium-browser"
-                    (lambda () (start-process
-                           "chromium-browser"
-                           (generate-new-buffer "chromium-process")
-                           "chromium-browser"
-                           "--remote-debugging-port=9222"))))
+                    (lambda ()
+                      (start-process
+                       "chromium-browser"
+                       (generate-new-buffer "chromium-process")
+                       "chromium-browser"
+                       "--remote-debugging-port=9222"))))
         (setf (map-elt map 'pulseaudio)
               (cons "Pavucontrol"
                     (lambda () (my/exwm-launch-desktop "pavucontrol.desktop"))))
         (setf (map-elt map 'vbox)
               (cons "VirtualBox Machine"
-                    (lambda () (start-process
-                           "virtualbox"
-                           (generate-new-buffer "virtualbox")
-                           "VBoxManage"
-                           "startvm"
-                           "Windows 10 (v4)"))))
+                    (lambda ()
+                      (start-process
+                       "virtualbox"
+                       (generate-new-buffer "virtualbox")
+                       "VBoxManage"
+                       "startvm"
+                       "Windows 10 (v4)"))))
         (setf (map-elt map 'slack)
               (cons "Slack"
                     (lambda () (my/exwm-launch-desktop "com.slack.Slack.desktop"))))
