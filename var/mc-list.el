@@ -22,6 +22,7 @@
         dabbrev-expand
         dired-toggle-read-only
         dired-unmark-all-files
+        electric-newline-and-maybe-indent
         electric-pair-delete-pair
         embrace-commander
         forward-sexp
@@ -31,6 +32,7 @@
         ignore
         indent-for-tab-command
         ivy-wgrep-change-to-wgrep-mode
+        js2r-kill
         keyboard-escape-quit
         kill-region
         markdown-outdent-or-delete
