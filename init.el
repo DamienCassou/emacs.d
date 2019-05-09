@@ -291,6 +291,11 @@ current."
   (progn
     (setq url-privacy-level 'high)))
 
+(use-package autorevert
+  :hook (dired-mode . auto-revert-mode)
+  :init
+  (global-auto-revert-mode))
+
 (use-package package
   :after package-lint
   :config
