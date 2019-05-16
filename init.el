@@ -292,9 +292,14 @@ current."
     (setq url-privacy-level 'high)))
 
 (use-package autorevert
+  :demand t
   :hook (dired-mode . auto-revert-mode)
   :init
-  (global-auto-revert-mode))
+  (progn
+    (setq auto-revert-verbose nil))
+  :config
+  (progn
+    (global-auto-revert-mode)))
 
 (use-package package
   :after package-lint
