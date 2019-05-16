@@ -969,6 +969,13 @@ hand."
       (interactive)
       (notmuch-show-apply-to-current-part-handle #'my/mm-ics-to-org-part))))
 
+(use-package shr
+  :bind ((
+          :map shr-map
+          ("C-c C-o" . shr-browse-url)
+          :map shr-image-map
+          ("C-c C-o" . shr-browse-url))))
+
 (use-package mml
   :config
   (progn
