@@ -909,21 +909,7 @@ hand."
     (setq projectile-generic-command "fd . -0"))
   :config
   (progn
-    (projectile-mode)
-
-    (projectile-register-project-type
-     'passwe
-     '("package.json")
-     :compile "make build"
-     :test "make test"
-     :test-suffix "-spec")
-
-    (projectile-register-project-type
-     'monitor
-     '("gulpfile.js")
-     :compile "cd monitor/Monitor.Web.Ui/Client && gulp lint:js"
-     :test "cd monitor/Monitor.Web.Ui/Client && gulp karma"
-     :test-suffix "-tests")))
+    (projectile-mode)))
 
 (use-package unify-opening
   :demand t)
