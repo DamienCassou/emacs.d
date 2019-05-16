@@ -133,6 +133,9 @@
 [submodule "diff-hl"] # shows git status in buffer's fringe
 	path = lib/diff-hl
 	url = git@github.com:dgutov/diff-hl.git
+[submodule "dired-du"]
+	path = lib/dired-du
+	url = git@github.com:emacsmirror/dired-du.git
 [submodule "dired-imenu"] # integrates imenu in dired
 	path = lib/dired-imenu
 	url = git@github.com:DamienCassou/dired-imenu.git

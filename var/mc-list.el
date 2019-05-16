@@ -63,6 +63,7 @@
         paredit-forward-slurp-sexp
         paredit-kill
         paredit-open-round
+        paredit-raise-sexp
         paredit-semicolon
         paredit-splice-sexp-killing-backward
         paredit-wrap-round
@@ -93,4 +94,5 @@
         my/swap-last-buffers
         org-capture
         orgtbl-self-insert-command
+        swiper-mc
         ))
