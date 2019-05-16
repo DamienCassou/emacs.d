@@ -155,9 +155,6 @@
 	path = lib/editorconfig
 	info-path = doc
 	url = git@github.com:editorconfig/editorconfig-emacs.git
-[submodule "ejira"]
-	path = lib/ejira
-	url = git@github.com:nyyManni/ejira.git
 [submodule "elcouch"]
 	path = lib/elcouch
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
