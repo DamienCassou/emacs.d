@@ -640,9 +640,7 @@ hand."
     (setq ledger-import-autosync-command
           '("ledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
-    (setq ledger-import-boobank-command
-          '("~/Documents/projects/weboob/weboob/tools/local_run.sh"
-            "boobank"))
+
 
     (defun my/ledger-import-alert ()
       "Notify the user that import is finished."
