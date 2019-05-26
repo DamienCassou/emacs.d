@@ -1,0 +1,57 @@
+# -*- mode: snippet -*-
+# name: gouter
+# key: gouter
+# --
+** Faire la compta GAEF
+*** TODO Mettre dans accounting.ledger les dettes GAEF
+*** TODO Mettre dans compta.xls les nouveaux tickets de caisse
+*** TODO Rédiger le mail
+Bonjour à vous,
+
+Comptage de la caisse avant goûter : $0
+
+| Valeur | Nombre |  Total |                          |
+|--------+--------+--------+--------------------------|
+|     85 |      1 |     85 | 5616010 de Damien Cassou |
+|     50 |      1 |     50 | 5616011 de Damien Cassou |
+|     10 |      3 |     30 |                          |
+|      5 |      1 |      5 |                          |
+|      2 |      8 |     16 |                          |
+|      1 |      8 |      8 |                          |
+|   0.50 |      8 |     4. |                          |
+|   0.20 |      6 |    1.2 |                          |
+|   0.10 |      9 |    0.9 |                          |
+|   0.02 |      1 |   0.02 |                          |
+|--------+--------+--------+--------------------------|
+|  Total |        | 200.12 |                          |
+#+TBLFM: $3=$1*$2::@12$3=vsum(@I..@II)
+
+Comptage de la caisse après goûter : 200.12€
+
+Somme reçue pendant le goûter : 24.50 €
+
+On devrait avoir dans la caisse : 175.62 + 24.50 = 200.12€
+
+On est bon !
+
+Jenny a payé le goûter pour 21.07€. Le GAEF avait déjà une dette de
+0.01€. Total de la dette 21.08€. Jenny prend 21€ dans la caisse.
+
+| Valeur | Nombre |  Total |                          |
+|--------+--------+--------+--------------------------|
+|     85 |      1 |     85 | 5616010 de Damien Cassou |
+|     50 |      1 |     50 | 5616011 de Damien Cassou |
+|     10 |      1 |     10 |                          |
+|      5 |      1 |      5 |                          |
+|      2 |      8 |     16 |                          |
+|      1 |      7 |      7 |                          |
+|   0.50 |      8 |     4. |                          |
+|   0.20 |      6 |    1.2 |                          |
+|   0.10 |      9 |    0.9 |                          |
+|   0.02 |      1 |   0.02 |                          |
+|--------+--------+--------+--------------------------|
+|  Total |        | 179.12 |                          |
+#+TBLFM: $3=$1*$2::@12$3=vsum(@I..@II)
+
+Il reste 179.12€ (= 200.12 - 21). Le GAEF doit 0.08€ à Jenny.
+*** TODO Envoyer le mail
