@@ -586,7 +586,7 @@ current."
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
              ("Budget"            . "balance --empty --sort account ^Assets:Budget and not \\(Available or Unbudgeted\\)")
              ("Check Budget"      . "balance --depth 1 ^Assets ^Liabilities ^Equity:Budget")
-             ("WK expenses"       . "register --effective --begin 2018-12 --end 2019-01 ^Assets:Receivables:WK")
+             ("WK expenses"       . "register --effective --begin 2019-05 --end 2019-06 --collapse ^Assets:Receivables:WK")
 
              ("Equity"            . "equity --real"))))
 
