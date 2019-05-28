@@ -832,6 +832,7 @@ hand."
           org-caldav-sync-changes-to-org 'all)))
 
 (use-package outshine
+  :disabled t
   :hook ((emacs-lisp-mode ledger-mode) . outshine-mode)
   :config
   (progn
