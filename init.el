@@ -632,6 +632,11 @@ hand."
           (ledger-mode-clean-buffer)
           (whitespace-cleanup))))))
 
+(use-package ledger-complete
+  :init
+  (progn
+    (setq ledger-complete-in-steps nil)))
+
 (use-package ledger-import
   :hook ((ledger-import-finished . my/ledger-import-alert))
   :init
