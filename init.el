@@ -1925,6 +1925,9 @@ I.e., the keyring has a public key for each recipient."
                        "VBoxManage"
                        "startvm"
                        "Windows 10 (v4)"))))
+        (setf (map-elt map 'boxes)
+              (cons "^Gnome-boxes$"
+                    (lambda () (my/exwm-launch-desktop "org.gnome.Boxes.desktop"))))
         (setf (map-elt map 'slack)
               (cons "^Slack - "
                     (lambda () (my/exwm-launch-desktop "com.slack.Slack.desktop"))))
@@ -1962,7 +1965,7 @@ NAME is a key of `my/exwm-applications'."
     (bind-key  "C-. s f" (lambda () (interactive) (my/exwm-app-switch/launch 'firefox)))
     (bind-key  "C-. s c" (lambda () (interactive) (my/exwm-app-switch/launch 'chromium)))
     (bind-key  "C-. s p" (lambda () (interactive) (my/exwm-app-switch/launch 'pulseaudio)))
-    (bind-key  "C-. s v" (lambda () (interactive) (my/exwm-app-switch/launch 'vbox)))
+    (bind-key  "C-. s v" (lambda () (interactive) (my/exwm-app-switch/launch 'boxes)))
     (bind-key  "C-. s k" (lambda () (interactive) (my/exwm-app-switch/launch 'slack)))
     (bind-key  "C-. s r" (lambda () (interactive) (my/exwm-app-switch/launch 'riot))))
 
