@@ -1860,27 +1860,23 @@ I.e., the keyring has a public key for each recipient."
   :demand t
   :preface
   (progn
-    (defun my/exwm-reliable-class-p ()
-      "Return t if application's class is suitable for naming."
-      (and (not (string-prefix-p "sun-awt-X11-" exwm-instance-name))
-           ;; gimp has several windows with the same class:
-           (not (string= "gimp" exwm-instance-name))))
-
-    (defun my/exwm-class-updated ()
-      "Use class names if `my/exwm-reliable-class-p'."
-      (when (my/exwm-reliable-class-p)
-        (exwm-workspace-rename-buffer exwm-class-name)))
-
-    (defun my/exwm-title-updated ()
-      "Use title unless `my/exwm-reliable-class-p'."
-      (unless (my/exwm-reliable-class-p)
-        (exwm-workspace-rename-buffer exwm-class-name))))
+    (defun my/exwm-rename-buffer ()
+      "Rename EXWM buffer according to the X class name."
+      (when-let* ((new-title
+                   (cond
+                    ((and
+                      (stringp exwm-class-name)
+                      (stringp exwm-title)
+                      (seq-contains '("Slack") exwm-class-name #'string=))
+                     exwm-title)
+                    ((stringp exwm-class-name) exwm-class-name))))
+        (exwm-workspace-rename-buffer new-title))))
 
   :hook ((exwm-init . gpastel-mode)
          (exwm-init . display-battery-mode)
          (exwm-init . display-time-mode)
-         (exwm-update-class . my/exwm-class-updated)
-         (exwm-update-title . my/exwm-title-updated)))
+         (exwm-update-class . my/exwm-rename-buffer)
+         (exwm-update-title . my/exwm-rename-buffer)))
 
 (use-package exwm-config
   :after exwm
