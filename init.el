@@ -676,7 +676,8 @@ hand."
   :init
   (progn
     (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
-    (setq org-catch-invisible-edits 'error)
+    (setq org-catch-invisible-edits 'show-and-error)
+    (setq org-cycle-separator-lines 0)
     (setq org-clock-clocked-in-display nil)
 
     (setq org-directory "~/Documents/configuration/org")
