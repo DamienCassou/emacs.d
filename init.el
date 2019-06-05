@@ -1150,7 +1150,7 @@ I.e., the keyring has a public key for each recipient."
     (imagemagick-register-types)))
 
 (use-package paredit
-  :hook ((emacs-lisp-mode lisp-mode eval-expression-minibuffer-setup) . enable-paredit-mode)
+  :hook ((emacs-lisp-mode lisp-mode eval-expression-minibuffer-setup scheme-mode) . enable-paredit-mode)
   :config
   (progn
     (with-eval-after-load "eldoc"
