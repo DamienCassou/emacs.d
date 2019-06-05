@@ -338,9 +338,6 @@
 [submodule "hydra"]
 	path = lib/hydra
 	url = git@github.com:abo-abo/hydra.git
-[submodule "iflipb"]
-	path = lib/iflipb
-	url = git@github.com:jrosdahl/iflipb.git
 [submodule "indium"]
 	path = lib/indium
 	url = git@github.com/NicolasPetton/Indium.git
