@@ -565,7 +565,7 @@ current."
     (setq flycheck-elsa-command 'host)))
 
 (use-package ledger-mode
-  :hook (ledger-mode . company-mode)
+  :hook (ledger-mode . my/configure-ledger-mode)
   :init
   (progn
     (setq ledger-reports
@@ -630,7 +630,14 @@ hand."
         (save-restriction
           (narrow-to-region transactions-start transactions-end)
           (ledger-mode-clean-buffer)
-          (whitespace-cleanup))))))
+          (whitespace-cleanup))))
+
+    (defun my/configure-ledger-mode ()
+      "Configure the current Ledger buffer."
+      ;; use TAB to complete:
+      (setq-local tab-always-indent 'complete)
+      ;; use minibuffer completion with ivy
+      (setq-local ivy-display-functions-alist nil))))
 
 (use-package ledger-complete
   :init
