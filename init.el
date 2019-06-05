@@ -1903,10 +1903,10 @@ I.e., the keyring has a public key for each recipient."
     (defconst my/exwm-applications
       (let ((map (make-hash-table)))
         (setf (map-elt map 'firefox)
-              (cons "Firefox"
+              (cons "^Firefox$"
                     (lambda () (my/exwm-launch-desktop "firefox.desktop"))))
         (setf (map-elt map 'chromium)
-              (cons "Chromium-browser"
+              (cons "^Chromium-browser$"
                     (lambda ()
                       (start-process
                        "chromium-browser"
@@ -1914,10 +1914,10 @@ I.e., the keyring has a public key for each recipient."
                        "chromium-browser"
                        "--remote-debugging-port=9222"))))
         (setf (map-elt map 'pulseaudio)
-              (cons "Pavucontrol"
+              (cons "^Pavucontrol$"
                     (lambda () (my/exwm-launch-desktop "pavucontrol.desktop"))))
         (setf (map-elt map 'vbox)
-              (cons "VirtualBox Machine"
+              (cons "^VirtualBox Machine$"
                     (lambda ()
                       (start-process
                        "virtualbox"
@@ -1926,10 +1926,10 @@ I.e., the keyring has a public key for each recipient."
                        "startvm"
                        "Windows 10 (v4)"))))
         (setf (map-elt map 'slack)
-              (cons "Slack"
+              (cons "^Slack - "
                     (lambda () (my/exwm-launch-desktop "com.slack.Slack.desktop"))))
         (setf (map-elt map 'riot)
-              (cons "Riot"
+              (cons "^Riot$"
                     (lambda () (my/exwm-launch-desktop "riot.desktop"))))
         map)
       "Maps an application name symbol to a pair (BUFFER-NAME . DESKTOP-FILENAME).")
@@ -1945,7 +1945,11 @@ NAME is a key of `my/exwm-applications'."
       (let* ((application (map-elt my/exwm-applications name))
              (buffer-name (car application))
              (start-application (cdr application)))
-        (if-let* ((buffer (get-buffer buffer-name)))
+        (if-let* ((buffer (seq-find
+                           (lambda (buffer)
+                             (string-match-p buffer-name
+                                             (buffer-name buffer)))
+                           (buffer-list))))
             (if (display-buffer-reuse-window buffer '((reusable-frames . visible)))
                 (pop-to-buffer buffer
                                (cons
