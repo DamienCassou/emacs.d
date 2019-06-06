@@ -155,6 +155,7 @@
 	path = lib/editorconfig
 	info-path = doc
 	url = git@github.com:editorconfig/editorconfig-emacs.git
+	fetchRecurseSubmodules = true
 [submodule "elcouch"]
 	path = lib/elcouch
 	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
@@ -184,6 +185,7 @@
 	path = lib/emake
 	url = https://github.com/vermiculus/emake.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/emake.el.git"
+	fetchRecurseSubmodules = true
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
@@ -500,6 +502,7 @@
 	load-path = lisp
 	info-path = doc
 	build-step = make compile autoloads info ORG_ADD_CONTRIB="org-notmuch"
+	fetchRecurseSubmodules = true
 [submodule "org-caldav"]
 	path = lib/org-caldav
 	url = git@github.com:dengste/org-caldav.git
