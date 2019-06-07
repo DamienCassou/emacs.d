@@ -1902,6 +1902,7 @@ I.e., the keyring has a public key for each recipient."
 
     (defconst my/exwm-applications
       (let ((map (make-hash-table)))
+        (require 'map)
         (setf (map-elt map 'firefox)
               (cons "^Firefox$"
                     (lambda () (my/exwm-launch-desktop "firefox.desktop"))))
