@@ -2139,6 +2139,11 @@ NAME is a key of `my/exwm-applications'."
          :map transmission-mode-map
          ("k" . transmission-remove)))
 
+(use-package nov
+  :init
+  (progn
+    (add-to-list 'auto-mode-alist (cons "\\.epub\\'" #'nov-mode))))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
