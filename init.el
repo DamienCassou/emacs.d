@@ -1664,7 +1664,9 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (defun my/restclient-use-json-mode ()
       (if (eq major-mode 'js-mode)
-          (json-mode)))))
+          (json-mode)))
+
+    (add-to-list 'auto-mode-alist (cons "\\.restclient\\'" #'restclient-mode))))
 
 (use-package firestarter
   :hook (prog-mode . firestarter-mode)
