@@ -1927,7 +1927,7 @@ I.e., the keyring has a public key for each recipient."
                        (generate-new-buffer "virtualbox")
                        "VBoxManage"
                        "startvm"
-                       "Windows 10 (v4)"))))
+                       "Windows 10 (v5)"))))
         (setf (map-elt map 'boxes)
               (cons "^Gnome-boxes$"
                     (lambda () (my/exwm-launch-desktop "org.gnome.Boxes.desktop"))))
