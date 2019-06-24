@@ -1413,7 +1413,8 @@ I.e., the keyring has a public key for each recipient."
     (require 'bookmark)
     (setq ftgp-atlassian-pass-entry "ftgp/id.atlassian.com_(API)")
     (setq ftgp-monitor-root-location
-          (expand-file-name (bookmark-location "ftgp-monitor-root")))))
+          (expand-file-name (bookmark-location "ftgp-monitor-root")))
+    (add-to-list 'ftgp-remotes '("vbox" "http://localhost:8081"))))
 
 (use-package prodigy
   :bind (
