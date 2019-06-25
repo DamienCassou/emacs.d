@@ -1831,7 +1831,8 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (defun my/configure-omnisharp ()
       (add-to-list 'company-backends #'company-omnisharp)
-      (local-set-key (kbd "C-c C-c") #'recompile))))
+      (local-set-key (kbd "C-c C-c") #'recompile)
+      (flycheck-mode 1))))
 
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
