@@ -447,10 +447,6 @@
 [submodule "markup-faces"]
 	path = lib/markup-faces
 	url = git@github.com:sensorflo/markup-faces.git
-[submodule "matrix-client"]
-	path = lib/matrix-client
-	url = git@github.com:alphapapa/matrix-client-el.git
-	remote = "DamienCassou git@github.com:DamienCassou/matrix-client-el.git"
 [submodule "memoize"]
 	path = lib/memoize
 	url = git@github.com:skeeto/emacs-memoize.git

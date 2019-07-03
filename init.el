@@ -1531,31 +1531,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq erc-track-enable-keybindings nil)))
 
-(use-package matrix-client
-  :commands my/matrix-client-connect
-  :bind (("C-. x l" . matrix-client-room-list)
-         :map matrix-client-mode-map
-         ("C-c C-a" . matrix-client-upload))
-  :init
-  (progn
-    (setq matrix-client-use-tracking t)
-    (setq matrix-log t))
-  :config
-  (progn
-    (defun my/matrix-client-connect ()
-      "Connect to the Matrix server."
-      (interactive)
-      (matrix-client-connect
-       (auth-source-pass-get 'user "matrix.org")
-       (password-store-get "matrix.org")
-       nil
-       "matrix.org"))
-
-    (defun my/matrix-refresh ()
-      "Refresh all Matrix buffers."
-      (interactive)
-      (matrix-sync (car matrix-client-sessions)))))
-
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
          (magit-post-refresh . diff-hl-magit-post-refresh)))
