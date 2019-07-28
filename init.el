@@ -844,15 +844,6 @@ hand."
           org-icalendar-timezone "Europe/Berlin"
           org-caldav-sync-changes-to-org 'all)))
 
-(use-package outshine
-  :disabled t
-  :hook ((emacs-lisp-mode ledger-mode) . outshine-mode)
-  :config
-  (progn
-    ;; these keys are already bound by drag-stuff and paredit:
-    (unbind-key "M-<up>" outshine-mode-map)
-    (unbind-key "M-<down>" outshine-mode-map)))
-
 (use-package calendar
   :init
   (progn
