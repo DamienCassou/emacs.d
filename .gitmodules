@@ -514,9 +514,6 @@
 [submodule "orgtbl-show-header"] # show header of column in minibuffer
 	path = lib/orgtbl-show-header
 	url = git@github.com:DamienCassou/orgtbl-show-header.git
-[submodule "outorg"]
-	path = lib/outorg
-	url = git@github.com:alphapapa/outorg.git
 [submodule "ov"]
 	path = lib/ov
 	url = git@github.com:ShingoFukuyama/ov.el.git
