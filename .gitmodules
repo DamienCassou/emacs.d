@@ -350,6 +350,10 @@
 	url = git@github.com:abo-abo/swiper.git
 	info-path = doc
 	remote = "DamienCassou git@github.com:DamienCassou/swiper.git"
+	build-step = borg-byte-compile
+	build-step = borg-update-autoloads
+	build-step = make --directory=doc/ ivy.info
+	build-step = borg-makeinfo
 [submodule "ivy-mpdel"]
 	path = lib/ivy-mpdel
 	url = https://DamienCassou@gitlab.petton.fr/mpdel/ivy-mpdel.git
