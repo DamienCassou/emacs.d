@@ -1222,7 +1222,6 @@ I.e., the keyring has a public key for each recipient."
          ("<left>" . counsel-up-directory))
   :init
   (progn
-    (bind-key "C-r" #'counsel-minibuffer-history minibuffer-local-map)
     (setq counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
     (setq counsel-yank-pop-preselect-last t))
   :config
@@ -1262,7 +1261,9 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package ivy
   :demand t
-  :bind (("C-. i" . ivy-resume))
+  :bind (("C-. i" . ivy-resume)
+         :map ivy-minibuffer-map
+         ("M-'" . ivy-avy))
   :init
   (progn
     (setq ivy-use-virtual-buffers t)
@@ -1285,7 +1286,9 @@ I.e., the keyring has a public key for each recipient."
      '((default counsel-projectile-switch-project-action-vc)))))
 
 (use-package swiper
-  :bind (("C-s" . swiper-isearch))
+  :bind (("C-s" . swiper-isearch)
+         :map swiper-map
+         ("M-'" . swiper-avy))
   :init
   (progn
     ;; To help me stop using it
