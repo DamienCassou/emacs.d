@@ -2012,13 +2012,6 @@ NAME is a key of `my/exwm-applications'."
     (exwm-input-set-key (kbd "<s-left>") #'buf-move-left)
     (exwm-input-set-key (kbd "<s-right>") #'buf-move-right)))
 
-(use-package exwm-manage
-  :init
-  (progn
-    ;; https://github.com/ch11ng/exwm/issues/574
-    (add-to-list 'exwm-manage-configurations
-                 '((equal exwm-class-name "Slack") managed t))))
-
 (use-package exwm-randr
   :after exwm
   :demand t
