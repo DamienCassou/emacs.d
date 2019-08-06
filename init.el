@@ -1903,7 +1903,7 @@ I.e., the keyring has a public key for each recipient."
               (cons "^Gnome-boxes$"
                     (lambda () (my/exwm-launch-desktop "org.gnome.Boxes.desktop"))))
         (setf (map-elt map 'slack)
-              (cons "^Slack - "
+              (cons "^Slack | "
                     (lambda () (my/exwm-launch-desktop "com.slack.Slack.desktop"))))
         (setf (map-elt map 'riot)
               (cons "^Riot$"
