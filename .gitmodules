@@ -396,6 +396,9 @@
 	url = git@github.com:ledger/ledger-mode.git
 	info-path = doc
 	remote = "DamienCassou git@github.com:DamienCassou/ledger-mode.git"
+[submodule "libbasecampel"]
+	path = lib/libbasecampel
+	url = git@gitlab.petton.fr:basecampel/libbasecampel.git
 [submodule "libelcouch"]
 	path = lib/libelcouch
 	url = https://DamienCassou@gitlab.petton.fr/elcouch/libelcouch.git
