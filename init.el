@@ -1791,9 +1791,9 @@ I.e., the keyring has a public key for each recipient."
   :after csharp-mode
   :bind (
          :map omnisharp-mode-map
-         ("C-c r r" . omnisharp-run-code-action-refactoring)
-         ("C-c n i" . omnisharp-find-implementations)
-         ("C-c n u" . omnisharp-find-usages))
+         ("C-c C-r" . omnisharp-run-code-action-refactoring)
+         ("M-." . omnisharp-find-implementations)
+         ("M-?" . omnisharp-find-usages))
   :hook ((omnisharp-mode . my/configure-omnisharp)
          (csharp-mode . omnisharp-mode))
   :config
