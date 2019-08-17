@@ -1278,6 +1278,12 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (ivy-mode)))
 
+(use-package ivy-hydra
+  :config
+  (progn
+    ;; deactivate ivy-hydra if it ever gets activated:
+    (setq ivy-read-action-function #'ivy-read-action-by-key)))
+
 (use-package counsel-projectile
   :demand t
   :after projectile
