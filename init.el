@@ -404,7 +404,11 @@ current."
   :hook (dired-mode . dired-omit-mode)
   :init
   (progn
-    (setq dired-omit-verbose nil)))
+    (setq dired-omit-verbose nil))
+  :config
+  (progn
+    (setq dired-omit-files (rx-to-string `(or (and bol ".tern-port" eol)
+                                              (regexp ,dired-omit-files))))))
 
 (use-package dired-imenu
   :demand t
