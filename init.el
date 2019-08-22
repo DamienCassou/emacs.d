@@ -1400,6 +1400,9 @@ I.e., the keyring has a public key for each recipient."
          :map js2-refactor-mode-map
          ("<M-up>" . js2r-move-line-up)
          ("<M-down>" . js2r-move-line-down))
+  :init
+  (progn
+    (setq indium-chrome-executable (executable-find "chromium-browser")))
   :config
   (progn
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
