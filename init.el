@@ -913,9 +913,7 @@ hand."
   (progn
     (setq projectile-completion-system 'ivy)
     (setq projectile-keymap-prefix (kbd "C-. p"))
-    (setq projectile-require-project-root nil)
-    ;; faster alternative to `find':
-    (setq projectile-generic-command "fd . -0"))
+    (setq projectile-require-project-root nil))
   :config
   (progn
     (projectile-mode)))
