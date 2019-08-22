@@ -1033,7 +1033,7 @@ hand."
              (profile-maildir . "/WK")
              (notmuch-fcc-dirs . "WK/Sent")
              (user-mail-address . "damien.cassou@wolterskluwer.com")
-             (message-signature . "Damien Cassou\nFöretagsplatsen AB\nPhone/Fax: +46 (0)8 774 63 00\nMobile: +33 (0)6 80 50 18 91\nAddress: Skeppsbron 26, 4tr, SE-111 30 Stockholm\nWeb: www.foretagsplatsen.se\n")
+             (message-signature . "Damien Cassou\nFinsit – a part of Wolters Kluwer Group\nPhone/Fax: +46 (0)8 774 63 00\nMobile: +33 (0)6 80 50 18 91\nAddress: Lindhagensgatan 126, 112 51 Stockholm\nWeb: www.foretagsplatsen.se\n")
              (smtpmail-queue-dir . "~/Mail/WK/queued-mail/")
              (smtpmail-local-domain . nil)
              (smtpmail-smtp-user . "damien.cassou@wolterskluwer.com")
