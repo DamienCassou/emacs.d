@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: keymap
+# key: keymap
+# --
+(defvar $1-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "$2") #'$3)
+    map)
+  "Keybindings for \`$1-mode'.")
