@@ -874,11 +874,8 @@ hand."
   (progn
     (drag-stuff-global-mode t)
     (drag-stuff-define-keys)
-    (add-to-list 'drag-stuff-except-modes 'org-mode)
-    (add-to-list 'drag-stuff-except-modes 'rebase-mode)
-    (add-to-list 'drag-stuff-except-modes 'emacs-lisp-mode)
-    (add-to-list 'drag-stuff-except-modes 'mpdel-playlist-mode)
-    (add-to-list 'drag-stuff-except-modes 'js2-mode)))
+    (dolist (mode '(org-mode rebase-mode emacs-lisp-mode mpdel-playlist-mode js2-mode))
+      (add-to-list 'drag-stuff-except-modes mode))))
 
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
