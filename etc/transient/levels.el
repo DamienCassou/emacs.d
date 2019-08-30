@@ -4,4 +4,6 @@
   (transient:magit-commit:--all . 7)
   (magit-commit-absorb . 4)
   (transient:magit-commit:--signoff . 7)
-  (t . 4)))
+  (t . 4))
+ (magit-log
+  (magit-log-matching-branches . 4)))
