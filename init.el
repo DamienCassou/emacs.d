@@ -1408,20 +1408,60 @@ I.e., the keyring has a public key for each recipient."
 (use-package gulp-task-runner
   :commands (gulp))
 
-(use-package ftgp
-  :demand t
-  :config
-  (progn
-    (require 'bookmark)
-    (setq ftgp-atlassian-pass-entry "ftgp/id.atlassian.com_(API)")
-    (setq ftgp-monitor-root-location
-          (expand-file-name (bookmark-location "ftgp-monitor-root")))
-    (add-to-list 'ftgp-remotes '("vbox" "http://localhost:8081"))))
-
 (use-package prodigy
   :bind (
          :map prodigy-mode-map
          ("k" . (lambda () (interactive) (prodigy-stop t)))))
+
+(use-package finsit-core
+  :config
+  (progn
+    (require 'bookmark)
+
+    (setq finsit-core-monitor-root-location
+          (expand-file-name (bookmark-location "ftgp-monitor-root")))))
+
+(use-package finsit-basecamp
+  :demand t
+  :init
+  (progn
+    (finsit-basecamp-setup)))
+
+(use-package finsit-bugref
+  :demand t
+  :init
+  (progn
+    (finsit-bugref-setup)))
+
+(use-package finsit-elcouch
+  :demand t
+  :after elcouch
+  :config
+  (progn
+    (finsit-elcouch-setup)))
+
+(use-package finsit-magit
+  :demand t
+  :after magit
+  :config
+  (progn
+    (finsit-magit-setup)))
+
+(use-package finsit-prodigy
+  :demand t
+  :after prodigy
+  :config
+  (progn
+    (add-to-list 'finsit-prodigy-remotes '("vbox" "http://localhost:8081"))
+
+    (finsit-prodigy-setup)))
+
+(use-package finsit-yasnippet
+  :demand t
+  :after yasnippet
+  :config
+  (progn
+    (finsit-yasnippet-setup)))
 
 (use-package lui
   :hook (lui-mode . my/lui-setup)
