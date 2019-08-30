@@ -1421,15 +1421,22 @@ I.e., the keyring has a public key for each recipient."
     (setq finsit-core-monitor-root-location
           (expand-file-name (bookmark-location "ftgp-monitor-root")))))
 
+(use-package libbasecampel
+  :init
+  (progn
+    (setq libbasecampel-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
+    (setq libbasecampel-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))))
+
 (use-package finsit-basecamp
   :demand t
-  :init
+  :disabled t
+  :config
   (progn
     (finsit-basecamp-setup)))
 
 (use-package finsit-bugref
   :demand t
-  :init
+  :config
   (progn
     (finsit-bugref-setup)))
 
