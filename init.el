@@ -1425,7 +1425,8 @@ I.e., the keyring has a public key for each recipient."
   :init
   (progn
     (setq libbasecampel-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
-    (setq libbasecampel-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))))
+    (setq libbasecampel-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
+    (setq libbasecampel-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
 
 (use-package finsit-basecamp
   :demand t
