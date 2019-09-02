@@ -328,9 +328,6 @@
 [submodule "hledger-mode"]
 	path = lib/hledger-mode
 	url = git@github.com:narendraj9/hledger-mode.git
-[submodule "ht"]
-	path = lib/ht
-	url = git@github.com:Wilfred/ht.el.git
 [submodule "htmlize"]
 	path = lib/htmlize
 	url = git@github.com:hniksic/emacs-htmlize.git
