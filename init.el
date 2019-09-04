@@ -104,7 +104,8 @@ are visible."
   (define-key ctl-x-4-map "t" #'my/toggle-window-split))
 
 (progn ; `eval'
-  (setq debugger-stack-frame-as-list t))
+  (setq debugger-stack-frame-as-list t)
+  (setq debug-on-error t))
 
 (progn ; `map-ynp'
   ;; Make all "yes or no" prompts show "y or n" instead
@@ -171,9 +172,6 @@ current."
     (if (daemonp)
         (add-hook 'after-make-frame-functions #'my/setup-frame)
       (my/setup-frame))))
-
-(use-package menu-bar
-  :bind (("C-. t d" . toggle-debug-on-error)))
 
 (use-package simple
   :demand t
