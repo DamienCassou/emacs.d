@@ -1144,15 +1144,6 @@ I.e., the keyring has a public key for each recipient."
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
-(use-package smartparens
-  :disabled t)
-
-(use-package smartparens-config
-  :after smartparens)
-
-(use-package smartscan
-  :hook (prog-mode . smartscan-mode))
-
 (use-package zoom-frm
   :bind (("C-x C-+" . zoom-in/out)
          ("C-x C--" . zoom-in/out)
