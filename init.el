@@ -1428,7 +1428,6 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package finsit-basecamp
   :demand t
-  :disabled t
   :config
   (progn
     (finsit-basecamp-setup)))
