@@ -1417,6 +1417,22 @@ I.e., the keyring has a public key for each recipient."
     (setq libbasecampel-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
     (setq libbasecampel-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
 
+(use-package basecamp
+  :config
+  (progn
+    (let ((expiration-date (format-time-string "%a %b %d %H:%M:%S %Y GMT"
+                                               ;; in a week
+                                               (time-add nil (* 60 60 24 7)) t)))
+      (url-cookie-store "bc3_identity_id"
+                        (auth-source-pass-get "bc3_identity_id" "ftgp/37signals.com")
+                        expiration-date
+                        ".3.basecamp.com" "/" t)
+
+      (url-cookie-store "bc3_session_verification_token"
+                        (auth-source-pass-get "bc3_session_verification_token" "ftgp/37signals.com")
+                        expiration-date
+                        ".3.basecamp.com" "/" t))))
+
 (use-package finsit-basecamp
   :demand t
   :config
