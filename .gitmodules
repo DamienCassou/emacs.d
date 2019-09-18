@@ -634,6 +634,9 @@
 [submodule "snapshot-timemachine-rsnapshot"] # rsnapshot backend for snapshot-timemachine
 	path = lib/snapshot-timemachine-rsnapshot
 	url = git@github.com:NicolasPetton/snapshot-timemachine-rsnapshot.git
+[submodule "solarized-theme"]
+	path = lib/solarized-theme
+	url = git@github.com:bbatsov/solarized-emacs.git
 [submodule "sourcemap"]
 	path = lib/sourcemap
 	url = git@github.com:syohex/emacs-sourcemap.git
