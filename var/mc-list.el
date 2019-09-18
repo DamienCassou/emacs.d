@@ -51,6 +51,7 @@
         org-self-insert-command
         org-transpose-words
         org-yank
+        orgtbl-hijacker-command-109
         outshine-self-insert-command
         paredit-backslash
         paredit-backward
