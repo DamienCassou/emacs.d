@@ -2015,13 +2015,22 @@ NAME is a key of `my/exwm-applications'."
     (bind-key  "C-. s p" (lambda () (interactive) (my/exwm-app-switch/launch 'pulseaudio)))
     (bind-key  "C-. s v" (lambda () (interactive) (my/exwm-app-switch/launch 'vbox)))
     (bind-key  "C-. s k" (lambda () (interactive) (my/exwm-app-switch/launch 'slack)))
-    (bind-key  "C-. s r" (lambda () (interactive) (my/exwm-app-switch/launch 'riot))))
+    (bind-key  "C-. s r" (lambda () (interactive) (my/exwm-app-switch/launch 'riot)))
+
+    (defun my/exwm-workspace-switch ()
+      "Switch to the other workspace.
+This works because I only have 2 workspaces."
+      (interactive)
+      (let ((workspace-index (if (eq 0 (exwm-workspace--position exwm-workspace--current))
+                                 1
+                               0)))
+        (exwm-workspace-switch-create workspace-index))))
 
   :config
   (progn
     ;; Key bindings accessible from everywhere:
     (exwm-input-set-key (kbd "s-r") #'exwm-reset)
-    (exwm-input-set-key (kbd "s-w") #'exwm-workspace-switch)
+    (exwm-input-set-key (kbd "s-w") #'my/exwm-workspace-switch)
     (exwm-input-set-key (kbd "s-;") #'other-frame)
 
     (exwm-input-set-key (kbd "<s-tab>") #'my/swap-last-buffers)
