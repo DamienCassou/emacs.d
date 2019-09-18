@@ -913,6 +913,20 @@ hand."
   (progn
     (projectile-mode)))
 
+(use-package ivy-taskrunner-minor-mode
+  :init
+  (progn
+    (ivy-taskrunner-minor-mode)))
+
+(use-package dumb-jump
+  :bind (
+         :map dumb-jump-mode-map
+         ("M-." . dumb-jump-go))
+  :init
+  (progn
+    (setq dumb-jump-selector 'ivy)
+    (dumb-jump-mode)))
+
 (use-package unify-opening
   :demand t)
 
