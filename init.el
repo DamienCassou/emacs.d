@@ -1425,12 +1425,12 @@ I.e., the keyring has a public key for each recipient."
     (setq finsit-core-monitor-root-location
           (expand-file-name (bookmark-location "ftgp-monitor-root")))))
 
-(use-package libbasecampel
-  :init
+(use-package libbcel
+  :config
   (progn
-    (setq libbasecampel-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
-    (setq libbasecampel-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
-    (setq libbasecampel-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
+    (setq libbcel-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
+    (setq libbcel-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
+    (setq libbcel-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
 
 (use-package basecamp
   :config
