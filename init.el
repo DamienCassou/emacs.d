@@ -913,7 +913,8 @@ hand."
   (progn
     (projectile-mode)))
 
-(use-package ivy-taskrunner-minor-mode
+(use-package ivy-taskrunner
+  :disabled t
   :init
   (progn
     (ivy-taskrunner-minor-mode)))
