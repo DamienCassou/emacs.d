@@ -126,7 +126,7 @@
 	url = git@github.com:emacsmirror/debbugs.git
 [submodule "desktop-environment"]
 	path = lib/desktop-environment
-	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/desktop-environment.git
+	url = git@gitea.petton.fr/DamienCassou/desktop-environment.git
 [submodule "devdocs"]
 	path = lib/devdocs
 	url = git@github.com:xuchunyang/devdocs.el.git
@@ -161,7 +161,7 @@
 	fetchRecurseSubmodules = true
 [submodule "elcouch"]
 	path = lib/elcouch
-	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/elcouch.git
+	url = git@gitea.petton.fr/DamienCassou/elcouch.git
 	remote = "github git@github.com:DamienCassou/elcouch.git"
 [submodule "elisp-lint"]
 	path = lib/elisp-lint
@@ -270,7 +270,7 @@
 	url = git@github.com:rneatherway/emacs-fsharp-mode-bin.git
 [submodule "ftgp"]
 	path = lib/ftgp
-	url = https://DamienCassou@gitlab.petton.fr/ftgp/emacs.git
+	url = git@gitea.petton.fr/ftgp/emacs.git
 [submodule "ghub"]
 	path = lib/ghub
 	url = git@github.com:magit/ghub.git
@@ -353,7 +353,7 @@
 	build-step = borg-makeinfo
 [submodule "ivy-mpdel"]
 	path = lib/ivy-mpdel
-	url = https://DamienCassou@gitlab.petton.fr/mpdel/ivy-mpdel.git
+	url = git@gitea.petton.fr/mpdel/ivy-mpdel.git
 	remote = "github git@github.com:DamienCassou/ivy-mpdel.git"
 [submodule "ivy-taskrunner"]
 	path = lib/ivy-taskrunner
@@ -373,7 +373,7 @@
 	url = git@github.com:DamienCassou/json-navigator.git
 [submodule "json-process-client"]
 	path = lib/json-process-client
-	url = git@gitlab.petton.fr:nico/json-process-client.git
+	url = git@gitea.petton.fr:nico/json-process-client.git
 [submodule "json-reformat"]
 	path = lib/json-reformat
 	url = git@github.com:gongo/json-reformat.git
@@ -382,10 +382,10 @@
 	url = git@github.com:Sterlingg/json-snatcher.git
 [submodule "khardel"]
 	path = lib/khardel
-	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/khardel.git
+	url = git@gitea.petton.fr/DamienCassou/khardel.git
 [submodule "klassified"]
 	path = lib/klassified
-	url = https://DamienCassou@gitlab.petton.fr/DamienCassou/klassified.git
+	url = git@gitea.petton.fr/DamienCassou/klassified.git
 	remote = "github git@github.com:DamienCassou/klassified.el.git"
 [submodule "know-your-http-well"]
 	path = lib/know-your-http-well
@@ -393,7 +393,7 @@
 	load-path = emacs
 [submodule "ledger-import"]
 	path = lib/ledger-import
-	url = git@gitlab.petton.fr:DamienCassou/ledger-import.git
+	url = git@gitea.petton.fr:DamienCassou/ledger-import.git
 [submodule "ledger-mode"]
 	path = lib/ledger-mode
 	url = git@github.com:ledger/ledger-mode.git
@@ -401,10 +401,10 @@
 	remote = "DamienCassou git@github.com:DamienCassou/ledger-mode.git"
 [submodule "libbcel"]
 	path = lib/libbcel
-	url = git@gitlab.petton.fr:bcel/libbcel.git
+	url = git@gitea.petton.fr:bcel/libbcel.git
 [submodule "libelcouch"]
 	path = lib/libelcouch
-	url = https://DamienCassou@gitlab.petton.fr/elcouch/libelcouch.git
+	url = git@gitea.petton.fr/elcouch/libelcouch.git
 	remote = "github git@github.com:DamienCassou/libelcouch.git"
 [submodule "libgit"]
 	path = lib/libgit
@@ -412,11 +412,11 @@
 	build-step = make
 [submodule "libmpdel"]
 	path = lib/libmpdel
-	url = https://DamienCassou@gitlab.petton.fr/mpdel/libmpdel.git
+	url = git@gitea.petton.fr/mpdel/libmpdel.git
 	remote = "github git@github.com:DamienCassou/libmpdel.git"
 [submodule "libnetmacs"]
 	path = lib/libnetmacs
-	url = git@gitlab.petton.fr:netmacs/libnetmacs.git
+	url = git@gitea.petton.fr:netmacs/libnetmacs.git
 [submodule "list-utils"]
 	path = lib/list-utils
 	url = git@github.com:rolandwalker/list-utils.git
@@ -447,7 +447,7 @@
 	url = git@github.com:abo-abo/make-it-so.git
 [submodule "makel"]
 	path = lib/makel
-	url = git@gitlab.petton.fr:DamienCassou/makel.git
+	url = git@gitea.petton.fr:DamienCassou/makel.git
 [submodule "makey"] # required by widgetjs and amd
 	path = lib/makey
 	url = git@github.com:mickeynp/makey.git
@@ -468,7 +468,7 @@
 	url = git@github.com:tarsius/minions.git
 [submodule "mpdel"]
 	path = lib/mpdel
-	url = https://DamienCassou@gitlab.petton.fr/mpdel/mpdel.git
+	url = git@gitea.petton.fr/mpdel/mpdel.git
 	remote = "github git@github.com:DamienCassou/mpdel.git"
 [submodule "multiple-cursors"] # Control multiple cursors with <C-S-c C-S-c>
 	path = lib/multiple-cursors
@@ -478,10 +478,10 @@
 	url = git@github.com:Malabarba/Nameless.git
 [submodule "navigel"]
 	path = lib/navigel
-	url = git@gitlab.petton.fr:DamienCassou/navigel.git
+	url = git@gitea.petton.fr:DamienCassou/navigel.git
 [submodule "netmacs"]
 	path = lib/netmacs
-	url = git@gitlab.petton.fr:netmacs/netmacs.git
+	url = git@gitea.petton.fr:netmacs/netmacs.git
 [submodule "no-littering"]
 	path = lib/no-littering
 	url = git@github.com:emacscollective/no-littering.git
@@ -548,7 +548,7 @@
 [submodule "pass"] # Nicolas' major mode for password-store
 	path = lib/pass
 	url = git@github.com:NicolasPetton/pass.git
-	remote = "DamienCassou https://DamienCassou@gitlab.petton.fr/nico/pass.git"
+	remote = "DamienCassou git@gitea.petton.fr/nico/pass.git"
 [submodule "password-store"] # get passwords from the 'pass' command
 	path = lib/password-store
 	url = git@github.com:emacsmirror/password-store.git
