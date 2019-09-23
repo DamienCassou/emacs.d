@@ -839,8 +839,8 @@ hand."
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
-    (setq org-caldav-url "https://damien@petton.fr/nextcloud/remote.php/dav/calendars/damien"
-          org-caldav-calendar-id "personal"
+    (setq org-caldav-url "https://dav.petton.fr/damien"
+          org-caldav-calendar-id "92d00156-d9fd-7188-977b-af2f48c47c8a"
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
