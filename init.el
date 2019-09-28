@@ -1443,9 +1443,9 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (setq libbcel-oauth-store-encryption-keys (list "8E64FBE545A394F5D35CD202F72C652AE7564ECC"))
-    (setq libbcel-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
-    (setq libbcel-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
-    (setq libbcel-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
+    (setq libbcel-oauth-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
+    (setq libbcel-oauth-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
+    (setq libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))
 
 (use-package basecamp
   :config
