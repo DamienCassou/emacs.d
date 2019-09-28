@@ -1447,6 +1447,21 @@ I.e., the keyring has a public key for each recipient."
     (setq libbcel-oauth-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
     (setq libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))
 
+    (defun my/libbcel-reload ()
+      "Reload libbcel for dev purposes."
+      (interactive)
+      (let ((libbcel-path "~/.emacs.d/lib/libbcel"))
+        (dolist (file (cons "libbcel-structs.el"
+                            (f-files libbcel-path
+                                     (lambda (filename)
+                                       (and (s-ends-with? ".el" filename)
+                                            (not (s-ends-with? ".dir-locals.el" filename)))))))
+          (load-file (expand-file-name file libbcel-path))))
+      (load-file "~/.emacs.d/lib/basecampel/bcel.el")
+      (dolist (buffer (buffer-list))
+        (when (s-starts-with? "*bcel" (buffer-name buffer))
+          (kill-buffer buffer))))))
+
 (use-package basecamp
   :config
   (progn
