@@ -590,7 +590,14 @@ current."
              ("Check Budget"      . "balance --depth 1 ^Assets ^Liabilities ^Equity:Budget")
              ("WK expenses"       . "register --effective --begin 2019-05 --end 2019-06 --collapse ^Assets:Receivables:WK")
 
-             ("Equity"            . "equity --real"))))
+             ("Equity"            . "equity --real")
+
+             ;; GAEF
+             ("GAEF - Balance" . "balance --real ^Actifs ^Dettes")
+             ("GAEF - Revenus vs. Dépenses" . "balance --real --invert --sort T ^Revenus ^Dépenses")
+
+             ("GAEF - Goûters" . "balance --invert ^Personne ^Caisse ^Capitaux")
+             )))
 
     (setq ledger-reconcile-default-commodity "EUR")
     (setq ledger-report-links-in-register t)
