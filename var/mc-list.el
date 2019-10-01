@@ -52,6 +52,7 @@
         org-transpose-words
         org-yank
         orgtbl-hijacker-command-109
+        orgtbl-self-insert-command
         outshine-self-insert-command
         paredit-backslash
         paredit-backward
@@ -94,6 +95,5 @@
         markdown-exdent-or-delete
         my/swap-last-buffers
         org-capture
-        orgtbl-self-insert-command
         swiper-mc
         ))
