@@ -58,6 +58,9 @@
 [submodule "bash-completion"]
 	path = lib/bash-completion
 	url = git@github.com:szermatt/emacs-bash-completion.git
+[submodule "bcel"]
+	path = lib/bcel
+	url = git@gitea.petton.fr:bcel/bcel.git
 [submodule "beginend"]
 	path = lib/beginend
 	url = git@github.com:DamienCassou/beginend.git
