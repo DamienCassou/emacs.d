@@ -1450,14 +1450,19 @@ I.e., the keyring has a public key for each recipient."
     (defun my/libbcel-reload ()
       "Reload libbcel for dev purposes."
       (interactive)
-      (let ((libbcel-path "~/.emacs.d/lib/libbcel"))
-        (dolist (file (cons "libbcel-structs.el"
-                            (f-files libbcel-path
-                                     (lambda (filename)
-                                       (and (s-ends-with? ".el" filename)
-                                            (not (s-ends-with? ".dir-locals.el" filename)))))))
-          (load-file (expand-file-name file libbcel-path))))
-      (load-file "~/.emacs.d/lib/basecampel/bcel.el")
+      (let ((libbcel-path "~/.emacs.d/lib/libbcel")
+            (bcel-path "~/.emacs.d/lib/bcel"))
+        (dolist (file (append (list
+                               (expand-file-name "libbcel-structs.el" libbcel-path))
+                              (f-files libbcel-path
+                                       (lambda (filename)
+                                         (and (s-ends-with? ".el" filename)
+                                              (not (s-ends-with? ".dir-locals.el" filename)))))
+                              (f-files bcel-path
+                                       (lambda (filename)
+                                         (and (s-ends-with? ".el" filename)
+                                              (not (s-ends-with? ".dir-locals.el" filename)))))))
+          (load-file file)))
       (dolist (buffer (buffer-list))
         (when (s-starts-with? "*bcel" (buffer-name buffer))
           (kill-buffer buffer))))))
