@@ -1453,7 +1453,8 @@ I.e., the keyring has a public key for each recipient."
       (let ((libbcel-path "~/.emacs.d/lib/libbcel")
             (bcel-path "~/.emacs.d/lib/bcel"))
         (dolist (file (append (list
-                               (expand-file-name "libbcel-structs.el" libbcel-path))
+                               (expand-file-name "libbcel-structs.el" libbcel-path)
+                               (expand-file-name "finsit-basecamp.el" "~/.emacs.d/lib/ftgp"))
                               (f-files libbcel-path
                                        (lambda (filename)
                                          (and (s-ends-with? ".el" filename)
