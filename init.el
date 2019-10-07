@@ -879,7 +879,7 @@ hand."
   (progn
     (drag-stuff-global-mode t)
     (drag-stuff-define-keys)
-    (dolist (mode '(org-mode rebase-mode emacs-lisp-mode mpdel-playlist-mode js2-mode))
+    (dolist (mode '(org-mode rebase-mode emacs-lisp-mode mpdel-playlist-current-playlist-mode js2-mode))
       (add-to-list 'drag-stuff-except-modes mode))))
 
 (use-package expand-region
