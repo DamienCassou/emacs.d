@@ -1226,7 +1226,7 @@ I.e., the keyring has a public key for each recipient."
 (use-package bookmark
   :init
   (progn
-    (customize-save-variable 'bookmark-save-flag 1)))
+    (setq bookmark-save-flag 1)))
 
 (use-package counsel
   :demand t
