@@ -23,7 +23,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((ledger-post-amount-alignment-column . 56)
+    ((firestarter . "yarn run less")
+     (ledger-post-amount-alignment-column . 56)
      (checkdoc-package-keywords-flag)
      (ledger-post-amount-alignment-column . 52)
      (ledger-post-amount-alignment-column . 61)
