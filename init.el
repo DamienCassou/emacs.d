@@ -2145,7 +2145,16 @@ This works because I only have 2 workspaces."
        "xrandr --output DP-2-1 --primary --right-of eDP-1 --auto"
        ;; Stokholm:
        ;; "xrandr --output DP-1 --primary --above eDP-1 --auto"
-       )))
+       ))
+
+    (defun my/toggle-monitors ()
+      "Toggle between external and internal monitors."
+      (interactive)
+      (start-process-shell-command
+       "toggle-monitors.sh" "*toggle-monitors.sh*"
+       "toggle-monitors.sh"))
+
+    (exwm-input-set-key (kbd "<XF86Display>") #'my/toggle-monitors))
 
   :hook (exwm-randr-screen-change . my/exwm-xrandr)
   :init
