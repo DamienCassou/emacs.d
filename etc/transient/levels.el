@@ -6,4 +6,5 @@
   (transient:magit-commit:--signoff . 7)
   (t . 4))
  (magit-log
-  (magit-log-matching-branches . 4)))
+  (magit-log-matching-tags . 4)
+  (magit-log-matching-branches . 7)))
