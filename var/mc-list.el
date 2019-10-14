@@ -90,6 +90,7 @@
         anzu-query-replace
         beginend-message-goto-end
         counsel-projectile-find-file
+        edebug-continue-mode
         end-of-buffer
         ivy-switch-buffer
         markdown-exdent-or-delete
