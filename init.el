@@ -2119,6 +2119,15 @@ This works because I only have 2 workspaces."
 (use-package desktop-environment
   :demand t
   :after exwm-input
+  :init
+  (progn
+    (setq desktop-environment-brightness-normal-increment "-A 10")
+    (setq desktop-environment-brightness-normal-decrement "-U 10")
+    (setq desktop-environment-brightness-small-increment "-A 5")
+    (setq desktop-environment-brightness-small-decrement "-U 5")
+    (setq desktop-environment-brightness-get-command "light")
+    (setq desktop-environment-brightness-set-command "light %s")
+    (setq desktop-environment-brightness-get-regexp "^\\([0-9]+\\)"))
   :config
   (progn
     (desktop-environment-mode)))
