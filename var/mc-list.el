@@ -42,6 +42,7 @@
         my/exwm-counsel-yank-pop
         my/join-line
         nameless-insert-name
+        nxml-electric-slash
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
