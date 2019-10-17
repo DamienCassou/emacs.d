@@ -2191,10 +2191,6 @@ This works because I only have 2 workspaces."
     (setq exwm-workspace-show-all-buffers t)
     (setq exwm-layout-show-all-buffers t)))
 
-(use-package exwm-edit
-  :after exwm
-  :demand t)
-
 (use-package libnetmacs
   :config
   (progn
