@@ -1942,7 +1942,6 @@ I.e., the keyring has a public key for each recipient."
   :demand t)
 
 (use-package exwm
-  :demand t
   :preface
   (progn
     (defun my/exwm-rename-buffer ()
