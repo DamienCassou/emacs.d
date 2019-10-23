@@ -596,7 +596,7 @@ current."
              ("GAEF - Balance" . "balance --real ^Actifs ^Dettes")
              ("GAEF - Revenus vs. Dépenses" . "balance --real --invert --sort T ^Revenus ^Dépenses")
 
-             ("GAEF - Goûters" . "balance --invert ^Personne ^Caisse ^Capitaux")
+             ("GAEF - Goûters" . "balance --invert -X eur ^Personne ^Caisse ^Capitaux")
              )))
 
     (setq ledger-reconcile-default-commodity "EUR")
