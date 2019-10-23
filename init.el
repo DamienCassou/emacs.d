@@ -1966,7 +1966,10 @@ I.e., the keyring has a public key for each recipient."
 (use-package transmission
   :bind (
          :map transmission-mode-map
-         ("k" . transmission-remove)))
+         ("k" . transmission-remove))
+  :config
+  (progn
+    (unbind-key "D" transmission-mode-map)))
 
 (use-package nov
   :init
