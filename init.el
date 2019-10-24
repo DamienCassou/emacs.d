@@ -1946,6 +1946,12 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (libnetmacs-secretagent-mode)))
 
+(use-package gpastel
+  :demand t
+  :config
+  (progn
+    (gpastel-mode)))
+
 (use-package minions
   :demand t
   :config
