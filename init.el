@@ -1692,23 +1692,7 @@ I.e., the keyring has a public key for each recipient."
   :commands offlineimap
   :init
   (progn
-    (add-hook 'offlineimap-event-hooks #'my/offlineimap-message-when-done))
-  :init
-  (progn
-    (defun my/offlineimap-message-when-done (message-type &optional action)
-      (ignore action)
-      (when (string-match "^finished" message-type)
-        (let ((count (offlineimap-new-email-count)))
-          (alert (cond
-                  ((= count 0) "No new email")
-                  ((= count 1) "1 new email")
-                  ((> count 1) (format "%s new emails" count)))
-                 :severity 'low
-                 :title "Offlineimap"
-                 :buffer (get-buffer "*notmuch-hello*")
-                 :icon (if (zerop count)
-                           nil
-                         (expand-file-name "email.png" (expand-file-name "media" user-emacs-directory)))))))))
+    (setq offlineimap-command "~/.local/bin/offlineimap.sh -u machineui")))
 
 (use-package smtpmail
   :init
