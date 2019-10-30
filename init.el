@@ -539,7 +539,6 @@ current."
 (use-package flycheck
   :init
   (progn
-    (setq flycheck-emacs-lisp-check-declare t)
     (setq flycheck-emacs-lisp-load-path 'inherit)))
 
 (use-package flycheck-ledger
