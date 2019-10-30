@@ -526,6 +526,9 @@
 [submodule "ox-jira"]
 	path = lib/ox-jira
 	url = git@github.com:stig/ox-jira.el.git
+[submodule "ox-reveal"]
+	path = lib/ox-reveal
+	url = git@github.com:yjwen/org-reveal.git
 [submodule "ox-twbs"] # use twitter bootstrap to export org files to HTML
 	path = lib/ox-twbs
 	url = git@github.com:marsmining/ox-twbs.git
