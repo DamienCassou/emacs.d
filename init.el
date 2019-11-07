@@ -1922,6 +1922,20 @@ I.e., the keyring has a public key for each recipient."
     (pdf-tools-install :no-query)
     (require 'pdf-occur)))
 
+(use-package libmpdel
+  :hook ((libmpdel-current-song-changed . my/libmpdel-write-song-to-file)
+         (libmpdel-player-changed . my/libmpdel-write-song-to-file))
+  :config
+  (progn
+    (defun my/libmpdel-write-song-to-file ()
+      "Write current song name to a dedicated file."
+      (with-current-buffer (find-file-noselect "/tmp/i3status-current-song.log")
+        (let ((song (libmpdel-current-song)))
+          (erase-buffer)
+          (when (and song (not (libmpdel-stopped-p)))
+            (insert "♪ " (libmpdel-entity-name song)))
+          (save-buffer))))))
+
 (use-package mpdel
   :demand t
   :init
