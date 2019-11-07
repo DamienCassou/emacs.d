@@ -1679,12 +1679,6 @@ I.e., the keyring has a public key for each recipient."
   :bind (("C-. ," . embrace-commander))
   :hook (emacs-lisp-mode . embrace-emacs-lisp-mode-hook))
 
-(use-package offlineimap
-  :commands offlineimap
-  :init
-  (progn
-    (setq offlineimap-command "~/.local/bin/offlineimap.sh -u machineui")))
-
 (use-package smtpmail
   :init
   (progn
