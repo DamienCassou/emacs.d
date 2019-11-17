@@ -1949,6 +1949,7 @@ I.e., the keyring has a public key for each recipient."
     (libnetmacs-secretagent-mode)))
 
 (use-package gpastel
+  :disabled t
   :demand t
   :config
   (progn
