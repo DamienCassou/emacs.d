@@ -13,6 +13,7 @@
 [submodule "ag"]
 	path = lib/ag
 	url = git@github.com:Wilfred/ag.el.git
+	remote = "DamienCassou git@github.com:DamienCassou/ag.el.git"
 [submodule "aggressive-indent"] # indent code automatically while typing
 	path = lib/aggressive-indent
 	url = git@github.com:Malabarba/aggressive-indent-mode.git
