@@ -355,7 +355,7 @@ current."
         (display-line-numbers-mode)))))
 
 (use-package hl-line
-  :hook ((ledger-report-mode tabulated-list-mode compilation-mode org-agenda-mode)
+  :hook ((ledger-report-mode ledger-mode tabulated-list-mode compilation-mode org-agenda-mode)
          .
          hl-line-mode))
 
@@ -604,6 +604,7 @@ current."
     (setq ledger-report-use-native-highlighting t)
     (setq ledger-report-auto-refresh-sticky-cursor t)
     (setq ledger-report-use-strict t)
+    (setq ledger-highlight-xact-under-point nil)
 
     (defvar my/ledger-rate-history (list)
       "Keeps track of entered SEK/EUR rates.")
