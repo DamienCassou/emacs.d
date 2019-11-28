@@ -151,7 +151,7 @@ current."
       (setq frame-title-format '(buffer-file-name "%f" ("%b")))
       (when (window-system)
         (ignore-errors
-          (load-theme 'zerodark t)
+          (load-theme 'zerodark)
           (setq zerodark-theme-display-vc-status 'full)
           (setq zerodark-modeline-vc
                 '(vc-mode ("   "
@@ -163,7 +163,8 @@ current."
                            (:eval (propertize (truncate-string-to-width vc-mode 15 nil nil "…")
                                               'face (when (zerodark--active-window-p)
                                                       (zerodark-git-face)))))))
-          (zerodark-setup-modeline-format))
+          (zerodark-setup-modeline-format)
+          (enable-theme 'zerodark))
         (my/set-selected-frame-dark)
         (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
 
