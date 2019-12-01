@@ -441,7 +441,8 @@ current."
     (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
     (setq magit-no-confirm '(amend-published))
     (setq magit-revision-insert-related-refs nil)
-    (setq magit-revision-show-gravatars t))
+    (setq magit-revision-show-gravatars t)
+    (setq magit-clone-set-remote.pushDefault t))
   :config
   (progn
     ;; Enable magit-clean
