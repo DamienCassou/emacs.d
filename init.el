@@ -1800,9 +1800,7 @@ I.e., the keyring has a public key for each recipient."
     (setq-default eshell-prompt-regexp "^$ ")))
 
 (use-package esh-mode
-  :bind (
-         :map eshell-mode-map
-         ("<tab>" . my/esh-mode-completion-at-point))
+  :hook (eshell-mode . my/configure-esh-mode)
   :config
   (progn
     (defun my/esh-mode-completion-at-point ()
@@ -1812,14 +1810,13 @@ I.e., the keyring has a public key for each recipient."
       ;; to complete make rules. Bash-completion is indeed more
       ;; powerfull than `pcomplete-make'.
       (cl-letf (((symbol-function 'pcomplete/make) nil))
-        (completion-at-point)))))
+        (completion-at-point)))
 
-(use-package em-hist
-  :after eshell
-  :demand t
-  :bind (
-         :map eshell-hist-mode-map
-         ("M-p" . counsel-esh-history)))
+    ;; We can't use use-package's :bind here as eshell insists on
+    ;; recreating a fresh eshell-mode-map for each new eshell buffer.
+    (defun my/configure-esh-mode ()
+      (bind-key "M-p" #'counsel-esh-history eshell-mode-map)
+      (bind-key "<tab>" #'my/esh-mode-completion-at-point eshell-mode-map))))
 
 (use-package em-cmpl
   :hook (eshell-mode . eshell-cmpl-initialize)
