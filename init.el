@@ -1994,7 +1994,6 @@ I.e., the keyring has a public key for each recipient."
     (setq youtube-dl-directory (expand-file-name "~/Downloads/"))))
 
 (use-package unfill
-  :disabled t
   :bind ([remap fill-paragraph] . unfill-toggle))
 
 (use-package transmission
