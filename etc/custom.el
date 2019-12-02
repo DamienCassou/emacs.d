@@ -11,7 +11,8 @@
  ;; If there is more than one, they won't work right.
  '(bookmark-save-flag 1)
  '(custom-safe-themes
-   '("93981d6bf0d37ba3db615be42b950899769ec88799dd9978526b10ec903beb2e" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "5cd4770f787ad997ca9243662728031766736fc12f310b822a93de3c51d81878" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "846ef3695c42d50347884515f98cc359a7a61b82a8d0c168df0f688cf54bf089" default))
+   (quote
+    ("00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "5cd4770f787ad997ca9243662728031766736fc12f310b822a93de3c51d81878" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "846ef3695c42d50347884515f98cc359a7a61b82a8d0c168df0f688cf54bf089" default)))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
@@ -21,7 +22,8 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((firestarter . "yarn run less")
+   (quote
+    ((firestarter . "yarn run less")
      (ledger-post-amount-alignment-column . 56)
      (checkdoc-package-keywords-flag)
      (ledger-post-amount-alignment-column . 52)
@@ -39,33 +41,54 @@
             (string-match-p "^[^.]"
                             (buffer-file-name)))
            (unless
-               (featurep 'package-build)
+               (featurep
+                (quote package-build))
              (let
                  ((load-path
                    (cons "../package-build" load-path)))
-               (require 'package-build)))
+               (require
+                (quote package-build))))
            (package-build-minor-mode)
            (set
-            (make-local-variable 'package-build-working-dir)
+            (make-local-variable
+             (quote package-build-working-dir))
             (expand-file-name "../working/"))
            (set
-            (make-local-variable 'package-build-archive-dir)
+            (make-local-variable
+             (quote package-build-archive-dir))
             (expand-file-name "../packages/"))
            (set
-            (make-local-variable 'package-build-recipes-dir)
+            (make-local-variable
+             (quote package-build-recipes-dir))
             default-directory))
-     (eval add-hook 'before-save-hook #'time-stamp nil t)
-     (eval add-hook 'before-save-hook #'time-stamp-target nil t)
+     (eval add-hook
+           (quote before-save-hook)
+           (function time-stamp)
+           nil t)
+     (eval add-hook
+           (quote before-save-hook)
+           (function time-stamp-target)
+           nil t)
      (electric-quote-mode . t)
      (org-src-preserve-indentation)
      (eval and
-           (featurep 'ox-extra)
+           (featurep
+            (quote ox-extra))
            (ox-extras-activate
-            '(ignore-headlines)))
-     (eval require 'ox-texinfo+ nil t)
-     (eval require 'ox-extra nil t)
-     (eval require 'org-man nil t)
-     (eval require 'magit-utils nil t)
+            (quote
+             (ignore-headlines))))
+     (eval require
+           (quote ox-texinfo+)
+           nil t)
+     (eval require
+           (quote ox-extra)
+           nil t)
+     (eval require
+           (quote org-man)
+           nil t)
+     (eval require
+           (quote magit-utils)
+           nil t)
      (TeX-master . "cv-esthetique")
      (TeX-PDF-mode . t)
      (ispell-dictionary . "francais")
@@ -84,10 +107,12 @@
      (js2-strict-missing-semi-warning)
      (eval flycheck-cask-setup)
      (ispell-dictionary . "french")
-     (eval add-to-list 'grep-find-ignored-files "archive-contents")))
+     (eval add-to-list
+           (quote grep-find-ignored-files)
+           "archive-contents"))))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
- '(transmission-rpc-auth '(:username "transmission"))
+ '(transmission-rpc-auth (quote (:username "transmission")))
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)
  '(undo-outer-limit 200000000)
