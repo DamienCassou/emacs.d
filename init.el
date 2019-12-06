@@ -1296,10 +1296,6 @@ I.e., the keyring has a public key for each recipient."
      `(("t" ,(my/apply-bookmark-fn #'my/counsel-open-in-external-terminal) "open terminal")
        ("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")))
 
-    ;; http://xenodium.com/emacs-counsel-default-search-switches/index.html
-    (ivy-configure 'counsel-ag :initial-input "--file-search-regex '' -- ")
-    (ivy-configure 'counsel-rg :initial-input "--glob '**' -- ")
-
     (counsel-mode)))
 
 (use-package ivy
@@ -1326,10 +1322,6 @@ I.e., the keyring has a public key for each recipient."
 (use-package counsel-projectile
   :demand t
   :after projectile
-  :init
-  (progn
-    ;; http://xenodium.com/emacs-counsel-default-search-switches/index.html
-    (setq counsel-projectile-rg-initial-input "--glob '**' -- "))
   :config
   (progn
     (counsel-projectile-mode)
