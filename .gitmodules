@@ -507,7 +507,7 @@
 	url = https://code.orgmode.org/bzg/org-mode.git
 	load-path = lisp
 	info-path = doc
-	build-step = make compile autoloads info ORG_ADD_CONTRIB="org-notmuch"
+	build-step = make compile autoloads info
 	fetchRecurseSubmodules = true
 [submodule "org-caldav"]
 	path = lib/org-caldav
