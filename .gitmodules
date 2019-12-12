@@ -163,6 +163,9 @@
 	info-path = doc
 	url = git@github.com:editorconfig/editorconfig-emacs.git
 	fetchRecurseSubmodules = true
+[submodule "el-mock"]
+	path = lib/el-mock
+	url = git@github.com:rejeep/el-mock.el.git
 [submodule "elcouch"]
 	path = lib/elcouch
 	url = git@gitea.petton.fr/DamienCassou/elcouch.git
@@ -202,6 +205,9 @@
 [submodule "epl"]
 	path = lib/epl
 	url = git@github.com:cask/epl.git
+[submodule "ert-async"]
+	path = lib/ert-async
+	url = git@github.com:rejeep/ert-async.el.git
 [submodule "eshell-git-prompt"]
 	path = lib/eshell-git-prompt
 	url = git@github.com:xuchunyang/eshell-git-prompt.git
