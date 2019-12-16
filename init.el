@@ -499,7 +499,6 @@ current."
   :init
   (progn
     (setq ispell-dictionary "english")
-    (setq ispell-program-name (executable-find "hunspell"))
 
     (defun ispell-set-dictionary (dict)
       (save-excursion
