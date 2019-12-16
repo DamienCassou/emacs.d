@@ -471,7 +471,10 @@ current."
                  '("gitea.petton.fr"
                    "gitea.petton.fr/api/v1"
                    "gitea.petton.fr"
-                   forge-gitea-repository))))
+                   forge-gitea-repository))
+
+    (setq forge-owned-accounts '(("DamienCassou" "mpdel")))
+    (setq forge-topic-list-limit  '(60 . -5))))
 
 (use-package vc-hooks
   :init
