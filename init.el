@@ -468,10 +468,10 @@ current."
   :config
   (progn
     (add-to-list 'forge-alist
-                 '("gitlab.petton.fr"
-                   "gitlab.petton.fr/api/v4"
-                   "gitlab.petton.fr"
-                   forge-gitlab-repository))))
+                 '("gitea.petton.fr"
+                   "gitea.petton.fr/api/v1"
+                   "gitea.petton.fr"
+                   forge-gitea-repository))))
 
 (use-package vc-hooks
   :init
