@@ -463,6 +463,7 @@ current."
   :after magit)
 
 (use-package forge
+  :disabled t
   :demand t
   :after magit
   :config
