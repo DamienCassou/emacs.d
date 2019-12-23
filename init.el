@@ -1453,7 +1453,8 @@ I.e., the keyring has a public key for each recipient."
 (use-package prodigy
   :bind (
          :map prodigy-mode-map
-         ("k" . (lambda () (interactive) (prodigy-stop t)))))
+         ("k" . (lambda () (interactive) (prodigy-stop t)))
+         ("M-w" . prodigy-copy-url)))
 
 (use-package finsit-core
   :config
