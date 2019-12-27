@@ -7,9 +7,6 @@
 	path = lib/ace-link
 	url = git@github.com:abo-abo/ace-link.git
 	remote = "DamienCassou git@github.com:DamienCassou/ace-link.git"
-[submodule "adoc-mode"]
-	path = lib/adoc-mode
-	url = git@github.com:sensorflo/adoc-mode.git
 [submodule "ag"]
 	path = lib/ag
 	url = git@github.com:Wilfred/ag.el.git
@@ -38,9 +35,6 @@
 [submodule "ascii-art-to-unicode"]
 	path = lib/ascii-art-to-unicode
 	url = git@github.com:emacsmirror/ascii-art-to-unicode.git
-[submodule "asciidoc"]
-	path = lib/asciidoc
-	url = git@github.com:metaperl/asciidoc-el.git
 [submodule "assess"] # library to facilitate test writing
 	path = lib/assess
 	url = git@github.com:phillord/assess.git
@@ -79,9 +73,6 @@
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
 	remote = "DamienCassou git@github.com:DamienCassou/emacs-buttercup.git"
-[submodule "cache"]
-	path = lib/cache
-	url = git@github.com:nflath/cache.git
 [submodule "cask"]
 	path = lib/cask
 	url = git@github.com:cask/cask.git
