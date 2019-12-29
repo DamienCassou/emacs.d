@@ -412,6 +412,9 @@
 [submodule "libnetmacs"]
 	path = lib/libnetmacs
 	url = git@gitea.petton.fr:netmacs/libnetmacs.git
+[submodule "lintel"]
+	path = lib/lintel
+	url = git@gitlab.com:lintel/lintel.git
 [submodule "list-utils"]
 	path = lib/list-utils
 	url = git@github.com:rolandwalker/list-utils.git
