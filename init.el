@@ -1943,8 +1943,10 @@ I.e., the keyring has a public key for each recipient."
       (with-current-buffer (find-file-noselect "/tmp/i3status-current-song.log")
         (let ((song (libmpdel-current-song)))
           (erase-buffer)
-          (when (and song (not (libmpdel-stopped-p)))
-            (insert "♪ " (libmpdel-entity-name song)))
+          (when (and song (libmpdel-playing-p))
+            (insert (format "♪ %s by %s"
+                            (libmpdel-entity-name song)
+                            (libmpdel-entity-name (libmpdel-artist song)))))
           (save-buffer))))))
 
 (use-package mpdel
