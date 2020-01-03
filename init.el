@@ -556,7 +556,9 @@ current."
     (setq flycheck-ledger-zero-accounts
           '("^Assets:Budget:Available"
             "^Assets:Budget:Taxes:Source"
-            "^Assets:Budget:Unbudgeted"))))
+            "^Assets:Budget:Unbudgeted"
+            "^Budget:Unbudgeted"
+            "^Budget:Available"))))
 
 (use-package flycheck-package
   :demand t
