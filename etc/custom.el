@@ -41,54 +41,33 @@
             (string-match-p "^[^.]"
                             (buffer-file-name)))
            (unless
-               (featurep
-                (quote package-build))
+               (featurep 'package-build)
              (let
                  ((load-path
                    (cons "../package-build" load-path)))
-               (require
-                (quote package-build))))
+               (require 'package-build)))
            (package-build-minor-mode)
            (set
-            (make-local-variable
-             (quote package-build-working-dir))
+            (make-local-variable 'package-build-working-dir)
             (expand-file-name "../working/"))
            (set
-            (make-local-variable
-             (quote package-build-archive-dir))
+            (make-local-variable 'package-build-archive-dir)
             (expand-file-name "../packages/"))
            (set
-            (make-local-variable
-             (quote package-build-recipes-dir))
+            (make-local-variable 'package-build-recipes-dir)
             default-directory))
-     (eval add-hook
-           (quote before-save-hook)
-           (function time-stamp)
-           nil t)
-     (eval add-hook
-           (quote before-save-hook)
-           (function time-stamp-target)
-           nil t)
+     (eval add-hook 'before-save-hook #'time-stamp nil t)
+     (eval add-hook 'before-save-hook #'time-stamp-target nil t)
      (electric-quote-mode . t)
      (org-src-preserve-indentation)
      (eval and
-           (featurep
-            (quote ox-extra))
+           (featurep 'ox-extra)
            (ox-extras-activate
-            (quote
-             (ignore-headlines))))
-     (eval require
-           (quote ox-texinfo+)
-           nil t)
-     (eval require
-           (quote ox-extra)
-           nil t)
-     (eval require
-           (quote org-man)
-           nil t)
-     (eval require
-           (quote magit-utils)
-           nil t)
+            '(ignore-headlines)))
+     (eval require 'ox-texinfo+ nil t)
+     (eval require 'ox-extra nil t)
+     (eval require 'org-man nil t)
+     (eval require 'magit-utils nil t)
      (TeX-master . "cv-esthetique")
      (TeX-PDF-mode . t)
      (ispell-dictionary . "francais")
@@ -107,12 +86,10 @@
      (js2-strict-missing-semi-warning)
      (eval flycheck-cask-setup)
      (ispell-dictionary . "french")
-     (eval add-to-list
-           (quote grep-find-ignored-files)
-           "archive-contents"))))
+     (eval add-to-list 'grep-find-ignored-files "archive-contents")))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
- '(transmission-rpc-auth (quote (:username "transmission")))
+ '(transmission-rpc-auth '(:username "transmission"))
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)
  '(undo-outer-limit 200000000)
