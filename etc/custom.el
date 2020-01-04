@@ -86,7 +86,7 @@
      (js2-strict-missing-semi-warning)
      (eval flycheck-cask-setup)
      (ispell-dictionary . "french")
-     (eval add-to-list 'grep-find-ignored-files "archive-contents")))
+     (eval add-to-list 'grep-find-ignored-files "archive-contents"))))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(transmission-rpc-auth '(:username "transmission"))
