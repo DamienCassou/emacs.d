@@ -662,7 +662,7 @@ hand."
     (setq ledger-complete-in-steps nil)))
 
 (use-package ledger-import
-  :hook ((ledger-import-finished . my/ledger-import-alert))
+  :hook ((ledger-import-finished . my/ledger-import-finish))
   :init
   (progn
     (setq ledger-import-boobank-import-from-date "2020-01-01")
@@ -675,7 +675,19 @@ hand."
       "Notify the user that import is finished."
       (alert "Finished"
              :title "Ledger-autosync"
-             :buffer (current-buffer))))
+             :buffer (current-buffer)))
+
+    (defun my/ledger-import-remove-EUR ()
+      "Remove the EUR commodity in the current buffer."
+      (setf (point) (point-min))
+      (while (search-forward " EUR" nil t)
+        (replace-match ""))
+      (ledger-mode-clean-buffer))
+
+    (defun my/ledger-import-finish ()
+      "Some actions to do when ledger-import finishes."
+      (my/ledger-import-remove-EUR)
+      (my/ledger-import-alert)))
   :config
   (progn
     ;; Fill `ledger-import-accounts' and `ledger-import-ofx-rewrite-rules':
