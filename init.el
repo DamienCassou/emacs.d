@@ -591,9 +591,10 @@ current."
              ("Checks"            . "register --group-by=payee --payee=code --sort=payee --uncleared :Check")
 
              ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
-             ("Balance sheet"     . "balance --real ^Assets ^Liabilities ^Equity")
-             ("Budget"            . "balance --empty --sort account ^Assets:Budget and not \\(Available or Unbudgeted\\)")
-             ("Check Budget"      . "balance --depth 1 ^Assets ^Liabilities ^Equity:Budget")
+             ("Balance sheet"     . "balance --real ^Assets ^Liabilities \"^Equity:Retained earnings\"")
+             ("Budget"            . "balance --empty --sort account ^Budget and not \\(Available or Unbudgeted\\)")
+             ("Check 1 (Equity:Budget = sums of envelops)"  . "balance --depth 1 ^Equity:Budget ^Budget")
+             ("Check 2 (Every euro is in an envelop)"       . "balance --depth 1 ^Assets ^Liabilities ^Equity:Budget")
              ("WK expenses"       . "register --effective --begin 2019-05 --end 2019-06 --collapse ^Assets:Receivables:WK")
 
              ("Equity"            . "equity --real")
