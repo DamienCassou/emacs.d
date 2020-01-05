@@ -1447,7 +1447,8 @@ I.e., the keyring has a public key for each recipient."
   :init
   (progn
     (setq company-dabbrev-downcase nil)
-    (setq company-dabbrev-ignore-case nil)))
+    (setq company-dabbrev-ignore-case nil)
+    (setq company-show-numbers t)))
 
 (use-package emacs-js
   :hook (js-mode . setup-js-buffer)
