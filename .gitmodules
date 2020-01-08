@@ -540,6 +540,9 @@
 [submodule "paredit"] # edit lisp AST instead of characters
 	path = lib/paredit
 	url = http://mumble.net/~campbell/git/paredit.git
+[submodule "paredit-everywhere"]
+	path = lib/paredit-everywhere
+	url = git@github.com:purcell/paredit-everywhere.git
 [submodule "paren-face"] # hide parenthesis in elisp code
 	path = lib/paren-face
 	url = git@github.com:tarsius/paren-face.git
