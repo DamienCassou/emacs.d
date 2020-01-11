@@ -199,9 +199,6 @@
 [submodule "ert-async"]
 	path = lib/ert-async
 	url = git@github.com:rejeep/ert-async.el.git
-[submodule "eshell-git-prompt"]
-	path = lib/eshell-git-prompt
-	url = git@github.com:xuchunyang/eshell-git-prompt.git
 [submodule "eslintd-fix"] # Automatically fix javascript with eslint_d
 	path = lib/eslintd-fix
 	url = git@github.com:aaronjensen/eslintd-fix.git
