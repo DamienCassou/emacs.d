@@ -12,6 +12,7 @@
         c-electric-brace
         c-electric-delete-forward
         c-electric-paren
+        c-electric-semi&comma
         c-indent-line-or-region
         clipboard-kill-region
         counsel-M-x
