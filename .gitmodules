@@ -693,6 +693,9 @@
 [submodule "vdirel"]
 	path = lib/vdirel
 	url = git@github.com:DamienCassou/vdirel.git
+[submodule "verb"]
+	path = lib/verb
+	url = git@github.com:federicotdn/verb.git
 [submodule "vlf"]
 	path = lib/vlf
 	url = git@github.com:m00natic/vlfi.git
