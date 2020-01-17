@@ -38,6 +38,9 @@
 [submodule "assess"] # library to facilitate test writing
 	path = lib/assess
 	url = git@github.com:phillord/assess.git
+[submodule "async"]
+	path = lib/async
+	url = git@github.com:jwiegley/emacs-async.git
 [submodule "auth-source-pass"]
 	path = lib/auth-source-pass
 	url = git@github.com:DamienCassou/auth-password-store.git
