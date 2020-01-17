@@ -133,15 +133,6 @@ are visible."
       (unless window-system
         (suspend-frame)))
 
-    (defun my/set-selected-frame-dark ()
-      "Make current frame use GTK dark theme."
-      (interactive)
-      (let ((frame-name (cdr (assq 'name (frame-parameters (selected-frame))))))
-        (call-process-shell-command
-         (format
-          "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT 'dark' -name '%s'"
-          frame-name))))
-
     (defun my/setup-frame (&optional frame)
       "Configure look of FRAME.
 
@@ -165,10 +156,7 @@ current."
                                                       (zerodark-git-face)))))))
           (zerodark-setup-modeline-format)
           (enable-theme 'zerodark))
-        (my/set-selected-frame-dark)
         (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
-
-    ;; (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
     (if (daemonp)
         (add-hook 'after-make-frame-functions #'my/setup-frame)
