@@ -156,7 +156,7 @@ current."
                                                       (zerodark-git-face)))))))
           (zerodark-setup-modeline-format)
           (enable-theme 'zerodark))
-        (set-face-attribute 'default nil :height 125 :family "Fira Mono")))
+        (set-face-attribute 'default nil :height 120 :family "JetBrains Mono")))
 
     (if (daemonp)
         (add-hook 'after-make-frame-functions #'my/setup-frame)
