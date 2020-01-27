@@ -26,6 +26,7 @@
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         embrace-commander
+        fill-paragraph
         forward-sexp
         helm-show-kill-ring
         hungry-delete-backward
