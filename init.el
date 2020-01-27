@@ -683,6 +683,7 @@ hand."
 
     (defun my/ledger-import-finish ()
       "Some actions to do when ledger-import finishes."
+      (interactive)
       (my/ledger-import-remove-EUR)
       (my/ledger-import-alert)))
   :config
