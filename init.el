@@ -162,6 +162,11 @@ current."
         (add-hook 'after-make-frame-functions #'my/setup-frame)
       (my/setup-frame))))
 
+(use-package tramp
+  :config
+  (progn
+    (add-to-list 'tramp-remote-path "/run/current-system/profile/bin")))
+
 (use-package simple
   :demand t
   :bind (("M-j" . my/join-line)
