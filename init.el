@@ -2025,6 +2025,10 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (add-to-list 'auto-mode-alist (cons "\\.epub\\'" #'nov-mode))))
 
+(use-package ob-verb
+  :demand t
+  :after org)
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
