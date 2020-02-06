@@ -325,6 +325,11 @@ current."
           :map bug-reference-map
           ("C-c C-o" . bug-reference-push-button))))
 
+(use-package info-colors
+  :demand t
+  :after info
+  :hook (Info-selection . info-colors-fontify-node))
+
 (use-package smime
   :config
   ;; https://src.fedoraproject.org/rpms/emacs/blob/f27/f/default.el
