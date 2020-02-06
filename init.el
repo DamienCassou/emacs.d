@@ -325,6 +325,12 @@ current."
           :map bug-reference-map
           ("C-c C-o" . bug-reference-push-button))))
 
+(use-package info
+  :init
+  (progn
+    (add-to-list 'Info-additional-directory-list
+                 "/home/cassou/.config/guix/current/share/info")))
+
 (use-package info-colors
   :demand t
   :after info
