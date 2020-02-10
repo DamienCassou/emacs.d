@@ -267,6 +267,9 @@
 [submodule "ftgp"]
 	path = lib/ftgp
 	url = git@gitea.petton.fr/ftgp/emacs.git
+[submodule "geiser"]
+	path = lib/geiser
+	url = git@gitlab.com:jaor/geiser.git
 [submodule "ghub"]
 	path = lib/ghub
 	url = git@github.com:magit/ghub.git

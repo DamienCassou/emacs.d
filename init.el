@@ -2045,6 +2045,11 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq navigel-single-buffer-apps '(mpdel))))
 
+(use-package geiser-guile
+  :config
+  (progn
+    (add-to-list 'geiser-guile-load-path "~/Documents/projects/guix/guix")))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
