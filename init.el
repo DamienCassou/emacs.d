@@ -1699,9 +1699,10 @@ I.e., the keyring has a public key for each recipient."
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package yasnippet
-  :hook (org-mode . yas-minor-mode)
+  :hook (((org-mode git-commit-mode) . yas-minor-mode))
   :config
   (progn
+    (add-to-list 'yas-snippet-dirs (expand-file-name "~/Documents/projects/guix/guix/etc/snippets/"))
     (yas-reload-all)))
 
 (use-package ws-butler
