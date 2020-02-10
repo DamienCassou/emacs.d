@@ -270,6 +270,8 @@
 [submodule "geiser"]
 	path = lib/geiser
 	url = git@gitlab.com:jaor/geiser.git
+	info-path = doc
+	load-path = elisp
 [submodule "ghub"]
 	path = lib/ghub
 	url = git@github.com:magit/ghub.git
