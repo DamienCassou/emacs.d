@@ -328,8 +328,11 @@ current."
 (use-package info
   :init
   (progn
+    (setenv "INFOPATH" "/home/cassou/.guix-profile/share/info")
     (add-to-list 'Info-additional-directory-list
-                 "/home/cassou/.config/guix/current/share/info")))
+                 "/home/cassou/.config/guix/current/share/info")
+    (add-to-list 'Info-additional-directory-list
+                 "/home/cassou/.guix-profile/share/info")))
 
 (use-package info-colors
   :demand t
