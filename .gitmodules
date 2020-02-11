@@ -542,6 +542,9 @@
 [submodule "ox-twbs"] # use twitter bootstrap to export org files to HTML
 	path = lib/ox-twbs
 	url = git@github.com:marsmining/ox-twbs.git
+[submodule "package-dev-handbook"]
+	path = lib/package-dev-handbook
+	url = https://github.com/alphapapa/emacs-package-dev-handbook.git
 [submodule "package-lint"]
 	path = lib/package-lint
 	url = git@github.com:purcell/package-lint.git
