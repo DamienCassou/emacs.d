@@ -190,10 +190,6 @@
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
-[submodule "epdh"]
-	path = lib/epdh
-	url = https://github.com/alphapapa/emacs-package-dev-handbook.git
-	remote = "DamienCassou git@github.com:DamienCassou/emacs-package-dev-handbook.git"
 [submodule "epkg"] # browse the emacs mirror
 	path = lib/epkg
 	url = git@github.com:emacscollective/epkg.git
