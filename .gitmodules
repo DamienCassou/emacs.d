@@ -297,9 +297,6 @@
 	url = git@github.com:ppareit/graphviz-dot-mode.git
 	remote = "DamienCassou git@github.com:DamienCassou/graphviz-dot-mode.git"
 	info-path = texinfo
-[submodule "grunt"]
-	path = lib/grunt
-	url = git@github.com:gempesaw/grunt.el.git
 [submodule "guix"]
 	path = lib/guix
 	url = git@github.com:alezost/guix.el.git
