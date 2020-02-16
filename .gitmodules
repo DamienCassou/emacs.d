@@ -69,6 +69,9 @@
 [submodule "buffer-move"]
 	path = lib/buffer-move
 	url = git@github.com:lukhas/buffer-move.git
+[submodule "bui"]
+	path = lib/bui
+	url = git@github.com:alezost/bui.el.git
 [submodule "buttercup"]
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
@@ -297,6 +300,11 @@
 [submodule "grunt"]
 	path = lib/grunt
 	url = git@github.com:gempesaw/grunt.el.git
+[submodule "guix"]
+	path = lib/guix
+	url = git@github.com:alezost/guix.el.git
+	load-path = elisp
+	info-path = doc
 [submodule "gulp-task-runner"]
 	path = lib/gulp-task-runner
 	url = git@github.com:NicolasPetton/gulp-task-runner.git
