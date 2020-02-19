@@ -21,7 +21,8 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((org-export-initial-scope . buffer)
+   '((TeX-master . "geiser")
+     (org-export-initial-scope . buffer)
      (org-id-link-to-org-use-id)
      (org-export-with-broken-links . t)
      (eval require 'org-make-toc)
