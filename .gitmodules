@@ -269,6 +269,7 @@
 [submodule "geiser"]
 	path = lib/geiser
 	url = git@gitlab.com:jaor/geiser.git
+	remote = "DamienCassou git@gitlab.com:DamienCassou/geiser.git"
 	info-path = doc
 	load-path = elisp
 [submodule "ghub"]
