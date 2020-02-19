@@ -33,6 +33,7 @@
         hungry-delete-forward
         ignore
         indent-for-tab-command
+        insert-parentheses
         ivy-wgrep-change-to-wgrep-mode
         js2r-kill
         keyboard-escape-quit
