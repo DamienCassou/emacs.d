@@ -535,9 +535,6 @@
 [submodule "ov"]
 	path = lib/ov
 	url = git@github.com:ShingoFukuyama/ov.el.git
-[submodule "ox-jira"]
-	path = lib/ox-jira
-	url = git@github.com:stig/ox-jira.el.git
 [submodule "ox-reveal"]
 	path = lib/ox-reveal
 	url = git@github.com:yjwen/org-reveal.git
