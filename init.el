@@ -695,10 +695,18 @@ hand."
         (replace-match ""))
       (ledger-mode-clean-buffer))
 
+    (defun my/ledger-import-merge-autosync-transactions ()
+      "Merge all autosync transactions into just one."
+      (setf (point) (point-min))
+      (search-forward "Autosync Balance Assertion")
+      (delete-matching-lines "Autosync Balance Assertion")
+      (delete-matching-lines "^$"))
+
     (defun my/ledger-import-finish ()
       "Some actions to do when ledger-import finishes."
       (interactive)
       (my/ledger-import-remove-EUR)
+      (my/ledger-import-merge-autosync-transactions)
       (my/ledger-import-alert)))
   :config
   (progn
