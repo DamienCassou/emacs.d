@@ -21,7 +21,35 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((TeX-master . "geiser")
+   '((eval when
+           (and
+            (buffer-file-name)
+            (not
+             (file-directory-p
+              (buffer-file-name)))
+            (string-match-p "^[^.]"
+                            (buffer-file-name)))
+           (unless
+               (featurep 'package-build)
+             (let
+                 ((load-path
+                   (cons "../package-build" load-path)))
+               (require 'package-build)))
+           (unless
+               (derived-mode-p 'emacs-lisp-mode)
+             (emacs-lisp-mode))
+           (package-build-minor-mode)
+           (setq-local flycheck-checkers nil)
+           (set
+            (make-local-variable 'package-build-working-dir)
+            (expand-file-name "../working/"))
+           (set
+            (make-local-variable 'package-build-archive-dir)
+            (expand-file-name "../packages/"))
+           (set
+            (make-local-variable 'package-build-recipes-dir)
+            default-directory))
+     (TeX-master . "geiser")
      (org-export-initial-scope . buffer)
      (org-id-link-to-org-use-id)
      (org-export-with-broken-links . t)
