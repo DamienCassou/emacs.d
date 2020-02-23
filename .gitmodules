@@ -457,6 +457,9 @@
 [submodule "makel"]
 	path = lib/makel
 	url = git@gitea.petton.fr:DamienCassou/makel.git
+[submodule "makem"]
+	path = lib/makem
+	url = https://github.com/alphapapa/makem.sh.git
 [submodule "makey"] # required by widgetjs and amd
 	path = lib/makey
 	url = git@github.com:mickeynp/makey.git
