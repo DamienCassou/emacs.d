@@ -1281,7 +1281,7 @@ I.e., the keyring has a public key for each recipient."
       (setq counsel-describe-variable-function #'helpful-variable))))
 
 (use-package aggressive-indent
-  :hook ((lisp-mode emacs-lisp-mode) . aggressive-indent-mode))
+  :hook ((lisp-mode emacs-lisp-mode scheme-mode) . aggressive-indent-mode))
 
 (use-package bookmark
   :init
