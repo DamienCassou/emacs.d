@@ -399,7 +399,7 @@
 	load-path = emacs
 [submodule "ledger-import"]
 	path = lib/ledger-import
-	url = git@gitea.petton.fr:DamienCassou/ledger-import.git
+	url = git@github.com:DamienCassou/ledger-import.git
 [submodule "ledger-mode"]
 	path = lib/ledger-mode
 	url = git@github.com:ledger/ledger-mode.git
