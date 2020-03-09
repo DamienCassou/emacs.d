@@ -1,3 +1,4 @@
+alias pre-guix guix environment --pure guix -- /home/cassou/Documents/projects/guix/guix/pre-inst-env $*
 alias dnf-list dnf repoquery --list $*
 alias dnf-provides dnf repoquery --cacheonly --file $*
 alias sudo /usr/bin/sudo --askpass $*
