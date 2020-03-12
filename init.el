@@ -2073,6 +2073,10 @@ I.e., the keyring has a public key for each recipient."
     (unbind-key "C-." geiser-repl-mode-map)))
 
 (use-package geiser-guile
+  :init
+  (progn
+    (setq geiser-guile-binary
+          (expand-file-name "~/.local/bin/guix-guile.sh")))
   :config
   (progn
     (add-to-list 'geiser-guile-load-path
