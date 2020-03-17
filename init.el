@@ -2082,6 +2082,9 @@ I.e., the keyring has a public key for each recipient."
     (add-to-list 'geiser-guile-load-path
                  (expand-file-name "~/Documents/projects/guix/guix"))))
 
+(use-package guix
+  :hook (scheme-mode . guix-devel-mode))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
