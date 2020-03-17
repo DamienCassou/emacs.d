@@ -72,6 +72,9 @@
 [submodule "bui"]
 	path = lib/bui
 	url = git@github.com:alezost/bui.el.git
+[submodule "build-farm"]
+	path = lib/build-farm
+	url = git@github.com:alezost/build-farm.el.git
 [submodule "buttercup"]
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
@@ -152,6 +155,9 @@
 [submodule "duplicate-thing"] # M-D to duplicate thing at point
 	path = lib/duplicate-thing
 	url = git@github.com:ongaeshi/duplicate-thing.git
+[submodule "edit-indirect"]
+	path = lib/edit-indirect
+	url = git@github.com:Fanael/edit-indirect.git
 [submodule "editorconfig"] # handle .editorconfig files automatically
 	path = lib/editorconfig
 	info-path = doc
