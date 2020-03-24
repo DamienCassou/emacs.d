@@ -2084,7 +2084,18 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (add-to-list 'geiser-guile-load-path
-                 (expand-file-name "~/Documents/projects/guix/guix"))))
+                 (expand-file-name "~/Documents/projects/guix/guix"))
+
+    (defun my/geiser-guile--version (binary)
+      "Override because guix-guile.sh don't know the -c option.
+
+This override is only necessary if `geiser-guile-binary' points
+to guix-guile.sh instead of plain guile."
+      ;; the version number is printed on the first line when
+      ;; executing guix-guile.sh:
+      "3.0.1")
+
+    (advice-add #'geiser-guile--version :override #'my/geiser-guile--version)))
 
 (use-package guix
   :hook (scheme-mode . guix-devel-mode))
