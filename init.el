@@ -1204,7 +1204,7 @@ I.e., the keyring has a public key for each recipient."
       (when (my/can-encrypt-message-p)
         (mml-secure-message-sign-encrypt)))
 
-    (add-hook 'message-send-hook #'my/add-encryption-mark-if-possible)
+    ;; (add-hook 'message-send-hook #'my/add-encryption-mark-if-possible)
 
     ;; Add "Fwd:" to the beginning of Subject of forwarded emails so that
     ;; basecamp detects it properly:
