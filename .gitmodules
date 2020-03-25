@@ -484,6 +484,9 @@
 [submodule "minions"]
 	path = lib/minions
 	url = git@github.com:tarsius/minions.git
+[submodule "modus-themes"]
+	path = lib/modus-themes
+	url = git@gitlab.com:protesilaos/modus-themes.git
 [submodule "mpdel"]
 	path = lib/mpdel
 	url = git@gitea.petton.fr/mpdel/mpdel.git
