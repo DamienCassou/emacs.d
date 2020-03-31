@@ -1710,7 +1710,6 @@ I.e., the keyring has a public key for each recipient."
   :hook (((org-mode git-commit-mode) . yas-minor-mode))
   :config
   (progn
-    (add-to-list 'yas-snippet-dirs (expand-file-name "~/Documents/projects/guix/guix/etc/snippets/"))
     (yas-reload-all)))
 
 (use-package ws-butler
@@ -2075,30 +2074,6 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (unbind-key "C-." geiser-repl-mode-map)))
-
-(use-package geiser-guile
-  :init
-  (progn
-    (setq geiser-guile-binary
-          (expand-file-name "~/.local/bin/guix-guile.sh")))
-  :config
-  (progn
-    (add-to-list 'geiser-guile-load-path
-                 (expand-file-name "~/Documents/projects/guix/guix"))
-
-    (defun my/geiser-guile--version (binary)
-      "Override because guix-guile.sh don't know the -c option.
-
-This override is only necessary if `geiser-guile-binary' points
-to guix-guile.sh instead of plain guile."
-      ;; the version number is printed on the first line when
-      ;; executing guix-guile.sh:
-      "3.0.1")
-
-    (advice-add #'geiser-guile--version :override #'my/geiser-guile--version)))
-
-(use-package guix
-  :hook (scheme-mode . guix-devel-mode))
 
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."

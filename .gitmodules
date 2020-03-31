@@ -272,12 +272,6 @@
 [submodule "ftgp"]
 	path = lib/ftgp
 	url = git@gitea.petton.fr/ftgp/emacs.git
-[submodule "geiser"]
-	path = lib/geiser
-	url = git@gitlab.com:jaor/geiser.git
-	remote = "DamienCassou git@gitlab.com:DamienCassou/geiser.git"
-	info-path = doc
-	load-path = elisp
 [submodule "ghub"]
 	path = lib/ghub
 	url = git@github.com:magit/ghub.git
@@ -304,11 +298,6 @@
 	url = git@github.com:ppareit/graphviz-dot-mode.git
 	remote = "DamienCassou git@github.com:DamienCassou/graphviz-dot-mode.git"
 	info-path = texinfo
-[submodule "guix"]
-	path = lib/guix
-	url = git@github.com:alezost/guix.el.git
-	load-path = elisp
-	info-path = doc
 [submodule "gulp-task-runner"]
 	path = lib/gulp-task-runner
 	url = git@github.com:NicolasPetton/gulp-task-runner.git
