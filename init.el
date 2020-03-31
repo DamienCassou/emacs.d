@@ -1201,6 +1201,7 @@ I.e., the keyring has a public key for each recipient."
 
     (defun my/add-encryption-mark-if-possible ()
       "Add MML tag to encrypt message when there is a key for each recipient."
+      (interactive)
       (when (my/can-encrypt-message-p)
         (mml-secure-message-sign-encrypt)))
 
