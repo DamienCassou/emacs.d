@@ -1996,7 +1996,9 @@ I.e., the keyring has a public key for each recipient."
   :bind (
          :map mpdel-core-map
          ("n" . mpdel-core-open-artists)
-         ("p" . mpdel-core-insert-current-playlist))
+         ("p" . mpdel-core-insert-current-playlist)
+         :map mpdel-playlist-current-playlist-mode-map
+         ("p" . mpdel-playlist-play))
   :init
   (progn
     (setq mpdel-prefix-key (kbd "C-. z")))
