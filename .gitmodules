@@ -473,6 +473,9 @@
 [submodule "minions"]
 	path = lib/minions
 	url = git@github.com:tarsius/minions.git
+[submodule "mmm-mode"]
+	path = lib/mmm-mode
+	url = git@github.com:purcell/mmm-mode.git
 [submodule "modus-themes"]
 	path = lib/modus-themes
 	url = git@gitlab.com:protesilaos/modus-themes.git
@@ -492,6 +495,9 @@
 [submodule "netmacs"]
 	path = lib/netmacs
 	url = git@gitea.petton.fr:netmacs/netmacs.git
+[submodule "nix-mode"]
+	path = lib/nix-mode
+	url = git@github.com:NixOS/nix-mode.git
 [submodule "no-littering"]
 	path = lib/no-littering
 	url = git@github.com:emacscollective/no-littering.git
