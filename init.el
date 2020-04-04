@@ -1164,7 +1164,7 @@ because slides don't change their ID all the time."
   :init
   (progn
     (setq message-log-max t)
-    (setq message-send-mail-function 'message-smtpmail-send-it)
+    (setq message-send-mail-function 'message-send-mail-with-sendmail)
     (setq message-signature t)
     (setq message-signature-file "~/.signature"))
   :config
@@ -1747,7 +1747,8 @@ I.e., the keyring has a public key for each recipient."
 (use-package sendmail
   :init
   (progn
-    (setq send-mail-function 'smtpmail-send-it)))
+    (setq send-mail-function 'smtpmail-send-it)
+    (setq sendmail-program "msmtp")))
 
 (use-package google-translate
   :init
