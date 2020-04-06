@@ -155,7 +155,9 @@ current."
                                               'face (when (zerodark--active-window-p)
                                                       (zerodark-git-face)))))))
           (zerodark-setup-modeline-format)
-          (enable-theme 'zerodark))
+          (enable-theme 'zerodark)
+          (load-theme 'modus-operandi)
+          (disable-theme 'zerodark))
         (set-face-attribute 'default nil :height 120 :family "JetBrains Mono")))
 
     (if (daemonp)
