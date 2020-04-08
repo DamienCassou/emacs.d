@@ -487,6 +487,14 @@ current."
     (setq forge-owned-accounts '(("DamienCassou" "mpdel")))
     (setq forge-topic-list-limit  '(60 . -5))))
 
+(use-package moody
+  :demand t
+  :config
+  (progn
+    (setq x-underline-at-descent-line t)
+    (moody-replace-mode-line-buffer-identification)
+    (moody-replace-vc-mode)))
+
 (use-package vc-hooks
   :init
   (progn
