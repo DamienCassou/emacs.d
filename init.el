@@ -423,6 +423,22 @@ current."
   :demand t
   :after dired)
 
+(use-package dired-rsync
+  :config
+  (progn
+    (defun my/dired-rsync-update-modeline (&optional err ind)
+      (let ((job-count (length (dired-rsync--get-active-buffers))))
+        (cond
+         ;; error has occurred
+         (err (alert (format "%d job failed: %s" job-count err)
+                     :severity 'urgent
+                     :title "dired-rsync"))
+         (t (alert "dome"
+                   :severity 'normal
+                   :title "dired-rsync")))))
+
+    (advice-add #'dired-rsync--update-modeline :after #'my/dired-rsync-update-modeline)))
+
 (use-package recentf
   :demand t
   :init
