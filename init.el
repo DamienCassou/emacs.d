@@ -139,7 +139,7 @@ are visible."
 If FRAME is nil, configure current frame. If non-nil, make FRAME
 current."
       (when frame (select-frame frame))
-      (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+      (setq frame-title-format "Emacs")
       (when (window-system)
         (ignore-errors
           (load-theme 'zerodark)
