@@ -2047,7 +2047,15 @@ I.e., the keyring has a public key for each recipient."
          ("k" . youtube-dl-list-kill))
   :init
   (progn
-    (setq youtube-dl-directory (expand-file-name "~/Downloads/"))))
+    (setq youtube-dl-directory (expand-file-name "~/Downloads/")))
+  :config
+  (progn
+    (defun my/youtube-dl-alert (_item)
+      (alert "youtube-dl"
+             :severity 'normal
+             :title "Command completed"))
+
+    (advice-add #'youtube-dl--remove :after #'my/youtube-dl-alert)))
 
 (use-package unfill
   :disabled t
