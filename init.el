@@ -141,28 +141,21 @@ current."
       (when frame (select-frame frame))
       (setq frame-title-format "Emacs")
       (when (window-system)
-        (ignore-errors
-          (load-theme 'zerodark)
-          (setq zerodark-theme-display-vc-status 'full)
-          (setq zerodark-modeline-vc
-                '(vc-mode ("   "
-                           (:eval (all-the-icons-faicon "code-fork"
-                                                        :height 0.9
-                                                        :v-adjust 0
-                                                        :face (when (zerodark--active-window-p)
-                                                                (zerodark-git-face))))
-                           (:eval (propertize (truncate-string-to-width vc-mode 15 nil nil "…")
-                                              'face (when (zerodark--active-window-p)
-                                                      (zerodark-git-face)))))))
-          (zerodark-setup-modeline-format)
-          (enable-theme 'zerodark)
-          (load-theme 'modus-operandi)
-          (disable-theme 'zerodark))
         (set-face-attribute 'default nil :height 120 :family "JetBrains Mono")))
 
-    (if (daemonp)
-        (add-hook 'after-make-frame-functions #'my/setup-frame)
-      (my/setup-frame))))
+    (my/setup-frame)))
+
+(use-package modus-operandi-theme
+  :demand t
+  :config
+  (load-theme 'modus-operandi t)
+  (let ((line (face-attribute 'mode-line :underline)))
+    (set-face-attribute 'mode-line          nil :overline   line)
+    (set-face-attribute 'mode-line-inactive nil :overline   line)
+    (set-face-attribute 'mode-line-inactive nil :underline  line)
+    (set-face-attribute 'mode-line          nil :box        nil)
+    (set-face-attribute 'mode-line-inactive nil :box        nil)
+    (set-face-attribute 'mode-line-inactive nil :background "#e3edef")))
 
 (use-package tramp
   :config
