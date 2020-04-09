@@ -19,7 +19,9 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((eval when
+   '((projectile-project-run-cmd . "mkdir -p build; cd build; cmake ..; make run")
+     (projectile-project-compilation-cmd . "mkdir -p build; cd build; cmake ..; make")
+     (eval when
            (and
             (buffer-file-name)
             (not
