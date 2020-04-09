@@ -10,8 +10,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bookmark-save-flag 1)
- '(custom-safe-themes
-   '("20d47b5fa606d6bbcfd8b1822b8f1e6363bc686d99d9ceef6f9e431a1a37bc27" "9417d910ad8675352bd9e42cf165d2386d345e6d70659a67b930e2473c7b05ca" "20f5690eb69b06a27c4c9dfcd386ca4945622d56c3469ecc38cacc183781e613" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "5cd4770f787ad997ca9243662728031766736fc12f310b822a93de3c51d81878" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "846ef3695c42d50347884515f98cc359a7a61b82a8d0c168df0f688cf54bf089" default))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
