@@ -726,6 +726,13 @@
 [submodule "vlf"]
 	path = lib/vlf
 	url = git@github.com:m00natic/vlfi.git
+[submodule "vterm"]
+	path = lib/vterm
+	url = git@github.com:akermu/emacs-libvterm.git
+	build-step = rm -rf build && mkdir build
+	build-step = cd build && cmake -DUSE_SYSTEM_LIBVTERM=yes .. && make
+	build-step = borg-byte-compile
+	build-step = borg-update-autoloads
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git

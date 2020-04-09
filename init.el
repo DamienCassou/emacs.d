@@ -1830,6 +1830,19 @@ I.e., the keyring has a public key for each recipient."
     (add-hook 'shell-dynamic-complete-functions
               #'bash-completion-dynamic-complete)))
 
+(use-package vterm
+  :init
+  (progn
+    (setq vterm-kill-buffer-on-exit t)
+
+    (defun my/vterm-open-new ()
+      "Open a new vterm session."
+      (interactive)
+      (vterm (generate-new-buffer-name "vterm")))
+
+    (with-eval-after-load 'shell-switcher
+      (setq shell-switcher-new-shell-function 'my/vterm-open-new))))
+
 (use-package eshell
   :commands (eshell eshell-command)
   :preface
