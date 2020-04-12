@@ -1819,7 +1819,23 @@ I.e., the keyring has a public key for each recipient."
   :hook (prog-mode . firestarter-mode)
   :init
   (progn
-    (setq firestarter-default-type 'failure)))
+    (setq firestarter-default-type 'failure))
+  :config
+  (progn
+    (defun my/firestarter-alert (process)
+      "Alert the user based on PROCESS termination."
+      (let ((return-code (process-exit-status process))
+            (buffer-name (process-get process 'buffer-name))
+            (output (process-get process 'output))
+            end)
+        (case return-code
+          (0 (alert "success"
+                    :title "firestarter"))
+          (otherwise (alert output
+                            :title "firestarter"
+                            :severity 'urgent)))))
+
+    (add-to-list 'firestarter-reporting-functions #'my/firestarter-alert)))
 
 (use-package adoc-mode
   :mode "\\.adoc\\'")
