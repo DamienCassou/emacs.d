@@ -94,6 +94,7 @@
       '(
         anzu-query-replace
         beginend-message-goto-end
+        beginend-prog-mode-goto-beginning
         counsel-projectile-find-file
         edebug-continue-mode
         end-of-buffer
