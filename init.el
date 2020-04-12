@@ -1850,6 +1850,7 @@ I.e., the keyring has a public key for each recipient."
   :init
   (progn
     (setq vterm-kill-buffer-on-exit t)
+    (setq vterm-max-scrollback 100000)
 
     (defun my/vterm-open-new ()
       "Open a new vterm session."
