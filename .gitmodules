@@ -505,15 +505,6 @@
 	path = lib/no-littering
 	url = git@github.com:emacscollective/no-littering.git
 	remote = "DamienCassou git@github.com:DamienCassou/no-littering.git"
-[submodule "notmuch"]
-	path = lib/notmuch
-	url = git://notmuchmail.org/git/notmuch
-	load-path = emacs
-	info-path = doc/_build/texinfo
-	build-step = ./configure
-	build-step = make
-	build-step = make sphinx-texinfo
-	build-step = borg-makeinfo
 [submodule "nov"]
 	path = lib/nov
 	url = git@github.com:wasamasa/nov.el.git
