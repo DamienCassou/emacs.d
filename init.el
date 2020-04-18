@@ -615,6 +615,7 @@ current."
   :hook (ledger-mode . my/configure-ledger-mode)
   :init
   (progn
+    (setq ledger-binary-path (executable-find "ledger"))
     (setq ledger-reports
           (mapcar
            (lambda (pair)
