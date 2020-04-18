@@ -1613,8 +1613,7 @@ I.e., the keyring has a public key for each recipient."
   :after prodigy
   :config
   (progn
-    (add-to-list 'finsit-prodigy-remotes '("vbox" "http://localhost:8081"))
-    (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.13:80"))
+    (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.88:80"))
 
     (finsit-prodigy-setup)))
 
