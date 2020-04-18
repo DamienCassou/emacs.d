@@ -91,9 +91,6 @@
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
-[submodule "closql"]
-	path = lib/closql
-	url = git@github.com:emacscollective/closql.git
 [submodule "company"]
 	path = lib/company
 	url = git@github.com:company-mode/company-mode.git
@@ -143,6 +140,9 @@
 [submodule "dired-rsync"]
 	path = lib/dired-rsync
 	url = git@github.com:stsquad/dired-rsync.git
+[submodule "direnv"]
+	path = lib/direnv
+	url = https://github.com/wbolster/emacs-direnv.git
 [submodule "dockerfile-mode"]
 	path = lib/dockerfile-mode
 	url = git@github.com:spotify/dockerfile-mode.git
@@ -186,11 +186,6 @@
 	url = git@github.com:foretagsplatsen/emacs-js.git
 	load-path = .
 	load-path = widgetjs
-[submodule "emacsql"]
-	path = lib/emacsql
-	url = git@github.com:skeeto/emacsql.git
-	no-byte-compile = emacsql-pg.el
-	remote = "DamienCassou git@github.com:DamienCassou/emacsql.git"
 [submodule "emake"]
 	path = lib/emake
 	url = https://github.com/vermiculus/emake.el.git
@@ -199,9 +194,6 @@
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
-[submodule "epkg"] # browse the emacs mirror
-	path = lib/epkg
-	url = git@github.com:emacscollective/epkg.git
 [submodule "epl"]
 	path = lib/epl
 	url = git@github.com:cask/epl.git
@@ -407,10 +399,6 @@
 	path = lib/libelcouch
 	url = git@gitea.petton.fr/elcouch/libelcouch.git
 	remote = "github git@github.com:DamienCassou/libelcouch.git"
-[submodule "libgit"]
-	path = lib/libgit
-	url = git@github.com:magit/libegit2.git
-	build-step = make
 [submodule "libmpdel"]
 	path = lib/libmpdel
 	url = git@gitea.petton.fr/mpdel/libmpdel.git
@@ -573,13 +561,6 @@
 	path = lib/password-store-otp
 	url = git@github.com:volrath/password-store-otp.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/password-store-otp.el.git"
-[submodule "pdf-tools"]
-	path = lib/pdf-tools
-	url = git@github.com:politza/pdf-tools.git
-	# build-step = sudo dnf install make automake autoconf gcc gcc-c++ ImageMagick libpng-devel zlib-devel poppler-glib-devel
-	build-step = make
-	build-step = borg-byte-compile
-	build-step = borg-update-autoloads
 [submodule "pinentry"]
 	path = lib/pinentry
 	url = git@github.com:ueno/pinentry-el.git
@@ -717,13 +698,6 @@
 [submodule "vlf"]
 	path = lib/vlf
 	url = git@github.com:m00natic/vlfi.git
-[submodule "vterm"]
-	path = lib/vterm
-	url = git@github.com:akermu/emacs-libvterm.git
-	build-step = rm -rf build && mkdir build
-	build-step = cd build && cmake -DUSE_SYSTEM_LIBVTERM=yes .. && make
-	build-step = borg-byte-compile
-	build-step = borg-update-autoloads
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git
