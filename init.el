@@ -431,9 +431,9 @@ current."
          (err (alert (format "%d job failed: %s" job-count err)
                      :severity 'urgent
                      :title "dired-rsync"))
-         (t (alert "dome"
-                   :severity 'normal
-                   :title "dired-rsync")))))
+         ((zerop job-count) (alert "done"
+                                   :severity 'normal
+                                   :title "dired-rsync")))))
 
     (advice-add #'dired-rsync--update-modeline :after #'my/dired-rsync-update-modeline)))
 
