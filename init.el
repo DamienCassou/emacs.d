@@ -1873,6 +1873,7 @@ I.e., the keyring has a public key for each recipient."
       (setq shell-switcher-new-shell-function 'my/vterm-open-new))))
 
 (use-package eshell
+  :disabled t
   :commands (eshell eshell-command)
   :preface
   (progn
@@ -1899,6 +1900,7 @@ I.e., the keyring has a public key for each recipient."
     (setq-default eshell-prompt-regexp "^$ ")))
 
 (use-package esh-mode
+  :disabled t
   :bind (
          :map eshell-mode-map
          ("<tab>" . my/esh-mode-completion-at-point))
@@ -1914,6 +1916,7 @@ I.e., the keyring has a public key for each recipient."
         (completion-at-point)))))
 
 (use-package em-hist
+  :disabled t
   :after eshell
   :demand t
   :bind (
@@ -1921,6 +1924,7 @@ I.e., the keyring has a public key for each recipient."
          ("M-p" . counsel-esh-history)))
 
 (use-package em-cmpl
+  :disabled t
   :hook (eshell-mode . eshell-cmpl-initialize)
   :init
   (progn
@@ -1935,12 +1939,14 @@ I.e., the keyring has a public key for each recipient."
       (setq eshell-default-completion-function #'my/eshell-bash-completion))))
 
 (use-package em-smart
+  :disabled t
   :hook (eshell-mode . eshell-smart-initialize)
   :config
   (progn
     (add-to-list 'eshell-smart-display-navigate-list #'counsel-esh-history)))
 
 (use-package em-term
+  :disabled t
   :config
   (progn
     (setq eshell-visual-commands
@@ -1960,6 +1966,7 @@ I.e., the keyring has a public key for each recipient."
   :hook (eshell-mode . esh-autosuggest-mode))
 
 (use-package esh-proc
+  :disabled t
   :hook ((eshell-kill . my/eshell-command-alert))
   :config
   (progn
