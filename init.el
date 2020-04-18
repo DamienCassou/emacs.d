@@ -604,6 +604,13 @@ current."
   (progn
     (setq flycheck-elsa-command 'host)))
 
+(use-package direnv
+  :demand t
+  :config
+  (progn
+    (direnv-mode)
+    (setq direnv-always-show-summary nil)))
+
 (use-package ledger-mode
   :hook (ledger-mode . my/configure-ledger-mode)
   :init
