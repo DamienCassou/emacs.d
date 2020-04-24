@@ -2033,6 +2033,11 @@ I.e., the keyring has a public key for each recipient."
       (local-set-key (kbd "C-c C-c") #'recompile)
       (flycheck-mode 1))))
 
+(use-package omnisharp-settings
+  :init
+  (progn
+    (setq omnisharp-server-executable-path (executable-find "omnisharp"))))
+
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
 
