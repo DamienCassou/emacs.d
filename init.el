@@ -1852,12 +1852,6 @@ I.e., the keyring has a public key for each recipient."
 (use-package adoc-mode
   :mode "\\.adoc\\'")
 
-(use-package bash-completion
-  :init
-  (progn
-    (add-hook 'shell-dynamic-complete-functions
-              #'bash-completion-dynamic-complete)))
-
 (use-package vterm
   :init
   (progn
