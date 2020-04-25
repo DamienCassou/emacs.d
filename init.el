@@ -1866,24 +1866,6 @@ I.e., the keyring has a public key for each recipient."
     (with-eval-after-load 'shell-switcher
       (setq shell-switcher-new-shell-function 'my/vterm-open-new))))
 
-(use-package term
-  :bind (
-         :map term-mode-map
-         ("M-j" . my/term-toggle-line-mode)
-         :map term-raw-map
-         ("M-j" . my/term-toggle-line-mode))
-  :init
-  (progn
-    ;; Avoids checking at runtime if my Emacs is recent enough (it is)
-    (setq term--bash-needs-EMACS-status 0)
-
-    (defun my/term-toggle-line-mode ()
-      "Toggle between char and line modes."
-      (interactive)
-      (if (term-in-char-mode)
-          (term-line-mode)
-        (term-char-mode)))))
-
 (use-package omnisharp
   :after csharp-mode
   :bind (
