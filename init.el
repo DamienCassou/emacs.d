@@ -942,7 +942,12 @@ because slides don't change their ID all the time."
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
-          org-caldav-sync-changes-to-org 'all)))
+          org-caldav-sync-changes-to-org 'all)
+
+    (defun my/org-caldav-archive-year ()
+      "Archive a given year in my calendar."
+      (while (re-search-forward "^ *<2019-.*>$" nil t)
+        (org-archive-subtree)))))
 
 (use-package calendar
   :init
