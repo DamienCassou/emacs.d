@@ -2000,11 +2000,6 @@ I.e., the keyring has a public key for each recipient."
   :demand t
   :after org)
 
-(use-package navigel
-  :init
-  (progn
-    (setq navigel-single-buffer-apps '(mpdel))))
-
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
