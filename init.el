@@ -2005,21 +2005,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq navigel-single-buffer-apps '(mpdel))))
 
-(use-package geiser-mode
-  :config
-  (progn
-    (unbind-key "C-." geiser-mode-map)))
-
-(use-package geiser-impl
-  :init
-  (progn
-    (setq geiser-active-implementations '(guile))))
-
-(use-package geiser-repl
-  :config
-  (progn
-    (unbind-key "C-." geiser-repl-mode-map)))
-
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
