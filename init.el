@@ -1991,6 +1991,11 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (add-to-list 'auto-mode-alist (cons "\\.epub\\'" #'nov-mode))))
 
+(use-package helm-systemd
+  :config
+  (progn
+    (setq helm-systemd-list-not-loaded t)))
+
 (use-package ob-verb
   :demand t
   :after org)
