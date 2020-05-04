@@ -1599,6 +1599,11 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (finsit-bugref-setup)))
 
+(use-package libelcouch
+  :init
+  (progn
+    (setq libelcouch-timeout 100)))
+
 (use-package finsit-elcouch
   :demand t
   :after elcouch
