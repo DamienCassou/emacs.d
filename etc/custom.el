@@ -10,6 +10,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bookmark-save-flag 1)
+ '(custom-safe-themes
+   (quote
+    ("20f5690eb69b06a27c4c9dfcd386ca4945622d56c3469ecc38cacc183781e613" default)))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
@@ -19,7 +22,8 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((projectile-project-run-cmd . "mkdir -p build; cd build; cmake ..; make run")
+   (quote
+    ((projectile-project-run-cmd . "mkdir -p build; cd build; cmake ..; make run")
      (projectile-project-compilation-cmd . "mkdir -p build; cd build; cmake ..; make")
      (eval when
            (and
@@ -30,30 +34,37 @@
             (string-match-p "^[^.]"
                             (buffer-file-name)))
            (unless
-               (featurep 'package-build)
+               (featurep
+                (quote package-build))
              (let
                  ((load-path
                    (cons "../package-build" load-path)))
-               (require 'package-build)))
+               (require
+                (quote package-build))))
            (unless
-               (derived-mode-p 'emacs-lisp-mode)
+               (derived-mode-p
+                (quote emacs-lisp-mode))
              (emacs-lisp-mode))
            (package-build-minor-mode)
            (setq-local flycheck-checkers nil)
            (set
-            (make-local-variable 'package-build-working-dir)
+            (make-local-variable
+             (quote package-build-working-dir))
             (expand-file-name "../working/"))
            (set
-            (make-local-variable 'package-build-archive-dir)
+            (make-local-variable
+             (quote package-build-archive-dir))
             (expand-file-name "../packages/"))
            (set
-            (make-local-variable 'package-build-recipes-dir)
+            (make-local-variable
+             (quote package-build-recipes-dir))
             default-directory))
      (TeX-master . "geiser")
      (org-export-initial-scope . buffer)
      (org-id-link-to-org-use-id)
      (org-export-with-broken-links . t)
-     (eval require 'org-make-toc)
+     (eval require
+           (quote org-make-toc))
      (eval modify-syntax-entry 43 "'")
      (eval modify-syntax-entry 36 "'")
      (eval modify-syntax-entry 126 "'")
@@ -76,23 +87,34 @@
             (string-match-p "^[^.]"
                             (buffer-file-name)))
            (unless
-               (featurep 'package-build)
+               (featurep
+                (quote package-build))
              (let
                  ((load-path
                    (cons "../package-build" load-path)))
-               (require 'package-build)))
+               (require
+                (quote package-build))))
            (package-build-minor-mode)
            (set
-            (make-local-variable 'package-build-working-dir)
+            (make-local-variable
+             (quote package-build-working-dir))
             (expand-file-name "../working/"))
            (set
-            (make-local-variable 'package-build-archive-dir)
+            (make-local-variable
+             (quote package-build-archive-dir))
             (expand-file-name "../packages/"))
            (set
-            (make-local-variable 'package-build-recipes-dir)
+            (make-local-variable
+             (quote package-build-recipes-dir))
             default-directory))
-     (eval add-hook 'before-save-hook #'time-stamp nil t)
-     (eval add-hook 'before-save-hook #'time-stamp-target nil t)
+     (eval add-hook
+           (quote before-save-hook)
+           (function time-stamp)
+           nil t)
+     (eval add-hook
+           (quote before-save-hook)
+           (function time-stamp-target)
+           nil t)
      (electric-quote-mode . t)
      (org-src-preserve-indentation)
      (firestarter let
@@ -102,10 +124,10 @@
      (firestarter . "gulp css")
      (org-ascii-text-width . 200000000)
      (js2-strict-missing-semi-warning)
-     (eval flycheck-cask-setup)))
+     (eval flycheck-cask-setup))))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
- '(transmission-rpc-auth '(:username "transmission"))
+ '(transmission-rpc-auth (quote (:username "transmission")))
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)
  '(undo-outer-limit 200000000)
