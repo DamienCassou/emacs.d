@@ -1840,7 +1840,8 @@ I.e., the keyring has a public key for each recipient."
   :hook (prog-mode . firestarter-mode)
   :init
   (progn
-    (setq firestarter-default-type 'failure))
+    (setq firestarter-default-type 'failure)
+    (setq firestarter-auto-kill t))
   :config
   (progn
     (defun my/firestarter-alert (process)
