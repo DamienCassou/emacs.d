@@ -208,6 +208,12 @@ current."
   (progn
     (global-font-lock-mode)))
 
+(use-package fringe
+  :config
+  (progn
+    ;; large fringes to get hi-resolution flycheck marks:
+    (set-fringe-style (cons 16 16))))
+
 (use-package minibuffer
   :init
   (progn
