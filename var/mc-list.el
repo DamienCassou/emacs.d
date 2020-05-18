@@ -69,6 +69,7 @@
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-kill
+        paredit-meta-doublequote
         paredit-open-round
         paredit-raise-sexp
         paredit-semicolon
