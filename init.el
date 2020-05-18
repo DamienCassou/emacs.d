@@ -592,10 +592,7 @@ current."
     (setq flycheck-ledger-pedantic 'check-payees)
     (setq flycheck-ledger-explicit t)
     (setq flycheck-ledger-zero-accounts
-          '("^Assets:Budget:Available"
-            "^Assets:Budget:Taxes:Source"
-            "^Assets:Budget:Unbudgeted"
-            "^Budget:Unbudgeted"
+          '("^Budget:Unbudgeted"
             "^Budget:Available"))))
 
 (use-package flycheck-package
