@@ -511,9 +511,55 @@ current."
   :demand t
   :config
   (progn
+    (defun my/moody-flycheck-status ()
+      "Return the status of flycheck to be displayed in the mode-line."
+      (when flycheck-mode
+        (let ((text (pcase flycheck-last-status-change
+                      (`finished (if flycheck-current-errors
+                                     (let ((count (let-alist (flycheck-count-errors flycheck-current-errors)
+                                                    (+ (or .warning 0) (or .error 0)))))
+                                       (format "✖ %s Issue%s" count (if (eq 1 count) "" "s")))
+                                   ""))
+                      (`running     "⟲ Running")
+                      (`no-checker  "⚠ No Checker")
+                      (`not-checked "✖ Disabled")
+                      (`errored     "⚠ Error")
+                      (`interrupted "⛔ Interrupted")
+                      (`suspicious  ""))))
+          (if (string-empty-p text)
+              ""
+            (list text " ")))))
+
+    (defvar my/moody-mule-info
+      '(:eval (unless (eq buffer-file-coding-system
+                          (default-value 'buffer-file-coding-system))
+                (list mode-line-mule-info " "))))
+    (put 'my/moody-mule-info 'risky-local-variable t)
+    (make-variable-buffer-local 'my/moody-mule-info)
+
+    (defvar my/moody-modified
+      '(:eval (if (buffer-modified-p (current-buffer)) "x " "")))
+    (put 'my/moody-modified 'risky-local-variable t)
+    (make-variable-buffer-local 'my/moody-modified)
+
+    (defvar my/moody-flycheck
+      '(:eval (my/moody-flycheck-status)))
+    (put 'my/moody-flycheck 'risky-local-variable t)
+    (make-variable-buffer-local 'my/moody-flycheck)
+
+    (defvar my/moody-mode-line-client "")
+
+    (defvar my/moody-buffer-position (list mode-line-percent-position " %l:%c "))
+
     (setq x-underline-at-descent-line t)
     (moody-replace-mode-line-buffer-identification)
-    (moody-replace-vc-mode)))
+    (moody-replace-vc-mode)
+
+    (moody-replace-element 'mode-line-mule-info 'my/moody-mule-info)
+    (moody-replace-element 'mode-line-position 'my/moody-buffer-position)
+    (moody-replace-element 'mode-line-modified 'my/moody-modified)
+    (moody-replace-element 'mode-line-remote 'my/moody-flycheck)
+    (moody-replace-element 'mode-line-client 'my/mode-line-client)))
 
 (use-package vc-hooks
   :init
