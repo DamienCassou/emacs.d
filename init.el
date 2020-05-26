@@ -2016,6 +2016,9 @@ I.e., the keyring has a public key for each recipient."
   :demand t
   :after org)
 
+(use-package nix-mode
+  :hook ((proced-mode . nix-prettify-mode)))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
