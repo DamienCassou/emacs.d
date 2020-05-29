@@ -75,6 +75,7 @@
         paredit-semicolon
         paredit-splice-sexp-killing-backward
         paredit-wrap-round
+        picture-clear-column
         save-some-buffers
         sgml-slash
         skeleton-pair-insert-maybe
