@@ -1876,9 +1876,6 @@ I.e., the keyring has a public key for each recipient."
 
     (add-to-list 'firestarter-reporting-functions #'my/firestarter-alert)))
 
-(use-package adoc-mode
-  :mode "\\.adoc\\'")
-
 (use-package vterm
   :init
   (progn
