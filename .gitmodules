@@ -191,6 +191,9 @@
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
+[submodule "envrc"]
+	path = lib/envrc
+	url = git@github.com:purcell/envrc.git
 [submodule "epl"]
 	path = lib/epl
 	url = git@github.com:cask/epl.git

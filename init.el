@@ -29,6 +29,12 @@
   (setq use-package-compute-statistics t)
   (require 'use-package))
 
+(use-package envrc
+  :demand t
+  :config
+  (progn
+    (envrc-global-mode)))
+
 (use-package auto-compile
   :demand t
   :init
@@ -654,6 +660,7 @@ current."
     (setq flycheck-elsa-command 'host)))
 
 (use-package direnv
+  :disabled t
   :demand t
   :config
   (progn
