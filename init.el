@@ -492,7 +492,10 @@ current."
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-overview)
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpulled-from-pushremote)
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-upstream)
-      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-pushremote))))
+      (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-pushremote))
+
+    (transient-replace-suffix 'magit-commit 'magit-commit-autofixup
+      '("x" "Absorb changes" magit-commit-absorb))))
 
 (use-package magit-tbdiff
   :demand t
