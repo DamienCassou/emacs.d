@@ -29,12 +29,6 @@
   (setq use-package-compute-statistics t)
   (require 'use-package))
 
-(use-package envrc
-  :demand t
-  :config
-  (progn
-    (envrc-global-mode)))
-
 (use-package auto-compile
   :demand t
   :init
@@ -2025,6 +2019,16 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package nix-mode
   :hook ((proced-mode . nix-prettify-mode)))
+
+;; envrc must come late in the init.el file so add-hook adds it first
+;; in `find-file-hook'.
+(use-package envrc
+  :demand t
+  :config
+  (progn
+    (envrc-global-mode)
+    ;; ledger needs that for `ledger-toggle-current-transaction':
+    (unbind-key "C-c C-e" envrc-mode-map)))
 
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
