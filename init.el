@@ -686,11 +686,6 @@ current."
              ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
              ("Balance sheet"     . "balance --real ^Assets ^Liabilities \"^Equity:Retained earnings\"")
              ("Budget"            . "balance --empty --sort account ^Budget and not \\(Available or Unbudgeted\\)")
-             ("Check 1 (Equity:Budget = sums of envelops)"  . "balance --depth 1 ^Equity:Budget ^Budget")
-             ("Check 2 (Every euro is in an envelop)"       . "balance --depth 1 ^Assets ^Liabilities ^Equity:Budget")
-             ("Check 3 (MealVouchers card = budget)"       . "balance --depth 1 --empty ^Budget:Food:MealVouchers ^Assets:MealVouchers")
-             ("Check 4 (No negative expense)"              . "register ^Expenses --limit \"amount < 0\"")
-             ("Check 5 (No positive income)"              . "register ^Income --limit \"amount > 0\"")
              ("WK expenses"       . "register --effective --begin 2019-05 --end 2019-06 --collapse ^Assets:Receivables:WK")
 
              ("Equity"            . "equity --real")
