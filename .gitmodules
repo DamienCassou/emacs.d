@@ -706,6 +706,7 @@
 [submodule "websocket"] # dependency of jade
 	path = lib/websocket
 	url = git@github.com:ahyatt/emacs-websocket.git
+	branch = main
 [submodule "wgrep"]
 	path = lib/wgrep
 	url = git@github.com:mhayashi1120/Emacs-wgrep.git
