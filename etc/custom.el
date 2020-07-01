@@ -23,7 +23,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((TeX-master . "cv-esthetique")
+    ((org-use-sub-superscripts . {})
+     (TeX-master . "cv-esthetique")
      (TeX-PDF-mode . t)
      (projectile-project-run-cmd . "mkdir -p build; cd build; cmake ..; make run")
      (projectile-project-compilation-cmd . "mkdir -p build; cd build; cmake ..; make")
