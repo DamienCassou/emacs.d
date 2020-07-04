@@ -152,15 +152,23 @@ current."
 
 (use-package modus-operandi-theme
   :demand t
+  :init
+  (progn
+    (setq modus-operandi-theme-slanted-constructs t)
+    (setq modus-operandi-theme-bold-constructs t)
+    (setq modus-operandi-theme-proportional-fonts t)
+    (setq modus-operandi-theme-rainbow-headings t)
+    (setq modus-operandi-theme-section-headings t)
+    (setq modus-operandi-theme-scale-headings t)
+    (setq modus-operandi-theme-visible-fringes t)
+    (setq modus-operandi-theme-distinct-org-blocks t)
+    (setq modus-operandi-theme-3d-modeline t)
+    (setq modus-operandi-theme-subtle-diffs t)
+    (setq modus-operandi-theme-intense-standard-completions t)
+    (setq modus-operandi-theme-faint-syntax t))
   :config
-  (load-theme 'modus-operandi t)
-  (let ((line (face-attribute 'mode-line :underline)))
-    (set-face-attribute 'mode-line          nil :overline   line)
-    (set-face-attribute 'mode-line-inactive nil :overline   line)
-    (set-face-attribute 'mode-line-inactive nil :underline  line)
-    (set-face-attribute 'mode-line          nil :box        nil)
-    (set-face-attribute 'mode-line-inactive nil :box        nil)
-    (set-face-attribute 'mode-line-inactive nil :background "#e3edef")))
+  (progn
+    (load-theme 'modus-operandi t)))
 
 (use-package tramp
   :config
