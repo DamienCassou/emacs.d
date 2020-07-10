@@ -684,23 +684,23 @@ current."
                    (format "%s %s"
                            "%(binary) -f %(ledger-file)"
                            (cdr pair))))
-           '(("AOM days"          . "register --real --related --invert --sort -date ^Expenses")
-             ("Cash Flow"         . "register --real --related --invert --period %(month) ^Assets:Current")
-             ("Monthly cash flow" . "register --real --monthly --collapse ^Assets:Current")
-             ("Monthly balance"   . "register --real --monthly --collapse ^Assets ^Liabilities ^Equity")
+           '(("AOM days"          . "register --related --invert --sort -date ^Expenses")
+             ("Cash Flow"         . "register --related --invert --period %(month) ^Assets:Current")
+             ("Monthly cash flow" . "register --monthly --collapse ^Assets:Current")
+             ("Monthly balance"   . "register --monthly --collapse ^Assets ^Liabilities ^Equity")
              ("Account statement" . "register ^%(account)")
              ("Checks"            . "register --group-by=payee --payee=code --sort=payee --uncleared :Check")
 
-             ("Income statement"  . "balance --real --period %(month) --invert --sort T ^Income ^Expenses")
-             ("Balance sheet"     . "balance --real ^Assets ^Liabilities \"^Equity:Retained earnings\"")
+             ("Income statement"  . "balance --period %(month) --invert --sort T ^Income ^Expenses")
+             ("Balance sheet"     . "balance ^Assets ^Liabilities \"^Equity:Retained earnings\"")
              ("Budget"            . "balance --empty --sort account ^Budget and not \\(Available or Unbudgeted\\)")
              ("WK expenses"       . "register --effective --begin 2019-05 --end 2019-06 --collapse ^Assets:Receivables:WK")
 
-             ("Equity"            . "equity --real")
+             ("Equity"            . "equity")
 
              ;; GAEF
-             ("GAEF - Balance" . "balance --real ^Actifs ^Dettes")
-             ("GAEF - Revenus vs. Dépenses" . "balance --real --invert --sort T ^Revenus ^Dépenses")
+             ("GAEF - Balance" . "balance ^Actifs ^Dettes")
+             ("GAEF - Revenus vs. Dépenses" . "balance --invert --sort T ^Revenus ^Dépenses")
 
              ("GAEF - Goûters" . "balance --invert -X eur ^Personne ^Caisse ^Capitaux")
              )))
