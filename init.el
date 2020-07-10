@@ -1063,9 +1063,6 @@ because slides don't change their ID all the time."
     (ivy-taskrunner-minor-mode)))
 
 (use-package dumb-jump
-  :bind (
-         :map dumb-jump-mode-map
-         ("M-." . dumb-jump-go))
   :init
   (progn
     (setq dumb-jump-selector 'ivy)
