@@ -1065,8 +1065,8 @@ because slides don't change their ID all the time."
 (use-package dumb-jump
   :init
   (progn
-    (setq dumb-jump-selector 'ivy)
-    (dumb-jump-mode)))
+    (with-eval-after-load "xref"
+      (add-to-list 'xref-backend-functions #'dumb-jump-xref-activate))))
 
 (use-package unify-opening
   :demand t)
