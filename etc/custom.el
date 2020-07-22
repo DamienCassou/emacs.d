@@ -23,7 +23,8 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    (quote
-    ((js2-missing-semi-one-line-override)
+    ((flycheck-mode . t)
+     (js2-missing-semi-one-line-override)
      (org-use-sub-superscripts . {})
      (TeX-master . "cv-esthetique")
      (TeX-PDF-mode . t)
