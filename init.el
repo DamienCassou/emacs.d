@@ -746,6 +746,11 @@ current."
   (progn
     (setq ledger-complete-in-steps nil)))
 
+(use-package company-ledger
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-ledger)))
+
 (use-package ledger-import
   :hook ((ledger-import-finished . my/ledger-import-finish))
   :init
@@ -1520,7 +1525,7 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package company
   :bind ("C-. /" . company-complete)
-  :hook (prog-mode . company-mode)
+  :hook ((prog-mode ledger-mode) . company-mode)
   :init
   (progn
     (setq company-dabbrev-downcase nil)

@@ -94,6 +94,9 @@
 [submodule "company-eshell-autosuggest"]
 	path = lib/company-eshell-autosuggest
 	url = git@github.com:dieggsy/company-eshell-autosuggest.git
+[submodule "company-ledger"]
+	path = lib/company-ledger
+	url = https://github.com/debanjum/company-ledger.git
 [submodule "company-quickhelp"]
 	path = lib/company-quickhelp
 	url = git@github.com:expez/company-quickhelp.git
