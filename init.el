@@ -146,6 +146,7 @@ current."
       (when frame (select-frame frame))
       (setq frame-title-format "Emacs")
       (when (window-system)
+        (add-to-list 'default-frame-alist '(cursor-type bar . 5))
         (set-face-attribute 'default nil :height 120 :family "JetBrains Mono")))
 
     (my/setup-frame)))
