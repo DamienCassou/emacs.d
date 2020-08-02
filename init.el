@@ -165,6 +165,7 @@ current."
     (setq modus-operandi-theme-3d-modeline t)
     (setq modus-operandi-theme-subtle-diffs t)
     (setq modus-operandi-theme-intense-standard-completions t)
+    (setq modus-operandi-theme-intense-paren-match t)
     (setq modus-operandi-theme-faint-syntax t))
   :config
   (progn
