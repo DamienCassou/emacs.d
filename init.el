@@ -1907,6 +1907,9 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (defun my/configure-omnisharp ()
+      ;; for Nix: expect that direnv will configure an OMNISHARP_PATH
+      ;; environment variable:
+      (setq-local omnisharp-server-executable-path (getenv "OMNISHARP_PATH"))
       (add-to-list 'company-backends #'company-omnisharp)
       (local-set-key (kbd "C-c C-c") #'recompile)
       (flycheck-mode 1))))
