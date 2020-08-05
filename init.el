@@ -161,7 +161,7 @@ current."
     (setq modus-operandi-theme-rainbow-headings t)
     (setq modus-operandi-theme-section-headings t)
     (setq modus-operandi-theme-scale-headings t)
-    (setq modus-operandi-theme-visible-fringes t)
+    (setq modus-operandi-theme-fringes 'intense)
     (setq modus-operandi-theme-org-blocks 'greyscale)
     (setq modus-operandi-theme-3d-modeline t)
     (setq modus-operandi-theme-subtle-diffs t)
