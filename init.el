@@ -1547,9 +1547,6 @@ I.e., the keyring has a public key for each recipient."
     (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
     (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
 
-(use-package gulp-task-runner
-  :commands (gulp))
-
 (use-package prodigy
   :bind (
          :map prodigy-mode-map

@@ -293,9 +293,6 @@
 	url = git@github.com:ppareit/graphviz-dot-mode.git
 	remote = "DamienCassou git@github.com:DamienCassou/graphviz-dot-mode.git"
 	info-path = texinfo
-[submodule "gulp-task-runner"]
-	path = lib/gulp-task-runner
-	url = git@github.com:NicolasPetton/gulp-task-runner.git
 [submodule "helm"] # selection/completion interface for everything
 	path = lib/helm
 	url = git@github.com:emacs-helm/helm.git
