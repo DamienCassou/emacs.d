@@ -41,6 +41,7 @@
         markdown-outdent-or-delete
         message-beginning-of-line
         message-tab
+        mc/insert-numbers
         my-join-line
         my/exwm-counsel-yank-pop
         my/join-line
