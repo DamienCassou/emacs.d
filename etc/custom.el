@@ -21,8 +21,8 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   (quote
-    ((flycheck-mode . t)
+   '((project-vc-merge-submodules)
+     (flycheck-mode . t)
      (js2-missing-semi-one-line-override)
      (org-use-sub-superscripts . {})
      (TeX-master . "cv-esthetique")
@@ -110,7 +110,7 @@
      (firestarter . "gulp css")
      (org-ascii-text-width . 200000000)
      (js2-strict-missing-semi-warning)
-     (eval flycheck-cask-setup))))
+     (eval flycheck-cask-setup)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(transmission-rpc-auth '(:username "transmission"))
