@@ -193,6 +193,16 @@ current."
 
     (column-number-mode)))
 
+(use-package so-long
+  :demand t
+  :config
+  (progn
+    ;; webpack adds quite a few short lines of initialization in its
+    ;; build files. We should let so-long ignore those and still find
+    ;; the long ones:
+    (setq so-long-max-lines 100)
+    (global-so-long-mode)))
+
 (use-package epkg
   :init
   (progn
