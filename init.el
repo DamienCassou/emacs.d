@@ -1455,6 +1455,9 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package pass
   :commands pass
+  :bind (
+         :map pass-mode-map
+         ("M-w" . pass-copy))
   :config
   (progn
     (defun my/pass-insert-generated (entry)
