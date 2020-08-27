@@ -159,7 +159,6 @@ current."
     (setq modus-operandi-theme-scale-headings t)
     (setq modus-operandi-theme-section-headings t)
     (setq modus-operandi-theme-slanted-constructs t)
-    (setq modus-operandi-theme-subtle-diffs t)
     (setq modus-operandi-theme-variable-pitch-headings t))
   :config
   (progn
