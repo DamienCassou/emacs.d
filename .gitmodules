@@ -675,6 +675,9 @@
 [submodule "trinary"]
 	path = lib/trinary
 	url = git@github.com:emacs-elsa/trinary-logic.git
+[submodule "typescript"]
+	path = lib/typescript
+	url = https://github.com/emacs-typescript/typescript.el.git
 [submodule "undercover"]
 	path = lib/undercover
 	url = git@github.com:sviridov/undercover.el.git
