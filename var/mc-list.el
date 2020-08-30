@@ -39,9 +39,9 @@
         keyboard-escape-quit
         kill-region
         markdown-outdent-or-delete
+        mc/insert-numbers
         message-beginning-of-line
         message-tab
-        mc/insert-numbers
         my-join-line
         my/exwm-counsel-yank-pop
         my/join-line
