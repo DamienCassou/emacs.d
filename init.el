@@ -159,11 +159,12 @@ current."
   :demand t
   :init
   (progn
-    (setq modus-operandi-theme-3d-modeline t)
+    (setq modus-operandi-theme-mode-line 'moody)
     (setq modus-operandi-theme-bold-constructs t)
     (setq modus-operandi-theme-faint-syntax t)
     (setq modus-operandi-theme-fringes 'intense)
     (setq modus-operandi-theme-intense-paren-match t)
+    (setq modus-operandi-theme-intense-hl-line t)
     (setq modus-operandi-theme-completions 'opinionated)
     (setq modus-operandi-theme-org-blocks 'greyscale)
     (setq modus-operandi-theme-prompt 'intense)
