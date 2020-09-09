@@ -8,6 +8,9 @@
 
 (setq load-prefer-newer t)
 
+;; Deactivate beeping
+(setq ring-bell-function (lambda ()))
+
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
   (require  'borg)
