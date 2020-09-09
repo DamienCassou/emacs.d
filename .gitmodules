@@ -207,9 +207,6 @@
 	path = lib/eslintd-fix
 	url = git@github.com:aaronjensen/eslintd-fix.git
 	remote = "DamienCassou git@github.com:DamienCassou/eslintd-fix.git"
-[submodule "ess"]
-	path = lib/ess
-	url = https://github.com/emacs-ess/ESS.git
 [submodule "esxml"]
 	path = lib/esxml
 	url = git@github.com:tali713/esxml.git
