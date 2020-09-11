@@ -11,6 +11,9 @@
 ;; Deactivate beeping
 (setq ring-bell-function (lambda ()))
 
+;; Apply recommendation from modus Info manual:
+(setq face-near-same-color-threshold 45000)
+
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
   (require  'borg)
@@ -168,9 +171,13 @@ current."
     (setq modus-operandi-theme-completions 'opinionated)
     (setq modus-operandi-theme-org-blocks 'greyscale)
     (setq modus-operandi-theme-prompt 'intense)
-    (setq modus-operandi-theme-rainbow-headings t)
+
+    (setq modus-operandi-theme-headings
+          '((1 . highlight) ; make h1 stand out with a background
+            (2 . line)      ; add a line above h2
+            (t . rainbow))) ; choose a random color for all headings
+
     (setq modus-operandi-theme-scale-headings t)
-    (setq modus-operandi-theme-section-headings t)
     (setq modus-operandi-theme-slanted-constructs t)
     (setq modus-operandi-theme-variable-pitch-headings t))
   :config
