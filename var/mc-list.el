@@ -88,6 +88,7 @@
         wdired-finish-edit
         wdired-upcase-word
         wgrep-finish-edit
+        whole-line-or-region-kill-region
         yaml-electric-backspace
         yaml-electric-dash-and-dot
         yas-expand
