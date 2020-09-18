@@ -2040,6 +2040,12 @@ I.e., the keyring has a public key for each recipient."
 (use-package nix-mode
   :hook ((proced-mode . nix-prettify-mode)))
 
+(use-package whole-line-or-region
+  :demand t
+  :config
+  (progn
+    (whole-line-or-region-global-mode)))
+
 ;; envrc must come late in the init.el file so add-hook adds it first
 ;; in `find-file-hook'.
 (use-package envrc
