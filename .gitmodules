@@ -168,7 +168,7 @@
 	url = git@github.com:rejeep/el-mock.el.git
 [submodule "elcouch"]
 	path = lib/elcouch
-	url = git@gitea.petton.fr/DamienCassou/elcouch.git
+	url = git@github.com:DamienCassou/elcouch.git
 	remote = "github git@github.com:DamienCassou/elcouch.git"
 [submodule "eldev"]
 	path = lib/eldev
@@ -402,7 +402,7 @@
 	url = git@gitea.petton.fr:bcel/libbcel.git
 [submodule "libelcouch"]
 	path = lib/libelcouch
-	url = git@gitea.petton.fr/elcouch/libelcouch.git
+	url = git@github.com:DamienCassou/libelcouch.git
 	remote = "github git@github.com:DamienCassou/libelcouch.git"
 [submodule "libmpdel"]
 	path = lib/libmpdel
