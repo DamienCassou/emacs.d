@@ -723,9 +723,6 @@
 [submodule "which-key"] # displays bindings after a short break in a key sequence
 	path = lib/which-key
 	url = git@github.com:justbur/emacs-which-key.git
-[submodule "whole-line-or-region"]
-	path = lib/whole-line-or-region
-	url = https://github.com/purcell/whole-line-or-region.git
 [submodule "with-editor"]
 	path = lib/with-editor
 	url = git@github.com:magit/with-editor.git
