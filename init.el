@@ -858,12 +858,23 @@ current."
     (defun my/org-current-is-todo ()
       (string= "TODO" (org-get-todo-state)))
 
+    (defun my/string-truncate (len s)
+      "If S is longer than LEN, cut it down and add \"…\" to the end.
+
+The resulting string, including ellipsis, will be LEN characters
+long."
+      (declare (pure t) (side-effect-free t))
+      (let ((ellipsis "…"))
+        (if (> (length s) len)
+            (format "%s%s" (substring s 0 (- len (length ellipsis))) ellipsis)
+          s)))
+
     (defun org-agenda-format-parent (n)
       (save-excursion
         (save-restriction
           (widen)
           (org-up-heading-safe)
-          (s-truncate n (org-get-heading t t)))))
+          (my/string-truncate n (org-get-heading t t)))))
 
     (setq org-agenda-custom-commands
           '(("a" "Agenda for the current week" ((agenda "" nil)) nil nil)
