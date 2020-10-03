@@ -154,7 +154,7 @@ current."
   (progn
     (defun my/locate-make-command-line (search-string)
       "Return a list of arguments representing the mlocate command line."
-      `(,(executable-find "locate") "--existing" "--regex" "--regexp" ,search-string))
+      `("/usr/bin/locate" "--existing" "--regex" "--regexp" ,search-string))
 
     (setq locate-make-command-line #'my/locate-make-command-line)))
 
