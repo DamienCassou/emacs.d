@@ -1938,7 +1938,8 @@ I.e., the keyring has a public key for each recipient."
 (use-package omnisharp-settings
   :init
   (progn
-    (setq omnisharp-server-executable-path (executable-find "omnisharp"))))
+    (setq omnisharp-server-executable-path (executable-find "omnisharp"))
+    (setq omnisharp-imenu-support t)))
 
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
