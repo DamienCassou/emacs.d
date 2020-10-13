@@ -809,7 +809,7 @@ current."
    ("C-. o t"   . org-capture))
   :init
   (progn
-    (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t) (R . t)))
+    (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t) (R . t) (python . t)))
     (setq org-catch-invisible-edits 'show-and-error)
     (setq org-cycle-separator-lines 0)
     (setq org-clock-clocked-in-display nil)
