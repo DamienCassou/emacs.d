@@ -637,9 +637,6 @@
 [submodule "snapshot-timemachine-rsnapshot"] # rsnapshot backend for snapshot-timemachine
 	path = lib/snapshot-timemachine-rsnapshot
 	url = git@github.com:NicolasPetton/snapshot-timemachine-rsnapshot.git
-[submodule "solarized-theme"]
-	path = lib/solarized-theme
-	url = git@github.com:bbatsov/solarized-emacs.git
 [submodule "sourcemap"]
 	path = lib/sourcemap
 	url = git@github.com:syohex/emacs-sourcemap.git
@@ -744,10 +741,6 @@
 [submodule "youtube-dl"]
 	path = lib/youtube-dl
 	url = git@github.com:skeeto/youtube-dl-emacs.git
-[submodule "zerodark-theme"] # the best theme ever
-	path = lib/zerodark-theme
-	url = git@github.com:NicolasPetton/zerodark-theme.git
-	remote = "DamienCassou git@github.com:DamienCassou/zerodark-theme.git"
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
