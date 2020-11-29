@@ -1673,46 +1673,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (finsit-yasnippet-setup)))
 
-(use-package lui
-  :hook (lui-mode . my/lui-setup)
-  :init
-  (progn
-    (setq lui-flyspell-p t)
-    (setq lui-flyspell-alist '((".*" "american")))
-
-    (setq lui-time-stamp-position 'right-margin)
-    (setq lui-fill-type nil)
-    (setq lui-time-stamp-format "%H:%M")
-
-    (setq my/lui-prompt-string
-          (format "%s " (propertize "moi>"
-                                    'face `(
-                                            :foreground "#c678dd"
-                                            :background "#48384c"
-                                            :weight bold
-                                            :box 1)))))
-  :config
-  (progn
-    (defun my/lui-setup ()
-      (setq right-margin-width 5)
-      (setq fringes-outside-margins t)
-      (setq word-wrap t)
-      (setq wrap-prefix "    "))))
-
-(use-package lui-logging
-  :demand t
-  :after lui
-  :config
-  (progn
-    (enable-lui-logging-globally)))
-
-(use-package lui-track-bar
-  :demand t
-  :after lui
-  :config
-  (progn
-    (enable-lui-track-bar)))
-
 (use-package alert
   :demand t
   :init
