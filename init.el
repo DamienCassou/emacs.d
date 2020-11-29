@@ -1684,11 +1684,6 @@ I.e., the keyring has a public key for each recipient."
               (:mode . "\\`eshell-mode\\'"))
              ignore nil)))))
 
-(use-package erc-track
-  :init
-  (progn
-    (setq erc-track-enable-keybindings nil)))
-
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
          (magit-pre-refresh . diff-hl-magit-pre-refresh)
