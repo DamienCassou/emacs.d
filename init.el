@@ -1677,12 +1677,7 @@ I.e., the keyring has a public key for each recipient."
   :demand t
   :init
   (progn
-    (setq alert-default-style 'notifications)
-    (setq alert-user-configuration
-          '(;; throw away eshell notifications if buffer is visible:
-            (((:status selected visible)
-              (:mode . "\\`eshell-mode\\'"))
-             ignore nil)))))
+    (setq alert-default-style 'notifications)))
 
 (use-package diff-hl
   :hook ((prog-mode . diff-hl-mode)
