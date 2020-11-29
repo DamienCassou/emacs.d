@@ -1713,12 +1713,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (enable-lui-track-bar)))
 
-(use-package tracking
-  :bind (("C-. ." . tracking-next-buffer))
-  :config
-  (progn
-    (setq tracking-mode-map (make-sparse-keymap))))
-
 (use-package alert
   :demand t
   :init
