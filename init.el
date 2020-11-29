@@ -1719,54 +1719,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq tracking-mode-map (make-sparse-keymap))))
 
-(use-package circe
-  ;; Install gnutls-utils if circe is stuck "Connecting..."
-  ;; https://github.com/jorgenschaefer/circe/issues/287
-  :preface
-  (progn
-    (defun my/circe-get-password (host &optional user)
-      "Return password for HOST and USER."
-      (when-let* ((entry (auth-source-pass--find-match host user nil)))
-        (auth-source-pass-get 'secret entry))))
-  :config
-  (progn
-    (setq circe-default-nick "DamienCassou")
-    (setq circe-reduce-lurker-spam t)
-    (setq-default circe-sasl-username "DamienCassou")
-    (setq-default circe-nickserv-nick "DamienCassou")
-    (setq-default circe-sasl-password #'my/circe-get-password)
-    (setq-default circe-nickserv-password #'my/circe-get-password)
-
-    (setq circe-prompt-string my/lui-prompt-string)
-
-    (add-to-list 'circe-network-defaults
-                 '("Mozilla"
-                   :host "irc.mozilla.org" :port (6667 . 6697)
-                   :tls t
-                   :nickserv-mask "^NickServ!NickServ@services\\.$"
-                   :nickserv-identify-challenge "This nickname is registered and protected."
-                   :nickserv-identify-command "PRIVMSG NickServ IDENTIFY {password}"
-                   :nickserv-identify-confirmation "^You are now identified for .*\\.$"
-                   :nickserv-ghost-command "PRIVMSG NickServ :GHOST {nick} {password}"
-                   :nickserv-ghost-confirmation "has been ghosted\\.$\\|is not online\\.$"))
-    (add-to-list 'circe-network-defaults
-                 '("Gnome"
-                   :host "irc.gnome.org" :port (6667 . 6697)
-                   :tls t
-                   :nickserv-mask "^NickServ!NickServ@services\\.$"
-                   :nickserv-identify-challenge "This nickname is registered and protected."
-                   :nickserv-identify-command "MSG NickServ IDENTIFY {password}"
-                   :nickserv-identify-confirmation "^You are now identified for .*\\.$"
-                   :nickserv-ghost-command "PRIVMSG NickServ :GHOST {nick} {password}"
-                   :nickserv-ghost-confirmation "has been ghosted\\.$\\|is not online\\.$"))))
-
-(use-package circe-notifications
-  :after circe
-  :hook ((circe-server-connected . enable-circe-notifications))
-  :init
-  (progn
-    (setq circe-notifications-watch-strings '("DamienCassou" "[Dd]amien"))))
-
 (use-package alert
   :demand t
   :init

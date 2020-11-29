@@ -82,9 +82,6 @@
 [submodule "cdlatex"]
 	path = lib/cdlatex
 	url = git@github.com:cdominik/cdlatex.git
-[submodule "circe"]
-	path = lib/circe
-	url = git@github.com:jorgenschaefer/circe.git
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
