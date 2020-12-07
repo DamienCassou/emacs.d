@@ -103,6 +103,9 @@
 [submodule "company-tern"] # tern backend for company mode
 	path = lib/company-tern
 	url = git@github.com:proofit404/company-tern.git
+[submodule "counsel-jq"]
+	path = lib/counsel-jq
+	url = https://github.com/200ok-ch/counsel-jq.git
 [submodule "counsel-projectile"]
 	path = lib/counsel-projectile
 	url = git@github.com:ericdanan/counsel-projectile.git
