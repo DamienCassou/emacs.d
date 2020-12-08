@@ -1663,7 +1663,6 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.114:80"))
-    (add-to-list 'finsit-prodigy-remotes '("local" "http://localhost:5000"))
     (finsit-prodigy-setup)))
 
 (use-package finsit-yasnippet
