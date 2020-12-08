@@ -505,9 +505,6 @@
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
-[submodule "omnisharp"]
-	path = lib/omnisharp
-	url = git@github.com:OmniSharp/omnisharp-emacs.git
 [submodule "org"]
 	path = lib/org
 	url = https://code.orgmode.org/bzg/org-mode.git

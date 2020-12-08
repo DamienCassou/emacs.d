@@ -1809,30 +1809,6 @@ I.e., the keyring has a public key for each recipient."
     (with-eval-after-load 'shell-switcher
       (setq shell-switcher-new-shell-function 'my/vterm-open-new))))
 
-(use-package omnisharp
-  :after csharp-mode
-  :bind (
-         :map omnisharp-mode-map
-         ("C-c C-r" . omnisharp-run-code-action-refactoring)
-         ("M-." . omnisharp-find-implementations)
-         ("M-?" . omnisharp-find-usages))
-  :hook ((omnisharp-mode . my/configure-omnisharp)
-         (csharp-mode . omnisharp-mode))
-  :config
-  (progn
-    (setq omnisharp-server-executable-path (executable-find "omnisharp"))
-
-    (defun my/configure-omnisharp ()
-      (add-to-list 'company-backends #'company-omnisharp)
-      (local-set-key (kbd "C-c C-c") #'recompile)
-      (flycheck-mode 1))))
-
-(use-package omnisharp-settings
-  :init
-  (progn
-    (setq omnisharp-server-executable-path (executable-find "omnisharp"))
-    (setq omnisharp-imenu-support t)))
-
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
 
