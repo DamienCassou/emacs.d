@@ -1472,6 +1472,8 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (ivy-prescient-mode)
     (add-to-list 'ivy-prescient-sort-commands 'counsel-yank-pop t)
+    (add-to-list 'ivy-prescient-sort-commands 'magit-checkout t)
+    (add-to-list 'ivy-prescient-sort-commands 'notmuch-show-interactively-view-part t)
     (add-to-list 'ivy-prescient-sort-commands 'dired-do-async-shell-command t)))
 
 (use-package password-store
