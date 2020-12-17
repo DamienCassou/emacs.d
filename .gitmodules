@@ -580,6 +580,9 @@
 [submodule "pos-tip"] # make tool-tips appear nicely
 	path = lib/pos-tip
 	url = git@github.com:pitkali/pos-tip.git
+[submodule "prescient"]
+	path = lib/prescient
+	url = git@github.com:raxod502/prescient.el.git
 [submodule "prodigy"] # manage external services from within Emacs
 	path = lib/prodigy
 	url = git@github.com:rejeep/prodigy.el.git

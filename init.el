@@ -1457,6 +1457,25 @@ I.e., the keyring has a public key for each recipient."
     ;; To help me stop using it
     (unbind-key "C-r")))
 
+(use-package prescient
+  :demand t
+  :config
+  (progn
+    (prescient-persist-mode)))
+
+(use-package ivy-prescient
+  :demand t
+  ;; from prescient README: Please note that you must load Counsel
+  ;; before ivy-prescient.el. This is because loading Counsel results
+  ;; in a number of changes being made to the user options of Ivy,
+  ;; which ivy-prescient.el must then undo.
+  :after counsel
+  :config
+  (progn
+    (ivy-prescient-mode)
+    (add-to-list 'ivy-prescient-sort-commands 'counsel-yank-pop t)
+    (add-to-list 'ivy-prescient-sort-commands 'dired-do-async-shell-command t)))
+
 (use-package password-store
   :init
   (progn
