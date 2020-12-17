@@ -477,8 +477,6 @@ current."
     (recentf-mode)))
 
 (use-package magit
-  :bind (("C-x g" . magit-status)
-         ("C-x G" . magit-dispatch-popup))
   :init
   (progn
     (setq magit-diff-refine-hunk 'all)
