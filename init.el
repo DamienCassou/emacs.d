@@ -1914,14 +1914,6 @@ I.e., the keyring has a public key for each recipient."
   :disabled t
   :bind ([remap fill-paragraph] . unfill-toggle))
 
-(use-package transmission
-  :bind (
-         :map transmission-mode-map
-         ("k" . transmission-remove))
-  :config
-  (progn
-    (unbind-key "D" transmission-mode-map)))
-
 (use-package nov
   :init
   (progn
