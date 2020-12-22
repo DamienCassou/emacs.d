@@ -332,6 +332,9 @@
 [submodule "hydra"]
 	path = lib/hydra
 	url = git@github.com:abo-abo/hydra.git
+[submodule "imenu-extra"]
+	path = lib/imenu-extra
+	url = https://github.com/redguardtoo/imenu-extra
 [submodule "indium"]
 	path = lib/indium
 	url = git@github.com/NicolasPetton/Indium.git
