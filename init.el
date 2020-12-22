@@ -1598,7 +1598,7 @@ I.e., the keyring has a public key for each recipient."
          ("tdd.desc" ,(rx
                        line-start
                        (* blank)
-                       "it("
+                       "describe("
                        (or (seq "\"" (group-n 1 (* (not "\""))) "\"")
                            (seq "'" (group-n 1 (* (not "'"))) "'"))) 1))))))
 
