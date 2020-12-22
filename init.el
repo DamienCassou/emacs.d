@@ -1581,11 +1581,7 @@ I.e., the keyring has a public key for each recipient."
          ("<M-down>" . js2r-move-line-down))
   :init
   (progn
-    (setq indium-chrome-executable (executable-find "chromium-browser")))
-  :config
-  (progn
-    (setenv "PATH" (concat (getenv "PATH") ":/home/cassou/node_modules/.bin"))
-    (add-to-list 'exec-path "/home/cassou/node_modules/.bin")))
+    (setq indium-chrome-executable (executable-find "chromium-browser"))))
 
 (use-package prodigy
   :bind (
