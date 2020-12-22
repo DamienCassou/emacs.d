@@ -1583,6 +1583,25 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq indium-chrome-executable (executable-find "chromium-browser"))))
 
+(use-package js2-mode
+  :hook (js2-mode . my/js2-mode-setup)
+  :init
+  (progn
+    (defun my/js2-mode-setup ()
+      (imenu-extra-auto-setup
+       `(("tdd.it" ,(rx
+                     line-start
+                     (* blank)
+                     "it("
+                     (or (seq "\"" (group-n 1 (* (not "\""))) "\"")
+                         (seq "'" (group-n 1 (* (not "'"))) "'"))) 1)
+         ("tdd.desc" ,(rx
+                       line-start
+                       (* blank)
+                       "it("
+                       (or (seq "\"" (group-n 1 (* (not "\""))) "\"")
+                           (seq "'" (group-n 1 (* (not "'"))) "'"))) 1))))))
+
 (use-package prodigy
   :bind (
          :map prodigy-mode-map
