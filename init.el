@@ -1474,7 +1474,8 @@ I.e., the keyring has a public key for each recipient."
     (add-to-list 'ivy-prescient-sort-commands 'counsel-yank-pop t)
     (add-to-list 'ivy-prescient-sort-commands 'magit-checkout t)
     (add-to-list 'ivy-prescient-sort-commands 'notmuch-show-interactively-view-part t)
-    (add-to-list 'ivy-prescient-sort-commands 'dired-do-async-shell-command t)))
+    (add-to-list 'ivy-prescient-sort-commands 'dired-do-async-shell-command t)
+    (add-to-list 'ivy-prescient-sort-commands 'counsel-imenu t)))
 
 (use-package password-store
   :init
