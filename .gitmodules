@@ -299,6 +299,9 @@
 	url = git@github.com:ppareit/graphviz-dot-mode.git
 	remote = "DamienCassou git@github.com:DamienCassou/graphviz-dot-mode.git"
 	info-path = texinfo
+[submodule "haskell-mode"]
+	path = lib/haskell-mode
+	url = https://github.com/haskell/haskell-mode
 [submodule "helm"] # selection/completion interface for everything
 	path = lib/helm
 	url = git@github.com:emacs-helm/helm.git
