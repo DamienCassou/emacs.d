@@ -686,9 +686,12 @@ current."
 
 (use-package ledger-mode
   :hook (ledger-mode . my/configure-ledger-mode)
+  :mode "\\.hledger\\'"
+  :bind (
+         :map ledger-mode-map
+         ("C-c C-r" . ledger-report))
   :init
   (progn
-    (setq ledger-binary-path (executable-find "ledger"))
     (setq ledger-reports
           (mapcar
            (lambda (pair)
@@ -699,20 +702,34 @@ current."
            '(("Account statement" . "register ^%(account)")
              ("Checks"            . "register --group-by=payee --payee=code --sort=payee --uncleared :Check")
 
-             ("Income statement"  . "balance --period %(month) --invert --sort T ^Income ^Expenses")
-             ("Balance sheet"     . "balance ^Assets ^Liabilities \"^Equity:Retained earnings\"")
-             ("Budget"            . "balance --empty --sort account ^Budget and not \\(Unbudgeted\\)")
-             ("WK expenses"       . "register --effective --begin 2019-05 --end 2019-06 --collapse ^Assets:Receivables:WK")
+             ("Income statement"  . "balance --tree --period %(month) --invert --sort T ^Income ^Expenses")
+             ("Balance sheet"     . "balance --tree ^asset ^debt \"^equity:\"")
+             ("Budget"            . "balance --tree --empty --sort account ^budget and not \\(unbudgeted\\)")
+             ("WK expenses"       . "register --effective --begin 2021-05 --end 2021-06 --collapse ^asset:receivables:wk")
 
              ;; GAEF
              ("GAEF - Balance" . "balance ^Actifs ^Dettes")
              ("GAEF - Revenus vs. Dépenses" . "balance --invert --sort T ^Revenus ^Dépenses")
-
              ("GAEF - Goûters" . "balance --invert -X eur ^Personne ^Caisse ^Capitaux")
              )))
 
+    ;; For ledger
+    (progn
+      (setq ledger-mode-should-check-version nil)
+      (setq ledger-binary-path (executable-find "ledger"))
+      (setq ledger-report-links-in-register t)
+      (setq ledger-report-native-highlighting-arguments '("--color" "--force-color"))
+      (setq ledger-report-auto-width t))
+
+    ;; For hledger
+    (progn
+      (setq ledger-mode-should-check-version nil)
+      (setq ledger-binary-path (executable-find "hledger"))
+      (setq ledger-report-links-in-register nil)
+      (setq ledger-report-native-highlighting-arguments '("--color=always"))
+      (setq ledger-report-auto-width nil))
+
     (setq ledger-reconcile-default-commodity "EUR")
-    (setq ledger-report-links-in-register t)
     (setq ledger-report-use-header-line t)
     (setq ledger-report-use-native-highlighting t)
     (setq ledger-report-auto-refresh-sticky-cursor t)
@@ -760,7 +777,7 @@ current."
   :hook ((ledger-import-finished . my/ledger-import-finish))
   :init
   (progn
-    (setq ledger-import-boobank-import-from-date "2020-11-30")
+    (setq ledger-import-boobank-import-from-date "2021-01-01")
     (setq ledger-import-autosync-command
           '("ledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
@@ -797,6 +814,16 @@ current."
     (let ((file (expand-file-name "~/.password-store/Secure_Notes/ledger-accounts.gpg")))
       (when (file-exists-p file)
         (load file t)))))
+
+(use-package hledger-mode
+  :disabled t
+  :mode ("\\.hledger\\'")
+  :init
+  (progn
+    (setq hledger-jfile (expand-file-name "~/Documents/configuration/ledger/2021.hledger"))
+
+    (with-eval-after-load 'company
+      (add-to-list 'company-backends 'hledger-company))))
 
 (use-package org
   :bind
