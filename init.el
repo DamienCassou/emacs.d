@@ -753,8 +753,6 @@ current."
           (abs sek)
           rate))))
 
-    (load (expand-file-name "my-ledger.el" user-emacs-directory))
-
     (defun my/configure-ledger-mode ()
       "Configure the current Ledger buffer."
       ;; use TAB to complete:
