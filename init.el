@@ -706,13 +706,11 @@ current."
                    (format "%s %s"
                            "%(binary) -f %(ledger-file)"
                            (cdr pair))))
-           '(("Account statement" . "register ^%(account)")
-             ("Checks"            . "register --group-by=payee --payee=code --sort=payee --uncleared :Check")
-
-             ("Income statement"  . "balance --tree --period %(month) --invert --sort T ^Income ^Expenses")
-             ("Balance sheet"     . "balance --tree ^asset ^debt \"^equity:\"")
-             ("Budget"            . "balance --tree --empty --sort account ^budget and not \\(unbudgeted\\)")
-             ("WK expenses"       . "register --effective --begin 2021-05 --end 2021-06 --collapse ^asset:receivables:wk")
+           '(("Account statement" . "register --auto ^%(account)")
+             ("Income statement"  . "balance --auto --tree --period %(month) --invert --sort T ^income ^expense")
+             ("Balance sheet"     . "balance --auto --tree --sort-amount ^asset ^debt \"^equity:\"")
+             ("Budget"            . "balance --auto --tree --empty --sort account ^budget and not \\(unbudgeted\\)")
+             ("WK expenses"       . "register --auto --effective --begin 2021-05 --end 2021-06 --collapse ^asset:receivables:wk")
 
              ;; GAEF
              ("GAEF - Balance" . "balance ^Actifs ^Dettes")
