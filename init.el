@@ -664,6 +664,13 @@ current."
           '("^Budget:Unbudgeted"
             "^Budget:Available"))))
 
+(use-package flycheck-hledger
+  :after (flycheck ledger-mode)
+  :demand t
+  :init
+  (progn
+    (setq flycheck-hledger-strict t)))
+
 (use-package flycheck-package
   :demand t
   :after flycheck
