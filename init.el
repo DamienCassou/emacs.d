@@ -696,7 +696,9 @@ current."
   :mode "\\.hledger\\'"
   :bind (
          :map ledger-mode-map
-         ("C-c C-r" . ledger-report))
+         ("C-c C-r" . ledger-report)
+         ;; To get outline-minor-mode in ledger buffers:
+         ("TAB" . org-cycle))
   :init
   (progn
     (setq ledger-reports
@@ -758,12 +760,20 @@ current."
           (abs sek)
           rate))))
 
+    (defun my/ledger-configure-outline-minor-mode ()
+      "Configure a ledger buffer when `outline-minor-mode' is active."
+      (font-lock-add-keywords 'ledger-mode outline-font-lock-keywords)
+      (setq-local ;; copied from outline-mode major mode:
+       imenu-generic-expression
+       (list (list nil (concat "^\\(?:" outline-regexp "\\).*$") 0))))
+
     (defun my/configure-ledger-mode ()
       "Configure the current Ledger buffer."
       ;; use TAB to complete:
       (setq-local tab-always-indent 'complete)
       ;; use minibuffer completion with ivy
-      (setq-local ivy-display-functions-alist nil))))
+      (setq-local ivy-display-functions-alist nil)
+      (add-hook 'outline-minor-mode-hook #'my/ledger-configure-outline-minor-mode nil t))))
 
 (use-package ledger-complete
   :init
