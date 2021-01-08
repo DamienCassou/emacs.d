@@ -828,6 +828,12 @@ current."
     (with-eval-after-load 'company
       (add-to-list 'company-backends 'hledger-company))))
 
+(use-package goggles
+  :demand t
+  :config
+  (progn
+    (goggles-mode)))
+
 (use-package org
   :bind
   (("C-. o a"   . org-agenda)
