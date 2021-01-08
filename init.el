@@ -792,7 +792,7 @@ current."
   (progn
     (setq ledger-import-boobank-import-from-date "2021-01-01")
     (setq ledger-import-autosync-command
-          '("ledger-autosync" "--assertions"
+          '("hledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
 
     (defun my/ledger-import-alert ()
@@ -815,11 +815,19 @@ current."
       (delete-matching-lines "Autosync Balance Assertion")
       (delete-matching-lines "^$"))
 
+    (defun my/ledger-import-add-today-date-as-outline ()
+      "Add today's date as `outline-mode' markup."
+      (setf (point) (point-min))
+      (search-forward "Autosync Balance Assertion")
+      (setf (point) (line-beginning-position))
+      (insert (format "*** %s\n\n" (format-time-string "%B %-d"))))
+
     (defun my/ledger-import-finish ()
       "Some actions to do when ledger-import finishes."
       (interactive)
       (my/ledger-import-remove-EUR)
       (my/ledger-import-merge-autosync-transactions)
+      (my/ledger-import-add-today-date-as-outline)
       (my/ledger-import-alert)))
   :config
   (progn
