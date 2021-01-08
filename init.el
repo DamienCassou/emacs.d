@@ -708,7 +708,7 @@ current."
                            (cdr pair))))
            '(("Account statement" . "register --auto ^%(account)")
              ("Income statement"  . "balance --auto --tree --period %(month) --invert --sort T ^income ^expense")
-             ("Balance sheet"     . "balance --auto --tree --sort-amount ^asset ^debt \"^equity:\"")
+             ("Balance sheet"     . "balance --auto --tree ^asset ^debt \"^equity:\"")
              ("Budget"            . "balance --auto --tree --empty --sort account ^budget and not \\(unbudgeted\\)")
              ("WK expenses"       . "register --auto --effective --begin 2021-05 --end 2021-06 --collapse ^asset:receivables:wk")
 
