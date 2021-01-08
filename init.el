@@ -1526,6 +1526,8 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (ivy-prescient-mode)
     (let ((commands-without-precient '(counsel-imenu
+                                       counsel-projectile-ag
+                                       counsel-projectile-rg
                                        counsel-yank-pop
                                        dired-do-async-shell-command
                                        magit-checkout
