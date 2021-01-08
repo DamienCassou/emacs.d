@@ -1525,11 +1525,13 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (ivy-prescient-mode)
-    (add-to-list 'ivy-prescient-sort-commands 'counsel-yank-pop t)
-    (add-to-list 'ivy-prescient-sort-commands 'magit-checkout t)
-    (add-to-list 'ivy-prescient-sort-commands 'notmuch-show-interactively-view-part t)
-    (add-to-list 'ivy-prescient-sort-commands 'dired-do-async-shell-command t)
-    (add-to-list 'ivy-prescient-sort-commands 'counsel-imenu t)))
+    (let ((commands-without-precient '(counsel-imenu
+                                       counsel-yank-pop
+                                       dired-do-async-shell-command
+                                       magit-checkout
+                                       notmuch-show-interactively-view-part)))
+      (dolist (command commands-without-precient)
+        (add-to-list 'ivy-prescient-sort-commands command t)))))
 
 (use-package password-store
   :init
