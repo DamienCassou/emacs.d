@@ -236,6 +236,9 @@
 	path = lib/flycheck-elsa
 	url = git@github.com:emacs-elsa/flycheck-elsa.git
 	remote = "DamienCassou git@github.com:DamienCassou/flycheck-elsa.git"
+[submodule "flycheck-hledger"]
+	path = lib/flycheck-hledger
+	url = git@github.com:DamienCassou/flycheck-hledger.git
 [submodule "flycheck-ledger"]
 	path = lib/flycheck-ledger
 	url = git@github.com:purcell/flycheck-ledger.git
