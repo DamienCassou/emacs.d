@@ -267,9 +267,6 @@
 [submodule "frame-purpose"]
 	path = lib/frame-purpose
 	url = git@github.com:alphapapa/frame-purpose.el.git
-[submodule "fsharp-mode"]
-	path = lib/fsharp-mode
-	url = git@github.com:fsharp/emacs-fsharp-mode.git
 [submodule "ftgp"]
 	path = lib/ftgp
 	url = git@gitea.petton.fr/ftgp/emacs.git
