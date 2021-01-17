@@ -1086,21 +1086,8 @@ because slides don't change their ID all the time."
 (use-package calendar
   :init
   (progn
-    (defvar my/french-holiday
-      '((holiday-fixed 1 1 "Jour de l'an")
-        (holiday-fixed 5 1 "Fête du travail")
-        (holiday-fixed 5 8 "Victoire 45")
-        (holiday-fixed 7 14 "Fête nationale")
-        (holiday-fixed 8 15 "Assomption")
-        (holiday-fixed 11 1 "Toussaint")
-        (holiday-fixed 11 11 "Armistice 18")
-        (holiday-fixed 12 25 "Noël")
-        (holiday-easter-etc 1 "Lundi de Pâques")
-        (holiday-easter-etc 39 "Ascension")
-        (holiday-easter-etc 50 "Lundi de Pentecôte")))
     (setq calendar-date-style 'european)
     (setq calendar-week-start-day 1)
-    (setq calendar-holidays my/french-holiday)
     (setq calendar-mark-holidays-flag t)))
 
 (use-package drag-stuff
