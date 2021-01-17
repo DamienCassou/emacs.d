@@ -1068,10 +1068,20 @@ because slides don't change their ID all the time."
 
 (use-package org-roam
   :demand t
+  :hook ((after-init . org-roam-mode)
+         (org-mode . my/org-roam-setup))
   :init
   (progn
-    (setq org-roam-db-update-method 'immediate)
-    (add-hook 'after-init-hook 'org-roam-mode)))
+    (setq org-roam-directory "/home/cassou/Documents/configuration/org-roam")
+    (setq org-roam-db-update-method 'immediate))
+  :config
+  (progn
+    (defun my/org-roam-setup ()
+      "Initialize an org-roam buffer."
+      (when (and (buffer-file-name) (string-prefix-p org-roam-directory (buffer-file-name)))
+        ;; Recommended by org-roam manual:
+        (setq-local company-backends (cons 'company-capf company-backends))
+        (company-mode)))))
 
 (use-package calendar
   :init
