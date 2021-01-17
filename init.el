@@ -1066,6 +1066,13 @@ because slides don't change their ID all the time."
       (while (re-search-forward "^ *<2019-.*>$" nil t)
         (org-archive-subtree)))))
 
+(use-package org-roam
+  :demand t
+  :init
+  (progn
+    (setq org-roam-db-update-method 'immediate)
+    (add-hook 'after-init-hook 'org-roam-mode)))
+
 (use-package calendar
   :init
   (progn
