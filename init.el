@@ -669,7 +669,8 @@ current."
   :demand t
   :init
   (progn
-    (setq flycheck-hledger-strict t)))
+    (setq flycheck-hledger-strict t)
+    (setq flycheck-hledger-checks '("payees" "ordereddates"))))
 
 (use-package flycheck-package
   :demand t
