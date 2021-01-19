@@ -396,10 +396,6 @@
 [submodule "khardel"]
 	path = lib/khardel
 	url = git@gitea.petton.fr/DamienCassou/khardel.git
-[submodule "klassified"]
-	path = lib/klassified
-	url = git@gitea.petton.fr/DamienCassou/klassified.git
-	remote = "github git@github.com:DamienCassou/klassified.el.git"
 [submodule "know-your-http-well"]
 	path = lib/know-your-http-well
 	url = git@github.com:for-GET/know-your-http-well.git

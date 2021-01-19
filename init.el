@@ -1820,9 +1820,6 @@ I.e., the keyring has a public key for each recipient."
     (setq skeletor-project-directory "/home/cassou/.emacs.d/packages/")
     (setq skeletor-show-project-command 'magit-status)))
 
-(use-package klassified
-  :hook (js-mode . klassified-interaction-js-mode))
-
 (use-package json-navigator
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
 
