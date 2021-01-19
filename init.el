@@ -1637,6 +1637,7 @@ I.e., the keyring has a public key for each recipient."
     (setq company-show-numbers t)))
 
 (use-package emacs-js
+  :disabled t
   :hook (js-mode . setup-js-buffer)
   :bind (
          :map js2-refactor-mode-map
@@ -1822,6 +1823,38 @@ I.e., the keyring has a public key for each recipient."
 
 (use-package json-navigator
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
+
+(use-package lsp-mode
+  :hook ((js2-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp
+  :load-path "./lib/lsp-mode/clients"
+  :init
+  (progn
+    (setq lsp-keymap-prefix "C-. l")
+    (setq lsp-file-watch-threshold 10000)
+    ;; Setup dap-mode manually to avoid `dap-ui-many-windows-mode':
+    (setq lsp-enable-dap-auto-configure nil)))
+
+(use-package js2-mode
+  :mode "\\.js\\'")
+
+(use-package dap-mode
+  :demand t
+  :after lsp-mode
+  :hook (dap-stopped . my/dap-mode-open-hydra)
+  :init
+  (progn
+    (dap-mode)
+    (dap-ui-mode))
+  :config
+  (progn
+    (defun my/dap-mode-open-hydra (_session)
+      (call-interactively #'dap-hydra))))
+
+(use-package dap-chrome
+  :demand t
+  :after dap-mode)
 
 (use-package markdown-mode
   :init
