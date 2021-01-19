@@ -115,6 +115,9 @@
 [submodule "css-eldoc"]
 	path = lib/css-eldoc
 	url = git@github.com:zenozeng/css-eldoc.git
+[submodule "dap-mode"]
+	path = lib/dap-mode
+	url = git@github.com:emacs-lsp/dap-mode.git
 [submodule "dash"] # list library
 	path = lib/dash
 	url = git@github.com:magnars/dash.el.git
@@ -332,6 +335,9 @@
 [submodule "hledger-mode"]
 	path = lib/hledger-mode
 	url = git@github.com:narendraj9/hledger-mode.git
+[submodule "ht"]
+	path = lib/ht
+	url = git@github.com:Wilfred/ht.el.git
 [submodule "htmlize"]
 	path = lib/htmlize
 	url = git@github.com:hniksic/emacs-htmlize.git
@@ -432,6 +438,16 @@
 [submodule "loop"]
 	path = lib/loop
 	url = git@github.com:Wilfred/loop.el.git
+[submodule "lsp-ivy"]
+	path = lib/lsp-ivy
+	url = git@github.com:emacs-lsp/lsp-ivy.git
+[submodule "lsp-mode"]
+	path = lib/lsp-mode
+	url = git@github.com:emacs-lsp/lsp-mode.git
+	remote = "DamienCassou git@github.com:DamienCassou/lsp-mode.git"
+[submodule "lsp-treemacs"]
+	path = lib/lsp-treemacs
+	url = git@github.com:emacs-lsp/lsp-treemacs.git
 [submodule "m-buffer"]
 	path = lib/m-buffer
 	url = git@github.com:phillord/m-buffer-el.git
@@ -577,6 +593,9 @@
 	path = lib/password-store-otp
 	url = git@github.com:volrath/password-store-otp.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/password-store-otp.el.git"
+[submodule "pfuture"]
+	path = lib/pfuture
+	url = git@github.com:Alexander-Miller/pfuture.git
 [submodule "pinentry"]
 	path = lib/pinentry
 	url = git@github.com:ueno/pinentry-el.git
@@ -593,6 +612,9 @@
 [submodule "pos-tip"] # make tool-tips appear nicely
 	path = lib/pos-tip
 	url = git@github.com:pitkali/pos-tip.git
+[submodule "posframe"]
+	path = lib/posframe
+	url = git@github.com:tumashu/posframe.git
 [submodule "prescient"]
 	path = lib/prescient
 	url = git@github.com:raxod502/prescient.el.git
@@ -653,6 +675,9 @@
 [submodule "sourcemap"]
 	path = lib/sourcemap
 	url = git@github.com:syohex/emacs-sourcemap.git
+[submodule "spinner"]
+	path = lib/spinner
+	url = git@github.com:Malabarba/spinner.el.git
 [submodule "stream"]
 	path = lib/stream
 	url = git@github.com:emacsmirror/stream.git
@@ -683,6 +708,10 @@
 	path = lib/transient
 	url = git@github.com:magit/transient.git
 	info-path = docs
+[submodule "treemacs"]
+	path = lib/treemacs
+	url = git@github.com:Alexander-Miller/treemacs.git
+	load-path = src/elisp
 [submodule "treepy"]
 	path = lib/treepy
 	url = git@github.com:volrath/treepy.el.git
