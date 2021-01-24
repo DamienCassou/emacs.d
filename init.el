@@ -714,13 +714,13 @@ current."
            '(("Account statement" . "register --auto ^%(account)")
              ("Income statement"  . "balance --auto --tree --period %(month) --invert --sort T ^income ^expense")
              ("Balance sheet"     . "balance --auto --tree ^asset ^debt \"^equity:\"")
-             ("Budget"            . "balance --auto --tree --empty --sort account ^budget and not \\(unbudgeted\\)")
+             ("Budget"            . "balance --auto --tree --empty ^budget not:unbudgeted")
              ("WK expenses"       . "register --auto --effective --begin 2021-05 --end 2021-06 --collapse ^asset:receivables:wk")
 
              ;; GAEF
-             ("GAEF - Balance" . "balance ^Actifs ^Dettes")
-             ("GAEF - Revenus vs. Dépenses" . "balance --invert --sort T ^Revenus ^Dépenses")
-             ("GAEF - Goûters" . "balance --invert -X eur ^Personne ^Caisse ^Capitaux")
+             ("GAEF - Balance" . "balance --tree ^Actifs ^Dettes")
+             ("GAEF - Revenus vs. Dépenses" . "balance --invert --tree ^Revenus ^Dépenses")
+             ("GAEF - Goûters" . "balance --invert -X eur --tree ^Personne ^Caisse ^Capitaux")
              )))
 
     ;; For ledger
