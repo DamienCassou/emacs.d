@@ -60,9 +60,6 @@
 	path = lib/borg
 	url = git@github.com:emacscollective/borg.git
 	remote = "DamienCassou git@github.com:DamienCassou/borg.git"
-[submodule "borg-queen"]
-	path = lib/borg-queen
-	url = git@github.com:thblt/borg-queen.git
 [submodule "buffer-move"]
 	path = lib/buffer-move
 	url = git@github.com:lukhas/buffer-move.git
