@@ -699,7 +699,9 @@ current."
          :map ledger-mode-map
          ("C-c C-r" . ledger-report)
          ;; To get outline-minor-mode in ledger buffers:
-         ("TAB" . org-cycle))
+         ("TAB" . org-cycle)
+         :map ledger-report-mode-map
+         ("C-c C-r" . ledger-report))
   :init
   (progn
     (setq ledger-reports
