@@ -1839,7 +1839,15 @@ I.e., the keyring has a public key for each recipient."
     (setq lsp-enable-dap-auto-configure nil)))
 
 (use-package js2-mode
-  :mode "\\.js\\'")
+  :mode "\\.js\\'"
+  :init
+  (progn
+    (add-hook 'js2-mode-hook #'my/js2-mode-setup 95))
+  :config
+  (progn
+    (defun my/js2-mode-setup ()
+      (when (bound-and-true-p lsp-eslint-auto-fix-on-save)
+        (add-hook 'before-save-hook #'lsp-eslint-fix-all nil t)))))
 
 (use-package dap-mode
   :demand t
