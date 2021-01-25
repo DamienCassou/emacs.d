@@ -431,6 +431,9 @@
 [submodule "loop"]
 	path = lib/loop
 	url = git@github.com:Wilfred/loop.el.git
+[submodule "lsp-haskell"]
+	path = lib/lsp-haskell
+	url = git@github.com:emacs-lsp/lsp-haskell.git
 [submodule "lsp-ivy"]
 	path = lib/lsp-ivy
 	url = git@github.com:emacs-lsp/lsp-ivy.git
@@ -441,6 +444,9 @@
 [submodule "lsp-treemacs"]
 	path = lib/lsp-treemacs
 	url = git@github.com:emacs-lsp/lsp-treemacs.git
+[submodule "lsp-ui"]
+	path = lib/lsp-ui
+	url = git@github.com:emacs-lsp/lsp-ui.git
 [submodule "m-buffer"]
 	path = lib/m-buffer
 	url = git@github.com:phillord/m-buffer-el.git
