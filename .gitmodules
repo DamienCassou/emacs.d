@@ -529,13 +529,6 @@
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
-[submodule "org"]
-	path = lib/org
-	url = https://code.orgmode.org/bzg/org-mode.git
-	load-path = lisp
-	info-path = doc
-	build-step = make compile autoloads info
-	fetchRecurseSubmodules = true
 [submodule "org-caldav"]
 	path = lib/org-caldav
 	url = git@github.com:dengste/org-caldav.git
