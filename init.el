@@ -1850,6 +1850,7 @@ I.e., the keyring has a public key for each recipient."
         (add-hook 'before-save-hook #'lsp-eslint-fix-all nil t)))))
 
 (use-package dap-mode
+  :disabled t
   :demand t
   :after lsp-mode
   :hook (dap-stopped . my/dap-mode-open-hydra)
