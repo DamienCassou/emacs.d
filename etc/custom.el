@@ -21,7 +21,8 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((lsp-eslint-auto-fix-on-save . t)
+   '((flycheck-disabled-checkers ledger)
+     (lsp-eslint-auto-fix-on-save . t)
      (lsp-eslint-package-manager . "yarn")
      (lsp--override-calculate-lisp-indent\? . t)
      (flycheck-disabled-checkers quote
