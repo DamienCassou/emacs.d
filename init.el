@@ -1033,6 +1033,7 @@ long."
         (org-agenda-to-appt t)))))
 
 (use-package org-notmuch
+  :disabled t
   :demand t
   :after (:any org notmuch))
 
