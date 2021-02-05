@@ -719,7 +719,7 @@ current."
                            "%(binary) -f %(ledger-file)"
                            (cdr pair))))
            '(("Account statement" . "register --auto ^%(account)")
-             ("Income statement"  . "balance --auto --tree --period %(month) --invert --sort T ^income ^expense")
+             ("Income statement"  . "balance --auto --tree --period %(month) --invert ^income ^expense")
              ("Balance sheet"     . "balance --auto --tree ^asset ^debt \"^equity:\"")
              ("Budget"            . "balance --auto --tree --empty ^budget not:unbudgeted")
              ("WK expenses"       . "register --auto --effective --begin 2021-05 --end 2021-06 --collapse ^asset:receivables:wk")
