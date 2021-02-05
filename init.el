@@ -653,7 +653,7 @@ current."
          ;; Use the same bindings as flycheck:
          :map flymake-mode-map
          ("C-c ! n" . flymake-goto-next-error)
-         ("C-c ! p" . flymake-goto-previous-error)))
+         ("C-c ! p" . flymake-goto-prev-error)))
 
 (use-package flycheck
   :init
