@@ -355,6 +355,9 @@
 [submodule "info-colors"]
 	path = lib/info-colors
 	url = git@github.com:ubolonton/info-colors.git
+[submodule "inheritenv"]
+	path = lib/inheritenv
+	url = git@github.com:purcell/inheritenv.git
 [submodule "ivy"]
 	path = lib/ivy
 	url = git@github.com:abo-abo/swiper.git
