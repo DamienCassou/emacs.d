@@ -1848,6 +1848,9 @@ I.e., the keyring has a public key for each recipient."
     ;; Setup dap-mode manually to avoid `dap-ui-many-windows-mode':
     (setq lsp-enable-dap-auto-configure nil)))
 
+(use-package eglot
+  :hook ((js2-mode haskell-mode) . eglot-ensure))
+
 (use-package js2-mode
   :mode "\\.js\\'"
   :init
