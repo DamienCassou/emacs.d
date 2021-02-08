@@ -857,8 +857,8 @@ current."
       (add-to-list 'company-backends 'hledger-company))))
 
 (use-package goggles
-  :disabled t ; because of a bug with vterm: https://github.com/minad/goggles/issues/4
   :demand t
+  :hook ((text-mode prog-mode) . goggles-mode)
   :config
   (progn
     (goggles-mode)))
