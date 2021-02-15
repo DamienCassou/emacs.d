@@ -112,6 +112,9 @@
 [submodule "css-eldoc"]
 	path = lib/css-eldoc
 	url = git@github.com:zenozeng/css-eldoc.git
+[submodule "csv"]
+	path = lib/csv
+	url = git@gitlab.com:u11/csv.el.git
 [submodule "dap-mode"]
 	path = lib/dap-mode
 	url = git@github.com:emacs-lsp/dap-mode.git
@@ -213,6 +216,9 @@
 	path = lib/eslintd-fix
 	url = git@github.com:aaronjensen/eslintd-fix.git
 	remote = "DamienCassou git@github.com:DamienCassou/eslintd-fix.git"
+[submodule "ess"]
+	path = lib/ess
+	url = git@github.com:emacs-ess/ESS.git
 [submodule "esxml"]
 	path = lib/esxml
 	url = git@github.com:tali713/esxml.git
