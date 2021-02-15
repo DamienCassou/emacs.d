@@ -400,6 +400,7 @@ current."
   :config
   (progn
     (global-undo-tree-mode)
+    (setq undo-tree-auto-save-history nil)
     (setq undo-tree-enable-undo-in-region t)
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
