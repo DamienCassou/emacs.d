@@ -1527,6 +1527,7 @@ I.e., the keyring has a public key for each recipient."
     (unbind-key "C-r")))
 
 (use-package prescient
+  :disabled t
   :demand t
   :config
   (progn
