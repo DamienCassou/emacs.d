@@ -1861,7 +1861,7 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (defun my/js2-mode-setup ()
-      (when (bound-and-true-p lsp-eslint-auto-fix-on-save)
+      (when (bound-and-true-p lsp-eslint-fix-all)
         (add-hook 'before-save-hook #'lsp-eslint-fix-all nil t)))))
 
 (use-package dap-mode
