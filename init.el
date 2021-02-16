@@ -1851,6 +1851,7 @@ I.e., the keyring has a public key for each recipient."
     (setq lsp-enable-dap-auto-configure nil)))
 
 (use-package eglot
+  :disabled t
   :hook ((js2-mode haskell-mode) . eglot-ensure))
 
 (use-package js2-mode
