@@ -1785,7 +1785,11 @@ I.e., the keyring has a public key for each recipient."
   :hook (prog-mode . ws-butler-mode))
 
 (use-package editorconfig
-  :hook ((prog-mode text-mode) . editorconfig-mode))
+  :hook ((prog-mode text-mode) . editorconfig-mode)
+  :config
+  (progn
+    ;; https://github.com/editorconfig/editorconfig-emacs/issues/246
+    (add-to-list 'editorconfig-exclude-modes 'git-rebase-mode)))
 
 (use-package compile
   :hook (compilation-filter . my/colorize-compilation-buffer)
