@@ -193,9 +193,6 @@ current."
          ("M-SPC" . cycle-spacing)
          ("<S-left>" . beginning-of-buffer)
          ("<S-right>" . end-of-buffer)
-         ("M-u" . upcase-dwim)
-         ("M-l" . downcase-dwim)
-         ("M-c" . capitalize-dwim)
          :map process-menu-mode-map
          ("k" . process-menu-delete-process))
   :init
