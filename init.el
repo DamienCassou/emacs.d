@@ -1858,16 +1858,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq markdown-command "kramdown")))
 
-(use-package restclient
-  :hook (restclient-response-loaded . my/restclient-use-json-mode)
-  :init
-  (progn
-    (defun my/restclient-use-json-mode ()
-      (if (eq major-mode 'js-mode)
-          (json-mode)))
-
-    (add-to-list 'auto-mode-alist (cons "\\.restclient\\'" #'restclient-mode))))
-
 (use-package firestarter
   :hook (prog-mode . firestarter-mode)
   :init

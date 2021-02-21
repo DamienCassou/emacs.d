@@ -631,9 +631,6 @@
 	path = lib/request
 	url = git@github.com:tkf/emacs-request.git
 	remote = "DamienCassou git@github.com:DamienCassou/emacs-request.git"
-[submodule "restclient"] # test REST queries
-	path = lib/restclient
-	url = git@github.com:pashky/restclient.el.git
 [submodule "rg"]
 	path = lib/rg
 	url = git@github.com:dajva/rg.el.git
