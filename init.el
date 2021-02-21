@@ -1858,12 +1858,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq markdown-command "kramdown")))
 
-(use-package websocket
-  :init
-  (progn
-    (setq websocket-callback-debug-on-error t)
-    (setq websocket-debug nil)))
-
 (use-package restclient
   :hook (restclient-response-loaded . my/restclient-use-json-mode)
   :init
