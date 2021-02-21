@@ -1941,11 +1941,6 @@ I.e., the keyring has a public key for each recipient."
   :after mpdel
   :demand t)
 
-(use-package libnetmacs
-  :config
-  (progn
-    (libnetmacs-secretagent-mode)))
-
 (use-package gpastel
   :disabled t
   :demand t

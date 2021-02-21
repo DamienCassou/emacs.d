@@ -419,9 +419,6 @@
 	path = lib/libmpdel
 	url = git@gitea.petton.fr/mpdel/libmpdel.git
 	remote = "github git@github.com:DamienCassou/libmpdel.git"
-[submodule "libnetmacs"]
-	path = lib/libnetmacs
-	url = git@gitea.petton.fr:netmacs/libnetmacs.git
 [submodule "lintel"]
 	path = lib/lintel
 	url = git@gitlab.com:lintel/lintel.git
