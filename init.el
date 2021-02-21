@@ -1941,13 +1941,6 @@ I.e., the keyring has a public key for each recipient."
   :after mpdel
   :demand t)
 
-(use-package gpastel
-  :disabled t
-  :demand t
-  :config
-  (progn
-    (gpastel-mode)))
-
 (use-package minions
   :demand t
   :config

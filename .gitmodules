@@ -291,9 +291,6 @@
 [submodule "goggles"]
 	path = lib/goggles
 	url = git@github.com:minad/goggles.git
-[submodule "gpastel"]
-	path = lib/gpastel
-	url = git@github.com:DamienCassou/gpastel.git
 [submodule "graphql"]
 	path = lib/graphql
 	url = git@github.com:vermiculus/graphql.el.git
