@@ -115,9 +115,6 @@
 [submodule "csv"]
 	path = lib/csv
 	url = git@gitlab.com:u11/csv.el.git
-[submodule "dap-mode"]
-	path = lib/dap-mode
-	url = git@github.com:emacs-lsp/dap-mode.git
 [submodule "dash"] # list library
 	path = lib/dash
 	url = git@github.com:magnars/dash.el.git

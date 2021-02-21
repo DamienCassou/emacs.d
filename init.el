@@ -1853,24 +1853,6 @@ I.e., the keyring has a public key for each recipient."
       (when (bound-and-true-p lsp-eslint-fix-all)
         (add-hook 'before-save-hook #'lsp-eslint-fix-all nil t)))))
 
-(use-package dap-mode
-  :disabled t
-  :demand t
-  :after lsp-mode
-  :hook (dap-stopped . my/dap-mode-open-hydra)
-  :init
-  (progn
-    (dap-mode)
-    (dap-ui-mode))
-  :config
-  (progn
-    (defun my/dap-mode-open-hydra (_session)
-      (call-interactively #'dap-hydra))))
-
-(use-package dap-chrome
-  :demand t
-  :after dap-mode)
-
 (use-package markdown-mode
   :init
   (progn
