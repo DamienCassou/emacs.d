@@ -297,9 +297,6 @@
 [submodule "goggles"]
 	path = lib/goggles
 	url = git@github.com:minad/goggles.git
-[submodule "google-translate"] # to translate current region and more
-	path = lib/google-translate
-	url = git@github.com:atykhonov/google-translate.git
 [submodule "gpastel"]
 	path = lib/gpastel
 	url = git@github.com:DamienCassou/gpastel.git

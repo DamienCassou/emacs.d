@@ -1822,12 +1822,6 @@ I.e., the keyring has a public key for each recipient."
     (setq send-mail-function 'smtpmail-send-it)
     (setq sendmail-program "msmtp")))
 
-(use-package google-translate
-  :init
-  (progn
-    (setq google-translate-default-source-language "sv")
-    (setq google-translate-default-target-language "en")))
-
 (use-package json-navigator
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
 
