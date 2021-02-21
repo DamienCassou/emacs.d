@@ -1899,9 +1899,6 @@ I.e., the keyring has a public key for each recipient."
 (use-package webpaste
   :commands (webpaste-paste-buffer webpaste-paste-region))
 
-(use-package vlf ;; handle large/big files
-  :demand t)
-
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
   :config

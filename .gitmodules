@@ -729,9 +729,6 @@
 [submodule "verb"]
 	path = lib/verb
 	url = git@github.com:federicotdn/verb.git
-[submodule "vlf"]
-	path = lib/vlf
-	url = git@github.com:m00natic/vlfi.git
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git
