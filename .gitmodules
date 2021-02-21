@@ -475,9 +475,6 @@
 [submodule "magit-tbdiff"]
 	path = lib/magit-tbdiff
 	url = git@github.com:magit/magit-tbdiff.git
-[submodule "make-it-so"] # Transform files with Makefile recipes
-	path = lib/make-it-so
-	url = git@github.com:abo-abo/make-it-so.git
 [submodule "makel"]
 	path = lib/makel
 	url = git@gitea.petton.fr:DamienCassou/makel.git

@@ -1828,8 +1828,6 @@ I.e., the keyring has a public key for each recipient."
     (setq google-translate-default-source-language "sv")
     (setq google-translate-default-target-language "en")))
 
-(use-package make-it-so)
-
 (use-package skeletor
   :commands (skeletor-create-project)
   :init
