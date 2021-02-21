@@ -1858,9 +1858,6 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (setq markdown-command "kramdown")))
 
-(use-package devdocs
-  :commands (devdocs-search))
-
 (use-package websocket
   :init
   (progn
