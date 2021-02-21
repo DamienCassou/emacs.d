@@ -664,9 +664,6 @@
 [submodule "shut-up"]
 	path = lib/shut-up
 	url = git@github.com:cask/shut-up.git
-[submodule "skeletor"] # facilitates the creation of new project
-	path = lib/skeletor
-	url = git@github.com:chrisbarrett/skeletor.el.git
 [submodule "snapshot-timemachine"]
 	path = lib/snapshot-timemachine
 	url = git@github.com:mrBliss/snapshot-timemachine.git

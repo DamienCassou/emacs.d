@@ -1828,13 +1828,6 @@ I.e., the keyring has a public key for each recipient."
     (setq google-translate-default-source-language "sv")
     (setq google-translate-default-target-language "en")))
 
-(use-package skeletor
-  :commands (skeletor-create-project)
-  :init
-  (progn
-    (setq skeletor-project-directory "/home/cassou/.emacs.d/packages/")
-    (setq skeletor-show-project-command 'magit-status)))
-
 (use-package json-navigator
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
 
