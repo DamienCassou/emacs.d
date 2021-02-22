@@ -520,6 +520,9 @@
 [submodule "nov"]
 	path = lib/nov
 	url = git@github.com:wasamasa/nov.el.git
+[submodule "nroam"]
+	path = lib/nroam
+	url = https://github.com/NicolasPetton/nroam/
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
