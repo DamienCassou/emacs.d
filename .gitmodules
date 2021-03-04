@@ -85,9 +85,6 @@
 [submodule "company"]
 	path = lib/company
 	url = git@github.com:company-mode/company-mode.git
-[submodule "company-eshell-autosuggest"]
-	path = lib/company-eshell-autosuggest
-	url = git@github.com:dieggsy/company-eshell-autosuggest.git
 [submodule "company-ledger"]
 	path = lib/company-ledger
 	url = https://github.com/debanjum/company-ledger.git
