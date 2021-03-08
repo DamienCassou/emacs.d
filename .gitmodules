@@ -523,6 +523,7 @@
 [submodule "nroam"]
 	path = lib/nroam
 	url = https://github.com/NicolasPetton/nroam/
+	remote = "DamienCassou git@github.com:DamienCassou/nroam.git"
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
