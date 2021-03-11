@@ -1898,6 +1898,9 @@ I.e., the keyring has a public key for each recipient."
     (add-to-list 'firestarter-reporting-functions #'my/firestarter-alert)))
 
 (use-package vterm
+  :bind (
+         :map vterm-mode-map
+         ("<f8>" . vterm-send-C-x))
   :init
   (progn
     (setq vterm-kill-buffer-on-exit t)
