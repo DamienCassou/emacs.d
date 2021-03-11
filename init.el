@@ -1114,6 +1114,9 @@ because slides don't change their ID all the time."
         (setq-local company-backends (cons 'company-capf company-backends))
         (company-mode)))))
 
+(use-package nroam
+  :hook (org-mode . nroam-setup-maybe))
+
 (use-package calendar
   :init
   (progn
