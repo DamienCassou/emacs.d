@@ -1084,10 +1084,27 @@ because slides don't change their ID all the time."
   :demand t
   :hook ((after-init . org-roam-mode)
          (org-mode . my/org-roam-setup))
+  :bind (("C-. r r" . org-roam-capture)
+         ("C-. r f" . org-roam-find-file)
+         ("C-. r d" . org-roam-dailies-capture-today)
+         ("C-. r D" . org-roam-dailies-find-today)
+         :map org-mode-map
+         ("C-. r i" . org-roam-insert)
+         ("C-. r I" . org-roam-insert-immediate))
   :init
   (progn
     (setq org-roam-directory "/home/cassou/Documents/configuration/org-roam")
-    (setq org-roam-db-update-method 'immediate))
+    ;; When renaming, links get updated after 2sec idle, which can lead to issues
+    ;; when renaming multiple times without idling, see
+    ;; https://github.com/org-roam/org-roam/issues/1425#issuecomment-775715148
+    (setq org-roam-db-update-method 'immediate)
+    (setq org-roam-completion-system 'ivy)
+
+    (setq org-roam-capture-templates
+          '(("d" "default" plain #'org-roam-capture--get-point "%?"
+             :file-name "%<%Y-%m-%d>-${slug}"
+             :head "#+title: ${title}\n"
+             :unnarrowed t))))
   :config
   (progn
     (defun my/org-roam-setup ()
