@@ -877,6 +877,7 @@ current."
     (setq org-catch-invisible-edits 'show-and-error)
     (setq org-cycle-separator-lines 0)
     (setq org-clock-clocked-in-display nil)
+    (setq org-id-link-to-org-use-id t)
 
     (setq org-directory "~/Documents/configuration/org")
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
