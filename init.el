@@ -1103,7 +1103,7 @@ because slides don't change their ID all the time."
     (setq org-roam-capture-templates
           '(("d" "default" plain #'org-roam-capture--get-point "%?"
              :file-name "%<%Y-%m-%d>-${slug}"
-             :head "#+title: ${title}\n"
+             :head "#+title: ${title}\n#+created: %T\n\n"
              :unnarrowed t))))
   :config
   (progn
