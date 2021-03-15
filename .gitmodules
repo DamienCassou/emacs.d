@@ -510,6 +510,9 @@
 [submodule "netmacs"]
 	path = lib/netmacs
 	url = git@gitea.petton.fr:netmacs/netmacs.git
+[submodule "nix-emacs"]
+	path = lib/nix-emacs
+	url = git@github.com:travisbhartwell/nix-emacs.git
 [submodule "nix-mode"]
 	path = lib/nix-mode
 	url = git@github.com:NixOS/nix-mode.git

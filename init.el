@@ -2003,6 +2003,19 @@ I.e., the keyring has a public key for each recipient."
 (use-package nix-mode
   :hook ((proced-mode . nix-prettify-mode)))
 
+(use-package nix-sandbox
+  :demand t
+  :init
+  (progn
+    (with-eval-after-load "flycheck"
+      (setq flycheck-command-wrapper-function
+            (lambda (command) (apply #'nix-shell-command (nix-current-sandbox) command)))
+      (setq flycheck-executable-find
+            (lambda (cmd) (nix-executable-find (nix-current-sandbox) cmd))))
+    (with-eval-after-load "haskell"
+      (setq haskell-process-wrapper-function
+            (lambda (args) (apply #'nix-shell-command (nix-current-sandbox) args))))))
+
 ;; envrc must come late in the init.el file so add-hook adds it first
 ;; in `find-file-hook'.
 (use-package envrc
