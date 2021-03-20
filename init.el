@@ -1536,7 +1536,24 @@ I.e., the keyring has a public key for each recipient."
 
     (counsel-projectile-modify-action
      'counsel-projectile-switch-project-action
-     '((default counsel-projectile-switch-project-action-vc)))))
+     '((default counsel-projectile-switch-project-action-vc)))
+
+    (defun my/counsel-projectile-import-file (filename)
+      "Add \"import\" line to current buffer importing FILENAME."
+      (save-excursion
+        (save-restriction
+          (setf (point) (point-min))
+          (while (re-search-forward "^import " nil t))
+          (next-line)
+          (setf (point) (line-beginning-position))
+          (let ((path (finsit-core-relative-to-monitor-client-js-location filename))
+                (object (file-name-sans-extension (file-name-nondirectory filename))))
+            (insert (format "import %s from %S;\n"
+                            object path))))))
+
+    (counsel-projectile-modify-action
+     'counsel-projectile-find-file-action
+     `((add ("I" ,#'my/counsel-projectile-import-file "Add \"import\" line"))))))
 
 (use-package swiper
   :bind (("C-s" . swiper-isearch)
