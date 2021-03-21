@@ -852,7 +852,7 @@ current."
   :mode ("\\.hledger\\'")
   :init
   (progn
-    (setq hledger-jfile (expand-file-name "~/Documents/configuration/ledger/2021.hledger"))
+    (setq hledger-jfile (expand-file-name "~/configuration/ledger/2021.hledger"))
 
     (with-eval-after-load 'company
       (add-to-list 'company-backends 'hledger-company))))
@@ -879,7 +879,7 @@ current."
     (setq org-clock-clocked-in-display nil)
     (setq org-id-link-to-org-use-id t)
 
-    (setq org-directory "~/Documents/configuration/org")
+    (setq org-directory "~/configuration/org")
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
     (setq org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
     (setq org-default-gtd-file (expand-file-name "gtd.org" org-directory))
@@ -1093,7 +1093,7 @@ because slides don't change their ID all the time."
          ("C-. r I" . org-roam-insert-immediate))
   :init
   (progn
-    (setq org-roam-directory "/home/cassou/Documents/configuration/org-roam")
+    (setq org-roam-directory "/home/cassou/configuration/org-roam")
     ;; When renaming, links get updated after 2sec idle, which can lead to issues
     ;; when renaming multiple times without idling, see
     ;; https://github.com/org-roam/org-roam/issues/1425#issuecomment-775715148
@@ -1661,7 +1661,7 @@ I.e., the keyring has a public key for each recipient."
   :init
   (progn
     (setq vdirel-repository
-          "~/Documents/configuration/contacts/contacts")))
+          "~/configuration/contacts/contacts")))
 
 (use-package khardel
   :bind (("C-. c" . khardel-insert-email)))
