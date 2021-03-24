@@ -1543,13 +1543,12 @@ I.e., the keyring has a public key for each recipient."
       (save-excursion
         (save-restriction
           (setf (point) (point-min))
-          (while (re-search-forward "^import " nil t))
-          (next-line)
+          (while (re-search-forward "^import .*\n" nil t))
           (setf (point) (line-beginning-position))
-          (let ((path (finsit-core-relative-to-monitor-client-js-location filename))
-                (object (file-name-sans-extension (file-name-nondirectory filename))))
-            (insert (format "import %s from %S;\n"
-                            object path))))))
+          (let* ((path (file-name-sans-extension
+                        (finsit-core-relative-to-monitor-client-js-location filename)))
+                 (object (file-name-nondirectory path)))
+            (insert (format "import %s from %S;\n" object path))))))
 
     (counsel-projectile-modify-action
      'counsel-projectile-find-file-action
