@@ -1794,13 +1794,6 @@ I.e., the keyring has a public key for each recipient."
     (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.114:80"))
     (finsit-prodigy-setup)))
 
-(use-package finsit-yasnippet
-  :demand t
-  :after yasnippet
-  :config
-  (progn
-    (finsit-yasnippet-setup)))
-
 (use-package alert
   :demand t
   :init
