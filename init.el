@@ -1687,6 +1687,7 @@ I.e., the keyring has a public key for each recipient."
     (setq company-show-numbers t)))
 
 (use-package emacs-js
+  :disabled t
   :hook (js-mode . setup-js-buffer)
   :bind (
          :map js2-refactor-mode-map
@@ -1778,6 +1779,13 @@ I.e., the keyring has a public key for each recipient."
   :config
   (progn
     (finsit-elcouch-setup)))
+
+(use-package finsit-javascript
+  :demand t
+  :after js
+  :config
+  (progn
+    (finsit-javascript-setup)))
 
 (use-package finsit-magit
   :demand t
