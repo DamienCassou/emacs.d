@@ -1864,6 +1864,7 @@ I.e., the keyring has a public key for each recipient."
   :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
 
 (use-package lsp-mode
+  :disabled t
   :hook (((haskell-mode haskell-literate-mode) . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
