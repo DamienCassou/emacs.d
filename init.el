@@ -55,7 +55,9 @@
 (progn ; `files'
   (setq confirm-kill-emacs 'y-or-n-p)
   (setq make-backup-files nil)
-  (setq version-control 'never))
+  (setq version-control 'never)
+  ;; Delete that when switching to Emacs 28:
+  (bind-key "C-x x g" #'revert-buffer))
 
 (progn ; `window'
   (bind-key "C-;" #'other-window)
