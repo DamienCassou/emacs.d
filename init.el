@@ -160,28 +160,27 @@ current."
 
     (setq locate-make-command-line #'my/locate-make-command-line)))
 
-(use-package modus-operandi-theme
+(use-package modus-themes
   :demand t
   :init
   (progn
-    (setq modus-operandi-theme-mode-line 'moody)
-    (setq modus-operandi-theme-bold-constructs t)
-    (setq modus-operandi-theme-intense-paren-match t)
-    (setq modus-operandi-theme-completions 'opinionated)
-    (setq modus-operandi-theme-org-blocks 'greyscale)
-    (setq modus-operandi-theme-prompt 'intense)
+    (setq modus-themes-mode-line 'moody)
+    (setq modus-themes-bold-constructs t)
+    (setq modus-themes-completions 'opinionated)
+    (setq modus-themes-org-blocks 'greyscale)
+    (setq modus-themes-prompt 'intense)
 
-    (setq modus-operandi-theme-headings
+    (setq modus-themes-headings
           '((1 . highlight) ; make h1 stand out with a background
             (2 . line)      ; add a line above h2
             (t . rainbow))) ; choose a random color for all headings
 
-    (setq modus-operandi-theme-scale-headings t)
-    (setq modus-operandi-theme-slanted-constructs t)
-    (setq modus-operandi-theme-variable-pitch-headings t))
+    (setq modus-themes-scale-headings t)
+    (setq modus-themes-slanted-constructs t)
+    (setq modus-themes-variable-pitch-headings t))
   :config
   (progn
-    (load-theme 'modus-operandi t)))
+    (modus-themes-load-operandi)))
 
 (use-package tramp
   :config
