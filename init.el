@@ -1785,7 +1785,9 @@ I.e., the keyring has a public key for each recipient."
   :after js
   :config
   (progn
-    (finsit-javascript-setup)))
+    (finsit-javascript-setup)
+    (add-to-list 'yas-snippet-dirs (expand-file-name "~/.emacs.d/lib/ftgp/snippets"))
+    (yas-reload-all)))
 
 (use-package finsit-magit
   :demand t
