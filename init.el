@@ -180,7 +180,27 @@ current."
     (setq modus-themes-variable-pitch-headings t))
   :config
   (progn
-    (modus-themes-load-operandi)))
+    (modus-themes-load-operandi)
+
+    (with-eval-after-load 'pdf-tools
+      ;; Configure PDF page colors. The code below comes from Modus
+      ;; Info manual (Backdrop for pdf-tools (DIY)).
+      (defun my/pdf-tools-backdrop ()
+        "Change background to be different from standard background."
+        (face-remap-add-relative
+         'default
+         `(:background ,(modus-themes-color 'bg-alt))))
+
+      (defun my/pdf-tools-midnight-mode-toggle ()
+        "Change background of pdf-view-mode to adapt to current Modus theme."
+        (when (eq major-mode 'pdf-view-mode)
+          (if (eq (car custom-enabled-themes) 'modus-vivendi)
+              (pdf-view-midnight-minor-mode 1)
+            (pdf-view-midnight-minor-mode -1))
+          (my/pdf-tools-backdrop)))
+
+      (add-hook 'pdf-tools-enabled-hook #'my/pdf-tools-midnight-mode-toggle)
+      (add-hook 'modus-themes-after-load-theme-hook #'my/pdf-tools-midnight-mode-toggle))))
 
 (use-package tramp
   :config
