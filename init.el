@@ -628,19 +628,6 @@ current."
   (progn
     (flycheck-package-setup)))
 
-(use-package flycheck-elsa
-  :init
-  (progn
-    (setq flycheck-elsa-command 'host)))
-
-(use-package direnv
-  :disabled t
-  :demand t
-  :config
-  (progn
-    (direnv-mode)
-    (setq direnv-always-show-summary nil)))
-
 (use-package ledger-mode
   :hook (ledger-mode . my/configure-ledger-mode)
   :mode "\\.hledger\\'"
@@ -787,16 +774,6 @@ current."
       (when (file-exists-p file)
         (load file t)))))
 
-(use-package hledger-mode
-  :disabled t
-  :mode ("\\.hledger\\'")
-  :init
-  (progn
-    (setq hledger-jfile (expand-file-name "~/configuration/ledger/2021.hledger"))
-
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'hledger-company))))
-
 (use-package goggles
   :demand t
   :hook ((text-mode prog-mode) . goggles-mode)
@@ -808,7 +785,6 @@ current."
   :bind
   (("C-. o a"   . org-agenda)
    ("C-. o l"   . org-store-link)
-   ("C-. o w"   . my:org-move-to-refile-target)
    ("C-. o s"   . org-save-all-org-buffers)
    ("C-. o t"   . org-capture))
   :init
@@ -946,11 +922,6 @@ long."
 
     (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
-    (defun my:org-move-to-refile-target (&optional last)
-      (interactive "p")
-      (require 'org)
-      (org-refile (if (= last 4) '(16) '(4))))
-
     ;; This is my `shell-switcher-switch-buffer':
     (unbind-key "C-'" org-mode-map)
 
@@ -968,17 +939,7 @@ long."
   (progn
     ;; Those are my `beginning-of-buffer' and `end-of-buffer':
     (unbind-key "<S-left>" org-agenda-mode-map)
-    (unbind-key "<S-right>" org-agenda-mode-map)
-
-    (defun my/org-agenda-to-appt ()
-      (interactive)
-      (let ((org-agenda-files (list org-default-calendar-file)))
-        (org-agenda-to-appt t)))))
-
-(use-package org-notmuch
-  :disabled t
-  :demand t
-  :after (:any org notmuch))
+    (unbind-key "<S-right>" org-agenda-mode-map)))
 
 (use-package ox
   :config
