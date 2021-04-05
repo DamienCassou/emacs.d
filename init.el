@@ -243,23 +243,11 @@ current."
     (setq so-long-threshold 500)
     (global-so-long-mode)))
 
-(use-package epkg
-  :init
-  (progn
-    (setq epkg-repository
-          (no-littering-expand-var-file-name "epkgs"))))
-
 (use-package server
   :config
   (progn
     (unless (or (daemonp) (server-running-p))
       (server-start))))
-
-(use-package font-core
-  :demand t
-  :config
-  (progn
-    (global-font-lock-mode)))
 
 (use-package fringe
   :config
@@ -272,27 +260,11 @@ current."
   (progn
     (setq read-file-name-completion-ignore-case t)))
 
-(use-package elec-pair
-  :demand t
-  :config
-  (progn
-    (electric-pair-mode)))
-
-(use-package prog-mode
-  :demand t
-  :config
-  (global-prettify-symbols-mode))
-
 (use-package saveplace
   :demand t
   :config
   (progn
     (save-place-mode)))
-
-(use-package uniquify
-  :init
-  (progn
-    (setq uniquify-buffer-name-style 'post-forward-angle-brackets)))
 
 (use-package tooltip
   :demand t
@@ -310,20 +282,6 @@ current."
   :init
   (progn
     (setq display-time-24hr-format t)))
-
-(use-package time-stamp
-  :init (progn
-          (defvar-local time-stamp-target nil
-            "File in which time-stamps should be written.")
-
-          (put 'time-stamp-target 'safe-local-variable 'string-or-null-p)
-
-          (defun time-stamp-target ()
-            "Update the time-stamp in `time-stamp-target' if non-nil."
-            (when (and time-stamp-target
-                       (file-exists-p time-stamp-target))
-              (with-current-buffer (find-file-noselect time-stamp-target)
-                (time-stamp))))))
 
 (use-package nsm ;; network security
   :init
@@ -344,7 +302,6 @@ current."
 
 (use-package autorevert
   :demand t
-  :hook (dired-mode . auto-revert-mode)
   :init
   (progn
     (setq auto-revert-verbose nil))
