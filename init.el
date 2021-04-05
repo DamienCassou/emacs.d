@@ -334,7 +334,7 @@ current."
 (use-package debbugs-gnu
   :init
   (progn
-    (setq debbugs-gnu-trunk-directory "~/Documents/projects/emacs/emacs-src")))
+    (setq debbugs-gnu-trunk-directory "~/Documents/projects/emacs/emacs-src-26")))
 
 (use-package bug-reference
   :bind ((
