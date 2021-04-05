@@ -267,9 +267,9 @@ current."
     (save-place-mode)))
 
 (use-package tooltip
-  :demand t
   :config
   (progn
+    ;; Use echo area for help texts instead of a pop-up window:
     (tooltip-mode -1)))
 
 (use-package winner
