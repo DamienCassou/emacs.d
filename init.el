@@ -1372,14 +1372,6 @@ because slides don't change their ID all the time."
   (progn
     (beginend-global-mode)))
 
-(use-package vdirel
-  :disabled t
-  :bind (("C-. c" . vdirel-helm-select-email))
-  :init
-  (progn
-    (setq vdirel-repository
-          "~/configuration/contacts/contacts")))
-
 (use-package khardel
   :bind (("C-. c" . khardel-insert-email)))
 

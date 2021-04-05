@@ -710,9 +710,6 @@
 	path = lib/use-package
 	url = git@github.com:jwiegley/use-package.git
 	remote = "DamienCassou git@github.com:DamienCassou/use-package"
-[submodule "vdirel"]
-	path = lib/vdirel
-	url = git@github.com:DamienCassou/vdirel.git
 [submodule "verb"]
 	path = lib/verb
 	url = git@github.com:federicotdn/verb.git
