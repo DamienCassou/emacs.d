@@ -1094,7 +1094,13 @@ because slides don't change their ID all the time."
     (setq notmuch-archive-tags '("-inbox" "-unread"))
     (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
     (setq notmuch-search-oldest-first nil)
-    (setq notmuch-draft-save-plaintext t)))
+    (setq notmuch-draft-save-plaintext t)
+    (setq notmuch-fcc-dirs "Perso/Sent")
+    (setq notmuch-identities '("Damien Cassou <damien@cassou.me>"))
+
+    (setq notmuch-saved-searches
+          `((:name "inbox" :query ,"(folder:\"Perso/INBOX\")" :key "i")
+            (:name "sent" :query "from:damien@cassou.me" :key "s")))))
 
 (use-package notmuch-show
   :bind (
@@ -1143,70 +1149,6 @@ because slides don't change their ID all the time."
           (apply orig-fun args))))
 
     (advice-add 'mml-attach-file :around #'my:mml-attach-file--go-to-eob)))
-
-(use-package profile
-  :demand t
-  :after notmuch
-  :init
-  (progn
-    (with-eval-after-load "message"
-      (bind-key "C-c F" #'profile-force-profile-in-compose message-mode-map)))
-  :config
-  (progn
-    (setq profile-binding-alist
-          '(("Perso"
-             (profile-maildir . "/Perso")
-             (notmuch-fcc-dirs . "Perso/Sent")
-             (user-mail-address . "damien@cassou.me")
-             (message-signature . t))
-            ("WK"
-             (profile-maildir . "/WK")
-             (notmuch-fcc-dirs . "WK/Sent")
-             (user-mail-address . "damien.cassou@wolterskluwer.com")
-             (message-signature . "Damien Cassou\nFinsit – a part of Wolters Kluwer Group\nPhone/Fax: +46 (0)8 774 63 00\nMobile: +33 (0)6 80 50 18 91\nAddress: Lindhagensgatan 126, 112 51 Stockholm\nWeb: www.foretagsplatsen.se\n"))))
-    (profile-set-profile-from-name "Perso")
-    (setq profile-extra-email-addresses
-          '("damien.cassou@lifl.fr" "cassou@inria.fr"
-            "damien.cassou@laposte.net" "damien@foretagsplatsen.se"))
-    (setq profile-noisy-query
-          "to:\"notmuch@notmuchmail.org\" OR to:\"offlineimap-project@lists.alioth.debian.org\" OR to:\"emacs-devel\" OR to:\"dev-addons@mozilla.org\" OR to:\"gnupg-users@gnupg.org\"")
-
-    (defun my:notmuch-build-identity (&optional email)
-      "Return a string of the form \"name <EMAIL>\"."
-      (let ((email (or email user-mail-address)))
-        (format "%s <%s>" (notmuch-user-name) email)))
-
-    (setq notmuch-identities
-          (mapcar #'my:notmuch-build-identity
-                  (profile-email-addresses)))
-
-    (defun my:notmuch-prompt-for-sender ()
-      "Prompt for a sender using `profile-binding-alist'."
-      (profile-set-profile)
-      (my:notmuch-build-identity))
-
-    (advice-add #'notmuch-mua-prompt-for-sender
-                :override
-                #'my:notmuch-prompt-for-sender)
-
-    ;; https://notmuchmail.org/pipermail/notmuch/2017/025320.html
-    (defun my:notmuch-mua-new-reply (arguments)
-      "Always set PROMPT-FOR-SENDER to t when using `notmuch-mua-new-reply'."
-      (list (cl-first arguments) t (cl-third arguments)))
-
-    (advice-add #'notmuch-mua-new-reply :filter-args #'my:notmuch-mua-new-reply)
-
-    (setq notmuch-saved-searches
-          `((:name "inbox" :query ,(format "(folder:\"Perso/INBOX\") AND (NOT (%s) OR recip:damien*)"
-                                           profile-noisy-query) :key "i")
-            (:name "noisy" :query ,(profile-noisy-unarchived-list-query) :key "n")
-            (:name "ftgp" :query "folder:\"Ftgp/INBOX\" AND tag:inbox" :key "f")
-            (:name "wk" :query "folder:\"WK/INBOX\" AND tag:inbox" :key "w")
-            (:name "sent" :query ,(profile-sent-query) :key "s")))
-
-    (add-to-list 'notmuch-hello-sections
-                 #'profile-queue-insert-section
-                 t)))
 
 (use-package message
   :init

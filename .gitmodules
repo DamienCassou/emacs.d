@@ -607,9 +607,6 @@
 	path = lib/prodigy
 	url = git@github.com:rejeep/prodigy.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/prodigy.el.git"
-[submodule "profile"]
-	path = lib/profile
-	url = git@github.com:DamienCassou/profile.git
 [submodule "projectile"] # add notion of projects
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
