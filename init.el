@@ -1270,9 +1270,7 @@ because slides don't change their ID all the time."
 
 (use-package ivy
   :demand t
-  :bind (("C-. i" . ivy-resume)
-         :map ivy-minibuffer-map
-         ("M-'" . ivy-avy))
+  :bind (("C-. i" . ivy-resume))
   :init
   (progn
     (setq ivy-use-virtual-buffers t)
@@ -1282,6 +1280,11 @@ because slides don't change their ID all the time."
   :config
   (progn
     (ivy-mode)))
+
+(use-package ivy-avy
+  :bind (
+         :map ivy-minibuffer-map
+         ("M-'" . ivy-avy)))
 
 (use-package ivy-hydra
   :config
