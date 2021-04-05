@@ -219,7 +219,7 @@ current."
   (progn
     (setq delete-active-region nil)
     (setq eval-expression-print-length 20)
-    (setq eval-expression-print-level nil))
+    (setq eval-expression-print-level 10))
   :config
   (progn
     (defun my/join-line ()
