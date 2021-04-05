@@ -147,7 +147,9 @@ current."
       (setq frame-title-format "Emacs")
       (when (window-system)
         (add-to-list 'default-frame-alist '(cursor-type bar . 5))
-        (set-face-attribute 'default nil :height 110 :family "JetBrains Mono")))
+        (set-face-attribute 'default nil :height 110 :family "JetBrains Mono")
+        (set-face-attribute 'fixed-pitch nil :height 110 :family "JetBrains Mono")
+        (set-face-attribute 'variable-pitch nil :height 140 :font "Gentium Book Basic")))
 
     (my/setup-frame)))
 
