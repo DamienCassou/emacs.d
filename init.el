@@ -351,16 +351,6 @@ current."
   ;; https://src.fedoraproject.org/rpms/emacs/blob/f27/f/default.el
   (setq smime-CA-directory "/etc/ssl/certs"))
 
-(use-package abbrev
-  :init
-  (progn
-    (setq-default abbrev-mode t)))
-
-(use-package facemenu
-  :config
-  (progn
-    (unbind-key "M-o")))
-
 (use-package display-line-numbers
   :hook ((prog-mode text-mode) . my/display-line-numbers)
   :config
@@ -493,21 +483,6 @@ current."
   :demand t
   :after magit)
 
-(use-package forge
-  :disabled t
-  :demand t
-  :after magit
-  :config
-  (progn
-    (add-to-list 'forge-alist
-                 '("gitea.petton.fr"
-                   "gitea.petton.fr/api/v1"
-                   "gitea.petton.fr"
-                   forge-gitea-repository))
-
-    (setq forge-owned-accounts '(("DamienCassou" "mpdel")))
-    (setq forge-topic-list-limit  '(60 . -5))))
-
 (use-package moody
   :demand t
   :config
@@ -575,7 +550,7 @@ current."
 
 (use-package ace-link
   :demand t
-  :after (:any elbank helpful info)
+  :after (:any helpful info)
   :config
   (progn
     (ace-link-setup-default)))
