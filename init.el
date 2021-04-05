@@ -1410,44 +1410,7 @@ because slides don't change their ID all the time."
     (setq libbcel-oauth-store-encryption-keys (list "8E64FBE545A394F5D35CD202F72C652AE7564ECC"))
     (setq libbcel-oauth-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
     (setq libbcel-oauth-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
-    (setq libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))
-
-    (defun my/libbcel-reload ()
-      "Reload libbcel for dev purposes."
-      (interactive)
-      (let ((libbcel-path "~/.emacs.d/lib/libbcel")
-            (bcel-path "~/.emacs.d/lib/bcel"))
-        (dolist (file (append (list
-                               (expand-file-name "libbcel-structs.el" libbcel-path)
-                               (expand-file-name "finsit-basecamp.el" "~/.emacs.d/lib/ftgp"))
-                              (f-files libbcel-path
-                                       (lambda (filename)
-                                         (and (s-ends-with? ".el" filename)
-                                              (not (s-ends-with? ".dir-locals.el" filename)))))
-                              (f-files bcel-path
-                                       (lambda (filename)
-                                         (and (s-ends-with? ".el" filename)
-                                              (not (s-ends-with? ".dir-locals.el" filename)))))))
-          (load-file file)))
-      (dolist (buffer (buffer-list))
-        (when (s-starts-with? "*bcel" (buffer-name buffer))
-          (kill-buffer buffer))))))
-
-(use-package basecamp
-  :config
-  (progn
-    (let ((expiration-date (format-time-string "%a %b %d %H:%M:%S %Y GMT"
-                                               ;; in a week
-                                               (time-add nil (* 60 60 24 7)) t)))
-      (url-cookie-store "bc3_identity_id"
-                        (auth-source-pass-get "bc3_identity_id" "ftgp/37signals.com")
-                        expiration-date
-                        ".3.basecamp.com" "/" t)
-
-      (url-cookie-store "bc3_session_verification_token"
-                        (auth-source-pass-get "bc3_session_verification_token" "ftgp/37signals.com")
-                        expiration-date
-                        ".3.basecamp.com" "/" t))))
+    (setq libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
 
 (use-package finsit-basecamp
   :demand t
@@ -1546,7 +1509,6 @@ because slides don't change their ID all the time."
   (progn
     (setq smtpmail-debug-info t)
     (setq smtpmail-debug-verb t)
-    (setq smtpmail-queue-mail nil)
     (setq smtpmail-stream-type 'starttls)))
 
 (use-package sendmail
@@ -1554,38 +1516,6 @@ because slides don't change their ID all the time."
   (progn
     (setq send-mail-function 'smtpmail-send-it)
     (setq sendmail-program "msmtp")))
-
-(use-package json-navigator
-  :commands (json-navigator-navigate-region json-navigator-navigate-after-point))
-
-(use-package lsp-mode
-  :disabled t
-  :hook (((haskell-mode haskell-literate-mode) . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp
-  :load-path "./lib/lsp-mode/clients"
-  :init
-  (progn
-    (setq lsp-keymap-prefix "C-. l")
-    (setq lsp-file-watch-threshold 10000)
-    ;; Setup dap-mode manually to avoid `dap-ui-many-windows-mode':
-    (setq lsp-enable-dap-auto-configure nil)))
-
-(use-package js2-mode
-  :mode "\\.js\\'"
-  :init
-  (progn
-    (add-hook 'js2-mode-hook #'my/js2-mode-setup 95))
-  :config
-  (progn
-    (defun my/js2-mode-setup ()
-      (when (bound-and-true-p lsp-eslint-fix-all)
-        (add-hook 'before-save-hook #'lsp-eslint-fix-all nil t)))))
-
-(use-package markdown-mode
-  :init
-  (progn
-    (setq markdown-command "kramdown")))
 
 (use-package firestarter
   :hook (prog-mode . firestarter-mode)
@@ -1627,9 +1557,6 @@ because slides don't change their ID all the time."
 
     (with-eval-after-load 'shell-switcher
       (setq shell-switcher-new-shell-function 'my/vterm-open-new))))
-
-(use-package webpaste
-  :commands (webpaste-paste-buffer webpaste-paste-region))
 
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
@@ -1693,9 +1620,7 @@ because slides don't change their ID all the time."
   :bind ([remap fill-paragraph] . unfill-toggle))
 
 (use-package nov
-  :init
-  (progn
-    (add-to-list 'auto-mode-alist (cons "\\.epub\\'" #'nov-mode))))
+ :mode ("\\.epub\\'" . nov-mode))
 
 (use-package ob-verb
   :demand t
