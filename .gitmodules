@@ -357,9 +357,6 @@
 	path = lib/ivy-mpdel
 	url = git@gitea.petton.fr/mpdel/ivy-mpdel.git
 	remote = "github git@github.com:DamienCassou/ivy-mpdel.git"
-[submodule "ivy-taskrunner"]
-	path = lib/ivy-taskrunner
-	url = git@github.com:emacs-taskrunner/ivy-taskrunner.git
 [submodule "js2-mode"] # Improved Javascript editing mode
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git
@@ -675,9 +672,6 @@
 [submodule "tablist"]
 	path = lib/tablist
 	url = git@github.com:politza/tablist.git
-[submodule "taskrunner"]
-	path = lib/taskrunner
-	url = git@github.com:emacs-taskrunner/emacs-taskrunner.git
 [submodule "tbdiff"]
 	path = lib/tbdiff
 	url = https://github.com/trast/tbdiff.git

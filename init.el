@@ -1072,12 +1072,6 @@ because slides don't change their ID all the time."
   (progn
     (projectile-mode)))
 
-(use-package ivy-taskrunner
-  :disabled t
-  :init
-  (progn
-    (ivy-taskrunner-minor-mode)))
-
 (use-package dumb-jump
   :init
   (progn
