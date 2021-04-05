@@ -1306,11 +1306,7 @@ because slides don't change their ID all the time."
 (use-package swiper
   :bind (("C-s" . swiper-isearch)
          :map swiper-map
-         ("M-'" . swiper-avy))
-  :init
-  (progn
-    ;; To help me stop using it
-    (unbind-key "C-r")))
+         ("M-'" . swiper-avy)))
 
 (use-package prescient
   :disabled t
