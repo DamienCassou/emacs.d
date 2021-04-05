@@ -1301,23 +1301,7 @@ because slides don't change their ID all the time."
 
     (counsel-projectile-modify-action
      'counsel-projectile-switch-project-action
-     '((default counsel-projectile-switch-project-action-vc)))
-
-    (defun my/counsel-projectile-import-file (filename)
-      "Add \"import\" line to current buffer importing FILENAME."
-      (save-excursion
-        (save-restriction
-          (setf (point) (point-min))
-          (while (re-search-forward "^import .*\n" nil t))
-          (setf (point) (line-beginning-position))
-          (let* ((path (file-name-sans-extension
-                        (finsit-core-relative-to-monitor-client-js-location filename)))
-                 (object (file-name-nondirectory path)))
-            (insert (format "import %s from %S;\n" object path))))))
-
-    (counsel-projectile-modify-action
-     'counsel-projectile-find-file-action
-     `((add ("I" ,#'my/counsel-projectile-import-file "Add \"import\" line"))))))
+     '((default counsel-projectile-switch-project-action-vc)))))
 
 (use-package swiper
   :bind (("C-s" . swiper-isearch)
