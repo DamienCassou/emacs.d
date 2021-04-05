@@ -1326,7 +1326,7 @@ because slides don't change their ID all the time."
   :config
   (progn
     (defun my/pass-insert-generated (entry)
-      "Same as pass-insert-generated but with my own template."
+      "Same as `pass-insert-generated' but with my own template."
       (interactive (list (read-string "Password entry: ")))
       (when (or (not (seq-contains (password-store-list) entry))
                 (yes-or-no-p "Erase existing entry with same name? "))
