@@ -168,7 +168,6 @@ current."
     (setq modus-themes-bold-constructs t)
     (setq modus-themes-completions 'opinionated)
     (setq modus-themes-org-blocks 'greyscale)
-    (setq modus-themes-prompt 'intense)
 
     (setq modus-themes-headings
           '((1 . highlight) ; make h1 stand out with a background
