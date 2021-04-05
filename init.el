@@ -1166,18 +1166,6 @@ because slides don't change their ID all the time."
 
     (add-to-list 'message-make-forward-subject-function #'message-forward-subject-fwd)))
 
-(use-package elfeed
-  :disabled t
-  :init
-  (progn
-    (setq elfeed-feeds '("https://emacs.stackexchange.com/feeds"))
-    (setq elfeed-sort-order 'ascending)))
-
-(use-package image
-  :config
-  (progn
-    (imagemagick-register-types)))
-
 (use-package paredit
   :hook ((emacs-lisp-mode
           lisp-mode
@@ -1248,25 +1236,15 @@ because slides don't change their ID all the time."
   :demand t
   :bind (("M-i" . counsel-imenu)
          ("C-x 8 RET" . counsel-unicode-char)
-         ("s-!" . counsel-linux-app)
          :map counsel-find-file-map
          ("C-l" . counsel-up-directory)
          ("<right>" . counsel-down-directory)
          ("<left>" . counsel-up-directory))
   :init
   (progn
-    (setq counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
     (setq counsel-yank-pop-preselect-last t))
   :config
   (progn
-    (defun my/counsel-open-in-external-terminal (file)
-      "Open FILE in external terminal."
-      (interactive "FFile: ")
-      (let ((default-directory (if (file-directory-p file)
-                                   file
-                                 (file-name-directory file))))
-        (call-process "xterm")))
-
     (defun my/counsel-open-in-eshell (file)
       "Open FILE in eshell."
       (interactive "FFile: ")
@@ -1277,8 +1255,7 @@ because slides don't change their ID all the time."
 
     (ivy-add-actions
      'counsel-find-file
-     '(("t" my/counsel-open-in-external-terminal "open terminal")
-       ("s" my/counsel-open-in-eshell "eshell")))
+     '(("s" my/counsel-open-in-eshell "eshell")))
 
     (defun my/apply-bookmark-fn (fn)
       "Return a function applyinig FN to a bookmark's location."
@@ -1287,8 +1264,7 @@ because slides don't change their ID all the time."
 
     (ivy-add-actions
      'counsel-bookmark
-     `(("t" ,(my/apply-bookmark-fn #'my/counsel-open-in-external-terminal) "open terminal")
-       ("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")))
+     `(("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")))
 
     (counsel-mode)))
 
