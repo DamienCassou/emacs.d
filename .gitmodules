@@ -181,10 +181,6 @@
 [submodule "emacs-everywhere"]
 	path = lib/emacs-everywhere
 	url = git@github.com:tecosaur/emacs-everywhere.git
-[submodule "emacs-js"]
-	path = lib/emacs-js
-	url = git@github.com:foretagsplatsen/emacs-js.git
-	load-path = .
 [submodule "emake"]
 	path = lib/emake
 	url = https://github.com/vermiculus/emake.el.git

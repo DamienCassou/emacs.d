@@ -1390,17 +1390,6 @@ because slides don't change their ID all the time."
     (setq company-dabbrev-ignore-case nil)
     (setq company-show-numbers t)))
 
-(use-package emacs-js
-  :disabled t
-  :hook (js-mode . setup-js-buffer)
-  :bind (
-         :map js2-refactor-mode-map
-         ("<M-up>" . js2r-move-line-up)
-         ("<M-down>" . js2r-move-line-down))
-  :init
-  (progn
-    (setq indium-chrome-executable (executable-find "chromium-browser"))))
-
 (use-package prodigy
   :bind (
          :map prodigy-mode-map
