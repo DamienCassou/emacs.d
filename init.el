@@ -1344,12 +1344,6 @@ because slides don't change their ID all the time."
 
     (advice-add #'pass-insert-generated :override #'my/pass-insert-generated)))
 
-(use-package auth-source
-  :init
-  (progn
-    (setq auth-source-debug t)
-    (setq auth-source-do-cache t)))
-
 (use-package auth-source-pass
   :demand t
   :after auth-source
