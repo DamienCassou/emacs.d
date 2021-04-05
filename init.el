@@ -740,7 +740,7 @@ current."
 
 (use-package ledger-import
   :hook ((ledger-import-finished . my/ledger-import-finish))
-  :init
+  :config
   (progn
     (setq ledger-import-boobank-import-from-date "2021-01-01")
     (setq ledger-import-autosync-command
@@ -780,9 +780,8 @@ current."
       (my/ledger-import-remove-EUR)
       (my/ledger-import-merge-autosync-transactions)
       (my/ledger-import-add-today-date-as-outline)
-      (my/ledger-import-alert)))
-  :config
-  (progn
+      (my/ledger-import-alert))
+
     ;; Fill `ledger-import-accounts' and `ledger-import-ofx-rewrite-rules':
     (let ((file (expand-file-name "~/.password-store/Secure_Notes/ledger-accounts.gpg")))
       (when (file-exists-p file)
