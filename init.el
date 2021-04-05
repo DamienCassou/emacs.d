@@ -2007,21 +2007,14 @@ I.e., the keyring has a public key for each recipient."
   (progn
     (minions-mode)))
 
-(use-package youtube-dl
-  :bind (
-         :map youtube-dl-list-mode-map
-         ("k" . youtube-dl-list-kill))
+(use-package ytdl
+  :hook (ytdl-download-finished . my/ytdl-alert)
   :init
   (progn
-    (setq youtube-dl-directory (expand-file-name "~/Downloads/")))
-  :config
-  (progn
-    (defun my/youtube-dl-alert (_item)
+    (defun my/ytdl-alert ()
       (alert "youtube-dl"
              :severity 'normal
-             :title "Command completed"))
-
-    (advice-add #'youtube-dl--remove :after #'my/youtube-dl-alert)))
+             :title "Download completed"))))
 
 (use-package unfill
   :disabled t

@@ -756,9 +756,9 @@
 [submodule "yasnippet"] # expand snippets of text
 	path = lib/yasnippet
 	url = git@github.com:joaotavora/yasnippet.git
-[submodule "youtube-dl"]
-	path = lib/youtube-dl
-	url = git@github.com:skeeto/youtube-dl-emacs.git
+[submodule "ytdl"]
+	path = lib/ytdl
+	url = git@gitlab.com:tuedachu/ytdl.git
 [submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
 	path = lib/zoom-frm
 	url = git@github.com:emacsmirror/zoom-frm.git
