@@ -1091,11 +1091,8 @@ because slides don't change their ID all the time."
          ("R" . notmuch-search-reply-to-thread-sender))
   :init
   (progn
-    (setq notmuch-always-prompt-for-sender t)
     (setq notmuch-archive-tags '("-inbox" "-unread"))
-    (setq notmuch-crypto-process-mime t)
     (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
-    (setq notmuch-labeler-hide-known-labels t)
     (setq notmuch-search-oldest-first nil)
     (setq notmuch-draft-save-plaintext t)))
 
@@ -1106,21 +1103,11 @@ because slides don't change their ID all the time."
          ("r" . notmuch-show-reply)
          ("R" . notmuch-show-reply-sender)
          :map notmuch-show-part-map
-         ("d" . my/notmuch-show-ics-to-org-part)
-         ("a" . nico-notmuch-git-am-patch))
+         ("d" . my/notmuch-show-ics-to-org-part))
   :init
   (progn
     (setq notmuch-show-imenu-indent t)
     (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
-
-    (defun nico-notmuch-git-am-part (handle)
-      (let ((dir (read-directory-name "Git directory: ")))
-        (mm-pipe-part handle (format "cd %s; git am" (expand-file-name dir)))))
-
-    (defun nico-notmuch-git-am-patch ()
-      "Apply the MIME part at point as a git patch using `git am'."
-      (interactive)
-      (notmuch-show-apply-to-current-part-handle #'nico-notmuch-git-am-part))
 
     (defun my/mm-ics-to-org-part (handle &optional prompt)
       "Add message part HANDLE to org."
@@ -1230,44 +1217,6 @@ because slides don't change their ID all the time."
     (setq message-signature-file "~/.signature"))
   :config
   (progn
-    ;;; The following make sure to use the right profile when sending
-    ;;; the message (i.e., when pressing C-c C-c in message-mode).
-    ;;; It's better to set the profile just before sending to be sure
-    ;;; to use the profile related to the From: message field).
-    (defun my:message-send-and-exit (&optional arg)
-      "Set profile according to From field.
-Designed to be called before `message-send-and-exit'."
-      (ignore arg)
-      (require 'profile)
-      (profile-set-profile-from-message-from-field))
-
-    (advice-add #'message-send-and-exit
-                :before
-                #'my:message-send-and-exit)
-
-    (defun my/can-encrypt-message-p ()
-      "Return non-nil if current message can be encrypted.
-I.e., the keyring has a public key for each recipient."
-      (let ((recipients (seq-map #'cadr
-                                 (seq-mapcat (lambda (header)
-                                               (let ((header-value (message-fetch-field header)))
-                                                 (and
-                                                  header-value
-                                                  (mail-extract-address-components header-value t))))
-                                             '("To" "CC" "BCC"))))
-            (context (epg-make-context epa-protocol)))
-        (seq-every-p (lambda (recipient)
-                       (not (seq-empty-p (epg-list-keys context recipient))))
-                     recipients)))
-
-    (defun my/add-encryption-mark-if-possible ()
-      "Add MML tag to encrypt message when there is a key for each recipient."
-      (interactive)
-      (when (my/can-encrypt-message-p)
-        (mml-secure-message-sign-encrypt)))
-
-    ;; (add-hook 'message-send-hook #'my/add-encryption-mark-if-possible)
-
     ;; Add "Fwd:" to the beginning of Subject of forwarded emails so that
     ;; basecamp detects it properly:
     (unless (listp message-make-forward-subject-function)
