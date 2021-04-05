@@ -1308,33 +1308,6 @@ because slides don't change their ID all the time."
          :map swiper-map
          ("M-'" . swiper-avy)))
 
-(use-package prescient
-  :disabled t
-  :demand t
-  :config
-  (progn
-    (prescient-persist-mode)))
-
-(use-package ivy-prescient
-  :demand t
-  ;; from prescient README: Please note that you must load Counsel
-  ;; before ivy-prescient.el. This is because loading Counsel results
-  ;; in a number of changes being made to the user options of Ivy,
-  ;; which ivy-prescient.el must then undo.
-  :after counsel
-  :config
-  (progn
-    (ivy-prescient-mode)
-    (let ((commands-without-precient '(counsel-imenu
-                                       counsel-projectile-ag
-                                       counsel-projectile-rg
-                                       counsel-yank-pop
-                                       dired-do-async-shell-command
-                                       magit-checkout
-                                       notmuch-show-interactively-view-part)))
-      (dolist (command commands-without-precient)
-        (add-to-list 'ivy-prescient-sort-commands command t)))))
-
 (use-package password-store
   :init
   (progn
