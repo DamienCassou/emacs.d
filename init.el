@@ -459,14 +459,10 @@ current."
 (use-package magit
   :init
   (progn
-    (setq magit-diff-refine-hunk 'all)
+    (setq magit-diff-refine-hunk t)
     (setq magit-process-find-password-functions '(magit-process-password-auth-source))
-    (setq magit-wip-after-apply-mode nil)
-    (setq magit-wip-after-save-mode nil)
-    (setq magit-wip-before-change-mode nil)
     (setq magit-branch-prefer-remote-upstream '("master"))
     (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
-    (setq magit-branch-arguments nil)
     (setq magit-module-sections-nested nil)
     (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
     (setq magit-no-confirm '(amend-published))
@@ -477,6 +473,8 @@ current."
   (progn
     ;; Enable magit-clean
     (put 'magit-clean 'disabled nil)
+
+    ;; Add modules in magit status buffer:
     (magit-add-section-hook 'magit-status-sections-hook
                             'magit-insert-modules
                             'magit-insert-unpulled-from-upstream)
