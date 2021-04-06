@@ -1288,6 +1288,7 @@ because slides don't change their ID all the time."
     (ivy-mode)))
 
 (use-package ivy-avy
+  :after ivy
   :bind (
          :map ivy-minibuffer-map
          ("M-'" . ivy-avy)))
