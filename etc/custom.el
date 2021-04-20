@@ -22,6 +22,12 @@
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    '((eglot-server-programs
+      (haskell-mode lambda
+                    (_)
+                    (nix-shell-command
+                     (nix-current-sandbox)
+                     "haskell-language-server" "--lsp")))
+     (eglot-server-programs
       (haskell-mode "haskell-language-server" "--lsp"))
      (flycheck-disabled-checkers ledger)
      (lsp-eslint-auto-fix-on-save . t)
