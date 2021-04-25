@@ -94,6 +94,12 @@
 [submodule "company-tern"] # tern backend for company mode
 	path = lib/company-tern
 	url = git@github.com:proofit404/company-tern.git
+[submodule "consult"]
+	path = lib/consult
+	url = git@github.com:minad/consult.git
+[submodule "corfu"]
+	path = lib/corfu
+	url = git@github.com:minad/corfu.git
 [submodule "counsel-jq"]
 	path = lib/counsel-jq
 	url = https://github.com/200ok-ch/counsel-jq.git
@@ -186,6 +192,9 @@
 	url = https://github.com/vermiculus/emake.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/emake.el.git"
 	fetchRecurseSubmodules = true
+[submodule "embark"]
+	path = lib/embark
+	url = git@github.com:oantolin/embark.git
 [submodule "embrace"] # wrap/unwrap/change wrapping for quote, braces, ...
 	path = lib/embrace
 	url = git@github.com:cute-jumper/embrace.el.git
@@ -451,6 +460,9 @@
 [submodule "makey"] # required by widgetjs and amd
 	path = lib/makey
 	url = git@github.com:mickeynp/makey.git
+[submodule "marginalia"]
+	path = lib/marginalia
+	url = git@github.com:minad/marginalia.git
 [submodule "markdown-mode"] # Major mode for markdown format
 	path = lib/markdown-mode
 	url = git@github.com:jrblevin/markdown-mode.git
@@ -515,6 +527,9 @@
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
+[submodule "orderless"]
+	path = lib/orderless
+	url = git@github.com:oantolin/orderless.git
 [submodule "org-caldav"]
 	path = lib/org-caldav
 	url = git@github.com:dengste/org-caldav.git
@@ -706,6 +721,9 @@
 [submodule "verb"]
 	path = lib/verb
 	url = git@github.com:federicotdn/verb.git
+[submodule "vertico"]
+	path = lib/vertico
+	url = git@github.com:minad/vertico.git
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git
