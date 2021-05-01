@@ -91,9 +91,6 @@
 [submodule "company-restclient"] # provides completion for restclient
 	path = lib/company-restclient
 	url = git@github.com:iquiw/company-restclient.git
-[submodule "company-tern"] # tern backend for company mode
-	path = lib/company-tern
-	url = git@github.com:proofit404/company-tern.git
 [submodule "consult"]
 	path = lib/consult
 	url = git@github.com:minad/consult.git
