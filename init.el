@@ -1568,10 +1568,87 @@ because slides don't change their ID all the time."
   (progn
     (savehist-mode)))
 
+(use-package vertico
+  :demand t
+  :config
+  (progn
+    (vertico-mode)))
+
+(use-package marginalia
+  :demand t
+  :bind (
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+  :config
+  (progn
+    (marginalia-mode)))
+
+(use-package orderless
+  :demand t
+  :init
+  (progn
+    (setq completion-styles '(orderless))))
+
 (use-package xref
   :init
   (progn
     (setq xref-show-definitions-function #'xref-show-definitions-completing-read)))
+
+(use-package consult
+  :bind (;; Virtual Buffers
+         ([remap switch-to-buffer] . consult-buffer)
+         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+         ([remap bookmark-jump] . consult-bookmark)
+         ;; Editing
+         ([remap yank-pop] . consult-yank-pop)
+         ;; Navigation
+         ([remap goto-line] . consult-goto-line)
+         ;; Grep and Find
+         ([remap project-find-regexp] . consult-ripgrep))
+  :init
+  (progn
+    ;; Use Consult to select xref locations with preview
+    (setq xref-show-xrefs-function #'consult-xref)
+    (setq xref-show-definitions-function #'consult-xref)
+
+    ;; Use consult to have in-buffer completions displayed in the minibuffer:
+    (setq completion-in-region-function #'consult-completion-in-region)
+
+    ;; Use `project` with consult:
+    (setq consult-project-root-function
+          (lambda ()
+            (when-let (project (project-current))
+              (project-root project))))))
+
+(use-package consult-imenu
+  :bind (("M-i" . consult-imenu)))
+
+(use-package consult-flycheck
+  :after (consult flycheck)
+  :bind (
+         :map flycheck-command-map
+         ("l" . consult-flycheck)))
+
+(use-package consult-flymake
+  :after (consult flymake)
+  :bind (
+         :map flymake-mode-map
+         ("C-c ! l" . counselt-flymake)))
+
+(use-package embark
+  :demand t
+  :bind (("C-S-a" . embark-act)
+         :map embark-file-map
+         ("v" . shell-switcher-open-on-directory)
+         :map embark-bookmark-map
+         ("v" . shell-switcher-open-on-bookmark))
+  :config
+  (progn
+    (add-to-list 'embark-keymap-alist (cons 'project-file embark-file-map))))
+
+(use-package embark-consult
+  :demand t
+  :after (embark consult))
 
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
