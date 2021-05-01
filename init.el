@@ -1650,6 +1650,11 @@ because slides don't change their ID all the time."
   :demand t
   :after (embark consult))
 
+(use-package wgrep
+  :init
+  (progn
+    (setq wgrep-enable-key [remap read-only-mode])))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
