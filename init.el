@@ -737,12 +737,6 @@ current."
   (progn
     (setq ledger-complete-in-steps nil)))
 
-(use-package company-ledger
-  :disabled
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-ledger)))
-
 (use-package ledger-import
   :hook ((ledger-import-finished . my/ledger-import-finish))
   :config
@@ -1001,8 +995,7 @@ because slides don't change their ID all the time."
 
 (use-package org-roam
   :demand t
-  :hook ((after-init . org-roam-mode)
-         (org-mode . my/org-roam-setup))
+  :hook ((after-init . org-roam-mode))
   :bind (("C-. r r" . org-roam-capture)
          ("C-. r f" . org-roam-find-file)
          ("C-. r d" . org-roam-dailies-capture-today)
@@ -1023,15 +1016,7 @@ because slides don't change their ID all the time."
           '(("d" "default" plain #'org-roam-capture--get-point "%?"
              :file-name "%<%Y-%m-%d>-${slug}"
              :head "#+title: ${title}\n#+created: %T\n\n"
-             :unnarrowed t))))
-  :config
-  (progn
-    (defun my/org-roam-setup ()
-      "Initialize an org-roam buffer."
-      (when (and (buffer-file-name) (string-prefix-p org-roam-directory (buffer-file-name)))
-        ;; Recommended by org-roam manual:
-        (setq-local company-backends (cons 'company-capf company-backends))
-        (company-mode)))))
+             :unnarrowed t)))))
 
 (use-package nroam
   :hook (org-mode . nroam-setup-maybe))
@@ -1399,15 +1384,6 @@ because slides don't change their ID all the time."
   :init
   (progn
     (global-subword-mode)))
-
-(use-package company
-  :bind ("C-. /" . company-complete)
-  :hook (prog-mode . company-mode)
-  :init
-  (progn
-    (setq company-dabbrev-downcase nil)
-    (setq company-dabbrev-ignore-case nil)
-    (setq company-show-numbers t)))
 
 (use-package prodigy
   :bind (
