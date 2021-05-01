@@ -1028,7 +1028,7 @@ because slides don't change their ID all the time."
   (progn
     (drag-stuff-global-mode)
     (drag-stuff-define-keys)
-    (dolist (mode '(org-mode rebase-mode emacs-lisp-mode mpdel-playlist-current-playlist-mode js2-mode))
+    (dolist (mode '(org-mode rebase-mode emacs-lisp-mode mpdel-playlist-current-playlist-mode))
       (add-to-list 'drag-stuff-except-modes mode))))
 
 (use-package expand-region
