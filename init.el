@@ -610,9 +610,6 @@ current."
     (unbind-key "C-." flyspell-mode-map)
     (unbind-key "C-;" flyspell-mode-map)))
 
-(use-package flyspell-correct-ivy
-  :bind (("M-$" . flyspell-correct-at-point)))
-
 (use-package checkdoc
   :init
   (progn
@@ -728,8 +725,6 @@ current."
       "Configure the current Ledger buffer."
       ;; use TAB to complete:
       (setq-local tab-always-indent 'complete)
-      ;; use minibuffer completion with ivy
-      (setq-local ivy-display-functions-alist nil)
       (add-hook 'outline-minor-mode-hook #'my/ledger-configure-outline-minor-mode nil t))))
 
 (use-package ledger-complete
@@ -1010,7 +1005,6 @@ because slides don't change their ID all the time."
     ;; when renaming multiple times without idling, see
     ;; https://github.com/org-roam/org-roam/issues/1425#issuecomment-775715148
     (setq org-roam-db-update-method 'immediate)
-    (setq org-roam-completion-system 'ivy)
 
     (setq org-roam-capture-templates
           '(("d" "default" plain #'org-roam-capture--get-point "%?"
@@ -1220,12 +1214,9 @@ because slides don't change their ID all the time."
       (revert-buffer ignore-auto t nil))))
 
 (use-package helpful
-  :bind (("C-h k" . helpful-key))
-  :init
-  (progn
-    (with-eval-after-load "counsel"
-      (setq counsel-describe-function-function #'helpful-callable)
-      (setq counsel-describe-variable-function #'helpful-variable))))
+  :bind (([remap describe-key] . helpful-key)
+         ([remap describe-function] . helpful-function)
+         ([remap describe-variable] . helpful-variable)))
 
 (use-package aggressive-indent
   :hook ((lisp-mode emacs-lisp-mode scheme-mode) . aggressive-indent-mode))
@@ -1234,83 +1225,6 @@ because slides don't change their ID all the time."
   :init
   (progn
     (setq bookmark-save-flag 1)))
-
-(use-package counsel
-  :demand t
-  :bind (("M-i" . counsel-imenu)
-         ("C-x 8 RET" . counsel-unicode-char)
-         :map counsel-find-file-map
-         ("C-l" . counsel-up-directory)
-         ("<right>" . counsel-down-directory)
-         ("<left>" . counsel-up-directory))
-  :init
-  (progn
-    (setq counsel-yank-pop-preselect-last t))
-  :config
-  (progn
-    (defun my/counsel-open-in-eshell (file)
-      "Open FILE in eshell."
-      (interactive "FFile: ")
-      (let ((default-directory (if (file-directory-p file)
-                                   file
-                                 (file-name-directory file))))
-        (shell-switcher-new-shell)))
-
-    (ivy-add-actions
-     'counsel-find-file
-     '(("s" my/counsel-open-in-eshell "eshell")))
-
-    (defun my/apply-bookmark-fn (fn)
-      "Return a function applyinig FN to a bookmark's location."
-      (lambda (bookmark)
-        (funcall fn (bookmark-location bookmark))))
-
-    (ivy-add-actions
-     'counsel-bookmark
-     `(("s" ,(my/apply-bookmark-fn #'my/counsel-open-in-eshell) "eshell")))
-
-    (counsel-mode)))
-
-(use-package ivy
-  :demand t
-  :bind (("C-. i" . ivy-resume))
-  :init
-  (progn
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-virtual-abbreviate 'abbreviate)
-    (setq ivy-count-format "(%d/%d) ")
-    (setq ivy-use-selectable-prompt t))
-  :config
-  (progn
-    (ivy-mode)))
-
-(use-package ivy-avy
-  :after ivy
-  :bind (
-         :map ivy-minibuffer-map
-         ("M-'" . ivy-avy)))
-
-(use-package ivy-hydra
-  :config
-  (progn
-    ;; deactivate ivy-hydra if it ever gets activated:
-    (setq ivy-read-action-function #'ivy-read-action-by-key)))
-
-(use-package counsel-projectile
-  :demand t
-  :after projectile
-  :config
-  (progn
-    (counsel-projectile-mode)
-
-    (counsel-projectile-modify-action
-     'counsel-projectile-switch-project-action
-     '((default counsel-projectile-switch-project-action-vc)))))
-
-(use-package swiper
-  :bind (("C-s" . swiper-isearch)
-         :map swiper-map
-         ("M-'" . swiper-avy)))
 
 (use-package password-store
   :init
