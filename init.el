@@ -1562,6 +1562,12 @@ because slides don't change their ID all the time."
   (progn
     (envrc-global-mode)))
 
+(use-package savehist
+  :demand t
+  :config
+  (progn
+    (savehist-mode)))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
