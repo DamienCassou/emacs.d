@@ -1568,6 +1568,11 @@ because slides don't change their ID all the time."
   (progn
     (savehist-mode)))
 
+(use-package xref
+  :init
+  (progn
+    (setq xref-show-definitions-function #'xref-show-definitions-completing-read)))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
