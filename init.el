@@ -342,10 +342,21 @@ current."
   (progn
     (setq debbugs-gnu-trunk-directory "~/Documents/projects/emacs/emacs-src-26")))
 
+(use-package goto-addr
+  :bind (
+         :map goto-address-highlight-keymap
+         ("C-c C-o" . goto-address-at-point))
+  :hook ((nix-mode . goto-address-mode)))
+
 (use-package bug-reference
   :bind ((
           :map bug-reference-map
           ("C-c C-o" . bug-reference-push-button))))
+
+(use-package info
+  :bind (
+         :map Info-mode-map
+         ("C-c C-o" . Info-follow-nearest-node)))
 
 (use-package info-colors
   :demand t
