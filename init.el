@@ -1298,7 +1298,8 @@ because slides don't change their ID all the time."
   :bind (
          :map prodigy-mode-map
          ("k" . (lambda () (interactive) (prodigy-stop t)))
-         ("M-w" . prodigy-copy-url)))
+         ("M-w" . prodigy-copy-url)
+         ("y" . finsit-prodigy-start-cypress)))
 
 (use-package finsit-core
   :config
@@ -1340,6 +1341,11 @@ because slides don't change their ID all the time."
   (progn
     (finsit-elcouch-setup)))
 
+(use-package indium
+  :bind (
+         :map indium-interaction-mode-map
+         ("C-c r" . indium-reload)))
+
 (use-package finsit-javascript
   :demand t
   :after js
@@ -1347,7 +1353,9 @@ because slides don't change their ID all the time."
   (progn
     (finsit-javascript-setup)
     (add-to-list 'yas-snippet-dirs (expand-file-name "~/.emacs.d/lib/ftgp/snippets"))
-    (yas-reload-all)))
+    (yas-reload-all)
+
+    (set-face-attribute 'finsit-javascript-html-tag-face nil :background nil)))
 
 (use-package finsit-magit
   :demand t
