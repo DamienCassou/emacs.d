@@ -1058,17 +1058,6 @@ because slides don't change their ID all the time."
   (progn
     (which-key-mode)))
 
-(use-package projectile
-  :demand t
-  :init
-  (progn
-    (setq projectile-completion-system 'ivy)
-    (setq projectile-keymap-prefix (kbd "C-. p"))
-    (setq projectile-require-project-root nil))
-  :config
-  (progn
-    (projectile-mode)))
-
 (use-package dumb-jump
   :init
   (progn
