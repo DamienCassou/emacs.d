@@ -1164,6 +1164,9 @@ because slides don't change their ID all the time."
     (add-to-list 'message-make-forward-subject-function #'message-forward-subject-fwd)))
 
 (use-package paredit
+  :bind (
+         :map paredit-mode-map
+         ("M-s" . nil))
   :hook ((emacs-lisp-mode
           lisp-mode
           eval-expression-minibuffer-setup
