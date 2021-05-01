@@ -496,6 +496,9 @@ current."
     (transient-replace-suffix 'magit-commit 'magit-commit-autofixup
       '("x" "Absorb changes" magit-commit-absorb))))
 
+(use-package magit-extras
+  :demand (project magit))
+
 (use-package magit-tbdiff
   :demand t
   :after magit)
