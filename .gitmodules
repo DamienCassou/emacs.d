@@ -94,9 +94,11 @@
 [submodule "consult"]
 	path = lib/consult
 	url = git@github.com:minad/consult.git
+	branch = main
 [submodule "corfu"]
 	path = lib/corfu
 	url = git@github.com:minad/corfu.git
+	branch = main
 [submodule "counsel-jq"]
 	path = lib/counsel-jq
 	url = https://github.com/200ok-ch/counsel-jq.git
@@ -343,6 +345,7 @@
 [submodule "inheritenv"]
 	path = lib/inheritenv
 	url = git@github.com:purcell/inheritenv.git
+	branch = main
 [submodule "ivy"]
 	path = lib/ivy
 	url = git@github.com:abo-abo/swiper.git
@@ -460,6 +463,7 @@
 [submodule "marginalia"]
 	path = lib/marginalia
 	url = git@github.com:minad/marginalia.git
+	branch = main
 [submodule "markdown-mode"] # Major mode for markdown format
 	path = lib/markdown-mode
 	url = git@github.com:jrblevin/markdown-mode.git
@@ -482,6 +486,7 @@
 	path = lib/modus-themes
 	url = git@gitlab.com:protesilaos/modus-themes.git
 	info-path = doc
+	branch = main
 [submodule "moody"]
 	path = lib/moody
 	url = git@github.com:tarsius/moody.git
@@ -721,6 +726,7 @@
 [submodule "vertico"]
 	path = lib/vertico
 	url = git@github.com:minad/vertico.git
+	branch = main
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git
