@@ -38,6 +38,7 @@
         js2r-kill
         keyboard-escape-quit
         kill-region
+        ledger-post-align-dwim
         markdown-outdent-or-delete
         mc/insert-numbers
         message-beginning-of-line
