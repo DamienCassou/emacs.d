@@ -1641,10 +1641,7 @@ because slides don't change their ID all the time."
          :map embark-file-map
          ("v" . shell-switcher-open-on-directory)
          :map embark-bookmark-map
-         ("v" . shell-switcher-open-on-bookmark))
-  :config
-  (progn
-    (add-to-list 'embark-keymap-alist (cons 'project-file embark-file-map))))
+         ("v" . shell-switcher-open-on-bookmark)))
 
 (use-package embark-consult
   :demand t
