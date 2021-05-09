@@ -1210,7 +1210,7 @@ because slides don't change their ID all the time."
 
 (use-package helpful
   :bind (([remap describe-key] . helpful-key)
-         ([remap describe-function] . helpful-function)
+         ([remap describe-function] . helpful-callable)
          ([remap describe-variable] . helpful-variable)))
 
 (use-package aggressive-indent
