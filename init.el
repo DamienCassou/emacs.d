@@ -1522,6 +1522,7 @@ because slides don't change their ID all the time."
   :hook (ytdl-download-finished . my/ytdl-alert)
   :init
   (progn
+    (setq ytdl-music-folder "~/Downloads/music")
     (defun my/ytdl-alert ()
       (alert "youtube-dl"
              :severity 'normal
