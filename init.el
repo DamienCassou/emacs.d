@@ -1595,6 +1595,26 @@ because slides don't change their ID all the time."
   (progn
     (setq xref-show-definitions-function #'xref-show-definitions-completing-read)))
 
+(use-package project
+  :bind (
+         :map project-prefix-map
+         ;; Use magit as default command when switching projects:
+         ("p" . my/project-switch-project-to-magit)
+         ("v" . shell-switcher-open-on-project))
+  :init
+  (progn
+    (defun my/project-switch-project-to-magit ()
+      "Ask the user to select a project from known projects and open magit on the selection."
+      (interactive)
+      (magit-status-setup-buffer (project-prompt-project-dir))))
+  :config
+  (progn
+    ;; Delete commands I don't want to see when switching projects:
+    (dolist (undesired-switch-command '(project-vc-dir project-eshell))
+      (setq project-switch-commands (cl-delete undesired-switch-command project-switch-commands :key #'car)))
+
+    (add-to-list 'project-switch-commands '(shell-switcher-open-on-project "Shell") t)))
+
 (use-package consult
   :bind (;; Virtual Buffers
          ([remap switch-to-buffer] . consult-buffer)
