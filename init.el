@@ -346,7 +346,7 @@ current."
   :bind (
          :map goto-address-highlight-keymap
          ("C-c C-o" . goto-address-at-point))
-  :hook ((nix-mode . goto-address-mode)))
+  :hook (((nix-mode magit-process-mode) . goto-address-mode)))
 
 (use-package bug-reference
   :bind ((
