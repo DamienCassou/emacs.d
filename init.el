@@ -1621,7 +1621,7 @@ because slides don't change their ID all the time."
          ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
          ([remap bookmark-jump] . consult-bookmark)
          ;; Editing
-         ([remap yank-pop] . consult-yank-pop)
+         ([remap yank-pop] . consult-yank-from-kill-ring)
          ;; Navigation
          ([remap goto-line] . consult-goto-line)
          ;; Grep and Find
