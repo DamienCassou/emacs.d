@@ -1369,7 +1369,7 @@ because slides don't change their ID all the time."
   :after prodigy
   :config
   (progn
-    (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.114:80"))
+    (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.37:80"))
     (finsit-prodigy-setup)))
 
 (use-package alert
