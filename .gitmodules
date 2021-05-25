@@ -95,6 +95,9 @@
 	path = lib/consult
 	url = git@github.com:minad/consult.git
 	branch = main
+[submodule "consult-flycheck"]
+	path = lib/consult-flycheck
+	url = git@github.com:minad/consult-flycheck.git
 [submodule "corfu"]
 	path = lib/corfu
 	url = git@github.com:minad/corfu.git
