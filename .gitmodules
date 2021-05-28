@@ -503,6 +503,9 @@
 [submodule "nameless"] # hide current package name everywhere in elisp code
 	path = lib/nameless
 	url = git@github.com:Malabarba/Nameless.git
+[submodule "nano"]
+	path = lib/nano
+	url = git@github.com:rougier/nano-emacs.git
 [submodule "navigel"]
 	path = lib/navigel
 	url = git@gitea.petton.fr:DamienCassou/navigel.git
