@@ -23,6 +23,7 @@
         dabbrev-expand
         dired-toggle-read-only
         dired-unmark-all-files
+        drag-stuff-down
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         embrace-commander
