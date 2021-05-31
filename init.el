@@ -147,10 +147,7 @@ current."
       (when frame (select-frame frame))
       (setq frame-title-format "Emacs")
       (when (window-system)
-        (add-to-list 'default-frame-alist '(cursor-type bar . 5))
-        (set-face-attribute 'default nil :height 110 :family "Fira Mono")
-        (set-face-attribute 'fixed-pitch nil :family "Fira Mono")
-        (set-face-attribute 'variable-pitch nil :font "Gentium Book Basic")))
+        (add-to-list 'default-frame-alist '(cursor-type bar . 5))))
 
     (my/setup-frame)))
 
@@ -505,6 +502,7 @@ current."
   :after magit)
 
 (use-package moody
+  :disabled t
   :demand t
   :config
   (progn
@@ -1673,6 +1671,50 @@ because slides don't change their ID all the time."
   :init
   (progn
     (setq wgrep-enable-key [remap read-only-mode])))
+
+(use-package nano-faces
+  :after (modus-themes)
+  :demand t
+  :init
+  (progn
+    (setq nano-color-highlight "#f2eff3")))
+
+(use-package nano-theme
+  :demand t
+  :config
+  (progn
+    (nano-theme--basics)
+    (nano-theme--font-lock)
+    (nano-theme--mode-line)
+    (nano-theme--minibuffer)
+    (nano-theme--buttons)
+    (nano-theme--info)
+    (nano-theme--bookmark)
+    (nano-theme--speedbar)
+    (nano-theme--message)
+    (nano-theme--outline)
+    (nano-theme--customize)
+    (nano-theme--package)
+    (nano-theme--flyspell)
+    (nano-theme--ido)
+    (nano-theme--diff)
+    (nano-theme--term)
+    (nano-theme--calendar)
+    (nano-theme--agenda)
+    (nano-theme--org)
+    (nano-theme--mu4e)
+    (nano-theme--elfeed)
+    (nano-theme--deft)
+    (nano-theme--rst)
+    (nano-theme--markdown)
+    (nano-theme--hl-line)
+    (nano-theme--company)))
+
+(use-package nano-modeline
+  :demand t)
+
+(use-package nano-layout
+  :demand t)
 
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
