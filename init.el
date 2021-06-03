@@ -131,6 +131,10 @@ are visible."
 
 (use-package frame
   :bind (("C-x C-z" . my/suspend-on-tty-only))
+  :init
+  (progn
+    ;; Space between windows:
+    (setq window-divider-default-right-width 12))
   :config
   (progn
     (defun my/suspend-on-tty-only ()
@@ -147,7 +151,20 @@ current."
       (when frame (select-frame frame))
       (setq frame-title-format "Emacs")
       (when (window-system)
-        (add-to-list 'default-frame-alist '(cursor-type bar . 5))
+        (setq default-frame-alist
+              '((cursor-type bar . 5)
+                ;; The width in pixels of the frame’s internal border:
+                (internal-border-width . 12)
+                ;; large fringes to get hi-resolution flycheck marks:
+                (left-fringe    . 8)
+                (right-fringe   . 8)
+                ;; Hide stuff I don't need:
+                (vertical-scroll-bars . nil)
+                (tool-bar-lines . 0)
+                (menu-bar-lines . 0)))
+
+        (window-divider-mode)
+
         (set-face-attribute 'default nil :height 110 :family "Fira Mono")
         (set-face-attribute 'fixed-pitch nil :family "Fira Mono")
         (set-face-attribute 'variable-pitch nil :font "Gentium Book Basic")))
@@ -179,7 +196,11 @@ current."
 
     (setq modus-themes-scale-headings t)
     (setq modus-themes-slanted-constructs t)
-    (setq modus-themes-variable-pitch-headings t))
+    (setq modus-themes-variable-pitch-headings t)
+
+    (setq modus-themes-operandi-color-overrides
+          '((fg-window-divider-outer . "white")
+            (fg-window-divider-inner . "white"))))
   :config
   (progn
     (modus-themes-load-operandi)
@@ -249,12 +270,6 @@ current."
   (progn
     (unless (or (daemonp) (server-running-p))
       (server-start))))
-
-(use-package fringe
-  :config
-  (progn
-    ;; large fringes to get hi-resolution flycheck marks:
-    (set-fringe-style (cons 16 16))))
 
 (use-package minibuffer
   :init
