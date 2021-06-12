@@ -1644,13 +1644,6 @@ because slides don't change their ID all the time."
          ([remap project-find-regexp] . consult-ripgrep))
   :init
   (progn
-    ;; Configure automatic preview of candidates
-    (consult-customize
-     consult-ripgrep consult-git-grep consult-grep
-     consult-bookmark consult-recent-file consult-xref
-     consult--source-file consult--source-project-file consult--source-bookmark
-     :preview-key (kbd "M-."))
-
     ;; Use Consult to select xref locations with preview
     (setq xref-show-xrefs-function #'consult-xref)
     (setq xref-show-definitions-function #'consult-xref)
@@ -1662,7 +1655,15 @@ because slides don't change their ID all the time."
     (setq consult-project-root-function
           (lambda ()
             (when-let (project (project-current))
-              (project-root project))))))
+              (project-root project)))))
+  :config
+  (progn
+    ;; Configure automatic preview of candidates
+    (consult-customize
+     consult-ripgrep consult-git-grep consult-grep
+     consult-bookmark consult-recent-file consult-xref
+     consult--source-file consult--source-project-file consult--source-bookmark
+     :preview-key (kbd "M-."))))
 
 (use-package consult-imenu
   :bind (("M-i" . consult-imenu)))
