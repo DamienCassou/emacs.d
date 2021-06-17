@@ -1378,6 +1378,7 @@ because slides don't change their ID all the time."
   :after magit
   :config
   (progn
+    (add-to-list 'finsit-magit-projects '("Print logos" . "22717147"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
