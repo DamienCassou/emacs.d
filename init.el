@@ -1335,6 +1335,7 @@ because slides don't change their ID all the time."
 
 (use-package finsit-basecamp
   :demand t
+  :after (finsit-magit)
   :config
   (progn
     (finsit-basecamp-setup)))
