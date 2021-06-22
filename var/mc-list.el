@@ -79,6 +79,7 @@
         paredit-splice-sexp-killing-backward
         paredit-wrap-round
         picture-clear-column
+        rjsx-delete-creates-full-tag
         save-some-buffers
         sgml-slash
         skeleton-pair-insert-maybe
