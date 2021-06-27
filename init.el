@@ -1589,6 +1589,9 @@ because slides don't change their ID all the time."
 
 (use-package vertico
   :demand t
+  :init
+  (progn
+    (setq vertico-cycle t))
   :config
   (progn
     (vertico-mode)))
