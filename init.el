@@ -1699,7 +1699,11 @@ the buffer's filename."
      consult-ripgrep consult-git-grep consult-grep
      consult-bookmark consult-recent-file consult-xref
      consult--source-file consult--source-project-file consult--source-bookmark
-     :preview-key (kbd "M-."))))
+     :preview-key (kbd "M-."))
+
+    ;; Remove some sources when listing buffers:
+    (dolist (source '(consult--source-bookmark consult--source-project-buffer consult--source-project-file))
+      (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))))
 
 (use-package consult-imenu
   :bind (("M-i" . consult-imenu)))
