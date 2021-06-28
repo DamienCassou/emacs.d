@@ -337,6 +337,9 @@
 [submodule "imenu-extra"]
 	path = lib/imenu-extra
 	url = https://github.com/redguardtoo/imenu-extra
+[submodule "imenu-list"]
+	path = lib/imenu-list
+	url = https://github.com/bmag/imenu-list.git
 [submodule "indium"]
 	path = lib/indium
 	url = git@github.com/NicolasPetton/Indium.git
@@ -485,6 +488,9 @@
 [submodule "mmm-mode"]
 	path = lib/mmm-mode
 	url = git@github.com:purcell/mmm-mode.git
+[submodule "mocha"]
+	path = lib/mocha
+	url = https://github.com/scottaj/mocha.el.git
 [submodule "modus-themes"]
 	path = lib/modus-themes
 	url = git@gitlab.com:protesilaos/modus-themes.git
