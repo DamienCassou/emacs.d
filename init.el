@@ -1361,7 +1361,10 @@ because slides don't change their ID all the time."
 (use-package indium
   :bind (
          :map indium-interaction-mode-map
-         ("C-c r" . indium-reload)))
+         ("C-c r" . indium-reload)
+         :map indium-repl-mode-map
+         ("C-c r" . indium-reload)
+         ("C-c d" . indium-switch-to-debugger)))
 
 (use-package finsit-javascript
   :demand t
