@@ -60,6 +60,9 @@
   ;; Delete that when switching to Emacs 28:
   (bind-key "C-x x g" #'revert-buffer))
 
+(progn ; `filelock'
+  (setq create-lockfiles nil))
+
 (progn ; `window'
   (bind-key "C-;" #'other-window)
   (unbind-key "C-x o")
