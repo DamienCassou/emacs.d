@@ -1385,7 +1385,7 @@ because slides don't change their ID all the time."
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Non-financial KPIs #2" . "22819118"))
+    (add-to-list 'finsit-magit-projects '("Convert Repository to native promises" . "23021478"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
