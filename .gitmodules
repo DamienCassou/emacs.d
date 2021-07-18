@@ -319,9 +319,6 @@
 [submodule "hierarchy"]
 	path = lib/hierarchy
 	url = git@github.com:DamienCassou/hierarchy.git
-[submodule "hledger-mode"]
-	path = lib/hledger-mode
-	url = git@github.com:narendraj9/hledger-mode.git
 [submodule "ht"]
 	path = lib/ht
 	url = git@github.com:Wilfred/ht.el.git
