@@ -198,7 +198,7 @@ current."
             (t . rainbow))) ; choose a random color for all headings
 
     (setq modus-themes-scale-headings t)
-    (setq modus-themes-slanted-constructs t)
+    (setq modus-themes-italic-constructs t)
     (setq modus-themes-variable-pitch-headings t)
 
     (setq modus-themes-operandi-color-overrides
