@@ -1602,6 +1602,15 @@ because slides don't change their ID all the time."
   (progn
     (vertico-mode)))
 
+(use-package vertico-directory
+  :load-path "lib/vertico/extensions"
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  ;; Tidy shadowed file names
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
 (use-package marginalia
   :demand t
   :bind (
