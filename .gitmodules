@@ -331,6 +331,10 @@
 [submodule "imenu-extra"]
 	path = lib/imenu-extra
 	url = https://github.com/redguardtoo/imenu-extra
+[submodule "imenu-inplace"]
+	path = lib/imenu-inplace
+	url = git@gitlab.com:DamienCassou/imenu-inplace.git
+	branch = main
 [submodule "imenu-list"]
 	path = lib/imenu-list
 	url = https://github.com/bmag/imenu-list.git
