@@ -88,6 +88,7 @@
         smex
         tern-get-type
         transpose-words
+        wdired-capitalize-word
         wdired-downcase-word
         wdired-finish-edit
         wdired-upcase-word
