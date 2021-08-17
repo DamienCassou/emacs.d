@@ -363,6 +363,9 @@
 	path = lib/ivy-mpdel
 	url = git@gitea.petton.fr/mpdel/ivy-mpdel.git
 	remote = "github git@github.com:DamienCassou/ivy-mpdel.git"
+[submodule "js2-imenu-mocha"]
+	path = lib/js2-imenu-mocha
+	url = git@github.com:DamienCassou/js2-imenu-mocha.git
 [submodule "js2-mode"] # Improved Javascript editing mode
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git
