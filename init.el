@@ -823,7 +823,7 @@ current."
     (setq org-cycle-separator-lines 0)
     (setq org-clock-clocked-in-display nil)
     (setq org-id-link-to-org-use-id t)
-
+    (setq org-adapt-indentation nil)
     (setq org-directory "~/configuration/org")
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
     (setq org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
