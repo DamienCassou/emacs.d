@@ -1034,6 +1034,9 @@ because slides don't change their ID all the time."
              :head "#+title: ${title}\n#+created: %T\n\n"
              :unnarrowed t)))))
 
+(use-package mixed-pitch
+  :hook (org-mode . mixed-pitch-mode))
+
 (use-package nroam
   :hook (org-mode . nroam-setup-maybe))
 
