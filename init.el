@@ -718,6 +718,7 @@ current."
     (setq ledger-report-auto-refresh-sticky-cursor t)
     (setq ledger-report-use-strict t)
     (setq ledger-highlight-xact-under-point nil)
+    (setq ledger-copy-transaction-insert-blank-line-after t)
 
     (defvar my/ledger-rate-history (list)
       "Keeps track of entered SEK/EUR rates.")
@@ -747,7 +748,33 @@ current."
       "Configure the current Ledger buffer."
       ;; use TAB to complete:
       (setq-local tab-always-indent 'complete)
-      (add-hook 'outline-minor-mode-hook #'my/ledger-configure-outline-minor-mode nil t))))
+      (add-hook 'outline-minor-mode-hook #'my/ledger-configure-outline-minor-mode nil t)))
+  :config
+  (progn
+    (let ((date-format "%B %-e"))
+      (defun my/ledger-insert-dates ()
+        "Insert all dates of a year in the current buffer as headings."
+        (let* ((year 2021)
+               (day `(0 0 0 1 1 ,year 0 t 0))
+               (inc-day (make-decoded-time :day 1)))
+          (while (equal (decoded-time-year day) year)
+            (when (equal (decoded-time-day day) 1)
+              (insert (format "** %s\n" (format-time-string "%B" (encode-time day)))))
+            (insert (format "*** %s\n" (format-time-string date-format (encode-time day))))
+            ;; day ⇐ day + 1
+            (setq day (decoded-time-add day inc-day)))))
+
+      (defun my/ledger-position-at-date (moment)
+        "Move point in current buffer to insert new transaction at MOMENT.
+MOMENT is an encoded date."
+        (let ((heading (format "*** %s" (format-time-string date-format moment))))
+          (setf (point) (point-min))
+          (search-forward heading)
+          (forward-line)
+          (re-search-forward "^\\*\\*\\*" nil t)
+          (setf (point) (line-beginning-position)))))
+
+    (advice-add #'ledger-xact-find-slot :override #'my/ledger-position-at-date)))
 
 (use-package ledger-complete
   :init
