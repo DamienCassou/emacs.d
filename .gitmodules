@@ -680,9 +680,6 @@
 [submodule "stream"]
 	path = lib/stream
 	url = git@github.com:emacsmirror/stream.git
-[submodule "svelte"]
-	path = lib/svelte
-	url = https://github.com/leafOfTree/svelte-mode
 [submodule "sx"]
 	path = lib/sx
 	url = git@github.com:vermiculus/sx.el.git
