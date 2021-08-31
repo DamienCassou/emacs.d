@@ -1415,7 +1415,7 @@ because slides don't change their ID all the time."
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Fix internal dependencies on the client" . "23487166"))
+    (add-to-list 'finsit-magit-projects '("Trend Compare to budget" . "23803922"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
