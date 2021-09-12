@@ -1582,10 +1582,6 @@ because slides don't change their ID all the time."
              :severity 'normal
              :title "Download completed"))))
 
-(use-package unfill
-  :disabled t
-  :bind ([remap fill-paragraph] . unfill-toggle))
-
 (use-package nov
  :mode ("\\.epub\\'" . nov-mode))
 
