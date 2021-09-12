@@ -1583,7 +1583,7 @@ because slides don't change their ID all the time."
              :title "Download completed"))))
 
 (use-package nov
- :mode ("\\.epub\\'" . nov-mode))
+  :mode ("\\.epub\\'" . nov-mode))
 
 (use-package ob-verb
   :demand t
