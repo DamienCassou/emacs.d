@@ -634,6 +634,10 @@
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
 	remote = "DamienCassou git@github.com:DamienCassou/projectile.git"
+[submodule "puni"]
+	path = lib/puni
+	url = git@github.com:AmaiKinono/puni.git
+	remote = "DamienCassou git@github.com:DamienCassou/puni.git"
 [submodule "rainbow-identifiers"]
 	path = lib/rainbow-identifiers
 	url = git@github.com:Fanael/rainbow-identifiers.git
@@ -720,9 +724,6 @@
 [submodule "undo-tree"] # <C-x u> to show the undo tree
 	path = lib/undo-tree
 	url = git@github.com:emacsmirror/undo-tree.git
-[submodule "unfill"]
-	path = lib/unfill
-	url = git@github.com:purcell/unfill.git
 [submodule "unify-opening"]
 	path = lib/unify-opening
 	url = git@github.com:DamienCassou/unify-opening.git
