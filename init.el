@@ -396,7 +396,7 @@ current."
         (display-line-numbers-mode)))))
 
 (use-package hl-line
-  :hook ((ledger-report-mode ledger-mode tabulated-list-mode compilation-mode org-agenda-mode ibuffer-mode)
+  :hook ((ledger-report-mode ledger-mode tabulated-list-mode compilation-mode org-agenda-mode ibuffer-mode git-rebase-mode)
          .
          hl-line-mode))
 
