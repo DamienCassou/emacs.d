@@ -1426,7 +1426,7 @@ because slides don't change their ID all the time."
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Trend Compare to budget" . "23803922"))
+    (add-to-list 'finsit-magit-projects '("Forecasting #1" . "24011950"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
