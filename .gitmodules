@@ -551,6 +551,7 @@
 	path = lib/org-roam
 	url = https://github.com/org-roam/org-roam.git
 	info-path = doc
+	remote = "DamienCassou git@github.com:DamienCassou/org-roam.git"
 [submodule "org-vcard"] # used by vdirel
 	path = lib/org-vcard
 	url = git@github.com:flexibeast/org-vcard.git
