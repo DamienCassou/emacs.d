@@ -21,7 +21,18 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((eglot-server-programs
+   '((elisp-lint-indent-specs
+      (describe . 1)
+      (it . 1)
+      (org-element-map . defun)
+      (org-roam-with-temp-buffer . 1)
+      (org-with-point-at . 1)
+      (magit-insert-section . defun)
+      (magit-section-case . 0)
+      (->> . 1)
+      (org-roam-with-file . 2))
+     (elisp-lint-ignored-validators "byte-compile" "package-lint")
+     (eglot-server-programs
       (haskell-mode lambda
                     (_)
                     (nix-shell-command
