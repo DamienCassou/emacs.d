@@ -1041,25 +1041,33 @@ because slides don't change their ID all the time."
   :demand t
   :hook ((after-init . org-roam-mode))
   :bind (("C-. r r" . org-roam-capture)
-         ("C-. r f" . org-roam-find-file)
-         ("C-. r d" . org-roam-dailies-capture-today)
-         ("C-. r D" . org-roam-dailies-find-today)
+         ("C-. r f" . org-roam-node-find)
          :map org-mode-map
-         ("C-. r i" . org-roam-insert)
-         ("C-. r I" . org-roam-insert-immediate))
+         ("C-. r i" . org-roam-node-insert)
+         ("C-. r b" . org-roam-buffer-toggle)
+         :map org-roam-mode-map
+         ("C-. r b" . org-roam-buffer-toggle))
   :init
   (progn
     (setq org-roam-v2-ack t)
     (setq org-roam-directory (file-truename "/home/cassou/configuration/org-roam"))
 
     (setq org-roam-capture-templates
-          '(("d" "default" plain #'org-roam-capture--get-point "%?"
-             :file-name "%<%Y-%m-%d>-${slug}"
-             :head "#+title: ${title}\n#+created: %T\n\n"
+          '(("d" "default" plain "%?"
+             :target (file+head "%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n#+created: %T\n\n")
              :unnarrowed t))))
   :config
   (progn
     (org-roam-db-autosync-mode)))
+
+(use-package org-roam-dailies
+  :load-path "lib/org-roam/extensions"
+  :demand t
+  :after org-roam
+  :bind (("C-. r d" . org-roam-dailies-map))
+  :init
+  (progn
+    (setq org-roam-dailies-directory "daily")))
 
 (use-package mixed-pitch
   :hook (org-mode . mixed-pitch-mode))
