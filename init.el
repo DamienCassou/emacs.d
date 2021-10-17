@@ -1210,7 +1210,6 @@ because slides don't change their ID all the time."
     (add-to-list 'message-make-forward-subject-function #'message-forward-subject-fwd)))
 
 (use-package paredit
-  :disabled t
   :bind (
          :map paredit-mode-map
          ("M-s" . nil))
@@ -1225,6 +1224,7 @@ because slides don't change their ID all the time."
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
 (use-package puni
+  :disabled t
   :hook ((prog-mode
           eval-expression-minibuffer-setup) . puni-mode))
 
