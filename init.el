@@ -1431,7 +1431,7 @@ because slides don't change their ID all the time."
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Period report refactoring" . "24152873"))
+    (add-to-list 'finsit-magit-projects '("Forecasting UI step1" . "24660624"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
