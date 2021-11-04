@@ -707,7 +707,10 @@ current."
     ;; For hledger
     (progn
       (setq ledger-mode-should-check-version nil)
-      (setq ledger-binary-path (executable-find "hledger"))
+
+      ;; https://github.com/simonmichael/hledger/issues/367#issuecomment-956436493
+      (setq ledger-binary-path (executable-find "ledger-to-hledger.sh"))
+
       (setq ledger-report-links-in-register nil)
       (setq ledger-report-native-highlighting-arguments '("--color=always"))
       (setq ledger-report-auto-width nil))
