@@ -489,10 +489,6 @@
 [submodule "mmm-mode"]
 	path = lib/mmm-mode
 	url = git@github.com:purcell/mmm-mode.git
-[submodule "mocha"]
-	path = lib/mocha
-	url = https://github.com/scottaj/mocha.el.git
-	remote = "github git@github.com:DamienCassou/mocha.el.git"
 [submodule "modus-themes"]
 	path = lib/modus-themes
 	url = git@gitlab.com:protesilaos/modus-themes.git
