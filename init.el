@@ -169,8 +169,7 @@ current."
         (window-divider-mode)
 
         (set-face-attribute 'default nil :height 110 :family "Fira Mono")
-        (set-face-attribute 'fixed-pitch nil :family "Fira Mono" :height 1.0)
-        (set-face-attribute 'variable-pitch nil :font "Gentium Book Basic" :height 1.0)))
+        (set-face-attribute 'fixed-pitch nil :family "Fira Mono" :height 1.0)))
 
     (my/setup-frame)))
 
@@ -199,7 +198,6 @@ current."
 
     (setq modus-themes-scale-headings t)
     (setq modus-themes-italic-constructs t)
-    (setq modus-themes-variable-pitch-headings t)
 
     (setq modus-themes-operandi-color-overrides
           '((fg-window-divider-outer . "white")
