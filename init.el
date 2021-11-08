@@ -1698,6 +1698,14 @@ the buffer's filename."
     ;; I don't want any information whe listing files:
     (map-delete marginalia-annotator-registry 'file)))
 
+(use-package epkg-marginalia
+  :demand t
+  :after marginalia
+  :init
+  (progn
+    (cl-pushnew 'epkg-marginalia-annotate-package
+                (alist-get 'package marginalia-annotator-registry))))
+
 (use-package orderless
   :demand t
   :init
