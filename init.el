@@ -1037,7 +1037,6 @@ because slides don't change their ID all the time."
 
 (use-package org-roam
   :demand t
-  :hook ((after-init . org-roam-mode))
   :bind (("C-. r r" . org-roam-capture)
          ("C-. r f" . org-roam-node-find)
          :map org-mode-map
