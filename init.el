@@ -1052,6 +1052,11 @@ because slides don't change their ID all the time."
     (setq org-roam-v2-ack t)
     (setq org-roam-directory (file-truename "/home/cassou/configuration/org-roam"))
 
+    (setq org-roam-mode-section-functions
+          (list #'org-roam-backlinks-section
+                #'org-roam-reflinks-section
+                #'org-roam-unlinked-references-section))
+
     (setq org-roam-capture-templates
           '(("d" "default" plain "%?"
              :target (file+head "%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n#+created: %T\n\n")
