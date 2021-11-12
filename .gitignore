@@ -5,3 +5,4 @@
 .pass-secrets-sync.el
 /etc/elbank.el
 auto-save-list/
+/eln-cache/
