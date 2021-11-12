@@ -1515,7 +1515,7 @@ because slides don't change their ID all the time."
             (buffer-name (process-get process 'buffer-name))
             (output (process-get process 'output))
             end)
-        (case return-code
+        (cl-case return-code
           (0 (alert "success"
                     :title "firestarter"))
           (otherwise (alert output
