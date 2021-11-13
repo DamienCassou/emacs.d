@@ -183,9 +183,6 @@
 	url = git@github.com:emacs-elsa/Elsa.git
 	remote = "DamienCassou git@github.com:DamienCassou/elcouch.git"
 	build-step = echo "Don't build elsa as it prevents it from running (issue #111)"
-[submodule "emacs-everywhere"]
-	path = lib/emacs-everywhere
-	url = git@github.com:tecosaur/emacs-everywhere.git
 [submodule "emake"]
 	path = lib/emake
 	url = https://github.com/vermiculus/emake.el.git
