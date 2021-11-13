@@ -27,6 +27,11 @@
   (setq use-package-compute-statistics nil)
   (require 'use-package))
 
+(use-package comp
+  :init
+  (progn
+    (setq native-comp-async-report-warnings-errors nil)))
+
 (use-package auto-compile
   :demand t
   :init
