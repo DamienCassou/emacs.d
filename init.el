@@ -173,7 +173,7 @@ current."
 
         (window-divider-mode)
 
-        (set-face-attribute 'default nil :height 110 :family "Fira Mono")
+        (set-face-attribute 'default nil :height 100 :family "Fira Mono")
         (set-face-attribute 'fixed-pitch nil :family "Fira Mono" :height 1.0)))
 
     (my/setup-frame)))
