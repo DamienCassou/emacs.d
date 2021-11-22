@@ -206,7 +206,9 @@ current."
 
     (setq modus-themes-operandi-color-overrides
           '((fg-window-divider-outer . "white")
-            (fg-window-divider-inner . "white"))))
+            (fg-window-divider-inner . "white")))
+
+    (load-theme 'modus-operandi))
   :config
   (progn
     (modus-themes-load-operandi)
