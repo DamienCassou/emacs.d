@@ -486,11 +486,6 @@
 [submodule "mmm-mode"]
 	path = lib/mmm-mode
 	url = git@github.com:purcell/mmm-mode.git
-[submodule "modus-themes"]
-	path = lib/modus-themes
-	url = git@gitlab.com:protesilaos/modus-themes.git
-	info-path = doc
-	branch = main
 [submodule "moldable-emacs"]
 	path = lib/moldable-emacs
 	url = git@github.com:ag91/moldable-emacs.git
