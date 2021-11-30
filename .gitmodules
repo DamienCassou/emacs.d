@@ -408,6 +408,9 @@
 	path = lib/libmpdel
 	url = git@gitea.petton.fr/mpdel/libmpdel.git
 	remote = "github git@github.com:DamienCassou/libmpdel.git"
+[submodule "lin"]
+	path = lib/lin
+	url = git@gitlab.com:protesilaos/lin.git
 [submodule "lintel"]
 	path = lib/lintel
 	url = git@gitlab.com:lintel/lintel.git
