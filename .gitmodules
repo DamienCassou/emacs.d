@@ -70,9 +70,6 @@
 [submodule "cask"]
 	path = lib/cask
 	url = git@github.com:cask/cask.git
-[submodule "cdlatex"]
-	path = lib/cdlatex
-	url = git@github.com:cdominik/cdlatex.git
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
