@@ -401,9 +401,23 @@ current."
         (display-line-numbers-mode)))))
 
 (use-package hl-line
-  :hook ((ledger-report-mode ledger-mode tabulated-list-mode compilation-mode org-agenda-mode ibuffer-mode git-rebase-mode)
+  :demand t
+  :config
+  (global-hl-line-mode))
+
+(use-package lin
+  :demand t
+  :after hl-line
+  :hook ((
+          git-rebase-mode
+          magit-log-mode
+          notmuch-search-mode
+          notmuch-tree-mode
+          org-agenda-mode
+          tabulated-list-mode
+          )
          .
-         hl-line-mode))
+         lin-mode))
 
 (use-package undo-tree
   :demand t
@@ -1440,7 +1454,6 @@ because slides don't change their ID all the time."
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Forecasting UI step1" . "24660624"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
