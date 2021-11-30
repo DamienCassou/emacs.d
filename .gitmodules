@@ -408,6 +408,10 @@
 [submodule "lin"]
 	path = lib/lin
 	url = git@gitlab.com:protesilaos/lin.git
+	build-step = borg-byte-compile
+	build-step = borg-update-autoloads
+	build-step = make
+	build-step = borg-makeinfo
 [submodule "lintel"]
 	path = lib/lintel
 	url = git@gitlab.com:lintel/lintel.git
