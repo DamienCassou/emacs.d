@@ -403,7 +403,8 @@ current."
 (use-package hl-line
   :demand t
   :config
-  (global-hl-line-mode))
+  (progn
+    (global-hl-line-mode)))
 
 (use-package lin
   :demand t
