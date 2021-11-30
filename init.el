@@ -408,16 +408,9 @@ current."
 (use-package lin
   :demand t
   :after hl-line
-  :hook ((
-          git-rebase-mode
-          magit-log-mode
-          notmuch-search-mode
-          notmuch-tree-mode
-          org-agenda-mode
-          tabulated-list-mode
-          )
-         .
-         lin-mode))
+  :config
+  (progn
+    (lin-add-to-many-modes)))
 
 (use-package undo-tree
   :demand t
