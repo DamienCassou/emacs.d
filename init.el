@@ -1240,11 +1240,6 @@ because slides don't change their ID all the time."
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
-(use-package puni
-  :disabled t
-  :hook ((prog-mode
-          eval-expression-minibuffer-setup) . puni-mode))
-
 (use-package elec-pair
   :demand t
   :config

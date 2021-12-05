@@ -621,10 +621,6 @@
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
 	remote = "DamienCassou git@github.com:DamienCassou/projectile.git"
-[submodule "puni"]
-	path = lib/puni
-	url = git@github.com:AmaiKinono/puni.git
-	remote = "DamienCassou git@github.com:DamienCassou/puni.git"
 [submodule "rainbow-identifiers"]
 	path = lib/rainbow-identifiers
 	url = git@github.com:Fanael/rainbow-identifiers.git
