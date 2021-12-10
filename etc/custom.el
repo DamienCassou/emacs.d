@@ -17,7 +17,7 @@
  '(frame-title-format "Emacs: %b" t)
  '(gc-cons-threshold 20000000)
  '(indent-tabs-mode nil)
- '(load-prefer-newer t)
+ '(load-prefer-newer t t)
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
@@ -340,7 +340,8 @@ is the buffer position of the start of the containing expression."
  '(undo-outer-limit 200000000)
  '(undo-strong-limit 10000000)
  '(user-full-name "Damien Cassou")
- '(visible-bell nil))
+ '(visible-bell nil)
+ '(warning-suppress-log-types '((browse-url))))
 
 ;;; Emacs Configuration
 (custom-set-faces
