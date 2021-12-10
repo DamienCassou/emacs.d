@@ -73,6 +73,9 @@
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
+[submodule "combobulate"]
+	path = lib/combobulate
+	url = git@github.com:mickeynp/combobulate.git
 [submodule "company"]
 	path = lib/company
 	url = git@github.com:company-mode/company-mode.git
