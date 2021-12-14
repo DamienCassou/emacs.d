@@ -427,9 +427,6 @@
 [submodule "loop"]
 	path = lib/loop
 	url = git@github.com:Wilfred/loop.el.git
-[submodule "lsp-haskell"]
-	path = lib/lsp-haskell
-	url = git@github.com:emacs-lsp/lsp-haskell.git
 [submodule "lsp-ivy"]
 	path = lib/lsp-ivy
 	url = git@github.com:emacs-lsp/lsp-ivy.git
