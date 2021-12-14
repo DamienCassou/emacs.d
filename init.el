@@ -269,8 +269,6 @@ current."
     ;; build files. We should let so-long ignore those and still find
     ;; the long ones:
     (setq so-long-max-lines 100)
-    ;; we have some very long strings in Monitor:
-    (setq so-long-threshold 500)
     (global-so-long-mode)))
 
 (use-package server
