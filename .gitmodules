@@ -427,19 +427,6 @@
 [submodule "loop"]
 	path = lib/loop
 	url = git@github.com:Wilfred/loop.el.git
-[submodule "lsp-ivy"]
-	path = lib/lsp-ivy
-	url = git@github.com:emacs-lsp/lsp-ivy.git
-[submodule "lsp-mode"]
-	path = lib/lsp-mode
-	url = git@github.com:emacs-lsp/lsp-mode.git
-	remote = "DamienCassou git@github.com:DamienCassou/lsp-mode.git"
-[submodule "lsp-treemacs"]
-	path = lib/lsp-treemacs
-	url = git@github.com:emacs-lsp/lsp-treemacs.git
-[submodule "lsp-ui"]
-	path = lib/lsp-ui
-	url = git@github.com:emacs-lsp/lsp-ui.git
 [submodule "m-buffer"]
 	path = lib/m-buffer
 	url = git@github.com:phillord/m-buffer-el.git
@@ -688,10 +675,6 @@
 	path = lib/transient
 	url = git@github.com:magit/transient.git
 	info-path = docs
-[submodule "treemacs"]
-	path = lib/treemacs
-	url = git@github.com:Alexander-Miller/treemacs.git
-	load-path = src/elisp
 [submodule "treepy"]
 	path = lib/treepy
 	url = git@github.com:volrath/treepy.el.git
