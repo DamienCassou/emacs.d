@@ -90,6 +90,7 @@
         smex
         tern-get-type
         transpose-words
+        wdired--self-insert
         wdired-capitalize-word
         wdired-downcase-word
         wdired-finish-edit
