@@ -1059,7 +1059,6 @@ because slides don't change their ID all the time."
          ("C-. r b" . org-roam-buffer-toggle))
   :init
   (progn
-    (setq org-roam-v2-ack t)
     (setq org-roam-directory (file-truename "/home/cassou/configuration/org-roam"))
 
     (setq org-roam-mode-section-functions
