@@ -330,9 +330,7 @@ current."
   :init
   (progn
     ;; Don't show messages when auto revert happens:
-    (setq auto-revert-verbose nil)
-    ;; Only rely on the OS notification mechanism:
-    (setq auto-revert-avoid-polling t))
+    (setq auto-revert-verbose nil))
   :config
   (progn
     (global-auto-revert-mode)))
