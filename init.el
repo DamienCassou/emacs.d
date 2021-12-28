@@ -1428,7 +1428,7 @@ because slides don't change their ID all the time."
   :config
   (progn
     (finsit-javascript-setup)
-    (add-to-list 'yas-snippet-dirs (expand-file-name "~/.emacs.d/lib/ftgp/snippets"))
+    (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "lib/ftgp/snippets"))
     (yas-reload-all)
 
     (set-face-attribute 'finsit-javascript-html-tag-face nil :background nil)))
