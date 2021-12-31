@@ -696,14 +696,7 @@ current."
            '(("Account statement" . "register --auto ^%(account)")
              ("Income statement"  . "balance --auto --tree --period %(month) --invert ^income ^expense")
              ("Balance sheet"     . "balance --auto --tree ^asset ^debt \"^equity:\"")
-             ("Budget"            . "balance --auto --tree --empty ^budget not:unbudgeted")
-             ("WK expenses"       . "register --auto --effective --begin 2021-05 --end 2021-06 --collapse ^asset:receivables:wk")
-
-             ;; GAEF
-             ("GAEF - Balance" . "balance --tree ^Actifs ^Dettes")
-             ("GAEF - Revenus vs. Dépenses" . "balance --invert --tree ^Revenus ^Dépenses")
-             ("GAEF - Goûters" . "balance --invert -X eur --tree ^Personne ^Caisse ^Capitaux")
-             )))
+             ("Budget"            . "balance --auto --tree --empty ^budget not:unbudgeted"))))
 
     ;; For ledger
     (progn
