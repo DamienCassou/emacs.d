@@ -418,9 +418,6 @@
 [submodule "lintel"]
 	path = lib/lintel
 	url = git@gitlab.com:lintel/lintel.git
-[submodule "list-utils"]
-	path = lib/list-utils
-	url = git@github.com:rolandwalker/list-utils.git
 [submodule "log4e"]
 	path = lib/log4e
 	url = git@github.com:aki2o/log4e.git
@@ -611,9 +608,6 @@
 [submodule "rainbow-identifiers"]
 	path = lib/rainbow-identifiers
 	url = git@github.com:Fanael/rainbow-identifiers.git
-[submodule "refine"] # edit list interactively
-	path = lib/refine
-	url = git@github.com:Wilfred/refine.git
 [submodule "request"]
 	path = lib/request
 	url = git@github.com:tkf/emacs-request.git
