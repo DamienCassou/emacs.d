@@ -753,10 +753,10 @@ current."
       (add-hook 'outline-minor-mode-hook #'my/ledger-configure-outline-minor-mode nil t)))
   :config
   (progn
-    (let ((date-format "%B %-e"))
+    (let ((date-format "%A, %B %-e"))
       (defun my/ledger-insert-dates ()
         "Insert all dates of a year in the current buffer as headings."
-        (let* ((year 2021)
+        (let* ((year 2022)
                (day `(0 0 0 1 1 ,year 0 t 0))
                (inc-day (make-decoded-time :day 1)))
           (while (equal (decoded-time-year day) year)
