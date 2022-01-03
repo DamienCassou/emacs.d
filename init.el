@@ -787,7 +787,7 @@ MOMENT is an encoded date."
   :hook ((ledger-import-finished . my/ledger-import-finish))
   :config
   (progn
-    (setq ledger-import-boobank-import-from-date "2021-11-01")
+    (setq ledger-import-boobank-import-from-date "2021-12-30")
     (setq ledger-import-autosync-command
           '("hledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
