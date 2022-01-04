@@ -572,9 +572,6 @@
 	path = lib/password-store-otp
 	url = git@github.com:volrath/password-store-otp.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/password-store-otp.el.git"
-[submodule "pfuture"]
-	path = lib/pfuture
-	url = git@github.com:Alexander-Miller/pfuture.git
 [submodule "pinentry"]
 	path = lib/pinentry
 	url = git@github.com:ueno/pinentry-el.git
