@@ -1696,28 +1696,12 @@ This is the same as `marginalia-annotate-buffer' but only keeps
 the buffer's filename."
       (when-let (buffer (get-buffer cand))
         (marginalia--fields
-         ((if-let (proc (get-buffer-process buffer))
-              (format "(%s %s) %s"
-                      proc (process-status proc)
-                      (abbreviate-file-name (buffer-local-value 'default-directory buffer)))
-            (abbreviate-file-name
-             (or (cond
-                  ;; see ibuffer-buffer-file-name
-                  ((buffer-file-name buffer))
-                  ((when-let (dir (and (local-variable-p 'dired-directory buffer)
-                                       (buffer-local-value 'dired-directory buffer)))
-                     (expand-file-name (if (stringp dir) dir (car dir))
-                                       (buffer-local-value 'default-directory buffer))))
-                  ((local-variable-p 'list-buffers-directory buffer)
-                   (buffer-local-value 'list-buffers-directory buffer)))
-                 "")))
-          :truncate marginalia-truncate-width
-          :face 'marginalia-file-name))))
+         ((marginalia--buffer-file buffer)))))
 
     ;; Use my own annotator when listing buffers:
     (map-put! marginalia-annotator-registry 'buffer (list #'my/marginalia-annotate-buffer))
 
-    ;; I don't want any information whe listing files:
+    ;; I don't want any information when listing files:
     (map-delete marginalia-annotator-registry 'file)))
 
 (use-package epkg-marginalia
