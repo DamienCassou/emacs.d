@@ -307,9 +307,6 @@
 [submodule "helm-flyspell"] # use helm for flyspell suggestions
 	path = lib/helm-flyspell
 	url = git@github.com:pronobis/helm-flyspell.git
-[submodule "helm-ls-git"]
-	path = lib/helm-ls-git
-	url = git@github.com:emacs-helm/helm-ls-git.git
 [submodule "helpful"]
 	path = lib/helpful
 	url = git@github.com:Wilfred/helpful.git
