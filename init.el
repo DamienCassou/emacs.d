@@ -1672,6 +1672,14 @@ because slides don't change their ID all the time."
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
+(use-package vertico-indexed
+  :load-path "lib/vertico/extensions"
+  :demand t
+  :after vertico
+  :config
+  (progn
+    (vertico-indexed-mode)))
+
 (use-package marginalia
   :demand t
   :bind (
