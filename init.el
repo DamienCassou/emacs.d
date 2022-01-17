@@ -273,7 +273,11 @@ This is recommended by Vertico's README."
       (interactive)
       (join-line -1))
 
-    (column-number-mode)))
+    (column-number-mode)
+
+    ;; Hide commands in M-x which do not work in the current mode.
+    (setq read-extended-command-predicate
+          #'command-completion-default-include-p)))
 
 (use-package so-long
   :demand t
