@@ -1732,7 +1732,10 @@ the buffer's filename."
   :demand t
   :init
   (progn
-    (setq completion-styles '(orderless))))
+    (setq completion-styles '(orderless))
+
+    ;; Restore tramp file completion (recommended by Vertico's README):
+    (setq completion-category-overrides '((file (styles basic partial-completion))))))
 
 (use-package xref
   :init
