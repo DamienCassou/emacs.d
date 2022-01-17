@@ -258,6 +258,7 @@ This is recommended by Vertico's README."
          ("M-SPC" . cycle-spacing)
          ("<S-left>" . beginning-of-buffer)
          ("<S-right>" . end-of-buffer)
+         ([remap yank-pop] . yank-from-kill-ring)
          :map process-menu-mode-map
          ("k" . process-menu-delete-process))
   :init
