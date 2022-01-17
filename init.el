@@ -178,6 +178,19 @@ current."
 
     (my/setup-frame)))
 
+(use-package ffap
+  :config
+  (progn
+    (defun my/ffap-menu-ask (&rest args)
+      "Used to override ffap-menu-ask and not show the *Completions* buffer.
+This is recommended by Vertico's README."
+      (cl-letf (((symbol-function #'minibuffer-completion-help)
+                 #'ignore))
+        (apply args)))
+
+    (with-eval-after-load "vertico"
+      (advice-add #'ffap-menu-ask :around #'my/ffap-menu-ask))))
+
 (use-package locate
   :init
   (progn
