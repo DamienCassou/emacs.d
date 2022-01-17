@@ -1765,12 +1765,6 @@ the buffer's filename."
 (use-package consult
   :bind (;; Virtual Buffers
          ([remap switch-to-buffer] . consult-buffer)
-         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
-         ([remap bookmark-jump] . consult-bookmark)
-         ;; Editing
-         ([remap yank-pop] . consult-yank-from-kill-ring)
-         ;; Navigation
-         ([remap goto-line] . consult-goto-line)
          ;; Grep and Find
          ([remap project-find-regexp] . consult-ripgrep))
   :init
