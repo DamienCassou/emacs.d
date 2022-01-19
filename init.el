@@ -1449,7 +1449,7 @@ because slides don't change their ID all the time."
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("KPI picker refactoring" . "25577436"))
+    (add-to-list 'finsit-magit-projects '("Forecasting UI #2" . "25772643"))
 
     (finsit-magit-setup)))
 
