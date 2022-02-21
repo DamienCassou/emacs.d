@@ -210,9 +210,10 @@ This is recommended by Vertico's README."
     (setq modus-themes-org-blocks 'greyscale)
 
     (setq modus-themes-headings
-          '((1 . highlight) ; make h1 stand out with a background
-            (2 . line)      ; add a line above h2
-            (t . rainbow))) ; choose a random color for all headings
+          '((1 . (background overline 1.5))
+            (2 . (overline 1.3))
+            (3 . (overline 1.1))
+            (t . (monochrome))))
 
     (setq modus-themes-scale-headings t)
     (setq modus-themes-italic-constructs t)
