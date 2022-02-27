@@ -206,7 +206,6 @@ This is recommended by Vertico's README."
   (progn
     (setq modus-themes-mode-line '(moody))
     (setq modus-themes-bold-constructs t)
-    (setq modus-themes-completions 'opinionated)
     (setq modus-themes-org-blocks 'greyscale)
 
     (setq modus-themes-headings
