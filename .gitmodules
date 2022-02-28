@@ -104,6 +104,11 @@
 	path = lib/corfu
 	url = git@github.com:minad/corfu.git
 	branch = main
+	build-step = borg-update-autoloads
+	build-step = borg-compile
+	build-step = (require 'ox-texinfo)
+	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
+	build-step = borg-makeinfo
 [submodule "counsel-jq"]
 	path = lib/counsel-jq
 	url = https://github.com/200ok-ch/counsel-jq.git
@@ -667,6 +672,11 @@
 [submodule "tempel"]
 	path = lib/tempel
 	url = git@github.com:minad/tempel.git
+	build-step = borg-update-autoloads
+	build-step = borg-compile
+	build-step = (require 'ox-texinfo)
+	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
+	build-step = borg-makeinfo
 [submodule "tern"] # Javascript code analyzer
 	path = lib/tern
 	url = git@github.com:ternjs/tern.git
