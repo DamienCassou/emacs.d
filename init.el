@@ -1442,7 +1442,9 @@ because slides don't change their ID all the time."
     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "lib/ftgp/snippets"))
     (yas-reload-all)
 
-    (set-face-attribute 'finsit-javascript-html-tag-face nil :background nil)))
+    ;; Remove background: (see https://debbugs.gnu.org/cgi/bugreport.cgi?bug=54156 for details
+    (dolist (frame '(nil t))
+      (set-face-attribute 'finsit-javascript-html-tag-face frame :background 'unspecified))))
 
 (use-package finsit-magit
   :demand t
