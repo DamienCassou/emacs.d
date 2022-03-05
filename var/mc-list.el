@@ -95,6 +95,7 @@
         wdired-downcase-word
         wdired-finish-edit
         wdired-upcase-word
+        wgrep-change-to-wgrep-mode
         wgrep-finish-edit
         whole-line-or-region-kill-region
         yaml-electric-backspace
