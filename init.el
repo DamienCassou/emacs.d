@@ -1769,6 +1769,9 @@ the buffer's filename."
               (project-root project)))))
   :config
   (progn
+    ;; Add --hidden to the list of arguments:
+    (setq consult-ripgrep-args (concat "rg --hidden " (substring consult-ripgrep-args 3)))
+
     ;; Configure automatic preview of candidates
     (consult-customize
      consult-ripgrep consult-git-grep consult-grep consult-buffer
