@@ -20,6 +20,9 @@
 [submodule "all-the-icons"] # library with many icons (zerodark dependency)
 	path = lib/all-the-icons
 	url = git@github.com:domtronn/all-the-icons.el.git
+[submodule "all-the-icons-completion"]
+	path = lib/all-the-icons-completion
+	url = git@github.com:iyefrat/all-the-icons-completion.git
 [submodule "amx"]
 	path = lib/amx
 	url = git@github.com:DarwinAwardWinner/amx.git
