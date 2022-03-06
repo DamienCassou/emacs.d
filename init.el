@@ -279,6 +279,11 @@ This is recommended by Vertico's README."
     (setq read-extended-command-predicate
           #'command-completion-default-include-p)))
 
+(use-package replace
+  :bind (
+         :map occur-mode-map
+         ("C-x C-q" . occur-edit-mode)))
+
 (use-package so-long
   :demand t
   :config
