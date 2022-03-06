@@ -1755,7 +1755,8 @@ the buffer's filename."
     (all-the-icons-completion-mode)))
 
 (use-package consult
-  :bind (;; Virtual Buffers
+  :bind (([remap yank-pop] . consult-yank-replace)
+         ;; Virtual Buffers
          ([remap switch-to-buffer] . consult-buffer)
          ;; Grep and Find
          ([remap project-find-regexp] . consult-ripgrep))
