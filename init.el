@@ -1790,9 +1790,6 @@ the buffer's filename."
     (setq xref-show-xrefs-function #'consult-xref)
     (setq xref-show-definitions-function #'consult-xref)
 
-    ;; Use consult to have in-buffer completions displayed in the minibuffer:
-    (setq completion-in-region-function #'consult-completion-in-region)
-
     ;; Use `project` with consult:
     (setq consult-project-root-function
           (lambda ()
@@ -1816,6 +1813,33 @@ the buffer's filename."
     ;; Remove some sources when listing buffers:
     (dolist (source '(consult--source-bookmark consult--source-project-buffer consult--source-project-file))
       (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))))
+
+(use-package corfu
+  :demand t
+  :bind (
+         :map corfu-map
+         ("SPC" . corfu-insert-separator)
+         ("M-m" . my/corfu-move-to-minibuffer))
+  :config
+  (progn
+    ;; copy/paste from "Completing with Corfu in the minibuffer" in
+    ;; Corfu's manual:
+    (defun my/corfu-enable-always-in-minibuffer ()
+      "Enable Corfu in the minibuffer if Vertico is not active."
+      (unless (bound-and-true-p vertico--input)
+        (corfu-mode 1)))
+
+    (add-hook 'minibuffer-setup-hook #'my/corfu-enable-always-in-minibuffer 1)
+
+    ;; copy/paste from "Transfer completion to the minibuffer" in
+    ;; Corfu's manual:
+    (defun my/corfu-move-to-minibuffer ()
+      (interactive)
+      (let ((completion-extra-properties corfu--extra)
+            completion-cycle-threshold completion-cycling)
+        (apply #'consult-completion-in-region completion-in-region--data)))
+
+    (corfu-global-mode)))
 
 (use-package consult-imenu
   :bind (("M-i" . consult-imenu)))
