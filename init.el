@@ -1466,6 +1466,15 @@ because slides don't change their ID all the time."
     (dolist (frame '(nil t))
       (set-face-attribute 'finsit-js-htmlcanvas-html-tag-face frame :background 'unspecified))))
 
+(use-package finsit-js-company
+  :config
+  (defun my/finsit-js-company-setup ()
+    "Prevent configuring `company-mode'.
+This should be used as an override of `finsit-js-company-setup'.")
+
+  (advice-add #'finsit-js-company-setup
+              :override #'my/finsit-js-company-setup))
+
 (use-package finsit-magit
   :demand t
   :after magit
