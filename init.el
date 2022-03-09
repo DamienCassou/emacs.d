@@ -1459,7 +1459,6 @@ because slides don't change their ID all the time."
   :config
   (progn
     (add-to-list 'finsit-magit-projects '("Forecast" . "26467171"))
-
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
