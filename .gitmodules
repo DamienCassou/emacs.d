@@ -720,6 +720,12 @@
 	path = lib/use-package
 	url = git@github.com:jwiegley/use-package.git
 	remote = "DamienCassou git@github.com:DamienCassou/use-package"
+	build-step = borg-update-autoloads
+	build-step = borg-compile
+	build-step = (require 'ox-texinfo+)
+	build-step = (and (require 'ox-extra nil t) (ox-extras-activate '(ignore-headlines)))
+	build-step = "(save-excursion (find-file \"use-package.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
+	build-step = borg-makeinfo
 [submodule "verb"]
 	path = lib/verb
 	url = git@github.com:federicotdn/verb.git
