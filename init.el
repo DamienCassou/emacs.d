@@ -193,6 +193,19 @@ This is recommended by Vertico's README."
     (with-eval-after-load "vertico"
       (advice-add #'ffap-menu-ask :around #'my/ffap-menu-ask))))
 
+(use-package dabbrev
+  :bind (("M-/" . my/dabbrev-completion))
+  :init
+  (progn
+    (setq dabbrev-case-fold-search t)
+    (setq dabbrev-case-replace nil))
+  :config
+  (progn
+    (defun my/dabbrev-completion ()
+      "Same as `dabbrev-completion' but searches all buffers."
+      (interactive)
+      (dabbrev-completion '(16)))))
+
 (use-package locate
   :init
   (progn
