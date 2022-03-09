@@ -6,6 +6,8 @@
       (with-demoted-errors "init.el error: %s"
         (load autoload-file nil t)))))
 
+(add-to-list 'load-path (locate-user-emacs-file "misc"))
+
 (setq load-prefer-newer t)
 
 ;; Deactivate beeping
