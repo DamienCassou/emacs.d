@@ -1490,11 +1490,7 @@ because slides don't change their ID all the time."
   :hook (prog-mode . ws-butler-mode))
 
 (use-package editorconfig
-  :hook ((prog-mode text-mode) . editorconfig-mode)
-  :config
-  (progn
-    ;; https://github.com/editorconfig/editorconfig-emacs/issues/246
-    (add-to-list 'editorconfig-exclude-modes 'git-rebase-mode)))
+  :hook ((prog-mode text-mode) . editorconfig-mode))
 
 (use-package compile
   :hook (compilation-filter . my/colorize-compilation-buffer)
