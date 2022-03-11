@@ -194,7 +194,7 @@ This is recommended by Vertico's README."
       (advice-add #'ffap-menu-ask :around #'my/ffap-menu-ask))))
 
 (use-package dabbrev
-  :bind (("M-/" . my/dabbrev-completion))
+  :bind (("M-/" . nil))
   :init
   (progn
     (setq dabbrev-case-fold-search t)
@@ -316,6 +316,7 @@ This is recommended by Vertico's README."
       (server-start))))
 
 (use-package minibuffer
+  :bind (("M-/" . completion-at-point))
   :init
   (progn
     (setq read-file-name-completion-ignore-case t)))
@@ -1831,6 +1832,14 @@ the buffer's filename."
   :bind (
          :map flymake-mode-map
          ("C-c ! l" . counselt-flymake)))
+
+(use-package cape
+  :demand t
+  :after minibuffer
+  :config
+  (progn
+    (add-to-list 'completion-at-point-functions #'cape-file)
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev)))
 
 (use-package embark
   :demand t
