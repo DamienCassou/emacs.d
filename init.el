@@ -1476,6 +1476,15 @@ This should be used as an override of `finsit-js-company-setup'.")
   (advice-add #'finsit-js-company-setup
               :override #'my/finsit-js-company-setup))
 
+(use-package finsit-js-company
+  :config
+  (defun my/finsit-js-tern-setup ()
+    "Prevent configuring `tern-mode'.
+This should be used as an override of `finsit-js-tern-setup'.")
+
+  (advice-add #'finsit-js-tern-setup
+              :override #'my/finsit-js-tern-setup))
+
 (use-package finsit-magit
   :demand t
   :after magit
