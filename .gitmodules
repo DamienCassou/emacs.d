@@ -70,6 +70,14 @@
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
 	remote = "DamienCassou git@github.com:DamienCassou/emacs-buttercup.git"
+[submodule "cape"]
+	path = lib/cape
+	url = git@github.com:minad/cape.git
+	build-step = borg-update-autoloads
+	build-step = borg-compile
+	build-step = (require 'ox-texinfo)
+	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
+	build-step = borg-makeinfo
 [submodule "cask"]
 	path = lib/cask
 	url = git@github.com:cask/cask.git
