@@ -263,6 +263,9 @@
 [submodule "flycheck-package"] # checks elisp package metadata
 	path = lib/flycheck-package
 	url = git@github.com:purcell/flycheck-package.git
+[submodule "flymake-eslint"]
+	path = lib/flymake-eslint
+	url = git@github.com:orzechowskid/flymake-eslint.git
 [submodule "flyspell-correct"]
 	path = lib/flyspell-correct
 	url = git@github.com:d12frosted/flyspell-correct.git
