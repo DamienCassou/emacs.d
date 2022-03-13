@@ -574,6 +574,17 @@ This is recommended by Vertico's README."
   :demand t
   :config
   (progn
+    (defun my/moody-flytool-mode-line ()
+      "Return a part of mode-line representing the state of flycheck or flymake."
+      (cond
+       ((and (featurep 'flycheck) flycheck-mode) (my/moody-flycheck-status))
+       ((and (featurep 'flymake) flymake-mode flymake--state) (my/moody-flymake-status))
+       (otherwise "")))
+
+    (defun my/moody-flymake-status ()
+      "Return the status of flymake to be displayed in the mode-line."
+      flymake-mode-line-format)
+
     (defun my/moody-flycheck-status ()
       "Return the status of flycheck to be displayed in the mode-line."
       (let* ((args (pcase flycheck-last-status-change
@@ -613,10 +624,10 @@ This is recommended by Vertico's README."
     (put 'my/moody-modified 'risky-local-variable t)
     (make-variable-buffer-local 'my/moody-modified)
 
-    (defvar my/moody-flycheck
-      '(:eval (my/moody-flycheck-status)))
-    (put 'my/moody-flycheck 'risky-local-variable t)
-    (make-variable-buffer-local 'my/moody-flycheck)
+    (defvar my/moody-flytool
+      '(:eval (my/moody-flytool-mode-line)))
+    (put 'my/moody-flytool 'risky-local-variable t)
+    (make-variable-buffer-local 'my/moody-flytool)
 
     (defvar my/moody-mode-line-client "")
 
@@ -629,7 +640,7 @@ This is recommended by Vertico's README."
     (moody-replace-element 'mode-line-mule-info 'my/moody-mule-info)
     (moody-replace-element 'mode-line-position 'my/moody-buffer-position)
     (moody-replace-element 'mode-line-modified 'my/moody-modified)
-    (moody-replace-element 'mode-line-remote 'my/moody-flycheck)
+    (moody-replace-element 'mode-line-remote 'my/moody-flytool)
     (moody-replace-element 'mode-line-client 'my/mode-line-client)))
 
 (use-package vc-hooks
