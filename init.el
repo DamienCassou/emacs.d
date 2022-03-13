@@ -576,22 +576,30 @@ This is recommended by Vertico's README."
   (progn
     (defun my/moody-flycheck-status ()
       "Return the status of flycheck to be displayed in the mode-line."
-      (when (and (featurep 'flycheck) flycheck-mode)
-        (let ((text (pcase flycheck-last-status-change
-                      (`finished (if flycheck-current-errors
-                                     (let ((count (let-alist (flycheck-count-errors flycheck-current-errors)
-                                                    (+ (or .warning 0) (or .error 0)))))
-                                       (format "✖ %s Issue%s" count (if (eq 1 count) "" "s")))
-                                   ""))
-                      (`running     "⟲ Running")
-                      (`no-checker  "⚠ No Checker")
-                      (`not-checked "✖ Disabled")
-                      (`errored     "⚠ Error")
-                      (`interrupted "⛔ Interrupted")
-                      (`suspicious  ""))))
-          (if (string-empty-p text)
-              ""
-            (list text " ")))))
+      (let* ((args (pcase flycheck-last-status-change
+                     (`finished (if flycheck-current-errors
+                                    `(failure ,(let-alist (flycheck-count-errors flycheck-current-errors)
+                                                 (+ (or .warning 0) (or .error 0))))
+                                  '(success)))
+                     (otherstatus `(,otherstatus)))))
+        (apply #'my/moody-flycheck-status-to-text args)))
+
+    (defun my/moody-flycheck-status-to-text (status &optional value)
+      "Return a string representing STATUS to be displayed in the mode-line."
+      (let ((text (pcase status
+                    (`success "")
+                    (`failure (format "✖ %s Issue%s"
+                                      value
+                                      (if (eq 1 value) "" "s")))
+                    (`running     "⟲ Running")
+                    (`no-checker  "⚠ No Checker")
+                    (`not-checked "✖ Disabled")
+                    (`errored     "⚠ Error")
+                    (`interrupted "⛔ Interrupted")
+                    (`suspicious  "????"))))
+        (if (string-empty-p text)
+            ""
+          (list text " "))))
 
     (defvar my/moody-mule-info
       '(:eval (unless (eq buffer-file-coding-system
