@@ -710,7 +710,16 @@ This is recommended by Vertico's README."
          :map flymake-mode-map
          ("C-c ! n" . flymake-goto-next-error)
          ("C-c ! p" . flymake-goto-prev-error)
-         ("C-c ! l" . flymake-show-buffer-diagnostics)))
+         ("C-c ! l" . flymake-show-buffer-diagnostics)
+         ("C-c ! v" . flymake-switch-to-log-buffer)))
+
+(use-package flymake-proc
+  :config
+  (progn
+    ;; flymake-proc adds this legacy backend automatically but (1) I
+    ;; don't seem to use it and (2) it triggers warnings in *Flymake
+    ;; log*.
+    (remove-hook 'flymake-diagnostic-functions #'flymake-proc-legacy-flymake)))
 
 (use-package flycheck
   :init
