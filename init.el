@@ -1522,6 +1522,19 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   (advice-add #'finsit-js-flycheck-setup
               :override #'my/finsit-js-flycheck-setup))
 
+(use-package flymake-eslint
+  :hook ((js-mode . my/flymake-eslint-finsit))
+  :init
+  (progn
+    (setq flymake-eslint-executable-args "--report-unused-disable-directives")
+
+    (defun my/flymake-eslint-finsit ()
+      "Enable flymake-eslint in finsit's Client/ buffer."
+      (when (finsit-core-own-javascript-buffer-p)
+        (setq-local flymake-eslint-executable-name (executable-find eslintd-fix-executable))
+        (setq-local flymake-eslint-project-root (finsit-core-monitor-client-location))
+        (flymake-eslint-enable)))))
+
 (use-package finsit-magit
   :demand t
   :after magit
