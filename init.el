@@ -1495,7 +1495,7 @@ This should be used as an override of `finsit-js-company-setup'.")
   (advice-add #'finsit-js-company-setup
               :override #'my/finsit-js-company-setup))
 
-(use-package finsit-js-company
+(use-package finsit-js-tern
   :config
   (defun my/finsit-js-tern-setup ()
     "Prevent configuring `tern-mode'.
