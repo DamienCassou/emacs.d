@@ -1513,6 +1513,15 @@ This should be used as an override of `finsit-js-tern-setup'.")
   (advice-add #'finsit-js-tern-setup
               :override #'my/finsit-js-tern-setup))
 
+(use-package finsit-js-flycheck
+  :config
+  (defun my/finsit-js-flycheck-setup ()
+    "Prevent configuring `flycheck-mode'.
+This should be used as an override of `finsit-js-flycheck-setup'.")
+
+  (advice-add #'finsit-js-flycheck-setup
+              :override #'my/finsit-js-flycheck-setup))
+
 (use-package finsit-magit
   :demand t
   :after magit
