@@ -194,7 +194,8 @@ This is recommended by Vertico's README."
       (advice-add #'ffap-menu-ask :around #'my/ffap-menu-ask))))
 
 (use-package dabbrev
-  :bind (("M-/" . nil))
+  :bind (("M-/" . nil)
+         ("C-M-/" . nil))
   :init
   (progn
     (setq dabbrev-case-fold-search t)
@@ -1895,6 +1896,7 @@ the buffer's filename."
 (use-package cape
   :demand t
   :after minibuffer
+  :bind (("C-M-/" . cape-dabbrev))
   :config
   (progn
     (add-to-list 'completion-at-point-functions #'cape-file)
