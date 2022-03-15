@@ -1527,7 +1527,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :hook ((js-mode . my/flymake-eslint-finsit))
   :init
   (progn
-    (setq flymake-eslint-executable-args "--report-unused-disable-directives")
+    (setq flymake-eslint-executable-args '("--report-unused-disable-directives"))
 
     (defun my/flymake-eslint-finsit ()
       "Enable flymake-eslint in finsit's Client/ buffer."
