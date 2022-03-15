@@ -224,6 +224,9 @@
 [submodule "ert-async"]
 	path = lib/ert-async
 	url = git@github.com:rejeep/ert-async.el.git
+[submodule "eslint-disable-rule"]
+	path = lib/eslint-disable-rule
+	url = git@github.com:DamienCassou/eslint-disable-rule.git
 [submodule "eslintd-fix"] # Automatically fix javascript with eslint_d
 	path = lib/eslintd-fix
 	url = git@github.com:aaronjensen/eslintd-fix.git
