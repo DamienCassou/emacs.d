@@ -939,46 +939,12 @@ MOMENT is an encoded date."
 
     (setq org-capture-templates
           '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox") "* TODO %?%i")
-            ("l" "Todo + link" entry (file+headline org-default-notes-file "Inbox") "* TODO %? %a")
             ("p" "Appt" entry (file org-default-calendar-file) "* %?\n%^T")
             ("T" "Tickler" entry (file+headline org-default-tickler-file "Tickler") "* %i%? \nSCHEDULED: %^t")))
 
     (setq org-todo-keywords
           '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
             (sequence "WAITING(w)" "|" "DONE(d)")))
-
-    (defun my/org-agenda-skip-all-siblings-but-first ()
-      (let (should-skip-entry)
-        (unless (my/org-current-is-todo)
-          (setq should-skip-entry t))
-        (save-excursion
-          (while (and (not should-skip-entry) (org-goto-sibling t))
-            (when (my/org-current-is-todo)
-              (setq should-skip-entry t))))
-        (when should-skip-entry
-          (or (outline-next-heading)
-              (goto-char (point-max))))))
-
-    (defun my/org-current-is-todo ()
-      (string= "TODO" (org-get-todo-state)))
-
-    (defun my/string-truncate (len s)
-      "If S is longer than LEN, cut it down and add \"…\" to the end.
-
-The resulting string, including ellipsis, will be LEN characters
-long."
-      (declare (pure t) (side-effect-free t))
-      (let ((ellipsis "…"))
-        (if (> (length s) len)
-            (format "%s%s" (substring s 0 (- len (length ellipsis))) ellipsis)
-          s)))
-
-    (defun org-agenda-format-parent (n)
-      (save-excursion
-        (save-restriction
-          (widen)
-          (org-up-heading-safe)
-          (my/string-truncate n (org-get-heading t t)))))
 
     (setq org-agenda-custom-commands
           '(("a" "Agenda for the current week" ((agenda "" nil)) nil nil)
@@ -987,41 +953,7 @@ long."
              ((org-agenda-entry-types '(:deadline))
               (org-agenda-overriding-header "Month deadlines")
               (org-agenda-span 'month)
-              (org-agenda-overriding-header "")))
-            ("n" "Next actions"
-             ((alltodo ""
-		       ((org-agenda-overriding-header "Next actions")
-		        (org-agenda-category-filter-preset '("+projects"))
-		        (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
-		        (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")
-		        (org-agenda-todo-keyword-format "%-4s")
-		        (org-agenda-files (list org-default-gtd-file)))))
-             nil nil)
-            ("@" "Contexts"
-             ((tags "ftgp"
-	            ((org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
-	             (org-agenda-overriding-header "FTGP next actions")
-                     (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
-              (tags "emacs"
-	            ((org-agenda-overriding-header "Emacs next actions")
-	             (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
-                     (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
-              (todo "WAITING"
-	            ((org-agenda-overriding-header "Waiting")
-                     (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
-              (tags-todo "@work"
-		         ((org-agenda-overriding-header "At work")
-		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
-                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
-              (tags-todo "@stockholm"
-		         ((org-agenda-overriding-header "At Stockholm")
-		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
-                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)")))
-              (tags-todo "@home"
-		         ((org-agenda-overriding-header "At Home")
-		          (org-agenda-skip-function #'my/org-agenda-skip-all-siblings-but-first)
-                          (org-agenda-prefix-format "%-32:(org-agenda-format-parent 30)"))))
-             nil nil)))
+              (org-agenda-overriding-header "")))))
 
     (setq org-agenda-show-future-repeats nil)
     (setq org-enforce-todo-dependencies t)
