@@ -199,16 +199,6 @@
 [submodule "elisp-refs"]
 	path = lib/elisp-refs
 	url = git@github.com:Wilfred/refs.el.git
-[submodule "elsa"]
-	path = lib/elsa
-	url = git@github.com:emacs-elsa/Elsa.git
-	remote = "DamienCassou git@github.com:DamienCassou/elcouch.git"
-	build-step = echo "Don't build elsa as it prevents it from running (issue #111)"
-[submodule "emake"]
-	path = lib/emake
-	url = https://github.com/vermiculus/emake.el.git
-	remote = "DamienCassou git@github.com:DamienCassou/emake.el.git"
-	fetchRecurseSubmodules = true
 [submodule "embark"]
 	path = lib/embark
 	url = git@github.com:oantolin/embark.git
@@ -715,9 +705,6 @@
 [submodule "treepy"]
 	path = lib/treepy
 	url = git@github.com:volrath/treepy.el.git
-[submodule "trinary"]
-	path = lib/trinary
-	url = git@github.com:emacs-elsa/trinary-logic.git
 [submodule "typescript-mode"]
 	path = lib/typescript-mode
 	url = git@github.com:emacs-typescript/typescript.el.git
