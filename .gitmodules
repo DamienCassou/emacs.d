@@ -190,9 +190,6 @@
 	path = lib/elcouch
 	url = git@github.com:DamienCassou/elcouch.git
 	remote = "github git@github.com:DamienCassou/elcouch.git"
-[submodule "eldev"]
-	path = lib/eldev
-	url = https://github.com/doublep/eldev.git
 [submodule "elisp-lint"]
 	path = lib/elisp-lint
 	url = git@github.com:gonewest818/elisp-lint.git
