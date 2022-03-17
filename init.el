@@ -580,7 +580,7 @@ This is recommended by Vertico's README."
       (cond
        ((and (featurep 'flycheck) flycheck-mode) (my/moody-flycheck-status))
        ((and (featurep 'flymake) flymake-mode flymake--state) (my/moody-flymake-status))
-       (otherwise "")))
+       (t "")))
 
     (defun my/moody-flymake-status ()
       "Return the status of flymake to be displayed in the mode-line."
