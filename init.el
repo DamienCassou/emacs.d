@@ -1823,7 +1823,7 @@ the buffer's filename."
   :after (consult flymake)
   :bind (
          :map flymake-mode-map
-         ("C-c ! l" . counselt-flymake)))
+         ("C-c ! l" . consult-flymake)))
 
 (use-package cape
   :demand t
