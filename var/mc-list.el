@@ -29,6 +29,7 @@
         embrace-commander
         fill-paragraph
         finsit-javascript-js2r-kill
+        finsit-js-kill-js2r-kill
         forward-sexp
         helm-show-kill-ring
         hungry-delete-backward
