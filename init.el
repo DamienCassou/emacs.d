@@ -447,7 +447,7 @@ This is recommended by Vertico's README."
   :after hl-line
   :config
   (progn
-    (lin-add-to-many-modes)))
+    (lin-setup)))
 
 (use-package undo-tree
   :demand t
