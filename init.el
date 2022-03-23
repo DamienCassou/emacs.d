@@ -1446,6 +1446,14 @@ This should be used as an override of `finsit-js-tern-setup'.")
   (advice-add #'finsit-js-tern-setup
               :override #'my/finsit-js-tern-setup))
 
+(use-package finsit-js-eglot
+  :disabled t
+  :demand t
+  :after (js2-mode finsit-js-core)
+  :config
+  (progn
+    (finsit-js-eglot-setup)))
+
 (use-package finsit-js-flycheck
   :config
   (defun my/finsit-js-flycheck-setup ()
