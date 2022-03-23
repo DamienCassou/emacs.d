@@ -1476,6 +1476,18 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
         (setq-local flymake-eslint-project-root (finsit-core-monitor-client-location))
         (flymake-eslint-enable)))))
 
+(use-package eslint-disable-rule
+  :after (:all js2-mode (:any flymake flycheck))
+  :bind ((
+          :map flymake-mode-map
+          ("C-c ! k" . eslint-disable-rule-disable-next-line)
+          :map flycheck-mode-map
+          ("C-c ! k" . eslint-disable-rule-disable-next-line)))
+  :init
+  (progn
+    (setq eslint-disable-rule-require-description 'prefer-description)
+    (setq eslint-disable-rule-all-executable "eslint_d")))
+
 (use-package finsit-magit
   :demand t
   :after magit
