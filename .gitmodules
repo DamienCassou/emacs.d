@@ -611,6 +611,10 @@
 [submodule "rainbow-identifiers"]
 	path = lib/rainbow-identifiers
 	url = git@github.com:Fanael/rainbow-identifiers.git
+[submodule "request"]
+	path = lib/request
+	url = git@github.com:tkf/emacs-request.git
+	remote = "DamienCassou git@github.com:DamienCassou/emacs-request.git"
 [submodule "rg"]
 	path = lib/rg
 	url = git@github.com:dajva/rg.el.git
