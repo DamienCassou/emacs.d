@@ -17,11 +17,13 @@
  '(frame-title-format "Emacs: %b" t)
  '(gc-cons-threshold 20000000)
  '(indent-tabs-mode nil)
- '(load-prefer-newer t t)
+ '(load-prefer-newer t)
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((elisp-lint-indent-specs
+   '((eval flymake-eslint-enable)
+     (flymake-eslint-executable-name . "eslint_d")
+     (elisp-lint-indent-specs
       (describe . 1)
       (it . 1)
       (org-element-map . defun)
