@@ -21,7 +21,8 @@
  '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((eval flymake-eslint-enable)
+   '((js2-strict-inconsistent-return-warning)
+     (eval flymake-eslint-enable)
      (flymake-eslint-executable-name . "eslint_d")
      (elisp-lint-indent-specs
       (describe . 1)
