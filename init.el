@@ -272,8 +272,10 @@ This is recommended by Vertico's README."
   :bind (("M-j" . my/join-line)
          ;; Replace `just-one-space' by the more advanced `cycle-spacing'.
          ("M-SPC" . cycle-spacing)
-         ("<S-left>" . beginning-of-buffer)
-         ("<S-right>" . end-of-buffer)
+         ("C-x a" . beginning-of-buffer)
+         ("M-<" . nil)
+         ("C-x e" . end-of-buffer)
+         ("M->" . nil)
          ([remap yank-pop] . yank-from-kill-ring)
          :map process-menu-mode-map
          ("k" . process-menu-delete-process))
@@ -462,7 +464,8 @@ This is recommended by Vertico's README."
   :bind (("C-x C-j" . dired-jump)
          :map dired-mode-map
          ("C-a" . my/dired-move-beginning-of-line)
-         ("k" . dired-do-delete))
+         ("C-k" . dired-do-delete)
+         ("D" . nil))
   :hook (dired-mode . dired-hide-details-mode)
   :init
   (progn
@@ -532,6 +535,9 @@ This is recommended by Vertico's README."
     (recentf-mode)))
 
 (use-package magit
+  :bind ((
+          :map magit-mode-map
+          ("M-w" . magit-copy-section-value)))
   :init
   (progn
     (setq magit-diff-refine-hunk t)
@@ -563,6 +569,12 @@ This is recommended by Vertico's README."
 
     (transient-replace-suffix 'magit-commit 'magit-commit-autofixup
       '("x" "Absorb changes" magit-commit-absorb))))
+
+(use-package magit-diff
+  :bind (
+         :map magit-diff-section-map
+         ;; disable binding that I use for begining of buffer
+         ("C-x a" . nil)))
 
 (use-package magit-extras
   :demand (project magit))
