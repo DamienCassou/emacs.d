@@ -73,11 +73,6 @@
 [submodule "cape"]
 	path = lib/cape
 	url = git@github.com:minad/cape.git
-	build-step = borg-update-autoloads
-	build-step = borg-compile
-	build-step = (require 'ox-texinfo)
-	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
-	build-step = borg-makeinfo
 [submodule "cask"]
 	path = lib/cask
 	url = git@github.com:cask/cask.git
@@ -103,11 +98,6 @@
 	path = lib/consult
 	url = git@github.com:minad/consult.git
 	branch = main
-	build-step = borg-update-autoloads
-	build-step = borg-compile
-	build-step = (require 'ox-texinfo)
-	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
-	build-step = borg-makeinfo
 [submodule "consult-flycheck"]
 	path = lib/consult-flycheck
 	url = git@github.com:minad/consult-flycheck.git
@@ -451,11 +441,6 @@
 	path = lib/marginalia
 	url = git@github.com:minad/marginalia.git
 	branch = main
-	build-step = borg-update-autoloads
-	build-step = borg-compile
-	build-step = (require 'ox-texinfo)
-	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
-	build-step = borg-makeinfo
 [submodule "markdown-mode"] # Major mode for markdown format
 	path = lib/markdown-mode
 	url = git@github.com:jrblevin/markdown-mode.git
@@ -669,11 +654,6 @@
 [submodule "tempel"]
 	path = lib/tempel
 	url = git@github.com:minad/tempel.git
-	build-step = borg-update-autoloads
-	build-step = borg-compile
-	build-step = (require 'ox-texinfo)
-	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
-	build-step = borg-makeinfo
 [submodule "tern"] # Javascript code analyzer
 	path = lib/tern
 	url = git@github.com:ternjs/tern.git
@@ -721,11 +701,6 @@
 	path = lib/vertico
 	url = git@github.com:minad/vertico.git
 	branch = main
-	build-step = borg-update-autoloads
-	build-step = borg-compile
-	build-step = (require 'ox-texinfo)
-	build-step = "(save-excursion (find-file \"README.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
-	build-step = borg-makeinfo
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git
