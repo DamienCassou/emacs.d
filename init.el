@@ -449,7 +449,7 @@ This is recommended by Vertico's README."
   :after hl-line
   :config
   (progn
-    (lin-setup)))
+    (lin-global-mode)))
 
 (use-package undo-tree
   :demand t
