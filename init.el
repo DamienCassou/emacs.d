@@ -313,6 +313,9 @@ This is recommended by Vertico's README."
     (global-so-long-mode)))
 
 (use-package server
+  :init
+  (progn
+    (setq server-client-instructions nil))
   :config
   (progn
     (unless (or (daemonp) (server-running-p))
