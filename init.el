@@ -1727,6 +1727,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :after vertico
   :config
   (progn
+    (set-face-attribute 'vertico-indexed nil :height 1.0)
     (vertico-indexed-mode)))
 
 (use-package marginalia
