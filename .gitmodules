@@ -701,6 +701,8 @@
 	path = lib/vertico
 	url = git@github.com:minad/vertico.git
 	branch = main
+	load-path = .
+	load-path = extensions
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git

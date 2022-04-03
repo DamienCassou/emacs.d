@@ -1715,7 +1715,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (vertico-mode)))
 
 (use-package vertico-directory
-  :load-path "lib/vertico/extensions"
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-char)
@@ -1724,7 +1723,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package vertico-indexed
-  :load-path "lib/vertico/extensions"
   :demand t
   :after vertico
   :config
