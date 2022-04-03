@@ -651,9 +651,6 @@
 [submodule "tbdiff"]
 	path = lib/tbdiff
 	url = https://github.com/trast/tbdiff.git
-[submodule "tempel"]
-	path = lib/tempel
-	url = git@github.com:minad/tempel.git
 [submodule "tern"] # Javascript code analyzer
 	path = lib/tern
 	url = git@github.com:ternjs/tern.git
