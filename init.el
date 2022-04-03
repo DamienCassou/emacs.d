@@ -724,7 +724,20 @@ This is recommended by Vertico's README."
          ("C-c ! n" . flymake-goto-next-error)
          ("C-c ! p" . flymake-goto-prev-error)
          ("C-c ! l" . flymake-show-buffer-diagnostics)
-         ("C-c ! v" . flymake-switch-to-log-buffer)))
+         ("C-c ! v" . flymake-switch-to-log-buffer))
+  :init
+  (progn
+    ;; Simplify mode-line format by removing square-brakets:
+    (setq flymake-mode-line-counter-format
+          '("" ; don't know why "" is necessary
+            flymake-mode-line-error-counter
+            flymake-mode-line-warning-counter
+            flymake-mode-line-note-counter))
+    ;; Simplify mode-line format by removing title:
+    (setq flymake-mode-line-format
+          '("" "" ; don't know why "" are necessary
+            flymake-mode-line-exception
+            flymake-mode-line-counters))))
 
 (use-package flymake-proc
   :config
