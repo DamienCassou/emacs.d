@@ -219,7 +219,7 @@ This is recommended by Vertico's README."
   :demand t
   :init
   (progn
-    (setq modus-themes-mode-line '(moody))
+    (setq modus-themes-mode-line '(borderless))
     (setq modus-themes-bold-constructs t)
     (setq modus-themes-org-blocks 'greyscale)
 
@@ -585,7 +585,66 @@ This is recommended by Vertico's README."
   :demand t
   :after magit)
 
+(use-package nano-modeline
+  :demand t
+  :init
+  (progn
+    (setq nano-modeline-mode-formats
+          '((vterm-mode             :mode-p nano-modeline-vterm-mode-p
+                                    :format my/nano-modeline-vterm-mode)
+            (calendar-mode          :mode-p nano-modeline-calendar-mode-p
+                                    :format nano-modeline-calendar-mode
+                                    :on-activate nano-modeline-calendar-activate
+                                    :on-inactivate nano-modeline-calendar-inactivate)
+            (info-mode              :mode-p nano-modeline-info-mode-p
+                                    :format nano-modeline-info-mode
+                                    :on-activate nano-modeline-info-activate
+                                    :on-inactivate nano-modeline-info-inactivate)
+            (org-agenda-mode        :mode-p nano-modeline-org-agenda-mode-p
+                                    :format nano-modeline-org-agenda-mode)
+            (org-capture-mode       :mode-p nano-modeline-org-capture-mode-p
+                                    :format nano-modeline-org-capture-mode
+                                    :on-activate nano-modeline-org-capture-activate
+                                    :on-inactivate nano-modeline-org-capture-inactivate)
+            (pdf-view-mode          :mode-p nano-modeline-pdf-view-mode-p
+                                    :format nano-modeline-pdf-view-mode))))
+  :config
+  (progn
+    (defun my/nano-modeline-vterm-mode ()
+      (nano-modeline-render
+       ">_"
+       shell-file-name
+       (if vterm-copy-mode "(copy)" "")
+       (nano-modeline-shorten-directory default-directory 50)))
+
+    (defun my/nano-modeline-vc-branch ()
+      "Remove all VC information from the modeline."
+      nil)
+
+    (advice-add #'nano-modeline-vc-branch :override #'my/nano-modeline-vc-branch)
+
+    (defun my/nano-modeline-default-mode ()
+      (let ((buffer-name (or (and (buffer-file-name)
+                                  (nano-modeline-shorten-directory (buffer-file-name) 30))
+                             (buffer-name)))
+            (flytool-state (if (and (featurep 'flymake) flymake-mode flymake--state)
+                               (format-mode-line `("(" ,flymake-mode-line-format ")"))
+                             ""))
+            (mode-name   (nano-modeline-mode-name))
+            (position    (format-mode-line "%l:%c")))
+        (nano-modeline-render (upcase  mode-name)
+                              buffer-name
+                              flytool-state
+                              position)))
+
+    (advice-add #'nano-modeline-default-mode :override #'my/nano-modeline-default-mode)
+
+    (set-face-attribute 'nano-modeline-active-name-** nil :background "#e4c340")
+
+    (nano-modeline-mode)))
+
 (use-package moody
+  :disabled t
   :demand t
   :config
   (progn
