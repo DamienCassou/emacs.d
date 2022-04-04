@@ -1804,6 +1804,23 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (set-face-attribute 'vertico-indexed nil :height 1.0)
     (vertico-indexed-mode)))
 
+(use-package vertico-buffer
+  :demand t
+  :after vertico)
+
+(use-package vertico-multiform
+  :demand t
+  :after vertico
+  :config
+  (progn
+    (vertico-multiform-mode)
+
+    (setq vertico-multiform-commands
+          '(;; show grep results in a dedicated buffer:
+            (consult-ripgrep buffer)
+            ;; don't sort commands that `runner' already sorts:
+            (dired-do-async-shell-command (vertico-sort-function . nil))))))
+
 (use-package marginalia
   :demand t
   :bind (
