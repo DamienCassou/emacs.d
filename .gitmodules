@@ -690,9 +690,7 @@
 	remote = "DamienCassou git@github.com:DamienCassou/use-package"
 	build-step = borg-update-autoloads
 	build-step = borg-compile
-	build-step = (require 'ox-texinfo+)
-	build-step = (and (require 'ox-extra nil t) (ox-extras-activate '(ignore-headlines)))
-	build-step = "(save-excursion (find-file \"use-package.org\") (org-export-to-file 'texinfo (org-export-output-file-name \".texi\")))"
+	build-step = make -f Makefile.doc texi DOC_LOAD_PATH='--directory ~/.emacs.d/misc --directory ~/.emacs.d/lib/ox-texinfo+'
 	build-step = borg-makeinfo
 [submodule "verb"]
 	path = lib/verb
