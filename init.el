@@ -1932,9 +1932,6 @@ the buffer's filename."
     (dolist (source '(consult--source-bookmark consult--source-project-buffer consult--source-project-file))
       (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))))
 
-(use-package consult-imenu
-  :bind (("M-i" . consult-imenu)))
-
 (use-package consult-flycheck
   :after (consult flycheck)
   :bind (
@@ -1972,6 +1969,20 @@ the buffer's filename."
   :init
   (progn
     (setq wgrep-enable-key [remap read-only-mode])))
+
+(use-package imenu-list
+  :bind (("M-i" . my/imenu-list))
+  :init
+  (progn
+    (setq imenu-list-position 'below))
+  :config
+  (progn
+    (defun my/imenu-list (arg)
+      "Start `imenu' by default and `imenu-list' with prefix ARG."
+      (interactive "P")
+      (if arg
+          (imenu-list)
+        (consult-imenu)))))
 
 (defun sudo-find-file (file)
   "Open FILE as root."
