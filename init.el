@@ -61,11 +61,8 @@
   (setq user-mail-address "damien@cassou.me"))
 
 (progn ; `files'
-  (setq confirm-kill-emacs 'y-or-n-p)
   (setq make-backup-files nil)
-  (setq version-control 'never)
-  ;; Delete that when switching to Emacs 28:
-  (bind-key "C-x x g" #'revert-buffer))
+  (setq version-control 'never))
 
 (progn ; `filelock'
   (setq create-lockfiles nil))
@@ -126,7 +123,7 @@ are visible."
 (progn ; `map-ynp'
   ;; Make all "yes or no" prompts show "y or n" instead
   (setq read-answer-short t)
-  (fset 'yes-or-no-p 'y-or-n-p))
+  (setq use-short-answers t))
 
 (progn ; `editfns'
   (put 'narrow-to-region 'disabled nil))
@@ -282,7 +279,8 @@ This is recommended by Vertico's README."
   (progn
     (setq delete-active-region nil)
     (setq eval-expression-print-length 20)
-    (setq eval-expression-print-level 10))
+    (setq eval-expression-print-level 10)
+    (setq next-error-message-highlight 'keep))
   :config
   (progn
     (defun my/join-line ()
