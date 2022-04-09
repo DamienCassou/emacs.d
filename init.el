@@ -189,6 +189,11 @@ This is recommended by Vertico's README."
     (with-eval-after-load "vertico"
       (advice-add #'ffap-menu-ask :around #'my/ffap-menu-ask))))
 
+(use-package isearch
+  :init
+  (progn
+    (setq isearch-allow-motion t)))
+
 (use-package dabbrev
   :bind (("M-/" . nil)
          ("C-M-/" . nil))
