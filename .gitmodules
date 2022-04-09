@@ -1,8 +1,5 @@
 [borg]
 	pushDefault = DamienCassou
-[submodule "a"]
-	path = lib/a
-	url = git@github.com:plexus/a.el.git
 [submodule "ace-link"] # type o in help-mode to go to a link
 	path = lib/ace-link
 	url = git@github.com:abo-abo/ace-link.git
