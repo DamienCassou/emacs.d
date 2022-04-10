@@ -1856,7 +1856,8 @@ the buffer's filename."
 (use-package xref
   :init
   (progn
-    (setq xref-show-definitions-function #'xref-show-definitions-completing-read)))
+    (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
+    (setq xref-search-program 'ripgrep)))
 
 (use-package project
   :bind (
