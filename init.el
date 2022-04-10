@@ -308,10 +308,6 @@ This is recommended by Vertico's README."
   :demand t
   :config
   (progn
-    ;; webpack adds quite a few short lines of initialization in its
-    ;; build files. We should let so-long ignore those and still find
-    ;; the long ones:
-    (setq so-long-max-lines 100)
     (global-so-long-mode)))
 
 (use-package server
@@ -466,7 +462,7 @@ This is recommended by Vertico's README."
     (define-key undo-tree-map (kbd "C-x r") nil)))
 
 (use-package dired
-  :bind (("C-x C-j" . dired-jump)
+  :bind (
          :map dired-mode-map
          ("C-a" . my/dired-move-beginning-of-line)
          ("C-k" . dired-do-delete)
