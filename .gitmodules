@@ -266,9 +266,6 @@
 [submodule "gnuplot-mode"]
 	path = lib/gnuplot-mode
 	url = git@github.com:mkmcc/gnuplot-mode.git
-[submodule "go-mode"]
-	path = lib/go-mode
-	url = https://github.com/dominikh/go-mode.el.git
 [submodule "goggles"]
 	path = lib/goggles
 	url = git@github.com:minad/goggles.git
