@@ -462,9 +462,6 @@
 [submodule "moldable-emacs"]
 	path = lib/moldable-emacs
 	url = git@github.com:ag91/moldable-emacs.git
-[submodule "moody"]
-	path = lib/moody
-	url = git@github.com:tarsius/moody.git
 [submodule "mpdel"]
 	path = lib/mpdel
 	url = git@gitea.petton.fr/mpdel/mpdel.git
