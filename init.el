@@ -588,6 +588,9 @@ This is recommended by Vertico's README."
   :demand t
   :init
   (progn
+    ;; To give some more room to the buffer:
+    (cl-incf ispell-choices-win-default-height)
+
     (setq nano-modeline-mode-formats
           '((vterm-mode             :mode-p nano-modeline-vterm-mode-p
                                     :format my/nano-modeline-vterm-mode
