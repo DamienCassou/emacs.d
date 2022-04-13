@@ -11,7 +11,7 @@
  ;; If there is more than one, they won't work right.
  '(bookmark-save-flag 1)
  '(custom-safe-themes
-   '("74a50f18c8c88eac44dc73d7a4c0bbe1f3e72ff5971aac38fcf354ddad0d4733" default))
+   '("7d062fbc4a6b42e3db5c8ad011c8182de69c0521df3f4577f893d9941a7af5e2" default))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
