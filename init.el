@@ -636,7 +636,7 @@ This is recommended by Vertico's README."
                                   (nano-modeline-shorten-directory (buffer-file-name) 30))
                              (buffer-name)))
             (flytool-state (if (and (featurep 'flymake) flymake-mode flymake--state)
-                               (format-mode-line `("(" ,flymake-mode-line-format ")"))
+                               (format-mode-line flymake-mode-line-format)
                              ""))
             (mode-name   (nano-modeline-mode-name))
             (position    (format-mode-line "%l:%c")))
@@ -799,17 +799,25 @@ This is recommended by Vertico's README."
          ("C-c ! v" . flymake-switch-to-log-buffer))
   :init
   (progn
-    ;; Simplify mode-line format by removing square-brakets:
-    (setq flymake-mode-line-counter-format
-          '("" ; don't know why "" is necessary
-            flymake-mode-line-error-counter
-            flymake-mode-line-warning-counter
-            flymake-mode-line-note-counter))
-    ;; Simplify mode-line format by removing title:
-    (setq flymake-mode-line-format
-          '("" "" ; don't know why "" are necessary
-            flymake-mode-line-exception
-            flymake-mode-line-counters))))
+    (defun my/flymake-modeline ()
+      "Compute a modeline format containing flymake's current status."
+      (let* ((running-backends (flymake-running-backends))
+             (reporting-backends (flymake-reporting-backends))
+             (computing-backends (cl-set-difference running-backends reporting-backends)))
+        (cond
+         ((zerop (hash-table-count flymake--state)) "(?)")
+         (computing-backends "(Wait)")
+         ((and (flymake-disabled-backends) (null running-backends)) "(Disabled)")
+         (t (if (flymake-diagnostics)
+                (list "("
+                      flymake-mode-line-error-counter
+                      flymake-mode-line-warning-counter
+                      flymake-mode-line-note-counter
+                      ")")
+              "")))))
+
+    (setq flymake-suppress-zero-counters t)
+    (setq flymake-mode-line-format '(:eval (my/flymake-modeline)))))
 
 (use-package flymake-proc
   :config
