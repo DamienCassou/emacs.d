@@ -590,28 +590,34 @@ This is recommended by Vertico's README."
   (progn
     (setq nano-modeline-mode-formats
           '((vterm-mode             :mode-p nano-modeline-vterm-mode-p
-                                    :format my/nano-modeline-vterm-mode)
+                                    :format my/nano-modeline-vterm-mode
+                                    :icon "") ;; nerd-font / oct-term
             (calendar-mode          :mode-p nano-modeline-calendar-mode-p
                                     :format nano-modeline-calendar-mode
                                     :on-activate nano-modeline-calendar-activate
-                                    :on-inactivate nano-modeline-calendar-inactivate)
+                                    :on-inactivate nano-modeline-calendar-inactivate
+                                    :icon "") ;; nerd-font / oct-calendar
             (info-mode              :mode-p nano-modeline-info-mode-p
                                     :format nano-modeline-info-mode
                                     :on-activate nano-modeline-info-activate
-                                    :on-inactivate nano-modeline-info-inactivate)
+                                    :on-inactivate nano-modeline-info-inactivate
+                                    :icon "") ;; nerd-font / oct-info
             (org-agenda-mode        :mode-p nano-modeline-org-agenda-mode-p
-                                    :format nano-modeline-org-agenda-mode)
+                                    :format nano-modeline-org-agenda-mode
+                                    :icon "") ;; nerd-font / oct-calendar
             (org-capture-mode       :mode-p nano-modeline-org-capture-mode-p
                                     :format nano-modeline-org-capture-mode
                                     :on-activate nano-modeline-org-capture-activate
-                                    :on-inactivate nano-modeline-org-capture-inactivate)
+                                    :on-inactivate nano-modeline-org-capture-inactivate
+                                    :icon "") ;; nerd-font / oct-calendar
             (pdf-view-mode          :mode-p nano-modeline-pdf-view-mode-p
-                                    :format nano-modeline-pdf-view-mode))))
+                                    :format nano-modeline-pdf-view-mode
+                                    :icon "")))) ;; nerd-font/ oct-file-pdf
   :config
   (progn
     (defun my/nano-modeline-vterm-mode ()
       (nano-modeline-render
-       ">_"
+       (plist-get (cdr (assoc 'vterm-mode nano-modeline-mode-formats)) :icon)
        shell-file-name
        (if vterm-copy-mode "(copy)" "")
        (nano-modeline-shorten-directory default-directory 50)))
