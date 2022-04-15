@@ -395,7 +395,7 @@
 	remote = "github git@github.com:DamienCassou/libmpdel.git"
 [submodule "lin"]
 	path = lib/lin
-	url = git@gitlab.com:protesilaos/lin.git
+	url = git@git.sr.ht:~protesilaos/lin
 	build-step = borg-compile
 	build-step = borg-update-autoloads
 	build-step = make
@@ -506,6 +506,9 @@
 [submodule "org-make-toc"]
 	path = lib/org-make-toc
 	url = git@github.com:alphapapa/org-make-toc.git
+[submodule "org-modern"]
+	path = lib/org-modern
+	url = git@github.com:minad/org-modern.git
 [submodule "org-roam"]
 	path = lib/org-roam
 	url = https://github.com/org-roam/org-roam.git

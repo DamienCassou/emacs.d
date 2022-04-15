@@ -1055,6 +1055,13 @@ because slides don't change their ID all the time."
           (concat "file://" (expand-file-name "~/Documents/projects/reveal/latest")))
     (setq org-reveal-title-slide nil)))
 
+(use-package org-modern
+  :demand t
+  :after org
+  :config
+  (progn
+    (global-org-modern-mode)))
+
 (use-package org-caldav
   :bind (("C-. o S"   . org-caldav-sync))
   :config
