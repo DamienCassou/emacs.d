@@ -157,17 +157,17 @@ If FRAME is nil, configure current frame. If non-nil, make FRAME
 current."
       (when frame (select-frame frame))
       (setq frame-title-format "Emacs")
-      (setq default-frame-alist
-            '((cursor-type bar . 5)
-              ;; The width in pixels of the frame’s internal border:
-              (internal-border-width . 12)
-              ;; large fringes to get hi-resolution flycheck marks:
-              (left-fringe    . 8)
-              (right-fringe   . 8)
-              ;; Hide stuff I don't need:
-              (vertical-scroll-bars . nil)
-              (tool-bar-lines . 0)
-              (menu-bar-lines . 0)))
+      (modify-all-frames-parameters
+       '((cursor-type bar . 5)
+         ;; The width in pixels of the frame’s internal border:
+         (internal-border-width . 12)
+         ;; large fringes to get hi-resolution flycheck marks:
+         (left-fringe    . 8)
+         (right-fringe   . 8)
+         ;; Hide stuff I don't need:
+         (vertical-scroll-bars . nil)
+         (tool-bar-lines . 0)
+         (menu-bar-lines . 0)))
 
       (window-divider-mode)
 
