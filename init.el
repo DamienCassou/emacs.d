@@ -1856,12 +1856,6 @@ the buffer's filename."
 
     (add-to-list 'project-switch-commands '(shell-switcher-open-on-project "Shell") t)))
 
-(use-package all-the-icons-completion
-  :demand t
-  :config
-  (progn
-    (all-the-icons-completion-mode)))
-
 (use-package consult
   :bind (([remap yank-pop] . consult-yank-replace)
          ;; Virtual Buffers
