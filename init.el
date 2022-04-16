@@ -1752,12 +1752,25 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package vertico-indexed
+  :disabled t
   :demand t
   :after vertico
   :config
   (progn
     (set-face-attribute 'vertico-indexed nil :height 1.0)
     (vertico-indexed-mode)))
+
+(use-package vertico-quick
+  :demand t
+  :after vertico
+  :bind (
+         :map vertico-map
+         ("M-q" . vertico-quick-insert)
+         ("C-q" . vertico-quick-exit))
+  :init
+  (progn
+    (setq vertico-quick1 "arstdhn")
+    (setq vertico-quick2 "oie")))
 
 (use-package vertico-buffer
   :demand t
