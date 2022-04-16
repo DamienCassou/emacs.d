@@ -1706,6 +1706,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :hook ((proced-mode . nix-prettify-mode)))
 
 (use-package nix-sandbox
+  :disabled t
   :demand t
   :init
   (progn
@@ -1721,6 +1722,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 ;; envrc must come late in the init.el file so add-hook adds it first
 ;; in `find-file-hook'.
 (use-package envrc
+  :disabled t
   :demand t
   :config
   (progn
