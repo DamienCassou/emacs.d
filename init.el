@@ -171,8 +171,11 @@ current."
 
       (window-divider-mode)
 
-      (set-face-attribute 'default nil :height 100 :family "Fira Mono")
-      (set-face-attribute 'fixed-pitch nil :family "Fira Mono" :height 1.0))
+      (set-face-attribute 'default nil :family "Iosevka")
+      (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
+
+      (with-eval-after-load "org-modern"
+        (set-face-attribute 'org-modern-symbol nil :family "Iosevka")))
 
     (my/setup-frame)))
 
