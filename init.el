@@ -946,6 +946,7 @@ MOMENT is an encoded date."
     (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t) (R . t) (python . t)))
     (setq org-catch-invisible-edits 'show-and-error)
     (setq org-cycle-separator-lines 0)
+    (setq org-insert-heading-respect-content t)
     (setq org-clock-clocked-in-display nil)
     (setq org-id-link-to-org-use-id t)
     (setq org-adapt-indentation nil)
@@ -992,6 +993,8 @@ MOMENT is an encoded date."
     (setq org-export-with-toc nil)
     (setq org-fontify-done-headline t)
     (setq org-hide-leading-stars t)
+    (setq org-hide-emphasis-markers t)
+    (setq org-pretty-entities t)
     (setq org-html-postamble nil)
     (setq org-imenu-depth 2)
     (setq org-log-done 'time)
@@ -1021,6 +1024,15 @@ MOMENT is an encoded date."
   :bind (
          :map org-agenda-mode-map
          ("k"         . org-agenda-kill))
+  :init
+  (progn
+    (setq org-agenda-block-separator ?─)
+    (setq org-agenda-time-grid
+          '((daily today require-timed)
+            (800 1000 1200 1400 1600 1800 2000)
+            " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
+    (setq  org-agenda-current-time-string
+           "⭠ now ─────────────────────────────────────────────────"))
   :config
   (progn
     ;; Those are my `beginning-of-buffer' and `end-of-buffer':
