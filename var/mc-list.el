@@ -69,6 +69,7 @@
         paredit-backward-kill-word
         paredit-backward-slurp-sexp
         paredit-close-round
+        paredit-comment-dwim
         paredit-doublequote
         paredit-forward
         paredit-forward-delete
