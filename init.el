@@ -171,8 +171,8 @@ current."
 
       (window-divider-mode)
 
-      (set-face-attribute 'default nil :family "Iosevka")
-      (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
+      (set-face-attribute 'default nil :family "Iosevka"  :height 130)
+      (set-face-attribute 'variable-pitch nil :family "Iosevka Aile"  :height 1.0)
 
       (with-eval-after-load "org-modern"
         (set-face-attribute 'org-modern-symbol nil :family "Iosevka")))
