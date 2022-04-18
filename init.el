@@ -461,7 +461,7 @@ This is recommended by Vertico's README."
   :bind (
          :map dired-mode-map
          ("C-a" . my/dired-move-beginning-of-line)
-         ("C-k" . dired-do-delete)
+         ("k" . dired-do-delete)
          ("D" . nil))
   :hook (dired-mode . dired-hide-details-mode)
   :init
