@@ -227,7 +227,6 @@ This is recommended by Vertico's README."
     (setq modus-themes-mode-line '(borderless))
     (setq modus-themes-bold-constructs t)
     (setq modus-themes-org-blocks 'greyscale)
-    (setq modus-themes-scale-headings t)
     (setq modus-themes-italic-constructs t)
 
     (setq modus-themes-operandi-color-overrides
