@@ -229,6 +229,13 @@ This is recommended by Vertico's README."
     (setq modus-themes-org-blocks 'greyscale)
     (setq modus-themes-italic-constructs t)
 
+    (setq modus-themes-headings
+          '((1 . (1.8))
+            (2 . (background 1.7))
+            (3 . (background bold 1.4))
+            (4 . (1.1))
+            (t . ())))
+
     (setq modus-themes-operandi-color-overrides
           '((fg-window-divider-outer . "white")
             (fg-window-divider-inner . "white")))
