@@ -695,6 +695,9 @@
 	branch = main
 	load-path = .
 	load-path = extensions
+[submodule "vundo"]
+	path = lib/vundo
+	url = git@github.com:casouri/vundo.git
 [submodule "web-mode"]
 	path = lib/web-mode
 	url = git@github.com:fxbois/web-mode.git
