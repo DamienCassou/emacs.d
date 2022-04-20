@@ -449,6 +449,7 @@ This is recommended by Vertico's README."
     (lin-global-mode)))
 
 (use-package undo-tree
+  :disabled t
   :demand t
   :config
   (progn
@@ -456,6 +457,21 @@ This is recommended by Vertico's README."
     (setq undo-tree-auto-save-history nil)
     (setq undo-tree-enable-undo-in-region t)
     (define-key undo-tree-map (kbd "C-x r") nil)))
+
+(use-package vundo
+  :bind ("C-x u" . vundo)
+  :hook ((vundo-mode . my/vundo-setup))
+  :init
+  (progn
+    (setq vundo-window-max-height 5))
+  :config
+  (progn
+    (setq vundo-glyph-alist vundo-unicode-symbols)
+
+    (defun my/vundo-setup ()
+      "Remove mode-line and header-line."
+      (setq mode-line-format nil)
+      (setq header-line-format nil))))
 
 (use-package dired
   :bind (
