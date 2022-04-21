@@ -668,7 +668,7 @@ This is recommended by Vertico's README."
 
     (setq nano-modeline-prefix 'icon)
 
-    (set-face-attribute 'nano-modeline-active-primary nil :background "#ef4f54")
+    (set-face-attribute 'nano-modeline-active-primary nil :background "#e4c340")
     (set-face-attribute 'nano-modeline-active-status-** nil :background "#e4c340")
 
     (nano-modeline-mode)))
