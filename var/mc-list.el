@@ -15,6 +15,7 @@
         c-electric-semi&comma
         c-indent-line-or-region
         clipboard-kill-region
+        completion-at-point
         counsel-M-x
         counsel-unicode-char
         counsel-yank-pop
