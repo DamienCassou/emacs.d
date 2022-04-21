@@ -1432,8 +1432,7 @@ because slides don't change their ID all the time."
   :bind (
          :map prodigy-mode-map
          ("k" . (lambda () (interactive) (prodigy-stop t)))
-         ("M-w" . prodigy-copy-url)
-         ("y" . finsit-prodigy-start-cypress)))
+         ("M-w" . prodigy-copy-url)))
 
 (use-package finsit-core
   :config
