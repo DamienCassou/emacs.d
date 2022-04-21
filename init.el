@@ -1090,7 +1090,15 @@ because slides don't change their ID all the time."
   :after org
   :config
   (progn
-    (global-org-modern-mode)))
+    (global-org-modern-mode)
+
+    (defun my/org-table-toggle-coordinate-overlays (&rest args)
+      "Toggle org-modern based on the presence of coordinate overlays."
+      (org-modern-mode (if org-table-overlay-coordinates -1 1)))
+
+    (advice-add #'org-table-toggle-coordinate-overlays
+                :after
+                #'my/org-table-toggle-coordinate-overlays)))
 
 (use-package org-caldav
   :bind (("C-. o S"   . org-caldav-sync))
