@@ -2009,6 +2009,11 @@ the buffer's filename."
 ;; horizontal ellipsis
 (bind-key "C-x 8 ," (my/insert-char-fn ?…))
 
+(defun my/add-mark (&rest args)
+  (push-mark nil t))
+
+(advice-add #'backward-up-list :before #'my/add-mark)
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
