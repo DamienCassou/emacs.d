@@ -283,18 +283,6 @@
 [submodule "haskell-mode"]
 	path = lib/haskell-mode
 	url = https://github.com/haskell/haskell-mode
-[submodule "helm"] # selection/completion interface for everything
-	path = lib/helm
-	url = git@github.com:emacs-helm/helm.git
-[submodule "helm-ag"] # use ag from helm
-	path = lib/helm-ag
-	url = git@github.com:syohex/emacs-helm-ag.git
-[submodule "helm-descbinds"] # list available bindings through helm
-	path = lib/helm-descbinds
-	url = git@github.com:emacs-helm/helm-descbinds.git
-[submodule "helm-flyspell"] # use helm for flyspell suggestions
-	path = lib/helm-flyspell
-	url = git@github.com:pronobis/helm-flyspell.git
 [submodule "helpful"]
 	path = lib/helpful
 	url = git@github.com:Wilfred/helpful.git
