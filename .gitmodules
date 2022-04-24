@@ -653,12 +653,6 @@
 	path = lib/transient
 	url = git@github.com:magit/transient.git
 	info-path = docs
-[submodule "tree-sitter"]
-	path = lib/tree-sitter
-	url = git@github.com:emacs-tree-sitter/elisp-tree-sitter.git
-	load-path = core
-	load-path = lisp
-	load-path = langs
 [submodule "treepy"]
 	path = lib/treepy
 	url = git@github.com:volrath/treepy.el.git
