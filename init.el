@@ -1184,6 +1184,7 @@ because slides don't change their ID all the time."
          ("C-c C-<" . mc/mark-all-like-this)))
 
 (use-package shell-switcher
+  :disabled t
   :bind (("C-M-'"   . shell-switcher-new-shell)
          ("C-'"     . shell-switcher-switch-buffer)
          ("C-x 4 '" . shell-switcher-switch-buffer-other-window))
@@ -1669,6 +1670,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 
 (use-package vterm
   :bind (
+         ("C-M-'" . my/vterm-open-new)
          :map vterm-mode-map
          ("<f8>" . vterm-send-C-x))
   :init
@@ -1942,7 +1944,27 @@ the buffer's filename."
 
     ;; Remove some sources when listing buffers:
     (dolist (source '(consult--source-bookmark consult--source-project-buffer consult--source-project-file))
-      (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))))
+      (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))
+
+    (defvar vterm-source
+      (list :name     "VTerm"
+            :category 'buffer
+            :narrow   ?v
+            :face     'consult-buffer
+            :history  'buffer-name-history
+            :state    #'consult--buffer-state
+            :new
+            (lambda (name)
+              (vterm (generate-new-buffer-name name)))
+            :items
+            (lambda ()
+              (mapcar #'buffer-name
+                      (seq-filter
+                       (lambda (buffer)
+                         (eq (buffer-local-value 'major-mode buffer) 'vterm-mode))
+                       (buffer-list))))))
+
+    (add-to-list 'consult-buffer-sources 'vterm-source 'append)))
 
 (use-package consult-flycheck
   :after (consult flycheck)
