@@ -1728,6 +1728,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :demand t)
 
 (use-package minions
+  :disabled t
   :demand t
   :config
   (progn
