@@ -671,6 +671,10 @@ This is recommended by Vertico's README."
     (set-face-attribute 'nano-modeline-active-primary nil :background "#e4c340")
     (set-face-attribute 'nano-modeline-active-status-** nil :background "#e4c340")
 
+    ;; https://github.com/rougier/nano-modeline/issues/36
+    (with-eval-after-load 'eldoc
+      (setq eldoc-message-function #'message))
+
     (nano-modeline-mode)))
 
 (use-package vc-hooks
