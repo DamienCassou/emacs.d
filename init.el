@@ -1309,6 +1309,21 @@ because slides don't change their ID all the time."
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
+(use-package combobulate
+  :disabled t
+  :hook ((js2-mode . my/setup-combobulate))
+  :config
+  (progn
+    ;; Override weird defaults
+    (map-delete combobulate-setup-functions-alist 'js2-mode)
+    (dolist (mode '(js-mode js2-mode))
+      (map-put! tree-sitter-major-mode-language-alist mode 'javascript))
+
+    (defun my/setup-combobulate ()
+      (combobulate-mode)
+      (tree-sitter-mode)
+      (tree-sitter-hl-mode))))
+
 (use-package elec-pair
   :demand t
   :config
