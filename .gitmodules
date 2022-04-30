@@ -637,6 +637,10 @@
 	url = git@github.com:ternjs/tern.git
 	load-path = emacs
 	build-step = npm install
+[submodule "tmr"]
+	path = lib/tmr
+	url = git@git.sr.ht:~protesilaos/tmr
+	branch = main
 [submodule "transient"]
 	path = lib/transient
 	url = git@github.com:magit/transient.git
