@@ -1913,7 +1913,8 @@ the buffer's filename."
          ;; Virtual Buffers
          ([remap switch-to-buffer] . consult-buffer)
          ;; Grep and Find
-         ([remap project-find-regexp] . consult-ripgrep))
+         ([remap project-find-regexp] . consult-ripgrep)
+         ("C-'" . my/consult-switch-vterm))
   :init
   (progn
     ;; Use Consult to select xref locations with preview
@@ -1965,7 +1966,12 @@ the buffer's filename."
                          (eq (buffer-local-value 'major-mode buffer) 'vterm-mode))
                        (buffer-list))))))
 
-    (add-to-list 'consult-buffer-sources 'vterm-source 'append)))
+    (add-to-list 'consult-buffer-sources 'vterm-source 'append)
+
+    (defun my/consult-switch-vterm ()
+      "List vterm buffers."
+      (interactive)
+      (consult-buffer (list vterm-source)))))
 
 (use-package consult-flycheck
   :after (consult flycheck)
