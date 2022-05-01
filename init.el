@@ -2025,6 +2025,13 @@ the buffer's filename."
           (imenu-list)
         (consult-imenu)))))
 
+(use-package tmr
+  :bind (("C-. t" . tmr-with-description))
+  :init
+  (progn
+    (setq tmr-descriptions-list '("Check draft PR" "Merge PR" "Check dev-damien"))
+    (setq tmr-sound-file nil)))
+
 (defun sudo-find-file (file)
   "Open FILE as root."
   (interactive "FOpen file as root: ")
