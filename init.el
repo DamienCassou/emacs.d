@@ -1581,7 +1581,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("KPI components" . "27230424"))
+    (add-to-list 'finsit-magit-projects '("Forecast" . "27310138"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
