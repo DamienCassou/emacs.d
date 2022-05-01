@@ -1838,7 +1838,8 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
           '(;; show grep results in a dedicated buffer:
             (consult-ripgrep buffer)
             ;; don't sort commands that `runner' already sorts:
-            (dired-do-async-shell-command (vertico-sort-function . nil))))))
+            (dired-do-async-shell-command (vertico-sort-function . nil))
+            (tmr (vertico-sort-function . nil))))))
 
 (use-package marginalia
   :demand t
