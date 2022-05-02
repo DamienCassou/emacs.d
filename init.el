@@ -1456,7 +1456,10 @@ because slides don't change their ID all the time."
   :bind (
          :map prodigy-mode-map
          ("k" . (lambda () (interactive) (prodigy-stop t)))
-         ("M-w" . prodigy-copy-url)))
+         ("M-w" . prodigy-copy-url))
+  :init
+  (progn
+    (setq prodigy-completing-read 'default)))
 
 (use-package finsit-core
   :config
