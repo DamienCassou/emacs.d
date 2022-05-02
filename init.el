@@ -1361,7 +1361,10 @@ because slides don't change their ID all the time."
          ("C-v" . find-variable)
          ("C-k" . find-function-on-key)
          ("C-f" . find-function)
-         ("C-l" . find-library)))
+         ("C-l" . find-library))
+  :init
+  (progn
+    (setq describe-bindings-outline t)))
 
 (use-package helpful
   :bind (([remap describe-key] . helpful-key)
