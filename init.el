@@ -325,7 +325,8 @@ This is recommended by Vertico's README."
   :bind (("M-/" . completion-at-point))
   :init
   (progn
-    (setq read-file-name-completion-ignore-case t)))
+    (setq read-file-name-completion-ignore-case t)
+    (setq completions-detailed t)))
 
 (use-package saveplace
   :demand t
