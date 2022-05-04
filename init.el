@@ -1680,7 +1680,9 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :bind (
          ("C-M-'" . my/vterm-open-new)
          :map vterm-mode-map
-         ("<f8>" . vterm-send-C-x))
+         ("<f8>" . vterm-send-C-x)
+         ("C-<up>" . vterm-previous-prompt)
+         ("C-<down>" . vterm-next-prompt))
   :init
   (progn
     (setq vterm-kill-buffer-on-exit t)
