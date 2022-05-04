@@ -489,6 +489,7 @@ This is recommended by Vertico's README."
   :hook (dired-mode . dired-hide-details-mode)
   :init
   (progn
+    (setq dired-auto-revert-buffer t)
     (setq dired-dwim-target t)
     (setq dired-listing-switches "-alh")
     (setq dired-recursive-deletes 'always)
