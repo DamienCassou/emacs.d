@@ -1624,14 +1624,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :hook ((prog-mode text-mode) . editorconfig-mode))
 
 (use-package compile
-  :hook (compilation-filter . my/colorize-compilation-buffer)
-  :config
-  (progn
-    ;; http://stackoverflow.com/questions/13397737
-    (defun my/colorize-compilation-buffer ()
-      (require 'ansi-color)
-      (let ((inhibit-read-only t))
-        (ansi-color-apply-on-region compilation-filter-start (point))))))
+  :hook (compilation-filter . ansi-color-compilation-filter))
 
 (use-package duplicate-thing
   :bind (("M-D" . duplicate-thing)))
