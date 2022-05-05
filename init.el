@@ -1951,9 +1951,6 @@ the buffer's filename."
      consult--source-recent-file consult--source-project-recent-file consult--source-bookmark
      :preview-key (kbd "M-."))
 
-    (advice-add #'completing-read-multiple
-                :override #'consult-completing-read-multiple)
-
     ;; Remove some sources when listing buffers:
     (dolist (source '(consult--source-bookmark consult--source-project-buffer consult--source-project-file))
       (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))
