@@ -26,6 +26,9 @@
 [submodule "anaphora"]
 	path = lib/anaphora
 	url = git@github.com:rolandwalker/anaphora.git
+[submodule "ansi"]
+	path = lib/ansi
+	url = git@github.com:rejeep/ansi.el.git
 [submodule "apiwrap"]
 	path = lib/apiwrap
 	url = git@github.com:vermiculus/apiwrap.el.git
@@ -150,6 +153,9 @@
 [submodule "duplicate-thing"] # M-D to duplicate thing at point
 	path = lib/duplicate-thing
 	url = git@github.com:ongaeshi/duplicate-thing.git
+[submodule "ecukes"]
+	path = lib/ecukes
+	url = git@github.com:ecukes/ecukes.git
 [submodule "edit-indirect"]
 	path = lib/edit-indirect
 	url = git@github.com:Fanael/edit-indirect.git
@@ -183,6 +189,9 @@
 [submodule "envrc"]
 	path = lib/envrc
 	url = git@github.com:purcell/envrc.git
+[submodule "epithet"]
+	path = lib/epithet
+	url = git@github.com:oantolin/epithet.git
 [submodule "epl"]
 	path = lib/epl
 	url = git@github.com:cask/epl.git
@@ -196,6 +205,9 @@
 	path = lib/eslintd-fix
 	url = git@github.com:aaronjensen/eslintd-fix.git
 	remote = "DamienCassou git@github.com:DamienCassou/eslintd-fix.git"
+[submodule "espuds"]
+	path = lib/espuds
+	url = git@github.com:ecukes/espuds.git
 [submodule "ess"]
 	path = lib/ess
 	url = git@github.com:emacs-ess/ESS.git
