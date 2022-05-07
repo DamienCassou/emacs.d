@@ -1448,6 +1448,11 @@ because slides don't change their ID all the time."
     (setq nameless-affect-indentation-and-filling nil)
     (setq nameless-prefix "…")))
 
+(use-package epithet
+  :hook ((Info-selection eww-after-render help-mode occur-mode)
+         .
+         epithet-rename-buffer))
+
 (use-package subword
   :init
   (progn
