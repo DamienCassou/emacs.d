@@ -582,9 +582,6 @@
 [submodule "posframe"]
 	path = lib/posframe
 	url = git@github.com:tumashu/posframe.git
-[submodule "prescient"]
-	path = lib/prescient
-	url = git@github.com:raxod502/prescient.el.git
 [submodule "prodigy"] # manage external services from within Emacs
 	path = lib/prodigy
 	url = git@github.com:rejeep/prodigy.el.git

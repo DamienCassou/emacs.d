@@ -295,6 +295,39 @@ This is recommended by Vertico's README."
       (interactive)
       (join-line -1))
 
+    (defun my/copy-region-unindented (pad beginning end)
+      "Copy the region, un-indented by the length of its minimum indent.
+
+If numeric prefix argument PAD is supplied, indent the resulting
+text by that amount."
+      (interactive "P\nr")
+      (let ((buf (current-buffer))
+            (itm indent-tabs-mode)
+            (tw tab-width)
+            (st (syntax-table))
+            (indent nil))
+        (with-temp-buffer
+          (setq indent-tabs-mode itm
+                tab-width tw)
+          (set-syntax-table st)
+          (insert-buffer-substring buf beginning end)
+          ;; Establish the minimum level of indentation.
+          (goto-char (point-min))
+          (while (and (re-search-forward "^[[:space:]\n]*" nil :noerror)
+                      (not (eobp)))
+            (let ((length (current-column)))
+              (when (or (not indent) (< length indent))
+                (setq indent length)))
+            (forward-line 1))
+          (if (not indent)
+              (error "Region is entirely whitespace")
+            ;; Un-indent the buffer contents by the length of the minimum
+            ;; indent level, and copy to the kill ring.
+            (when pad
+              (setq indent (- indent (prefix-numeric-value pad))))
+            (indent-rigidly (point-min) (point-max) (- indent))
+            (copy-region-as-kill (point-min) (point-max))))))
+
     (column-number-mode)
 
     ;; Hide commands in M-x which do not work in the current mode.
@@ -1732,11 +1765,24 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (setq mpdel-prefix-key (kbd "C-. z")))
   :config
   (progn
-    (mpdel-mode)))
+    (mpdel-mode)
+
+    (with-eval-after-load 'embark
+      (embark-define-keymap embark-libmpdel-artist-actions
+        "Keymap for actions on an artist."
+        ("p" libmpdel-current-playlist-add))
+
+      (add-to-list 'embark-keymap-alist '(libmpdel-artist . embark-libmpdel-artist-actions)))))
 
 (use-package ivy-mpdel
+  :disabled t
   :after mpdel
   :demand t)
+
+(use-package mpdel-minibuffer
+  :bind (
+         :map mpdel-core-map
+         ("i" . mpdel-minibuffer-list)))
 
 (use-package minions
   :disabled t
