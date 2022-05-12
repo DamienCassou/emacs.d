@@ -2035,7 +2035,8 @@ the buffer's filename."
         (consult-imenu)))))
 
 (use-package tmr
-  :bind (("C-. t" . tmr-with-description))
+  :bind (("C-. t" . tmr-with-description)
+         ("C-. T" . tmr-tabulated-view))
   :init
   (progn
     (setq tmr-descriptions-list '("Check draft PR" "Merge PR" "Check dev-damien"))
