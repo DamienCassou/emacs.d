@@ -1466,7 +1466,7 @@ because slides don't change their ID all the time."
          ("M-w" . prodigy-copy-url))
   :init
   (progn
-    (setq prodigy-completing-read 'default)))
+    (setq prodigy-completion-system 'default)))
 
 (use-package finsit-core
   :config
