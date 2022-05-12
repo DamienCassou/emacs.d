@@ -1092,6 +1092,7 @@ because slides don't change their ID all the time."
     (setq org-reveal-title-slide nil)))
 
 (use-package org-modern
+  :disabled t
   :demand t
   :after org
   :config
