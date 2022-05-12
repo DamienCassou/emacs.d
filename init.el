@@ -163,11 +163,7 @@ current."
          (internal-border-width . 12)
          ;; large fringes to get hi-resolution flycheck marks:
          (left-fringe    . 8)
-         (right-fringe   . 8)
-         ;; Hide stuff I don't need:
-         (vertical-scroll-bars . nil)
-         (tool-bar-lines . 0)
-         (menu-bar-lines . 0)))
+         (right-fringe   . 8)))
 
       (window-divider-mode)
 

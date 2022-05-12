@@ -18,7 +18,6 @@
  '(gc-cons-threshold 20000000)
  '(indent-tabs-mode nil)
  '(load-prefer-newer t)
- '(menu-bar-mode nil)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    '((js2-strict-inconsistent-return-warning)
@@ -335,8 +334,6 @@ is the buffer position of the start of the containing expression."
      (org-ascii-text-width . 200000000)
      (js2-strict-missing-semi-warning)
      (eval flycheck-cask-setup)))
- '(scroll-bar-mode nil)
- '(tool-bar-mode nil)
  '(transmission-rpc-auth '(:username "transmission"))
  '(truncate-partial-width-windows nil)
  '(undo-limit 5000000)
