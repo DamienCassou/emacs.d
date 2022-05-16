@@ -2064,6 +2064,11 @@ the buffer's filename."
     (setq tmr-descriptions-list '("Check draft PR" "Merge PR" "Check dev-damien"))
     (setq tmr-sound-file nil)))
 
+(use-package tmr-tabulated
+  :bind (
+         :map tmr-tabulated-mode-map
+         ("a" . tmr-with-description)))
+
 (defun sudo-find-file (file)
   "Open FILE as root."
   (interactive "FOpen file as root: ")
