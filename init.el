@@ -168,10 +168,7 @@ current."
       (window-divider-mode)
 
       (set-face-attribute 'default nil :family "Iosevka"  :height 130)
-      (set-face-attribute 'variable-pitch nil :family "Iosevka Aile"  :height 1.0)
-
-      (with-eval-after-load "org-modern"
-        (set-face-attribute 'org-modern-symbol nil :family "Iosevka")))
+      (set-face-attribute 'variable-pitch nil :family "Iosevka Aile"  :height 1.0))
 
     (my/setup-frame)))
 
@@ -1119,22 +1116,6 @@ because slides don't change their ID all the time."
     (setq org-reveal-root
           (concat "file://" (expand-file-name "~/Documents/projects/reveal/latest")))
     (setq org-reveal-title-slide nil)))
-
-(use-package org-modern
-  :disabled t
-  :demand t
-  :after org
-  :config
-  (progn
-    (global-org-modern-mode)
-
-    (defun my/org-table-toggle-coordinate-overlays (&rest args)
-      "Toggle org-modern based on the presence of coordinate overlays."
-      (org-modern-mode (if org-table-overlay-coordinates -1 1)))
-
-    (advice-add #'org-table-toggle-coordinate-overlays
-                :after
-                #'my/org-table-toggle-coordinate-overlays)))
 
 (use-package org-caldav
   :bind (("C-. o S"   . org-caldav-sync))
