@@ -632,9 +632,6 @@
 [submodule "sx"]
 	path = lib/sx
 	url = git@github.com:vermiculus/sx.el.git
-[submodule "systemd"] # facilitate edition of systemd unit files
-	path = lib/systemd
-	url = git@github.com:holomorph/systemd-mode.git
 [submodule "tablist"]
 	path = lib/tablist
 	url = git@github.com:politza/tablist.git
