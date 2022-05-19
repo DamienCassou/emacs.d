@@ -1879,7 +1879,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
             ;; candidates because my brain wants to learn their
             ;; position:
             (dired-do-async-shell-command (vertico-sort-function . nil))
-            (tmr (vertico-sort-function . nil))
             (prodigy-browse (vertico-sort-function . nil))))))
 
 (use-package marginalia
