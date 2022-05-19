@@ -1928,6 +1928,11 @@ the buffer's filename."
     (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
     (setq xref-search-program 'ripgrep)))
 
+(use-package xref-js2
+  :init
+  (progn
+    (setq xref-js2-search-program 'rg)))
+
 (use-package project
   :bind (
          :map project-prefix-map
