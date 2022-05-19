@@ -372,6 +372,12 @@ text by that amount."
   (progn
     (winner-mode)))
 
+(use-package buffer-mode
+  :bind (("C-S-<up>" . buf-move-up)
+         ("C-S-<down>" . buf-move-down)
+         ("C-S-<left>" . buf-move-left)
+         ("C-S-<right>" . buf-move-right)))
+
 (use-package time
   :init
   (progn
