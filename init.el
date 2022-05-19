@@ -1668,6 +1668,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (setq sendmail-program "msmtp")))
 
 (use-package firestarter
+  :disabled t
   :hook (prog-mode . firestarter-mode)
   :init
   (progn
