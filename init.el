@@ -159,11 +159,12 @@ current."
       (setq frame-title-format "Emacs")
       (modify-all-frames-parameters
        '((cursor-type bar . 5)
+         (scroll-bar-width . 1)
          ;; The width in pixels of the frame’s internal border:
-         (internal-border-width . 12)
+         (internal-border-width . 10)
          ;; large fringes to get hi-resolution flycheck marks:
-         (left-fringe    . 8)
-         (right-fringe   . 8)))
+         (left-fringe    . 0)
+         (right-fringe   . 0)))
 
       (window-divider-mode)
 
