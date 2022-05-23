@@ -1601,6 +1601,7 @@ This should be used as an override of `finsit-js-tern-setup'.")
     (finsit-js-eglot-setup)))
 
 (use-package finsit-js-flycheck
+  :disabled t
   :config
   (defun my/finsit-js-flycheck-setup ()
     "Prevent configuring `flycheck-mode'.
