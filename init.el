@@ -1268,6 +1268,14 @@ because slides don't change their ID all the time."
           `((:name "inbox" :query ,"(folder:\"Perso/INBOX\")" :key "i")
             (:name "sent" :query "from:damien@cassou.me" :key "s")))))
 
+(use-package notmuch-mua
+  :demand t
+  :config
+  (progn
+    ;; Configure notmuch as my default mail-user-agent
+    (setq mail-user-agent 'notmuch-user-agent)
+    (setq compose-mail-user-agent-warnings nil)))
+
 (use-package notmuch-show
   :bind (
          :map notmuch-show-mode-map
@@ -1322,7 +1330,8 @@ because slides don't change their ID all the time."
     (setq message-log-max t)
     (setq message-send-mail-function 'message-send-mail-with-sendmail)
     (setq message-signature t)
-    (setq message-signature-file "~/.signature"))
+    (setq message-signature-file "~/.signature")
+    (setq message-mail-user-agent t))
   :config
   (progn
     ;; Add "Fwd:" to the beginning of Subject of forwarded emails so that
