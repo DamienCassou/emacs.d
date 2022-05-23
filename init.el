@@ -1502,7 +1502,7 @@ because slides don't change their ID all the time."
     (global-subword-mode)))
 
 (use-package prodigy
-  :bind (
+  :bind (("C-. p" . prodigy)
          :map prodigy-mode-map
          ("k" . (lambda () (interactive) (prodigy-stop t)))
          ("M-w" . prodigy-copy-url)
