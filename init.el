@@ -462,6 +462,12 @@ text by that amount."
   :after info
   :hook (Info-selection . info-colors-fontify-node))
 
+(use-package olivetty
+  :hook ((Info-mode . olivetti-mode))
+  :init
+  (progn
+    (setq olivetti-body-width 80)))
+
 (use-package smime
   :config
   ;; https://src.fedoraproject.org/rpms/emacs/blob/f27/f/default.el
