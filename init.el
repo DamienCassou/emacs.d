@@ -1793,9 +1793,21 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :demand t)
 
 (use-package mpdel-minibuffer
+  :demand t
+  :after mpdel
   :bind (
          :map mpdel-core-map
-         ("i" . mpdel-minibuffer-list)))
+         ("i" . mpdel-minibuffer-list))
+  :config
+  (progn
+    (with-eval-after-load "embark"
+      (defvar my/embark-mpdel
+        (make-composed-keymap mpdel-minibuffer-map embark-general-map)
+        "Embark keymap for mpdel.")
+
+      (dolist (category '(libmpdel-artist libmpdel-album libmpdel-song))
+        (add-to-list 'embark-keymap-alist
+                     `(,category my/embark-mpdel))))))
 
 (use-package minions
   :disabled t
