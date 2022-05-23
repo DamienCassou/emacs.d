@@ -491,12 +491,18 @@
 	path = lib/no-littering
 	url = git@github.com:emacscollective/no-littering.git
 	remote = "DamienCassou git@github.com:DamienCassou/no-littering.git"
+[submodule "notmuch"]
+	path = lib/notmuch
+	url = https://git.notmuchmail.org/git/notmuch
 [submodule "nov"]
 	path = lib/nov
 	url = git@github.com:wasamasa/nov.el.git
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
+[submodule "olivetti"]
+	path = lib/olivetti
+	url = git@github.com:rnkn/olivetti.git
 [submodule "orderless"]
 	path = lib/orderless
 	url = git@github.com:oantolin/orderless.git
