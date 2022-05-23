@@ -1232,7 +1232,20 @@ because slides don't change their ID all the time."
       (add-to-list 'xref-backend-functions #'dumb-jump-xref-activate))))
 
 (use-package unify-opening
-  :demand t)
+  :demand t
+  :config
+  (progn
+    (with-eval-after-load "mm-decode"
+      (unify-opening-setup-for-mm-decode))
+
+    (with-eval-after-load "org"
+      (unify-opening-setup-for-org))
+
+    (with-eval-after-load "dired-x"
+      (unify-opening-setup-for-dired-x))
+
+    (with-eval-after-load "consult"
+      (unify-opening-setup-for-consult))))
 
 (use-package notmuch
   :preface (setq-default notmuch-command (executable-find "notmuch"))
