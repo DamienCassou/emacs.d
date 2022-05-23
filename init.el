@@ -1916,12 +1916,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 
     (setq vertico-multiform-commands
           '(;; show grep results in a dedicated buffer:
-            (consult-ripgrep buffer)
-            ;; don't sort candidates of commands with predictable
-            ;; candidates because my brain wants to learn their
-            ;; position:
-            (dired-do-async-shell-command (vertico-sort-function . nil))
-            (prodigy-browse (vertico-sort-function . nil))))))
+            (consult-ripgrep buffer)))))
 
 (use-package marginalia
   :demand t
