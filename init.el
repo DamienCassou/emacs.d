@@ -1591,10 +1591,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
               :override #'my/finsit-js-flycheck-setup))
 
 (use-package testjump
-  :init
-  (progn
-    (with-eval-after-load "js"
-      (bind-key "C-c j" #'testjump-jump 'js-mode-map))))
+  :bind (("C-x j" . testjump-jump)))
 
 (use-package flymake-eslint
   :hook ((js-mode . my/flymake-eslint-finsit))
