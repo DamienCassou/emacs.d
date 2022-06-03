@@ -2092,13 +2092,18 @@ the buffer's filename."
          ("C-. T" . tmr-tabulated-view))
   :init
   (progn
-    (setq tmr-descriptions-list '("Check draft PR" "Merge PR" "Check dev-damien"))
-    (setq tmr-sound-file nil)))
+    (setq tmr-descriptions-list '("Check draft PR" "Merge PR" "Check dev-damien"))))
 
 (use-package tmr-tabulated
   :bind (
          :map tmr-tabulated-mode-map
          ("a" . tmr-with-description)))
+
+(use-package tmr-sound
+  :init
+  (progn
+    (setq tmr-sound-file
+          (expand-file-name (locate-user-emacs-file "media/complete.oga")))))
 
 (defun sudo-find-file (file)
   "Open FILE as root."
