@@ -509,9 +509,6 @@
 [submodule "org-make-toc"]
 	path = lib/org-make-toc
 	url = git@github.com:alphapapa/org-make-toc.git
-[submodule "org-modern"]
-	path = lib/org-modern
-	url = git@github.com:minad/org-modern.git
 [submodule "org-roam"]
 	path = lib/org-roam
 	url = https://github.com/org-roam/org-roam.git
