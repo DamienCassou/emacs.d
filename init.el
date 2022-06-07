@@ -499,6 +499,23 @@ This is recommended by Vertico's README."
       (setq mode-line-format nil)
       (setq header-line-format nil))))
 
+(use-package ibuffer
+  :bind (
+         :map ibuffer-mode-map
+         ("k". ibuffer-do-my/ibuffer-do-kill-marked))
+  :config
+  (progn
+    (define-ibuffer-op my/ibuffer-do-kill-marked ()
+      "Kill marked buffers as with `kill-this-buffer'."
+      (:opstring "killed"
+                 :active-opstring "kill"
+                 :dangerous t
+                 :complex t
+                 :modifier-p t)
+      (if (kill-buffer buf)
+          'kill
+        nil))))
+
 (use-package dired
   :bind (
          :map dired-mode-map
