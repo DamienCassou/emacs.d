@@ -11,7 +11,7 @@
  ;; If there is more than one, they won't work right.
  '(bookmark-save-flag 1)
  '(custom-safe-themes
-   '("c414f69a02b719fb9867b41915cb49c853489930be280ce81385ff7b327b4bf6" "7d062fbc4a6b42e3db5c8ad011c8182de69c0521df3f4577f893d9941a7af5e2" default))
+   '("dad40020beea412623b04507a4c185079bff4dcea20a93d8f8451acb6afc8358" "c414f69a02b719fb9867b41915cb49c853489930be280ce81385ff7b327b4bf6" "7d062fbc4a6b42e3db5c8ad011c8182de69c0521df3f4577f893d9941a7af5e2" default))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
