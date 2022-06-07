@@ -443,7 +443,7 @@ This is recommended by Vertico's README."
   :hook (Info-selection . info-colors-fontify-node))
 
 (use-package olivetty
-  :hook ((Info-mode . olivetti-mode))
+  :hook (((Info-mode help-mode helpful-mode) . olivetti-mode))
   :init
   (progn
     (setq olivetti-body-width 80)))
