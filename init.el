@@ -2077,6 +2077,7 @@ the buffer's filename."
   :demand t
   :bind (("C-S-a" . embark-act)
          ("C-h b" . embark-bindings)
+         ("M-." . embark-dwim)
          :map embark-file-map
          ("v" . shell-switcher-open-on-directory)
          :map embark-bookmark-map
