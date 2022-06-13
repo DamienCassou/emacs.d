@@ -1068,7 +1068,7 @@ MOMENT is an encoded date."
     (setq org-email-link-description-format "%s"))
   :config
   (progn
-    (setq org-modules '(org-protocol org-capture ox-beamer org-info))
+    (setq org-modules '(org-protocol org-capture ox-beamer))
 
     (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
