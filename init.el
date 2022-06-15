@@ -2124,9 +2124,12 @@ targets."
   :after (embark consult))
 
 (use-package wgrep
+  :demand t
+  :after (grep)
   :init
   (progn
-    (setq wgrep-enable-key [remap read-only-mode])))
+    (setq wgrep-enable-key [remap read-only-mode])
+    (setq wgrep-auto-save-buffer t)))
 
 (use-package imenu-list
   :bind (("M-i" . my/imenu-list))
