@@ -2169,6 +2169,28 @@ targets."
     (setq tmr-sound-file
           (expand-file-name (locate-user-emacs-file "media/complete.oga")))))
 
+(use-package fontaine
+  :init
+  (progn
+    (setq fontaine-presets
+          '((medium
+             :default-height 110)
+            (large
+             :default-weight semilight
+             :default-height 140
+             :bold-weight extrabold)
+            (presentation
+             :default-weight semilight
+             :default-height 170
+             :bold-weight extrabold)
+            (t
+             :default-family "Iosevka Comfy"
+             :default-weight regular
+             :variable-pitch-family "Iosevka Comfy Duo"))))
+  :config
+  (progn
+    (fontaine-set-preset 'large)))
+
 (defun sudo-find-file (file)
   "Open FILE as root."
   (interactive "FOpen file as root: ")
