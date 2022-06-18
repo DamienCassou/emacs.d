@@ -128,6 +128,11 @@ are visible."
 (progn ; `editfns'
   (put 'narrow-to-region 'disabled nil))
 
+(progn ; `subr'
+  ;; recommended by
+  ;; (info "(embark) How does Embark call the actions?")
+  (setq y-or-n-p-use-read-key t))
+
 (use-package custom
   :demand t
   :config
