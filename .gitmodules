@@ -249,6 +249,9 @@
 [submodule "font-lock+"]
 	path = lib/font-lock+
 	url = git@github.com:emacsmirror/font-lock-plus.git
+[submodule "fontaine"]
+	path = lib/fontaine
+	url = https://git.sr.ht/~protesilaos/fontaine
 [submodule "forge"]
 	path = lib/forge
 	url = git@github.com:magit/forge.git
