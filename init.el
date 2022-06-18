@@ -1494,7 +1494,7 @@ because slides don't change their ID all the time."
     (setq nameless-prefix "…")))
 
 (use-package epithet
-  :hook ((Info-selection eww-after-render help-mode occur-mode)
+  :hook ((Info-selection eww-after-render help-mode occur-mode shell-mode)
          .
          epithet-rename-buffer))
 
