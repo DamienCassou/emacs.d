@@ -2086,6 +2086,7 @@ the buffer's filename."
          :map embark-file-map
          ("v" . shell-switcher-open-on-directory)
          :map embark-bookmark-map
+         ("k" . bookmark-delete)
          ("v" . shell-switcher-open-on-bookmark))
   :init
   (progn
