@@ -334,6 +334,9 @@
 [submodule "info-colors"]
 	path = lib/info-colors
 	url = git@github.com:ubolonton/info-colors.git
+[submodule "info-variable-pitch"]
+	path = lib/info-variable-pitch
+	url = git@github.com:kisaragi-hiu/info-variable-pitch.git
 [submodule "inheritenv"]
 	path = lib/inheritenv
 	url = git@github.com:purcell/inheritenv.git
