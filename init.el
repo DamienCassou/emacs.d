@@ -444,6 +444,10 @@ This is recommended by Vertico's README."
   :after info
   :hook (Info-selection . info-colors-fontify-node))
 
+
+(use-package info-variable-pitch
+  :hook ((Info-mode . info-variable-pitch-mode)))
+
 (use-package olivetty
   :hook (((Info-mode help-mode helpful-mode) . olivetti-mode))
   :init
