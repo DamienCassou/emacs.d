@@ -509,7 +509,7 @@
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
-[submodule "olivetti"]
+[submodule "olivetti"] # add large margins around text to ease reading
 	path = lib/olivetti
 	url = git@github.com:rnkn/olivetti.git
 [submodule "orderless"]
