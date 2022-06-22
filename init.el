@@ -1186,9 +1186,6 @@ because slides don't change their ID all the time."
   (progn
     (setq org-roam-dailies-directory "daily")))
 
-(use-package mixed-pitch
-  :hook (org-mode . mixed-pitch-mode))
-
 (use-package calendar
   :init
   (progn
