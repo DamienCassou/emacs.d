@@ -448,7 +448,7 @@ This is recommended by Vertico's README."
   :hook (((Info-mode help-mode helpful-mode) . olivetti-mode))
   :init
   (progn
-    (setq olivetti-body-width 80)))
+    (setq olivetti-body-width 84)))
 
 (use-package smime
   :config
