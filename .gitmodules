@@ -123,6 +123,9 @@
 [submodule "debbugs"] # SOAP library to access debbugs servers
 	path = lib/debbugs
 	url = git@github.com:emacsmirror/debbugs.git
+[submodule "denote"]
+	path = lib/denote
+	url = git@git.sr.ht:~protesilaos/denote
 [submodule "desktop-environment"]
 	path = lib/desktop-environment
 	url = git@gitea.petton.fr/DamienCassou/desktop-environment.git
