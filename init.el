@@ -171,10 +171,7 @@ current."
          (left-fringe    . 0)
          (right-fringe   . 0)))
 
-      (window-divider-mode)
-
-      (set-face-attribute 'default nil :family "Iosevka"  :height 130)
-      (set-face-attribute 'variable-pitch nil :family "Iosevka Aile"  :height 1.0))
+      (window-divider-mode))
 
     (my/setup-frame)))
 
@@ -2173,6 +2170,7 @@ targets."
           (expand-file-name (locate-user-emacs-file "media/complete.oga")))))
 
 (use-package fontaine
+  :demand t
   :init
   (progn
     (setq fontaine-presets
