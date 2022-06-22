@@ -845,6 +845,7 @@ This is recommended by Vertico's README."
   :bind (
          :map ledger-mode-map
          ("C-c C-r" . ledger-report)
+         ("C-c C-c" . my/ledger-lint)
          ;; To get outline-minor-mode in ledger buffers:
          ("TAB" . org-cycle)
          :map ledger-report-mode-map
@@ -941,7 +942,12 @@ MOMENT is an encoded date."
           (re-search-forward "^\\*\\*\\*" nil t)
           (setf (point) (line-beginning-position)))))
 
-    (advice-add #'ledger-xact-find-slot :override #'my/ledger-position-at-date)))
+    (advice-add #'ledger-xact-find-slot :override #'my/ledger-position-at-date)
+
+    (defun my/ledger-lint ()
+      "Lint my ledger file."
+      (interactive)
+      (async-shell-command "lint-system"))))
 
 (use-package ledger-complete
   :init
