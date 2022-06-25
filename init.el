@@ -1153,6 +1153,7 @@ because slides don't change their ID all the time."
         (org-archive-subtree)))))
 
 (use-package org-roam
+  :disabled t
   :demand t
   :bind (("C-. r r" . org-roam-capture)
          ("C-. r f" . org-roam-node-find)
@@ -1186,6 +1187,22 @@ because slides don't change their ID all the time."
   :init
   (progn
     (setq org-roam-dailies-directory "daily")))
+
+(use-package denote
+  :bind (("C-. r r" . denote))
+  :init
+  (progn
+    (setq denote-directory (expand-file-name "~/configuration/denote"))
+    (setq denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
+    (setq denote-front-matter-date-format 'org-timestamp)))
+
+(use-package denote-dired
+  :hook (dired-mode . denote-dired-mode-in-directories)
+  :init
+  (progn
+    (setq denote-dired-directories
+          (list denote-directory
+                (expand-file-name "attachments" denote-directory)))))
 
 (use-package calendar
   :init
