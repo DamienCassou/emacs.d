@@ -2198,7 +2198,7 @@ targets."
           '((medium
              :default-height 110)
             (large
-             :default-weight semilight
+             :default-weight regular
              :default-height 140
              :bold-weight extrabold)
             (presentation
