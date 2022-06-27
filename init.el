@@ -2213,6 +2213,19 @@ targets."
   (progn
     (fontaine-set-preset 'large)))
 
+(use-package ligature
+  :load-path "path-to-ligature-repo"
+  :config
+  ;; Enable all Iosevka ligatures in programming modes
+  (ligature-set-ligatures 'prog-mode
+                          '("<---" "<--"  "<<-" "<-" "->" "-->" "--->" "<->" "<-->" "<--->" "<---->" "<!--"
+                            "<==" "<===" "<=" "=>" "=>>" "==>" "===>" ">=" "<=>" "<==>" "<===>" "<====>" "<!---"
+                            "<~~" "<~" "~>" "~~>" "::" ":::" "==" "!=" "===" "!=="
+                            ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "+:" "-:" "=:" "<******>" "++" "+++"))
+  ;; Enable ligature checks globally in all buffers. You can also do
+  ;; it per mode with `ligature-mode'.
+  (global-ligature-mode t))
+
 (defun sudo-find-file (file)
   "Open FILE as root."
   (interactive "FOpen file as root: ")
