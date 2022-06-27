@@ -2004,6 +2004,13 @@ the buffer's filename."
          ("v" . shell-switcher-open-on-project))
   :init
   (progn
+    ;; I usually want to consider submodules as different
+    ;; projects. This is very useful to add Emacs packages to the list
+    ;; of projects. Setting project-vc-merge-submodules to nil in
+    ;; ~/.emacs.d/.dir-locals.el wouldn't work as packages usually
+    ;; define their own .dir-locals.el, thus overrinding ours.
+    (setq-default project-vc-merge-submodules nil)
+
     (defun my/project-switch-project-to-magit ()
       "Ask the user to select a project from known projects and open magit on the selection."
       (interactive)
