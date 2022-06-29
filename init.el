@@ -2017,6 +2017,7 @@ the buffer's filename."
     (defun my/project-switch-project-to-magit ()
       "Ask the user to select a project from known projects and open magit on the selection."
       (interactive)
+      (require 'project)
       (magit-status-setup-buffer (project-prompt-project-dir))))
   :config
   (progn
