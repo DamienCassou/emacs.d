@@ -1677,6 +1677,9 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.131:80"))
     (finsit-prodigy-setup)))
 
+(use-package jsonian
+  :mode "\\.json\\'")
+
 (use-package alert
   :demand t
   :init
