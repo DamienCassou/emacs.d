@@ -16,6 +16,7 @@
         c-indent-line-or-region
         clipboard-kill-region
         completion-at-point
+        consult-yank-replace
         counsel-M-x
         counsel-unicode-char
         counsel-yank-pop
