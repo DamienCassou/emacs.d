@@ -2192,7 +2192,7 @@ targets."
          ("C-. T" . tmr-tabulated-view))
   :init
   (progn
-    (setq tmr-descriptions-list '("Check draft PR" "Merge PR" "Check dev-damien"))))
+    (setq tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))))
 
 (use-package tmr-tabulated
   :bind (
