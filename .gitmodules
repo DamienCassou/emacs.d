@@ -280,7 +280,7 @@
 	url = git@github.com:magit/git-modes.git
 [submodule "git-timemachine"] # history of a file with M-x git-timemachine
 	path = lib/git-timemachine
-	url = https://gitlab.com/pidu/git-timemachine.git
+	url = https://codeberg.org/pidu/git-timemachine
 [submodule "gnuplot-mode"]
 	path = lib/gnuplot-mode
 	url = git@github.com:mkmcc/gnuplot-mode.git
