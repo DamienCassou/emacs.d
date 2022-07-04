@@ -1995,6 +1995,9 @@ the buffer's filename."
     (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
     (setq xref-search-program 'ripgrep)))
 
+(use-package js
+  :mode ("\\.[cm]js\\'" . javascript-mode))
+
 (use-package xref-js2
   :init
   (progn
