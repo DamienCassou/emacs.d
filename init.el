@@ -2192,18 +2192,14 @@ targets."
          ("C-. T" . tmr-tabulated-view))
   :init
   (progn
-    (setq tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))))
+    (setq tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))
+    (setq tmr-sound-file
+          (expand-file-name (locate-user-emacs-file "media/complete.oga")))))
 
 (use-package tmr-tabulated
   :bind (
          :map tmr-tabulated-mode-map
          ("a" . tmr-with-description)))
-
-(use-package tmr-sound
-  :init
-  (progn
-    (setq tmr-sound-file
-          (expand-file-name (locate-user-emacs-file "media/complete.oga")))))
 
 (use-package fontaine
   :demand t
