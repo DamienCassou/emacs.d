@@ -1679,7 +1679,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (finsit-prodigy-setup)))
 
 (use-package jsonian
-  :mode "\\.json\\'")
+  :mode ("\\.json\\'". jsonian-mode))
 
 (use-package alert
   :demand t
