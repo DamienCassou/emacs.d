@@ -304,9 +304,6 @@
 [submodule "helpful"]
 	path = lib/helpful
 	url = git@github.com:Wilfred/helpful.git
-[submodule "hierarchy"]
-	path = lib/hierarchy
-	url = git@github.com:DamienCassou/hierarchy.git
 [submodule "ht"]
 	path = lib/ht
 	url = git@github.com:Wilfred/ht.el.git
