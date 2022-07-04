@@ -2194,7 +2194,19 @@ targets."
   (progn
     (setq tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))
     (setq tmr-sound-file
-          (expand-file-name (locate-user-emacs-file "media/complete.oga")))))
+          (expand-file-name (locate-user-emacs-file "media/complete.oga"))))
+  :config
+  (progn
+    (with-eval-after-load 'embark
+      (defvar my/tmr-action-map
+        (let ((map (make-sparse-keymap)))
+          (define-key map "k" #'tmr-remove)
+          (define-key map "K" #'tmr-remove-finished)
+          (define-key map "c" #'tmr-clone)
+          (define-key map "e" #'tmr-edit-description)
+          (define-key map "s" #'tmr-reschedule)
+          map))
+      (add-to-list 'embark-keymap-alist '(tmr-timer . my/tmr-action-map)))))
 
 (use-package tmr-tabulated
   :bind (
