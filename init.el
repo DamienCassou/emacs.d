@@ -295,6 +295,7 @@ This is recommended by Vertico's README."
     (defun my/copy-snippet-deindented (begin end)
       "Copy region, untabifying and removing indentation."
       (interactive "r")
+      (require 'org-macs)
       (let ((orig-tab-width tab-width)
 	    (region (buffer-substring-no-properties begin end)))
         (with-temp-buffer
