@@ -400,8 +400,7 @@
 	remote = "github git@github.com:DamienCassou/libelcouch.git"
 [submodule "libmpdel"]
 	path = lib/libmpdel
-	url = git@gitea.petton.fr/mpdel/libmpdel.git
-	remote = "github git@github.com:DamienCassou/libmpdel.git"
+	url = git@github.com/mpdel/libmpdel.git
 [submodule "ligature"]
 	path = lib/ligature
 	url = git@github.com:mickeynp/ligature.el.git
@@ -476,8 +475,10 @@
 	url = git@github.com:ag91/moldable-emacs.git
 [submodule "mpdel"]
 	path = lib/mpdel
-	url = git@gitea.petton.fr/mpdel/mpdel.git
-	remote = "github git@github.com:DamienCassou/mpdel.git"
+	url = git@github.com:DamienCassou/mpdel.git
+[submodule "mpdel-embark"]
+	path = lib/mpdel-embark
+	url = git@github.com:mpdel/mpdel-embark.git
 [submodule "multiple-cursors"] # Control multiple cursors with <C-S-c C-S-c>
 	path = lib/multiple-cursors
 	url = git@github.com:magnars/multiple-cursors.el.git
