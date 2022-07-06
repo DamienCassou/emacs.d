@@ -1679,7 +1679,14 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (finsit-prodigy-setup)))
 
 (use-package jsonian
-  :mode ("\\.json\\'". jsonian-mode))
+  :mode ("\\.json\\'". jsonian-mode)
+  :config
+  (progn
+    ;; json-mode.el automatically modifies auto-mode-alist which I
+    ;; don't want:
+    (with-eval-after-load "json"
+      (setq auto-mode-alist
+            (cl-delete 'json-mode auto-mode-alist :key #'cdr)))))
 
 (use-package alert
   :demand t
