@@ -2218,7 +2218,8 @@ targets."
 (use-package tmr-tabulated
   :bind (
          :map tmr-tabulated-mode-map
-         ("a" . tmr-with-description)))
+         ("a" . tmr-with-description)
+         ("K" . tmr-remove-finished)))
 
 (use-package fontaine
   :demand t
