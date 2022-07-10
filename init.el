@@ -1823,36 +1823,22 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (setq mpdel-prefix-key (kbd "C-. z")))
   :config
   (progn
-    (mpdel-mode)
-
-    (with-eval-after-load 'embark
-      (embark-define-keymap embark-libmpdel-artist-actions
-        "Keymap for actions on an artist."
-        ("p" libmpdel-current-playlist-add))
-
-      (add-to-list 'embark-keymap-alist '(libmpdel-artist . embark-libmpdel-artist-actions)))))
+    (mpdel-mode)))
 
 (use-package ivy-mpdel
   :disabled t
   :after mpdel
   :demand t)
 
-(use-package mpdel-minibuffer
+(use-package mpdel-embark
   :demand t
   :after mpdel
   :bind (
          :map mpdel-core-map
-         ("i" . mpdel-minibuffer-list))
+         ("i" . mpdel-embark-list))
   :config
   (progn
-    (with-eval-after-load "embark"
-      (defvar my/embark-mpdel
-        (make-composed-keymap mpdel-minibuffer-map embark-general-map)
-        "Embark keymap for mpdel.")
-
-      (dolist (category '(libmpdel-artist libmpdel-album libmpdel-song))
-        (add-to-list 'embark-keymap-alist
-                     `(,category my/embark-mpdel))))))
+    (mpdel-embark-setup)))
 
 (use-package minions
   :disabled t
