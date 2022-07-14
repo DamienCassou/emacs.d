@@ -609,6 +609,9 @@
 [submodule "rainbow-identifiers"]
 	path = lib/rainbow-identifiers
 	url = git@github.com:Fanael/rainbow-identifiers.git
+[submodule "repeat-help"]
+	path = lib/repeat-help
+	url = git@github.com:karthink/repeat-help.git
 [submodule "rg"]
 	path = lib/rg
 	url = git@github.com:dajva/rg.el.git

@@ -1513,6 +1513,22 @@ Interactively ask which file to open with completion."
   (progn
     (beginend-global-mode)))
 
+(use-package repeat
+  :demand t
+  :config
+  (progn
+    (repeat-mode)))
+
+(use-package repeat-help
+  :demand t
+  :after repeat
+  :init
+  (progn
+    (setq repeat-help-auto t))
+  :config
+  (progn
+    (repeat-help-mode)))
+
 (use-package khardel
   :bind (("C-. c" . khardel-insert-email)))
 
