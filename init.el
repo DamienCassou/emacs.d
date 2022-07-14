@@ -2055,7 +2055,8 @@ the buffer's filename."
          ([remap switch-to-buffer] . consult-buffer)
          ;; Grep and Find
          ([remap project-find-regexp] . consult-ripgrep)
-         ("C-'" . my/consult-switch-vterm))
+         ("C-'" . my/consult-switch-vterm)
+         ("C-. C-SPC" . my/consult-mark))
   :init
   (progn
     ;; Use Consult to select xref locations with preview
@@ -2109,7 +2110,17 @@ the buffer's filename."
     (defun my/consult-switch-vterm ()
       "List vterm buffers."
       (interactive)
-      (consult-buffer (list vterm-source)))))
+      (consult-buffer (list vterm-source)))
+
+    (defun my/consult-mark (globalp)
+      "Jump to a marker.
+Jump to a global marker unless GLOBALP is nil. Interactively,
+jump to a local marker by default and to a global marker if the
+prefix arg was used."
+      (interactive "P")
+      (if globalp
+          (consult-global-mark)
+        (consult-mark)))))
 
 (use-package consult-flycheck
   :after (consult flycheck)
