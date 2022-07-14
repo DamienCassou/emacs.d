@@ -1500,7 +1500,7 @@ Interactively ask which file to open with completion."
     (setq auth-sources '(password-store))))
 
 (use-package avy
-  :bind* (("C-," . avy-goto-char-2))
+  :bind* (("C-," . avy-goto-char-timer))
   :bind (("M-g g" . avy-goto-line))
   :init
   (progn
