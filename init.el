@@ -283,7 +283,8 @@ This is recommended by Vertico's README."
     (setq delete-active-region nil)
     (setq eval-expression-print-length 20)
     (setq eval-expression-print-level 10)
-    (setq next-error-message-highlight 'keep))
+    (setq next-error-message-highlight 'keep)
+    (setq set-mark-command-repeat-pop t))
   :config
   (progn
     (defun my/join-line ()
