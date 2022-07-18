@@ -648,6 +648,9 @@ This is recommended by Vertico's README."
   :demand t
   :after magit)
 
+(use-package magit-delta
+  :hook (magit-mode . magit-delta-mode))
+
 (use-package nano-modeline
   :demand t
   :init

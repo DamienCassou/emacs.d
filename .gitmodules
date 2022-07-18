@@ -430,6 +430,9 @@
 	path = lib/magit
 	url = git@github.com:magit/magit.git
 	info-path = docs
+[submodule "magit-delta"]
+	path = lib/magit-delta
+	url = git@github.com:dandavison/magit-delta.git
 [submodule "magit-popup"]
 	path = lib/magit-popup
 	url = git@github.com:magit/magit-popup.git
@@ -727,6 +730,9 @@
 [submodule "xref-js2"] # Jump to references/definitions using ag & js2-mode's AST (JavaScript)
 	path = lib/xref-js2
 	url = git@github.com:NicolasPetton/xref-js2.git
+[submodule "xterm-color"]
+	path = lib/xterm-color
+	url = git@github.com:atomontage/xterm-color.git
 [submodule "yaml-mode"] # to edit *.yml files (including .travis.yml)
 	path = lib/yaml-mode
 	url = git@github.com:yoshiki/yaml-mode.git
