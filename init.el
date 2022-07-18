@@ -2042,6 +2042,8 @@ the buffer's filename."
     ;; define their own .dir-locals.el, thus overrinding ours.
     (setq-default project-vc-merge-submodules nil)
 
+    (setq project-compilation-buffer-name-function 'project-prefixed-buffer-name)
+
     (defun my/project-switch-project-to-magit ()
       "Ask the user to select a project from known projects and open magit on the selection."
       (interactive)
