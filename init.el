@@ -953,7 +953,8 @@ MOMENT is an encoded date."
     (defun my/ledger-lint ()
       "Lint my ledger file."
       (interactive)
-      (async-shell-command "lint-system"))))
+      (require 'autoclose-shell)
+      (autoclose-shell-start "lint-system" '("lint-system")))))
 
 (use-package ledger-complete
   :init
