@@ -1195,13 +1195,15 @@ because slides don't change their ID all the time."
     (setq org-roam-dailies-directory "daily")))
 
 (use-package denote
-  :bind (("C-. r r" . denote)
-         ("C-. r f" . my/denote-find-file))
+  :bind (("C-. r r" . denote))
   :init
   (progn
     (setq denote-directory (expand-file-name "~/configuration/denote"))
     (setq denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
-    (setq denote-front-matter-date-format 'org-timestamp))
+    (setq denote-front-matter-date-format 'org-timestamp)))
+
+(use-package denote-retrieve
+  :bind (("C-. r f" . my/denote-find-file))
   :config
   (progn
     (defun my/denote-find-file (filename)
