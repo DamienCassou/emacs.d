@@ -430,9 +430,6 @@
 	path = lib/magit
 	url = git@github.com:magit/magit.git
 	info-path = docs
-[submodule "magit-delta"]
-	path = lib/magit-delta
-	url = git@github.com:dandavison/magit-delta.git
 [submodule "magit-popup"]
 	path = lib/magit-popup
 	url = git@github.com:magit/magit-popup.git
