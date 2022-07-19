@@ -1570,7 +1570,22 @@ Interactively ask which file to open with completion."
     (require 'bookmark)
 
     (setq finsit-core-monitor-root-location
-          (expand-file-name (bookmark-location "ftgp-monitor-root")))))
+          (expand-file-name (bookmark-location "ftgp-monitor-root")))
+
+    (with-eval-after-load 'project
+      (defun my/finsit-project-find-file ()
+        "Faster alternative to project-find-file for monitor's Client/ folder."
+        (interactive)
+        (if-let* ((project (project-current))
+                  ((eq (car project) 'transient))
+                  ((string= (expand-file-name "./" (cdr project))
+                            (expand-file-name "./" (finsit-core-monitor-client-location)))))
+            (project-find-file-in (thing-at-point 'filename)
+                                  (list (finsit-core-monitor-client-location))
+                                  (project-current nil (finsit-core-monitor-root-location)))
+          (project-find-file)))
+
+      (bind-key "f" #'my/finsit-project-find-file project-prefix-map))))
 
 (use-package libbcel
   :config
