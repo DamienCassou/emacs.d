@@ -1710,7 +1710,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Forecast" . "28317311"))
+    (add-to-list 'finsit-magit-projects '("Forecast" . "28499991"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
