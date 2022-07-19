@@ -2067,7 +2067,34 @@ the buffer's filename."
     (dolist (undesired-switch-command '(project-vc-dir project-eshell))
       (setq project-switch-commands (cl-delete undesired-switch-command project-switch-commands :key #'car)))
 
-    (add-to-list 'project-switch-commands '(shell-switcher-open-on-project "Shell") t)))
+    (add-to-list 'project-switch-commands '(shell-switcher-open-on-project "Shell") t)
+
+    (defconst my/project-root-marker ".project"
+      "File indicating the root of a project.")
+
+    (defun my/project-find-root (path)
+      "Search up the PATH for `my/project-root-marker'."
+      (when-let* ((root (locate-dominating-file path my/project-root-marker)))
+        (cons 'transient root)))
+
+    (add-to-list 'project-find-functions #'my/project-find-root)
+
+    (defun my/project-copy-filename (file)
+      "Copy the path of FILE relative to the project root to the kill ring."
+      (interactive (list (or
+                          (buffer-file-name)
+                          (and (derived-mode-p 'dired-mode) (dired-filename-at-point))
+                          default-directory)))
+      (when-let* (file
+                  (expanded-filename (expand-file-name file))
+                  (root (expand-file-name (project-root
+                                           (project-current
+                                            nil
+                                            (file-name-directory expanded-filename)))))
+                  ((string-prefix-p root expanded-filename))
+                  (result (substring expanded-filename (length root))))
+        (kill-new result)
+        (message "%s" result)))))
 
 (use-package consult
   :bind (([remap yank-pop] . consult-yank-replace)
