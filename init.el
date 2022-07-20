@@ -1544,7 +1544,7 @@ Interactively ask which file to open with completion."
     (setq nameless-prefix "…")))
 
 (use-package epithet
-  :hook ((Info-selection eww-after-render help-mode occur-mode shell-mode)
+  :hook ((Info-selection eww-after-render help-mode occur-mode shell-mode compilation-mode)
          .
          epithet-rename-buffer))
 
@@ -2053,8 +2053,6 @@ the buffer's filename."
     ;; ~/.emacs.d/.dir-locals.el wouldn't work as packages usually
     ;; define their own .dir-locals.el, thus overrinding ours.
     (setq-default project-vc-merge-submodules nil)
-
-    (setq project-compilation-buffer-name-function 'project-prefixed-buffer-name)
 
     (defun my/project-switch-project-to-magit ()
       "Ask the user to select a project from known projects and open magit on the selection."
