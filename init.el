@@ -1507,7 +1507,7 @@ Interactively ask which file to open with completion."
   :bind (("M-g g" . avy-goto-line))
   :init
   (progn
-    ;; keys under my fingers (blue keys on my Kinesis Advantage)
+    ;; home row on a Colemak keyboard:
     (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))))
 
 (use-package beginend
