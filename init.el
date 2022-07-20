@@ -2196,6 +2196,7 @@ prefix arg was used."
          :map embark-file-map
          ("v" . shell-switcher-open-on-directory)
          :map embark-bookmark-map
+         ("c" . my/embark-compile)
          ("k" . bookmark-delete)
          ("v" . shell-switcher-open-on-bookmark))
   :init
@@ -2233,7 +2234,16 @@ targets."
           '(embark--vertico-indicator
             my/embark-which-key-indicator
             embark-highlight-indicator
-            embark-isearch-highlight-indicator))))
+            embark-isearch-highlight-indicator))
+
+    (defun my/embark-compile (_)
+      "Same as `compile' but is not `interactive'.
+This is important so that embark doesn't try to insert a
+file/buffer/… name where a shell command is expected."
+      (call-interactively #'compile))
+
+    (setf (alist-get #'my/embark-compile embark-pre-action-hooks)
+          (list #'embark--cd))))
 
 (use-package embark-consult
   :demand t
