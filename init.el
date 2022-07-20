@@ -2185,8 +2185,8 @@ prefix arg was used."
   :bind (("C-M-/" . cape-dabbrev))
   :config
   (progn
-    (add-to-list 'completion-at-point-functions #'cape-file)
-    (add-to-list 'completion-at-point-functions #'cape-dabbrev)))
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+    (add-to-list 'completion-at-point-functions #'cape-file)))
 
 (use-package embark
   :demand t
