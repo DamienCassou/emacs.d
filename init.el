@@ -1504,7 +1504,9 @@ Interactively ask which file to open with completion."
     (setq auth-sources '(password-store))))
 
 (use-package avy
-  :bind* (("C-," . avy-goto-char-timer))
+  :bind* (("C-," . avy-goto-char-timer)
+          :map isearch-mode-map
+          ("C-," . avy-isearch))
   :bind (("M-g g" . avy-goto-line))
   :init
   (progn
