@@ -2098,7 +2098,8 @@ the buffer's filename."
     (map-put! marginalia-annotator-registry 'buffer (list #'my/marginalia-annotate-buffer))
 
     ;; I don't want any information when listing files:
-    (map-delete marginalia-annotator-registry 'file)))
+    (map-delete marginalia-annotator-registry 'file)
+    (map-delete marginalia-annotator-registry 'project-file)))
 
 (use-package epkg-marginalia
   :demand t
