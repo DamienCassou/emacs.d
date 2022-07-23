@@ -452,7 +452,7 @@ This is recommended by Vertico's README."
   :hook ((Info-mode . info-variable-pitch-mode)))
 
 (use-package olivetty
-  :hook (((Info-mode help-mode helpful-mode) . olivetti-mode))
+  :hook (((Info-mode help-mode helpful-mode eww-mode) . olivetti-mode))
   :init
   (progn
     (setq olivetti-body-width 84)))
