@@ -1635,9 +1635,10 @@ Interactively ask which file to open with completion."
     (setq nameless-prefix "…")))
 
 (use-package epithet
-  :hook ((Info-selection eww-after-render help-mode occur-mode shell-mode compilation-mode)
-         .
-         epithet-rename-buffer))
+  :hook (((Info-selection eww-after-render help-mode occur-mode shell-mode)
+          .
+          epithet-rename-buffer)
+         (compilation-start . epithet-rename-buffer-ignoring-arguments)))
 
 (use-package subword
   :init
