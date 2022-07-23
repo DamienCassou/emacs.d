@@ -1514,7 +1514,93 @@ Interactively ask which file to open with completion."
     (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
     ;; Let me easily use actions beyond jump:
     (setq avy-single-candidate-jump nil)
-    (setq avy-flyspell-correct-function #'ispell-word)))
+    (setq avy-flyspell-correct-function #'ispell-word))
+  :config
+  (progn
+    (defmacro my/avy-without-moving-point (point &rest body)
+      "Move point to POINT than execute BODY and restore previous location."
+      (declare (indent 1))
+      `(unwind-protect
+           (save-excursion
+             (setf (point) point)
+             ,@body)
+         (select-window (cdr (ring-ref avy-ring 0)))))
+
+    (defun my/avy-action-help (point)
+      "Show the Emacs help for thing at POINT."
+      (my/avy-without-moving-point point
+        (helpful-at-point)))
+
+    (defun my/avy-action-kill-whole-line (point)
+      "Kill the whole line at POINT."
+      (my/avy-without-moving-point point
+        (kill-whole-line)))
+
+    (defun my/avy-action-embark (point)
+      "Start `embark-act' at POINT."
+      (my/avy-without-moving-point point
+        (embark-act)))
+
+    (setq avy-dispatch-alist
+          '(
+            ;; (?a) in avy-keys
+            ;; (?b)
+            ;; (?c)
+            ;; (?d) in avy-keys
+            ;; (?e) in avy-keys
+            ;; (?f)
+            ;; (?g)
+            ;; (?h) in avy-keys
+            ;; (?i) in avy-keys
+            ;; (?j)
+            ;; (?k)
+            ;; (?l)
+            ;; (?m)
+            ;; (?n) in avy-keys
+            ;; (?o) in avy-keys
+            ;; (?p)
+            ;; (?q)
+            ;; (?r) in avy-keys
+            ;; (?s) in avy-keys
+            ;; (?t) in avy-keys
+            ;; (?u)
+            ;; (?v)
+            ;; (?w)
+            ;; (?x)
+            ;; (?y)
+            ;; (?z)
+            ;; (?A)
+            ;; (?B)
+            ;; (?C)
+            ;; (?D)
+            ;; (?E)
+            ;; (?F)
+            ;; (?G)
+            ;; (?H)
+            ;; (?I)
+            ;; (?J)
+            ;; (?K)
+            ;; (?L)
+            ;; (?M)
+            ;; (?N)
+            ;; (?O)
+            ;; (?P)
+            ;; (?Q)
+            ;; (?R)
+            ;; (?S)
+            ;; (?T)
+            ;; (?U)
+            ;; (?V)
+            ;; (?W)
+            ;; (?X)
+            ;; (?Y)
+            ;; (?Z)
+            (?$ . avy-action-ispell)
+            (?? . my/avy-action-help)
+            (?\C-w . avy-action-kill-stay)
+            (?\C-k . my/avy-action-kill-whole-line)
+            (?\M-w . avy-action-copy)
+            (?\C-\S-a . my/avy-action-embark)))))
 
 (use-package beginend
   :demand t
