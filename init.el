@@ -1504,12 +1504,14 @@ Interactively ask which file to open with completion."
     (setq auth-sources '(password-store))))
 
 (use-package avy
-  :bind* (("C-," . avy-goto-char-2))
+  :bind* (("C-," . avy-goto-char-timer))
   :bind (("M-g g" . avy-goto-line))
   :init
   (progn
     ;; home row on a Colemak keyboard:
-    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))))
+    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
+    ;; Let me easily use actions beyond jump:
+    (setq avy-single-candidate-jump nil)))
 
 (use-package beginend
   :demand t
