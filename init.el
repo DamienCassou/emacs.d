@@ -1513,7 +1513,8 @@ Interactively ask which file to open with completion."
     ;; home row on a Colemak keyboard:
     (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
     ;; Let me easily use actions beyond jump:
-    (setq avy-single-candidate-jump nil)))
+    (setq avy-single-candidate-jump nil)
+    (setq avy-flyspell-correct-function #'ispell-word)))
 
 (use-package beginend
   :demand t
