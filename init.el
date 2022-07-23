@@ -276,6 +276,7 @@ This is recommended by Vertico's README."
          ("C-x e" . end-of-buffer)
          ("M->" . nil)
          ([remap yank-pop] . yank-from-kill-ring)
+         ("C-_" . nil) ;; force me to use C-/ to undo
          :map process-menu-mode-map
          ("k" . process-menu-delete-process))
   :init
