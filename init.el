@@ -2402,10 +2402,6 @@ file/buffer/… name where a shell command is expected."
              :default-weight regular
              :default-height 140
              :bold-weight extrabold)
-            (presentation
-             :default-weight semilight
-             :default-height 170
-             :bold-weight extrabold)
             (t
              :default-family "Iosevka Comfy"
              :default-weight regular
