@@ -2289,9 +2289,10 @@ prefix arg was used."
          :map embark-file-map
          ("v" . shell-switcher-open-on-directory)
          :map embark-bookmark-map
-         ("c" . my/embark-compile)
+         ("c" . compile)
          ("k" . bookmark-delete)
-         ("v" . shell-switcher-open-on-bookmark))
+         ("v" . shell-switcher-open-on-bookmark)
+         ("&" . async-shell-command))
   :init
   (progn
     ;; Pressing C-h after a prefix key lists all suffixes with
@@ -2329,13 +2330,18 @@ targets."
             embark-highlight-indicator
             embark-isearch-highlight-indicator))
 
-    (defun my/embark-compile (_)
-      "Same as `compile' but is not `interactive'.
-This is important so that embark doesn't try to insert a
-file/buffer/… name where a shell command is expected."
-      (call-interactively #'compile))
+    ;; Configure `compile':
+    (setf (alist-get #'compile embark-target-injection-hooks)
+          (list #'embark--allow-edit #'embark--shell-prep))
+    (setf (alist-get #'compile embark-pre-action-hooks)
+          (list #'embark--cd))
 
-    (setf (alist-get #'my/embark-compile embark-pre-action-hooks)
+    ;; Configure `project-compile':
+    (setf (alist-get #'project-compile embark-target-injection-hooks)
+          (list #'embark--allow-edit #'embark--shell-prep))
+
+    ;; Configure `async-shell-command':
+    (setf (alist-get #'async-shell-command embark-pre-action-hooks)
           (list #'embark--cd))))
 
 (use-package embark-consult
