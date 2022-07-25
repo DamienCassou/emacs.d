@@ -2412,6 +2412,7 @@ file/buffer/… name where a shell command is expected."
 
 (use-package ligature
   :load-path "path-to-ligature-repo"
+  :demand t
   :config
   ;; Enable all Iosevka ligatures in programming modes
   (ligature-set-ligatures 'prog-mode
