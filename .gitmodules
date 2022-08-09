@@ -648,9 +648,6 @@
 [submodule "stream"]
 	path = lib/stream
 	url = git@github.com:emacsmirror/stream.git
-[submodule "sx"]
-	path = lib/sx
-	url = git@github.com:vermiculus/sx.el.git
 [submodule "tablist"]
 	path = lib/tablist
 	url = git@github.com:politza/tablist.git
