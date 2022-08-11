@@ -2274,6 +2274,11 @@ prefix arg was used."
          :map flymake-mode-map
          ("C-c ! l" . consult-flymake)))
 
+(use-package embark-recoll
+  :config
+  (progn
+    (consult-recoll-embark-setup)))
+
 (use-package cape
   :demand t
   :after minibuffer
