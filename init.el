@@ -2194,7 +2194,9 @@ the buffer's filename."
          ;; Grep and Find
          ([remap project-find-regexp] . consult-ripgrep)
          ("C-'" . my/consult-switch-vterm)
-         ("C-. C-SPC" . my/consult-mark))
+         ("C-. C-SPC" . my/consult-mark)
+         :map minibuffer-local-map
+         ("M-r". consult-history))
   :init
   (progn
     ;; Use Consult to select xref locations with preview
