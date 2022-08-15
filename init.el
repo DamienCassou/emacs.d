@@ -1243,19 +1243,6 @@ Interactively ask which file to open with completion."
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-(use-package shell-switcher
-  :disabled t
-  :bind (("C-M-'"   . shell-switcher-new-shell)
-         ("C-'"     . shell-switcher-switch-buffer)
-         ("C-x 4 '" . shell-switcher-switch-buffer-other-window))
-  :init
-  (progn
-    (setq shell-switcher-ask-before-creating-new t)
-    (setq shell-switcher-new-shell-function 'shell-switcher-make-eshell))
-  :config
-  (progn
-    (shell-switcher-mode)))
-
 (use-package which-key
   :demand t
   :config
