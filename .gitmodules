@@ -461,6 +461,9 @@
 [submodule "meson-mode"]
 	path = lib/meson-mode
 	url = git@github.com:wentasah/meson-mode.git
+[submodule "minibuffer-header"]
+	path = lib/minibuffer-header
+	url = git@github.com:rougier/minibuffer-header.git
 [submodule "minions"]
 	path = lib/minions
 	url = git@github.com:tarsius/minions.git
