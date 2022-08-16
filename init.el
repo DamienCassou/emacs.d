@@ -1088,7 +1088,7 @@ MOMENT is an encoded date."
 
     (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
-    ;; This is my `shell-switcher-switch-buffer':
+    ;; I use that to switch term buffers
     (unbind-key "C-'" org-mode-map)
 
     ;; Those are my `beginning-of-buffer' and `end-of-buffer':
