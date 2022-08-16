@@ -2024,15 +2024,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
-(use-package vertico-indexed
-  :disabled t
-  :demand t
-  :after vertico
-  :config
-  (progn
-    (set-face-attribute 'vertico-indexed nil :height 1.0)
-    (vertico-indexed-mode)))
-
 (use-package vertico-quick
   :demand t
   :after vertico
