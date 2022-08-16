@@ -17,7 +17,7 @@
  '(frame-title-format "Emacs: %b" t)
  '(gc-cons-threshold 20000000)
  '(indent-tabs-mode nil)
- '(load-prefer-newer t t)
+ '(load-prefer-newer t)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
    '((js2-strict-inconsistent-return-warning)
