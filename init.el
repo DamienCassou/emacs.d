@@ -1895,8 +1895,31 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
       (interactive)
       (vterm (generate-new-buffer-name "vterm")))
 
-    (with-eval-after-load 'shell-switcher
-      (setq shell-switcher-new-shell-function 'my/vterm-open-new))))
+    (defun my/vterm-open-on-directory (directory)
+      "Open DIRECTORY in vterm."
+      (interactive "FDirectory: ")
+      (let ((default-directory (if (file-directory-p directory)
+                                   directory
+                                 (file-name-directory directory))))
+        (my/vterm-open-new)))
+
+    (defun my/vterm-open-on-bookmark (bookmark)
+      "Open BOOKMARK's location in vterm."
+      (interactive (list (bookmark-completing-read "Bookmark: "
+				                   bookmark-current-bookmark)))
+      (let* ((file (bookmark-location bookmark))
+             (default-directory (if (file-directory-p file)
+                                    file
+                                  (file-name-directory file))))
+        (my/vterm-open-new)))
+
+    (defun my/vterm-open-on-project (&optional project)
+      "Open the project's root directory in vterm.
+If PROJECT is nil, use `project-current'."
+      (interactive)
+      (when-let* ((project (or project (project-current t)))
+                  (default-directory (car (project-roots project))))
+        (my/vterm-open-new)))))
 
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
@@ -2108,7 +2131,7 @@ the buffer's filename."
          :map project-prefix-map
          ;; Use magit as default command when switching projects:
          ("p" . my/project-switch-project-to-magit)
-         ("v" . shell-switcher-open-on-project))
+         ("v" . my/vterm-open-on-project))
   :init
   (progn
     ;; I usually want to consider submodules as different
@@ -2129,7 +2152,7 @@ the buffer's filename."
     (dolist (undesired-switch-command '(project-vc-dir project-eshell))
       (setq project-switch-commands (cl-delete undesired-switch-command project-switch-commands :key #'car)))
 
-    (add-to-list 'project-switch-commands '(shell-switcher-open-on-project "Shell") t)
+    (add-to-list 'project-switch-commands '(my/vterm-open-new "Shell") t)
 
     (defconst my/project-root-marker ".project"
       "File indicating the root of a project.")
@@ -2265,11 +2288,11 @@ prefix arg was used."
          ("C-h b" . embark-bindings)
          ("M-." . embark-dwim)
          :map embark-file-map
-         ("v" . shell-switcher-open-on-directory)
+         ("v" . my/vterm-open-on-directory)
          :map embark-bookmark-map
          ("c" . compile)
          ("k" . bookmark-delete)
-         ("v" . shell-switcher-open-on-bookmark)
+         ("v" . my/vterm-open-on-bookmark)
          ("&" . async-shell-command))
   :init
   (progn
