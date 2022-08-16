@@ -2036,10 +2036,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (setq vertico-quick1 "arstdhn")
     (setq vertico-quick2 "oie")))
 
-(use-package vertico-buffer
-  :demand t
-  :after vertico)
-
 (use-package vertico-multiform
   :demand t
   :after vertico
