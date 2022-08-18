@@ -649,6 +649,15 @@ This is recommended by Vertico's README."
   :demand t
   :after magit)
 
+(use-package forge
+  :demand t
+  :after magit)
+
+(use-package forge-topic
+  :init
+  (progn
+    (setq forge-topic-list-limit '(60 . -1))))
+
 (use-package nano-modeline
   :demand t
   :init
