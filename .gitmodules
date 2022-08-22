@@ -101,9 +101,6 @@
 [submodule "consult-flycheck"]
 	path = lib/consult-flycheck
 	url = git@github.com:minad/consult-flycheck.git
-[submodule "consult-recoll"]
-	path = lib/consult-recoll
-	url = https://codeberg.org/jao/consult-recoll.git
 [submodule "counsel-jq"]
 	path = lib/counsel-jq
 	url = https://github.com/200ok-ch/counsel-jq.git
