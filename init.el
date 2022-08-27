@@ -1627,7 +1627,7 @@ Interactively ask which file to open with completion."
   :after repeat
   :init
   (progn
-    (setq repeat-help-auto t))
+    (setq repeat-help-auto nil))
   :config
   (progn
     (repeat-help-mode)))
