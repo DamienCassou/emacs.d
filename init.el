@@ -600,6 +600,24 @@ This is recommended by Vertico's README."
   (progn
     (recentf-mode)))
 
+(use-package transient
+  :config
+  (progn
+    (defun my/transient--describe-function (fn)
+      "New implementation of `transient--describe-function'.
+This implementation uses helpful if possible and doesn't try to
+switch to the new buffer."
+      ;; https://github.com/magit/transient/issues/208
+      (let ((fn (if (symbolp fn)
+                    fn
+                  'transient--anonymous-infix-argument))
+            (help-function (if (fboundp #'helpful-callable)
+                               #'helpful-callable
+                             #'describe-function)))
+        (funcall help-function fn)))
+
+    (advice-add #'transient--describe-function :override #'my/transient--describe-function)))
+
 (use-package magit
   :bind ((
           :map magit-mode-map
