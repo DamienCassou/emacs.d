@@ -684,6 +684,7 @@ switch to the new buffer."
     (with-eval-after-load "ispell"
       (cl-incf ispell-choices-win-default-height))
 
+    (setq nano-modeline-position 'bottom)
     (setq nano-modeline-mode-formats
           '((vterm-mode             :mode-p nano-modeline-vterm-mode-p
                                     :format my/nano-modeline-vterm-mode
