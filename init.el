@@ -1777,10 +1777,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   (advice-add #'finsit-js-flycheck-setup
               :override #'my/finsit-js-flycheck-setup))
 
-(use-package testjump
-  :disabled t
-  :bind (("C-x j" . testjump-jump)))
-
 (use-package jumprel
   :bind (("C-x j" . jumprel-jump)))
 
