@@ -862,7 +862,7 @@ switch to the new buffer."
   :init
   (progn
     (setq flycheck-hledger-strict t)
-    (setq flycheck-hledger-checks '("payees" "ordereddates"))))
+    (setq flycheck-hledger-checks '("payees" "ordereddates" "recentassertions"))))
 
 (use-package flycheck-package
   :demand t
