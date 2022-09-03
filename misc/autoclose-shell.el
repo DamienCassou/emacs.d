@@ -38,7 +38,7 @@ Use NAME, a string, to name the process and buffer.
 
 COMMAND is a list starting with the program file name, followed
 by strings to give to the program as arguments."
-  (let ((output-buffer (generate-new-buffer name)))
+  (let ((output-buffer (get-buffer-create name)))
     (display-buffer output-buffer)
     (make-process
      :name name
