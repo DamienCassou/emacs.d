@@ -1394,7 +1394,8 @@ Interactively ask which file to open with completion."
           lisp-mode
           eval-expression-minibuffer-setup
           scheme-mode
-          geiser-repl-mode) . enable-paredit-mode)
+          geiser-repl-mode
+          lisp-data-mode) . enable-paredit-mode)
   :config
   (progn
     (with-eval-after-load "eldoc"
@@ -1461,7 +1462,7 @@ Interactively ask which file to open with completion."
          ([remap describe-variable] . helpful-variable)))
 
 (use-package aggressive-indent
-  :hook ((lisp-mode emacs-lisp-mode scheme-mode) . aggressive-indent-mode))
+  :hook ((lisp-mode emacs-lisp-mode scheme-mode lisp-data-mode) . aggressive-indent-mode))
 
 (use-package bookmark
   :init
