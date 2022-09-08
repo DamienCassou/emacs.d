@@ -1818,6 +1818,13 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (add-to-list 'finsit-magit-projects '("Current project" . "29173445"))
     (finsit-magit-setup)))
 
+(use-package finsit-forge
+  :demand t
+  :after forge
+  :config
+  (progn
+    (finsit-forge-setup)))
+
 (use-package finsit-prodigy
   :demand t
   :after prodigy
