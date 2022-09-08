@@ -458,6 +458,9 @@
 [submodule "memoize"]
 	path = lib/memoize
 	url = git@github.com:skeeto/emacs-memoize.git
+[submodule "meow"]
+	path = lib/meow
+	url = git@github.com:meow-edit/meow.git
 [submodule "meson-mode"]
 	path = lib/meson-mode
 	url = git@github.com:wentasah/meson-mode.git
