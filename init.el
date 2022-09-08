@@ -1815,7 +1815,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Current project" . "28901650"))
+    (add-to-list 'finsit-magit-projects '("Current project" . "29173445"))
     (finsit-magit-setup)))
 
 (use-package finsit-prodigy
