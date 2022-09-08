@@ -1783,7 +1783,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   (progn
     (cl-defmethod jumprel-maker-fill ((filler (head yasnippet)) &allow-other-keys &rest)
       (when-let* ((snippet (map-elt (cdr filler) :name)))
-        (yas-expand-snippet (yas-lookup-snippet snippet 'js-mode))))))
+        (yas-expand-snippet (yas-lookup-snippet snippet major-mode))))))
 
 (use-package flymake-eslint
   :hook ((js-mode . my/flymake-eslint-finsit))
