@@ -93,6 +93,7 @@
         smartscan-symbol-go-backward
         smex
         tern-get-type
+        transpose-sexps
         transpose-words
         wdired--self-insert
         wdired-capitalize-word
