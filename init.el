@@ -600,24 +600,6 @@ This is recommended by Vertico's README."
   (progn
     (recentf-mode)))
 
-(use-package transient
-  :config
-  (progn
-    (defun my/transient--describe-function (fn)
-      "New implementation of `transient--describe-function'.
-This implementation uses helpful if possible and doesn't try to
-switch to the new buffer."
-      ;; https://github.com/magit/transient/issues/208
-      (let ((fn (if (symbolp fn)
-                    fn
-                  'transient--anonymous-infix-argument))
-            (help-function (if (fboundp #'helpful-callable)
-                               #'helpful-callable
-                             #'describe-function)))
-        (funcall help-function fn)))
-
-    (advice-add #'transient--describe-function :override #'my/transient--describe-function)))
-
 (use-package magit
   :bind ((
           :map magit-mode-map
@@ -1779,10 +1761,12 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
               :override #'my/finsit-js-flycheck-setup))
 
 (use-package jumprel
-  :bind (("C-x j" . jumprel-jump))
+  :load-path "jumprel"
+  :bind (("C-x j" . jumprel-jump)
+         ("C-x J" . jumprel-make))
   :config
   (progn
-    (cl-defmethod jumprel-maker-fill ((filler (head yasnippet)) &allow-other-keys &rest)
+    (cl-defmethod jumprel-fill ((filler (head yasnippet)) &allow-other-keys &rest)
       (when-let* ((snippet (map-elt (cdr filler) :name)))
         (yas-expand-snippet (yas-lookup-snippet snippet major-mode))))))
 
@@ -1968,6 +1952,9 @@ If PROJECT is nil, use `project-current'."
 (use-package libmpdel
   :hook ((libmpdel-current-song-changed . my/libmpdel-write-song-to-file)
          (libmpdel-player-changed . my/libmpdel-write-song-to-file))
+  :init
+  (progn
+    (setq libmpdel-music-directory "~/Music/son"))
   :config
   (progn
     (defun my/libmpdel-write-song-to-file ()
@@ -2069,9 +2056,6 @@ If PROJECT is nil, use `project-current'."
 
 (use-package vertico
   :demand t
-  :init
-  (progn
-    (setq vertico-cycle t))
   :config
   (progn
     (vertico-mode)))
@@ -2438,19 +2422,20 @@ targets."
           '((medium
              :default-height 110)
             (large
-             :default-weight regular
+             :default-weight semilight
              :default-height 140
              :bold-weight extrabold)
             (t
              :default-family "Iosevka Comfy"
              :default-weight regular
-             :variable-pitch-family "Iosevka Comfy Duo"))))
+             :variable-pitch-family "Iosevka Comfy Motion Duo"
+             :italic-family "Iosevka Comfy Motion"
+             :italic-slant italic))))
   :config
   (progn
     (fontaine-set-preset 'large)))
 
 (use-package ligature
-  :load-path "path-to-ligature-repo"
   :demand t
   :config
   ;; Enable all Iosevka ligatures in programming modes
