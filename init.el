@@ -1606,6 +1606,7 @@ Interactively ask which file to open with completion."
     (repeat-mode)))
 
 (use-package repeat-help
+  :disabled t
   :demand t
   :after repeat
   :init
