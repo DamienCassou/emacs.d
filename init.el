@@ -1762,7 +1762,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
               :override #'my/finsit-js-flycheck-setup))
 
 (use-package jumprel
-  :load-path "jumprel"
+  :load-path "lib/jumprel"
   :bind (("C-x j" . jumprel-jump)
          ("C-x J" . jumprel-make))
   :config
