@@ -1037,6 +1037,10 @@ MOMENT is an encoded date."
   (progn
     (goggles-mode)))
 
+(use-package outli
+  :disabled t
+  :hook (emacs-lisp-mode . outli-mode))
+
 (use-package org
   :bind
   (("C-. o a"   . org-agenda)
