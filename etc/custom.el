@@ -20,24 +20,7 @@
  '(load-prefer-newer t)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((jumprel-jumpers
-      (filename :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests"))
-     (jumprel-jumpers
-      (filename :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test"))
-     (jumprel-jumpers
-      (filename :remove-suffix ".js" :add-suffix "-tests.js" :add-directory "tests")
-      (filename :remove-suffix ".js" :add-suffix ".spec.component.js")
-      (filename :remove-suffix ".js" :add-suffix ".less")
-      (filename :remove-suffix ".js" :add-suffix ".stories.js"))
-     (jumprel-jumpers
-      (filename :add-directory "test" :add-extension "-tests.el" :remove-extension ".el"))
-     (forge--buffer-draft-p . t)
-     (jumprel-jumpers
-      (filename :remove-extension ".js" :add-extension "-tests.js" :add-directory "tests")
-      (filename :remove-extension ".js" :add-extension ".spec.component.js")
-      (filename :remove-extension ".js" :add-extension ".less")
-      (filename :remove-extension ".js" :add-extension ".stories.js"))
-     (js2-strict-inconsistent-return-warning)
+   '((js2-strict-inconsistent-return-warning)
      (eval flymake-eslint-enable)
      (flymake-eslint-executable-name . "eslint_d")
      (elisp-lint-indent-specs
