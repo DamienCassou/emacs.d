@@ -651,7 +651,19 @@ This is recommended by Vertico's README."
 
 (use-package forge
   :demand t
-  :after magit)
+  :after magit
+  :hook (forge-post-submit-callback . my/forge-start-timer-for-draft-pullreq)
+  :config
+  (progn
+    (defun my/forge-start-timer-for-draft-pullreq (pullreq &rest _)
+      "Start a `tmr' timer if PULLREQ is draft."
+      (when (map-elt pullreq 'draft)
+        (when-let* ((url (map-elt pullreq 'url))
+                    (minutes (cond
+                              ((string-match-p "foretagsplatsen/monitor" url) 15)
+                              (t 10))))
+          (require 'tmr)
+          (tmr minutes (format "Check draft %s" url)))))))
 
 (use-package forge-topic
   :init
