@@ -430,7 +430,12 @@ This is recommended by Vertico's README."
   :bind (
          :map goto-address-highlight-keymap
          ("C-c C-o" . goto-address-at-point))
-  :hook (((nix-mode magit-process-mode) . goto-address-mode)))
+  :hook (((nix-mode magit-process-mode) . goto-address-mode))
+  :config
+  (progn
+    ;; Recommended by modus-themes (2.7.0 release notes):
+    (setq goto-address-mail-face 'link)
+    (setq goto-address-mail-mouse-face 'highlight)))
 
 (use-package bug-reference
   :bind ((
