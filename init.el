@@ -1782,19 +1782,19 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   (advice-add #'finsit-js-flycheck-setup
               :override #'my/finsit-js-flycheck-setup))
 
-(use-package jumprel
-  :load-path "lib/jumprel"
-  :bind (("C-x j" . jumprel-jump)
-         ("C-x J" . jumprel-make))
+(use-package related-files
+  :load-path "lib/related-files"
+  :bind (("C-x j" . related-files-jump)
+         ("C-x J" . related-files-make))
   :config
   (progn
-    (cl-defmethod jumprel-fill ((filler (head yasnippet)) &allow-other-keys &rest)
+    (cl-defmethod related-files-fill ((filler (head yasnippet)) &allow-other-keys &rest)
       (when-let* ((snippet (map-elt (cdr filler) :name)))
         (yas-expand-snippet (yas-lookup-snippet snippet major-mode))))))
 
-(use-package jumprel-recipe
+(use-package related-files-recipe
   :demand t
-  :after jumprel)
+  :after related-files)
 
 (use-package flymake-eslint
   :hook ((js-mode . my/flymake-eslint-finsit))
