@@ -20,7 +20,11 @@
  '(load-prefer-newer t)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((js2-strict-inconsistent-return-warning)
+   '((forge-display-in-status-buffer)
+     (diff-add-log-use-relative-names . t)
+     (vc-git-annotate-switches . "-w")
+     (forge-buffer-draft-p . t)
+     (js2-strict-inconsistent-return-warning)
      (eval flymake-eslint-enable)
      (flymake-eslint-executable-name . "eslint_d")
      (elisp-lint-indent-specs
