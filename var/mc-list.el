@@ -15,6 +15,7 @@
         c-electric-semi&comma
         c-indent-line-or-region
         clipboard-kill-region
+        comment-dwim
         completion-at-point
         consult-yank-replace
         counsel-M-x
@@ -71,6 +72,7 @@
         paredit-backward-kill-word
         paredit-backward-slurp-sexp
         paredit-close-round
+        paredit-close-round-and-newline
         paredit-comment-dwim
         paredit-doublequote
         paredit-forward
