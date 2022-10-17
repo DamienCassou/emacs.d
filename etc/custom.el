@@ -20,14 +20,7 @@
  '(load-prefer-newer t)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((related-files-jumpers
-      (recipe :remove-suffix ".js" :add-suffix "-tests.js" :add-directory "tests" :case-transformer uncapitalize)
-      (recipe :remove-suffix ".js" :add-suffix ".spec.component.js" :filler
-              (yasnippet :name "componentSpec"))
-      (recipe :remove-suffix ".js" :add-suffix ".less")
-      (recipe :remove-suffix ".js" :add-suffix ".stories.js" :filler
-              (yasnippet :name "stories")))
-     (forge-display-in-status-buffer)
+   '((forge-display-in-status-buffer)
      (diff-add-log-use-relative-names . t)
      (vc-git-annotate-switches . "-w")
      (forge-buffer-draft-p . t)
