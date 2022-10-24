@@ -19,8 +19,47 @@
  '(indent-tabs-mode nil)
  '(load-prefer-newer t)
  '(next-screen-context-lines 5)
+ '(related-files-jumpers
+   '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test" :filler auto-insert)
+     (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests" :filler auto-insert)))
  '(safe-local-variable-values
-   '((forge-display-in-status-buffer)
+   '((eval when
+           (and
+            (buffer-file-name)
+            (not
+             (file-directory-p
+              (buffer-file-name)))
+            (string-match-p "^[^.]"
+                            (buffer-file-name)))
+           (unless
+               (require 'package-recipe-mode nil t)
+             (let
+                 ((load-path
+                   (cons "../package-build" load-path)))
+               (require 'package-recipe-mode)))
+           (unless
+               (derived-mode-p 'emacs-lisp-mode)
+             (emacs-lisp-mode))
+           (package-build-minor-mode)
+           (setq-local flycheck-checkers nil)
+           (set
+            (make-local-variable 'package-build-working-dir)
+            (expand-file-name "../working/"))
+           (set
+            (make-local-variable 'package-build-archive-dir)
+            (expand-file-name "../packages/"))
+           (set
+            (make-local-variable 'package-build-recipes-dir)
+            default-directory))
+     (related-files-jumpers
+      (recipe :remove-suffix ".js" :add-suffix "-tests.js" :add-directory "tests" :case-transformer uncapitalize)
+      (recipe :remove-suffix ".js" :add-suffix "-tests.js" :add-directory "tests")
+      (recipe :remove-suffix ".js" :add-suffix ".spec.component.js" :filler
+              (yasnippet :name "componentSpec"))
+      (recipe :remove-suffix ".js" :add-suffix ".less")
+      (recipe :remove-suffix ".js" :add-suffix ".stories.js" :filler
+              (yasnippet :name "stories")))
+     (forge-display-in-status-buffer)
      (diff-add-log-use-relative-names . t)
      (vc-git-annotate-switches . "-w")
      (forge-buffer-draft-p . t)
