@@ -548,6 +548,9 @@
 [submodule "ov"]
 	path = lib/ov
 	url = git@github.com:ShingoFukuyama/ov.el.git
+[submodule "ox-linuxmag"]
+	path = lib/ox-linuxmag
+	url = git@github.com:DamienCassou/ox-linuxmag.git
 [submodule "ox-reveal"]
 	path = lib/ox-reveal
 	url = git@github.com:yjwen/org-reveal.git
