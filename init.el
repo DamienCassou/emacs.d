@@ -995,7 +995,7 @@ MOMENT is an encoded date."
   :hook ((ledger-import-finished . my/ledger-import-finish))
   :config
   (progn
-    (setq ledger-import-boobank-import-from-date "2022-01-01")
+    (setq ledger-import-boobank-import-from-date "2022-10-15")
     (setq ledger-import-autosync-command
           '("hledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
@@ -1831,7 +1831,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :after magit
   :config
   (progn
-    (add-to-list 'finsit-magit-projects '("Current project" . "29173445"))
+    (add-to-list 'finsit-magit-projects '("Current project" . "29795865"))
     (finsit-magit-setup)))
 
 (use-package finsit-forge
