@@ -170,9 +170,6 @@
 	info-path = doc
 	url = git@github.com:editorconfig/editorconfig-emacs.git
 	fetchRecurseSubmodules = true
-[submodule "eglot"]
-	path = lib/eglot
-	url = git@github.com:joaotavora/eglot.git
 [submodule "el-mock"]
 	path = lib/el-mock
 	url = git@github.com:rejeep/el-mock.el.git
