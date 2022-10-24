@@ -175,6 +175,11 @@ current."
 
     (my/setup-frame)))
 
+(use-package window
+  :config
+  (progn
+    (setq switch-to-buffer-obey-display-actions t)))
+
 (use-package ffap
   :config
   (progn
