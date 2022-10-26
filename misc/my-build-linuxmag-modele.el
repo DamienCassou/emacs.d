@@ -1,12 +1,12 @@
 (defun my/export-article ()
-  "Convert ox-linuxmag's model-article.org into an ODT file and
+  "Convert ox-linuxmag-fr's model-article.org into an ODT file and
 compare that with ./content.xml."
   (interactive)
-  (let* ((source-file "/home/cassou/.emacs.d/lib/ox-linuxmag/modele-article.org")
+  (let* ((source-file "/home/cassou/.emacs.d/lib/ox-linuxmag-fr/modele-article.org")
          (comparison-file "/home/cassou/.emacs.d/misc/content.xml")
          (zip-content (with-current-buffer
                           (find-file-noselect source-file)
-                        (org-export-as 'linuxmag)))
+                        (org-export-as 'linuxmag-fr)))
          (comparison-buffer (find-file-noselect comparison-file)))
     (switch-to-buffer (get-buffer-create "*my/export-article*"))
     (erase-buffer)
