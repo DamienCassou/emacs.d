@@ -1069,7 +1069,6 @@ MOMENT is an encoded date."
     (goggles-mode)))
 
 (use-package outli
-  :disabled t
   :hook (emacs-lisp-mode . outli-mode))
 
 (use-package org
