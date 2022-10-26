@@ -372,7 +372,17 @@ This is recommended by Vertico's README."
   :demand t
   :config
   (progn
-    (winner-mode)))
+    (winner-mode)
+
+    (defvar winner-repeat-map
+      (let ((map (make-sparse-keymap)))
+        (define-key map [left] 'winner-undo)
+        (define-key map [right] 'winner-redo)
+        map)
+      "Keymap to repeat winner key sequences.  Used in `repeat-mode'.")
+
+    (put 'winner-undo 'repeat-map 'winner-repeat-map)
+    (put 'winner-redo 'repeat-map 'winner-repeat-map)))
 
 (use-package buffer-mode
   :bind (("C-S-<up>" . buf-move-up)
