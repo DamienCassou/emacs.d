@@ -1212,42 +1212,6 @@ because slides don't change their ID all the time."
       (while (re-search-forward "^ *<2020-.*>$" nil t)
         (org-archive-subtree)))))
 
-(use-package org-roam
-  :disabled t
-  :demand t
-  :bind (("C-. r r" . org-roam-capture)
-         ("C-. r f" . org-roam-node-find)
-         :map org-mode-map
-         ("C-. r i" . org-roam-node-insert)
-         ("C-. r b" . org-roam-buffer-toggle)
-         :map org-roam-mode-map
-         ("C-. r b" . org-roam-buffer-toggle))
-  :init
-  (progn
-    (setq org-roam-directory (file-truename "/home/cassou/configuration/org-roam"))
-
-    (setq org-roam-mode-section-functions
-          (list #'org-roam-backlinks-section
-                #'org-roam-reflinks-section
-                #'org-roam-unlinked-references-section))
-
-    (setq org-roam-capture-templates
-          '(("d" "default" plain "%?"
-             :target (file+head "%<%Y-%m-%d>-${slug}.org" "#+title: ${title}\n#+created: %T\n\n")
-             :unnarrowed t))))
-  :config
-  (progn
-    (org-roam-db-autosync-mode)))
-
-(use-package org-roam-dailies
-  :load-path "lib/org-roam/extensions"
-  :demand t
-  :after org-roam
-  :bind (("C-. r d" . org-roam-dailies-map))
-  :init
-  (progn
-    (setq org-roam-dailies-directory "daily")))
-
 (use-package denote
   :bind (("C-. r r" . denote)
          ("C-. r f" . my/denote-find-file))
