@@ -613,6 +613,9 @@
 [submodule "rainbow-identifiers"]
 	path = lib/rainbow-identifiers
 	url = git@github.com:Fanael/rainbow-identifiers.git
+[submodule "related-files"]
+	path = lib/related-files
+	url = git@github.com:DamienCassou/related-files.git
 [submodule "repeat-help"]
 	path = lib/repeat-help
 	url = git@github.com:karthink/repeat-help.git
