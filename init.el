@@ -993,11 +993,11 @@ This is recommended by Vertico's README."
         "Move point in current buffer to insert new transaction at MOMENT.
 MOMENT is an encoded date."
         (let ((heading (format "*** %s" (format-time-string date-format moment))))
-          (setf (point) (point-min))
+          (goto-char (point-min))
           (search-forward heading)
           (forward-line)
           (re-search-forward "^\\*\\*\\*" nil t)
-          (setf (point) (line-beginning-position)))))
+          (goto-char (line-beginning-position)))))
 
     (advice-add #'ledger-xact-find-slot :override #'my/ledger-position-at-date)
 
@@ -1029,23 +1029,23 @@ MOMENT is an encoded date."
 
     (defun my/ledger-import-remove-EUR ()
       "Remove the EUR commodity in the current buffer."
-      (setf (point) (point-min))
+      (goto-char (point-min))
       (while (search-forward " EUR" nil t)
         (replace-match ""))
       (ledger-mode-clean-buffer))
 
     (defun my/ledger-import-merge-autosync-transactions ()
       "Merge all autosync transactions into just one."
-      (setf (point) (point-min))
+      (goto-char (point-min))
       (search-forward "Autosync Balance Assertion")
       (delete-matching-lines "Autosync Balance Assertion")
       (delete-matching-lines "^$"))
 
     (defun my/ledger-import-add-today-date-as-outline ()
       "Add today's date as `outline-mode' markup."
-      (setf (point) (point-min))
+      (goto-char (point-min))
       (search-forward "Autosync Balance Assertion")
-      (setf (point) (line-beginning-position))
+      (goto-char (line-beginning-position))
       (insert (format "*** %s\n\n" (format-time-string "%B %-d"))))
 
     (defun my/ledger-import-finish ()
@@ -1523,7 +1523,7 @@ Interactively ask which file to open with completion."
       (declare (indent 1))
       `(unwind-protect
            (save-excursion
-             (setf (point) point)
+             (goto-char point)
              ,@body)
          (select-window (cdr (ring-ref avy-ring 0)))))
 
