@@ -1746,7 +1746,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
               :override #'my/finsit-js-flycheck-setup))
 
 (use-package related-files
-  :load-path "lib/related-files"
   :bind (("C-x j" . related-files-jump)
          ("C-x J" . related-files-make))
   :config
