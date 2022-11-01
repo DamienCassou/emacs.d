@@ -178,18 +178,7 @@ current."
 (use-package window
   :init
   (progn
-    (setq switch-to-buffer-obey-display-actions t))
-  :config
-  (progn
-    (defvar window-previous-next-repeat-map
-      (let ((map (make-sparse-keymap)))
-        (define-key map [left] 'previous-buffer)
-        (define-key map [right] 'next-buffer)
-        map)
-      "Keymap to repeat `previous-buffer' and `next-buffer'.  Used in `repeat-mode'.")
-
-    (put 'previous-buffer 'repeat-map 'window-previous-next-repeat-map)
-    (put 'next-buffer 'repeat-map 'window-previous-next-repeat-map)))
+    (setq switch-to-buffer-obey-display-actions t)))
 
 (use-package ffap
   :config
