@@ -68,9 +68,6 @@
   (setq create-lockfiles nil))
 
 (progn ; `window'
-  (bind-key "C-;" #'other-window)
-  (unbind-key "C-x o")
-
   (defun my/kill-this-buffer ()
     "Kill current buffer.
 Better version of `kill-this-buffer' whose docstring says it is
