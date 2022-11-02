@@ -71,13 +71,6 @@
   (bind-key "C-;" #'other-window)
   (unbind-key "C-x o")
 
-  (defun my/swap-last-buffers ()
-    "Replace currently visible buffer by last one."
-    (interactive)
-    (switch-to-buffer (other-buffer (current-buffer))))
-
-  (bind-key "<s-tab>" #'my/swap-last-buffers)
-
   (defun my/kill-this-buffer ()
     "Kill current buffer.
 Better version of `kill-this-buffer' whose docstring says it is
