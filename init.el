@@ -1746,12 +1746,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 
 (use-package related-files
   :bind (("C-x j" . related-files-jump)
-         ("C-x J" . related-files-make))
-  :config
-  (progn
-    (cl-defmethod related-files-fill ((filler (head yasnippet)) &allow-other-keys &rest)
-      (when-let* ((snippet (map-elt (cdr filler) :name)))
-        (yas-expand-snippet (yas-lookup-snippet snippet major-mode))))))
+         ("C-x J" . related-files-make)))
 
 (use-package related-files-recipe
   :demand t
