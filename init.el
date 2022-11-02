@@ -1057,7 +1057,6 @@ MOMENT is an encoded date."
     (setq org-cycle-separator-lines 0)
     (setq org-insert-heading-respect-content t)
     (setq org-clock-clocked-in-display nil)
-    (setq org-id-link-to-org-use-id t)
     (setq org-adapt-indentation nil)
     (setq org-directory "~/configuration/org")
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
@@ -1127,6 +1126,13 @@ MOMENT is an encoded date."
     (unbind-key "<S-right>" org-mode-map)
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))))
+
+(use-package org-id
+  :demand t
+  :after org
+  :init
+  (progn
+    (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)))
 
 (use-package org-agenda
   :bind (
