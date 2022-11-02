@@ -1113,7 +1113,9 @@ MOMENT is an encoded date."
     (setq org-email-link-description-format "%s"))
   :config
   (progn
-    (setq org-modules '(org-protocol org-capture ox-linuxmag-fr))
+    (add-to-list 'org-modules 'org-protocol)
+    (add-to-list 'org-modules 'ox-linuxmag-fr)
+    (add-to-list 'org-modules 'org-capture)
 
     (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
