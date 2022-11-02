@@ -443,6 +443,7 @@ This is recommended by Vertico's README."
          ("C-c C-o" . Info-follow-nearest-node)))
 
 (use-package info-colors
+  :disabled t ;; https://github.com/ubolonton/info-colors/issues/4
   :demand t
   :after info
   :hook (Info-selection . info-colors-fontify-node))
