@@ -1219,6 +1219,11 @@ Interactively ask which file to open with completion."
     (setq calendar-week-start-day 1)
     (setq calendar-mark-holidays-flag t)))
 
+(use-package graphviz-dot-mode
+  :init
+  (progn
+    (setq graphviz-dot-indent-width 2)))
+
 (use-package drag-stuff
   :demand t
   :config
