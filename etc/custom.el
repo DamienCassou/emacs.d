@@ -20,7 +20,8 @@
  '(load-prefer-newer t)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((eval when
+   '((graphviz-dot-indent-width . 2)
+     (eval when
            (and
             (buffer-file-name)
             (not

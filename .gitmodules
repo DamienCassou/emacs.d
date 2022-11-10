@@ -461,6 +461,9 @@
 [submodule "meow"]
 	path = lib/meow
 	url = git@github.com:meow-edit/meow.git
+[submodule "mermaid-mode"]
+	path = lib/mermaid-mode
+	url = git@github.com:abrochard/mermaid-mode.git
 [submodule "meson-mode"]
 	path = lib/meson-mode
 	url = git@github.com:wentasah/meson-mode.git
@@ -516,6 +519,9 @@
 [submodule "oauth2"]
 	path = lib/oauth2
 	url = git@github.com:emacsmirror/oauth2.git
+[submodule "ob-mermaid"]
+	path = lib/ob-mermaid
+	url = git@github.com:arnm/ob-mermaid.git
 [submodule "olivetti"] # add large margins around text to ease reading
 	path = lib/olivetti
 	url = git@github.com:rnkn/olivetti.git
