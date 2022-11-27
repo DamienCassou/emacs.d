@@ -1826,7 +1826,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package yasnippet
-  :hook (((org-mode git-commit-mode) . yas-minor-mode))
+  :hook (((org-mode git-commit-mode css-mode) . yas-minor-mode))
   :config
   (progn
     (yas-reload-all)))
