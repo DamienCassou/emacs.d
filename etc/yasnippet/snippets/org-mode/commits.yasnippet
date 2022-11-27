@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: commits
+# key: commits
+# --
+
+#+begin_src dot :file media-generated/git_$1.png
+  digraph {
+    // REFERENCES
+    node [shape=plain] $0alice [label="alice\nHEAD"] bob
+    // COMMITS
+    node [shape=circle] a [group=main] b [group=main] c
+    // PARENTING
+    edge [arrowhead=open] b -> a c -> a
+    // ASSIGNEMENTS
+    edge [dir=none, constraint=false, style=dashed] alice -> b bob -> c
+  }
+#+end_src
+
+#+NAME: git_$1
+#+CAPTION: Description de ce qu'on voit
+#+RESULTS:
+[[file:media-generated/git_$1.png]]
