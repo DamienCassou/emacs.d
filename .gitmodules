@@ -123,6 +123,9 @@
 [submodule "debbugs"] # SOAP library to access debbugs servers
 	path = lib/debbugs
 	url = git@github.com:emacsmirror/debbugs.git
+[submodule "define-word"]
+	path = lib/define-word
+	url = https://github.com/abo-abo/define-word
 [submodule "denote"]
 	path = lib/denote
 	url = git@git.sr.ht:~protesilaos/denote
