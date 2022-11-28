@@ -1626,7 +1626,10 @@ Interactively ask which file to open with completion."
   :hook (((Info-selection eww-after-render help-mode occur-mode shell-mode)
           .
           epithet-rename-buffer)
-         (compilation-start . epithet-rename-buffer-ignoring-arguments)))
+         (compilation-start . epithet-rename-buffer-ignoring-arguments))
+  :config
+  (progn
+    (add-hook 'compilation-finish-functions #'epithet-rename-buffer-ignoring-arguments)))
 
 (use-package subword
   :init
