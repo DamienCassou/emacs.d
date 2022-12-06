@@ -1367,7 +1367,9 @@ Interactively ask which file to open with completion."
 (use-package paredit
   :bind (
          :map paredit-mode-map
-         ("M-s" . nil))
+         ("M-s" . nil) ; used for isearch
+         ("RET" . nil) ; used during M-: to evaluate the input
+         ("C-j" . paredit-newline)) ; replacement for RET
   :hook ((emacs-lisp-mode
           lisp-mode
           eval-expression-minibuffer-setup
