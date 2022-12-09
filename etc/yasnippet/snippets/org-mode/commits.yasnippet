@@ -6,13 +6,15 @@
 #+begin_src dot :file media-generated/git_$1.png
   digraph {
     // REFERENCES
-    node [shape=plain] $0alice [label="alice\nHEAD"] bob
+    node [shape=plain] $0alice bob HEAD
     // COMMITS
     node [shape=circle] a [group=main] b [group=main] c
     // PARENTING
     edge [arrowhead=open] b -> a c -> a
+    // HEAD
+    edge [style=dashed] HEAD -> bob
     // ASSIGNEMENTS
-    edge [dir=none, constraint=false, style=dashed] alice -> b bob -> c
+    edge [constraint=false] alice -> b bob -> c
   }
 #+end_src
 
