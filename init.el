@@ -1127,6 +1127,11 @@ MOMENT is an encoded date."
 
     (add-to-list 'org-file-apps '("\\.png\\'" . default))))
 
+(use-package org-src
+  :init
+  (progn
+    (setq org-src-ask-before-returning-to-edit-buffer nil)))
+
 (use-package org-id
   :demand t
   :after org
