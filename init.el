@@ -2346,7 +2346,7 @@ targets."
     ;; Configure `compile':
     (setf (alist-get #'compile embark-target-injection-hooks)
           (list #'embark--allow-edit #'embark--shell-prep))
-    (setf (alist-get #'compile embark-pre-action-hooks)
+    (setf (alist-get #'compile embark-around-action-hooks)
           (list #'embark--cd))
 
     ;; Configure `project-compile':
@@ -2354,7 +2354,7 @@ targets."
           (list #'embark--allow-edit #'embark--shell-prep))
 
     ;; Configure `async-shell-command':
-    (setf (alist-get #'async-shell-command embark-pre-action-hooks)
+    (setf (alist-get #'async-shell-command embark-around-action-hooks)
           (list #'embark--cd))))
 
 (use-package embark-consult
