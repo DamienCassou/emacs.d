@@ -20,7 +20,8 @@
  '(load-prefer-newer t)
  '(next-screen-context-lines 5)
  '(safe-local-variable-values
-   '((graphviz-dot-indent-width . 2)
+   '((org-confirm-babel-evaluate)
+     (graphviz-dot-indent-width . 2)
      (eval when
            (and
             (buffer-file-name)
