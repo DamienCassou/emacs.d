@@ -1987,10 +1987,7 @@ If PROJECT is nil, use `project-current'."
 
 (use-package mpdel-embark
   :demand t
-  :after mpdel
-  :bind (
-         :map mpdel-core-map
-         ("i" . mpdel-embark-list))
+  :after (embark mpdel)
   :config
   (progn
     (mpdel-embark-setup)))
