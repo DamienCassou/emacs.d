@@ -2382,8 +2382,11 @@ targets."
         (consult-imenu)))))
 
 (use-package tmr
-  :bind (("C-. t" . tmr-with-description)
-         ("C-. T" . tmr-tabulated-view))
+  :bind (("C-. t" . tmr-prefix-map)
+         :map tmr-prefix-map
+         ;; prefer "t" over "T" to create a tmr with a description:
+         ("t" . tmr-with-description)
+         ("T" . nil))
   :init
   (progn
     (setq tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))
