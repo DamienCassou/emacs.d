@@ -921,20 +921,6 @@ This is recommended by Vertico's README."
     (defvar my/ledger-rate-history (list)
       "Keeps track of entered SEK/EUR rates.")
 
-    (defun my/ledger-insert-sek-eur (sek rate)
-      "Insert amount in eur corresponding to SEK * RATE."
-      (interactive
-       (list (string-to-number (read-string "Amount in SEK: "))
-             (string-to-number (read-string "EUR/SEK Rate: " nil 'my/ledger-rate-history my/ledger-rate-history))))
-      (if (> rate 1)
-          (my/ledger-insert-sek-eur sek (/ 1.0 rate))
-        (insert
-         (format
-          "%.2f EUR\n    ; %s SEK @ %.5f EUR\n"
-          (* sek rate)
-          (abs sek)
-          rate))))
-
     (defun my/ledger-configure-outline-minor-mode ()
       "Configure a ledger buffer when `outline-minor-mode' is active."
       (font-lock-add-keywords 'ledger-mode outline-font-lock-keywords)
@@ -950,18 +936,6 @@ This is recommended by Vertico's README."
   :config
   (progn
     (let ((date-format "%A, %B %-e"))
-      (defun my/ledger-insert-dates ()
-        "Insert all dates of a year in the current buffer as headings."
-        (let* ((year 2022)
-               (day `(0 0 0 1 1 ,year 0 t 0))
-               (inc-day (make-decoded-time :day 1)))
-          (while (equal (decoded-time-year day) year)
-            (when (equal (decoded-time-day day) 1)
-              (insert (format "** %s\n" (format-time-string "%B" (encode-time day)))))
-            (insert (format "*** %s\n" (format-time-string date-format (encode-time day))))
-            ;; day ⇐ day + 1
-            (setq day (decoded-time-add day inc-day)))))
-
       (defun my/ledger-position-at-date (moment)
         "Move point in current buffer to insert new transaction at MOMENT.
 MOMENT is an encoded date."
