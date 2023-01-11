@@ -1169,7 +1169,8 @@ because slides don't change their ID all the time."
 
     (defun my/org-caldav-archive-year ()
       "Archive a given year in my calendar."
-      (while (re-search-forward "^ *<2020-.*>$" nil t)
+      (interactive)
+      (while (re-search-forward "^ *<2021-.*>$" nil t)
         (org-archive-subtree)))))
 
 (use-package denote
