@@ -1145,10 +1145,6 @@ because slides don't change their ID all the time."
                 :override
                 #'my/org-export-new-reference)))
 
-(use-package ox-twbs
-  :demand t
-  :after org)
-
 (use-package ox-reveal
   :init
   (progn

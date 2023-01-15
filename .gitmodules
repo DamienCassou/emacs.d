@@ -558,9 +558,6 @@
 [submodule "ox-texinfo+"]
 	path = lib/ox-texinfo+
 	url = git@github.com:emacsattic/ox-texinfo-plus.git
-[submodule "ox-twbs"] # use twitter bootstrap to export org files to HTML
-	path = lib/ox-twbs
-	url = git@github.com:marsmining/ox-twbs.git
 [submodule "package-dev-handbook"]
 	path = lib/package-dev-handbook
 	url = https://github.com/alphapapa/emacs-package-dev-handbook.git
