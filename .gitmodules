@@ -728,6 +728,9 @@
 	path = lib/with-editor
 	url = git@github.com:magit/with-editor.git
 	info-path = docs
+[submodule "workflows"]
+	path = lib/workflows
+	url = git@github.com:emacscollective/workflows.git
 [submodule "ws-butler"] # trim whitespace only in edited lines
 	path = lib/ws-butler
 	url = git@github.com:lewang/ws-butler.git
