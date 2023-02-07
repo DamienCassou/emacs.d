@@ -75,6 +75,7 @@
         paredit-close-round
         paredit-close-round-and-newline
         paredit-comment-dwim
+        paredit-delete-char
         paredit-doublequote
         paredit-forward
         paredit-forward-delete
@@ -121,6 +122,7 @@
         end-of-buffer
         ivy-switch-buffer
         markdown-exdent-or-delete
+        mc--insert-number-and-increase
         my/swap-last-buffers
         org-capture
         swiper-mc
