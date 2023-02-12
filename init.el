@@ -2413,7 +2413,7 @@ targets."
   :bind (("C-. t" . tmr-prefix-map)
          :map tmr-prefix-map
          ;; prefer "t" over "T" to create a tmr with a description:
-         ("t" . tmr-with-description)
+         ("t" . tmr-with-details)
          ("T" . nil))
   :init
   (progn
