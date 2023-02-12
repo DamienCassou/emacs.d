@@ -2258,7 +2258,7 @@ the buffer's filename."
      consult-ripgrep consult-git-grep consult-grep consult-buffer
      consult-bookmark consult-recent-file consult-xref
      consult--source-recent-file consult--source-project-recent-file consult--source-bookmark
-     :preview-key (kbd "M-."))
+     :preview-key "M-.")
 
     ;; Remove some sources when listing buffers:
     (dolist (source '(consult--source-bookmark consult--source-project-buffer consult--source-project-file))
