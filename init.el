@@ -952,7 +952,65 @@ MOMENT is an encoded date."
       "Lint my ledger file."
       (interactive)
       (require 'autoclose-shell)
-      (autoclose-shell-start "lint-system" '("lint-system")))))
+      (autoclose-shell-start "lint-system" '("lint-system")))
+
+    (defun my/ledger-mortgage-read-numbers ()
+      "Returns the numbers of the current mortgage reimbursement transaction.
+
+The returned value is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST)."
+      (cl-labels ((parse-number (string) (string-to-number (string-replace "," "." string))))
+        (let* ((number-regexp (rx (1+ (any digit)) ?, (1+ (any digit))))
+               (regexp (rx "ECHEANCE PRET DONT CAP "
+                           (group-n 1 (regexp number-regexp))
+                           " ASS. "
+                           (group-n 2 (regexp number-regexp))
+                           "E INT. "
+                           (group-n 3 (regexp number-regexp))
+                           " COM. 0,00E")))
+          (save-match-data
+            (save-excursion
+              (ledger-navigate-beginning-of-xact)
+              (when-let* (((re-search-forward regexp (line-end-position)))
+                          (capital (parse-number (match-string 1)))
+                          (insurance (parse-number (match-string 2)))
+                          (interest (parse-number (match-string 3))))
+                (list :capital capital :insurance insurance :interest interest)))))))
+
+    (defun my/ledger-mortgage-guess-type (numbers)
+      "Return the type of the transaction with NUMBERS.
+The type is either 'ecoptz, 'immo1 or 'immo2.
+
+NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST)."
+      (cond
+       ((and (>= (map-elt numbers :insurance) 0.1)
+             (= (map-elt numbers :interest) 0))
+        'ecoptz)
+       ((or (>= (map-elt numbers :insurance) 0.1)
+            (= (map-elt numbers :interest) 0))
+        (user-error "Invalid numbers: %S" numbers))
+       ((>= (map-elt numbers :capital) 700) 'immo1)
+       (t 'immo2)))
+
+    (defun my/ledger-mortgage-rewrite ()
+      "Rewrite the mortgage transaction at point."
+      (interactive)
+      (when-let* ((numbers (my/ledger-mortgage-read-numbers))
+                  (mortgage-type (my/ledger-mortgage-guess-type numbers))
+                  (account (format "debt:longterm:mortgage:%s" mortgage-type)))
+        (save-match-data
+          (save-excursion
+            (ledger-navigate-beginning-of-xact)
+            (when (re-search-forward " .*$" (line-end-position)) ; skip date
+              (replace-match " banque populaire prêt" t)
+              (forward-line 3)
+              (delete-region (point) (line-end-position))
+              (map-do
+               (lambda (number-type number)
+                 (when (> number 0)
+                   (insert " " account (symbol-name number-type) "  " (number-to-string number) "\n")))
+               numbers)
+              (delete-backward-char 1) ; remove additional newline
+              (ledger-post-align-dwim))))))))
 
 (use-package ledger-complete
   :init
