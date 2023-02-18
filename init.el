@@ -442,12 +442,6 @@ This is recommended by Vertico's README."
          :map Info-mode-map
          ("C-c C-o" . Info-follow-nearest-node)))
 
-(use-package info-colors
-  :disabled t ;; https://github.com/ubolonton/info-colors/issues/4
-  :demand t
-  :after info
-  :hook (Info-selection . info-colors-fontify-node))
-
 
 (use-package info-variable-pitch
   :hook ((Info-mode . info-variable-pitch-mode)))
