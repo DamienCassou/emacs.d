@@ -2422,6 +2422,12 @@ targets."
           (expand-file-name (locate-user-emacs-file "media/complete.oga"))))
   :config
   (progn
+    (defun my/tmr--acknowledge-prompt ()
+      t)
+
+    (advice-add #'tmr--acknowledge-prompt
+                :override #'my/tmr--acknowledge-prompt)
+
     (with-eval-after-load 'embark
       (defvar my/tmr-action-map
         (let ((map (make-sparse-keymap)))
