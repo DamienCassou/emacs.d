@@ -1222,10 +1222,13 @@ because slides don't change their ID all the time."
         (org-archive-subtree)))))
 
 (use-package denote
-  :bind (("C-. r r" . denote)
+  :bind (("C-. r r" . my/denote-today)
+         ("C-. r R" . denote)
          ("C-. r f" . my/denote-find-file))
+  :hook (dired-mode . denote-dired-mode)
   :init
   (progn
+    (setq denote-date-prompt-use-org-read-date t)
     (setq denote-directory (expand-file-name "~/configuration/denote"))
     (setq denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
     (setq denote-front-matter-date-format 'org-timestamp)
@@ -1237,8 +1240,23 @@ because slides don't change their ID all the time."
     (defun my/denote-find-file (filename)
       "Open FILENAME, a denote file.
 Interactively ask which file to open with completion."
-      (interactive (list (denote--retrieve-read-file-prompt)))
-      (find-file filename))))
+      (interactive (list (denote-file-prompt)))
+      (find-file filename))
+
+    (defun my/denote-today ()
+      (interactive)
+      (let* ((title (format-time-string "%A %e %B %Y"))
+             (sluggified-title (denote-sluggify title))
+             (all-files (denote-all-files))
+             (matching-files (seq-filter
+                              (apply-partially
+                               #'string-match-p
+                               (regexp-quote sluggified-title))
+                              all-files)))
+        (cond
+         ((length= matching-files 0) (denote title '("journal")))
+         ((length= matching-files 1) (find-file (car matching-files)) (goto-char (point-max)))
+         (t (user-error "Several notes in '%s' match '%s'" (denote-directory) sluggified-title)))))))
 
 (use-package calendar
   :init
