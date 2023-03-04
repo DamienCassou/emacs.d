@@ -1222,7 +1222,7 @@ because slides don't change their ID all the time."
         (org-archive-subtree)))))
 
 (use-package denote
-  :bind (("C-. r r" . my/denote-today)
+  :bind (("C-. r r" . my/denote-date)
          ("C-. r R" . denote)
          ("C-. r f" . my/denote-find-file))
   :hook (dired-mode . denote-dired-mode)
@@ -1243,9 +1243,15 @@ Interactively ask which file to open with completion."
       (interactive (list (denote-file-prompt)))
       (find-file filename))
 
-    (defun my/denote-today ()
-      (interactive)
-      (let* ((title (format-time-string "%A %e %B %Y"))
+    (defun my/denote-date (&optional date)
+      "Open note for DATE and create it if necessary.
+
+DATE is today by default. Interactively, DATE is asked to the
+user if the command is called with a prefix argument."
+      (interactive (list (and current-prefix-arg
+                              (encode-time
+                               (iso8601-parse (concat (org-read-date) "T00:00:00"))))))
+      (let* ((title (format-time-string "%A %e %B %Y" date))
              (sluggified-title (denote-sluggify title))
              (all-files (denote-all-files))
              (matching-files (seq-filter
