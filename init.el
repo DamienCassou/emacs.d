@@ -1649,6 +1649,9 @@ user if the command is called with a prefix argument."
   (progn
     (beginend-global-mode)))
 
+(use-package markdown-mode
+  :mode ("README\\.md\\'" . gfm-mode))
+
 (use-package repeat
   :demand t
   :config
