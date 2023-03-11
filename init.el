@@ -809,6 +809,20 @@ This is recommended by Vertico's README."
   (progn
     (setq checkdoc-spellcheck-documentation-flag t)))
 
+(use-package eldoc
+  :init
+  (progn
+    ;; https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc
+    (add-to-list 'display-buffer-alist
+                 '("^\\*eldoc for" display-buffer-at-bottom
+                   (window-height . 4)))
+    (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))
+  :config
+  (progn
+    ;; https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc
+    (eldoc-add-command-completions "paredit-")
+    (eldoc-add-command-completions "combobulate-")))
+
 (use-package flymake
   :bind (
          ;; Use the same bindings as flycheck:
