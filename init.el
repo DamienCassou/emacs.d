@@ -131,6 +131,10 @@ are visible."
     (when (file-exists-p custom-file)
       (load custom-file))))
 
+(use-package edebug
+  :init
+  (setq edebug-print-length 5000))
+
 (use-package frame
   :bind (("C-x C-z" . my/suspend-on-tty-only))
   :init
