@@ -2286,7 +2286,12 @@ the buffer's filename."
     (setq consult-project-root-function
           (lambda ()
             (when-let (project (project-current))
-              (project-root project)))))
+              (project-root project))))
+
+    (defun my/consult-switch-vterm ()
+      "List vterm buffers."
+      (interactive)
+      (consult-buffer (list vterm-source))))
   :config
   (progn
     ;; Add --hidden to the list of arguments:
@@ -2322,11 +2327,6 @@ the buffer's filename."
                        (buffer-list))))))
 
     (add-to-list 'consult-buffer-sources 'vterm-source 'append)
-
-    (defun my/consult-switch-vterm ()
-      "List vterm buffers."
-      (interactive)
-      (consult-buffer (list vterm-source)))
 
     (defun my/consult-mark (globalp)
       "Jump to a marker.
