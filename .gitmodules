@@ -47,9 +47,6 @@
 [submodule "avy"] # move fast in buffer with <C-,>
 	path = lib/avy
 	url = git@github.com:abo-abo/avy.git
-[submodule "bcel"]
-	path = lib/bcel
-	url = git@gitea.petton.fr:bcel/bcel.git
 [submodule "beginend"]
 	path = lib/beginend
 	url = git@github.com:DamienCassou/beginend.git
