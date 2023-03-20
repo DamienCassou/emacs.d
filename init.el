@@ -1524,7 +1524,21 @@ user if the command is called with a prefix argument."
   (progn
     (defun my/password-length ()
       "Return a random number suitable for a password length."
-      (+ 30 (random 10))))
+      (+ 30 (random 10)))
+
+    (defun my/generate-password (&optional length)
+      "Generate a random password of size LENGTH, `my/password-length' by default.
+
+If LENGTH is positive, the password is inserted at point. If
+negative, the password is copied to the kill ring."
+      (interactive "P")
+      (let* ((length (or length (my/password-length)))
+             (password (string-trim (shell-command-to-string
+                                     (format "pwgen --num-passwords=1 --secure --symbols %s" (abs length))))))
+        (if (> length 0)
+            (insert password)
+          (kill-new password)
+          (message "Added %S to kill ring." password)))))
   :config
   (progn
     (setq password-store-password-length (my/password-length))))
