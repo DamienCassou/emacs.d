@@ -4,6 +4,9 @@
 	path = lib/ace-link
 	url = git@github.com:abo-abo/ace-link.git
 	remote = "DamienCassou git@github.com:DamienCassou/ace-link.git"
+[submodule "adoc-mode"]
+	path = lib/adoc-mode
+	url = https://github.com/bbatsov/adoc-mode
 [submodule "ag"]
 	path = lib/ag
 	url = git@github.com:Wilfred/ag.el.git
