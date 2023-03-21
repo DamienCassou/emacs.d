@@ -1529,13 +1529,16 @@ user if the command is called with a prefix argument."
     (defun my/generate-password (&optional length)
       "Generate a random password of size LENGTH, `my/password-length' by default.
 
-If LENGTH is positive, the password is inserted at point. If
-negative, the password is copied to the kill ring."
+If LENGTH is positive, the password is copied to the kill ring.  If
+negative, the password is inserted at point."
       (interactive "P")
-      (let* ((length (or length (my/password-length)))
+      (let* ((length (cond
+                      ((eq length '-) (- (my/password-length)))
+                      (length length)
+                      (t (my/password-length))))
              (password (string-trim (shell-command-to-string
                                      (format "pwgen --num-passwords=1 --secure --symbols %s" (abs length))))))
-        (if (> length 0)
+        (if (< length 0)
             (insert password)
           (kill-new password)
           (message "Added %S to kill ring." password)))))
