@@ -2065,11 +2065,6 @@ If PROJECT is nil, use `project-current'."
   (progn
     (mpdel-mode)))
 
-(use-package ivy-mpdel
-  :disabled t
-  :after mpdel
-  :demand t)
-
 (use-package mpdel-embark
   :demand t
   :after (embark mpdel)

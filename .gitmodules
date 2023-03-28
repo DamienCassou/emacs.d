@@ -350,10 +350,6 @@
 	build-step = borg-update-autoloads
 	build-step = make --directory=doc/ ivy.info
 	build-step = borg-makeinfo
-[submodule "ivy-mpdel"]
-	path = lib/ivy-mpdel
-	url = git@gitea.petton.fr/mpdel/ivy-mpdel.git
-	remote = "github git@github.com:DamienCassou/ivy-mpdel.git"
 [submodule "js2-mode"] # Improved Javascript editing mode
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git
