@@ -219,7 +219,6 @@ This is recommended by Vertico's README."
   :demand t
   :init
   (progn
-    (setq modus-themes-mode-line '(borderless))
     (setq modus-themes-bold-constructs t)
     (setq modus-themes-org-blocks 'greyscale)
     (setq modus-themes-italic-constructs t)
@@ -231,15 +230,9 @@ This is recommended by Vertico's README."
             (4 . (1.1))
             (t . ())))
 
-    (setq modus-themes-operandi-color-overrides
-          '((fg-window-divider-outer . "white")
-            (fg-window-divider-inner . "white")))
-
     (load-theme 'modus-operandi))
   :config
   (progn
-    (modus-themes-load-operandi)
-
     (with-eval-after-load 'pdf-tools
       ;; Configure PDF page colors. The code below comes from Modus
       ;; Info manual (Backdrop for pdf-tools (DIY)).
