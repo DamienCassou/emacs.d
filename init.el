@@ -760,6 +760,7 @@ This is recommended by Vertico's README."
     (ace-link-setup-default)))
 
 (use-package ispell
+  :disabled t
   :bind
   (("C-. d b" . ispell-buffer)
    ("C-. d f" . ispell-change-dictionary-to-french)
@@ -787,6 +788,7 @@ This is recommended by Vertico's README."
       (flyspell-buffer))))
 
 (use-package flyspell
+  :disabled t
   :bind (("C-. f b" . flyspell-buffer))
   :hook (text-mode . flyspell-mode)
   :init
@@ -796,6 +798,13 @@ This is recommended by Vertico's README."
   (progn
     (unbind-key "C-." flyspell-mode-map)
     (unbind-key "C-;" flyspell-mode-map)))
+
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode)
+  :bind ([remap ispell-word] . jinx-correct)
+  :init
+  (progn
+    (setq jinx-languages '("en_US.UTF-8" "fr_FR.UTF-8"))))
 
 (use-package checkdoc
   :init
