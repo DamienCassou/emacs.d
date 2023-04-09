@@ -1016,8 +1016,8 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
             (ledger-navigate-beginning-of-xact)
             (when (re-search-forward " .*$" (line-end-position)) ; skip date
               (replace-match " banque populaire prêt" t)
-              (forward-line 3)
-              (delete-region (point) (line-end-position))
+              (ledger-navigate-end-of-xact)
+              (delete-region (line-beginning-position) (line-end-position))
               (map-do
                (lambda (number-type number)
                  (when (> number 0)
