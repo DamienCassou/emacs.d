@@ -980,7 +980,7 @@ The returned value is of the form (:capital CAPITAL :insurance INSURANCE :intere
                            (group-n 2 (regexp number-regexp))
                            "E INT. "
                            (group-n 3 (regexp number-regexp))
-                           " COM. 0,00E")))
+                           (? " COM. 0,00E"))))
           (save-match-data
             (save-excursion
               (ledger-navigate-beginning-of-xact)
