@@ -804,7 +804,7 @@ This is recommended by Vertico's README."
   :bind ([remap ispell-word] . jinx-correct)
   :init
   (progn
-    (setq jinx-languages '("en_US.UTF-8" "fr_FR.UTF-8"))))
+    (setq jinx-languages "en fr")))
 
 (use-package checkdoc
   :init
