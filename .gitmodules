@@ -326,11 +326,6 @@
 [submodule "imenu-list"]
 	path = lib/imenu-list
 	url = https://github.com/bmag/imenu-list.git
-[submodule "indium"]
-	path = lib/indium
-	url = git@github.com/NicolasPetton/Indium.git
-	remote = "DamienCassou git@github.com/DamienCassou/Indium.git"
-	info-path = doc
 [submodule "info-colors"]
 	path = lib/info-colors
 	url = git@github.com:ubolonton/info-colors.git
