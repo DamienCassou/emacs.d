@@ -3,25 +3,20 @@
 # key: commits
 # --
 
-#+begin_src dot :file media-generated/git_$1.png
+#+begin_src dot :file media-generated/$1.png
   digraph {
     fontname="Gentium Plus Bold"
     node [penwidth=2,fontname="Gentium Plus Bold"]
-    edge [penwidth=2]
-    // REFERENCES
+    edge [penwidth=2,arrowsize=0.5]
     node [shape=plain] $0alice bob HEAD
-    // COMMITS
-    node [shape=circle] a [group=main] b [group=main] c
-    // PARENTING
+    node [shape=rectangle] a [group=main] b [group=main] c
     edge [arrowhead=open] b -> a c -> a
-    // HEAD
     edge [style=dashed] HEAD -> bob
-    // ASSIGNEMENTS
     edge [constraint=false] alice -> b bob -> c
   }
 #+end_src
 
-#+NAME: git_$1
+#+NAME: $1
 #+CAPTION: Description de ce qu'on voit
 #+RESULTS:
-[[file:media-generated/git_$1.png]]
+[[file:media-generated/$1.png]]
