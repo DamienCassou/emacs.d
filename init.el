@@ -800,7 +800,7 @@ This is recommended by Vertico's README."
     (unbind-key "C-;" flyspell-mode-map)))
 
 (use-package jinx
-  :hook (emacs-startup . global-jinx-mode)
+  :hook (text-mode . jinx-mode)
   :bind ([remap ispell-word] . jinx-correct)
   :init
   (progn
