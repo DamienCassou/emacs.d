@@ -23,9 +23,6 @@
 [submodule "all-the-icons-completion"]
 	path = lib/all-the-icons-completion
 	url = git@github.com:iyefrat/all-the-icons-completion.git
-[submodule "amx"]
-	path = lib/amx
-	url = git@github.com:DarwinAwardWinner/amx.git
 [submodule "anaphora"]
 	path = lib/anaphora
 	url = git@github.com:rolandwalker/anaphora.git
