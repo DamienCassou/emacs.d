@@ -63,9 +63,6 @@
 [submodule "bui"]
 	path = lib/bui
 	url = git@github.com:alezost/bui.el.git
-[submodule "build-farm"]
-	path = lib/build-farm
-	url = git@github.com:alezost/build-farm.el.git
 [submodule "buttercup"]
 	path = lib/buttercup
 	url = git@github.com:jorgenschaefer/emacs-buttercup.git
@@ -424,9 +421,6 @@
 	path = lib/magit
 	url = git@github.com:magit/magit.git
 	info-path = docs
-[submodule "magit-popup"]
-	path = lib/magit-popup
-	url = git@github.com:magit/magit-popup.git
 [submodule "magit-tbdiff"]
 	path = lib/magit-tbdiff
 	url = git@github.com:magit/magit-tbdiff.git
