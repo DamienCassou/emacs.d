@@ -23,18 +23,9 @@
 [submodule "all-the-icons-completion"]
 	path = lib/all-the-icons-completion
 	url = git@github.com:iyefrat/all-the-icons-completion.git
-[submodule "anaphora"]
-	path = lib/anaphora
-	url = git@github.com:rolandwalker/anaphora.git
 [submodule "ansi"]
 	path = lib/ansi
 	url = git@github.com:rejeep/ansi.el.git
-[submodule "apiwrap"]
-	path = lib/apiwrap
-	url = git@github.com:vermiculus/apiwrap.el.git
-[submodule "ascii-art-to-unicode"]
-	path = lib/ascii-art-to-unicode
-	url = git@github.com:emacsmirror/ascii-art-to-unicode.git
 [submodule "assess"] # library to facilitate test writing
 	path = lib/assess
 	url = git@github.com:phillord/assess.git
