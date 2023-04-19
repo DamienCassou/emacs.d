@@ -1,11 +1,5 @@
 ;;; init.el --- user-init-file                    -*- lexical-binding: t; -*-
 
-(dolist (path load-path)
-  (when (string-match-p "/nix/store/[a-z0-9]\\{32\\}-emacs-packages-deps.*" path)
-    (dolist (autoload-file (directory-files path t "-autoloads.el"))
-      (with-demoted-errors "init.el error: %s"
-        (load autoload-file nil t)))))
-
 (add-to-list 'load-path (locate-user-emacs-file "misc"))
 
 (setq load-prefer-newer t)
