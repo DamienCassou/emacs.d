@@ -113,7 +113,7 @@
 	url = git@git.sr.ht:~protesilaos/denote
 [submodule "desktop-environment"]
 	path = lib/desktop-environment
-	url = git@gitea.petton.fr/DamienCassou/desktop-environment.git
+	url = git@github.com:DamienCassou/desktop-environment.git
 [submodule "diff-hl"] # shows git status in buffer's fringe
 	path = lib/diff-hl
 	url = git@github.com:dgutov/diff-hl.git
@@ -256,7 +256,7 @@
 	url = git@github.com:alphapapa/frame-purpose.el.git
 [submodule "ftgp"]
 	path = lib/ftgp
-	url = git@gitea.petton.fr/ftgp/emacs.git
+	url = git@github.com:foretagsplatsen/emacs.git
 [submodule "ghub"]
 	path = lib/ghub
 	url = git@github.com:magit/ghub.git
@@ -357,7 +357,7 @@
 	url = git@github.com:iwahbe/jsonian.git
 [submodule "khardel"]
 	path = lib/khardel
-	url = git@gitea.petton.fr/DamienCassou/khardel.git
+	url = git@gitub.com:DamienCassou/khardel.git
 [submodule "know-your-http-well"]
 	path = lib/know-your-http-well
 	url = git@github.com:for-GET/know-your-http-well.git
@@ -414,7 +414,7 @@
 	url = git@github.com:magit/magit-tbdiff.git
 [submodule "makel"]
 	path = lib/makel
-	url = git@gitea.petton.fr:DamienCassou/makel.git
+	url = git@github.com:DamienCassou/makel.git
 [submodule "makem"]
 	path = lib/makem
 	url = https://github.com/alphapapa/makem.sh.git
@@ -469,7 +469,7 @@
 	url = git@github.com:rougier/nano-modeline.git
 [submodule "navigel"]
 	path = lib/navigel
-	url = git@gitea.petton.fr:DamienCassou/navigel.git
+	url = git@github.com:DamienCassou/navigel.git
 [submodule "netmacs"]
 	path = lib/netmacs
 	url = git@gitea.petton.fr:netmacs/netmacs.git
@@ -547,7 +547,6 @@
 [submodule "pass"] # Nicolas' major mode for password-store
 	path = lib/pass
 	url = git@github.com:NicolasPetton/pass.git
-	remote = "DamienCassou git@gitea.petton.fr/nico/pass.git"
 [submodule "password-store"] # get passwords from the 'pass' command
 	path = lib/password-store
 	url = git@github.com:emacsmirror/password-store.git
