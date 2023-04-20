@@ -652,7 +652,7 @@ This is recommended by Vertico's README."
                               ((string-match-p "foretagsplatsen/monitor" url) 22)
                               (t 10))))
           (require 'tmr)
-          (tmr minutes (format "Check draft %s" url)))))))
+          (tmr minutes (format "Check draft %s" url) t))))))
 
 (use-package forge-topic
   :init
