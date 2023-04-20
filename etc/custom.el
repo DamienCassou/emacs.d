@@ -25,37 +25,19 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((sh-shell . "bash")
+   '((eval and buffer-file-name
+           (not
+            (eq major-mode 'package-recipe-mode))
+           (or
+            (require 'package-recipe-mode nil t)
+            (let
+                ((load-path
+                  (cons "../package-build" load-path)))
+              (require 'package-recipe-mode nil t)))
+           (package-recipe-mode))
+     (sh-shell . "bash")
      (org-confirm-babel-evaluate)
      (graphviz-dot-indent-width . 2)
-     (eval when
-           (and
-            (buffer-file-name)
-            (not
-             (file-directory-p
-              (buffer-file-name)))
-            (string-match-p "^[^.]"
-                            (buffer-file-name)))
-           (unless
-               (require 'package-recipe-mode nil t)
-             (let
-                 ((load-path
-                   (cons "../package-build" load-path)))
-               (require 'package-recipe-mode)))
-           (unless
-               (derived-mode-p 'emacs-lisp-mode)
-             (emacs-lisp-mode))
-           (package-build-minor-mode)
-           (setq-local flycheck-checkers nil)
-           (set
-            (make-local-variable 'package-build-working-dir)
-            (expand-file-name "../working/"))
-           (set
-            (make-local-variable 'package-build-archive-dir)
-            (expand-file-name "../packages/"))
-           (set
-            (make-local-variable 'package-build-recipes-dir)
-            default-directory))
      (related-files-jumpers
       (recipe :remove-suffix ".js" :add-suffix "-tests.js" :add-directory "tests" :case-transformer uncapitalize)
       (recipe :remove-suffix ".js" :add-suffix "-tests.js" :add-directory "tests")
@@ -93,34 +75,6 @@
      (TeX-PDF-mode . t)
      (projectile-project-run-cmd . "mkdir -p build; cd build; cmake ..; make run")
      (projectile-project-compilation-cmd . "mkdir -p build; cd build; cmake ..; make")
-     (eval when
-           (and
-            (buffer-file-name)
-            (not
-             (file-directory-p
-              (buffer-file-name)))
-            (string-match-p "^[^.]"
-                            (buffer-file-name)))
-           (unless
-               (featurep 'package-build)
-             (let
-                 ((load-path
-                   (cons "../package-build" load-path)))
-               (require 'package-build)))
-           (unless
-               (derived-mode-p 'emacs-lisp-mode)
-             (emacs-lisp-mode))
-           (package-build-minor-mode)
-           (setq-local flycheck-checkers nil)
-           (set
-            (make-local-variable 'package-build-working-dir)
-            (expand-file-name "../working/"))
-           (set
-            (make-local-variable 'package-build-archive-dir)
-            (expand-file-name "../packages/"))
-           (set
-            (make-local-variable 'package-build-recipes-dir)
-            default-directory))
      (TeX-master . "geiser")
      (org-export-initial-scope . buffer)
      (org-id-link-to-org-use-id)
@@ -140,29 +94,6 @@
      (ledger-post-account-alignment-column . 2)
      (flycheck-ledger-pedantic . t)
      (git-commit-major-mode . git-commit-elisp-text-mode)
-     (eval when
-           (and
-            (buffer-file-name)
-            (file-regular-p
-             (buffer-file-name))
-            (string-match-p "^[^.]"
-                            (buffer-file-name)))
-           (unless
-               (featurep 'package-build)
-             (let
-                 ((load-path
-                   (cons "../package-build" load-path)))
-               (require 'package-build)))
-           (package-build-minor-mode)
-           (set
-            (make-local-variable 'package-build-working-dir)
-            (expand-file-name "../working/"))
-           (set
-            (make-local-variable 'package-build-archive-dir)
-            (expand-file-name "../packages/"))
-           (set
-            (make-local-variable 'package-build-recipes-dir)
-            default-directory))
      (eval add-hook 'before-save-hook #'time-stamp nil t)
      (eval add-hook 'before-save-hook #'time-stamp-target nil t)
      (electric-quote-mode . t)
