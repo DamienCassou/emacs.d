@@ -798,7 +798,7 @@ This is recommended by Vertico's README."
   :bind ([remap ispell-word] . jinx-correct)
   :init
   (progn
-    (setq jinx-languages "en fr")))
+    (setq jinx-languages "en_US fr_FR")))
 
 (use-package checkdoc
   :init
