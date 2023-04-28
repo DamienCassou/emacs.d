@@ -926,9 +926,6 @@ This is recommended by Vertico's README."
     (setq ledger-highlight-xact-under-point nil)
     (setq ledger-copy-transaction-insert-blank-line-after t)
 
-    (defvar my/ledger-rate-history (list)
-      "Keeps track of entered SEK/EUR rates.")
-
     (defun my/ledger-configure-outline-minor-mode ()
       "Configure a ledger buffer when `outline-minor-mode' is active."
       (font-lock-add-keywords 'ledger-mode outline-font-lock-keywords)
