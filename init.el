@@ -948,7 +948,7 @@ MOMENT is an encoded date."
           (goto-char (point-min))
           (search-forward heading)
           (forward-line)
-          (re-search-forward "^\\*\\*\\*" nil t)
+          (re-search-forward "; \\*\\*\\*" nil t)
           (goto-char (line-beginning-position)))))
 
     (advice-add #'ledger-xact-find-slot :override #'my/ledger-position-at-date)
