@@ -154,10 +154,7 @@ current."
        '((cursor-type bar . 5)
          (scroll-bar-width . 1)
          ;; The width in pixels of the frame’s internal border:
-         (internal-border-width . 10)
-         ;; large fringes to get hi-resolution flycheck marks:
-         (left-fringe    . 0)
-         (right-fringe   . 0)))
+         (internal-border-width . 10)))
 
       (window-divider-mode))
 
