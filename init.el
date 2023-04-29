@@ -1899,9 +1899,18 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (setq alert-default-style 'notifications)))
 
 (use-package diff-hl
-  :hook ((prog-mode . diff-hl-mode)
-         (magit-pre-refresh . diff-hl-magit-pre-refresh)
-         (magit-post-refresh . diff-hl-magit-post-refresh)))
+  :demand t
+  :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
+         (magit-post-refresh . diff-hl-magit-post-refresh)
+         (after-init . global-diff-hl-mode))
+  :init
+  (progn
+    (setq diff-hl-disable-on-remote t)))
+
+(use-package diff-hl-dired
+  :demand t
+  :after diff-hl
+  :hook ((dired-mode . diff-hl-dired-mode-unless-remote)))
 
 (use-package yasnippet
   :hook (((org-mode git-commit-mode css-mode) . yas-minor-mode))
