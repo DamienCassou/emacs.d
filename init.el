@@ -791,11 +791,50 @@ This is recommended by Vertico's README."
     (unbind-key "C-;" flyspell-mode-map)))
 
 (use-package jinx
-  :hook (text-mode . jinx-mode)
+  :hook ((text-mode . jinx-mode)
+         (jinx-mode . my/jinx-add-ispell-localwords))
   :bind ([remap ispell-word] . jinx-correct)
   :init
   (progn
-    (setq jinx-languages "en_US fr_FR")))
+    (setq jinx-languages "en_US fr_FR"))
+  :config
+  (progn
+    (defun my/jinx-ispell-localwords ()
+      "Return a string of ispell's local words.
+
+Those are the words following `ispell-words-keyword' (usually
+\"LocalWords\") in the current buffer."
+      (require 'ispell)
+      (let (result)
+        (save-excursion
+          (goto-char (point-min))
+          (while (search-forward ispell-words-keyword nil t)
+            (setq result (cons (string-trim (buffer-substring-no-properties (point) (line-end-position)))
+                               result))))
+        (mapconcat #'identity result " ")))
+
+    (defun my/jinx-add-ispell-localwords ()
+      "Add ispell's local words to `jinx-local-words'."
+      (let ((ispell-localwords (my/jinx-ispell-localwords)))
+        (setq jinx-local-words (concat jinx-local-words ispell-localwords))
+        (setq jinx--session-words (append jinx--session-words (split-string ispell-localwords)))))
+
+    (defun my/jinx-save-as-ispell-localword (save key word)
+      "Save WORD using ispell's `ispell-words-keyword'.
+If SAVE is non-nil save, otherwise format candidate given action KEY."
+      (if save
+          (progn
+            (ispell-add-per-file-word-list word)
+            (add-to-list 'jinx--session-words word)
+            (setq jinx-local-words
+                  (string-join
+                   (sort (delete-dups
+                          (cons word (split-string jinx-local-words)))
+                         #'string<)
+                   " ")))
+        (jinx--save-action key word "File")))
+
+    (map-put! jinx--save-keys ?* #'my/jinx-save-as-ispell-localword)))
 
 (use-package checkdoc
   :init
