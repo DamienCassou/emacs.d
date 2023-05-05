@@ -799,6 +799,14 @@ This is recommended by Vertico's README."
     (setq jinx-languages "en_US fr_FR"))
   :config
   (progn
+    (add-to-list 'jinx-include-faces
+                 (list 'ledger-mode 'ledger-font-comment-face))
+
+    (add-to-list 'jinx-include-faces
+                 (list 'js2-mode 'js2-jsdoc-value))
+
+    (add-to-list 'jinx-camel-modes 'js-mode)
+
     (defun my/jinx-ispell-localwords ()
       "Return a string of ispell's local words.
 
