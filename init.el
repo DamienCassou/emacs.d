@@ -2017,6 +2017,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (add-to-list 'firestarter-reporting-functions #'my/firestarter-alert)))
 
 (use-package vterm
+  :commands (vterm)
   :bind (
          ("C-M-'" . my/vterm-open-new)
          :map vterm-mode-map
