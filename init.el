@@ -791,7 +791,7 @@ This is recommended by Vertico's README."
     (unbind-key "C-;" flyspell-mode-map)))
 
 (use-package jinx
-  :hook ((text-mode . jinx-mode)
+  :hook ((emacs-startup . global-jinx-mode)
          (jinx-mode . my/jinx-add-ispell-localwords))
   :bind ([remap ispell-word] . jinx-correct)
   :init
