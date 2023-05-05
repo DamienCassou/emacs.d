@@ -330,6 +330,9 @@
 	build-step = borg-update-autoloads
 	build-step = make --directory=doc/ ivy.info
 	build-step = borg-makeinfo
+[submodule "jinx"]
+	path = lib/jinx
+	url = git@github.com:minad/jinx.git
 [submodule "js2-mode"] # Improved Javascript editing mode
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git
