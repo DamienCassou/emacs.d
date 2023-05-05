@@ -813,13 +813,11 @@ This is recommended by Vertico's README."
 Those are the words following `ispell-words-keyword' (usually
 \"LocalWords\") in the current buffer."
       (require 'ispell)
-      (let (result)
-        (save-excursion
-          (goto-char (point-min))
-          (while (search-forward ispell-words-keyword nil t)
-            (setq result (cons (string-trim (buffer-substring-no-properties (point) (line-end-position)))
-                               result))))
-        (mapconcat #'identity result " ")))
+      (save-excursion
+        (goto-char (point-min))
+        (cl-loop while (search-forward ispell-words-keyword nil t)
+                 collect (string-trim (buffer-substring-no-properties (point) (line-end-position))) into result
+                 finally return (mapconcat #'identity result " "))))
 
     (defun my/jinx-add-ispell-localwords ()
       "Add ispell's local words to `jinx-local-words'."
