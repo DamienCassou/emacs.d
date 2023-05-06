@@ -805,8 +805,6 @@ This is recommended by Vertico's README."
     (add-to-list 'jinx-include-faces
                  (list 'js2-mode 'js2-jsdoc-value))
 
-    (add-to-list 'jinx-camel-modes 'js-mode)
-
     (defun my/jinx-ispell-localwords ()
       "Return a string of ispell's local words.
 
