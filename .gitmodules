@@ -418,9 +418,6 @@
 [submodule "makel"]
 	path = lib/makel
 	url = git@github.com:DamienCassou/makel.git
-[submodule "makem"]
-	path = lib/makem
-	url = https://github.com/alphapapa/makem.sh.git
 [submodule "marginalia"]
 	path = lib/marginalia
 	url = git@github.com:minad/marginalia.git
