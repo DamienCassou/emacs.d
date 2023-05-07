@@ -1486,18 +1486,7 @@ user if the command is called with a prefix argument."
 
 (use-package combobulate
   :disabled t
-  :hook ((js2-mode . my/setup-combobulate))
-  :config
-  (progn
-    ;; Override weird defaults
-    (map-delete combobulate-setup-functions-alist 'js2-mode)
-    (dolist (mode '(js-mode js2-mode))
-      (map-put! tree-sitter-major-mode-language-alist mode 'javascript))
-
-    (defun my/setup-combobulate ()
-      (combobulate-mode)
-      (tree-sitter-mode)
-      (tree-sitter-hl-mode))))
+  :hook (js-ts-mode . combobulate-mode))
 
 (use-package elec-pair
   :demand t
