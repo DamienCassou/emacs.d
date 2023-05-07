@@ -25,7 +25,8 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((eval add-hook 'org-export-before-parsing-hook #'my-insert-shell-prompt)
+   '((vc-prepare-patches-separately)
+     (eval add-hook 'org-export-before-parsing-hook #'my-insert-shell-prompt)
      (eval defun my-insert-shell-prompt
            (_backend)
            "https://emacs.stackexchange.com/questions/44958/can-i-insert-a-prefix-to-org-babel-source-code-lines-on-export/44970#44970"
