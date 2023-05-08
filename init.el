@@ -1763,6 +1763,7 @@ negative, the password is inserted at point."
     (setq prodigy-completion-system 'default)))
 
 (use-package treesit-auto
+  :disabled t
   :demand t
   :hook (emacs-startup . global-treesit-auto-mode))
 
