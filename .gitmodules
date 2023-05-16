@@ -501,9 +501,6 @@
 [submodule "orderless"]
 	path = lib/orderless
 	url = git@github.com:oantolin/orderless.git
-[submodule "org"]
-	path = lib/org
-	url = git@github.com:emacsmirror/org.git
 [submodule "org-caldav"]
 	path = lib/org-caldav
 	url = git@github.com:dengste/org-caldav.git
