@@ -181,7 +181,8 @@ This is recommended by Vertico's README."
 (use-package isearch
   :init
   (progn
-    (setq isearch-allow-motion t)))
+    (setq isearch-allow-motion t)
+    (setq isearch-lazy-count t)))
 
 (use-package dabbrev
   :bind (("M-/" . nil)
