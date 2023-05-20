@@ -1937,6 +1937,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (setq alert-default-style 'notifications)))
 
 (use-package diff-hl
+  :disabled t
   :demand t
   :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
          (magit-post-refresh . diff-hl-magit-post-refresh)
