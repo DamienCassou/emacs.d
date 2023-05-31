@@ -435,7 +435,7 @@ This is recommended by Vertico's README."
 (use-package info-variable-pitch
   :hook ((Info-mode . info-variable-pitch-mode)))
 
-(use-package olivetty
+(use-package olivetti
   :hook (((Info-mode help-mode helpful-mode eww-mode) . olivetti-mode))
   :init
   (progn
