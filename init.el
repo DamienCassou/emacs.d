@@ -117,6 +117,18 @@ are visible."
   ;; (info "(embark) How does Embark call the actions?")
   (setq y-or-n-p-use-read-key t))
 
+(progn ; `buffer'
+  ;; Remove some information I don't need from the modeline:
+  (setq-default
+   mode-line-format
+   (cl-subst-if ""
+                (lambda (item) (or
+                                (eql item 'mode-line-mule-info)
+                                (eql item 'mode-line-client)
+                                (eql item 'mode-line-frame-identification)
+                                (and (consp item) (eql (car item) 'vc-mode))))
+                mode-line-format)))
+
 (use-package custom
   :demand t
   :config
@@ -269,7 +281,9 @@ This is recommended by Vertico's README."
     (setq eval-expression-print-length 20)
     (setq eval-expression-print-level 10)
     (setq next-error-message-highlight 'keep)
-    (setq set-mark-command-repeat-pop t))
+    (setq set-mark-command-repeat-pop t)
+    (setq line-number-mode nil)
+    (setq column-number-mode nil))
   :config
   (progn
     (defun my/join-line ()
@@ -316,6 +330,13 @@ This is recommended by Vertico's README."
   (progn
     (unless (or (daemonp) (server-running-p))
       (server-start))))
+
+(use-package elisp-mode
+  :hook (emacs-lisp-mode . my/elisp-mode-reduce-mode-name)
+  :config
+  (progn
+    (defun my/elisp-mode-reduce-mode-name ()
+      (setq-local mode-name "Elisp"))))
 
 (use-package minibuffer
   :bind (("M-/" . completion-at-point))
@@ -656,82 +677,6 @@ This is recommended by Vertico's README."
   :init
   (progn
     (setq forge-topic-list-limit '(60 . -1))))
-
-(use-package nano-modeline
-  :demand t
-  :init
-  (progn
-    ;; To give some more room to the buffer:
-    (with-eval-after-load "ispell"
-      (cl-incf ispell-choices-win-default-height))
-
-    (setq nano-modeline-position 'bottom)
-    (setq nano-modeline-mode-formats
-          '((vterm-mode             :mode-p nano-modeline-vterm-mode-p
-                                    :format my/nano-modeline-vterm-mode
-                                    :icon "") ;; nerd-font / oct-term
-            (calendar-mode          :mode-p nano-modeline-calendar-mode-p
-                                    :format nano-modeline-calendar-mode
-                                    :on-activate nano-modeline-calendar-activate
-                                    :on-inactivate nano-modeline-calendar-inactivate
-                                    :icon "") ;; nerd-font / oct-calendar
-            (info-mode              :mode-p nano-modeline-info-mode-p
-                                    :format nano-modeline-info-mode
-                                    :on-activate nano-modeline-info-activate
-                                    :on-inactivate nano-modeline-info-inactivate
-                                    :icon "") ;; nerd-font / oct-info
-            (org-agenda-mode        :mode-p nano-modeline-org-agenda-mode-p
-                                    :format nano-modeline-org-agenda-mode
-                                    :icon "") ;; nerd-font / oct-calendar
-            (org-capture-mode       :mode-p nano-modeline-org-capture-mode-p
-                                    :format nano-modeline-org-capture-mode
-                                    :on-activate nano-modeline-org-capture-activate
-                                    :on-inactivate nano-modeline-org-capture-inactivate
-                                    :icon "") ;; nerd-font / oct-calendar
-            (pdf-view-mode          :mode-p nano-modeline-pdf-view-mode-p
-                                    :format nano-modeline-pdf-view-mode
-                                    :icon "")))) ;; nerd-font/ oct-file-pdf
-  :config
-  (progn
-    (defun my/nano-modeline-vterm-mode ()
-      (nano-modeline-render
-       (plist-get (cdr (assoc 'vterm-mode nano-modeline-mode-formats)) :icon)
-       shell-file-name
-       (if vterm-copy-mode "(copy)" "")
-       (nano-modeline-shorten-directory default-directory 50)))
-
-    (defun my/nano-modeline-vc-branch ()
-      "Remove all VC information from the modeline."
-      nil)
-
-    (advice-add #'nano-modeline-vc-branch :override #'my/nano-modeline-vc-branch)
-
-    (defun my/nano-modeline-default-mode ()
-      (let ((buffer-name (or (and (buffer-file-name)
-                                  (nano-modeline-shorten-directory (buffer-file-name) 30))
-                             (buffer-name)))
-            (flytool-state (if (and (featurep 'flymake) flymake-mode flymake--state)
-                               (format-mode-line flymake-mode-line-format)
-                             ""))
-            (mode-name   (nano-modeline-mode-name))
-            (position    (format-mode-line "%l:%c")))
-        (nano-modeline-render (upcase  mode-name)
-                              buffer-name
-                              flytool-state
-                              position)))
-
-    (advice-add #'nano-modeline-default-mode :override #'my/nano-modeline-default-mode)
-
-    (setq nano-modeline-prefix 'icon)
-
-    (set-face-attribute 'nano-modeline-active-primary nil :background "#e4c340")
-    (set-face-attribute 'nano-modeline-active-status-** nil :background "#e4c340")
-
-    ;; https://github.com/rougier/nano-modeline/issues/36
-    (with-eval-after-load 'eldoc
-      (setq eldoc-message-function #'message))
-
-    (nano-modeline-mode)))
 
 (use-package vc-hooks
   :init
@@ -2104,7 +2049,6 @@ If PROJECT is nil, use `project-current'."
     (mpdel-embark-setup)))
 
 (use-package minions
-  :disabled t
   :demand t
   :config
   (progn
@@ -2246,6 +2190,13 @@ the buffer's filename."
 
 (use-package js
   :mode ("\\.[cm]js\\'" . javascript-mode))
+
+(use-package js2-mode
+  :hook (js2-mode . my/js2-mode-reduce-mode-name)
+  :config
+  (progn
+    (defun my/js2-mode-reduce-mode-name ()
+      (setq-local mode-name "JS2"))))
 
 (use-package xref-js2
   :init
