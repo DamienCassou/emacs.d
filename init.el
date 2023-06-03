@@ -118,6 +118,31 @@ are visible."
   (setq y-or-n-p-use-read-key t))
 
 (progn ; `buffer'
+  (defvar-local my/mode-line-buffer-status
+      '((:eval (cond (buffer-read-only "RO")
+                     ((buffer-modified-p) "**")
+                     (t "")))
+        " ")
+    "Return buffer's status: read-only or modified.")
+
+  (put 'my/mode-line-buffer-status 'risky-local-variable t)
+
+  (defvar-local my/mode-line-remote
+      '(:eval (if (stringp default-directory)
+                  (file-remote-p default-directory)
+                ""))
+    "Return the host if current buffer is remote, an empty string otherwise.")
+
+  (put 'my/mode-line-remote 'risky-local-variable t)
+
+  ;; Change buffer status to my own function to simplify output:
+  (setq-default mode-line-format
+                (cl-subst 'my/mode-line-buffer-status 'mode-line-modified mode-line-format))
+
+  ;; Change buffer remote info to my own function to simplify output:
+  (setq-default mode-line-format
+                (cl-subst 'my/mode-line-remote 'mode-line-remote mode-line-format))
+
   ;; Remove some information I don't need from the modeline:
   (setq-default
    mode-line-format
@@ -2053,6 +2078,26 @@ If PROJECT is nil, use `project-current'."
   :config
   (progn
     (minions-mode)))
+
+(use-package moody
+  :config
+  (progn
+    (setq x-underline-at-descent-line t)
+
+    ;; Add mode-line-position to mode-line-buffer-identification
+    (setq-default
+     moody-mode-line-buffer-identification
+     '(:eval (moody-tab (concat
+                         (car (propertized-buffer-identification (buffer-name)))
+                         " "
+                         (string-replace "%" "%%" (format-mode-line mode-line-position)))
+                        20 'down)))
+
+    ;; Remove mode-line-position from mode-line-format
+    (setq-default mode-line-format (cl-subst "" 'mode-line-position mode-line-format))
+
+    (moody-replace-mode-line-buffer-identification)
+    (moody-replace-mode-line-front-space)))
 
 (use-package ytdl
   :hook (ytdl-download-finished . my/ytdl-alert)
