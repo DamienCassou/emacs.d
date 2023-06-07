@@ -119,11 +119,13 @@ are visible."
 
 (progn ; `buffer'
   (defvar-local my/mode-line-buffer-status
-      '((:eval (cond (buffer-read-only "RO")
-                     ((buffer-modified-p) "**")
-                     (t "")))
-        " ")
-    "Return buffer's status: read-only or modified.")
+      '(buffer-file-name (:eval (cond (buffer-read-only "RO")
+                                      ((buffer-modified-p) "**")
+                                      (t ""))))
+    "Return buffer's status: read-only or modified.
+
+Only display something if the buffer is attached to a file and is
+either read only or modified.")
 
   (put 'my/mode-line-buffer-status 'risky-local-variable t)
 
