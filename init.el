@@ -977,11 +977,15 @@ MOMENT is an encoded date."
 The returned value is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST)."
       (cl-labels ((parse-number (string) (string-to-number (string-replace "," "." string))))
         (let* ((number-regexp (rx (1+ (any digit)) ?, (1+ (any digit))))
-               (regexp (rx "ECHEANCE PRET DONT CAP "
+               (regexp (rx "ECHEANCE PRET"
+                           (? " -")
+                           " DONT CAP "
                            (group-n 1 (regexp number-regexp))
                            " ASS. "
                            (group-n 2 (regexp number-regexp))
-                           "E INT. "
+                           "E"
+                           (? " -")
+                           " INT. "
                            (group-n 3 (regexp number-regexp))
                            (? " COM. 0,00E"))))
           (save-match-data
