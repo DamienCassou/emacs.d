@@ -307,8 +307,7 @@ This is recommended by Vertico's README."
     (setq eval-expression-print-level 10)
     (setq next-error-message-highlight 'keep)
     (setq set-mark-command-repeat-pop t)
-    (setq line-number-mode nil)
-    (setq column-number-mode nil))
+    (setq line-number-mode nil))
   :config
   (progn
     (defun my/join-line ()
@@ -330,7 +329,7 @@ This is recommended by Vertico's README."
           (org-do-remove-indentation)
           (kill-new (buffer-string)))))
 
-    (column-number-mode)
+    (column-number-mode -1)
 
     ;; Hide commands in M-x which do not work in the current mode.
     (setq read-extended-command-predicate
