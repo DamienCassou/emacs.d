@@ -2085,6 +2085,7 @@ If PROJECT is nil, use `project-current'."
     (minions-mode)))
 
 (use-package moody
+  :demand t
   :config
   (progn
     (setq x-underline-at-descent-line t)
