@@ -119,8 +119,8 @@ are visible."
 
 (progn ; `buffer'
   (defvar-local my/mode-line-buffer-status
-      '(buffer-file-name (:eval (cond (buffer-read-only "RO")
-                                      ((buffer-modified-p) "**")
+      '(buffer-file-name (:eval (cond (buffer-read-only "RO ")
+                                      ((buffer-modified-p) "** ")
                                       (t ""))))
     "Return buffer's status: read-only or modified.
 
@@ -2078,11 +2078,15 @@ If PROJECT is nil, use `project-current'."
 
 (use-package minions
   :demand t
+  :init
+  (progn
+    (setq minions-mode-line-delimiters nil))
   :config
   (progn
     (minions-mode)))
 
 (use-package moody
+  :disabled t
   :demand t
   :config
   (progn
