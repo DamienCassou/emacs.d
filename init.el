@@ -191,9 +191,7 @@ current."
       (setq frame-title-format "Emacs")
       (modify-all-frames-parameters
        '((cursor-type bar . 5)
-         (scroll-bar-width . 1)
-         ;; The width in pixels of the frame’s internal border:
-         (internal-border-width . 10)))
+         (scroll-bar-width . 1)))
 
       (window-divider-mode))
 
@@ -2550,6 +2548,12 @@ targets."
   :config
   (progn
     (fontaine-set-preset 'large)))
+
+(use-package spacious-padding
+  :demand t
+  :config
+  (progn
+    (spacious-padding-mode)))
 
 (use-package ligature
   :demand t

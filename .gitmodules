@@ -615,6 +615,10 @@
 [submodule "sourcemap"]
 	path = lib/sourcemap
 	url = git@github.com:syohex/emacs-sourcemap.git
+[submodule "spacious-padding"]
+	path = lib/spacious-padding
+	url = https://git.sr.ht/~protesilaos/spacious-padding
+	branch = main
 [submodule "spinner"]
 	path = lib/spinner
 	url = git@github.com:Malabarba/spinner.el.git
