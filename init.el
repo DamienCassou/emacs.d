@@ -873,6 +873,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
     (setq flycheck-emacs-lisp-load-path 'inherit)))
 
 (use-package flycheck-hledger
+  :disabled t
   :after (flycheck ledger-mode)
   :demand t
   :init
@@ -1030,6 +1031,12 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
                numbers)
               (delete-backward-char 1) ; remove additional newline
               (ledger-post-align-dwim))))))))
+
+(use-package flymake-hledger
+  :config
+  (progn
+    (dolist (check '("ordereddates" "payees" "recentassertions" "tags"))
+      (add-to-list 'flymake-hledger-checks check))))
 
 (use-package ledger-complete
   :init
