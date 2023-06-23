@@ -202,6 +202,13 @@ current."
   (progn
     (setq switch-to-buffer-obey-display-actions t)))
 
+(use-package emacs-gc-stats
+  :demand t
+  :config
+  (progn
+    (setq emacs-gc-stats-gc-defaults 'emacs-defaults)
+    (emacs-gc-stats-mode +1)))
+
 (use-package ffap
   :config
   (progn
