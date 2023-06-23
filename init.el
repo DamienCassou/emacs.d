@@ -2094,7 +2094,11 @@ If PROJECT is nil, use `project-current'."
   :demand t
   :init
   (progn
-    (setq minions-mode-line-delimiters nil))
+    (setq minions-mode-line-delimiters nil)
+
+    ;; Always show flymake-mode as this is where flymake report
+    ;; problems:
+    (setq minions-prominent-modes '(flymake-mode)))
   :config
   (progn
     (minions-mode)))
