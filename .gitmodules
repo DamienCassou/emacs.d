@@ -165,6 +165,9 @@
 [submodule "elisp-refs"]
 	path = lib/elisp-refs
 	url = git@github.com:Wilfred/refs.el.git
+[submodule "emacs-gc-stats"]
+	path = lib/emacs-gc-stats
+	url = https://github.com/emacsmirror/emacs-gc-stats
 [submodule "embark"]
 	path = lib/embark
 	url = git@github.com:oantolin/embark.git
@@ -227,6 +230,9 @@
 [submodule "flymake-eslint"]
 	path = lib/flymake-eslint
 	url = git@github.com:orzechowskid/flymake-eslint.git
+[submodule "flymake-hledger"]
+	path = lib/flymake-hledger
+	url = git@github.com:DamienCassou/flymake-hledger.git
 [submodule "flyspell-correct"]
 	path = lib/flyspell-correct
 	url = git@github.com:d12frosted/flyspell-correct.git
