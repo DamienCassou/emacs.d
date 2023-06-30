@@ -1043,6 +1043,9 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
 (use-package flymake-hledger
   :config
   (progn
+    ;; Enable 4 optional checks. See URL
+    ;; https://hledger.org/1.30/hledger.html#check for the meaning of
+    ;; each check and a list of all of them.
     (dolist (check '("ordereddates" "payees" "recentassertions" "tags"))
       (add-to-list 'flymake-hledger-checks check))))
 
