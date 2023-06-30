@@ -495,6 +495,9 @@
 [submodule "ob-mermaid"]
 	path = lib/ob-mermaid
 	url = git@github.com:arnm/ob-mermaid.git
+[submodule "ob-racket"]
+	path = lib/ob-racket
+	url = git@github.com:hasu/emacs-ob-racket.git
 [submodule "olivetti"] # add large margins around text to ease reading
 	path = lib/olivetti
 	url = git@github.com:rnkn/olivetti.git
@@ -582,6 +585,9 @@
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
 	remote = "DamienCassou git@github.com:DamienCassou/projectile.git"
+[submodule "racket-mode"]
+	path = lib/racket-mode
+	url = https://github.com/greghendershott/racket-mode
 [submodule "rainbow-identifiers"]
 	path = lib/rainbow-identifiers
 	url = git@github.com:Fanael/rainbow-identifiers.git
@@ -612,6 +618,9 @@
 [submodule "shut-up"]
 	path = lib/shut-up
 	url = git@github.com:cask/shut-up.git
+[submodule "sicp"]
+	path = lib/sicp
+	url = https://github.com/webframp/sicp-info
 [submodule "snapshot-timemachine"]
 	path = lib/snapshot-timemachine
 	url = git@github.com:mrBliss/snapshot-timemachine.git

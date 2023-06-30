@@ -2589,6 +2589,13 @@ targets."
   ;; it per mode with `ligature-mode'.
   (global-ligature-mode t))
 
+(use-package racket
+  :hook (racket-mode . enable-paredit-mode))
+
+(use-package ob-racket
+  :demand t
+  :after (org racket-mode))
+
 (use-package meow
   :disabled t
   :config
