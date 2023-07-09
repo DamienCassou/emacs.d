@@ -677,14 +677,6 @@
 [submodule "unify-opening"]
 	path = lib/unify-opening
 	url = git@github.com:DamienCassou/unify-opening.git
-[submodule "use-package"] # to structure my init.el file
-	path = lib/use-package
-	url = git@github.com:jwiegley/use-package.git
-	remote = "DamienCassou git@github.com:DamienCassou/use-package"
-	build-step = borg-update-autoloads
-	build-step = borg-compile
-	build-step = make -f Makefile.doc texi DOC_LOAD_PATH='--directory ~/.emacs.d/misc --directory ~/.emacs.d/lib/ox-texinfo+'
-	build-step = borg-makeinfo
 [submodule "verb"]
 	path = lib/verb
 	url = git@github.com:federicotdn/verb.git
