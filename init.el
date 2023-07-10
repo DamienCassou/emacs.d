@@ -484,6 +484,10 @@ This is recommended by Vertico's README."
          :map Info-mode-map
          ("C-c C-o" . Info-follow-nearest-node)))
 
+(use-package man
+  :init
+  (progn
+    (setq Man-notify-method 'aggressive)))
 
 (use-package info-variable-pitch
   :hook ((Info-mode . info-variable-pitch-mode)))
