@@ -1730,7 +1730,7 @@ negative, the password is inserted at point."
     (setq nameless-prefix "…")))
 
 (use-package epithet
-  :hook (((Info-selection eww-after-render help-mode occur-mode shell-mode)
+  :hook (((Info-selection eww-after-render help-mode occur shell-mode)
           .
           epithet-rename-buffer)
          (compilation-start . epithet-rename-buffer-ignoring-arguments))
