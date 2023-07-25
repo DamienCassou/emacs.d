@@ -210,6 +210,7 @@ current."
       (advice-add fn :after #'my/window-balance-windows))))
 
 (use-package emacs-gc-stats
+  :disabled t
   :demand t
   :config
   (progn
