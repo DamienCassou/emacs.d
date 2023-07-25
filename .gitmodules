@@ -348,7 +348,7 @@
 	url = git@github.com:DamienCassou/json-navigator.git
 [submodule "json-process-client"]
 	path = lib/json-process-client
-	url = git@gitea.petton.fr:nico/json-process-client.git
+	url = git@github.com:DamienCassou/json-process-client.git
 [submodule "json-reformat"]
 	path = lib/json-reformat
 	url = git@github.com:gongo/json-reformat.git
