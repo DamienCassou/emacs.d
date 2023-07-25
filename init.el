@@ -200,7 +200,14 @@ current."
 (use-package window
   :init
   (progn
-    (setq switch-to-buffer-obey-display-actions t)))
+    (setq switch-to-buffer-obey-display-actions t)
+
+    (defun my/window-balance-windows (&rest args)
+      "Same as `balance-windows' but ignores arguments."
+      (balance-windows))
+
+    (seq-doseq (fn (list #'split-window #'delete-window))
+      (advice-add fn :after #'my/window-balance-windows))))
 
 (use-package emacs-gc-stats
   :demand t
