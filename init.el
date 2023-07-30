@@ -1070,7 +1070,7 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
   :hook ((ledger-import-finished . my/ledger-import-finish))
   :config
   (progn
-    (setq ledger-import-boobank-import-from-date "2023-03-15")
+    (setq ledger-import-boobank-import-from-date "2023-07-29")
     (setq ledger-import-autosync-command
           '("hledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
