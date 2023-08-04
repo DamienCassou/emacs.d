@@ -1955,7 +1955,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :hook ((dired-mode . diff-hl-dired-mode-unless-remote)))
 
 (use-package yasnippet
-  :hook (((org-mode git-commit-mode css-mode) . yas-minor-mode))
+  :hook (((org-mode git-commit-mode css-mode prog-mode) . yas-minor-mode))
   :config
   (progn
     (yas-reload-all)))
