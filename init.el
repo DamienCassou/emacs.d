@@ -166,6 +166,9 @@ either read only or modified.")
   :init
   (setq edebug-print-length 5000))
 
+(use-package executable
+  :hook (after-save . executable-make-buffer-file-executable-if-script-p))
+
 (use-package frame
   :bind (("C-x C-z" . my/suspend-on-tty-only))
   :init
