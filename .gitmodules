@@ -729,6 +729,3 @@
 [submodule "ytdl"]
 	path = lib/ytdl
 	url = git@gitlab.com:tuedachu/ytdl.git
-[submodule "zoom-frm"] # change font size for all buffers <C-x C-+>
-	path = lib/zoom-frm
-	url = git@github.com:emacsmirror/zoom-frm.git

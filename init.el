@@ -197,6 +197,12 @@ current."
 
     (my/setup-frame)))
 
+(use-package face-remap
+  :bind (("C-x C-+" . global-text-scale-adjust)
+         ("C-x C--" . global-text-scale-adjust)
+         ("C-x C-=" . global-text-scale-adjust)
+         ("C-x C-0" . global-text-scale-adjust)))
+
 (use-package window
   :init
   (progn
@@ -1499,6 +1505,7 @@ user if the command is called with a prefix argument."
     (electric-pair-mode)))
 
 (use-package zoom-frm
+  :disabled t
   :bind (("C-x C-+" . zoom-in/out)
          ("C-x C--" . zoom-in/out)
          ("C-x C-=" . zoom-in/out)
