@@ -1976,8 +1976,8 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 (use-package compile
   :hook (compilation-filter . ansi-color-compilation-filter))
 
-(use-package duplicate-thing
-  :bind (("M-D" . duplicate-thing)))
+(use-package misc
+  :bind (("M-D" . duplicate-dwim)))
 
 (use-package embrace
   :bind (("C-. ," . embrace-commander))

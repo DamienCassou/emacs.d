@@ -135,9 +135,6 @@
 [submodule "dumb-jump"]
 	path = lib/dumb-jump
 	url = git@github.com:jacktasia/dumb-jump.git
-[submodule "duplicate-thing"] # M-D to duplicate thing at point
-	path = lib/duplicate-thing
-	url = git@github.com:ongaeshi/duplicate-thing.git
 [submodule "dwim-shell-command"]
 	path = lib/dwim-shell-command
 	url = git@github.com:xenodium/dwim-shell-command.git
