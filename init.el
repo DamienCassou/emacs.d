@@ -33,11 +33,9 @@
   :init
   (progn
     (setq auto-compile-display-buffer nil)
-    (setq auto-compile-mode-line-counter t)
     (setq auto-compile-source-recreate-deletes-dest t)
     (setq auto-compile-toggle-deletes-nonlib-dest t)
-    (setq auto-compile-update-autoloads t)
-    (setq auto-compile-use-mode-line nil))
+    (setq auto-compile-update-autoloads t))
   :hook (auto-compile-inhibit-compile . auto-compile-inhibit-compile-detached-git-head)
   :config
   (progn
