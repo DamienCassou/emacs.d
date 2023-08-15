@@ -390,7 +390,13 @@ This is recommended by Vertico's README."
   :init
   (progn
     (setq read-file-name-completion-ignore-case t)
-    (setq completions-detailed t)))
+    (setq completions-detailed t))
+  :config
+  (progn
+    (dolist (regexp '())
+      (add-to-list 'inhibit-message-regexps regexp nil #'string=))
+    (add-to-list 'set-message-functions #'set-multi-message)
+    (add-to-list 'set-message-functions #'inhibit-message)))
 
 (use-package saveplace
   :demand t
