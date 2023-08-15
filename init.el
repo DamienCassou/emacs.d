@@ -391,7 +391,7 @@ This is recommended by Vertico's README."
     (setq completions-detailed t))
   :config
   (progn
-    (dolist (regexp '())
+    (dolist (regexp '("File .* removed from the recentf list"))
       (add-to-list 'inhibit-message-regexps regexp nil #'string=))
     (add-to-list 'set-message-functions #'set-multi-message)
     (add-to-list 'set-message-functions #'inhibit-message)))
