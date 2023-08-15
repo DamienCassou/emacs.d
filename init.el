@@ -414,6 +414,9 @@ This is recommended by Vertico's README."
   (progn
     (winner-mode)))
 
+(use-package apropos
+  :hook (apropos-mode . outline-minor-mode))
+
 (use-package buffer-mode
   :bind (("C-S-<up>" . buf-move-up)
          ("C-S-<down>" . buf-move-down)
