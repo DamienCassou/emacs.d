@@ -313,8 +313,6 @@ This is recommended by Vertico's README."
 (use-package simple
   :demand t
   :bind (("M-j" . my/join-line)
-         ;; Replace `just-one-space' by the more advanced `cycle-spacing'.
-         ("M-SPC" . cycle-spacing)
          ("C-x a" . beginning-of-buffer)
          ("M-<" . nil)
          ("C-x e" . end-of-buffer)
