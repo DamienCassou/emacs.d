@@ -799,11 +799,6 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
 
     (map-put! jinx--save-keys ?* #'my/jinx-save-as-ispell-localword)))
 
-(use-package checkdoc
-  :init
-  (progn
-    (setq checkdoc-spellcheck-documentation-flag t)))
-
 (use-package eldoc
   :init
   (progn
