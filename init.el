@@ -1505,18 +1505,6 @@ user if the command is called with a prefix argument."
   (progn
     (electric-pair-mode)))
 
-(use-package zoom-frm
-  :disabled t
-  :bind (("C-x C-+" . zoom-in/out)
-         ("C-x C--" . zoom-in/out)
-         ("C-x C-=" . zoom-in/out)
-         ("C-x C-0" . zoom-in/out)
-         ("<C-mouse-4>" . zoom-in)
-         ("<C-mouse-5>" . zoom-out))
-  :init
-  (progn
-    (setq zoom-frame/buffer 'frame)))
-
 (use-package paren
   :demand t
   :init
