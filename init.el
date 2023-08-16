@@ -1422,10 +1422,6 @@ user if the command is called with a prefix argument."
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
-(use-package combobulate
-  :disabled t
-  :hook (js-ts-mode . combobulate-mode))
-
 (use-package elec-pair
   :demand t
   :config
@@ -1691,11 +1687,6 @@ negative, the password is inserted at point."
   :init
   (progn
     (setq prodigy-completion-system 'default)))
-
-(use-package treesit-auto
-  :disabled t
-  :demand t
-  :hook (emacs-startup . global-treesit-auto-mode))
 
 (use-package finsit-core
   :config
