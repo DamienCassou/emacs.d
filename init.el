@@ -1519,6 +1519,9 @@ user if the command is called with a prefix argument."
 
 (use-package paren
   :demand t
+  :init
+  (progn
+    (setq show-paren-context-when-offscreen t))
   :config
   (progn
     (show-paren-mode)))
