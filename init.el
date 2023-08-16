@@ -1457,18 +1457,9 @@ user if the command is called with a prefix argument."
           ("C-c C-o" . shr-browse-url))))
 
 (use-package mml
-  :config
+  :init
   (progn
-    ;; http://mbork.pl/2015-11-28_Fixing_mml-attach-file_using_advice
-    (defun my:mml-attach-file--go-to-eob (orig-fun &rest args)
-      "Go to the end of buffer before attaching files."
-      (save-excursion
-        (save-restriction
-          (widen)
-          (goto-char (point-max))
-          (apply orig-fun args))))
-
-    (advice-add 'mml-attach-file :around #'my:mml-attach-file--go-to-eob)))
+    (setq mml-attach-file-at-the-end t)))
 
 (use-package message
   :init
