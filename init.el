@@ -1660,8 +1660,13 @@ negative, the password is inserted at point."
     (setq nameless-affect-indentation-and-filling nil)
     (setq nameless-prefix "…")))
 
+(use-package eww
+  :init
+  (progn
+    (setq eww-auto-rename-buffer 'title)))
+
 (use-package epithet
-  :hook (((Info-selection eww-after-render help-mode occur shell-mode)
+  :hook (((Info-selection help-mode occur shell-mode)
           .
           epithet-rename-buffer)
          (compilation-start . epithet-rename-buffer-ignoring-arguments))
