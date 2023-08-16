@@ -851,27 +851,6 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
     ;; log*.
     (remove-hook 'flymake-diagnostic-functions #'flymake-proc-legacy-flymake)))
 
-(use-package flycheck
-  :init
-  (progn
-    (setq flycheck-emacs-lisp-load-path 'inherit)))
-
-(use-package flycheck-hledger
-  :disabled t
-  :after (flycheck ledger-mode)
-  :demand t
-  :init
-  (progn
-    (setq flycheck-hledger-strict t)
-    (setq flycheck-hledger-checks '("payees" "ordereddates" "recentassertions"))))
-
-(use-package flycheck-package
-  :demand t
-  :after flycheck
-  :config
-  (progn
-    (flycheck-package-setup)))
-
 (use-package ledger-mode
   :hook (ledger-mode . my/configure-ledger-mode)
   :mode "\\.hledger\\'"
@@ -1806,7 +1785,6 @@ This should be used as an override of `finsit-js-tern-setup'.")
               :override #'my/finsit-js-tern-setup))
 
 (use-package finsit-js-flycheck
-  :disabled t
   :config
   (defun my/finsit-js-flycheck-setup ()
     "Prevent configuring `flycheck-mode'.
@@ -2366,12 +2344,6 @@ prefix arg was used."
       (if globalp
           (consult-global-mark)
         (consult-mark)))))
-
-(use-package consult-flycheck
-  :after (consult flycheck)
-  :bind (
-         :map flycheck-command-map
-         ("l" . consult-flycheck)))
 
 (use-package consult-flymake
   :after (consult flymake)

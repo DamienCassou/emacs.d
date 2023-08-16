@@ -80,9 +80,6 @@
 	path = lib/consult
 	url = git@github.com:minad/consult.git
 	branch = main
-[submodule "consult-flycheck"]
-	path = lib/consult-flycheck
-	url = git@github.com:minad/consult-flycheck.git
 [submodule "counsel-jq"]
 	path = lib/counsel-jq
 	url = https://github.com/200ok-ch/counsel-jq.git
@@ -215,12 +212,6 @@
 	path = lib/flycheck
 	url = git@github.com:flycheck/flycheck.git
 	remote = "DamienCassou git@github.com:DamienCassou/flycheck.git"
-[submodule "flycheck-hledger"]
-	path = lib/flycheck-hledger
-	url = git@github.com:DamienCassou/flycheck-hledger.git
-[submodule "flycheck-package"] # checks elisp package metadata
-	path = lib/flycheck-package
-	url = git@github.com:purcell/flycheck-package.git
 [submodule "flymake-eslint"]
 	path = lib/flymake-eslint
 	url = git@github.com:orzechowskid/flymake-eslint.git
