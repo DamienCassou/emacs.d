@@ -539,16 +539,6 @@ This is recommended by Vertico's README."
   (progn
     (lin-global-mode)))
 
-(use-package undo-tree
-  :disabled t
-  :demand t
-  :config
-  (progn
-    (global-undo-tree-mode)
-    (setq undo-tree-auto-save-history nil)
-    (setq undo-tree-enable-undo-in-region t)
-    (define-key undo-tree-map (kbd "C-x r") nil)))
-
 (use-package vundo
   :bind ("C-x u" . vundo)
   :hook ((vundo-mode . my/vundo-setup))
