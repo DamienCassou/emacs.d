@@ -40,7 +40,8 @@
   :config
   (progn
     (auto-compile-on-load-mode)
-    (auto-compile-on-save-mode)))
+    (auto-compile-on-save-mode)
+    (auto-compile-use-mode-line-set nil nil)))
 
 (use-package no-littering
   :demand t)
