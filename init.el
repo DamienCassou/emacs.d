@@ -1004,6 +1004,14 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
     (dolist (check '("ordereddates" "payees" "recentassertions" "tags"))
       (add-to-list 'flymake-hledger-checks check))))
 
+(use-package package-lint
+  :after (flymake)
+  :hook (emacs-lisp-mode . my/package-lint-flymake-setup)
+  :config
+  (progn
+    (defun my/package-lint-flymake-setup ()
+      (add-hook 'flymake-diagnostic-functions #'package-lint-flymake nil t))))
+
 (use-package ledger-complete
   :init
   (progn
