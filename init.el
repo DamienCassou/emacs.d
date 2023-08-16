@@ -320,6 +320,7 @@ This is recommended by Vertico's README."
          ("M->" . nil)
          ([remap yank-pop] . yank-from-kill-ring)
          ("C-_" . nil) ;; force me to use C-/ to undo
+         ("C-. s" . scratch-buffer)
          :map process-menu-mode-map
          ("k" . process-menu-delete-process))
   :init
