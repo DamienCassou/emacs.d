@@ -108,9 +108,6 @@
 [submodule "desktop-environment"]
 	path = lib/desktop-environment
 	url = git@github.com:DamienCassou/desktop-environment.git
-[submodule "diff-hl"] # shows git status in buffer's fringe
-	path = lib/diff-hl
-	url = git@github.com:dgutov/diff-hl.git
 [submodule "dired-du"]
 	path = lib/dired-du
 	url = git@github.com:emacsmirror/dired-du.git
@@ -199,9 +196,6 @@
 [submodule "feature-mode"] # major mode for editing feature files
 	path = lib/feature-mode
 	url = git@github.com:michaelklishin/cucumber.el.git
-[submodule "firestarter"]
-	path = lib/firestarter
-	url = git@github.com:wasamasa/firestarter.git
 [submodule "flx"] # used by ivy
 	path = lib/flx
 	url = git@github.com:lewang/flx.git
@@ -434,9 +428,6 @@
 [submodule "moldable-emacs"]
 	path = lib/moldable-emacs
 	url = git@github.com:ag91/moldable-emacs.git
-[submodule "moody"]
-	path = lib/moody
-	url = https://github.com/tarsius/moody
 [submodule "mpdel"]
 	path = lib/mpdel
 	url = git@github.com:DamienCassou/mpdel.git

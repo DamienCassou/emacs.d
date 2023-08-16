@@ -1852,16 +1852,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   (progn
     (setq alert-default-style 'notifications)))
 
-(use-package diff-hl
-  :disabled t
-  :demand t
-  :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-         (magit-post-refresh . diff-hl-magit-post-refresh)
-         (after-init . global-diff-hl-mode))
-  :init
-  (progn
-    (setq diff-hl-disable-on-remote t)))
-
 (use-package diff-hl-dired
   :demand t
   :after diff-hl
@@ -1901,30 +1891,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   (progn
     (setq send-mail-function 'smtpmail-send-it)
     (setq sendmail-program "msmtp")))
-
-(use-package firestarter
-  :disabled t
-  :hook (prog-mode . firestarter-mode)
-  :init
-  (progn
-    (setq firestarter-default-type 'failure)
-    (setq firestarter-auto-kill t))
-  :config
-  (progn
-    (defun my/firestarter-alert (process)
-      "Alert the user based on PROCESS termination."
-      (let ((return-code (process-exit-status process))
-            (buffer-name (process-get process 'buffer-name))
-            (output (process-get process 'output))
-            end)
-        (cl-case return-code
-          (0 (alert "success"
-                    :title "firestarter"))
-          (otherwise (alert output
-                            :title "firestarter"
-                            :severity 'urgent)))))
-
-    (add-to-list 'firestarter-reporting-functions #'my/firestarter-alert)))
 
 (use-package vterm
   :commands (vterm)
@@ -2031,28 +1997,6 @@ If PROJECT is nil, use `project-current'."
   :config
   (progn
     (minions-mode)))
-
-(use-package moody
-  :disabled t
-  :demand t
-  :config
-  (progn
-    (setq x-underline-at-descent-line t)
-
-    ;; Add mode-line-position to mode-line-buffer-identification
-    (setq-default
-     moody-mode-line-buffer-identification
-     '(:eval (moody-tab (concat
-                         (car (propertized-buffer-identification (buffer-name)))
-                         " "
-                         (string-replace "%" "%%" (format-mode-line mode-line-position)))
-                        20 'down)))
-
-    ;; Remove mode-line-position from mode-line-format
-    (setq-default mode-line-format (cl-subst "" 'mode-line-position mode-line-format))
-
-    (moody-replace-mode-line-buffer-identification)
-    (moody-replace-mode-line-front-space)))
 
 (use-package ytdl
   :hook (ytdl-download-finished . my/ytdl-alert)
