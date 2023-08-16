@@ -737,34 +737,6 @@ This is recommended by Vertico's README."
   (progn
     (ace-link-setup-default)))
 
-(use-package ispell
-  :disabled t
-  :bind
-  (("C-. d b" . ispell-buffer)
-   ("C-. d f" . ispell-change-dictionary-to-french)
-   ("C-. d e" . ispell-change-dictionary-to-english))
-  :init
-  (progn
-    (setq ispell-dictionary "english")
-
-    (defun ispell-set-dictionary (dict)
-      (save-excursion
-        (add-file-local-variable 'ispell-local-dictionary dict)))
-
-    (defun ispell-change-dictionary-to-french (arg)
-      (interactive "P")
-      (ispell-change-dictionary "francais")
-      (when arg
-        (ispell-set-dictionary "francais"))
-      (flyspell-buffer))
-
-    (defun ispell-change-dictionary-to-english (arg)
-      (interactive "P")
-      (ispell-change-dictionary "english")
-      (when arg
-        (ispell-set-dictionary "english"))
-      (flyspell-buffer))))
-
 (use-package flyspell
   :disabled t
   :bind (("C-. f b" . flyspell-buffer))
