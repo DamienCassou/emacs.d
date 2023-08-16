@@ -1642,17 +1642,6 @@ negative, the password is inserted at point."
   (progn
     (repeat-mode)))
 
-(use-package repeat-help
-  :disabled t
-  :demand t
-  :after repeat
-  :init
-  (progn
-    (setq repeat-help-auto nil))
-  :config
-  (progn
-    (repeat-help-mode)))
-
 (use-package khardel
   :bind (("C-. c" . khardel-insert-email)))
 

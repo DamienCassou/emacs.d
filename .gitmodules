@@ -579,9 +579,6 @@
 [submodule "related-files"]
 	path = lib/related-files
 	url = git@github.com:DamienCassou/related-files.git
-[submodule "repeat-help"]
-	path = lib/repeat-help
-	url = git@github.com:karthink/repeat-help.git
 [submodule "rg"]
 	path = lib/rg
 	url = git@github.com:dajva/rg.el.git
