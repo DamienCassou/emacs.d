@@ -471,7 +471,8 @@ This is recommended by Vertico's README."
 (use-package proced
   :init
   (progn
-    (setq proced-filter 'all)))
+    (setq proced-filter 'all)
+    (setq proced-enable-color-flag t)))
 
 (use-package emacsbug
   :init
