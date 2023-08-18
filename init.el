@@ -1949,8 +1949,18 @@ If PROJECT is nil, use `project-current'."
                   (default-directory (car (project-roots project))))
         (my/vterm-open-new)))))
 
+(use-package dockerfile-ts-mode
+  :mode "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'")
+
 (use-package yaml-ts-mode
   :mode "\\.ya?ml\\'")
+
+(use-package sh-script
+  :interpreter ("bash" . bash-ts-mode)
+  :mode ("\\.\\(?:bash\\(?:_\\(?:history\\|profile\\)\\|rc\\)\\|profile\\)\\'" . bash-ts-mode))
+
+(use-package csharp-mode
+  :mode ("\\.cs\\'" . csharp-ts-mode))
 
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
