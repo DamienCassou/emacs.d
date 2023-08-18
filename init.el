@@ -2138,6 +2138,7 @@ the buffer's filename."
     (setq completion-category-overrides '((file (styles basic partial-completion))))))
 
 (use-package xref
+  :hook (xref-after-update . outline-minor-mode)
   :init
   (progn
     (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
