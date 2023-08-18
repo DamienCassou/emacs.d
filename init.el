@@ -1962,6 +1962,15 @@ If PROJECT is nil, use `project-current'."
 (use-package csharp-mode
   :mode ("\\.cs\\'" . csharp-ts-mode))
 
+(use-package eglot
+  :hook ((eglot-managed-mode . my/eglot-eldoc)
+         ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode) . eglot-ensure))
+  :config
+  (progn
+    (defun my/eglot-eldoc ()
+      "Stop eglot from overriding `eldoc-documentation-strategy'."
+      (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))))
+
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
   :config
