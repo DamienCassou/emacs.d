@@ -1942,6 +1942,9 @@ If PROJECT is nil, use `project-current'."
                   (default-directory (car (project-roots project))))
         (my/vterm-open-new)))))
 
+(use-package yaml-ts-mode
+  :mode "\\.ya?ml\\'")
+
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
   :config

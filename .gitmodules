@@ -680,9 +680,6 @@
 [submodule "yaml"]
 	path = lib/yaml
 	url = git@github.com:zkry/yaml.el.git
-[submodule "yaml-mode"] # to edit *.yml files (including .travis.yml)
-	path = lib/yaml-mode
-	url = git@github.com:yoshiki/yaml-mode.git
 [submodule "yasnippet"] # expand snippets of text
 	path = lib/yasnippet
 	url = git@github.com:joaotavora/yasnippet.git
