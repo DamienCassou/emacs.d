@@ -370,11 +370,16 @@ This is recommended by Vertico's README."
       (server-start))))
 
 (use-package elisp-mode
-  :hook (emacs-lisp-mode . my/elisp-mode-reduce-mode-name)
+  :hook ((emacs-lisp-mode . my/elisp-mode-reduce-mode-name)
+         (emacs-lisp-mode . my/eldoc-shows-more-information))
   :config
   (progn
     (defun my/elisp-mode-reduce-mode-name ()
-      (setq-local mode-name "Elisp"))))
+      (setq-local mode-name "Elisp"))
+
+    (defun my/eldoc-shows-more-information ()
+      (remove-hook 'eldoc-documentation-functions #'elisp-eldoc-var-docstring t)
+      (add-hook 'eldoc-documentation-functions #'elisp-eldoc-var-docstring-with-value nil t))))
 
 (use-package minibuffer
   :bind (("M-/" . completion-at-point))
