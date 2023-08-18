@@ -1881,7 +1881,8 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :hook ((prog-mode text-mode) . editorconfig-mode))
 
 (use-package compile
-  :hook (compilation-filter . ansi-color-compilation-filter))
+  :hook ((compilation-filter . ansi-color-compilation-filter)
+         (compilation-filter . ansi-osc-compilation-filter)))
 
 (use-package misc
   :bind (("M-D" . duplicate-dwim)))
