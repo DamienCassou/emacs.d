@@ -1847,16 +1847,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.131:80"))
     (finsit-prodigy-setup)))
 
-(use-package jsonian
-  :mode ("\\.json\\'". jsonian-mode)
-  :config
-  (progn
-    ;; json-mode.el automatically modifies auto-mode-alist which I
-    ;; don't want:
-    (with-eval-after-load "json"
-      (setq auto-mode-alist
-            (cl-delete 'json-mode auto-mode-alist :key #'cdr)))))
-
 (use-package alert
   :demand t
   :init
@@ -1953,7 +1943,10 @@ If PROJECT is nil, use `project-current'."
   :mode "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'")
 
 (use-package yaml-ts-mode
-  :mode "\\.ya?ml\\'")
+  :mode "\\.ya?ml\\'" )
+
+(use-package json-ts-mode
+  :mode "\\.json\\'")
 
 (use-package sh-script
   :interpreter ("bash" . bash-ts-mode)
@@ -1964,7 +1957,7 @@ If PROJECT is nil, use `project-current'."
 
 (use-package eglot
   :hook ((eglot-managed-mode . my/eglot-eldoc)
-         ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode) . eglot-ensure))
+         ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-js-mode) . eglot-ensure))
   :config
   (progn
     (defun my/eglot-eldoc ()

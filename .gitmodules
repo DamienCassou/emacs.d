@@ -328,9 +328,6 @@
 [submodule "json-snatcher"]
 	path = lib/json-snatcher
 	url = git@github.com:Sterlingg/json-snatcher.git
-[submodule "jsonian"]
-	path = lib/jsonian
-	url = git@github.com:iwahbe/jsonian.git
 [submodule "khardel"]
 	path = lib/khardel
 	url = git@gitub.com:DamienCassou/khardel.git
