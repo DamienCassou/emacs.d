@@ -1948,6 +1948,15 @@ If PROJECT is nil, use `project-current'."
 (use-package json-ts-mode
   :mode "\\.json\\'")
 
+(use-package json-mode
+  :config
+  (progn
+    ;; Remove automatically-added entries:
+    (setq magic-fallback-mode-alist
+          (cl-delete 'json-mode magic-fallback-mode-alist :key #'cdr))
+    (setq auto-mode-alist
+          (cl-delete 'json-mode auto-mode-alist :key #'cdr))))
+
 (use-package sh-script
   :interpreter ("bash" . bash-ts-mode)
   :mode ("\\.\\(?:bash\\(?:_\\(?:history\\|profile\\)\\|rc\\)\\|profile\\)\\'" . bash-ts-mode))
