@@ -217,6 +217,14 @@ current."
     (seq-doseq (fn (list #'split-window #'delete-window))
       (advice-add fn :after #'my/window-balance-windows))))
 
+(use-package ace-window
+  :bind ("M-o" . ace-window)
+  :init
+  (progn
+    ;; home row in a Colemak layout
+    (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
+    (setq aw-background nil)))
+
 (use-package ffap
   :config
   (progn
@@ -261,6 +269,7 @@ This is recommended by Vertico's README."
 
 (use-package modus-themes
   :demand t
+  :hook (modus-themes-after-load-theme . my/fix-modus-themes-faces)
   :init
   (progn
     (setq modus-themes-bold-constructs t)
@@ -295,7 +304,13 @@ This is recommended by Vertico's README."
           (my/pdf-tools-backdrop)))
 
       (add-hook 'pdf-tools-enabled-hook #'my/pdf-tools-midnight-mode-toggle)
-      (add-hook 'modus-themes-after-load-theme-hook #'my/pdf-tools-midnight-mode-toggle))))
+      (add-hook 'modus-themes-after-load-theme-hook #'my/pdf-tools-midnight-mode-toggle))
+
+    (defun my/fix-modus-themes-faces ()
+      "Change the faces to how I like them to be."
+      ;; reduce the height of ace-window letters to they blend nicely
+      ;; within their buffers without moving pixels around:
+      (set-face-attribute 'aw-leading-char-face nil :height 1.0))))
 
 (use-package tramp
   :config
