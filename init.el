@@ -1251,7 +1251,8 @@ because slides don't change their ID all the time."
 (use-package denote
   :bind (("C-. r r" . my/denote-date)
          ("C-. r R" . denote)
-         ("C-. r f" . my/denote-find-file))
+         ("C-. r f" . my/denote-find-file)
+         ("C-. r g" . my/denote-grep))
   :hook (dired-mode . denote-dired-mode)
   :init
   (progn
@@ -1289,7 +1290,12 @@ user if the command is called with a prefix argument."
         (cond
          ((length= matching-files 0) (denote title '("journal")))
          ((length= matching-files 1) (find-file (car matching-files)) (goto-char (point-max)))
-         (t (user-error "Several notes in '%s' match '%s'" (denote-directory) sluggified-title)))))))
+         (t (user-error "Several notes in '%s' match '%s'" (denote-directory) sluggified-title)))))
+
+    (defun my/denote-grep ()
+      "Search within my notes."
+      (interactive)
+      (consult-ripgrep denote-directory))))
 
 (use-package calendar
   :init
