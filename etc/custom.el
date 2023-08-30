@@ -26,6 +26,8 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
    '((eval flymake-hledger-enable)
+     (jumprel-jumpers
+      (filename :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test"))
      (vc-prepare-patches-separately)
      (eval add-hook 'org-export-before-parsing-hook #'my-insert-shell-prompt)
      (eval defun my-insert-shell-prompt
