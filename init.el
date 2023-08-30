@@ -2073,7 +2073,16 @@ If PROJECT is nil, use `project-current'."
   :after org)
 
 (use-package nix-mode
+  :config
+  (progn
+    (setq auto-mode-alist
+          (cl-delete 'nix-mode auto-mode-alist :key #'cdr))))
+
+(use-package nix-prettify-mode
   :hook ((proced-mode . nix-prettify-mode)))
+
+(use-package nix-ts-mode
+  :mode ("\\.nix\\'" . nix-ts-mode))
 
 (use-package savehist
   :demand t

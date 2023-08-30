@@ -452,6 +452,9 @@
 [submodule "nix-mode"]
 	path = lib/nix-mode
 	url = git@github.com:NixOS/nix-mode.git
+[submodule "nix-ts-mode"]
+	path = lib/nix-ts-mode
+	url = https://github.com/remi-gelinas/nix-ts-mode
 [submodule "no-littering"]
 	path = lib/no-littering
 	url = git@github.com:emacscollective/no-littering.git
