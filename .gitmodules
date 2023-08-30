@@ -504,9 +504,6 @@
 [submodule "ox-texinfo+"]
 	path = lib/ox-texinfo+
 	url = git@github.com:emacsattic/ox-texinfo-plus.git
-[submodule "package-dev-handbook"]
-	path = lib/package-dev-handbook
-	url = https://github.com/alphapapa/emacs-package-dev-handbook.git
 [submodule "package-lint"]
 	path = lib/package-lint
 	url = git@github.com:purcell/package-lint.git
