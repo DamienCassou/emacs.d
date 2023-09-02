@@ -1993,7 +1993,10 @@ If PROJECT is nil, use `project-current'."
     (defun my/eglot-setup ()
       "Misc changes to eglot's configuration."
       ;; Stop eglot from overriding `eldoc-documentation-strategy':
-      (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))))
+      (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
+      ;; Format on save
+      (when (eglot--server-capable :documentFormattingProvider)
+        (add-hook 'before-save-hook #'eglot-format-buffer nil t)))))
 
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
