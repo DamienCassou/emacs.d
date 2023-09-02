@@ -1990,6 +1990,17 @@ If PROJECT is nil, use `project-current'."
          ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-js-mode nix-ts-mode) . eglot-ensure))
   :config
   (progn
+    (add-to-list 'eglot-server-programs
+                 '(nix-ts-mode
+                   .
+                   ("nil"
+                    :initializationOptions (:nil (:formatting (:command ["nixfmt"]))))))
+
+    ;; The above `add-to-list' should be enough but it doesn't seem to work
+    ;; https://github.com/oxalica/nil/issues/101
+    (setq-default eglot-workspace-configuration
+                  (append eglot-workspace-configuration '(:nil (:formatting (:command ["nixfmt"])))))
+
     (defun my/eglot-setup ()
       "Misc changes to eglot's configuration."
       ;; Stop eglot from overriding `eldoc-documentation-strategy':
