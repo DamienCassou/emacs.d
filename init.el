@@ -1987,7 +1987,7 @@ If PROJECT is nil, use `project-current'."
 
 (use-package eglot
   :hook ((eglot-managed-mode . my/eglot-setup)
-         ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-js-mode) . eglot-ensure))
+         ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-js-mode nix-ts-mode) . eglot-ensure))
   :config
   (progn
     (defun my/eglot-setup ()
