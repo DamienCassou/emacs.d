@@ -1886,7 +1886,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (yas-reload-all)))
 
 (use-package ws-butler
-  :hook (prog-mode . ws-butler-mode))
+  :hook ((prog-mode ledger-mode) . ws-butler-mode))
 
 (use-package editorconfig
   :hook ((prog-mode text-mode) . editorconfig-mode))
