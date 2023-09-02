@@ -2259,7 +2259,43 @@ the buffer's filename."
                   ((string-prefix-p root expanded-filename))
                   (result (substring expanded-filename (length root))))
         (kill-new result)
-        (message "%s" result)))))
+        (message "%s" result)))
+
+    ;; Fix for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65704
+    (cl-defmethod project-ignores ((project (head vc)) dir)
+      (let* ((root (nth 2 project))
+             (backend (cadr project)))
+        (append
+         (when (and backend
+                    (file-equal-p dir root))
+           (setq backend (cadr project))
+           (delq
+            nil
+            (mapcar
+             (lambda (entry)
+               (cond
+                ((eq ?! (aref entry 0))
+                 ;; No support for whitelisting (yet).
+                 nil)
+                ((string-match "\\(/\\)[^/]" entry)
+                 ;; FIXME: This seems to be Git-specific.
+                 ;; And / in the entry (start or even the middle) means
+                 ;; the pattern is "rooted".  Or actually it is then
+                 ;; relative to its respective .gitignore (of which there
+                 ;; could be several), but we only support .gitignore at
+                 ;; the root.
+                 (if (= (match-beginning 0) 0)
+                     (replace-match "./" t t entry 1)
+                   (concat "./" entry)))
+                (t entry)))
+             (condition-case nil
+                 (vc-call-backend backend 'ignore-completion-table root)
+               (vc-not-supported () nil)))))
+         (project--value-in-dir 'project-vc-ignores root)
+         (mapcar
+          (lambda (dir)
+            (concat dir "/"))
+          vc-directory-exclusion-list))))))
 
 (use-package consult
   :bind (([remap yank-pop] . consult-yank-replace)
