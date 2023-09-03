@@ -440,9 +440,6 @@
 [submodule "navigel"]
 	path = lib/navigel
 	url = git@github.com:DamienCassou/navigel.git
-[submodule "netmacs"]
-	path = lib/netmacs
-	url = git@gitea.petton.fr:netmacs/netmacs.git
 [submodule "nix-buffer"]
 	path = lib/nix-buffer
 	url = https://github.com/shlevy/nix-buffer.git
