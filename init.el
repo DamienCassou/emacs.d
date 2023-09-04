@@ -1723,22 +1723,7 @@ negative, the password is inserted at point."
     (require 'bookmark)
 
     (setq finsit-core-monitor-root-location
-          (expand-file-name (bookmark-location "ftgp-monitor-root")))
-
-    (with-eval-after-load 'project
-      (defun my/finsit-project-find-file ()
-        "Faster alternative to project-find-file for monitor's Client/ folder."
-        (interactive)
-        (if-let* ((project (project-current))
-                  ((eq (car project) 'transient))
-                  ((string= (expand-file-name "./" (cdr project))
-                            (expand-file-name "./" (finsit-core-monitor-client-location)))))
-            (project-find-file-in (thing-at-point 'filename)
-                                  (list (finsit-core-monitor-client-location))
-                                  (project-current nil (finsit-core-monitor-root-location)))
-          (project-find-file)))
-
-      (bind-key "f" #'my/finsit-project-find-file project-prefix-map))))
+          (expand-file-name (bookmark-location "ftgp-monitor-root")))))
 
 (use-package libbcel
   :config
@@ -2234,15 +2219,7 @@ the buffer's filename."
 
     (add-to-list 'project-switch-commands '(my/vterm-open-new "Shell") t)
 
-    (defconst my/project-root-marker ".project"
-      "File indicating the root of a project.")
-
-    (defun my/project-find-root (path)
-      "Search up the PATH for `my/project-root-marker'."
-      (when-let* ((root (locate-dominating-file path my/project-root-marker)))
-        (cons 'transient root)))
-
-    (add-to-list 'project-find-functions #'my/project-find-root)
+    (add-to-list 'project-vc-extra-root-markers "package.json")
 
     (defun my/project-copy-filename (file)
       "Copy the path of FILE relative to the project root to the kill ring."
