@@ -268,6 +268,9 @@
 [submodule "haskell-mode"]
 	path = lib/haskell-mode
 	url = https://github.com/haskell/haskell-mode
+[submodule "helm"]
+	path = lib/helm
+	url = https://github.com/emacs-helm/helm
 [submodule "helpful"]
 	path = lib/helpful
 	url = git@github.com:Wilfred/helpful.git
@@ -630,6 +633,9 @@
 [submodule "unify-opening"]
 	path = lib/unify-opening
 	url = git@github.com:DamienCassou/unify-opening.git
+[submodule "vdirel"]
+	path = lib/vdirel
+	url = https://github.com/DamienCassou/vdirel
 [submodule "verb"]
 	path = lib/verb
 	url = git@github.com:federicotdn/verb.git
