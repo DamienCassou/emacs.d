@@ -2236,28 +2236,7 @@ the buffer's filename."
                   ((string-prefix-p root expanded-filename))
                   (result (substring expanded-filename (length root))))
         (kill-new result)
-        (message "%s" result)))
-
-    ;; Fix for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65704
-    (cl-defmethod project-files ((project (head vc)) &optional dirs)
-      (mapcan
-       (lambda (dir)
-         (let ((ignores (project--value-in-dir 'project-vc-ignores dir))
-               backend)
-           (if (and (file-equal-p dir (caddr project))
-                    (setq backend (vc-responsible-backend dir))
-                    (cond
-                     ((eq backend 'Hg))
-                     ((and (eq backend 'Git)
-                           (or
-                            (not ignores)
-                            (version<= "1.9" (vc-git--program-version)))))))
-               (project--vc-list-files dir backend ignores)
-             (project--files-in-directory
-              dir
-              (project--dir-ignores project dir)))))
-       (or dirs
-           (list (project-root project)))))))
+        (message "%s" result)))))
 
 (use-package consult
   :bind (([remap yank-pop] . consult-yank-replace)
