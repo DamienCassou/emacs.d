@@ -7,4 +7,15 @@
   (t . 4))
  (magit-log
   (magit-log-matching-tags . 4)
-  (magit-log-matching-branches . 7)))
+  (magit-log-matching-branches . 7))
+ (magit-rebase
+  (transient:magit-rebase:--autostash . 5)
+  (transient:magit-rebase:--autosquash . 5)
+  (transient:magit-rebase:--no-verify . 5)
+  (transient:magit-rebase:--interactive . 5)
+  (transient:magit-rebase:--ignore-date . 5)
+  (transient:magit-rebase:--committer-date-is-author-date . 5)
+  (transient:magit-rebase:--update-refs . 4)
+  (transient:magit-rebase:--rebase-merges= . 5)
+  (transient:magit-rebase:--keep-empty . 5)
+  (magit-rebase:--exec . 4)))
