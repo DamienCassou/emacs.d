@@ -157,7 +157,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(widgetjs-html-tag-face ((t (:foreground "#61afef" :box 1 :weight bold)))))
+ '(fringe ((t :background "#ffffff")))
+ '(widgetjs-html-tag-face ((t (:foreground "#61afef" :box 1 :weight bold))))
+ '(window-divider ((t :background "#ffffff" :foreground "#ffffff")))
+ '(window-divider-first-pixel ((t :background "#ffffff" :foreground "#ffffff")))
+ '(window-divider-last-pixel ((t :background "#ffffff" :foreground "#ffffff"))))
 
 ;; Local Variables:
 ;; eval: (flycheck-mode -1)
