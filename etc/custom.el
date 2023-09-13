@@ -25,7 +25,8 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((eval add-to-list 'org-export-before-parsing-functions #'my-insert-shell-prompt)
+   '((completion-ignore-case . t)
+     (eval add-to-list 'org-export-before-parsing-functions #'my-insert-shell-prompt)
      (jumprel-jumpers
       (filename :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test"))
      (eval flymake-hledger-enable)
