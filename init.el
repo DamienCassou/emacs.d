@@ -1229,7 +1229,7 @@ because slides don't change their ID all the time."
   (progn
     (setq org-reveal-root
           (concat "file://" (expand-file-name "~/Documents/projects/reveal/latest")))
-    (setq org-reveal-title-slide nil)))
+    (setq org-reveal-reveal-js-version 4)))
 
 (use-package org-caldav
   :bind (("C-. o S"   . org-caldav-sync))
