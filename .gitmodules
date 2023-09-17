@@ -17,6 +17,9 @@
 [submodule "aggressive-indent"] # indent code automatically while typing
 	path = lib/aggressive-indent
 	url = git@github.com:Malabarba/aggressive-indent-mode.git
+[submodule "aio"]
+	path = lib/aio
+	url = https://github.com/skeeto/emacs-aio
 [submodule "alert"]
 	path = lib/alert
 	url = git@github.com:jwiegley/alert.git
@@ -123,6 +126,9 @@
 [submodule "direnv"]
 	path = lib/direnv
 	url = https://github.com/wbolster/emacs-direnv.git
+[submodule "docker"]
+	path = lib/docker
+	url = https://github.com/Silex/docker.el
 [submodule "drag-stuff"] # use <M-arrow> to move things around
 	path = lib/drag-stuff
 	url = git@github.com:rejeep/drag-stuff.el.git
