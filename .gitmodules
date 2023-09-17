@@ -23,12 +23,12 @@
 [submodule "alert"]
 	path = lib/alert
 	url = git@github.com:jwiegley/alert.git
-[submodule "all-the-icons"] # library with many icons (zerodark dependency)
-	path = lib/all-the-icons
-	url = git@github.com:domtronn/all-the-icons.el.git
 [submodule "all-the-icons-completion"]
 	path = lib/all-the-icons-completion
 	url = git@github.com:iyefrat/all-the-icons-completion.git
+[submodule "all-the-icons-dired"]
+	path = lib/all-the-icons-dired
+	url = https://github.com/wyuenho/all-the-icons-dired
 [submodule "ansi"]
 	path = lib/ansi
 	url = git@github.com:rejeep/ansi.el.git
