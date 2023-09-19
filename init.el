@@ -613,6 +613,9 @@ This is recommended by Vertico's README."
         (when (= point (point))
           (move-beginning-of-line nil))))))
 
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode))
+
 (use-package gnus-dired
   :hook (dired-mode . turn-on-gnus-dired-mode))
 
