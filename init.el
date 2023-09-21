@@ -1256,7 +1256,7 @@ because slides don't change their ID all the time."
          ("C-. r R" . denote)
          ("C-. r f" . my/denote-find-file)
          ("C-. r g" . my/denote-grep))
-  :hook (dired-mode . denote-dired-mode)
+  :hook (dired-mode . denote-dired-mode-in-directories)
   :init
   (progn
     (setq denote-date-prompt-use-org-read-date t)
