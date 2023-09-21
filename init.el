@@ -1298,7 +1298,22 @@ user if the command is called with a prefix argument."
     (defun my/denote-grep ()
       "Search within my notes."
       (interactive)
-      (consult-ripgrep denote-directory))))
+      (consult-ripgrep denote-directory))
+
+    (defun my/denote-attach (file &optional description)
+      "Save FILE in attachments/ directory and add a link in current buffer.
+The link will contain DESCRIPTION as text."
+      (interactive "*fSelect file to attach: \nMDescription: " org-mode)
+      (let ((target-dir (expand-file-name "attachments" denote-directory)))
+        (unless (file-directory-p target-dir)
+          (make-directory target-dir))
+        (let* ((target-basename (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))
+               (target-filename (make-temp-file
+                                 (expand-file-name (concat target-basename ".") target-dir)
+                                 nil
+                                 (concat "." (file-name-extension file)))))
+          (copy-file file target-filename t)
+          (org-insert-link nil (concat "file:" target-filename) description)))))))
 
 (use-package calendar
   :init
