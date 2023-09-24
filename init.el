@@ -1313,7 +1313,7 @@ The link will contain DESCRIPTION as text."
                                  nil
                                  (concat "." (file-name-extension file)))))
           (copy-file file target-filename t)
-          (org-insert-link nil (concat "file:" target-filename) description)))))))
+          (org-insert-link nil (concat "file:" target-filename) description))))))
 
 (use-package calendar
   :init
