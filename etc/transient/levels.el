@@ -1,6 +1,7 @@
 ((magit-commit
+  (transient:magit-commit:--verbose . 7)
   (transient:magit-commit:--reset-author . 7)
-  (transient:magit-commit:--no-verify . 7)
+  (transient:magit-commit:--no-verify . 4)
   (transient:magit-commit:--all . 7)
   (magit-commit-absorb . 4)
   (transient:magit-commit:--signoff . 7)
@@ -15,7 +16,7 @@
   (transient:magit-rebase:--interactive . 5)
   (transient:magit-rebase:--ignore-date . 5)
   (transient:magit-rebase:--committer-date-is-author-date . 5)
-  (transient:magit-rebase:--update-refs . 4)
+  (transient:magit-rebase:--update-refs . 7)
   (transient:magit-rebase:--rebase-merges= . 5)
   (transient:magit-rebase:--keep-empty . 5)
   (magit-rebase:--exec . 4)))
