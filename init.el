@@ -2644,6 +2644,42 @@ targets."
 
 (advice-add #'backward-up-list :before #'my/add-mark)
 
+;; https://emacsnotes.wordpress.com/2023/09/14/view-emacs-news-files-as-info-manual-too/
+(defun my/view-text-file-as-info-manual ()
+  "View ‘info’, ‘texi’, ‘org’, ‘md’ and 'NEWS' files as ‘Info’ manual."
+  (interactive)
+  (require 'rx)
+  (require 'ox-texinfo)
+  (when (buffer-file-name)
+    (let* ((org-export-with-broken-links 'mark)
+           (ext (file-name-extension (buffer-file-name))))
+      (cond
+       ;; A `.info' file
+       ((or (string= "info" ext))
+        (info (buffer-file-name)))
+       ;; A `.texi' file
+       ((or (string= "texi" ext))
+        (info (org-texinfo-compile (buffer-file-name))))
+       ;; An `.org' file
+       ((or (derived-mode-p 'org-mode)
+            (string= "org" ext))
+        (info (org-texinfo-export-to-info)))
+       ;; A `.md' file
+       ((or (derived-mode-p 'markdown-mode)
+            (string= "md" ext))
+        (let ((org-file-name (concat (file-name-sans-extension (buffer-file-name)) ".org")))
+          (apply #'call-process "pandoc" nil standard-output nil
+                 `("-f" "markdown"
+                   "-t" "org"
+                   "-o" ,org-file-name
+                   ,(buffer-file-name)))
+          (with-current-buffer (find-file-noselect org-file-name)
+            (info (org-texinfo-export-to-info)))))
+       (t (user-error "Don't know how to convert `%s' to an `info' file"
+                      (buffer-file-name)))))))
+
+(global-set-key (kbd "C-x x v") 'my/view-text-file-as-info-manual)
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; eval: (flycheck-mode -1)
