@@ -2007,12 +2007,16 @@ If PROJECT is nil, use `project-current'."
     (setq-default eglot-workspace-configuration
                   (append eglot-workspace-configuration '(:nil (:formatting (:command ["nixfmt"])))))
 
+    (defcustom my/eglot-autoformat-on-save t
+      "Whether eglot should autoformat on save."
+      :type 'boolean)
+
     (defun my/eglot-setup ()
       "Misc changes to eglot's configuration."
       ;; Stop eglot from overriding `eldoc-documentation-strategy':
       (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
       ;; Format on save
-      (when (eglot--server-capable :documentFormattingProvider)
+      (when (and my/eglot-autoformat-on-save (eglot--server-capable :documentFormattingProvider))
         (add-hook 'before-save-hook #'eglot-format-buffer nil t)))))
 
 (use-package pdf-tools
