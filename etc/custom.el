@@ -25,7 +25,9 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((magit-todos-exclude-globs "Makefile" "makem.sh")
+   '((my/eglot-autoformat-on-save)
+     (eval eglot-ensure)
+     (magit-todos-exclude-globs "Makefile" "makem.sh")
      (completion-ignore-case . t)
      (eval add-to-list 'org-export-before-parsing-functions #'my-insert-shell-prompt)
      (jumprel-jumpers
