@@ -2109,6 +2109,15 @@ If PROJECT is nil, use `project-current'."
 (use-package nix-ts-mode
   :mode ("\\.nix\\'" . nix-ts-mode))
 
+(use-package typescript-mode
+  :config
+  (progn
+    (setq auto-mode-alist
+          (cl-delete 'typescript-mode auto-mode-alist :key #'cdr))))
+
+(use-package typescript-ts-mode
+  :mode ("\\.ts\\'" . typescript-ts-mode))
+
 (use-package savehist
   :demand t
   :config
