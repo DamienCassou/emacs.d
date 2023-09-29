@@ -38,33 +38,33 @@
            (_backend)
            "https://emacs.stackexchange.com/questions/44958/can-i-insert-a-prefix-to-org-babel-source-code-lines-on-export/44970#44970"
            (org-babel-map-src-blocks nil
-                                     (let
-                                         ((lang lang)
-                                          (beg-body beg-body)
-                                          (end-body end-body)
-                                          (prefix "$ ")
-                                          (is-contd-from-prev-line nil))
-                                       (when
-                                           (member lang org-babel-shell-names)
-                                         (goto-char beg-body)
-                                         (skip-chars-forward "\12 " end-body)
-                                         (while
-                                             (<
-                                              (point)
-                                              end-body)
-                                           (if
-                                               (not is-contd-from-prev-line)
-                                               (insert prefix))
-                                           (end-of-line)
-                                           (if
-                                               (eq 92
-                                                   (char-after
-                                                    (-
-                                                     (point)
-                                                     1)))
-                                               (setq is-contd-from-prev-line t)
-                                             (setq is-contd-from-prev-line nil))
-                                           (skip-chars-forward "\12 " end-body))))))
+             (let
+                 ((lang lang)
+                  (beg-body beg-body)
+                  (end-body end-body)
+                  (prefix "$ ")
+                  (is-contd-from-prev-line nil))
+               (when
+                   (member lang org-babel-shell-names)
+                 (goto-char beg-body)
+                 (skip-chars-forward "\12 " end-body)
+                 (while
+                     (<
+                      (point)
+                      end-body)
+                   (if
+                       (not is-contd-from-prev-line)
+                       (insert prefix))
+                   (end-of-line)
+                   (if
+                       (eq 92
+                           (char-after
+                            (-
+                             (point)
+                             1)))
+                       (setq is-contd-from-prev-line t)
+                     (setq is-contd-from-prev-line nil))
+                   (skip-chars-forward "\12 " end-body))))))
      (eval and buffer-file-name
            (not
             (eq major-mode 'package-recipe-mode))
