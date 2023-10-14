@@ -1832,6 +1832,7 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :init
   (progn
     (setq flymake-eslint-executable-args '("--report-unused-disable-directives"))
+    (setq flymake-eslint-prefer-json-diagnostics t)
 
     (defun my/flymake-eslint-finsit ()
       "Enable flymake-eslint in finsit's Client/ buffer."
