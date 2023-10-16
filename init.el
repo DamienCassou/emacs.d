@@ -2018,7 +2018,12 @@ If PROJECT is nil, use `project-current'."
       (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
       ;; Format on save
       (when (and my/eglot-autoformat-on-save (eglot--server-capable :documentFormattingProvider))
-        (add-hook 'before-save-hook #'eglot-format-buffer nil t)))))
+        (add-hook 'before-save-hook #'my/eglot-format-buffer nil t)))
+
+    (defun my/eglot-format-buffer ()
+      "Use eglot to format the buffer if eglot is active."
+      (when (eglot-managed-p)
+        (eglot-format-buffer)))))
 
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
