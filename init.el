@@ -1841,16 +1841,19 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
       (flymake-eslint-enable))))
 
 (use-package eslint-disable-rule
+  :demand t
   :after (:all js2-mode (:any flymake flycheck))
-  :bind ((
-          :map flymake-mode-map
-          ("C-c ! k" . eslint-disable-rule-disable-next-line)
-          :map flycheck-mode-map
-          ("C-c ! k" . eslint-disable-rule-disable-next-line)))
   :init
   (progn
     (setq eslint-disable-rule-require-description 'prefer-description)
-    (setq eslint-disable-rule-all-executable "eslint_d")))
+    (setq eslint-disable-rule-all-executable "eslint_d"))
+  :config
+  (progn
+    (with-eval-after-load 'flymake
+      (bind-key "C-c ! k" #'eslint-disable-rule-disable-next-line flymake-mode-map))
+
+    (with-eval-after-load 'flycheck
+      (bind-key "C-c ! k" #'eslint-disable-rule-disable-next-line flycheck-mode-map))))
 
 (use-package finsit-magit
   :demand t
