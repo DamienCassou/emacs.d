@@ -2233,6 +2233,9 @@ the buffer's filename."
     (defun my/js2-mode-reduce-mode-name ()
       (setq-local mode-name "JS2"))))
 
+(use-package js2-refactor
+  :hook (js2-mode . js2-refactor-mode))
+
 (use-package xref-js2
   :init
   (progn
