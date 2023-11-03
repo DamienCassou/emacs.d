@@ -503,7 +503,7 @@ This is recommended by Vertico's README."
   :bind (
          :map goto-address-highlight-keymap
          ("C-c C-o" . goto-address-at-point))
-  :hook (((nix-mode magit-process-mode) . goto-address-mode))
+  :hook (((prog-mode magit-process-mode) . goto-address-mode))
   :config
   (progn
     ;; Recommended by modus-themes (2.7.0 release notes):
