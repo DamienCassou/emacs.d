@@ -1996,7 +1996,7 @@ If PROJECT is nil, use `project-current'."
 
 (use-package eglot
   :hook ((eglot-managed-mode . my/eglot-setup)
-         ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-js-mode nix-ts-mode go-ts-mode) . eglot-ensure))
+         ((bash-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-js-mode nix-ts-mode go-ts-mode) . my/eglot-ensure))
   :config
   (progn
     (add-to-list 'eglot-server-programs
@@ -2013,6 +2013,11 @@ If PROJECT is nil, use `project-current'."
     (defcustom my/eglot-autoformat-on-save t
       "Whether eglot should autoformat on save."
       :type 'boolean)
+
+    (defun my/eglot-ensure ()
+      "Only start eglot in file-visiting buffers."
+      (when (buffer-file-name)
+        (eglot-ensure)))
 
     (defun my/eglot-setup ()
       "Misc changes to eglot's configuration."
