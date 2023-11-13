@@ -533,6 +533,9 @@
 	path = lib/password-store-otp
 	url = git@github.com:volrath/password-store-otp.el.git
 	remote = "DamienCassou git@github.com:DamienCassou/password-store-otp.el.git"
+[submodule "php-mode"]
+	path = lib/php-mode
+	url = https://github.com/emacs-php/php-mode
 [submodule "pinentry"]
 	path = lib/pinentry
 	url = git@github.com:ueno/pinentry-el.git
