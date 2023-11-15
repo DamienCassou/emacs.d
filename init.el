@@ -1744,7 +1744,13 @@ negative, the password is inserted at point."
     (require 'bookmark)
 
     (setq finsit-core-monitor-root-location
-          (expand-file-name (bookmark-location "ftgp-monitor-root")))))
+          (expand-file-name (bookmark-location "ftgp-monitor-root")))
+
+    (defun my/finsit-project-reset-client ()
+      "Use this command when the client project isn't recognized."
+      (interactive)
+      (vc-file-setprop (expand-file-name "monitor/Monitor.Web.Ui/Client/" finsit-core-monitor-root-location)
+                       'project-vc nil))))
 
 (use-package libbcel
   :config
