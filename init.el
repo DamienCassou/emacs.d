@@ -626,16 +626,6 @@ This is recommended by Vertico's README."
   (progn
     (setq runner-run-in-background t)))
 
-(use-package dwim-shell-command
-  :config
-  (progn
-    (defun my/dwim-add-drop-shadow ()
-      "Add a drop shadow to the selected images."
-      (interactive)
-      (dwim-shell-command-on-marked-files
-       "Add a drop shadow"
-       "convert <<f>> -bordercolor white -border 13 \\( +clone -background black -shadow 80x3+2+2 \\) +swap -background white -layers merge +repage <<fne>>-shadow.<<e>>"))))
-
 (use-package dired-x
   :after dired
   :bind (:map dired-mode-map
