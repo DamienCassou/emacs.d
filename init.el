@@ -2086,6 +2086,12 @@ If PROJECT is nil, use `project-current'."
   (progn
     (mpdel-embark-setup)))
 
+(use-package daemons-systemd
+  :after daemons
+  :init
+  (progn
+    (setq daemons-systemd-is-user t)))
+
 (use-package minions
   :demand t
   :init

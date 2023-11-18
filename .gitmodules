@@ -98,6 +98,9 @@
 [submodule "csv"]
 	path = lib/csv
 	url = git@gitlab.com:u11/csv.el.git
+[submodule "daemons"]
+	path = lib/daemons
+	url = https://github.com/cbowdon/daemons.el
 [submodule "dash"] # list library
 	path = lib/dash
 	url = git@github.com:magnars/dash.el.git
