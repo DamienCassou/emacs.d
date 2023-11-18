@@ -2090,6 +2090,20 @@ If PROJECT is nil, use `project-current'."
   (progn
     (setq daemons-systemd-is-user t)))
 
+(use-package journalctl-mode
+  :init
+  (progn
+    (defun my/journalctl-mode-open-from-daemons (name)
+      (interactive (list (daemons--daemon-at-point)))
+      (require 'journalctl-mode)
+      (journalctl--follow `(,@(if daemons-systemd-is-user '("--user") nil)
+                            ,(format "--unit=%s" name)
+                            ,(format "--lines=1000")
+                            "--follow")))
+
+    (with-eval-after-load 'daemons
+      (bind-key "l" #'my/journalctl-mode-open-from-daemons #'daemons-mode-map))))
+
 (use-package minions
   :demand t
   :init

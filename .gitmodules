@@ -320,6 +320,9 @@
 	build-step = borg-update-autoloads
 	build-step = make --directory=doc/ ivy.info
 	build-step = borg-makeinfo
+[submodule "journalctl-mode"]
+	path = lib/journalctl-mode
+	url = https://github.com/SebastianMeisel/journalctl-mode
 [submodule "js2-mode"] # Improved Javascript editing mode
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git
