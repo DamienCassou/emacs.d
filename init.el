@@ -172,10 +172,6 @@ either read only or modified.")
 
 (use-package frame
   :bind (("C-x C-z" . my/suspend-on-tty-only))
-  :init
-  (progn
-    ;; Space between windows:
-    (setq window-divider-default-right-width 12))
   :config
   (progn
     (defun my/suspend-on-tty-only ()
@@ -192,12 +188,14 @@ current."
       (when frame (select-frame frame))
       (setq frame-title-format "Emacs")
       (modify-all-frames-parameters
-       '((cursor-type bar . 5)
-         (scroll-bar-width . 1)))
-
-      (window-divider-mode))
+       '((cursor-type bar . 5))))
 
     (my/setup-frame)))
+
+(use-package scroll-bar
+  :config
+  (progn
+    (scroll-bar-mode)))
 
 (use-package face-remap
   :bind (("C-x C-+" . global-text-scale-adjust)
