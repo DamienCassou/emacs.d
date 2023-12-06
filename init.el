@@ -2550,7 +2550,10 @@ targets."
 
 (use-package spacious-padding
   :demand t
-  :hook (server-after-make-frame . spacious-padding-mode))
+  :hook (server-after-make-frame . spacious-padding-mode)
+  :config
+  (progn
+    (setq spacious-padding-subtle-mode-line t)))
 
 (use-package ligature
   :demand t
