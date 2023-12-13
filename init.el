@@ -1839,10 +1839,20 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 
     (defun my/flymake-eslint-finsit ()
       "Enable flymake-eslint in finsit's Client/ buffer."
-      (setq-local flymake-eslint-executable-name (executable-find eslintd-fix-executable))
       (when (finsit-core-own-javascript-buffer-p)
         (setq-local flymake-eslint-project-root (finsit-core-monitor-client-location)))
-      (flymake-eslint-enable))))
+      (flymake-eslint-enable)))
+  :config
+  (progn
+    (defun my/flymake-eslint--set-executable-name ()
+      "Set `flymake-eslint-executable-name' to the binary in node_modules/."
+      (when-let* (((or (not flymake-eslint-executable-name) (string= flymake-eslint-executable-name "eslint")))
+                  (relative-path "node_modules/.bin/eslint")
+                  (path (locate-dominating-file default-directory relative-path)))
+        (setq flymake-eslint-executable-name (expand-file-name relative-path path))))
+
+    (advice-add #'flymake-eslint--ensure-binary-exists
+                :before #'my/flymake-eslint--set-executable-name)))
 
 (use-package eslint-disable-rule
   :demand t
