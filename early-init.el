@@ -1,10 +1,5 @@
 ;;; early-init.el -*- lexical-binding: t; -*-
 
-;; Extracted from https://github.com/hlissner/doom-emacs/blob/develop/early-init.el
-
-;; Emacs 27.1 introduces early-init.el, which is run before init.el,
-;; before package and UI initialization happens.
-
 ;; In Emacs 27+, package initialization occurs before `user-init-file' is
 ;; loaded, but after `early-init-file'.
 (setq package-enable-at-startup nil)
