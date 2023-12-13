@@ -1236,8 +1236,8 @@ because slides don't change their ID all the time."
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
-    (setq org-caldav-url "https://dav.petton.fr/damien"
-          org-caldav-calendar-id "92d00156-d9fd-7188-977b-af2f48c47c8a"
+    (setq org-caldav-url "https://licorne.ninja/remote.php/dav/calendars/DamienCassou"
+          org-caldav-calendar-id "personal"
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
           org-icalendar-timezone "Europe/Berlin"
