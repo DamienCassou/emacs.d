@@ -2563,7 +2563,8 @@ targets."
   :hook (server-after-make-frame . spacious-padding-mode)
   :config
   (progn
-    (setq spacious-padding-subtle-mode-line t)))
+    (setq spacious-padding-subtle-mode-line
+          '(:mode-line-active error :mode-line-inactive shadow))))
 
 (use-package ligature
   :demand t
