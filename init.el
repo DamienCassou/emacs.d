@@ -2461,6 +2461,8 @@ targets."
             embark-highlight-indicator
             embark-isearch-highlight-indicator))
 
+    (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+
     ;; Configure `compile':
     (setf (alist-get #'compile embark-target-injection-hooks)
           (list #'embark--allow-edit #'embark--shell-prep))
