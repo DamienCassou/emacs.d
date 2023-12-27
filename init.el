@@ -1163,7 +1163,7 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
         (load file t)))))
 
 (use-package goggles
-  :demand t
+  :disabled t
   :hook ((text-mode prog-mode) . goggles-mode)
   :config
   (progn
