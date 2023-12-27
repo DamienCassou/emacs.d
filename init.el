@@ -1915,7 +1915,8 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
       "Enable flymake-eslint in finsit's Client/ buffer."
       (when (finsit-core-own-javascript-buffer-p)
         (setq-local flymake-eslint-project-root (finsit-core-monitor-client-location)))
-      (flymake-eslint-enable)))
+      (when (and (buffer-file-name) (not (derived-mode-p 'json-mode 'json-ts-mode)))
+        (flymake-eslint-enable))))
   :config
   (progn
     (defun my/flymake-eslint--set-executable-name ()
