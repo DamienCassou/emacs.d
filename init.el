@@ -138,24 +138,41 @@ either read only or modified.")
 
   (put 'my/mode-line-remote 'risky-local-variable t)
 
+  (defun my/mode-line-buffer-identification-face ()
+    "Return face for `my/mode-line-buffer-identification'."
+    (when (mode-line-window-selected-p)
+      'mode-line-buffer-id))
+
+  (defvar-local my/mode-line-buffer-identification
+      '(:eval (propertize (buffer-name)
+                          'face (my/mode-line-buffer-identification-face))))
+
+  (put 'my/mode-line-buffer-identification 'risky-local-variable t)
+
+  (defvar-local my/mode-line-position
+      '(:eval (when (mode-line-window-selected-p)
+                mode-line-position)))
+
+  (put 'my/mode-line-position 'risky-local-variable t)
+
+  (defvar-local my/mode-line-modes
+      '(:eval (when (mode-line-window-selected-p)
+                mode-line-modes)))
+
+  (put 'my/mode-line-modes 'risky-local-variable t)
+
   ;; Change buffer status to my own function to simplify output:
   (setq-default mode-line-format
-                (cl-subst 'my/mode-line-buffer-status 'mode-line-modified mode-line-format))
-
-  ;; Change buffer remote info to my own function to simplify output:
-  (setq-default mode-line-format
-                (cl-subst 'my/mode-line-remote 'mode-line-remote mode-line-format))
-
-  ;; Remove some information I don't need from the modeline:
-  (setq-default
-   mode-line-format
-   (cl-subst-if ""
-                (lambda (item) (or
-                                (eql item 'mode-line-mule-info)
-                                (eql item 'mode-line-client)
-                                (eql item 'mode-line-frame-identification)
-                                (and (consp item) (eql (car item) 'vc-mode))))
-                mode-line-format)))
+                '("%e" ;; error message about full memory
+                  "  "
+                  my/mode-line-buffer-status
+                  my/mode-line-remote
+                  my/mode-line-buffer-identification
+                  "  "
+                  my/mode-line-position
+                  "  "
+                  my/mode-line-modes
+                  mode-line-misc-info)))
 
 (use-package custom
   :demand t
@@ -2202,7 +2219,10 @@ If PROJECT is nil, use `project-current'."
     (setq minions-prominent-modes '(flymake-mode)))
   :config
   (progn
-    (minions-mode)))
+    (setq-default my/mode-line-modes
+                  (cl-subst 'minions-mode-line-modes
+                            'mode-line-modes
+                            (default-value 'my/mode-line-modes)))))
 
 (use-package ytdl
   :hook (ytdl-download-finished . my/ytdl-alert)
