@@ -569,6 +569,11 @@
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
 	remote = "DamienCassou git@github.com:DamienCassou/projectile.git"
+[submodule "prot-emacs"]
+	path = lib/prot-emacs
+	url = https://git.sr.ht/~protesilaos/dotfiles
+	load-path = emacs/.emacs.d/prot-lisp
+	load-path = emacs/.emacs.d/prot-emacs-modules
 [submodule "racket-mode"]
 	path = lib/racket-mode
 	url = https://github.com/greghendershott/racket-mode
