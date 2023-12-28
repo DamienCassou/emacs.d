@@ -118,9 +118,11 @@ are visible."
 
 (progn ; `buffer'
   (defvar-local my/mode-line-buffer-status
-      '(buffer-file-name (:eval (cond (buffer-read-only "RO ")
-                                      ((buffer-modified-p) "** ")
-                                      (t ""))))
+      '(buffer-file-name (:eval (cond
+                                 ((not (mode-line-window-selected-p)) "")
+                                 (buffer-read-only (format "🔒 "))
+                                 ((buffer-modified-p) "💾 ")
+                                 (t ""))))
     "Return buffer's status: read-only or modified.
 
 Only display something if the buffer is attached to a file and is
