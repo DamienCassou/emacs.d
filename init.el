@@ -986,10 +986,10 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
                    (format "%s %s"
                            "%(binary) -f %(ledger-file)"
                            (cdr pair))))
-           '(("Account statement" . "register --auto ^%(account)")
-             ("Income statement"  . "balance --auto --tree --period %(month) --invert ^income ^expense")
-             ("Balance sheet"     . "balance --auto --tree ^asset ^debt \"^equity:\"")
-             ("Budget"            . "balance --auto --tree --empty ^budget not:unbudgeted"))))
+           '(("Account statement" . "register --ignore-assertions --auto ^%(account)")
+             ("Income statement"  . "balance --ignore-assertions --auto --tree --period %(month) --invert ^income ^expense")
+             ("Balance sheet"     . "balance --ignore-assertions --auto --tree ^asset ^debt \"^equity:\"")
+             ("Budget"            . "balance --ignore-assertions --auto --tree --empty ^budget not:unbudgeted"))))
 
     ;; For ledger
     (progn
