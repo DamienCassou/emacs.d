@@ -991,14 +991,6 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
              ("Balance sheet"     . "balance --ignore-assertions --auto --tree ^asset ^debt \"^equity:\"")
              ("Budget"            . "balance --ignore-assertions --auto --tree --empty ^budget not:unbudgeted"))))
 
-    ;; For ledger
-    (progn
-      (setq ledger-mode-should-check-version nil)
-      (setq ledger-binary-path (executable-find "ledger"))
-      (setq ledger-report-links-in-register t)
-      (setq ledger-report-native-highlighting-arguments '("--color" "--force-color"))
-      (setq ledger-report-auto-width t))
-
     ;; For hledger
     (progn
       (setq ledger-mode-should-check-version nil)
