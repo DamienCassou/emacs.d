@@ -1040,6 +1040,20 @@ MOMENT is an encoded date."
       (require 'autoclose-shell)
       (autoclose-shell-start "lint-system" '("lint-system")))
 
+    (defun my/ledger-insert-mortgage-transaction ()
+      "Read accounting data for MORTGAGE and write the ledger entry."
+      (interactive)
+      (let* ((amount (- (abs (read-number "Amount: "))))
+             (description (read-string "Description: "))
+             (date (ledger-read-date "Date: "))
+             (begining (point)))
+        (insert (format "%s %s\n" date description))
+        (insert (format "  asset:current:couple  %s\n" amount))
+        (insert (format "  expense:misc  %s\n" amount))
+        (save-excursion
+          (goto-char begining)
+          (my/ledger-mortgage-rewrite))))
+
     (defun my/ledger-mortgage-read-numbers ()
       "Returns the numbers of the current mortgage reimbursement transaction.
 
