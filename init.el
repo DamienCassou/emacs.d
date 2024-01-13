@@ -1380,7 +1380,7 @@ user if the command is called with a prefix argument."
                               (encode-time
                                (iso8601-parse (concat (org-read-date) "T00:00:00"))))))
       (let* ((title (format-time-string "%A %e %B %Y" date))
-             (sluggified-title (denote-sluggify title))
+             (sluggified-title (denote-sluggify 'title title))
              (all-files (denote-all-files))
              (matching-files (seq-filter
                               (apply-partially
