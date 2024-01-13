@@ -48,6 +48,7 @@
         ledger-post-align-dwim
         markdown-electric-backquote
         markdown-outdent-or-delete
+        mc--insert-letter-and-increase
         mc/insert-numbers
         message-beginning-of-line
         message-tab
