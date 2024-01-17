@@ -694,6 +694,7 @@ This is recommended by Vertico's README."
     (setq dired-dwim-target t)
     (setq dired-listing-switches "-alh")
     (setq dired-recursive-deletes 'always)
+    (setq dired-mouse-drag-files t)
 
     (defun my/dired-move-beginning-of-line ()
       (interactive)
