@@ -338,6 +338,14 @@ This is recommended by Vertico's README."
         ("o"
          "occur"
          isearch-occur
+         :transient nil)
+        ("h"
+         "highlight"
+         isearch-highlight-regexp
+         :transient nil)
+        ("H"
+         "highlight lines"
+         isearch-highlight-lines-matching-regexp
          :transient nil)]])))
 
 (use-package dabbrev
