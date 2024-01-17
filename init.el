@@ -1411,7 +1411,9 @@ The link will contain DESCRIPTION as text."
                                  nil
                                  (concat "." (file-name-extension file)))))
           (copy-file file target-filename t)
-          (org-insert-link nil (concat "file:" target-filename) description))))))
+          (org-insert-link nil (concat "file:" target-filename) description)
+          (when (yes-or-no-p "Delete the initial file? ")
+            (delete-file file t)))))))
 
 (use-package calendar
   :init
