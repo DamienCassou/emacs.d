@@ -878,6 +878,7 @@ This is recommended by Vertico's README."
     (add-to-list 'jinx-include-faces
                  (list 'js2-mode 'js2-jsdoc-value))
 
+    ;; https://github.com/minad/jinx/wiki
     (defun my/jinx-ispell-localwords ()
       "Return a string of ispell's local words.
 
@@ -890,17 +891,20 @@ Those are the words following `ispell-words-keyword' (usually
                  collect (string-trim (buffer-substring-no-properties (point) (line-end-position))) into result
                  finally return (mapconcat #'identity result " "))))
 
+    ;; https://github.com/minad/jinx/wiki
     (defun my/jinx-add-ispell-localwords ()
       "Add ispell's local words to `jinx-local-words'."
       (let ((ispell-localwords (my/jinx-ispell-localwords)))
         (setq jinx-local-words (concat jinx-local-words ispell-localwords))
         (setq jinx--session-words (append jinx--session-words (split-string ispell-localwords)))))
 
+    ;; https://github.com/minad/jinx/wiki
     (defun my/jinx-save-as-ispell-localword (save key word)
       "Save WORD using ispell's `ispell-words-keyword'.
 If SAVE is non-nil save, otherwise format candidate given action KEY."
       (if save
           (progn
+            (require 'ispell)
             (ispell-add-per-file-word-list word)
             (add-to-list 'jinx--session-words word)
             (setq jinx-local-words
