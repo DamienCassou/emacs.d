@@ -909,7 +909,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
                           (cons word (split-string jinx-local-words)))
                          #'string<)
                    " ")))
-        (jinx--save-action key word "File")))
+        (list key word "File")))
 
     (map-put! jinx--save-keys ?* #'my/jinx-save-as-ispell-localword)))
 
