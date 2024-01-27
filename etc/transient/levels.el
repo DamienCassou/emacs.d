@@ -1,4 +1,5 @@
 ((magit-commit
+  (transient:magit-commit:--date= . 4)
   (transient:magit-commit:--verbose . 7)
   (transient:magit-commit:--reset-author . 7)
   (transient:magit-commit:--no-verify . 4)
