@@ -174,6 +174,10 @@ either read only or modified.")
                   my/mode-line-modes
                   mode-line-misc-info)))
 
+(use-package register
+  :config
+  (set-register ?t "!-tests.js !.spec.component.js !_spec.ui.js !_spec.e2e.js"))
+
 (use-package custom
   :demand t
   :config
