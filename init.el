@@ -964,7 +964,7 @@ This function requires GNU ls from coreutils installed."
       (when (map-elt pullreq 'draft)
         (when-let* ((url (map-elt pullreq 'url))
                     (minutes (cond
-                              ((string-match-p "foretagsplatsen/monitor" url) 22)
+                              ((string-match-p "foretagsplatsen/monitor" url) 15)
                               (t 10))))
           (require 'tmr)
           (tmr minutes (format "Check draft %s" url) t))))))
