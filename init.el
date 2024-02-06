@@ -1251,8 +1251,7 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
                           #'+
                           (map-values (my/ledger-mortgage-read-numbers))
                           0))
-                  (mortgage-type (my/ledger-mortgage-guess-type numbers))
-                  (account (format "debt:longterm:mortgage:%s" mortgage-type)))
+                  (mortgage-type (my/ledger-mortgage-guess-type numbers)))
         (save-match-data
           (save-excursion
             (ledger-navigate-beginning-of-xact)
@@ -1266,7 +1265,10 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
               (map-do
                (lambda (number-type number)
                  (when (> number 0)
-                   (insert " " account (symbol-name number-type) "  " (number-to-string number) "\n")))
+                   (let ((account (if (eq number-type :insurance)
+                                      "expense:util:insurance"
+                                    (format "expense:mortgage:%s%s" mortgage-type number-type))))
+                     (insert " " account "  " (number-to-string number) "\n"))))
                numbers)
               (delete-backward-char 1) ; remove additional newline
               (ledger-post-align-dwim))))))))
