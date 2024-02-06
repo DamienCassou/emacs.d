@@ -1192,13 +1192,12 @@ MOMENT is an encoded date."
       "Read accounting data for MORTGAGE and write the ledger entry."
       (interactive)
       (ensure-empty-lines 1)
-      (let* ((amount (- (abs (read-number "Amount: "))))
-             (description (read-string "Description: "))
+      (let* ((description (read-string "Description: "))
              (date (ledger-read-date "Date: "))
              (begining (point)))
         (insert (format "%s %s\n" date description))
-        (insert (format "  asset:current:couple  %s\n" amount))
-        (insert (format "  expense:misc  %s\n" amount))
+        (insert (format "  asset:current:couple  0\n"))
+        (insert (format "  expense:misc  0\n"))
         (save-excursion
           (goto-char begining)
           (my/ledger-mortgage-rewrite))))
@@ -1248,6 +1247,10 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
       "Rewrite the mortgage transaction at point."
       (interactive)
       (when-let* ((numbers (my/ledger-mortgage-read-numbers))
+                  (total (seq-reduce
+                          #'+
+                          (map-values (my/ledger-mortgage-read-numbers))
+                          0))
                   (mortgage-type (my/ledger-mortgage-guess-type numbers))
                   (account (format "debt:longterm:mortgage:%s" mortgage-type)))
         (save-match-data
@@ -1255,6 +1258,9 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
             (ledger-navigate-beginning-of-xact)
             (when (re-search-forward " .*$" (line-end-position)) ; skip date
               (replace-match " banque populaire prêt" t)
+              (next-line)
+              (delete-region (line-beginning-position) (line-end-position))
+              (insert (format " asset:current:couple  %.2f" total))
               (ledger-navigate-end-of-xact)
               (delete-region (line-beginning-position) (line-end-position))
               (map-do
