@@ -180,6 +180,12 @@ either read only or modified.")
                   my/mode-line-modes
                   my/mode-line-misc-info)))
 
+(use-package which-func
+  :defer 5
+  :config
+  (progn
+    (which-function-mode)))
+
 (use-package register
   :config
   (set-register ?t "!-tests.js !.spec.component.js !_spec.ui.js !_spec.e2e.js"))
