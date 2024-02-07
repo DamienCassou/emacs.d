@@ -1271,7 +1271,7 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
               (replace-match " banque populaire prêt" t)
               (next-line)
               (delete-region (line-beginning-position) (line-end-position))
-              (insert (format " asset:current:couple  %.2f" total))
+              (insert (format " asset:current:couple  %.2f" (- total)))
               (ledger-navigate-end-of-xact)
               (delete-region (line-beginning-position) (line-end-position))
               (map-do
