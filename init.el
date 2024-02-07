@@ -161,6 +161,12 @@ either read only or modified.")
 
   (put 'my/mode-line-modes 'risky-local-variable t)
 
+  (defvar-local my/mode-line-misc-info
+      '(:eval (when (mode-line-window-selected-p)
+                mode-line-misc-info)))
+
+  (put 'my/mode-line-misc-info 'risky-local-variable t)
+
   ;; Change buffer status to my own function to simplify output:
   (setq-default mode-line-format
                 '("%e" ;; error message about full memory
@@ -172,7 +178,7 @@ either read only or modified.")
                   my/mode-line-position
                   "  "
                   my/mode-line-modes
-                  mode-line-misc-info)))
+                  my/mode-line-misc-info)))
 
 (use-package register
   :config
