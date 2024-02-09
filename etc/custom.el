@@ -25,7 +25,8 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((etags-regen-ignores "test/manual/etags/")
+   '((org-imenu-depth . 1)
+     (etags-regen-ignores "test/manual/etags/")
      (etags-regen-regexp-alist
       (("c" "objc")
        "/[ \11]*DEFVAR_[A-Z_ \11(]+\"\\([^\"]+\\)\"/\\1/" "/[ \11]*DEFVAR_[A-Z_ \11(]+\"[^\"]+\",[ \11]\\([A-Za-z0-9_]+\\)/\\1/"))
