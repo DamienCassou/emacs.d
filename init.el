@@ -952,7 +952,22 @@ This function requires GNU ls from coreutils installed."
       (remove-hook 'magit-module-sections-hook 'magit-insert-modules-unpushed-to-pushremote))
 
     (transient-replace-suffix 'magit-commit 'magit-commit-autofixup
-      '("x" "Absorb changes" magit-commit-absorb))))
+      '("x" "Absorb changes" magit-commit-absorb))
+
+    (dir-locals-set-class-variables 'my/magit-huge-git-repository
+                                    '((magit-status-mode
+                                       .
+                                       ((eval . (magit-disable-section-inserter 'magit-insert-tags-header))
+                                        (eval . (magit-disable-section-inserter 'magit-insert-untracked-files))
+                                        (eval . (magit-disable-section-inserter 'magit-insert-modules))))))
+
+    (let ((huge-repos
+           '("~/Documents/projects/nix/nixpkgs-master"
+             "~/Documents/projects/nix-system/nixpkgs/")))
+      (dolist (repo huge-repos)
+        (dir-locals-set-directory-class
+         (expand-file-name repo)
+         'my/magit-huge-git-repository)))))
 
 (use-package magit-diff
   :bind (
