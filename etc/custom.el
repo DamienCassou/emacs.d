@@ -25,7 +25,9 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((magit-refresh-verbose . t)
+   '((eval require 'ol-man nil t)
+     (eval require 'magit-base nil t)
+     (magit-refresh-verbose . t)
      (org-imenu-depth . 1)
      (etags-regen-ignores "test/manual/etags/")
      (etags-regen-regexp-alist
