@@ -27,6 +27,7 @@
         dired-toggle-read-only
         dired-unmark-all-files
         drag-stuff-down
+        duplicate-dwim
         duplicate-thing
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
