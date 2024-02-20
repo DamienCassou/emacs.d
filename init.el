@@ -1213,6 +1213,7 @@ MOMENT is an encoded date."
       "Lint my ledger file."
       (interactive)
       (require 'autoclose-shell)
+      (save-buffer)
       (autoclose-shell-start "lint-system" '("lint-system")))
 
     (defun my/ledger-insert-mortgage-transaction ()
