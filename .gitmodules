@@ -67,6 +67,9 @@
 [submodule "cask"]
 	path = lib/cask
 	url = git@github.com:cask/cask.git
+[submodule "cc-isearch-menu"]
+	path = lib/cc-isearch-menu
+	url = https://github.com/kickingvegas/cc-isearch-menu
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
