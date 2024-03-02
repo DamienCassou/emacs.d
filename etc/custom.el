@@ -25,7 +25,41 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((eval require 'ol-man nil t)
+   '((eval defun my-insert-shell-prompt
+           (_backend)
+           "https://emacs.stackexchange.com/questions/44958/can-i-insert-a-prefix-to-org-babel-source-code-lines-on-export/44970#44970"
+           (org-babel-map-src-blocks nil
+             (let
+                 ((lang lang)
+                  (beg-body beg-body)
+                  (end-body
+                   (copy-marker end-body))
+                  (prefix "$ ")
+                  (is-contd-from-prev-line nil))
+               (when
+                   (member lang org-babel-shell-names)
+                 (goto-char beg-body)
+                 (skip-chars-forward "\12 "
+                                     (marker-position end-body))
+                 (while
+                     (<
+                      (point)
+                      (marker-position end-body))
+                   (if
+                       (not is-contd-from-prev-line)
+                       (insert prefix))
+                   (end-of-line)
+                   (if
+                       (eq 92
+                           (char-after
+                            (-
+                             (point)
+                             1)))
+                       (setq is-contd-from-prev-line t)
+                     (setq is-contd-from-prev-line nil))
+                   (skip-chars-forward "\12 "
+                                       (marker-position end-body)))))))
+     (eval require 'ol-man nil t)
      (eval require 'magit-base nil t)
      (magit-refresh-verbose . t)
      (org-imenu-depth . 1)
