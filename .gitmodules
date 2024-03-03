@@ -292,6 +292,9 @@
 [submodule "ht"]
 	path = lib/ht
 	url = git@github.com:Wilfred/ht.el.git
+[submodule "html-ts-mode"]
+	path = lib/html-ts-mode
+	url = git@github.com:mickeynp/html-ts-mode.git
 [submodule "htmlize"]
 	path = lib/htmlize
 	url = git@github.com:hniksic/emacs-htmlize.git
