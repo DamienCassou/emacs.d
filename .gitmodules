@@ -400,7 +400,7 @@
 	url = git@github.com:phillord/m-buffer-el.git
 [submodule "macrostep"] # Interactively expand macros
 	path = lib/macrostep
-	url = git@github.com:joddie/macrostep.git
+	url = git@github.com:emacsorphanage/macrostep.git
 [submodule "magit"] # Integrate git <C-x g>
 	path = lib/magit
 	url = git@github.com:magit/magit.git
