@@ -1710,6 +1710,11 @@ The link will contain DESCRIPTION as text."
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
+(use-package combobulate
+  :hook ((css-ts-mode html-ts-mode json-ts-mode toml-ts-mode yaml-ts-mode)
+         .
+         combobulate-mode))
+
 (use-package elec-pair
   :demand t
   :config
