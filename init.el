@@ -973,7 +973,7 @@ This function requires GNU ls from coreutils installed."
                  (list 'ledger-mode 'ledger-font-comment-face))
 
     (add-to-list 'jinx-include-faces
-                 (list 'js2-mode 'js2-jsdoc-value))
+                 (list 'js2-mode 'js2-jsdoc-value 'js2-jsdoc-type))
 
     ;; https://github.com/minad/jinx/wiki
     (defun my/jinx-ispell-localwords ()
