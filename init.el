@@ -2225,6 +2225,9 @@ If PROJECT is nil, use `project-current'."
 (use-package json-ts-mode
   :mode "\\.json\\'")
 
+(use-package toml-ts-mode
+  :mode "\\.toml\\'")
+
 (use-package json-mode
   :config
   (progn
@@ -2391,6 +2394,12 @@ If PROJECT is nil, use `project-current'."
 
 (use-package nix-ts-mode
   :mode ("\\.nix\\'" . nix-ts-mode))
+
+(use-package html-ts-mode
+  :mode ("\\.html\\'" . html-ts-mode))
+
+(use-package css-ts-mode
+  :mode ("\\.css\\'" . css-ts-mode))
 
 (use-package typescript-mode
   :config
