@@ -2493,10 +2493,7 @@ the buffer's filename."
     (setq completion-styles '(orderless basic))
 
     ;; allow filtering completion lists with keywords
-    (add-to-list 'orderless-style-dispatchers #'orderless-kwd-dispatch)
-
-    ;; Restore tramp file completion (recommended by Vertico's README):
-    (setq completion-category-overrides '((file (styles basic partial-completion))))))
+    (add-to-list 'orderless-style-dispatchers #'orderless-kwd-dispatch)))
 
 (use-package xref
   :hook (xref-after-update . outline-minor-mode)
