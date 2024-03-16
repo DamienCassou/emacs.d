@@ -2472,8 +2472,9 @@ the buffer's filename."
   :demand t
   :init
   (progn
-    (setq completion-styles '(orderless basic))
-
+    (setq completion-styles '(orderless basic)))
+  :config
+  (progn
     ;; allow filtering completion lists with keywords
     (add-to-list 'orderless-style-dispatchers #'orderless-kwd-dispatch)))
 
