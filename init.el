@@ -1404,30 +1404,6 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
   (progn
     (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)))
 
-(use-package ob-core
-  :config
-  (progn
-    ;; overrides a function with the same name in ob-core to prevent
-    ;; executing `org-babel-execute-src-block' on non-executable code
-    ;; blocks (https://list.orgmode.org/87zfv7kg0p.fsf@cassou.me/T/#u):
-    (defun org-babel-execute-buffer (&optional arg)
-      "Execute source code blocks in a buffer.
-Prefix argument ARG is passed to `org-babel-execute-src-block'.
-Call `org-babel-execute-src-block' on every source block in
-the current buffer."
-      (interactive "P")
-      (org-babel-eval-wipe-error-buffer)
-      (org-save-outline-visibility t
-        (org-babel-map-executables nil
-          (if (org-element-type-p
-               (org-element-context) '(babel-call inline-babel-call))
-              (org-babel-lob-execute-maybe)
-            (let* ((info (org-babel-get-src-block-info))
-                   (lang (nth 0 info))
-                   (cmd (intern (concat "org-babel-execute:" lang))))
-              (when (fboundp cmd)
-                (org-babel-execute-src-block arg)))))))))
-
 (use-package org-agenda
   :bind (
          :map org-agenda-mode-map
@@ -1968,6 +1944,7 @@ negative, the password is inserted at point."
     (global-subword-mode)))
 
 (use-package prodigy
+  :hook (prodigy-mode . my/prodigy-setup)
   :bind (("C-. p" . prodigy)
          :map prodigy-mode-map
          ("k" . (lambda () (interactive) (prodigy-stop t)))
@@ -1976,7 +1953,12 @@ negative, the password is inserted at point."
          ("C-<up>" . prodigy-prev-with-status))
   :init
   (progn
-    (setq prodigy-completion-system 'default)))
+    (setq prodigy-completion-system 'default))
+  :config
+  (progn
+    (defun my/prodigy-setup ()
+      "Configure prodigy."
+      (setq-local browse-url-browser-function #'browse-url-chromium))))
 
 (use-package finsit-core
   :config
