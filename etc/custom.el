@@ -25,7 +25,33 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((eval defun my-insert-shell-prompt
+   '((org-babel-default-header-args:gitconfig
+      (:eval . "no"))
+     (org-babel-default-header-args:text
+      (:eval . "no"))
+     (org-babel-default-header-args:sh
+      (:exports . "both")
+      (:results . "output raw")
+      (:session . "repo-test")
+      (:tangle . "yes")
+      (:wrap . "src text"))
+     (org-export-global-macros
+      ("fedora-version" lambda
+       (&rest _)
+       (save-excursion
+         (with-temp-buffer
+           (insert-file "/etc/fedora-release")
+           (goto-char
+            (point-min))
+           (re-search-forward
+            (rx
+             (group-n 1
+               (+ digit))))
+           (match-string 1))))
+      ("git-version" lambda
+       (&rest _)
+       (magit-git-version)))
+     (eval defun my-insert-shell-prompt
            (_backend)
            "https://emacs.stackexchange.com/questions/44958/can-i-insert-a-prefix-to-org-babel-source-code-lines-on-export/44970#44970"
            (org-babel-map-src-blocks nil
