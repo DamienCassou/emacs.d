@@ -1556,12 +1556,6 @@ The link will contain DESCRIPTION as text."
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-(use-package which-key
-  :demand t
-  :config
-  (progn
-    (which-key-mode)))
-
 (use-package dumb-jump
   :init
   (progn
