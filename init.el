@@ -2679,6 +2679,7 @@ targets."
            nil nil t (lambda (binding)
                        (not (string-suffix-p "-argument" (cdr binding))))))))
 
+    (setq embark-confirm-act-all nil)
     (setq embark-indicators
           '(embark--vertico-indicator
             my/embark-which-key-indicator
