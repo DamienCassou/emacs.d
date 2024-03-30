@@ -317,15 +317,6 @@
 	path = lib/inheritenv
 	url = git@github.com:purcell/inheritenv.git
 	branch = main
-[submodule "ivy"]
-	path = lib/ivy
-	url = git@github.com:abo-abo/swiper.git
-	info-path = doc
-	remote = "DamienCassou git@github.com:DamienCassou/swiper.git"
-	build-step = borg-compile
-	build-step = borg-update-autoloads
-	build-step = make --directory=doc/ ivy.info
-	build-step = borg-makeinfo
 [submodule "journalctl-mode"]
 	path = lib/journalctl-mode
 	url = https://github.com/SebastianMeisel/journalctl-mode
