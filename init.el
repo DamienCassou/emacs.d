@@ -2427,7 +2427,9 @@ If PROJECT is nil, use `project-current'."
 
     (setq vertico-multiform-commands
           '(;; show grep results in a dedicated buffer:
-            (consult-ripgrep buffer)))))
+            (consult-ripgrep buffer)))
+
+    (add-to-list 'vertico-multiform-categories '(embark-keybinding grid))))
 
 (use-package marginalia
   :demand t
