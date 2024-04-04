@@ -48,6 +48,7 @@
         kill-region
         ledger-post-align-dwim
         markdown-electric-backquote
+        markdown-end-of-line
         markdown-outdent-or-delete
         mc--insert-letter-and-increase
         mc/insert-numbers
