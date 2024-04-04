@@ -2528,6 +2528,7 @@ the buffer's filename."
     (add-to-list 'project-switch-commands '(my/vterm-open-new "Shell") t)
 
     (add-to-list 'project-vc-extra-root-markers "package.json")
+    (add-to-list 'project-vc-extra-root-markers "*.sln")
 
     (defun my/project-copy-filename (file)
       "Copy the path of FILE relative to the project root to the kill ring."
