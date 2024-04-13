@@ -1187,13 +1187,8 @@ The type is either 'ecoptz, 'immo1 or 'immo2.
 
 NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST)."
       (cond
-       ((and (>= (map-elt numbers :insurance) 0.1)
-             (= (map-elt numbers :interest) 0))
-        'ecoptz)
-       ((or (>= (map-elt numbers :insurance) 0.1)
-            (= (map-elt numbers :interest) 0))
-        (user-error "Invalid numbers: %S" numbers))
-       ((>= (map-elt numbers :capital) 700) 'immo1)
+       ((= (map-elt numbers :interest) 0) 'ecoptz)
+       ((>= (map-elt numbers :capital) 410) 'immo1)
        (t 'immo2)))
 
     (defun my/ledger-mortgage-rewrite ()
@@ -1218,10 +1213,10 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
               (map-do
                (lambda (number-type number)
                  (when (> number 0)
-                   (let ((account (if (eq number-type :insurance)
-                                      "expense:util:insurance"
-                                    (format "expense:mortgage:%s%s" mortgage-type number-type))))
-                     (insert " " account "  " (number-to-string number) "\n"))))
+                   (insert
+                    (format
+                     " expense:mortgage:%s%s  %s\n"
+                     mortgage-type number-type number))))
                numbers)
               (delete-backward-char 1) ; remove additional newline
               (ledger-post-align-dwim))))))))
