@@ -218,6 +218,9 @@
 	path = lib/flycheck
 	url = git@github.com:flycheck/flycheck.git
 	remote = "DamienCassou git@github.com:DamienCassou/flycheck.git"
+[submodule "flycheck-hledger"]
+	path = lib/flycheck-hledger
+	url = https://github.com/DamienCassou/flycheck-hledger
 [submodule "flymake-eslint"]
 	path = lib/flymake-eslint
 	url = git@github.com:orzechowskid/flymake-eslint.git
