@@ -2783,6 +2783,9 @@ prefix arg was used."
   :demand t
   :after (org racket-mode))
 
+(use-package dotenv-mode
+  :mode ("\\.env\\'" . dotenv-mode))
+
 (use-package meow
   :disabled t
   :config
