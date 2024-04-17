@@ -138,6 +138,9 @@
 [submodule "docker"]
 	path = lib/docker
 	url = https://github.com/Silex/docker.el
+[submodule "dotenv-mode"]
+	path = lib/dotenv-mode
+	url = https://github.com/preetpalS/emacs-dotenv-mode
 [submodule "drag-stuff"] # use <M-arrow> to move things around
 	path = lib/drag-stuff
 	url = git@github.com:rejeep/drag-stuff.el.git
