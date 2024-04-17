@@ -25,7 +25,8 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((org-babel-default-header-args:gitconfig
+   '((adaptive-wrap-extra-indent . 2)
+     (org-babel-default-header-args:gitconfig
       (:eval . "no"))
      (org-babel-default-header-args:text
       (:eval . "no"))
