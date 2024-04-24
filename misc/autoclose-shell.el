@@ -40,6 +40,7 @@ COMMAND is a list starting with the program file name, followed
 by strings to give to the program as arguments."
   (let ((output-buffer (get-buffer-create name)))
     (display-buffer output-buffer)
+    (goto-char (point-max))
     (make-process
      :name name
      :command command
