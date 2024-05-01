@@ -1240,6 +1240,10 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
     (defun my/package-lint-flymake-setup ()
       (add-hook 'flymake-diagnostic-functions #'package-lint-flymake nil t))))
 
+(use-package package-lint-flymake
+  :after (flymake package-lint)
+  :demand t)
+
 (use-package ledger-complete
   :init
   (progn
