@@ -92,6 +92,9 @@
 	path = lib/consult
 	url = git@github.com:minad/consult.git
 	branch = main
+[submodule "corfu"]
+	path = lib/corfu
+	url = https://github.com/minad/corfu
 [submodule "counsel-jq"]
 	path = lib/counsel-jq
 	url = https://github.com/200ok-ch/counsel-jq.git
