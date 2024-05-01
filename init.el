@@ -1963,6 +1963,10 @@ negative, the password is inserted at point."
       (vc-file-setprop (expand-file-name "monitor/Monitor.Web.Ui/Client/" finsit-core-monitor-root-location)
                        'project-vc nil))))
 
+(use-package finsit-insert-commit-id
+  :after git-commit
+  :hook (git-commit-setup . finsit-insert-commit-id))
+
 (use-package libbcel
   :config
   (progn
@@ -1970,19 +1974,6 @@ negative, the password is inserted at point."
     (setq libbcel-oauth-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
     (setq libbcel-oauth-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
     (setq libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
-
-(use-package finsit-basecamp
-  :demand t
-  :after (finsit-magit)
-  :config
-  (progn
-    (finsit-basecamp-setup)))
-
-(use-package finsit-bugref
-  :demand t
-  :config
-  (progn
-    (finsit-bugref-setup)))
 
 (use-package libelcouch
   :init
@@ -2073,19 +2064,11 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
     (with-eval-after-load 'flycheck
       (bind-key "C-c ! k" #'eslint-disable-rule-disable-next-line flycheck-mode-map))))
 
-(use-package finsit-magit
-  :demand t
-  :after magit
-  :config
-  (progn
-    (finsit-magit-setup)))
-
 (use-package finsit-forge
-  :demand t
   :after forge
-  :config
-  (progn
-    (finsit-forge-setup)))
+  :hook ((forge-create-pullreq . finsit-forge-insert-branch-description-into-topic)
+         (forge-post-submit-callback . finsit-forge-browse-pullreq)
+         (forge-post-submit-callback . finsit-forge-insert-pullreq-url-into-todo)))
 
 (use-package finsit-prodigy
   :demand t
