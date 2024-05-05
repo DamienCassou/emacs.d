@@ -1717,6 +1717,7 @@ The link will contain DESCRIPTION as text."
     (setq describe-bindings-outline t)))
 
 (use-package helpful
+  :disabled t
   :bind (([remap describe-key] . helpful-key)
          ([remap describe-function] . helpful-callable)
          ([remap describe-variable] . helpful-variable)))
