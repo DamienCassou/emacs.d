@@ -301,7 +301,12 @@ This is recommended by Vertico's README."
     (defun my/dabbrev-completion ()
       "Same as `dabbrev-completion' but searches all buffers."
       (interactive)
-      (dabbrev-completion '(16)))))
+      (dabbrev-completion '(16)))
+
+    ;; recommended by corfu:
+    (add-to-list 'dabbrev-ignored-buffer-modes 'doc-view-mode)
+    (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode)
+    (add-to-list 'dabbrev-ignored-buffer-modes 'tags-table-mode)))
 
 (use-package locate
   :init
