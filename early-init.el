@@ -1,5 +1,16 @@
 ;;; early-init.el -*- lexical-binding: t; -*-
 
+;; My Nix configuration seems to mess up with variable
+;; `invocation-directory': instead of referencing the package with
+;; emacs and its dependencies, it is referencing the package
+;; containing only Emacs. This is problematic for some tools such as
+;; `elisp-flymake-byte-compile' and `borg--build-interactive' which
+;; don't find necessary libraries.
+(when (string-match-p "/nix/store.*-emacs-gtk" invocation-directory)
+  (setq invocation-directory
+        (let ((emacs-bin-store-path (file-chase-links (expand-file-name invocation-name "~/.nix-profile/bin"))))
+          (file-name-parent-directory emacs-bin-store-path))))
+
 ;; In Emacs 27+, package initialization occurs before `user-init-file' is
 ;; loaded, but after `early-init-file'.
 (setq package-enable-at-startup nil)

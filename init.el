@@ -432,14 +432,7 @@ This is recommended by Vertico's README."
 
     (defun my/eldoc-shows-more-information ()
       (remove-hook 'eldoc-documentation-functions #'elisp-eldoc-var-docstring t)
-      (add-hook 'eldoc-documentation-functions #'elisp-eldoc-var-docstring-with-value nil t))
-
-    (defun my/elisp-flymake-byte-compile (oldfun &rest args)
-      "Make sure flymake uses our Emacs with packages to find dependencies."
-      (let ((invocation-directory (expand-file-name "~/.nix-profile/bin")))
-        (apply oldfun args)))
-
-    (advice-add #'elisp-flymake-byte-compile :around #'my/elisp-flymake-byte-compile)))
+      (add-hook 'eldoc-documentation-functions #'elisp-eldoc-var-docstring-with-value nil t))))
 
 (use-package minibuffer
   :bind (("M-/" . completion-at-point))
