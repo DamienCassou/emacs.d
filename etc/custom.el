@@ -25,7 +25,9 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((adaptive-wrap-extra-indent . 2)
+   '((eval my/eglot-ensure)
+     (finsit-insert-commit-id . t)
+     (adaptive-wrap-extra-indent . 2)
      (org-babel-default-header-args:gitconfig
       (:eval . "no"))
      (org-babel-default-header-args:text
