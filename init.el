@@ -2457,6 +2457,12 @@ the buffer's filename."
     ;; allow filtering completion lists with keywords
     (add-to-list 'orderless-style-dispatchers #'orderless-kwd-dispatch)))
 
+(use-package emacs-everywhere
+  :config
+  (progn
+    (require 'ox-gfm) ;; so we get better output in GitHub windows
+    (add-to-list 'emacs-everywhere-markdown-windows "Reviewable")))
+
 (use-package xref
   :hook (xref-after-update . outline-minor-mode)
   :init
