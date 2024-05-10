@@ -520,6 +520,9 @@
 [submodule "ov"]
 	path = lib/ov
 	url = git@github.com:ShingoFukuyama/ov.el.git
+[submodule "ox-gfm"]
+	path = lib/ox-gfm
+	url = https://github.com/larstvei/ox-gfm
 [submodule "ox-linuxmag-fr"]
 	path = lib/ox-linuxmag-fr
 	url = git@github.com:DamienCassou/ox-linuxmag-fr.git
