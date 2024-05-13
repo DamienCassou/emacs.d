@@ -635,8 +635,7 @@ This is recommended by Vertico's README."
          :map dired-mode-map
          ("C-a" . my/dired-move-beginning-of-line)
          ("k" . dired-do-delete)
-         ("D" . nil)
-         ("s" . cc/dired-sort-by))
+         ("D" . nil))
   :hook (dired-mode . dired-hide-details-mode)
   :init
   (progn
@@ -651,139 +650,14 @@ This is recommended by Vertico's README."
       (let ((point (point)))
         (dired-move-to-filename)
         (when (= point (point))
-          (move-beginning-of-line nil)))))
-  :config
-  (progn
-    ;; http://yummymelon.com/devnull/enhancing-dired-sorting-with-transient.html
-    (defun cc/--dired-sort-by (criteria &optional prefix-args)
-      "Sort current Dired buffer according to CRITERIA and PREFIX-ARGS.
+          (move-beginning-of-line nil))))))
 
-This function will invoke `dired-sort-other' with arguments built from
-CRITERIA and PREFIX-ARGS.
-
-CRITERIA is a keyword of which the following are supported:
-  :name             :date-added             :version
-  :kind             :date-metadata-changed  :size
-  :date-last-opened :date-modified
-
-PREFIX-ARGS is a list of GNU ls arguments. If nil, then it will use the value
-of `cc-dired-listing-switches'. Otherwise this is typically populated by the
-Transient menu `cc/dired-sort-by'.
-
-This function requires GNU ls from coreutils installed.
-
-See the man page `ls(1)' for details."
-      (let ((arg-list (list "-l")))
-        (if prefix-args
-            (nconc arg-list prefix-args)
-          (nconc arg-list cc-dired-listing-switches))
-        (cond
-         ((eq criteria :name)
-          (message "Sorted by name"))
-
-         ((eq criteria :kind)
-          (message "Sorted by kind")
-          (push "--sort=extension" arg-list))
-
-         ((eq criteria :date-last-opened)
-          (message "Sorted by date last opened")
-          (push "--sort=time" arg-list)
-          (push "--time=access" arg-list))
-
-         ((eq criteria :date-added)
-          (message "Sorted by date added")
-          (push "--sort=time" arg-list)
-          (push "--time=creation" arg-list))
-
-         ((eq criteria :date-modified)
-          (message "Sorted by date modified")
-          (push "--sort=time" arg-list)
-          (push "--time=modification" arg-list))
-
-         ((eq criteria :date-metadata-changed)
-          (message "Sorted by date metadata changed")
-          (push "--sort=time" arg-list)
-          (push "--time=status" arg-list))
-
-         ((eq criteria :version)
-          (message "Sorted by version")
-          (push "--sort=version" arg-list))
-
-         ((eq criteria :size)
-          (message "Sorted by size")
-          (push "-S" arg-list))
-
-         (t
-          (message "Default sorted by name")))
-
-        (dired-sort-other (mapconcat 'identity arg-list " "))))
-
-    (require 'transient)
-    (transient-define-prefix cc/dired-sort-by ()
-      "Transient menu to sort Dired buffer by different criteria.
-
-This function requires GNU ls from coreutils installed."
-      :value '("--human-readable"
-               "--group-directories-first"
-               "--time-style=long-iso")
-                                        ; TODO: support cc-dired-listing-switches
-      [["Arguments"
-        ("-a" "all" "--all")
-        ("g" "group directories first" "--group-directories-first")
-        ("-r" "reverse" "--reverse")
-        ("-h" "human readable" "--human-readable")
-        ("t" "time style" "--time-style="
-         :choices ("full-iso" "long-iso" "iso" "locale"))]
-
-       ["Sort By"
-        ("n"
-         "Name"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :name
-                               (transient-args transient-current-command)))
-         :transient nil)
-        ("k"
-         "Kind"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :kind
-                               (transient-args transient-current-command)))
-         :transient nil)
-        ("l"
-         "Date Last Opened"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :date-last-opened
-                               (transient-args transient-current-command)))
-         :transient nil)
-        ("a"
-         "Date Added"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :date-added
-                               (transient-args transient-current-command)))
-         :transient nil)
-        ("m"
-         "Date Modified"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :date-modified
-                               (transient-args transient-current-command)))
-         :transient nil)
-        ("M"
-         "Date Metadata Changed"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :date-metadata-changed
-                               (transient-args transient-current-command)))
-         :transient nil)
-        ("v"
-         "Version"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :version
-                               (transient-args transient-current-command)))
-         :transient nil)
-        ("s"
-         "Size"
-         (lambda () (interactive)
-           (cc/--dired-sort-by :size
-                               (transient-args transient-current-command)))
-         :transient nil)]])))
+(use-package casual-dired
+  :after dired
+  :bind (
+         :map dired-mode-map
+         ("?" . casual-dired-tmenu)
+         ("s" . casual-dired-sort-by-tmenu)))
 
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
