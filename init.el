@@ -2410,6 +2410,13 @@ the buffer's filename."
         (kill-new result)
         (message "%s" result)))))
 
+(use-package conner
+  :bind (([remap project-compile] . conner-run-project-command))
+  :config
+  (progn
+    ;; make sure to load vterm because conner checks for it:
+    (require 'vterm)))
+
 (use-package consult
   :bind (([remap yank-pop] . consult-yank-replace)
          ;; Virtual Buffers
