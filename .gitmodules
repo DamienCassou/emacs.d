@@ -92,6 +92,9 @@
 [submodule "company-quickhelp"]
 	path = lib/company-quickhelp
 	url = git@github.com:expez/company-quickhelp.git
+[submodule "conner"]
+	path = lib/conner
+	url = https://github.com/tralph3/conner
 [submodule "consult"]
 	path = lib/consult
 	url = git@github.com:minad/consult.git
