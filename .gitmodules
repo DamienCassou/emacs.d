@@ -70,6 +70,10 @@
 [submodule "cask"]
 	path = lib/cask
 	url = git@github.com:cask/cask.git
+[submodule "casual-dired"]
+	path = lib/casual-dired
+	url = https://github.com/kickingvegas/casual-dired
+	load-path = lisp
 [submodule "cc-isearch-menu"]
 	path = lib/cc-isearch-menu
 	url = https://github.com/kickingvegas/cc-isearch-menu
