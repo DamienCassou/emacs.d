@@ -2374,7 +2374,7 @@ the buffer's filename."
     ;; projects. This is very useful to add Emacs packages to the list
     ;; of projects. Setting project-vc-merge-submodules to nil in
     ;; ~/.emacs.d/.dir-locals.el wouldn't work as packages usually
-    ;; define their own .dir-locals.el, thus overrinding ours.
+    ;; define their own .dir-locals.el, thus overriding ours.
     (setq-default project-vc-merge-submodules nil)
 
     (defun my/project-switch-project-to-magit ()
