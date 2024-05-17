@@ -25,7 +25,21 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((eval my/eglot-ensure)
+   '((eval setq-local elisp-flymake-byte-compile-load-path
+           (cons "./"
+                 (let
+                     ((regexp
+                       (rx
+                        (or "/dash" "/elcouch" "/forge/lisp" "/json-mode" "/lib/markdown-mode" "/libbcel" "/magit/lisp" "/with-editor/lisp" "/yaml" "/json-snatcher" "/navigel" "/libelcouch" "/prodigy"
+                            (and "/s" string-end)
+                            (and "/f" string-end)
+                            "/flycheck" "/yasnippet" "/company" "/eslintd-fix" "/js2-mode" "/js2-refactor" "/multiple-cursors" "/tern" "/xref-js2" "/ghub" "/treepy"))))
+                   (seq-filter
+                    (lambda
+                      (path)
+                      (string-match-p regexp path))
+                    load-path))))
+     (eval my/eglot-ensure)
      (finsit-insert-commit-id . t)
      (adaptive-wrap-extra-indent . 2)
      (org-babel-default-header-args:gitconfig
