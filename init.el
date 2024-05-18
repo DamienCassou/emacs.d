@@ -2459,7 +2459,7 @@ the buffer's filename."
      :preview-key "M-.")
 
     ;; Remove some sources when listing buffers:
-    (dolist (source '(consult--source-bookmark consult--source-project-buffer consult--source-project-file))
+    (dolist (source '(consult--source-project-buffer consult--source-project-file))
       (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))
 
     (defvar vterm-source
