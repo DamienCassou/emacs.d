@@ -25,7 +25,8 @@
    '((recipe :remove-suffix ".el" :add-suffix "-tests.el" :add-directory "test")
      (recipe :remove-suffix ".el" :add-suffix "-test.el" :add-directory "tests")))
  '(safe-local-variable-values
-   '((eval setq-local elisp-flymake-byte-compile-load-path
+   '((org-imenu-depth . 3)
+     (eval setq-local elisp-flymake-byte-compile-load-path
            (cons "./"
                  (let
                      ((regexp
