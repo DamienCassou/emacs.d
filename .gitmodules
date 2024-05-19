@@ -147,9 +147,6 @@
 [submodule "dired-rsync"]
 	path = lib/dired-rsync
 	url = git@github.com:stsquad/dired-rsync.git
-[submodule "direnv"]
-	path = lib/direnv
-	url = https://github.com/wbolster/emacs-direnv.git
 [submodule "docker"]
 	path = lib/docker
 	url = https://github.com/Silex/docker.el
@@ -539,9 +536,6 @@
 [submodule "ox-reveal"]
 	path = lib/ox-reveal
 	url = git@github.com:yjwen/org-reveal.git
-[submodule "ox-texinfo+"]
-	path = lib/ox-texinfo+
-	url = git@github.com:emacsattic/ox-texinfo-plus.git
 [submodule "package-lint"]
 	path = lib/package-lint
 	url = git@github.com:purcell/package-lint.git
