@@ -1859,7 +1859,8 @@ negative, the password is inserted at point."
 (use-package libelcouch
   :init
   (progn
-    (setq libelcouch-timeout 100)))
+    (setq libelcouch-timeout 100)
+    (setq libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
 
 (use-package finsit-elcouch
   :demand t
