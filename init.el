@@ -1873,17 +1873,38 @@ negative, the password is inserted at point."
     (with-eval-after-load 'flycheck
       (bind-key "C-c ! k" #'eslint-disable-rule-disable-next-line flycheck-mode-map))))
 
+(use-package finsit-fill-pr-description-template
+  :after forge
+  :hook ((forge-create-pullreq . finsit-fill-pr-description-template)))
+
 (use-package finsit-insert-commit-id
   :after git-commit
   :hook (git-commit-setup . finsit-insert-commit-id))
+
+(use-package finsit-js-add-import
+  :init
+  (progn
+    (with-eval-after-load 'embark
+      (defvar embark-file-map)
+      (define-key embark-file-map "z" #'finsit-js-add-import))))
+
+(use-package finsit-js-test-structure
+  :hook ((js2-mode . finsit-js-test-structure-imenu-mode)))
+
+(use-package finsit-write-pr-to-basecamp
+  :after forge
+  :hook ((forge-post-submit-callback . finsit-write-pr-to-basecamp)))
 
 (use-package finsit-prodigy
   :demand t
   :after prodigy
   :config
   (progn
-    (add-to-list 'finsit-prodigy-remotes '("boxes" "http://192.168.122.131:80"))
-    (finsit-prodigy-setup)))
+    (finsit-prodigy-setup
+     ;; path to the frontend:
+     (expand-file-name "~/Documents/projects/ftgp/finsit/frontend/monitor/Monitor.Web.Ui/Client/")
+     ;; path to the backend:
+     (expand-file-name "~/Documents/projects/ftgp/finsit/monitor"))))
 
 (use-package alert
   :demand t
@@ -1900,6 +1921,7 @@ negative, the password is inserted at point."
   :hook (((org-mode git-commit-mode css-mode prog-mode) . yas-minor-mode))
   :config
   (progn
+    (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "lib/ftgp/snippets"))
     (yas-reload-all)))
 
 (use-package ws-butler
@@ -2276,14 +2298,27 @@ the buffer's filename."
   :mode ("\\.[cm]js\\'" . javascript-mode))
 
 (use-package js2-mode
+  :mode ("\\.cjs\\'" "\\.mjs\\'" "\\.js\\'")
   :hook (js2-mode . my/js2-mode-reduce-mode-name)
+  :bind (
+         :map js2-mode-map
+         ;; Prevent js2-mode from hiding the xref binding:
+         ("M-." . nil))
   :config
   (progn
     (defun my/js2-mode-reduce-mode-name ()
-      (setq-local mode-name "JS2"))))
+      (setq-local mode-name "JS2"))
+
+    ;; Prevent js2 from reporting things eslint is reporting already:
+    (setq-local
+     js2-ignored-warnings
+     '("msg.no.side.effects" "msg.undeclared.variable"))))
 
 (use-package js2-refactor
-  :hook (js2-mode . js2-refactor-mode))
+  :hook (js2-mode . js2-refactor-mode)
+  :config
+  (progn
+    (js2r-add-keybindings-with-prefix "C-c C-r")))
 
 (use-package xref-js2
   :init
