@@ -1844,10 +1844,6 @@ negative, the password is inserted at point."
       (vc-file-setprop (expand-file-name "monitor/Monitor.Web.Ui/Client/" finsit-core-monitor-root-location)
                        'project-vc nil))))
 
-(use-package finsit-insert-commit-id
-  :after git-commit
-  :hook (git-commit-setup . finsit-insert-commit-id))
-
 (use-package libbcel
   :config
   (progn
@@ -1945,6 +1941,10 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 
     (with-eval-after-load 'flycheck
       (bind-key "C-c ! k" #'eslint-disable-rule-disable-next-line flycheck-mode-map))))
+
+(use-package finsit-insert-commit-id
+  :after git-commit
+  :hook (git-commit-setup . finsit-insert-commit-id))
 
 (use-package finsit-forge
   :after forge
