@@ -817,13 +817,6 @@ This is recommended by Vertico's README."
     (setq ediff-split-window-function 'split-window-horizontally)
     (setq ediff-window-setup-function 'ediff-setup-windows-plain)))
 
-(use-package ace-link
-  :demand t
-  :after (:any helpful info)
-  :config
-  (progn
-    (ace-link-setup-default)))
-
 (use-package flyspell
   :disabled t
   :bind (("C-. f b" . flyspell-buffer))
