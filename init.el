@@ -1830,20 +1830,6 @@ negative, the password is inserted at point."
       "Configure prodigy."
       (setq-local browse-url-browser-function #'browse-url-chromium))))
 
-(use-package finsit-core
-  :config
-  (progn
-    (require 'bookmark)
-
-    (setq finsit-core-monitor-root-location
-          (expand-file-name (bookmark-location "ftgp-monitor-root")))
-
-    (defun my/finsit-project-reset-client ()
-      "Use this command when the client project isn't recognized."
-      (interactive)
-      (vc-file-setprop (expand-file-name "monitor/Monitor.Web.Ui/Client/" finsit-core-monitor-root-location)
-                       'project-vc nil))))
-
 (use-package libbcel
   :config
   (progn
@@ -1858,53 +1844,6 @@ negative, the password is inserted at point."
     (setq libelcouch-timeout 100)
     (setq libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
 
-(use-package finsit-elcouch
-  :demand t
-  :after elcouch
-  :config
-  (progn
-    (finsit-elcouch-setup)))
-
-(use-package finsit-javascript
-  :demand t
-  :after js
-  :config
-  (progn
-    (finsit-javascript-setup)
-    (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "lib/ftgp/snippets"))
-    (yas-reload-all)
-
-    ;; Remove background: (see https://debbugs.gnu.org/cgi/bugreport.cgi?bug=54156 for details
-    (dolist (frame '(nil t))
-      (set-face-attribute 'finsit-js-htmlcanvas-html-tag-face frame :background 'unspecified))))
-
-(use-package finsit-js-company
-  :config
-  (defun my/finsit-js-company-setup ()
-    "Prevent configuring `company-mode'.
-This should be used as an override of `finsit-js-company-setup'.")
-
-  (advice-add #'finsit-js-company-setup
-              :override #'my/finsit-js-company-setup))
-
-(use-package finsit-js-tern
-  :config
-  (defun my/finsit-js-tern-setup ()
-    "Prevent configuring `tern-mode'.
-This should be used as an override of `finsit-js-tern-setup'.")
-
-  (advice-add #'finsit-js-tern-setup
-              :override #'my/finsit-js-tern-setup))
-
-(use-package finsit-js-flycheck
-  :config
-  (defun my/finsit-js-flycheck-setup ()
-    "Prevent configuring `flycheck-mode'.
-This should be used as an override of `finsit-js-flycheck-setup'.")
-
-  (advice-add #'finsit-js-flycheck-setup
-              :override #'my/finsit-js-flycheck-setup))
-
 (use-package related-files
   :bind (("C-x j" . related-files-jump)
          ("C-x J" . related-files-make)))
@@ -1914,18 +1853,10 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
   :after related-files)
 
 (use-package flymake-eslint
-  :hook ((js-mode . my/flymake-eslint-finsit))
   :init
   (progn
     (setq flymake-eslint-executable-args '("--report-unused-disable-directives"))
-    (setq flymake-eslint-executable-name "eslint_d")
-
-    (defun my/flymake-eslint-finsit ()
-      "Enable flymake-eslint in finsit's Client/ buffer."
-      (when (finsit-core-own-javascript-buffer-p)
-        (setq-local flymake-eslint-project-root (finsit-core-monitor-client-location)))
-      (when (and (buffer-file-name) (not (derived-mode-p 'json-mode 'json-ts-mode)))
-        (flymake-eslint-enable)))))
+    (setq flymake-eslint-executable-name "eslint_d")))
 
 (use-package eslint-disable-rule
   :demand t
@@ -1945,12 +1876,6 @@ This should be used as an override of `finsit-js-flycheck-setup'.")
 (use-package finsit-insert-commit-id
   :after git-commit
   :hook (git-commit-setup . finsit-insert-commit-id))
-
-(use-package finsit-forge
-  :after forge
-  :hook ((forge-create-pullreq . finsit-forge-insert-branch-description-into-topic)
-         (forge-post-submit-callback . finsit-forge-browse-pullreq)
-         (forge-post-submit-callback . finsit-forge-insert-pullreq-url-into-todo)))
 
 (use-package finsit-prodigy
   :demand t
