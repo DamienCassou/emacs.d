@@ -1549,7 +1549,7 @@ The link will contain DESCRIPTION as text."
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
 (use-package combobulate
-  :hook ((css-ts-mode html-ts-mode json-ts-mode toml-ts-mode yaml-ts-mode)
+  :hook ((css-ts-mode html-ts-mode json-ts-mode typescript-ts-mode toml-ts-mode yaml-ts-mode)
          .
          combobulate-mode))
 
@@ -2184,7 +2184,8 @@ If PROJECT is nil, use `project-current'."
           (cl-delete 'typescript-mode auto-mode-alist :key #'cdr))))
 
 (use-package typescript-ts-mode
-  :mode ("\\.ts\\'" . typescript-ts-mode))
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode)))
 
 (use-package savehist
   :demand t
