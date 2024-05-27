@@ -1895,7 +1895,7 @@ negative, the password is inserted at point."
   (progn
     (finsit-prodigy-setup
      ;; path to the frontend:
-     (expand-file-name "~/Documents/projects/ftgp/finsit/frontend/monitor/Monitor.Web.Ui/Client/")
+     (expand-file-name "~/Documents/projects/ftgp/finsit/monitor/monitor/Monitor.Web.Ui/Client/")
      ;; path to the backend:
      (expand-file-name "~/Documents/projects/ftgp/finsit/monitor"))))
 
