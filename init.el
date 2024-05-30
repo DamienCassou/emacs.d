@@ -206,15 +206,8 @@ either read only or modified.")
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
 
 (use-package frame
-  :bind (("C-x C-z" . my/suspend-on-tty-only))
   :config
   (progn
-    (defun my/suspend-on-tty-only ()
-      "Suspend Emacs, but only if in tty mode."
-      (interactive)
-      (unless window-system
-        (suspend-frame)))
-
     (defun my/setup-frame (&optional frame)
       "Configure look of FRAME.
 
