@@ -1773,6 +1773,7 @@ negative, the password is inserted at point."
 
 (use-package repeat
   :demand t
+  :bind (("C-z" . repeat))
   :config
   (progn
     (repeat-mode)))
