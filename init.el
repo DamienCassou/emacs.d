@@ -1315,10 +1315,11 @@ because slides don't change their ID all the time."
           org-icalendar-timezone "Europe/Berlin"
           org-caldav-sync-changes-to-org 'all)
 
-    (defun my/org-caldav-archive-year ()
+    (defun my/org-caldav-archive-year (year)
       "Archive a given year in my calendar."
-      (interactive)
-      (while (re-search-forward "^ *<2021-.*>$" nil t)
+      (interactive "nWhich year would you like to archive? ")
+      (goto-char (point-min))
+      (while (re-search-forward (format "^ *<%s-.*>$" year) nil t)
         (org-archive-subtree)))))
 
 (use-package denote
