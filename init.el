@@ -2311,6 +2311,13 @@ the buffer's filename."
   (progn
     (setq xref-js2-search-program 'rg)))
 
+(use-package rjsx-mode
+  :mode ("\\.jsx\\'")
+  :config
+  (progn
+    (with-eval-after-load 'js2-refactor
+      (bind-key "C-c C-r r t" #'rjsx-rename-tag-at-point js2-refactor-mode-map))))
+
 (use-package project
   :bind (
          :map project-prefix-map
