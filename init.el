@@ -1540,7 +1540,7 @@ The link will contain DESCRIPTION as text."
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
 (use-package combobulate
-  :hook ((css-ts-mode html-ts-mode json-ts-mode typescript-ts-mode toml-ts-mode yaml-ts-mode)
+  :hook ((css-ts-mode html-ts-mode json-ts-mode js-ts-mode typescript-ts-mode toml-ts-mode yaml-ts-mode)
          .
          combobulate-mode))
 
@@ -2281,27 +2281,86 @@ the buffer's filename."
     (setq xref-search-program 'ripgrep)))
 
 (use-package js
-  :mode ("\\.[cm]js\\'" . javascript-mode))
-
-(use-package js2-mode
-  :mode ("\\.cjs\\'" "\\.mjs\\'" "\\.js\\'")
-  :hook (js2-mode . my/js2-mode-reduce-mode-name)
-  :bind (
-         :map js2-mode-map
-         ;; Prevent js2-mode from hiding the xref binding:
-         ("M-." . nil))
+  :mode (("\\.[cm]?js\\'" . js-ts-mode))
+  :interpreter ("node" . js-ts-mode)
+  :hook (js-ts-mode . my/js-ts-add-jsdoc-parser)
   :config
   (progn
-    (defun my/js2-mode-reduce-mode-name ()
-      (setq-local mode-name "JS2"))
+    (setq auto-mode-alist
+          (cl-delete 'javascript-mode auto-mode-alist :key #'cdr))
 
+    (setq interpreter-mode-alist
+          (cl-delete 'js-mode interpreter-mode-alist :key #'cdr))
+
+    (defun my/js-ts-language-at-point (point)
+      "Return the language at POINT."
+      (let ((node (treesit-node-at point 'javascript)))
+        (if (and (treesit-ready-p 'jsdoc)
+                 (equal (treesit-node-type node) "comment")
+                 (string-match-p
+                  (rx bos "/**")
+                  (treesit-node-text node)))
+            'jsdoc
+          'javascript)))
+
+    (defun my/js-ts-add-jsdoc-parser ()
+      "Add jsdoc parser for jsdoc comments."
+      (when treesit-range-settings
+        (user-error "init.el: We shouldn't override `treesit-range-settings'."))
+
+      (setq treesit-range-settings
+            (treesit-range-rules
+             :embed 'jsdoc
+             :host 'javascript
+             `(((comment) @capture (:match ,(rx bos "/**") @capture)))))
+
+      (when treesit-language-at-point-function
+        (user-error "init.el: We shouldn't override `treesit-language-at-point-function'."))
+
+      (setq-local
+       treesit-language-at-point-function
+       #'my/js-ts-language-at-point)
+
+      (setq treesit-font-lock-settings
+            (append
+             (treesit-font-lock-rules
+              :language 'jsdoc
+              :override t
+              :feature 'keyword
+              '((tag_name) @font-lock-keyword-face)
+
+              :language 'jsdoc
+              :override t
+              :feature 'bracket
+              '((["{" "}"]) @font-lock-bracket-face)
+
+              :language 'jsdoc
+              :override t
+              :feature 'property
+              '((type) @font-lock-variable-use-face)
+
+              :language 'jsdoc
+              :override t
+              :feature 'definition
+              '((identifier) @font-lock-variable-name-face)
+
+              :language 'jsdoc
+              :override t
+              :feature 'comment
+              '((description) @font-lock-comment-face))
+             treesit-font-lock-settings)))))
+
+(use-package js2-mode
+  :hook (js-base-mode . js2-minor-mode)
+  :config
+  (progn
     ;; Prevent js2 from reporting things eslint is reporting already:
     (setq-local
      js2-ignored-warnings
      '("msg.no.side.effects" "msg.undeclared.variable"))))
 
 (use-package js2-refactor
-  :hook (js2-mode . js2-refactor-mode)
+  :hook ((js2-mode js2-minor-mode) . js2-refactor-mode)
   :config
   (progn
     (js2r-add-keybindings-with-prefix "C-c C-r")))
@@ -2312,11 +2371,10 @@ the buffer's filename."
     (setq xref-js2-search-program 'rg)))
 
 (use-package rjsx-mode
-  :mode ("\\.jsx\\'")
   :config
   (progn
-    (with-eval-after-load 'js2-refactor
-      (bind-key "C-c C-r r t" #'rjsx-rename-tag-at-point js2-refactor-mode-map))))
+    (setq auto-mode-alist
+          (cl-delete 'rjsx-mode auto-mode-alist :key #'cdr))))
 
 (use-package project
   :bind (
