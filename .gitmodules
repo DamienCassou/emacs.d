@@ -118,6 +118,9 @@
 [submodule "daemons"]
 	path = lib/daemons
 	url = https://github.com/cbowdon/daemons.el
+[submodule "dape"]
+	path = lib/dape
+	url = https://github.com/svaante/dape
 [submodule "dash"] # list library
 	path = lib/dash
 	url = git@github.com:magnars/dash.el.git
