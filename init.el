@@ -1840,7 +1840,6 @@ negative, the password is inserted at point."
 (use-package flymake-eslint
   :init
   (progn
-    (setq flymake-eslint-executable-args '("--report-unused-disable-directives"))
     (setq flymake-eslint-executable-name "eslint_d")))
 
 (use-package eslint-disable-rule
