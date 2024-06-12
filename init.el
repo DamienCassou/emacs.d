@@ -2049,6 +2049,11 @@ If PROJECT is nil, use `project-current'."
       (when (eglot-managed-p)
         (eglot-format-buffer)))))
 
+(use-package dape
+  :init
+  (progn
+    (setq dape-buffer-window-arrangement 'right)))
+
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
   :config
