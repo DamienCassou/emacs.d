@@ -228,6 +228,7 @@ current."
          ("C-x C-0" . global-text-scale-adjust)))
 
 (use-package window
+  :bind (("C-x o" . nil))
   :init
   (progn
     (setq switch-to-buffer-obey-display-actions t)
