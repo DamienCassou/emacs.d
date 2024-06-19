@@ -1339,7 +1339,7 @@ because slides don't change their ID all the time."
     (defun my/denote-find-file (filename)
       "Open FILENAME, a denote file.
 Interactively ask which file to open with completion."
-      (interactive (list (denote-file-prompt)))
+      (interactive (list (denote-file-prompt (rx ".org" eos))))
       (find-file filename))
 
     (defun my/denote-date (&optional date)
