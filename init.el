@@ -2266,7 +2266,11 @@ the buffer's filename."
   :demand t
   :init
   (progn
-    (setq completion-styles '(orderless basic)))
+    (setq completion-styles '(orderless basic))))
+
+(use-package orderless-kwd
+  :demand t
+  :after orderless
   :config
   (progn
     ;; allow filtering completion lists with keywords
