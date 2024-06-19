@@ -271,12 +271,12 @@ This is recommended by Vertico's README."
     (setq isearch-allow-motion t)
     (setq isearch-lazy-count t)))
 
-(use-package cc-isearch-menu
+(use-package casual-isearch
   :demand t
   :after isearch
   :init
   (progn
-    (bind-key "<f2>" #'cc-isearch-menu-transient isearch-mode-map)))
+    (bind-key "<f2>" #'casual-isearch-tmenu isearch-mode-map)))
 
 (use-package dabbrev
   :bind (("M-/" . nil)

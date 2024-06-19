@@ -70,9 +70,9 @@
 	path = lib/casual-dired
 	url = https://github.com/kickingvegas/casual-dired
 	load-path = lisp
-[submodule "cc-isearch-menu"]
-	path = lib/cc-isearch-menu
-	url = https://github.com/kickingvegas/cc-isearch-menu
+[submodule "casual-isearch"]
+	path = lib/casual-isearch
+	url = https://github.com/kickingvegas/casual-isearch
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
