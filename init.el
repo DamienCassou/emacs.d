@@ -2404,7 +2404,10 @@ the buffer's filename."
       "Ask the user to select a project from known projects and open magit on the selection."
       (interactive)
       (require 'project)
-      (magit-status-setup-buffer (project-prompt-project-dir))))
+      (let ((project-directory (project-prompt-project-dir)))
+        (if (magit-git-repo-p project-directory)
+            (magit-status-setup-buffer project-directory)
+          (dired project-directory)))))
   :config
   (progn
     ;; Delete commands I don't want to see when switching projects:
