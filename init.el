@@ -716,6 +716,7 @@ This is recommended by Vertico's README."
           ("M-w" . magit-copy-section-value)))
   :init
   (progn
+    (setq magit-show-long-lines-warning nil)
     (setq magit-diff-refine-hunk t)
     (setq magit-process-find-password-functions '(magit-process-password-auth-source))
     (setq magit-branch-prefer-remote-upstream '("master"))
