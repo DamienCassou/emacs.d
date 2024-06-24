@@ -1695,6 +1695,11 @@ negative, the password is inserted at point."
       (my/avy-without-moving-point point
         (kill-whole-line)))
 
+    (defun my/avy-action-comment-line (point)
+      "Comment the whole line at POINT."
+      (my/avy-without-moving-point point
+        (comment-line 1)))
+
     (defun my/avy-action-embark (point)
       "Start `embark-act' at POINT."
       (my/avy-without-moving-point point
@@ -1759,6 +1764,7 @@ negative, the password is inserted at point."
             (?\C-w . avy-action-kill-stay)
             (?\C-k . my/avy-action-kill-whole-line)
             (?\M-w . avy-action-copy)
+            (?\M-\; . my/avy-action-comment-line)
             (?\C-\S-a . my/avy-action-embark)))))
 
 (use-package beginend
