@@ -936,6 +936,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
          :map ledger-mode-map
          ("C-c C-r" . ledger-report)
          ("C-c C-c" . my/ledger-lint)
+         ("M-q" . my/ledger-reindent)
          ;; To get outline-minor-mode in ledger buffers:
          ("TAB" . org-cycle)
          :map ledger-report-mode-map
@@ -984,6 +985,12 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
       (add-hook 'outline-minor-mode-hook #'my/ledger-configure-outline-minor-mode nil t)))
   :config
   (progn
+    (defun my/ledger-reindent ()
+      "Fill the current transaction and reindent it."
+      (interactive)
+      (ledger-post-fill)
+      (ledger-post-align-dwim))
+
     (let ((date-format "%A, %B %-e"))
       (defun my/ledger-position-at-date (moment)
         "Move point in current buffer to insert new transaction at MOMENT.
