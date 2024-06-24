@@ -2309,6 +2309,9 @@ the buffer's filename."
   :mode (("\\.[cm]?js\\'" . js-ts-mode))
   :interpreter ("node" . js-ts-mode)
   :hook (js-ts-mode . my/js-ts-add-jsdoc-parser)
+  :bind (
+         :map js-ts-mode-map
+         ("M-." . nil))
   :config
   (progn
     (setq auto-mode-alist
@@ -2391,9 +2394,16 @@ the buffer's filename."
     (js2r-add-keybindings-with-prefix "C-c C-r")))
 
 (use-package xref-js2
-  :init
+  :demand t
+  :after (js2-mode xref)
+  :hook (js2-minor-mode . my/xref-js2-setup)
+  :config
   (progn
-    (setq xref-js2-search-program 'rg)))
+    (setq xref-js2-search-program 'rg)
+
+    (defun my/xref-js2-setup ()
+      "Configure xref-js2."
+      (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
 (use-package rjsx-mode
   :config
