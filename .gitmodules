@@ -490,6 +490,7 @@
 	path = lib/no-littering
 	url = git@github.com:emacscollective/no-littering.git
 	remote = "DamienCassou git@github.com:DamienCassou/no-littering.git"
+	branch = main
 [submodule "nov"]
 	path = lib/nov
 	url = git@github.com:wasamasa/nov.el.git
