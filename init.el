@@ -241,6 +241,7 @@ current."
       (advice-add fn :after #'my/window-balance-windows))))
 
 (use-package ace-window
+  :demand t
   :bind ("M-o" . ace-window)
   :init
   (progn
@@ -249,6 +250,7 @@ current."
     (setq aw-background nil))
   :config
   (progn
+    (ace-window-display-mode)
     ;; reduce the height of ace-window letters so they blend nicely
     ;; within their buffers without moving pixels around:
     (set-face-attribute 'aw-leading-char-face nil :height 1.0)))
