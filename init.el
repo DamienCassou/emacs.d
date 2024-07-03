@@ -2074,6 +2074,10 @@ If PROJECT is nil, use `project-current'."
   :init
   (progn
     (setq dape-buffer-window-arrangement 'right)))
+  :config
+  (progn
+    (remove-hook 'dape-on-start-hooks 'dape-info)
+    (remove-hook 'dape-on-start-hooks 'dape-repl)))
 
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
