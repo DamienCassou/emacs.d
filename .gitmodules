@@ -701,9 +701,6 @@
 [submodule "wgrep"]
 	path = lib/wgrep
 	url = git@github.com:mhayashi1120/Emacs-wgrep.git
-[submodule "which-key"] # displays bindings after a short break in a key sequence
-	path = lib/which-key
-	url = git@github.com:justbur/emacs-which-key.git
 [submodule "with-editor"]
 	path = lib/with-editor
 	url = git@github.com:magit/with-editor.git
