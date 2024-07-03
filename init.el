@@ -216,11 +216,6 @@ current."
 
     (my/setup-frame)))
 
-(use-package scroll-bar
-  :config
-  (progn
-    (scroll-bar-mode)))
-
 (use-package face-remap
   :bind (("C-x C-+" . global-text-scale-adjust)
          ("C-x C--" . global-text-scale-adjust)
