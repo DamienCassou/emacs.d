@@ -2317,7 +2317,6 @@ the buffer's filename."
 (use-package js
   :mode (("\\.[cm]?js\\'" . js-ts-mode))
   :interpreter ("node" . js-ts-mode)
-  :hook (js-ts-mode . my/js-ts-add-jsdoc-parser)
   :bind (
          :map js-ts-mode-map
          ("M-." . nil))
@@ -2327,74 +2326,13 @@ the buffer's filename."
           (cl-delete 'javascript-mode auto-mode-alist :key #'cdr))
 
     (setq interpreter-mode-alist
-          (cl-delete 'js-mode interpreter-mode-alist :key #'cdr))
-
-    (defun my/js-ts-language-at-point (point)
-      "Return the language at POINT."
-      (let ((node (treesit-node-at point 'javascript)))
-        (if (and (treesit-ready-p 'jsdoc)
-                 (equal (treesit-node-type node) "comment")
-                 (string-match-p
-                  (rx bos "/**")
-                  (treesit-node-text node)))
-            'jsdoc
-          'javascript)))
-
-    (defun my/js-ts-add-jsdoc-parser ()
-      "Add jsdoc parser for jsdoc comments."
-      (when treesit-range-settings
-        (user-error "init.el: We shouldn't override `treesit-range-settings'."))
-
-      (setq treesit-range-settings
-            (treesit-range-rules
-             :embed 'jsdoc
-             :host 'javascript
-             `(((comment) @capture (:match ,(rx bos "/**") @capture)))))
-
-      (when treesit-language-at-point-function
-        (user-error "init.el: We shouldn't override `treesit-language-at-point-function'."))
-
-      (setq-local
-       treesit-language-at-point-function
-       #'my/js-ts-language-at-point)
-
-      (setq treesit-font-lock-settings
-            (append
-             (treesit-font-lock-rules
-              :language 'jsdoc
-              :override t
-              :feature 'keyword
-              '((tag_name) @font-lock-keyword-face)
-
-              :language 'jsdoc
-              :override t
-              :feature 'bracket
-              '((["{" "}"]) @font-lock-bracket-face)
-
-              :language 'jsdoc
-              :override t
-              :feature 'property
-              '((type) @font-lock-variable-use-face)
-
-              :language 'jsdoc
-              :override t
-              :feature 'definition
-              '((identifier) @font-lock-variable-name-face)
-
-              :language 'jsdoc
-              :override t
-              :feature 'comment
-              '((description) @font-lock-comment-face))
-             treesit-font-lock-settings)))))
+          (cl-delete 'js-mode interpreter-mode-alist :key #'cdr))))
 
 (use-package js2-mode
   :hook (js-base-mode . js2-minor-mode)
   :config
   (progn
-    ;; Prevent js2 from reporting things eslint is reporting already:
-    (setq-local
-     js2-ignored-warnings
-     '("msg.no.side.effects" "msg.undeclared.variable"))))
+    (setq js2-mode-show-strict-warnings nil)))
 
 (use-package js2-refactor
   :hook ((js2-mode js2-minor-mode) . js2-refactor-mode)
