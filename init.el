@@ -2060,7 +2060,10 @@ If PROJECT is nil, use `project-current'."
       (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
       ;; Format on save
       (when (and my/eglot-autoformat-on-save (eglot--server-capable :documentFormattingProvider))
-        (add-hook 'before-save-hook #'my/eglot-format-buffer nil t)))
+        (add-hook 'before-save-hook #'my/eglot-format-buffer nil t))
+      ;; Re-enable flymake-eslint if it was active:
+      (when (seq-contains-p (map-elt eglot--saved-bindings 'flymake-diagnostic-functions) 'flymake-eslint--checker)
+        (add-hook 'flymake-diagnostic-functions 'flymake-eslint--checker nil t)))
 
     (defun my/eglot-format-buffer ()
       "Use eglot to format the buffer if eglot is active."
