@@ -2073,7 +2073,8 @@ If PROJECT is nil, use `project-current'."
 (use-package dape
   :init
   (progn
-    (setq dape-buffer-window-arrangement 'right)))
+    (setq dape-buffer-window-arrangement 'right)
+    (setq dape-debug t))
   :config
   (progn
     (remove-hook 'dape-on-start-hooks 'dape-info)
