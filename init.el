@@ -290,6 +290,12 @@ This is recommended by Vertico's README."
     (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode)
     (add-to-list 'dabbrev-ignored-buffer-modes 'tags-table-mode)))
 
+(use-package diff
+  :bind (
+         :map diff-mode-map
+         ;; This key is for changing the active window:
+         ("M-o" . nil)))
+
 (use-package locate
   :init
   (progn
