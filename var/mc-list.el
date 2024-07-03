@@ -45,6 +45,7 @@
         ivy-wgrep-change-to-wgrep-mode
         js2r-kill
         keyboard-escape-quit
+        kill-rectangle
         kill-region
         ledger-post-align-dwim
         markdown-electric-backquote
