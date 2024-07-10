@@ -2382,7 +2382,8 @@ the buffer's filename."
   :hook (js-base-mode . js2-minor-mode)
   :config
   (progn
-    (setq js2-mode-show-strict-warnings nil)))
+    (setq js2-mode-show-strict-warnings nil)
+    (setq js2-mode-show-parse-errors nil)))
 
 (use-package js2-refactor
   :hook ((js2-mode js2-minor-mode) . js2-refactor-mode)
