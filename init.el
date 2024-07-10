@@ -341,7 +341,57 @@ This is recommended by Vertico's README."
           (my/pdf-tools-backdrop)))
 
       (add-hook 'pdf-tools-enabled-hook #'my/pdf-tools-midnight-mode-toggle)
-      (add-hook 'modus-themes-after-load-theme-hook #'my/pdf-tools-midnight-mode-toggle))))
+      (add-hook 'modus-themes-after-load-theme-hook #'my/pdf-tools-midnight-mode-toggle)
+
+      ;; Configure faces for combobulate that is not yet supported by
+      ;; modus:
+      (modus-themes-with-colors
+        (custom-set-faces
+         `(combobulate-active-indicator-face ((,c :foreground ,fg-main)))
+         `(combobulate-dimmed-indicator-face ((,c :inherit shadow)))
+         `(combobulate-error-indicator-face ((,c :inherit error)))
+         `(combobulate-query-highlight-fiery-flames-face ((,c :inherit
+                                                              modus-themes-intense-red)))
+         `(combobulate-query-highlight-gleaming-gold-face ((,c :inherit
+                                                               modus-themes-intense-yellow)))
+         `(combobulate-query-highlight-majestic-mercury-face ((,c :inherit
+                                                                  modus-themes-intense-cyan)))
+         `(combobulate-query-highlight-mysterious-mauve-face ((,c :inherit
+                                                                  modus-themes-intense-magenta)))
+         `(combobulate-query-highlight-radiant-rind-face ((,c :inherit
+                                                              modus-themes-subtle-red)))
+         `(combobulate-query-highlight-regal-ripples-face ((,c :inherit
+                                                               modus-themes-intense-blue)))
+         `(combobulate-query-highlight-serene-shade-face ((,c :inherit
+                                                              modus-themes-subtle-green)))
+         `(combobulate-query-highlight-silver-shadows-face ((,c :background ,bg-active
+                                                                :foreground ,fg-main)))
+         `(combobulate-query-highlight-vibrant-veggie-face ((,c :inherit
+                                                                modus-themes-intense-green)))
+         `(combobulate-query-query-anonymous-face ((,c :inherit modus-themes-bold
+                                                       :foreground ,fg-alt)))
+         `(combobulate-query-query-builtin-face ((,c :inherit font-lock-builtin-face)))
+         `(combobulate-query-query-constant-face ((,c :inherit font-lock-constant-face)))
+         `(combobulate-query-query-doc-markup-face ((,c :inherit
+                                                        font-lock-doc-markup-face)))
+         `(combobulate-query-query-keyword-face ((,c :inherit font-lock-keyword-face)))
+         `(combobulate-query-query-predicate-builtin-face ((,c :inherit bold)))
+         `(combobulate-query-query-string-face ((,c :inherit font-lock-string-face)))
+         `(combobulate-refactor-choice-face ((,c :inherit modus-themes-slant :foreground
+                                                 ,info)))
+         `(combobulate-refactor-cursor-face ((,c :foreground ,cursor)))
+         `(combobulate-refactor-field-face ((,c :background ,bg-inactive :foreground
+                                                ,fg-main :extend nil)))
+         `(combobulate-refactor-highlight-face ((,c :inherit highlight)))
+         `(combobulate-refactor-inactive-choice-face ((,c :inherit modus-themes-slant
+                                                          :foreground ,fg-dim)))
+         `(combobulate-refactor-inactive-field-face ((,c :background ,bg-dim :foreground
+                                                         ,fg-dim :extend nil)))
+         `(combobulate-refactor-label-face ((,c :inherit modus-themes-search-replace)))
+         `(combobulate-tree-branch-face ((,c :inherit shadow)))
+         `(combobulate-tree-highlighted-node-face ((,c :inherit success)))
+         `(combobulate-tree-normal-node-face ((,c :foreground ,fg-main)))
+         `(combobulate-tree-pulse-node-face ((,c :background ,bg-blue-intense :extend t))))))))
 
 (use-package tramp
   :config
