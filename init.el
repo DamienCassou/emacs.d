@@ -2113,7 +2113,7 @@ If PROJECT is nil, use `project-current'."
         (add-hook 'before-save-hook #'my/eglot-format-buffer nil t))
       ;; Re-enable flymake-eslint if it was active:
       (when (seq-contains-p (map-elt eglot--saved-bindings 'flymake-diagnostic-functions) 'flymake-eslint--checker)
-        (add-hook 'flymake-diagnostic-functions 'flymake-eslint--checker nil t)))
+        (setq flymake-diagnostic-functions (list 'flymake-eslint--checker))))
 
     (defun my/eglot-format-buffer ()
       "Use eglot to format the buffer if eglot is active."
