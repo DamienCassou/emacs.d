@@ -754,7 +754,7 @@ This is recommended by Vertico's README."
   (progn
     (setq recentf-auto-cleanup 300)
     (setq recentf-exclude '("~$" "\\.log$"))
-    (setq recentf-max-saved-items 2000)
+    (setq recentf-max-saved-items 1000)
     ;; recommended by consult in `consult--source-recent-file':
     (setq recentf-filename-handlers nil))
   :config
