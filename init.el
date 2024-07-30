@@ -1910,6 +1910,16 @@ negative, the password is inserted at point."
   (progn
     (setq flymake-eslint-executable-name "/home/cassou/Documents/projects/javascript/eslint_d.js/bin/eslint_d.js")))
 
+(use-package reformatter
+  :demand t
+  :config
+  (progn
+    (reformatter-define eslint-format
+      :program (executable-find "node")
+      :args (list "--inspect=9230" "/home/cassou/Documents/projects/javascript/eslint_d.js/bin/eslint_d.js" "--fix-to-stdout" "--stdin" "--stdin-filename" (buffer-file-name))
+      :input-file (reformatter-temp-file-in-current-directory "js")
+      :exit-code-success-p (lambda (code) (or (eq code 1) (eq code 0))))))
+
 (use-package eslint-disable-rule
   :demand t
   :after (:all js2-mode (:any flymake flycheck))
