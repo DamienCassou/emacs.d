@@ -1908,7 +1908,7 @@ negative, the password is inserted at point."
 (use-package flymake-eslint
   :init
   (progn
-    (setq flymake-eslint-executable-name "eslint_d")))
+    (setq flymake-eslint-executable-name "/home/cassou/Documents/projects/javascript/eslint_d.js/bin/eslint_d.js")))
 
 (use-package eslint-disable-rule
   :demand t
