@@ -1914,11 +1914,19 @@ negative, the password is inserted at point."
   :demand t
   :config
   (progn
-    (reformatter-define eslint-format
-      :program (executable-find "node")
-      :args (list "--inspect=9230" "/home/cassou/Documents/projects/javascript/eslint_d.js/bin/eslint_d.js" "--fix-to-stdout" "--stdin" "--stdin-filename" (buffer-file-name))
-      :input-file (reformatter-temp-file-in-current-directory "js")
-      :exit-code-success-p (lambda (code) (or (eq code 1) (eq code 0))))))
+    (reformatter-define eslintd-fix
+      :program "eslint_d"
+      :args (list "--fix-to-stdout" "--stdin" "--stdin-filename" (buffer-file-name))
+      :input-file (reformatter-temp-file-in-current-directory "js"))
+
+    (reformatter-define prettier
+      :program (let* ((root (locate-dominating-file default-directory "node_modules/.bin/prettier"))
+                      (exec-path (if root
+                                     (cons (expand-file-name "node_modules/.bin" root) exec-path)
+                                   exec-path)))
+                 (executable-find "prettier"))
+      :args (list "--stdin-filepath" (buffer-file-name))
+      :input-file (reformatter-temp-file-in-current-directory))))
 
 (use-package eslint-disable-rule
   :demand t
