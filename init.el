@@ -1933,8 +1933,7 @@ negative, the password is inserted at point."
   :after (:all js2-mode (:any flymake flycheck))
   :init
   (progn
-    (setq eslint-disable-rule-require-description 'prefer-description)
-    (setq eslint-disable-rule-all-executable "eslint_d"))
+    (setq eslint-disable-rule-require-description 'prefer-description))
   :config
   (progn
     (with-eval-after-load 'flymake
