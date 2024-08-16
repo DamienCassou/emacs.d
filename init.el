@@ -700,6 +700,13 @@ This is recommended by Vertico's README."
          ("?" . casual-dired-tmenu)
          ("s" . casual-dired-sort-by-tmenu)))
 
+(use-package casual-re-builder
+  :after re-builder
+  :bind (:map
+         reb-mode-map ("C-o" . casual-re-builder-tmenu)
+         :map
+         reb-lisp-mode-map ("C-o" . casual-re-builder-tmenu)))
+
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 
