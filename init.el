@@ -272,9 +272,7 @@ This is recommended by Vertico's README."
 (use-package casual-isearch
   :demand t
   :after isearch
-  :init
-  (progn
-    (bind-key "<f2>" #'casual-isearch-tmenu isearch-mode-map)))
+  :bind (:map isearch-mode-map ("C-o" . casual-isearch-tmenu)))
 
 (use-package dabbrev
   :bind (("M-/" . nil)
