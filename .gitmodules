@@ -207,10 +207,6 @@
 [submodule "eslint-disable-rule"]
 	path = lib/eslint-disable-rule
 	url = git@github.com:DamienCassou/eslint-disable-rule.git
-[submodule "eslintd-fix"] # Automatically fix javascript with eslint_d
-	path = lib/eslintd-fix
-	url = git@github.com:aaronjensen/eslintd-fix.git
-	remote = "DamienCassou git@github.com:DamienCassou/eslintd-fix.git"
 [submodule "espuds"]
 	path = lib/espuds
 	url = git@github.com:ecukes/espuds.git
