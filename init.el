@@ -1419,7 +1419,7 @@ user if the command is called with a prefix argument."
                                (iso8601-parse (concat (org-read-date) "T00:00:00"))))))
       (let* ((title (format-time-string "%A %e %B %Y" date))
              (sluggified-title (denote-sluggify 'title title))
-             (all-files (denote-all-files))
+             (all-files (denote-directory-files (rx ".org" eos)))
              (matching-files (seq-filter
                               (apply-partially
                                #'string-match-p
