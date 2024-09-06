@@ -15,6 +15,7 @@
         c-electric-semi&comma
         c-indent-line-or-region
         clipboard-kill-region
+        combobulate-maybe-insert-attribute
         comment-dwim
         completion-at-point
         consult-yank-replace
@@ -108,6 +109,7 @@
         wdired-capitalize-word
         wdired-downcase-word
         wdired-finish-edit
+        wdired-next-line
         wdired-upcase-word
         wgrep-change-to-wgrep-mode
         wgrep-finish-edit
