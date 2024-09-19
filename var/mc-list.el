@@ -7,6 +7,7 @@
         LaTeX-insert-left-brace
         TeX-insert-backslash
         amd-kill-line
+        avy-goto-char-timer
         avy-zap-to-char-dwim
         backward-sexp
         c-electric-brace
