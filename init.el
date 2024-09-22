@@ -1610,9 +1610,8 @@ The link will contain DESCRIPTION as text."
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
 (use-package combobulate
-  :hook ((css-ts-mode html-ts-mode json-ts-mode js-ts-mode typescript-ts-mode toml-ts-mode yaml-ts-mode)
-         .
-         combobulate-mode))
+  :demand t
+  :hook (prog-mode . combobulate-mode))
 
 (use-package elec-pair
   :demand t
