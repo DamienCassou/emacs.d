@@ -1471,12 +1471,10 @@ The link will contain DESCRIPTION as text."
 
 (use-package drag-stuff
   :demand t
-  :config
-  (progn
-    (drag-stuff-global-mode)
-    (drag-stuff-define-keys)
-    (dolist (mode '(org-mode rebase-mode emacs-lisp-mode mpdel-playlist-current-playlist-mode))
-      (add-to-list 'drag-stuff-except-modes mode))))
+  :bind (:map drag-stuff-mode-map
+              ("M-P" . drag-stuff-up)
+              ("M-N" . drag-stuff-down))
+  :hook ((ledger-mode . drag-stuff-mode)))
 
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
