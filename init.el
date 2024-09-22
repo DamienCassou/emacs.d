@@ -1368,6 +1368,11 @@ because slides don't change their ID all the time."
           (concat "file://" (expand-file-name "~/Documents/projects/reveal/latest")))
     (setq org-reveal-reveal-js-version 4)))
 
+(use-package ox-icalendar ;; used by org-caldav
+  :init
+  (progn
+    (setq org-icalendar-alarm-time 15)))
+
 (use-package org-caldav
   :bind (("C-. o S"   . org-caldav-sync))
   :config
