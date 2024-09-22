@@ -2390,7 +2390,8 @@ the buffer's filename."
     (setq xref-search-program 'ripgrep)))
 
 (use-package js
-  :mode (("\\.[cm]?js\\'" . js-ts-mode))
+  :mode (("\\.[cm]?js\\'" . js-ts-mode)
+         ("\\.jsx\\'" . js-ts-mode))
   :interpreter ("node" . js-ts-mode)
   :bind (
          :map js-ts-mode-map
