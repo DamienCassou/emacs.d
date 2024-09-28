@@ -1477,7 +1477,7 @@ The link will contain DESCRIPTION as text."
   :hook ((ledger-mode . drag-stuff-mode)))
 
 (use-package expand-region
-  :bind ("C-=" . er/expand-region))
+  :bind ("M-h" . er/expand-region))
 
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
