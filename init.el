@@ -2694,13 +2694,14 @@ prefix arg was used."
              :default-height 110)
             (large
              :default-weight semilight
-             :default-height 140
-             :bold-weight extrabold)
+             :default-height 100
+             :bold-weight semibold)
             (t
-             :default-family "Iosevka Comfy"
+             :default-family "Jetbrains Mono"
              :default-weight regular
-             :variable-pitch-family "Iosevka Comfy Motion Duo"
-             :italic-family "Iosevka Comfy Motion"
+             :variable-pitch-family "Gentium book plus"
+             :variable-pitch-height 1.3
+             :italic-family "Jetbrains Mono"
              :italic-slant italic))))
   :config
   (progn
