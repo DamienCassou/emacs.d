@@ -2076,6 +2076,9 @@ If PROJECT is nil, use `project-current'."
                   (default-directory (car (project-roots project))))
         (my/vterm-open-new)))))
 
+(use-package docker
+  :bind (("C-. d c" . docker-containers)))
+
 (use-package dockerfile-ts-mode
   :mode "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'")
 
