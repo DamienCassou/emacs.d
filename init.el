@@ -2702,7 +2702,7 @@ prefix arg was used."
             (t
              :default-family "Jetbrains Mono"
              :default-weight regular
-             :variable-pitch-family "Gentium book plus"
+             :variable-pitch-family "Atkinson Hyperlegible"
              :variable-pitch-height 1.3
              :italic-family "Jetbrains Mono"
              :italic-slant italic))))
