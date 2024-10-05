@@ -1044,7 +1044,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
     (defun my/ledger-reindent ()
       "Fill the current transaction and reindent it."
       (interactive)
-      (ledger-post-fill)
+      (with-demoted-errors (ledger-post-fill))
       (ledger-post-align-dwim))
 
     (let ((date-format "%A, %B %-e"))
