@@ -2123,10 +2123,6 @@ If PROJECT is nil, use `project-current'."
     (setq-default eglot-workspace-configuration
                   (append eglot-workspace-configuration '(:nil (:formatting (:command ["nixfmt"])))))
 
-    (defcustom my/eglot-autoformat-on-save t
-      "Whether eglot should autoformat on save."
-      :type 'boolean)
-
     (defun my/eglot-ensure ()
       "Only start eglot in file-visiting buffers."
       (when (buffer-file-name)
@@ -2136,16 +2132,21 @@ If PROJECT is nil, use `project-current'."
       "Misc changes to eglot's configuration."
       ;; Stop eglot from overriding `eldoc-documentation-strategy':
       (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
-      ;; Format on save
-      (when (and my/eglot-autoformat-on-save (eglot--server-capable :documentFormattingProvider))
-        (add-hook 'before-save-hook #'my/eglot-format-buffer nil t))
       ;; Re-enable flymake-eslint if it was active:
       (when (seq-contains-p (map-elt eglot--saved-bindings 'flymake-diagnostic-functions) 'flymake-eslint--checker)
         (setq flymake-diagnostic-functions (list 'flymake-eslint--checker))))
 
+    (define-minor-mode my/eglot-format-on-save-mode
+      "Automatically format buffer with eglot before saving."
+      :lighter ""
+      (if my/eglot-format-on-save-mode
+          (add-hook 'before-save-hook #'my/eglot-format-buffer nil t)
+        (remove-hook 'before-save-hook #'my/eglot-format-buffer t)))
+
     (defun my/eglot-format-buffer ()
       "Use eglot to format the buffer if eglot is active."
-      (when (eglot-managed-p)
+      (interactive)
+      (when (and (eglot-managed-p) (eglot--server-capable :documentFormattingProvider))
         (eglot-format-buffer)))))
 
 (use-package dape
