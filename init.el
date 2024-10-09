@@ -1474,7 +1474,7 @@ The link will contain DESCRIPTION as text."
   :bind (:map drag-stuff-mode-map
               ("M-P" . drag-stuff-up)
               ("M-N" . drag-stuff-down))
-  :hook ((ledger-mode . drag-stuff-mode)))
+  :hook ((ledger-mode nix-ts-mode) . drag-stuff-mode))
 
 (use-package expand-region
   :bind ("M-h" . er/expand-region))
