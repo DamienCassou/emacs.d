@@ -104,6 +104,12 @@
 [submodule "consult-denote"]
 	path = lib/consult-denote
 	url = git@github.com:protesilaos/consult-denote.git
+[submodule "copilot"]
+	path = lib/copilot
+	url = https://github.com/copilot-emacs/copilot.el
+[submodule "copilot-chat"]
+	path = lib/copilot-chat
+	url = https://github.com/chep/copilot-chat.el
 [submodule "corfu"]
 	path = lib/corfu
 	url = https://github.com/minad/corfu
