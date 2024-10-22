@@ -1224,13 +1224,6 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
       (when (file-exists-p file)
         (load file t)))))
 
-(use-package goggles
-  :disabled t
-  :hook ((text-mode prog-mode) . goggles-mode)
-  :config
-  (progn
-    (goggles-mode)))
-
 (use-package outli
   :hook (emacs-lisp-mode . outli-mode))
 

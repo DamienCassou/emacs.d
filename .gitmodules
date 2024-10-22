@@ -289,9 +289,6 @@
 [submodule "go-mode"]
 	path = lib/go-mode
 	url = git@github.com:dominikh/go-mode.el.git
-[submodule "goggles"]
-	path = lib/goggles
-	url = git@github.com:minad/goggles.git
 [submodule "gpastel"]
 	path = lib/gpastel
 	url = https://github.com/DamienCassou/gpastel
