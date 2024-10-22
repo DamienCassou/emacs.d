@@ -1925,12 +1925,6 @@ negative, the password is inserted at point."
   :demand t
   :config
   (progn
-    (reformatter-define eslintd-fix
-      :program "eslint_d"
-      :args (list "--fix-to-stdout" "--stdin" "--stdin-filename" (buffer-file-name))
-      :input-file (reformatter-temp-file-in-current-directory "js")
-      :working-directory (locate-dominating-file default-directory "package.json"))
-
     (reformatter-define prettier
       :program (let* ((root (locate-dominating-file default-directory "node_modules/.bin/prettier"))
                       (exec-path (if root
