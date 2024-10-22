@@ -590,11 +590,6 @@
 	path = lib/projectile
 	url = git@github.com:bbatsov/projectile.git
 	remote = "DamienCassou git@github.com:DamienCassou/projectile.git"
-[submodule "prot-emacs"]
-	path = lib/prot-emacs
-	url = https://git.sr.ht/~protesilaos/dotfiles
-	load-path = emacs/.emacs.d/prot-lisp
-	load-path = emacs/.emacs.d/prot-emacs-modules
 [submodule "racket-mode"]
 	path = lib/racket-mode
 	url = https://github.com/greghendershott/racket-mode
@@ -658,10 +653,16 @@
 	url = git@github.com:ternjs/tern.git
 	load-path = emacs
 	build-step = npm install
+[submodule "test-cockpit"]
+	path = lib/test-cockpit
+	url = https://github.com/johannes-mueller/test-cockpit.el
 [submodule "tmr"]
 	path = lib/tmr
 	url = git@git.sr.ht:~protesilaos/tmr
 	branch = main
+[submodule "transient"]
+	path = lib/transient
+	url = https://github.com/magit/transient
 [submodule "treepy"]
 	path = lib/treepy
 	url = git@github.com:volrath/treepy.el.git
