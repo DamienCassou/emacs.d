@@ -2745,7 +2745,11 @@ prefix arg was used."
 (use-package copilot
   :bind (
          :map copilot-completion-map
-         ("TAB" . copilot-accept-completion))
+         ("TAB" . copilot-accept-completion)
+         ("M-f" . copilot-accept-completion-by-word)
+         ("M-n" . copilot-accept-completion-by-line)
+         ("C-n" . copilot-next-completion)
+         ("C-p" . copilot-previous-completion))
   :init
   (progn
     (setq copilot-install-dir "/nix/store/3pb2l6fdgjf52h1bb5fx94zzvsb5csd1-copilot-node-server-1.27.0")))
