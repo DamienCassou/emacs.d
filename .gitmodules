@@ -66,19 +66,9 @@
 [submodule "cask"]
 	path = lib/cask
 	url = git@github.com:cask/cask.git
-[submodule "casual-dired"]
-	path = lib/casual-dired
-	url = https://github.com/kickingvegas/casual-dired
-	load-path = lisp
-[submodule "casual-isearch"]
-	path = lib/casual-isearch
-	url = https://github.com/kickingvegas/casual-isearch
-[submodule "casual-lib"]
-	path = lib/casual-lib
-	url = https://github.com/kickingvegas/casual-lib
-[submodule "casual-re-builder"]
-	path = lib/casual-re-builder
-	url = https://github.com/kickingvegas/casual-re-builder
+[submodule "casual"]
+	path = lib/casual
+	url = https://github.com/kickingvegas/casual
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
