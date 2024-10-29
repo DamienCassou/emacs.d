@@ -2727,7 +2727,7 @@ prefix arg was used."
          ("C-p" . copilot-previous-completion))
   :init
   (progn
-    (setq copilot-install-dir "/nix/store/3pb2l6fdgjf52h1bb5fx94zzvsb5csd1-copilot-node-server-1.27.0")))
+    (setq copilot-install-dir "/nix/store/znx4mpha1sw08wjb6jbmfdhh6ygpl463-copilot-node-server-1.27.0/")))
 
 (defun sudo-find-file (file)
   "Open FILE as root."
