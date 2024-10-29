@@ -2050,7 +2050,7 @@ If PROJECT is nil, use `project-current'."
         (my/vterm-open-new)))))
 
 (use-package docker
-  :bind (("C-. d c" . docker-containers)))
+  :bind (("C-. d" . docker)))
 
 (use-package dockerfile-ts-mode
   :mode "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'")
