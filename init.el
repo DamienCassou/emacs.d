@@ -780,7 +780,7 @@ This is recommended by Vertico's README."
                                                       ("origin/main" "main")))
     (setq magit-module-sections-nested nil)
     (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-    (setq magit-no-confirm '(amend-published trash))
+    (setq magit-no-confirm '(amend-published trash delete-unmerged-branch))
     (setq magit-revision-insert-related-refs nil)
     (setq magit-revision-show-gravatars t)
     (setq magit-clone-set-remote.pushDefault t))
