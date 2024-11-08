@@ -1058,15 +1058,13 @@ MOMENT is an encoded date."
     (defun my/ledger-insert-mortgage-transaction ()
       "Read accounting data for MORTGAGE and write the ledger entry."
       (interactive)
-      (ensure-empty-lines 1)
       (let* ((description (read-string "Description: "))
-             (date (ledger-read-date "Date: "))
-             (begining (point)))
+             (date (ledger-read-date "Date: ")))
+        (my/ledger-position-at-date (ledger-parse-iso-date date))
         (insert (format "%s %s\n" date description))
         (insert (format "  asset:current:couple  0\n"))
         (insert (format "  expense:misc  0\n"))
         (save-excursion
-          (goto-char begining)
           (my/ledger-mortgage-rewrite))))
 
     (defun my/ledger-mortgage-read-numbers ()
