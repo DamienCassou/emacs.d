@@ -11,7 +11,9 @@
  ;; If there is more than one, they won't work right.
  '(bookmark-save-flag 1)
  '(custom-safe-themes
-   '("4cc1cc7efd5c2362ef684657eec7d7e482223b1def4edeb0fab52ba1d334d38a" "4a288765be220b99defaaeb4c915ed783a9916e3e08f33278bf5ff56e49cbc73" default))
+   '("4cc1cc7efd5c2362ef684657eec7d7e482223b1def4edeb0fab52ba1d334d38a"
+     "4a288765be220b99defaaeb4c915ed783a9916e3e08f33278bf5ff56e49cbc73"
+     default))
  '(delete-by-moving-to-trash t)
  '(enable-recursive-minibuffers t)
  '(frame-title-format "Emacs: %b" t)
@@ -47,9 +49,8 @@
                    (seq-filter
                     (lambda (path) (string-match-p regexp path))
                     load-path))))
-     (org-imenu-depth . 3)
-     (eval my/eglot-ensure) (finsit-insert-commit-id . t)
-     (adaptive-wrap-extra-indent . 2)
+     (org-imenu-depth . 3) (eval my/eglot-ensure)
+     (finsit-insert-commit-id . t) (adaptive-wrap-extra-indent . 2)
      (org-babel-default-header-args:gitconfig (:eval . "no"))
      (org-babel-default-header-args:text (:eval . "no"))
      (org-babel-default-header-args:sh (:exports . "both")
