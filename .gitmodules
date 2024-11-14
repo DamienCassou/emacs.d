@@ -437,9 +437,6 @@
 [submodule "minions"]
 	path = lib/minions
 	url = git@github.com:tarsius/minions.git
-[submodule "mixed-pitch"]
-	path = lib/mixed-pitch
-	url = git@gitlab.com:jabranham/mixed-pitch.git
 [submodule "mmm-mode"]
 	path = lib/mmm-mode
 	url = git@github.com:purcell/mmm-mode.git
