@@ -69,6 +69,9 @@
 [submodule "casual"]
 	path = lib/casual
 	url = https://github.com/kickingvegas/casual
+[submodule "chatgpt-shell"]
+	path = lib/chatgpt-shell
+	url = https://github.com/xenodium/chatgpt-shell
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
