@@ -1457,7 +1457,7 @@ The link will contain DESCRIPTION as text."
   :bind (:map drag-stuff-mode-map
               ("M-P" . drag-stuff-up)
               ("M-N" . drag-stuff-down))
-  :hook ((nix-ts-mode text-mode) . drag-stuff-mode))
+  :hook ((nix-ts-mode text-mode conf-mode) . drag-stuff-mode))
 
 (use-package expand-region
   :bind ("M-h" . er/expand-region))
