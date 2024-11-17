@@ -69,9 +69,6 @@
 [submodule "casual"]
 	path = lib/casual
 	url = https://github.com/kickingvegas/casual
-[submodule "chatgpt-shell"]
-	path = lib/chatgpt-shell
-	url = https://github.com/xenodium/chatgpt-shell
 [submodule "circe-notifications"]
 	path = lib/circe-notifications
 	url = git@github.com:eqyiel/circe-notifications.git
@@ -601,6 +598,9 @@
 [submodule "sed-mode"]
 	path = lib/sed-mode
 	url = git@github.com:emacsmirror/sed-mode.git
+[submodule "shell-maker"]
+	path = lib/shell-maker
+	url = https://github.com/xenodium/shell-maker
 [submodule "shut-up"]
 	path = lib/shut-up
 	url = git@github.com:cask/shut-up.git
