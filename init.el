@@ -1403,8 +1403,10 @@ Interactively ask which file to open with completion."
       "Open note for DATE and create it if necessary.
 
 Interactively, DATE is asked to the user."
-      (interactive (list (encode-time
-                          (iso8601-parse (concat (org-read-date) "T00:00:00")))))
+      (interactive (list (and
+                          (require 'org)
+                          (encode-time
+                           (iso8601-parse (concat (org-read-date) "T00:00:00"))))))
       (let* ((title (format-time-string "%A %e %B %Y" date))
              (sluggified-title (denote-sluggify 'title title))
              (all-files (denote-directory-files (rx ".org" eos)))
