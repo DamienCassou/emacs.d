@@ -2083,6 +2083,7 @@ If PROJECT is nil, use `project-current'."
 (use-package eglot
   :hook ((eglot-managed-mode . my/eglot-setup)
          ((bash-ts-mode css-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-ts-mode go-ts-mode) . my/eglot-ensure))
+  :commands (my/eglot-format-on-save-mode)
   :config
   (progn
     (add-to-list 'eglot-server-programs
