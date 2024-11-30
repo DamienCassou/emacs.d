@@ -1630,7 +1630,8 @@ The link will contain DESCRIPTION as text."
          ("C-l" . find-library))
   :init
   (progn
-    (setq describe-bindings-outline t)))
+    (setq describe-bindings-outline t)
+    (setq help-window-select t)))
 
 (use-package aggressive-indent
   :hook ((lisp-mode emacs-lisp-mode scheme-mode lisp-data-mode) . aggressive-indent-mode))
