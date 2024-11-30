@@ -7,6 +7,8 @@
 ;; Apply recommendation from modus Info manual:
 (setq face-near-same-color-threshold 45000)
 
+(setq scroll-step 1)
+
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
   (require  'borg)
