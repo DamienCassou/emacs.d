@@ -4,9 +4,6 @@
 
 (setq load-prefer-newer t)
 
-;; Deactivate beeping
-(setq ring-bell-function (lambda ()))
-
 ;; Apply recommendation from modus Info manual:
 (setq face-near-same-color-threshold 45000)
 
