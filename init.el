@@ -22,6 +22,9 @@
   (setq use-package-compute-statistics nil)
   (require 'use-package))
 
+(progn ; paragraphs
+  (set-default 'sentence-end-double-space nil))
+
 (use-package comp
   :init
   (progn
