@@ -1228,7 +1228,7 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
     (setq org-insert-heading-respect-content t)
     (setq org-clock-clocked-in-display nil)
     (setq org-adapt-indentation nil)
-    (setq org-directory "~/configuration/org")
+    (setq org-directory "~/personal/notes/org")
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
     (setq org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
     (setq org-default-gtd-file (expand-file-name "gtd.org" org-directory))
@@ -1381,7 +1381,7 @@ because slides don't change their ID all the time."
   :init
   (progn
     (setq denote-date-prompt-use-org-read-date t)
-    (setq denote-directory (expand-file-name "~/configuration/denote"))
+    (setq denote-directory (expand-file-name "~/personal/notes/denote"))
     (setq denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
     (setq denote-front-matter-date-format 'org-timestamp)
     (setq denote-dired-directories
@@ -2147,7 +2147,7 @@ If PROJECT is nil, use `project-current'."
          (libmpdel-player-changed . my/libmpdel-write-song-to-file))
   :init
   (progn
-    (setq libmpdel-music-directory "~/Music/son"))
+    (setq libmpdel-music-directory (getenv "XDG_MUSIC_DIR")))
   :config
   (progn
     (defun my/libmpdel-write-song-to-file ()
