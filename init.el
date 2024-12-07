@@ -776,7 +776,6 @@ This is recommended by Vertico's README."
   (progn
     (setq magit-show-long-lines-warning nil)
     (setq magit-diff-refine-hunk t)
-    (setq magit-process-find-password-functions '(magit-process-password-auth-source))
     (setq magit-branch-prefer-remote-upstream '("master"))
     (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")
                                                       ("origin/main" "main")))
