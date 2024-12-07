@@ -29,7 +29,8 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el"
              :add-directory "tests")))
  '(safe-local-variable-values
-   '((package-lint-main-file . "test-cockpit.el")
+   '((eval add-hook 'before-save-hook #'whitespace-cleanup nil t)
+     (package-lint-main-file . "test-cockpit.el")
      (eval setq-local elisp-flymake-byte-compile-load-path
            (cons "./"
                  (let
