@@ -1946,9 +1946,9 @@ negative, the password is inserted at point."
   (progn
     (finsit-prodigy-setup
      ;; path to the frontend:
-     (expand-file-name "~/Documents/projects/ftgp/finsit/frontend/apps/client/")
+     (expand-file-name "~/work/setup/frontend/apps/client")
      ;; path to the backend:
-     (expand-file-name "~/Documents/projects/ftgp/finsit/monitor"))))
+     (expand-file-name "~/work/setup/monitor"))))
 
 (use-package alert
   :demand t
