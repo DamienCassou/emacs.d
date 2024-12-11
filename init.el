@@ -1891,6 +1891,7 @@ negative, the password is inserted at point."
 
 (use-package reformatter
   :demand t
+  :commands (prettier-on-save-mode)
   :config
   (progn
     (reformatter-define prettier
