@@ -1946,7 +1946,7 @@ negative, the password is inserted at point."
   (progn
     (finsit-prodigy-setup
      ;; path to the frontend:
-     (expand-file-name "~/work/setup/frontend/apps/client")
+     (expand-file-name "~/work/setup/frontend")
      ;; path to the backend:
      (expand-file-name "~/work/setup/monitor"))))
 
