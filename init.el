@@ -2176,26 +2176,6 @@ If PROJECT is nil, use `project-current'."
   (progn
     (mpdel-embark-setup)))
 
-(use-package daemons-systemd
-  :after daemons
-  :init
-  (progn
-    (setq daemons-systemd-is-user t)))
-
-(use-package journalctl-mode
-  :init
-  (progn
-    (defun my/journalctl-mode-open-from-daemons (name)
-      (interactive (list (daemons--daemon-at-point)))
-      (require 'journalctl-mode)
-      (journalctl--follow `(,@(if daemons-systemd-is-user '("--user") nil)
-                            ,(format "--unit=%s" name)
-                            ,(format "--lines=1000")
-                            "--follow")))
-
-    (with-eval-after-load 'daemons
-      (bind-key "l" #'my/journalctl-mode-open-from-daemons #'daemons-mode-map))))
-
 (use-package minions
   :demand t
   :init
@@ -2224,10 +2204,6 @@ If PROJECT is nil, use `project-current'."
 
 (use-package nov
   :mode ("\\.epub\\'" . nov-mode))
-
-(use-package ob-verb
-  :demand t
-  :after org)
 
 (use-package nix-mode
   :config
@@ -2701,13 +2677,6 @@ prefix arg was used."
   ;; Enable ligature checks globally in all buffers. You can also do
   ;; it per mode with `ligature-mode'.
   (global-ligature-mode t))
-
-(use-package racket
-  :hook (racket-mode . enable-paredit-mode))
-
-(use-package ob-racket
-  :demand t
-  :after (org racket-mode))
 
 (use-package dotenv-mode
   :mode (("\\.env\\'" . dotenv-mode)
