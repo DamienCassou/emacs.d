@@ -911,6 +911,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
                    " ")))
         (list key word "File")))
 
+    (require 'map)
     (map-put! jinx--save-keys ?* #'my/jinx-save-as-ispell-localword)))
 
 (use-package eldoc
@@ -2320,6 +2321,7 @@ the buffer's filename."
          ((marginalia--buffer-file buffer)))))
 
     ;; Use my own annotator when listing buffers:
+    (require 'map)
     (map-put! marginalia-annotator-registry 'buffer (list #'my/marginalia-annotate-buffer))
 
     ;; I don't want any information when listing files:
