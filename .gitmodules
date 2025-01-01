@@ -75,9 +75,6 @@
 [submodule "combobulate"]
 	path = lib/combobulate
 	url = git@github.com:mickeynp/combobulate.git
-[submodule "company"]
-	path = lib/company
-	url = git@github.com:company-mode/company-mode.git
 [submodule "company-ledger"]
 	path = lib/company-ledger
 	url = https://github.com/debanjum/company-ledger.git
@@ -91,20 +88,12 @@
 	path = lib/consult
 	url = git@github.com:minad/consult.git
 	branch = main
-[submodule "consult-denote"]
-	path = lib/consult-denote
-	url = git@github.com:protesilaos/consult-denote.git
 [submodule "copilot"]
 	path = lib/copilot
 	url = https://github.com/copilot-emacs/copilot.el
 [submodule "copilot-chat"]
 	path = lib/copilot-chat
 	url = https://github.com/chep/copilot-chat.el
-[submodule "corfu"]
-	path = lib/corfu
-	url = https://github.com/minad/corfu
-	load-path = .
-	load-path = extensions
 [submodule "counsel-jq"]
 	path = lib/counsel-jq
 	url = https://github.com/200ok-ch/counsel-jq.git
@@ -133,9 +122,6 @@
 [submodule "define-word"]
 	path = lib/define-word
 	url = https://github.com/abo-abo/define-word
-[submodule "denote"]
-	path = lib/denote
-	url = git@git.sr.ht:~protesilaos/denote
 [submodule "desktop-environment"]
 	path = lib/desktop-environment
 	url = git@github.com:DamienCassou/desktop-environment.git
@@ -206,9 +192,6 @@
 [submodule "espuds"]
 	path = lib/espuds
 	url = git@github.com:ecukes/espuds.git
-[submodule "ess"]
-	path = lib/ess
-	url = git@github.com:emacs-ess/ESS.git
 [submodule "esxml"]
 	path = lib/esxml
 	url = git@github.com:tali713/esxml.git
