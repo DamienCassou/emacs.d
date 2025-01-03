@@ -46,7 +46,16 @@
     (auto-compile-use-mode-line-set nil nil)))
 
 (use-package no-littering
-  :demand t)
+  :demand t
+  :config
+  (progn
+    ;; no-littering sets the value of `copilot-install-dir' to
+    ;; something in ~/.emacs.d/var but I want the default value from
+    ;; the `copilot' package instead. This is because the default
+    ;; value comes from Nix and points to the installation directory
+    ;; of "copilot-node-server". Because `copilot' isn't loaded yet,
+    ;; we just delete the variable:
+    (makunbound 'copilot-install-dir)))
 
 (progn ; `startup'
   (setq inhibit-startup-screen t)
