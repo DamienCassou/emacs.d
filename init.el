@@ -9,6 +9,10 @@
 
 (setq scroll-step 1)
 
+;; I don't use package.el to install packages but I still want to
+;; configure autoloads and info manuals:
+(package-activate-all)
+
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
   (require  'borg)
