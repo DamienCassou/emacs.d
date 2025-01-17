@@ -309,15 +309,6 @@ This is recommended by Vertico's README."
          ;; This key is for changing the active window:
          ("M-o" . nil)))
 
-(use-package locate
-  :init
-  (progn
-    (defun my/locate-make-command-line (search-string)
-      "Return a list of arguments representing the mlocate command line."
-      `("/usr/bin/locate" "--existing" "--regex" "--regexp" ,search-string))
-
-    (setq locate-make-command-line #'my/locate-make-command-line)))
-
 (use-package modus-themes
   :demand t
   :init
