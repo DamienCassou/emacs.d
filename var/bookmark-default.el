@@ -25,10 +25,10 @@
  (front-context-string . "2021-01-17-robor")
  (rear-context-string . "50 Jun 19 19:07 ") (position . 136))
 ("org-capture-last-stored"
- (filename . "~/personal/notes/org/tickler.org")
- (front-context-string . "** aller cherche")
- (rear-context-string . "2025-02-10 Mon>\n") (position . 1327)
- (last-modified 26501 31661 319553 250000))
+ (filename . "~/personal/notes/org/schplaf.org")
+ (front-context-string . "* Commande froma")
+ (rear-context-string . "at 14:00-16:00>\n") (position . 100351)
+ (last-modified 26506 15328 928985 698000))
 ("2021-achat-brest"
  (filename . "~/famille/logements/2021-achat-brest/")
  (front-context-string . "2021-11-15-devis")
