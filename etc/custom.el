@@ -29,7 +29,15 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el"
              :add-directory "tests")))
  '(safe-local-variable-values
-   '((eval add-hook 'before-save-hook #'whitespace-cleanup nil t)
+   '((org-export-global-macros
+      ("debian-version" lambda (&rest _)
+       (save-excursion
+         (with-temp-buffer
+           (insert-file "/etc/debian_version") (goto-char (point-min))
+           (re-search-forward (rx (group-n 1 (+ digit))))
+           (match-string 1))))
+      ("git-version" lambda (&rest _) (magit-git-version)))
+     (eval add-hook 'before-save-hook #'whitespace-cleanup nil t)
      (package-lint-main-file . "test-cockpit.el")
      (eval setq-local elisp-flymake-byte-compile-load-path
            (cons "./"
