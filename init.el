@@ -2645,11 +2645,11 @@ prefix arg was used."
              :default-height 100
              :bold-weight semibold)
             (t
-             :default-family "Jetbrains Mono"
+             :default-family "Aporetic sans mono"
              :default-weight regular
-             :variable-pitch-family "Atkinson Hyperlegible"
+             :variable-pitch-family "Aporetic serif"
              :variable-pitch-height 1.3
-             :italic-family "Jetbrains Mono"
+             :italic-family "Aporetic sans mono"
              :italic-slant italic))))
   :config
   (progn
