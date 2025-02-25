@@ -8,6 +8,7 @@
 (setq face-near-same-color-threshold 45000)
 
 (setq scroll-step 1)
+(setq ring-bell-function (lambda ()))
 
 ;; I don't use package.el to install packages but I still want to
 ;; configure autoloads and info manuals:
