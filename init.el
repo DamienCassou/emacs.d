@@ -10,6 +10,9 @@
 (setq scroll-step 1)
 (setq ring-bell-function (lambda ()))
 
+(setq ns-right-alternate-modifier 'none)
+(setq ns-right-command-modifier 'none)
+
 ;; I don't use package.el to install packages but I still want to
 ;; configure autoloads and info manuals:
 (package-activate-all)
