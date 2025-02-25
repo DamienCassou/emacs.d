@@ -2017,6 +2017,7 @@ negative, the password is inserted at point."
          ("<f8>" . vterm-send-C-x)
          ("C-<up>" . vterm-previous-prompt)
          ("C-<down>" . vterm-next-prompt))
+  :hook (vterm-mode . my/vterm-setup)
   :init
   (progn
     (setq vterm-kill-buffer-on-exit t)
@@ -2052,7 +2053,14 @@ If PROJECT is nil, use `project-current'."
       (interactive)
       (when-let* ((project (or project (project-current t)))
                   (default-directory (car (project-roots project))))
-        (my/vterm-open-new)))))
+        (my/vterm-open-new)))
+
+    (defun my/vterm-setup ()
+      ;; On darwin, the .profile is not loaded by the system on
+      ;; startup, terminals have to do it manually:
+      (when (memq system-type '(darwin))
+        (vterm-send-string "source ~/.profile" t)
+        (vterm-send-return)))))
 
 (use-package docker
   :bind (("C-. d" . docker)))
