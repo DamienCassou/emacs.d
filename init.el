@@ -2643,13 +2643,12 @@ prefix arg was used."
              :default-height 110)
             (large
              :default-weight semilight
-             :default-height 100
-             :bold-weight semibold)
+             :default-height 130
+             :bold-weight extrabold)
             (t
              :default-family "Aporetic sans mono"
              :default-weight regular
              :variable-pitch-family "Aporetic serif"
-             :variable-pitch-height 1.3
              :italic-family "Aporetic sans mono"
              :italic-slant italic))))
   :config
