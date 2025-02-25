@@ -1960,7 +1960,9 @@ negative, the password is inserted at point."
   :demand t
   :init
   (progn
-    (setq alert-default-style 'notifications)))
+    (setq alert-default-style (if (eq 'darwin system-type)
+                                  'osx-notifier
+                                'notifications))))
 
 (use-package diff-hl-dired
   :demand t
