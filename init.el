@@ -2711,18 +2711,6 @@ The alert package works on different platforms."
          ("\\.env\\.local\\'" . dotenv-mode)
          ("\\.env\\.development\\'" . dotenv-mode)))
 
-(defun sudo-find-file (file)
-  "Open FILE as root."
-  (interactive "FOpen file as root: ")
-  (when (file-writable-p file)
-    (user-error "File is user writeable, aborting sudo"))
-  (find-file (if (file-remote-p file)
-                 (concat "/" (file-remote-p file 'method) ":"
-                         (file-remote-p file 'user) "@" (file-remote-p file 'host)
-                         "|sudo:root@"
-                         (file-remote-p file 'host) ":" (file-remote-p file 'localname))
-               (concat "/sudo:root@localhost:" file))))
-
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
