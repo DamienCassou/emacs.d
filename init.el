@@ -254,6 +254,16 @@ current."
     (seq-doseq (fn (list #'split-window #'delete-window))
       (advice-add fn :after #'my/window-balance-windows))))
 
+(use-package completion-preview
+  :demand t
+  :bind (
+         :map completion-preview-active-mode-map
+         ("M-n" . completion-preview-next-candidate)
+         ("M-p" . completion-preview-prev-candidate))
+  :config
+  (progn
+    (global-completion-preview-mode)))
+
 (use-package ace-window
   :demand t
   :bind ("M-o" . ace-window)
