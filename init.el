@@ -2775,6 +2775,5 @@ The alert package works on different platforms."
 
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
-;; eval: (flycheck-mode -1)
 ;; no-byte-compile: t
 ;; End:
