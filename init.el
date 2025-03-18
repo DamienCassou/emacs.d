@@ -2263,7 +2263,10 @@ If PROJECT is nil, use `project-current'."
   :mode ("\\.nix\\'" . nix-ts-mode))
 
 (use-package html-ts-mode
-  :mode ("\\.html\\'" . html-ts-mode))
+  :mode ("\\.html\\'" . html-ts-mode)
+  :bind (
+         :map html-ts-mode-map
+         ("M-o" . nil)))
 
 (use-package css-ts-mode
   :mode ("\\.css\\'" . css-ts-mode))
