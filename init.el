@@ -269,6 +269,9 @@ current."
   (progn
     (setq epa-keys-select-method 'minibuffer)))
 
+(use-package simple
+  :hook (org-mode . visual-line-mode))
+
 (use-package ace-window
   :demand t
   :bind ("M-o" . ace-window)
