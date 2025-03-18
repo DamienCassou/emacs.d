@@ -260,9 +260,7 @@ current."
          :map completion-preview-active-mode-map
          ("M-n" . completion-preview-next-candidate)
          ("M-p" . completion-preview-prev-candidate))
-  :config
-  (progn
-    (global-completion-preview-mode)))
+  :hook ((prog-mode . completion-preview-mode)))
 
 (use-package epa
   :init
