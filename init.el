@@ -264,6 +264,11 @@ current."
   (progn
     (global-completion-preview-mode)))
 
+(use-package epa
+  :init
+  (progn
+    (setq epa-keys-select-method 'minibuffer)))
+
 (use-package ace-window
   :demand t
   :bind ("M-o" . ace-window)
