@@ -269,6 +269,12 @@ current."
   (progn
     (setq epa-keys-select-method 'minibuffer)))
 
+(use-package visual-wrap
+  :hook (org-mode . visual-wrap-prefix-mode)
+  :init
+  (progn
+    (setq visual-wrap-extra-indent 2)))
+
 (use-package simple
   :hook (org-mode . visual-line-mode))
 
