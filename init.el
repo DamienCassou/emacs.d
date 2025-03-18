@@ -753,8 +753,13 @@ This is recommended by Vertico's README."
     (setq dired-omit-verbose nil))
   :config
   (progn
-    (setq dired-omit-files (rx-to-string `(or (and bol ".tern-port" eol)
-                                              (regexp ,dired-omit-files))))))
+    (let ((files-to-ignore '(".DS_Store" ".localized" ".stfolder")))
+      (setq dired-omit-files
+            (rx-to-string
+             `(or ,@(mapcar
+                     (lambda (file) `(and bol ,file eol))
+                     files-to-ignore)
+                  (regexp ,dired-omit-files)))))))
 
 (use-package dired-imenu
   :demand t
