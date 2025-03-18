@@ -268,13 +268,12 @@ current."
     (setq epa-keys-select-method 'minibuffer)))
 
 (use-package visual-wrap
-  :hook (org-mode . visual-wrap-prefix-mode)
   :init
   (progn
     (setq visual-wrap-extra-indent 2)))
 
 (use-package simple
-  :hook (org-mode . visual-line-mode))
+  :hook (visual-line-mode . visual-wrap-prefix-mode))
 
 (use-package ace-window
   :demand t
@@ -1247,6 +1246,7 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
    ("C-. o l"   . org-store-link)
    ("C-. o s"   . org-save-all-org-buffers)
    ("C-. o t"   . org-capture))
+  :hook (org-mode . visual-line-mode)
   :init
   (progn
     (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t) (R . t) (python . t)))
