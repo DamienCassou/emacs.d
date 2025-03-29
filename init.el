@@ -2190,9 +2190,6 @@ If PROJECT is nil, use `project-current'."
 (use-package libmpdel
   :hook ((libmpdel-current-song-changed . my/libmpdel-write-song-to-file)
          (libmpdel-player-changed . my/libmpdel-write-song-to-file))
-  :init
-  (progn
-    (setq libmpdel-music-directory (getenv "XDG_MUSIC_DIR")))
   :config
   (progn
     (defun my/libmpdel-write-song-to-file ()
