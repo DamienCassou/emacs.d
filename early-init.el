@@ -28,3 +28,10 @@
 ;; in this file and can conflict with later config (particularly where the
 ;; cursor color is concerned).
 (advice-add #'x-apply-session-resources :override #'ignore)
+
+(when (eq system-type 'darwin)
+  (dolist (path '("/run/current-system/sw/bin" "/etc/profiles/per-user/cassou/bin" "/usr/local/bin" "/opt/homebrew/bin" ))
+    (add-to-list 'exec-path path)
+    (setenv "PATH" (concat path ":" (getenv "PATH"))))
+
+  (setenv "SSH_AUTH_SOCK" (expand-file-name "~/.gnupg/S.gpg-agent.ssh")))
