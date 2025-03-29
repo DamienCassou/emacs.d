@@ -1626,6 +1626,13 @@ The link will contain DESCRIPTION as text."
   :demand t
   :hook (prog-mode . combobulate-mode))
 
+(use-package combobulate-js-ts
+  :hook (combobulate-javascript-minor-mode . my/combobulate-js-ts-setup)
+  :config
+  (progn
+    (defun my/combobulate-js-ts-setup ()
+      (unbind-key "=" combobulate-javascript-map))))
+
 (use-package elec-pair
   :demand t
   :config
