@@ -29,7 +29,8 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el"
              :add-directory "tests")))
  '(safe-local-variable-values
-   '((org-export-global-macros
+   '((checkdoc-allow-quoting-nil-and-t . t)
+     (org-export-global-macros
       ("debian-version" lambda (&rest _)
        (save-excursion
          (with-temp-buffer
