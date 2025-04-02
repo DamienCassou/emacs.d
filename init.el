@@ -229,6 +229,11 @@ current."
          ("C-x C-=" . global-text-scale-adjust)
          ("C-x C-0" . global-text-scale-adjust)))
 
+(use-package sort
+  :init
+  (progn
+    (setq sort-fold-case t)))
+
 (use-package window
   :bind (("C-x o" . nil))
   :init
