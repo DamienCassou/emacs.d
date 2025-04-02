@@ -2728,6 +2728,15 @@ The alert package works on different platforms."
          ("\\.env\\.local\\'" . dotenv-mode)
          ("\\.env\\.development\\'" . dotenv-mode)))
 
+(use-package copilot
+  :bind (
+         :map copilot-completion-map
+         ("TAB" . copilot-accept-completion)
+         ("M-f" . copilot-accept-completion-by-word)
+         ("M-n" . copilot-accept-completion-by-line)
+         ("C-n" . copilot-next-completion)
+         ("C-p" . copilot-previous-completion)))
+
 (defmacro my/insert-char-fn (char)
   "Create an anonymous command inserting CHAR."
   `(lambda ()
