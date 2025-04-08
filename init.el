@@ -2,16 +2,16 @@
 
 (add-to-list 'load-path (locate-user-emacs-file "misc"))
 
-(setq load-prefer-newer t)
+(setopt load-prefer-newer t)
 
 ;; Apply recommendation from modus Info manual:
-(setq face-near-same-color-threshold 45000)
+(setopt face-near-same-color-threshold 45000)
 
-(setq scroll-step 1)
-(setq ring-bell-function (lambda ()))
+(setopt scroll-step 1)
+(setopt ring-bell-function (lambda ()))
 
-(setq ns-right-alternate-modifier 'none)
-(setq ns-right-command-modifier 'none)
+(setopt ns-right-alternate-modifier 'none)
+(setopt ns-right-command-modifier 'none)
 
 ;; I don't use package.el to install packages but I still want to
 ;; configure autoloads and info manuals:
@@ -23,11 +23,11 @@
   (borg-initialize))
 
 (progn ; `use-package'
-  (setq use-package-always-defer t)
-  (setq use-package-enable-imenu-support t)
-  (setq use-package-minimum-reported-time 0)
-  (setq use-package-verbose t)
-  (setq use-package-compute-statistics nil)
+  (setopt use-package-always-defer t)
+  (setopt use-package-enable-imenu-support t)
+  (setopt use-package-minimum-reported-time 0)
+  (setopt use-package-verbose t)
+  (setopt use-package-compute-statistics nil)
   (require 'use-package))
 
 (progn ; paragraphs
@@ -36,16 +36,16 @@
 (use-package comp
   :init
   (progn
-    (setq native-comp-async-report-warnings-errors nil)))
+    (setopt native-comp-async-report-warnings-errors nil)))
 
 (use-package auto-compile
   :demand t
   :init
   (progn
-    (setq auto-compile-display-buffer nil)
-    (setq auto-compile-source-recreate-deletes-dest t)
-    (setq auto-compile-toggle-deletes-nonlib-dest t)
-    (setq auto-compile-update-autoloads t))
+    (setopt auto-compile-display-buffer nil)
+    (setopt auto-compile-source-recreate-deletes-dest t)
+    (setopt auto-compile-toggle-deletes-nonlib-dest t)
+    (setopt auto-compile-update-autoloads t))
   :hook (auto-compile-inhibit-compile . auto-compile-inhibit-compile-detached-git-head)
   :config
   (progn
@@ -54,18 +54,18 @@
     (auto-compile-use-mode-line-set nil nil)))
 
 (progn ; `startup'
-  (setq inhibit-startup-screen t)
-  (setq initial-buffer-choice t)
-  (setq initial-major-mode 'text-mode)
-  (setq initial-scratch-message nil)
-  (setq user-mail-address "damien@cassou.me"))
+  (setopt inhibit-startup-screen t)
+  (setopt initial-buffer-choice t)
+  (setopt initial-major-mode 'text-mode)
+  (setopt initial-scratch-message nil)
+  (setopt user-mail-address "damien@cassou.me"))
 
 (progn ; `files'
-  (setq make-backup-files nil)
-  (setq version-control 'never))
+  (setopt make-backup-files nil)
+  (setopt version-control 'never))
 
 (progn ; `filelock'
-  (setq create-lockfiles nil))
+  (setopt create-lockfiles nil))
 
 (progn ; `window'
   (defun my/kill-this-buffer ()
@@ -108,8 +108,8 @@ are visible."
 
 (progn ; `map-ynp'
   ;; Make all "yes or no" prompts show "y or n" instead
-  (setq read-answer-short t)
-  (setq use-short-answers t))
+  (setopt read-answer-short t)
+  (setopt use-short-answers t))
 
 (progn ; `editfns'
   (put 'narrow-to-region 'disabled nil))
@@ -117,7 +117,7 @@ are visible."
 (progn ; `subr'
   ;; recommended by
   ;; (info "(embark) How does Embark call the actions?")
-  (setq y-or-n-p-use-read-key t))
+  (setopt y-or-n-p-use-read-key t))
 
 (progn ; `buffer'
   (defvar-local my/mode-line-buffer-status
@@ -197,13 +197,13 @@ either read only or modified.")
   :demand t
   :config
   (progn
-    (setq custom-file (no-littering-expand-etc-file-name "custom.el"))
+    (setopt custom-file (no-littering-expand-etc-file-name "custom.el"))
     (when (file-exists-p custom-file)
       (load custom-file))))
 
 (use-package edebug
   :init
-  (setq edebug-print-length 5000))
+  (setopt edebug-print-length 5000))
 
 (use-package executable
   :hook (after-save . executable-make-buffer-file-executable-if-script-p))
@@ -217,7 +217,7 @@ either read only or modified.")
 If FRAME is nil, configure current frame. If non-nil, make FRAME
 current."
       (when frame (select-frame frame))
-      (setq frame-title-format "Emacs")
+      (setopt frame-title-format "Emacs")
       (modify-all-frames-parameters
        '((cursor-type bar . 5))))
 
@@ -232,13 +232,13 @@ current."
 (use-package sort
   :init
   (progn
-    (setq sort-fold-case t)))
+    (setopt sort-fold-case t)))
 
 (use-package window
   :bind (("C-x o" . nil))
   :init
   (progn
-    (setq switch-to-buffer-obey-display-actions t)
+    (setopt switch-to-buffer-obey-display-actions t)
 
     (defun my/window-balance-windows (&rest args)
       "Same as `balance-windows' but ignores arguments."
@@ -258,12 +258,12 @@ current."
 (use-package epa
   :init
   (progn
-    (setq epa-keys-select-method 'minibuffer)))
+    (setopt epa-keys-select-method 'minibuffer)))
 
 (use-package visual-wrap
   :init
   (progn
-    (setq visual-wrap-extra-indent 2)))
+    (setopt visual-wrap-extra-indent 2)))
 
 (use-package simple
   :hook (visual-line-mode . visual-wrap-prefix-mode))
@@ -274,8 +274,8 @@ current."
   :init
   (progn
     ;; home row in a Colemak layout
-    (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
-    (setq aw-background nil))
+    (setopt aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
+    (setopt aw-background nil))
   :config
   (progn
     (ace-window-display-mode)
@@ -299,8 +299,8 @@ This is recommended by Vertico's README."
 (use-package isearch
   :init
   (progn
-    (setq isearch-allow-motion t)
-    (setq isearch-lazy-count t)))
+    (setopt isearch-allow-motion t)
+    (setopt isearch-lazy-count t)))
 
 (use-package casual-isearch
   :demand t
@@ -312,8 +312,8 @@ This is recommended by Vertico's README."
          ("C-M-/" . nil))
   :init
   (progn
-    (setq dabbrev-case-fold-search t)
-    (setq dabbrev-case-replace nil))
+    (setopt dabbrev-case-fold-search t)
+    (setopt dabbrev-case-replace nil))
   :config
   (progn
     ;; recommended by corfu:
@@ -331,11 +331,11 @@ This is recommended by Vertico's README."
   :demand t
   :init
   (progn
-    (setq modus-themes-bold-constructs t)
-    (setq modus-themes-org-blocks 'greyscale)
-    (setq modus-themes-italic-constructs t)
+    (setopt modus-themes-bold-constructs t)
+    (setopt modus-themes-org-blocks 'greyscale)
+    (setopt modus-themes-italic-constructs t)
 
-    (setq modus-themes-headings
+    (setopt modus-themes-headings
           '((1 . (1.6))
             (2 . (background 1.5))
             (3 . (background bold 1.2))
@@ -425,12 +425,12 @@ This is recommended by Vertico's README."
          ("k" . process-menu-delete-process))
   :init
   (progn
-    (setq delete-active-region nil)
-    (setq eval-expression-print-length 20)
-    (setq eval-expression-print-level 10)
-    (setq next-error-message-highlight 'keep)
-    (setq set-mark-command-repeat-pop t)
-    (setq line-number-mode nil))
+    (setopt delete-active-region nil)
+    (setopt eval-expression-print-length 20)
+    (setopt eval-expression-print-level 10)
+    (setopt next-error-message-highlight 'keep)
+    (setopt set-mark-command-repeat-pop t)
+    (setopt line-number-mode nil))
   :config
   (progn
     (defun my/join-line ()
@@ -446,7 +446,7 @@ This is recommended by Vertico's README."
       (let ((orig-tab-width tab-width)
 	    (region (buffer-substring-no-properties begin end)))
         (with-temp-buffer
-          (setq tab-width orig-tab-width)
+          (setopt tab-width orig-tab-width)
           (insert region)
           (untabify (point-min) (point-max))
           (org-do-remove-indentation)
@@ -455,7 +455,7 @@ This is recommended by Vertico's README."
     (column-number-mode -1)
 
     ;; Hide commands in M-x which do not work in the current mode.
-    (setq read-extended-command-predicate
+    (setopt read-extended-command-predicate
           #'command-completion-default-include-p)))
 
 (use-package replace
@@ -472,7 +472,7 @@ This is recommended by Vertico's README."
 (use-package server
   :init
   (progn
-    (setq server-client-instructions nil))
+    (setopt server-client-instructions nil))
   :config
   (progn
     (unless (or (daemonp) (server-running-p))
@@ -494,8 +494,8 @@ This is recommended by Vertico's README."
   :bind (("M-/" . completion-at-point))
   :init
   (progn
-    (setq read-file-name-completion-ignore-case t)
-    (setq completions-detailed t))
+    (setopt read-file-name-completion-ignore-case t)
+    (setopt completions-detailed t))
   :config
   (progn
     (dolist (regexp '("File .* removed from the recentf list"))
@@ -533,24 +533,24 @@ This is recommended by Vertico's README."
 (use-package time
   :init
   (progn
-    (setq display-time-24hr-format t)))
+    (setopt display-time-24hr-format t)))
 
 (use-package nsm ;; network security
   :init
   (progn
-    (setq network-security-level 'high)
-    (setq nsm-save-host-names t)))
+    (setopt network-security-level 'high)
+    (setopt nsm-save-host-names t)))
 
 (use-package imenu
   :init
   (progn
-    (setq imenu-auto-rescan t)
-    (setq imenu-max-item-length 200)))
+    (setopt imenu-auto-rescan t)
+    (setopt imenu-max-item-length 200)))
 
 (use-package url-vars
   :init
   (progn
-    (setq url-privacy-level 'high)))
+    (setopt url-privacy-level 'high)))
 
 (use-package autorevert
   :demand t
@@ -560,7 +560,7 @@ This is recommended by Vertico's README."
   :init
   (progn
     ;; Don't show messages when auto revert happens:
-    (setq auto-revert-verbose nil))
+    (setopt auto-revert-verbose nil))
   :config
   (progn
     (global-auto-revert-mode)))
@@ -580,18 +580,18 @@ This is recommended by Vertico's README."
 (use-package proced
   :init
   (progn
-    (setq proced-filter 'all)
-    (setq proced-enable-color-flag t)))
+    (setopt proced-filter 'all)
+    (setopt proced-enable-color-flag t)))
 
 (use-package emacsbug
   :init
   (progn
-    (setq report-emacs-bug-no-explanations t)))
+    (setopt report-emacs-bug-no-explanations t)))
 
 (use-package debbugs-gnu
   :init
   (progn
-    (setq debbugs-gnu-trunk-directory "~/Documents/projects/emacs/emacs-src-26")))
+    (setopt debbugs-gnu-trunk-directory "~/Documents/projects/emacs/emacs-src-26")))
 
 (use-package goto-addr
   :bind (
@@ -601,8 +601,8 @@ This is recommended by Vertico's README."
   :config
   (progn
     ;; Recommended by modus-themes (2.7.0 release notes):
-    (setq goto-address-mail-face 'link)
-    (setq goto-address-mail-mouse-face 'highlight)))
+    (setopt goto-address-mail-face 'link)
+    (setopt goto-address-mail-mouse-face 'highlight)))
 
 (use-package bug-reference
   :bind ((
@@ -617,7 +617,7 @@ This is recommended by Vertico's README."
 (use-package man
   :init
   (progn
-    (setq Man-notify-method 'aggressive)))
+    (setopt Man-notify-method 'aggressive)))
 
 (use-package info-variable-pitch
   :hook ((Info-mode . info-variable-pitch-mode)))
@@ -626,12 +626,12 @@ This is recommended by Vertico's README."
   :hook (((Info-mode help-mode helpful-mode eww-mode) . olivetti-mode))
   :init
   (progn
-    (setq olivetti-body-width 84)))
+    (setopt olivetti-body-width 84)))
 
 (use-package smime
   :config
   ;; https://src.fedoraproject.org/rpms/emacs/blob/f27/f/default.el
-  (setq smime-CA-directory "/etc/ssl/certs"))
+  (setopt smime-CA-directory "/etc/ssl/certs"))
 
 (use-package display-line-numbers
   :hook ((prog-mode text-mode) . my/display-line-numbers)
@@ -659,15 +659,15 @@ This is recommended by Vertico's README."
   :hook ((vundo-mode . my/vundo-setup))
   :init
   (progn
-    (setq vundo-window-max-height 5))
+    (setopt vundo-window-max-height 5))
   :config
   (progn
-    (setq vundo-glyph-alist vundo-unicode-symbols)
+    (setopt vundo-glyph-alist vundo-unicode-symbols)
 
     (defun my/vundo-setup ()
       "Remove mode-line and header-line."
-      (setq mode-line-format nil)
-      (setq header-line-format nil))))
+      (setopt mode-line-format nil)
+      (setopt header-line-format nil))))
 
 (use-package ibuffer
   :bind (
@@ -695,11 +695,11 @@ This is recommended by Vertico's README."
   :hook (dired-mode . dired-hide-details-mode)
   :init
   (progn
-    (setq dired-auto-revert-buffer t)
-    (setq dired-dwim-target t)
-    (setq dired-listing-switches "-alh")
-    (setq dired-recursive-deletes 'always)
-    (setq dired-mouse-drag-files t)
+    (setopt dired-auto-revert-buffer t)
+    (setopt dired-dwim-target t)
+    (setopt dired-listing-switches "-alh")
+    (setopt dired-recursive-deletes 'always)
+    (setopt dired-mouse-drag-files t)
 
     (defun my/dired-move-beginning-of-line ()
       (interactive)
@@ -733,7 +733,7 @@ This is recommended by Vertico's README."
   :after dired
   :init
   (progn
-    (setq runner-run-in-background t)))
+    (setopt runner-run-in-background t)))
 
 (use-package dired-x
   :after dired
@@ -742,14 +742,14 @@ This is recommended by Vertico's README."
   :hook (dired-mode . dired-omit-mode)
   :init
   (progn
-    (setq dired-omit-verbose nil))
+    (setopt dired-omit-verbose nil))
   :config
   (progn
     ;; don't hide .lib files because of Api.Lib
-    (setq dired-omit-extensions (cl-delete ".lib" dired-omit-extensions :test #'string=))
+    (setopt dired-omit-extensions (cl-delete ".lib" dired-omit-extensions :test #'string=))
 
     (let ((files-to-ignore '(".DS_Store" ".localized" ".stfolder")))
-      (setq dired-omit-files
+      (setopt dired-omit-files
             (rx-to-string
              `(or ,@(mapcar
                      (lambda (file) `(and bol ,file eol))
@@ -780,11 +780,11 @@ This is recommended by Vertico's README."
   :demand t
   :init
   (progn
-    (setq recentf-auto-cleanup 300)
-    (setq recentf-exclude '("~$" "\\.log$"))
-    (setq recentf-max-saved-items 1000)
+    (setopt recentf-auto-cleanup 300)
+    (setopt recentf-exclude '("~$" "\\.log$"))
+    (setopt recentf-max-saved-items 1000)
     ;; recommended by consult in `consult--source-recent-file':
-    (setq recentf-filename-handlers nil))
+    (setopt recentf-filename-handlers nil))
   :config
   (progn
     (recentf-mode)))
@@ -795,17 +795,17 @@ This is recommended by Vertico's README."
           ("M-w" . magit-copy-section-value)))
   :init
   (progn
-    (setq magit-show-long-lines-warning nil)
-    (setq magit-diff-refine-hunk t)
-    (setq magit-branch-prefer-remote-upstream '("master"))
-    (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")
+    (setopt magit-show-long-lines-warning nil)
+    (setopt magit-diff-refine-hunk t)
+    (setopt magit-branch-prefer-remote-upstream '("master"))
+    (setopt magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")
                                                       ("origin/main" "main")))
-    (setq magit-module-sections-nested nil)
-    (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-    (setq magit-no-confirm '(amend-published trash delete-unmerged-branch))
-    (setq magit-revision-insert-related-refs nil)
-    (setq magit-revision-show-gravatars t)
-    (setq magit-clone-set-remote.pushDefault t))
+    (setopt magit-module-sections-nested nil)
+    (setopt magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+    (setopt magit-no-confirm '(amend-published trash delete-unmerged-branch))
+    (setopt magit-revision-insert-related-refs nil)
+    (setopt magit-revision-show-gravatars t)
+    (setopt magit-clone-set-remote.pushDefault t))
   :config
   (progn
     ;; Enable magit-clean
@@ -876,18 +876,18 @@ This is recommended by Vertico's README."
 (use-package forge-topic
   :init
   (progn
-    (setq forge-topic-list-limit '(60 . -1))))
+    (setopt forge-topic-list-limit '(60 . -1))))
 
 (use-package vc-hooks
   :init
   (progn
-    (setq vc-follow-symlinks nil)))
+    (setopt vc-follow-symlinks nil)))
 
 (use-package ediff-wind
   :init
   (progn
-    (setq ediff-split-window-function 'split-window-horizontally)
-    (setq ediff-window-setup-function 'ediff-setup-windows-plain)))
+    (setopt ediff-split-window-function 'split-window-horizontally)
+    (setopt ediff-window-setup-function 'ediff-setup-windows-plain)))
 
 (use-package jinx
   :hook ((emacs-startup . global-jinx-mode)
@@ -895,7 +895,7 @@ This is recommended by Vertico's README."
   :bind ([remap ispell-word] . jinx-correct)
   :init
   (progn
-    (setq jinx-languages "en_US fr_FR"))
+    (setopt jinx-languages "en_US fr_FR"))
   :config
   (progn
     (add-to-list 'jinx-include-faces
@@ -921,8 +921,8 @@ Those are the words following `ispell-words-keyword' (usually
     (defun my/jinx-add-ispell-localwords ()
       "Add ispell's local words to `jinx-local-words'."
       (let ((ispell-localwords (my/jinx-ispell-localwords)))
-        (setq jinx-local-words (concat jinx-local-words ispell-localwords))
-        (setq jinx--session-words (append jinx--session-words (split-string ispell-localwords)))))
+        (setopt jinx-local-words (concat jinx-local-words ispell-localwords))
+        (setopt jinx--session-words (append jinx--session-words (split-string ispell-localwords)))))
 
     ;; https://github.com/minad/jinx/wiki
     (defun my/jinx-save-as-ispell-localword (save key word)
@@ -933,7 +933,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
             (require 'ispell)
             (ispell-add-per-file-word-list word)
             (add-to-list 'jinx--session-words word)
-            (setq jinx-local-words
+            (setopt jinx-local-words
                   (string-join
                    (sort (delete-dups
                           (cons word (split-string jinx-local-words)))
@@ -951,7 +951,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
     (add-to-list 'display-buffer-alist
                  '("^\\*eldoc for" display-buffer-at-bottom
                    (window-height . 4)))
-    (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))
+    (setopt eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))
   :config
   (progn
     ;; https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc
@@ -985,7 +985,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
                       ")")
               "")))))
 
-    (setq flymake-suppress-zero-counters t)
+    (setopt flymake-suppress-zero-counters t)
     (setq flymake-mode-line-format '(:eval (my/flymake-modeline)))))
 
 (use-package flymake-proc
@@ -1010,33 +1010,33 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
          ("C-c C-r" . ledger-report))
   :init
   (progn
-    (setq ledger-reports
-          (mapcar
-           (lambda (pair)
-             (list (car pair)
-                   (format "%s %s"
-                           "%(binary) -f %(ledger-file)"
-                           (cdr pair))))
-           '(("Account statement" . "register --ignore-assertions --auto ^%(account)")
-             ("Income statement"  . "balance --ignore-assertions --auto --tree --period %(month) --invert ^income ^expense")
-             ("Balance sheet"     . "balance --ignore-assertions --auto --tree ^asset ^debt \"^equity:\"")
-             ("Budget"            . "balance --ignore-assertions --auto --tree --empty ^budget not:unbudgeted"))))
+    (setopt ledger-reports
+            (mapcar
+             (lambda (pair)
+               (list (car pair)
+                     (format "%s %s"
+                             "%(binary) -f %(ledger-file)"
+                             (cdr pair))))
+             '(("Account statement" . "register --ignore-assertions --auto ^%(account)")
+               ("Income statement"  . "balance --ignore-assertions --auto --tree --period %(month) --invert ^income ^expense")
+               ("Balance sheet"     . "balance --ignore-assertions --auto --tree ^asset ^debt \"^equity:\"")
+               ("Budget"            . "balance --ignore-assertions --auto --tree --empty ^budget not:unbudgeted"))))
 
     ;; For hledger
     (progn
-      (setq ledger-mode-should-check-version nil)
-      (setq ledger-binary-path (executable-find "hledger"))
-      (setq ledger-report-links-in-register nil)
-      (setq ledger-report-native-highlighting-arguments '("--color=always"))
-      (setq ledger-report-auto-width nil))
+      (setopt ledger-mode-should-check-version nil)
+      (setopt ledger-binary-path (executable-find "hledger"))
+      (setopt ledger-report-links-in-register nil)
+      (setopt ledger-report-native-highlighting-arguments '("--color=always"))
+      (setopt ledger-report-auto-width nil))
 
-    (setq ledger-reconcile-default-commodity "EUR")
-    (setq ledger-report-use-header-line t)
-    (setq ledger-report-use-native-highlighting t)
-    (setq ledger-report-auto-refresh-sticky-cursor t)
-    (setq ledger-report-use-strict t)
-    (setq ledger-highlight-xact-under-point nil)
-    (setq ledger-copy-transaction-insert-blank-line-after t)
+    (setopt ledger-reconcile-default-commodity "EUR")
+    (setopt ledger-report-use-header-line t)
+    (setopt ledger-report-use-native-highlighting t)
+    (setopt ledger-report-auto-refresh-sticky-cursor t)
+    (setopt ledger-report-use-strict t)
+    (setopt ledger-highlight-xact-under-point nil)
+    (setopt ledger-copy-transaction-insert-blank-line-after t)
 
     (defun my/ledger-configure-outline-minor-mode ()
       "Configure a ledger buffer when `outline-minor-mode' is active."
@@ -1159,7 +1159,7 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
 (use-package flymake-hledger
   :config
   (progn
-    (setq flymake-hledger-command '("hledger" "--auto"))
+    (setopt flymake-hledger-command '("hledger" "--auto"))
 
     ;; Enable 4 optional checks. See URL
     ;; https://hledger.org/1.30/hledger.html#check for the meaning of
@@ -1182,14 +1182,14 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
 (use-package ledger-complete
   :init
   (progn
-    (setq ledger-complete-in-steps nil)))
+    (setopt ledger-complete-in-steps nil)))
 
 (use-package ledger-import
   :hook ((ledger-import-finished . my/ledger-import-finish))
   :config
   (progn
-    (setq ledger-import-boobank-import-from-date "2024-05-16")
-    (setq ledger-import-autosync-command
+    (setopt ledger-import-boobank-import-from-date "2024-05-16")
+    (setopt ledger-import-autosync-command
           '("hledger-autosync" "--assertions"
             "--payee-format" "{payee}"))
 
@@ -1245,38 +1245,38 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
   :hook (org-mode . visual-line-mode)
   :init
   (progn
-    (setq org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t) (R . t) (python . t)))
-    (setq org-catch-invisible-edits 'show-and-error)
-    (setq org-cycle-separator-lines 0)
-    (setq org-insert-heading-respect-content t)
-    (setq org-clock-clocked-in-display nil)
-    (setq org-adapt-indentation nil)
-    (setq org-directory "~/personal/notes/org")
-    (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
-    (setq org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
-    (setq org-default-gtd-file (expand-file-name "gtd.org" org-directory))
-    (setq org-default-someday-file (expand-file-name "someday.org" org-directory))
-    (setq org-default-tickler-file (expand-file-name "tickler.org" org-directory))
-    (setq org-agenda-files `(,org-default-notes-file
+    (setopt org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t) (R . t) (python . t)))
+    (setopt org-catch-invisible-edits 'show-and-error)
+    (setopt org-cycle-separator-lines 0)
+    (setopt org-insert-heading-respect-content t)
+    (setopt org-clock-clocked-in-display nil)
+    (setopt org-adapt-indentation nil)
+    (setopt org-directory "~/personal/notes/org")
+    (setopt org-default-notes-file (expand-file-name "inbox.org" org-directory))
+    (setopt org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
+    (setopt org-default-gtd-file (expand-file-name "gtd.org" org-directory))
+    (setopt org-default-someday-file (expand-file-name "someday.org" org-directory))
+    (setopt org-default-tickler-file (expand-file-name "tickler.org" org-directory))
+    (setopt org-agenda-files `(,org-default-notes-file
                              ,org-default-calendar-file
                              ,org-default-gtd-file
                              ,org-default-tickler-file))
 
-    (setq org-refile-targets `((,org-default-notes-file :level . 1)
+    (setopt org-refile-targets `((,org-default-notes-file :level . 1)
                                (,org-default-gtd-file :maxlevel . 3)
                                (,org-default-someday-file :level . 1)
                                (,org-default-tickler-file :maxlevel . 2)))
 
-    (setq org-capture-templates
+    (setopt org-capture-templates
           '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox") "* TODO %?%i")
             ("p" "Appt" entry (file org-default-calendar-file) "* %?\n%^T")
             ("T" "Tickler" entry (file+headline org-default-tickler-file "Tickler") "* %i%? \nSCHEDULED: %^t")))
 
-    (setq org-todo-keywords
+    (setopt org-todo-keywords
           '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
             (sequence "WAITING(w)" "|" "DONE(d)")))
 
-    (setq org-agenda-custom-commands
+    (setopt org-agenda-custom-commands
           '(("a" "Agenda for the current week" ((agenda "" nil)) nil nil)
             ("w" . "TODOs")
             ("d" "30 days deadlines" agenda ""
@@ -1285,24 +1285,24 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
               (org-agenda-span 'month)
               (org-agenda-overriding-header "")))))
 
-    (setq org-agenda-show-future-repeats nil)
-    (setq org-enforce-todo-dependencies t)
-    (setq org-enforce-todo-checkbox-dependencies t)
-    (setq org-ellipsis "…")
-    (setq org-export-allow-bind-keywords nil)
-    (setq org-export-creator-string "")
-    (setq org-export-with-toc nil)
-    (setq org-fontify-done-headline t)
-    (setq org-html-postamble nil)
-    (setq org-imenu-depth 2)
-    (setq org-log-done 'time)
-    (setq org-outline-path-complete-in-steps nil)
-    (setq org-special-ctrl-a/e t)
-    (setq org-startup-align-all-tables t)
-    (setq org-table-use-standard-references nil)
-    (setq org-time-stamp-rounding-minutes '(10 10))
-    (setq org-use-speed-commands t)
-    (setq org-email-link-description-format "%s"))
+    (setopt org-agenda-show-future-repeats nil)
+    (setopt org-enforce-todo-dependencies t)
+    (setopt org-enforce-todo-checkbox-dependencies t)
+    (setopt org-ellipsis "…")
+    (setopt org-export-allow-bind-keywords nil)
+    (setopt org-export-creator-string "")
+    (setopt org-export-with-toc nil)
+    (setopt org-fontify-done-headline t)
+    (setopt org-html-postamble nil)
+    (setopt org-imenu-depth 2)
+    (setopt org-log-done 'time)
+    (setopt org-outline-path-complete-in-steps nil)
+    (setopt org-special-ctrl-a/e t)
+    (setopt org-startup-align-all-tables t)
+    (setopt org-table-use-standard-references nil)
+    (setopt org-time-stamp-rounding-minutes '(10 10))
+    (setopt org-use-speed-commands t)
+    (setopt org-email-link-description-format "%s"))
   :config
   (progn
     (add-to-list 'org-modules 'org-protocol)
@@ -1323,14 +1323,14 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
 (use-package org-src
   :init
   (progn
-    (setq org-src-ask-before-returning-to-edit-buffer nil)))
+    (setopt org-src-ask-before-returning-to-edit-buffer nil)))
 
 (use-package org-id
   :demand t
   :after org
   :init
   (progn
-    (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)))
+    (setopt org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)))
 
 (use-package org-agenda
   :bind (
@@ -1338,12 +1338,12 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
          ("k"         . org-agenda-kill))
   :init
   (progn
-    (setq org-agenda-block-separator ?─)
-    (setq org-agenda-time-grid
+    (setopt org-agenda-block-separator ?─)
+    (setopt org-agenda-time-grid
           '((daily today require-timed)
             (800 1000 1200 1400 1600 1800 2000)
             " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
-    (setq  org-agenda-current-time-string
+    (setopt  org-agenda-current-time-string
            "⭠ now ─────────────────────────────────────────────────"))
   :config
   (progn
@@ -1367,20 +1367,20 @@ because slides don't change their ID all the time."
 (use-package ox-reveal
   :init
   (progn
-    (setq org-reveal-root
+    (setopt org-reveal-root
           (concat "file://" (expand-file-name "~/Documents/projects/reveal/latest")))
-    (setq org-reveal-reveal-js-version 4)))
+    (setopt org-reveal-reveal-js-version 4)))
 
 (use-package ox-icalendar ;; used by org-caldav
   :init
   (progn
-    (setq org-icalendar-alarm-time 15)))
+    (setopt org-icalendar-alarm-time 15)))
 
 (use-package org-caldav
   :bind (("C-. o S"   . org-caldav-sync))
   :config
   (progn
-    (setq org-caldav-url "https://licorne.ninja/remote.php/dav/calendars/DamienCassou"
+    (setopt org-caldav-url "https://licorne.ninja/remote.php/dav/calendars/DamienCassou"
           org-caldav-calendar-id "personal"
           org-caldav-inbox org-default-calendar-file
           org-caldav-files '()
@@ -1403,11 +1403,11 @@ because slides don't change their ID all the time."
   :hook (dired-mode . denote-dired-mode-in-directories)
   :init
   (progn
-    (setq denote-date-prompt-use-org-read-date t)
-    (setq denote-directory (expand-file-name "~/personal/notes/denote"))
-    (setq denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
-    (setq denote-front-matter-date-format 'org-timestamp)
-    (setq denote-dired-directories
+    (setopt denote-date-prompt-use-org-read-date t)
+    (setopt denote-directory (expand-file-name "~/personal/notes/denote"))
+    (setopt denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
+    (setopt denote-front-matter-date-format 'org-timestamp)
+    (setopt denote-dired-directories
           (list denote-directory
                 (expand-file-name "attachments" denote-directory))))
   :config
@@ -1469,14 +1469,14 @@ The link will contain DESCRIPTION as text."
 (use-package calendar
   :init
   (progn
-    (setq calendar-date-style 'european)
-    (setq calendar-week-start-day 1)
-    (setq calendar-mark-holidays-flag t)))
+    (setopt calendar-date-style 'european)
+    (setopt calendar-week-start-day 1)
+    (setopt calendar-mark-holidays-flag t)))
 
 (use-package graphviz-dot-mode
   :init
   (progn
-    (setq graphviz-dot-indent-width 2)))
+    (setopt graphviz-dot-indent-width 2)))
 
 (use-package drag-stuff
   :demand t
@@ -1526,14 +1526,14 @@ The link will contain DESCRIPTION as text."
          ("R" . notmuch-search-reply-to-thread-sender))
   :init
   (progn
-    (setq notmuch-archive-tags '("-inbox" "-unread"))
-    (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
-    (setq notmuch-search-oldest-first nil)
-    (setq notmuch-draft-save-plaintext t)
-    (setq notmuch-fcc-dirs "Perso/Sent")
-    (setq notmuch-identities '("Damien Cassou <damien@cassou.me>"))
+    (setopt notmuch-archive-tags '("-inbox" "-unread"))
+    (setopt notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
+    (setopt notmuch-search-oldest-first nil)
+    (setopt notmuch-draft-save-plaintext t)
+    (setopt notmuch-fcc-dirs "Perso/Sent")
+    (setopt notmuch-identities '("Damien Cassou <damien@cassou.me>"))
 
-    (setq notmuch-saved-searches
+    (setopt notmuch-saved-searches
           `((:name "inbox" :query ,"(folder:\"Perso/INBOX\")" :key "i")
             (:name "sent" :query "from:damien@cassou.me" :key "s")))))
 
@@ -1542,8 +1542,8 @@ The link will contain DESCRIPTION as text."
   :config
   (progn
     ;; Configure notmuch as my default mail-user-agent
-    (setq mail-user-agent 'notmuch-user-agent)
-    (setq compose-mail-user-agent-warnings nil)))
+    (setopt mail-user-agent 'notmuch-user-agent)
+    (setopt compose-mail-user-agent-warnings nil)))
 
 (use-package notmuch-show
   :bind (
@@ -1555,8 +1555,8 @@ The link will contain DESCRIPTION as text."
          ("d" . my/notmuch-show-ics-to-org-part))
   :init
   (progn
-    (setq notmuch-show-imenu-indent t)
-    (setq notmuch-message-headers '("To" "Cc" "Subject" "Date"))
+    (setopt notmuch-show-imenu-indent t)
+    (setopt notmuch-message-headers '("To" "Cc" "Subject" "Date"))
 
     (defun my/mm-ics-to-org-part (handle &optional prompt)
       "Add message part HANDLE to org."
@@ -1582,22 +1582,22 @@ The link will contain DESCRIPTION as text."
 (use-package mml
   :init
   (progn
-    (setq mml-attach-file-at-the-end t)))
+    (setopt mml-attach-file-at-the-end t)))
 
 (use-package message
   :init
   (progn
-    (setq message-log-max t)
-    (setq message-send-mail-function 'message-send-mail-with-sendmail)
-    (setq message-signature t)
-    (setq message-signature-file "~/.signature")
-    (setq message-mail-user-agent t))
+    (setopt message-log-max t)
+    (setopt message-send-mail-function 'message-send-mail-with-sendmail)
+    (setopt message-signature t)
+    (setopt message-signature-file "~/.signature")
+    (setopt message-mail-user-agent t))
   :config
   (progn
     ;; Add "Fwd:" to the beginning of Subject of forwarded emails so that
     ;; basecamp detects it properly:
     (unless (listp message-make-forward-subject-function)
-      (setq message-make-forward-subject-function (list message-make-forward-subject-function)))
+      (setopt message-make-forward-subject-function (list message-make-forward-subject-function)))
 
     (add-to-list 'message-make-forward-subject-function #'message-forward-subject-fwd)))
 
@@ -1639,7 +1639,7 @@ The link will contain DESCRIPTION as text."
   :demand t
   :init
   (progn
-    (setq show-paren-context-when-offscreen t))
+    (setopt show-paren-context-when-offscreen t))
   :config
   (progn
     (show-paren-mode)))
@@ -1659,8 +1659,8 @@ The link will contain DESCRIPTION as text."
          ("C-l" . find-library))
   :init
   (progn
-    (setq describe-bindings-outline t)
-    (setq help-window-select t)))
+    (setopt describe-bindings-outline t)
+    (setopt help-window-select t)))
 
 (use-package aggressive-indent
   :hook ((lisp-mode emacs-lisp-mode scheme-mode lisp-data-mode) . aggressive-indent-mode))
@@ -1668,7 +1668,7 @@ The link will contain DESCRIPTION as text."
 (use-package bookmark
   :init
   (progn
-    (setq bookmark-save-flag 1)))
+    (setopt bookmark-save-flag 1)))
 
 (use-package password-store
   :init
@@ -1695,7 +1695,7 @@ negative, the password is inserted at point."
           (message "Added %S to kill ring." password)))))
   :config
   (progn
-    (setq password-store-password-length (my/password-length))))
+    (setopt password-store-password-length (my/password-length))))
 
 (use-package pass
   :commands pass
@@ -1728,7 +1728,7 @@ negative, the password is inserted at point."
   :after auth-source
   :init
   (progn
-    (setq auth-sources '(password-store))))
+    (setopt auth-sources '(password-store))))
 
 (use-package avy
   :bind* (("C-," . avy-goto-char-timer)
@@ -1738,11 +1738,11 @@ negative, the password is inserted at point."
   :init
   (progn
     ;; home row on a Colemak keyboard:
-    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
+    (setopt avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
     ;; Let me easily use actions beyond jump:
-    (setq avy-single-candidate-jump nil)
-    (setq avy-flyspell-correct-function #'ispell-word)
-    (setq avy-timeout-seconds 0.4))
+    (setopt avy-single-candidate-jump nil)
+    (setopt avy-flyspell-correct-function #'ispell-word)
+    (setopt avy-timeout-seconds 0.4))
   :config
   (progn
     (defmacro my/avy-without-moving-point (point &rest body)
@@ -1846,7 +1846,7 @@ negative, the password is inserted at point."
   :mode ("README\\.md\\'" . gfm-mode)
   :init
   (progn
-    (setq markdown-gfm-additional-languages '("bash"))))
+    (setopt markdown-gfm-additional-languages '("bash"))))
 
 (use-package repeat
   :demand t
@@ -1862,13 +1862,13 @@ negative, the password is inserted at point."
   :hook (emacs-lisp-mode . nameless-mode)
   :init
   (progn
-    (setq nameless-affect-indentation-and-filling nil)
-    (setq nameless-prefix "…")))
+    (setopt nameless-affect-indentation-and-filling nil)
+    (setopt nameless-prefix "…")))
 
 (use-package eww
   :init
   (progn
-    (setq eww-auto-rename-buffer 'title)))
+    (setopt eww-auto-rename-buffer 'title)))
 
 (use-package epithet
   :hook (((Info-selection help-mode occur shell-mode)
@@ -1894,7 +1894,7 @@ negative, the password is inserted at point."
          ("C-<up>" . prodigy-prev-with-status))
   :init
   (progn
-    (setq prodigy-completion-system 'default))
+    (setopt prodigy-completion-system 'default))
   :config
   (progn
     (defun my/prodigy-setup ()
@@ -1904,16 +1904,16 @@ negative, the password is inserted at point."
 (use-package libbcel
   :config
   (progn
-    (setq libbcel-oauth-store-encryption-keys (list "8E64FBE545A394F5D35CD202F72C652AE7564ECC"))
-    (setq libbcel-oauth-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
-    (setq libbcel-oauth-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
-    (setq libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
+    (setopt libbcel-oauth-store-encryption-keys (list "8E64FBE545A394F5D35CD202F72C652AE7564ECC"))
+    (setopt libbcel-oauth-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
+    (setopt libbcel-oauth-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
+    (setopt libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
 
 (use-package libelcouch
   :init
   (progn
-    (setq libelcouch-timeout 100)
-    (setq libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
+    (setopt libelcouch-timeout 100)
+    (setopt libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
 
 (use-package related-files
   :bind (("C-x j" . related-files-jump)
@@ -1926,7 +1926,7 @@ negative, the password is inserted at point."
 (use-package flymake-eslint
   :init
   (progn
-    (setq flymake-eslint-executable-name "eslint_d")))
+    (setopt flymake-eslint-executable-name "eslint_d")))
 
 (use-package reformatter
   :demand t
@@ -1947,7 +1947,7 @@ negative, the password is inserted at point."
   :after (:all js2-mode (:any flymake flycheck))
   :init
   (progn
-    (setq eslint-disable-rule-require-description 'prefer-description))
+    (setopt eslint-disable-rule-require-description 'prefer-description))
   :config
   (progn
     (with-eval-after-load 'flymake
@@ -2029,15 +2029,15 @@ negative, the password is inserted at point."
 (use-package smtpmail
   :init
   (progn
-    (setq smtpmail-debug-info t)
-    (setq smtpmail-debug-verb t)
-    (setq smtpmail-stream-type 'starttls)))
+    (setopt smtpmail-debug-info t)
+    (setopt smtpmail-debug-verb t)
+    (setopt smtpmail-stream-type 'starttls)))
 
 (use-package sendmail
   :init
   (progn
-    (setq send-mail-function 'smtpmail-send-it)
-    (setq sendmail-program "msmtp")))
+    (setopt send-mail-function 'smtpmail-send-it)
+    (setopt sendmail-program "msmtp")))
 
 (use-package vterm
   :commands (vterm)
@@ -2050,9 +2050,9 @@ negative, the password is inserted at point."
   :hook (vterm-mode . my/vterm-setup)
   :init
   (progn
-    (setq vterm-kill-buffer-on-exit t)
-    (setq vterm-max-scrollback 100000)
-    (setq vterm-buffer-name-string "vterm: %s")
+    (setopt vterm-kill-buffer-on-exit t)
+    (setopt vterm-max-scrollback 100000)
+    (setopt vterm-buffer-name-string "vterm: %s")
 
     (defun my/vterm-open-new ()
       "Open a new vterm session."
@@ -2111,9 +2111,9 @@ If PROJECT is nil, use `project-current'."
   :config
   (progn
     ;; Remove automatically-added entries:
-    (setq magic-fallback-mode-alist
+    (setopt magic-fallback-mode-alist
           (cl-delete 'json-mode magic-fallback-mode-alist :key #'cdr))
-    (setq auto-mode-alist
+    (setopt auto-mode-alist
           (cl-delete 'json-mode auto-mode-alist :key #'cdr))))
 
 (use-package sh-script
@@ -2148,10 +2148,10 @@ If PROJECT is nil, use `project-current'."
     (defun my/eglot-setup ()
       "Misc changes to eglot's configuration."
       ;; Stop eglot from overriding `eldoc-documentation-strategy':
-      (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
+      (setopt eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
       ;; Re-enable flymake-eslint if it was active:
       (when (seq-contains-p (map-elt eglot--saved-bindings 'flymake-diagnostic-functions) 'flymake-eslint--checker)
-        (setq flymake-diagnostic-functions (list 'flymake-eslint--checker))))
+        (setopt flymake-diagnostic-functions (list 'flymake-eslint--checker))))
 
     (define-minor-mode my/eglot-format-on-save-mode
       "Automatically format buffer with eglot before saving."
@@ -2169,8 +2169,8 @@ If PROJECT is nil, use `project-current'."
 (use-package dape
   :init
   (progn
-    (setq dape-buffer-window-arrangement 'right)
-    (setq dape-debug t))
+    (setopt dape-buffer-window-arrangement 'right)
+    (setopt dape-debug t))
   :config
   (progn
     (remove-hook 'dape-on-start-hooks 'dape-info)
@@ -2209,7 +2209,7 @@ If PROJECT is nil, use `project-current'."
          ("p" . mpdel-playlist-play))
   :init
   (progn
-    (setq mpdel-prefix-key (kbd "C-. z")))
+    (setopt mpdel-prefix-key (kbd "C-. z")))
   :config
   (progn
     (mpdel-mode)))
@@ -2225,11 +2225,11 @@ If PROJECT is nil, use `project-current'."
   :demand t
   :init
   (progn
-    (setq minions-mode-line-delimiters nil)
+    (setopt minions-mode-line-delimiters nil)
 
     ;; Always show flymake-mode as this is where flymake report
     ;; problems:
-    (setq minions-prominent-modes '(flymake-mode)))
+    (setopt minions-prominent-modes '(flymake-mode)))
   :config
   (progn
     (setq-default my/mode-line-modes
@@ -2241,7 +2241,7 @@ If PROJECT is nil, use `project-current'."
   :hook (ytdl-download-finished . my/ytdl-alert)
   :init
   (progn
-    (setq ytdl-music-folder "~/Downloads/music")
+    (setopt ytdl-music-folder "~/Downloads/music")
     (defun my/ytdl-alert ()
       (alert "youtube-dl"
              :severity 'normal
@@ -2253,7 +2253,7 @@ If PROJECT is nil, use `project-current'."
 (use-package nix-mode
   :config
   (progn
-    (setq auto-mode-alist
+    (setopt auto-mode-alist
           (cl-delete 'nix-mode auto-mode-alist :key #'cdr))))
 
 (use-package nix-prettify-mode
@@ -2274,7 +2274,7 @@ If PROJECT is nil, use `project-current'."
 (use-package typescript-mode
   :config
   (progn
-    (setq auto-mode-alist
+    (setopt auto-mode-alist
           (cl-delete 'typescript-mode auto-mode-alist :key #'cdr))))
 
 (use-package typescript-ts-mode
@@ -2310,8 +2310,8 @@ If PROJECT is nil, use `project-current'."
          ("C-q" . vertico-quick-exit))
   :init
   (progn
-    (setq vertico-quick1 "arstdhn")
-    (setq vertico-quick2 "oie")))
+    (setopt vertico-quick1 "arstdhn")
+    (setopt vertico-quick2 "oie")))
 
 (use-package vertico-multiform
   :demand t
@@ -2320,7 +2320,7 @@ If PROJECT is nil, use `project-current'."
   (progn
     (vertico-multiform-mode)
 
-    (setq vertico-multiform-commands
+    (setopt vertico-multiform-commands
           '(;; show grep results in a dedicated buffer:
             (consult-ripgrep buffer)))
 
@@ -2364,7 +2364,7 @@ the buffer's filename."
   :demand t
   :init
   (progn
-    (setq completion-styles '(orderless basic))))
+    (setopt completion-styles '(orderless basic))))
 
 (use-package orderless-kwd
   :demand t
@@ -2378,8 +2378,8 @@ the buffer's filename."
   :hook (xref-after-update . outline-minor-mode)
   :init
   (progn
-    (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
-    (setq xref-search-program 'ripgrep)))
+    (setopt xref-show-definitions-function #'xref-show-definitions-completing-read)
+    (setopt xref-search-program 'ripgrep)))
 
 (use-package js
   :mode (("\\.[cm]?js\\'" . js-ts-mode)
@@ -2390,18 +2390,18 @@ the buffer's filename."
          ("M-." . nil))
   :config
   (progn
-    (setq auto-mode-alist
+    (setopt auto-mode-alist
           (cl-delete 'javascript-mode auto-mode-alist :key #'cdr))
 
-    (setq interpreter-mode-alist
+    (setopt interpreter-mode-alist
           (cl-delete 'js-mode interpreter-mode-alist :key #'cdr))))
 
 (use-package js2-mode
   :hook (js-base-mode . js2-minor-mode)
   :config
   (progn
-    (setq js2-mode-show-strict-warnings nil)
-    (setq js2-mode-show-parse-errors nil)))
+    (setopt js2-mode-show-strict-warnings nil)
+    (setopt js2-mode-show-parse-errors nil)))
 
 (use-package js2-refactor
   :hook ((js2-mode js2-minor-mode) . js2-refactor-mode)
@@ -2415,7 +2415,7 @@ the buffer's filename."
   :hook (js2-minor-mode . my/xref-js2-setup)
   :config
   (progn
-    (setq xref-js2-search-program 'rg)
+    (setopt xref-js2-search-program 'rg)
 
     (defun my/xref-js2-setup ()
       "Configure xref-js2."
@@ -2424,7 +2424,7 @@ the buffer's filename."
 (use-package rjsx-mode
   :config
   (progn
-    (setq auto-mode-alist
+    (setopt auto-mode-alist
           (cl-delete 'rjsx-mode auto-mode-alist :key #'cdr))))
 
 (use-package project
@@ -2454,7 +2454,7 @@ the buffer's filename."
   (progn
     ;; Delete commands I don't want to see when switching projects:
     (dolist (undesired-switch-command '(project-vc-dir project-eshell))
-      (setq project-switch-commands (cl-delete undesired-switch-command project-switch-commands :key #'car)))
+      (setopt project-switch-commands (cl-delete undesired-switch-command project-switch-commands :key #'car)))
 
     (add-to-list 'project-switch-commands '(my/vterm-open-new "Shell") t)
 
@@ -2498,17 +2498,17 @@ the buffer's filename."
   :init
   (progn
     ;; Use Consult to select xref locations with preview
-    (setq xref-show-xrefs-function #'consult-xref)
-    (setq xref-show-definitions-function #'consult-xref)
+    (setopt xref-show-xrefs-function #'consult-xref)
+    (setopt xref-show-definitions-function #'consult-xref)
 
     ;; Use consult to have in-buffer completions displayed in the minibuffer:
-    (setq completion-in-region-function #'consult-completion-in-region)
+    (setopt completion-in-region-function #'consult-completion-in-region)
 
     ;; Use `project` with consult:
-    (setq consult-project-root-function
-          (lambda ()
-            (when-let (project (project-current))
-              (project-root project))))
+    (setopt consult-project-root-function
+            (lambda ()
+              (when-let (project (project-current))
+                (project-root project))))
 
     (defun my/consult-switch-vterm ()
       "List vterm buffers."
@@ -2525,7 +2525,7 @@ the buffer's filename."
 
     ;; Remove some sources when listing buffers:
     (dolist (source '(consult--source-project-buffer consult--source-project-file))
-      (setq consult-buffer-sources (cl-delete source consult-buffer-sources)))
+      (setopt consult-buffer-sources (cl-delete source consult-buffer-sources)))
 
     (defvar vterm-source
       (list :name     "VTerm"
@@ -2588,15 +2588,15 @@ prefix arg was used."
   (progn
     ;; Pressing C-h after a prefix key lists all suffixes with
     ;; completion:
-    (setq prefix-help-command #'embark-prefix-help-command))
+    (setopt prefix-help-command #'embark-prefix-help-command))
   :config
   (progn
-    (setq embark-confirm-act-all nil)
-    (setq embark-indicators
-          '(embark-minimal-indicator
-            embark--vertico-indicator
-            embark-highlight-indicator
-            embark-isearch-highlight-indicator))
+    (setopt embark-confirm-act-all nil)
+    (setopt embark-indicators
+            '(embark-minimal-indicator
+              embark--vertico-indicator
+              embark-highlight-indicator
+              embark-isearch-highlight-indicator))
 
     ;; Configure `compile':
     (setf (alist-get #'compile embark-target-injection-hooks)
@@ -2621,14 +2621,14 @@ prefix arg was used."
   :after (grep)
   :init
   (progn
-    (setq wgrep-enable-key [remap read-only-mode])
-    (setq wgrep-auto-save-buffer t)))
+    (setopt wgrep-enable-key [remap read-only-mode])
+    (setopt wgrep-auto-save-buffer t)))
 
 (use-package imenu-list
   :bind (("M-i" . my/imenu-list))
   :init
   (progn
-    (setq imenu-list-position 'below))
+    (setopt imenu-list-position 'below))
   :config
   (progn
     (defun my/imenu-list (arg)
@@ -2646,9 +2646,9 @@ prefix arg was used."
          ("T" . nil))
   :init
   (progn
-    (setq tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))
-    (setq tmr-sound-file
-          (expand-file-name (locate-user-emacs-file "media/complete.oga"))))
+    (setopt tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))
+    (setopt tmr-sound-file
+            (expand-file-name (locate-user-emacs-file "media/complete.oga"))))
   :config
   (progn
     (defun my/tmr--acknowledge-prompt ()
@@ -2688,19 +2688,19 @@ The alert package works on different platforms."
   :demand t
   :init
   (progn
-    (setq fontaine-presets
-          '((medium
-             :default-height 110)
-            (large
-             :default-weight semilight
-             :default-height 130
-             :bold-weight extrabold)
-            (t
-             :default-family "Aporetic sans mono"
-             :default-weight regular
-             :variable-pitch-family "Aporetic serif"
-             :italic-family "Aporetic sans mono"
-             :italic-slant italic))))
+    (setopt fontaine-presets
+            '((medium
+               :default-height 110)
+              (large
+               :default-weight semilight
+               :default-height 130
+               :bold-weight extrabold)
+              (t
+               :default-family "Aporetic sans mono"
+               :default-weight regular
+               :variable-pitch-family "Aporetic serif"
+               :italic-family "Aporetic sans mono"
+               :italic-slant italic))))
   :config
   (progn
     (fontaine-set-preset 'large)))
@@ -2710,8 +2710,8 @@ The alert package works on different platforms."
   :hook (server-after-make-frame . spacious-padding-mode)
   :config
   (progn
-    (setq spacious-padding-subtle-mode-line
-          '(:mode-line-active error :mode-line-inactive shadow))))
+    (setopt spacious-padding-subtle-mode-line
+            '(:mode-line-active error :mode-line-inactive shadow))))
 
 (use-package ligature
   :demand t
