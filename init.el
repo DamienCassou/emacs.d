@@ -745,6 +745,9 @@ This is recommended by Vertico's README."
     (setq dired-omit-verbose nil))
   :config
   (progn
+    ;; don't hide .lib files because of Api.Lib
+    (setq dired-omit-extensions (cl-delete ".lib" dired-omit-extensions :test #'string=))
+
     (let ((files-to-ignore '(".DS_Store" ".localized" ".stfolder")))
       (setq dired-omit-files
             (rx-to-string
