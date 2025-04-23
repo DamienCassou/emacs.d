@@ -608,6 +608,9 @@ This is recommended by Vertico's README."
     (setopt goto-address-mail-face 'link)
     (setopt goto-address-mail-mouse-face 'highlight)))
 
+(use-package go-ts-mode
+  :mode "\\.go\\'")
+
 (use-package bug-reference
   :bind ((
           :map bug-reference-map
