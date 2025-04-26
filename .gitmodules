@@ -6,9 +6,6 @@
 [submodule "combobulate"]
 	path = lib/combobulate
 	url = https://github.com/mickeynp/combobulate
-[submodule "copilot"]
-	path = lib/copilot
-	url = https://github.com/copilot-emacs/copilot.el
 [submodule "epithet"]
 	path = lib/epithet
 	url = https://github.com/oantolin/epithet
