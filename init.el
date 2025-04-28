@@ -2136,17 +2136,6 @@ If PROJECT is nil, use `project-current'."
   :commands (my/eglot-format-on-save-mode)
   :config
   (progn
-    (add-to-list 'eglot-server-programs
-                 '(nix-ts-mode
-                   .
-                   ("nil"
-                    :initializationOptions (:nil (:formatting (:command ["nixfmt"]))))))
-
-    ;; The above `add-to-list' should be enough but it doesn't seem to work
-    ;; https://github.com/oxalica/nil/issues/101
-    (setq-default eglot-workspace-configuration
-                  (append eglot-workspace-configuration '(:nil (:formatting (:command ["nixfmt"])))))
-
     (defun my/eglot-ensure ()
       "Only start eglot in file-visiting buffers."
       (when (buffer-file-name)
