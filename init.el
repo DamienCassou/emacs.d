@@ -1947,7 +1947,11 @@ negative, the password is inserted at point."
                                    exec-path)))
                  (executable-find "prettier"))
       :args (list "--stdin-filepath" (buffer-file-name))
-      :input-file (reformatter-temp-file-in-current-directory))))
+      :input-file (reformatter-temp-file-in-current-directory))
+
+    (reformatter-define nixfmt
+      :program (executable-find "nixfmt")
+      :args (list (format "--filename=" input-file)))))
 
 (use-package eslint-disable-rule
   :demand t
