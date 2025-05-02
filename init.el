@@ -1977,10 +1977,6 @@ negative, the password is inserted at point."
 (use-package finsit-js-test-structure
   :hook ((js2-mode . finsit-js-test-structure-imenu-mode)))
 
-(use-package finsit-write-pr-to-basecamp
-  :after forge
-  :hook ((forge-post-submit-callback . finsit-write-pr-to-basecamp)))
-
 (use-package finsit-prodigy
   :demand t
   :after prodigy
