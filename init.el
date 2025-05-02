@@ -1598,15 +1598,7 @@ The link will contain DESCRIPTION as text."
     (setopt message-send-mail-function 'message-send-mail-with-sendmail)
     (setopt message-signature t)
     (setopt message-signature-file "~/.signature")
-    (setopt message-mail-user-agent t))
-  :config
-  (progn
-    ;; Add "Fwd:" to the beginning of Subject of forwarded emails so that
-    ;; basecamp detects it properly:
-    (unless (listp message-make-forward-subject-function)
-      (setopt message-make-forward-subject-function (list message-make-forward-subject-function)))
-
-    (add-to-list 'message-make-forward-subject-function #'message-forward-subject-fwd)))
+    (setopt message-mail-user-agent t)))
 
 (use-package paredit
   :bind (
