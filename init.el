@@ -2125,7 +2125,6 @@ If PROJECT is nil, use `project-current'."
 (use-package eglot
   :hook ((eglot-managed-mode . my/eglot-setup)
          ((bash-ts-mode css-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-ts-mode go-ts-mode) . my/eglot-ensure))
-  :commands (my/eglot-format-on-save-mode)
   :config
   (progn
     (defun my/eglot-ensure ()
@@ -2139,20 +2138,7 @@ If PROJECT is nil, use `project-current'."
       (setopt eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
       ;; Re-enable flymake-eslint if it was active:
       (when (seq-contains-p (map-elt eglot--saved-bindings 'flymake-diagnostic-functions) 'flymake-eslint--checker)
-        (setopt flymake-diagnostic-functions (list 'flymake-eslint--checker))))
-
-    (define-minor-mode my/eglot-format-on-save-mode
-      "Automatically format buffer with eglot before saving."
-      :lighter ""
-      (if my/eglot-format-on-save-mode
-          (add-hook 'before-save-hook #'my/eglot-format-buffer nil t)
-        (remove-hook 'before-save-hook #'my/eglot-format-buffer t)))
-
-    (defun my/eglot-format-buffer ()
-      "Use eglot to format the buffer if eglot is active."
-      (interactive)
-      (when (and (eglot-managed-p) (eglot--server-capable :documentFormattingProvider))
-        (eglot-format-buffer)))))
+        (setopt flymake-diagnostic-functions (list 'flymake-eslint--checker))))))
 
 (use-package dape
   :init
