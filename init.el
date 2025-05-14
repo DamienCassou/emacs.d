@@ -2134,14 +2134,9 @@ If PROJECT is nil, use `project-current'."
 
 (use-package eglot
   :hook ((eglot-managed-mode . my/eglot-setup)
-         ((bash-ts-mode css-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-ts-mode go-ts-mode) . my/eglot-ensure))
+         ((bash-ts-mode css-ts-mode yaml-ts-mode dockerfile-ts-mode graphviz-dot-mode json-ts-mode go-ts-mode) . eglot-ensure))
   :config
   (progn
-    (defun my/eglot-ensure ()
-      "Only start eglot in file-visiting buffers."
-      (when (buffer-file-name)
-        (eglot-ensure)))
-
     (defun my/eglot-setup ()
       "Misc changes to eglot's configuration."
       ;; Stop eglot from overriding `eldoc-documentation-strategy':
