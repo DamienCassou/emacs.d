@@ -814,9 +814,9 @@ This is recommended by Vertico's README."
   (progn
     (setopt magit-show-long-lines-warning nil)
     (setopt magit-diff-refine-hunk t)
-    (setopt magit-branch-prefer-remote-upstream '("master"))
+    (setopt magit-branch-prefer-remote-upstream '("master" "main"))
     (setopt magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")
-                                                      ("origin/main" "main")))
+                                                        ("origin/main" "main")))
     (setopt magit-module-sections-nested nil)
     (setopt magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
     (setopt magit-no-confirm '(amend-published trash delete-unmerged-branch))
