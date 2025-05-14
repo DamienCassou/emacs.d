@@ -1998,6 +1998,12 @@ negative, the password is inserted at point."
      ;; path to the backend:
      (expand-file-name "~/work/setup"))))
 
+(use-package hungry-delete
+  :demand t
+  :config
+  (progn
+    (global-hungry-delete-mode)))
+
 (use-package alert
   :demand t
   :init
