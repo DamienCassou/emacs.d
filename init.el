@@ -2706,6 +2706,7 @@ The alert package works on different platforms."
          ("\\.env\\.development\\'" . dotenv-mode)))
 
 (use-package copilot
+  :disabled t
   :bind (
          :map copilot-completion-map
          ("TAB" . copilot-accept-completion)
