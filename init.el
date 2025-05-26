@@ -2650,18 +2650,7 @@ The alert package works on different platforms."
         (alert body :title title)))
 
     (advice-add #'tmr-notification-notify
-                :override #'my/tmr--notification-notify)
-
-    (with-eval-after-load 'embark
-      (defvar my/tmr-action-map
-        (let ((map (make-sparse-keymap)))
-          (define-key map "k" #'tmr-remove)
-          (define-key map "K" #'tmr-remove-finished)
-          (define-key map "c" #'tmr-clone)
-          (define-key map "e" #'tmr-edit-description)
-          (define-key map "s" #'tmr-reschedule)
-          map))
-      (add-to-list 'embark-keymap-alist '(tmr-timer . my/tmr-action-map)))))
+                :override #'my/tmr--notification-notify)))
 
 (use-package tmr-tabulated
   :bind (
