@@ -31,12 +31,23 @@
  '(safe-local-variable-values
    '((checkdoc-allow-quoting-nil-and-t . t)
      (org-export-global-macros
-      ("debian-version" lambda (&rest _)
-       (save-excursion
-         (with-temp-buffer
-           (insert-file "/etc/debian_version") (goto-char (point-min))
-           (re-search-forward (rx (group-n 1 (+ digit))))
-           (match-string 1))))
+      ("os-version" lambda (&rest _)
+       (cond
+        ((eq system-type 'gnu/linux)
+         (let
+             ((os-file
+               (if (file-exists-p "/etc/debian_version")
+                   "/etc/debian_version"
+                 "/etc/fedora-release")))
+           (save-excursion
+             (with-temp-buffer
+               (insert-file os-file) (goto-char (point-min))
+               (re-search-forward (rx (group-n 1 (+ digit))))
+               (match-string 1)))))
+        ((and (eq system-type 'darwin))
+         (format "macOS %s"
+                 (string-trim
+                  (shell-command-to-string "sw_vers --productVersion"))))))
       ("git-version" lambda (&rest _) (magit-git-version)))
      (eval add-hook 'before-save-hook #'whitespace-cleanup nil t)
      (package-lint-main-file . "test-cockpit.el")
@@ -68,14 +79,6 @@
                                        (:session . "repo-test")
                                        (:tangle . "yes")
                                        (:wrap . "src text"))
-     (org-export-global-macros
-      ("fedora-version" lambda (&rest _)
-       (save-excursion
-         (with-temp-buffer
-           (insert-file "/etc/fedora-release") (goto-char (point-min))
-           (re-search-forward (rx (group-n 1 (+ digit))))
-           (match-string 1))))
-      ("git-version" lambda (&rest _) (magit-git-version)))
      (eval defun my-insert-shell-prompt (_backend)
            "https://emacs.stackexchange.com/questions/44958/can-i-insert-a-prefix-to-org-babel-source-code-lines-on-export/44970#44970"
            (org-babel-map-src-blocks nil
