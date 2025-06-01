@@ -349,6 +349,13 @@ This is recommended by Vertico's README."
     (setopt modus-themes-org-blocks 'greyscale)
     (setopt modus-themes-italic-constructs t)
 
+    (setopt modus-themes-common-palette-overrides
+            '(;; Choose background for active mode-line:
+              (bg-mode-line-active bg-ochre)
+              ;; Remove backgrounp of inactive mode-line;
+              (bg-mode-line-inactive unspecified)
+              (border-mode-line-inactive unspecified)))
+
     (setopt modus-themes-headings
             '((1 . (1.6))
               (2 . (background 1.5))
