@@ -29,26 +29,31 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el"
              :add-directory "tests")))
  '(safe-local-variable-values
-   '((checkdoc-allow-quoting-nil-and-t . t)
-     (org-export-global-macros
+   '((org-export-global-macros
       ("os-version" lambda (&rest _)
        (cond
-        ((eq system-type 'gnu/linux)
-         (let
-             ((os-file
-               (if (file-exists-p "/etc/debian_version")
-                   "/etc/debian_version"
-                 "/etc/fedora-release")))
-           (save-excursion
-             (with-temp-buffer
-               (insert-file os-file) (goto-char (point-min))
-               (re-search-forward (rx (group-n 1 (+ digit))))
-               (match-string 1)))))
+        ((and (eq system-type 'gnu/linux)
+              (file-exists-p "/etc/debian_version"))
+         (save-excursion
+           (with-temp-buffer
+             (insert-file "/etc/debian_version")
+             (goto-char (point-min))
+             (re-search-forward (rx (group-n 1 (+ digit))))
+             (format "GNU/Linux Debian %s" (match-string 1)))))
+        ((and (eq system-type 'gnu/linux)
+              (file-exists-p "/etc/fedora-release"))
+         (save-excursion
+           (with-temp-buffer
+             (insert-file "/etc/fedora-release")
+             (goto-char (point-min))
+             (re-search-forward (rx (group-n 1 (+ digit))))
+             (format "GNU/Linux Fedora %s" (match-string 1)))))
         ((and (eq system-type 'darwin))
          (format "macOS %s"
                  (string-trim
                   (shell-command-to-string "sw_vers --productVersion"))))))
       ("git-version" lambda (&rest _) (magit-git-version)))
+     (checkdoc-allow-quoting-nil-and-t . t)
      (eval add-hook 'before-save-hook #'whitespace-cleanup nil t)
      (package-lint-main-file . "test-cockpit.el")
      (eval setq-local elisp-flymake-byte-compile-load-path
