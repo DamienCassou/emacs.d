@@ -2675,11 +2675,9 @@ The alert package works on different platforms."
 
 (use-package spacious-padding
   :demand t
-  :hook (server-after-make-frame . spacious-padding-mode)
   :config
   (progn
-    (setopt spacious-padding-subtle-mode-line
-            '(:mode-line-active error :mode-line-inactive shadow))))
+    (spacious-padding-mode 1)))
 
 (use-package ligature
   :demand t
