@@ -350,11 +350,11 @@ This is recommended by Vertico's README."
     (setopt modus-themes-italic-constructs t)
 
     (setopt modus-themes-headings
-          '((1 . (1.6))
-            (2 . (background 1.5))
-            (3 . (background bold 1.2))
-            (4 . (1.1))
-            (t . ())))
+            '((1 . (1.6))
+              (2 . (background 1.5))
+              (3 . (background bold 1.2))
+              (4 . (1.1))
+              (t . ())))
 
     (load-theme 'modus-operandi))
   :config
