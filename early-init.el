@@ -34,4 +34,11 @@
     (add-to-list 'exec-path path)
     (setenv "PATH" (concat path ":" (getenv "PATH"))))
 
-  (setenv "SSH_AUTH_SOCK" (expand-file-name "~/.gnupg/S.gpg-agent.ssh")))
+  (setenv "SSH_AUTH_SOCK" (expand-file-name "~/.gnupg/S.gpg-agent.ssh"))
+
+  ;; Enforce asking permissions immediately:
+  (shell-command "ls ~/Documents")
+  (shell-command "ls ~/Desktop")
+  (shell-command "ls ~/Downloads")
+  (shell-command "ls ~/Movies/TV")
+  (shell-command "ls ~/Pictures/'Photo Booth Library'"))
