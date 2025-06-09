@@ -475,7 +475,7 @@ This is recommended by Vertico's README."
 
     ;; Hide commands in M-x which do not work in the current mode.
     (setopt read-extended-command-predicate
-          #'command-completion-default-include-p)))
+            #'command-completion-default-include-p)))
 
 (use-package replace
   :bind (
