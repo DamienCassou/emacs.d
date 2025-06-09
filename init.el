@@ -269,9 +269,6 @@ current."
   (progn
     (setopt visual-wrap-extra-indent 2)))
 
-(use-package simple
-  :hook (visual-line-mode . visual-wrap-prefix-mode))
-
 (use-package ace-window
   :demand t
   :bind ("M-o" . ace-window)
@@ -444,6 +441,7 @@ This is recommended by Vertico's README."
          ("C-. s" . scratch-buffer)
          :map process-menu-mode-map
          ("k" . process-menu-delete-process))
+  :hook (visual-line-mode . visual-wrap-prefix-mode)
   :init
   (progn
     (setopt delete-active-region nil)
