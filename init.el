@@ -437,6 +437,7 @@ This is recommended by Vertico's README."
          ("C-x e" . end-of-buffer)
          ("M->" . nil)
          ([remap yank-pop] . yank-from-kill-ring)
+         ([remap keyboard-quit] . my/keyboard-quit)
          ("C-_" . nil) ;; force me to use C-/ to undo
          ("C-. s" . scratch-buffer)
          :map process-menu-mode-map
@@ -470,6 +471,20 @@ This is recommended by Vertico's README."
           (untabify (point-min) (point-max))
           (org-do-remove-indentation)
           (kill-new (buffer-string)))))
+
+    ;; https://emacsredux.com/blog/2025/06/01/let-s-make-keyboard-quit-smarter/
+    (defun my/keyboard-quit ()
+      "Smater version of the built-in `keyboard-quit'.
+
+The generic `keyboard-quit' does not do the expected thing when
+the minibuffer is open.  Whereas we want it to close the
+minibuffer, even without explicitly focusing it."
+      (interactive)
+      (if (active-minibuffer-window)
+          (if (minibufferp)
+              (minibuffer-keyboard-quit)
+            (abort-recursive-edit))
+        (keyboard-quit)))
 
     (column-number-mode -1)
 
