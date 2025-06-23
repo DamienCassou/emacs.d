@@ -2204,6 +2204,7 @@ If PROJECT is nil, use `project-current'."
          :map mpdel-core-map
          ("n" . mpdel-core-open-artists)
          ("p" . mpdel-core-insert-current-playlist)
+         ("i" . imenu)
          :map mpdel-playlist-current-playlist-mode-map
          ("p" . mpdel-playlist-play))
   :init
