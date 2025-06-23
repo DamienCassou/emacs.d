@@ -897,7 +897,7 @@ minibuffer, even without explicitly focusing it."
   :hook (forge-post-submit-callback . my/forge-start-timer-for-draft-pullreq)
   :config
   (progn
-    (setq-default forge-buffer-draft-p t)
+    (finsit-draft-prs-mode)
 
     (defun my/forge-start-timer-for-draft-pullreq (pullreq &rest _)
       "Start a `tmr' timer if PULLREQ is draft."
