@@ -897,8 +897,6 @@ minibuffer, even without explicitly focusing it."
   :hook (forge-post-submit-callback . my/forge-start-timer-for-draft-pullreq)
   :config
   (progn
-    (finsit-draft-prs-mode)
-
     (defun my/forge-start-timer-for-draft-pullreq (pullreq &rest _)
       "Start a `tmr' timer if PULLREQ is draft."
       (when (map-elt pullreq 'draft)
@@ -1988,6 +1986,13 @@ negative, the password is inserted at point."
 
     (with-eval-after-load 'flycheck
       (bind-key "C-c ! k" #'eslint-disable-rule-disable-next-line flycheck-mode-map))))
+
+(use-package finsit-draft-prs
+  :demand t
+  :after forge
+  :config
+  (progn
+    (finsit-draft-prs-mode)))
 
 (use-package finsit-fill-pr-description-template
   :after forge
