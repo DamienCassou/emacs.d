@@ -117,6 +117,7 @@
         whole-line-or-region-kill-region
         yaml-electric-backspace
         yaml-electric-dash-and-dot
+        yank-from-kill-ring
         yas-expand
         ))
 
