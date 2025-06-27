@@ -41,4 +41,5 @@
   (shell-command "ls ~/Desktop")
   (shell-command "ls ~/Downloads")
   (shell-command "ls ~/Movies/TV")
-  (shell-command "ls ~/Pictures/'Photo Booth Library'"))
+  (shell-command "ls ~/Pictures/'Photo Booth Library'")
+  (shell-command "ls ~/Library/Containers/com.apple.systempreferences.KeyboardSettingsExtension/.com.apple.containermanagerd.metadata.plist"))
