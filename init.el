@@ -913,6 +913,11 @@ minibuffer, even without explicitly focusing it."
   (progn
     (setopt forge-topic-list-limit '(60 . -1))))
 
+(use-package forge-post
+  :config
+  (progn
+    (remove-hook 'forge-edit-post-hook #'forge-create-pullreq-insert-single-commit-message)))
+
 (use-package vc-hooks
   :init
   (progn
