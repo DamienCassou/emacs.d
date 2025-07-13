@@ -304,7 +304,6 @@ This is recommended by Vertico's README."
     (setopt isearch-lazy-count t)))
 
 (use-package casual-isearch
-  :demand t
   :after isearch
   :bind (:map isearch-mode-map ("C-o" . casual-isearch-tmenu)))
 
