@@ -1917,7 +1917,6 @@ negative, the password is inserted at point."
     (global-subword-mode)))
 
 (use-package prodigy
-  :hook (prodigy-mode . my/prodigy-setup)
   :bind (("C-. p" . prodigy)
          :map prodigy-mode-map
          ("k" . (lambda () (interactive) (prodigy-stop t)))
@@ -1926,12 +1925,7 @@ negative, the password is inserted at point."
          ("C-<up>" . prodigy-prev-with-status))
   :init
   (progn
-    (setopt prodigy-completion-system 'default))
-  :config
-  (progn
-    (defun my/prodigy-setup ()
-      "Configure prodigy."
-      (setq-local browse-url-browser-function #'browse-url-chromium))))
+    (setopt prodigy-completion-system 'default)))
 
 (use-package libbcel
   :config
