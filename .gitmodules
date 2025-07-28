@@ -15,9 +15,6 @@
 [submodule "info-variable-pitch"]
 	path = lib/info-variable-pitch
 	url = git@github.com:kisaragi-hiu/info-variable-pitch.git
-[submodule "outli"]
-	path = lib/outli
-	url = git@github.com:jdtsmith/outli.git
 [submodule "var/epkgs"]
 	path = var/epkgs
 	url = git@github.com:emacsmirror/epkgs.git
