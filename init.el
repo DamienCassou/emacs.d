@@ -1193,7 +1193,66 @@ NUMBERS is of the form (:capital CAPITAL :insurance INSURANCE :interest INTEREST
                      mortgage-type number-type number))))
                numbers)
               (delete-backward-char 1) ; remove additional newline
-              (ledger-post-align-dwim))))))))
+              (ledger-post-align-dwim))))))
+
+    (defun my/ledger-fill-with-budget ()
+      (interactive)
+      (save-match-data
+        (pcase-let* ((`(,begin ,end) (ledger-navigate-find-xact-extents (point))))
+          (goto-char begin)
+          (when-let* ((date
+                       (progn
+                         (looking-at ledger-full-date-regexp)
+                         (match-string ledger-regex-full-date-group-actual)))
+                      (expense-accounts-and-amounts
+                       (cl-loop
+                        while (re-search-forward ledger-post-line-regexp end t)
+                        for account = (match-string ledger-regex-post-line-group-account)
+                        for amount-string = (match-string ledger-regex-post-line-group-amount)
+                        when (string-prefix-p "expense" account) collect (cons account
+                                                                               (car (ledger-split-commodity-string  amount-string)))))
+                      (budget-accounts
+                       (seq-filter (lambda (account) (string-prefix-p "budget:" account)) (ledger-accounts-list)))
+                      (source-budget
+                       (ledger-completing-read-with-default "Choose a source budget"
+                                                            "budget:vacation"
+                                                            budget-accounts)))
+            (goto-char end)
+            (insert "\n\n")
+            (insert date " budget\n")
+            (insert "    " source-budget "\n")
+            (pcase-dolist (`(,expense-account . ,expense-amount) expense-accounts-and-amounts)
+              (insert "    " (my/ledger-find-corresponding-budget expense-account budget-accounts) "  " (number-to-string expense-amount) "\n"))))))
+
+    (defun my/ledger-find-corresponding-budget (expense-account budget-accounts)
+      "Return the one of BUDGET-ACCOUNTS which closest ressemble EXPENSE-ACCOUNT."
+      (when-let* ((expense-account-list (cdr (split-string expense-account ":")))
+                  (budget-accounts-list (mapcar (lambda (budget-account) (cdr (split-string budget-account ":"))) budget-accounts))
+                  (closest-budget-account-list (my/ledger-seq-min budget-accounts-list
+                                                                  (lambda (budget-account-list)
+                                                                    (my/ledger-levenstein budget-account-list expense-account-list)))))
+        (string-join (cons "budget" closest-budget-account-list) ":")))
+
+    (defun my/ledger-seq-min (list fn)
+      "Return the smallest in LIST according to FN.
+FN should accept an element of LIST as argument and return a number."
+      (let (result (result-value most-positive-fixnum))
+        (dolist (elem list result)
+          (let ((value (funcall fn elem)))
+            (when (< value result-value)
+              (setq result-value value)
+              (setq result elem))))))
+
+    (defun my/ledger-levenstein (list1 list2)
+      "Return the levenstein distance between list1 and list2, both list of strings."
+      (cond
+       ((seq-empty-p list2) (length list1))
+       ((seq-empty-p list1) (length list2))
+       ((string= (car list1) (car list2)) (my/ledger-levenstein (cdr list1) (cdr list2)))
+       (t (1+ (min
+               (my/ledger-levenstein (cdr list1) list2)
+               (my/ledger-levenstein list1 (cdr list2))
+               (my/ledger-levenstein (cdr list1) (cdr list2)))))))))
 
 (use-package flymake-hledger
   :config
