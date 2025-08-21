@@ -1910,7 +1910,7 @@ negative, the password is inserted at point."
 
 (use-package finsit-fill-pr-description-template
   :after forge
-  :hook ((forge-create-pullreq . finsit-fill-pr-description-template)))
+  :hook ((forge-edit-post . finsit-fill-pr-description-template)))
 
 (use-package finsit-insert-commit-id
   :after git-commit
