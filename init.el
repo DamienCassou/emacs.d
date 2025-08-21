@@ -901,7 +901,7 @@ minibuffer, even without explicitly focusing it."
       (when (map-elt pullreq 'draft)
         (when-let* ((url (map-elt pullreq 'url))
                     (minutes (cond
-                              ((string-match-p "foretagsplatsen/monitor" url) 15)
+                              ((string-match-p "foretagsplatsen/monitor" url) 25)
                               ((string-match-p "foretagsplatsen/frontend" url) 20)
                               (t 10))))
           (require 'tmr)
