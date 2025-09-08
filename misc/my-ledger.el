@@ -38,7 +38,7 @@ MOMENT is an encoded date."
       (re-search-forward "; \\*\\*" nil t)
       (goto-char (line-beginning-position)))))
 
-;;; Insert a transaction based on a given description
+;;; Insert a mortgage transaction based on a given description
 
 (defun my-ledger-insert-mortgage-transaction ()
   "Insert a transaction based on a given description."
