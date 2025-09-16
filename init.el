@@ -1541,6 +1541,12 @@ The link will contain DESCRIPTION as text."
           :map shr-image-map
           ("C-c C-o" . shr-browse-url))))
 
+(use-package whole-line-or-region
+  :demand t
+  :config
+  (progn
+    (whole-line-or-region-global-mode)))
+
 (use-package mml
   :init
   (progn
