@@ -1527,6 +1527,13 @@ The link will contain DESCRIPTION as text."
       (interactive)
       (notmuch-show-apply-to-current-part-handle #'my/mm-ics-to-org-part))))
 
+(use-package notmuch-microdata
+  :after notmuch
+  :bind
+  (
+   :map notmuch-show-mode-map
+   ("C-c C-c" . notmuch-microdata-show-action-view)))
+
 (use-package shr
   :bind ((
           :map shr-map
