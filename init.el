@@ -1867,7 +1867,7 @@ negative, the password is inserted at point."
   :init
   (progn
     (setopt libelcouch-timeout 100)
-    (setopt libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
+    (setq libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
 
 (use-package related-files
   :bind (("C-x j" . related-files-jump)
