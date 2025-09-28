@@ -6,6 +6,9 @@
 [submodule "combobulate"]
 	path = lib/combobulate
 	url = https://github.com/mickeynp/combobulate
+[submodule "ejira3"]
+	path = lib/ejira3
+	url = git@git.sr.ht:~madearl/ejira3
 [submodule "epithet"]
 	path = lib/epithet
 	url = https://github.com/oantolin/epithet
@@ -15,6 +18,9 @@
 [submodule "info-variable-pitch"]
 	path = lib/info-variable-pitch
 	url = git@github.com:kisaragi-hiu/info-variable-pitch.git
+[submodule "jiralib3"]
+	path = lib/jiralib3
+	url = git@git.sr.ht:~madearl/jiralib3
 [submodule "microdata"]
 	path = lib/microdata
 	url = git@github.com:Stebalien/microdata.el.git
