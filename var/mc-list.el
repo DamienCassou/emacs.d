@@ -60,6 +60,7 @@
         my-join-line
         my/exwm-counsel-yank-pop
         my/join-line
+        my/ledger-reindent
         nameless-insert-name
         nxml-electric-slash
         org-beginning-of-line
@@ -123,6 +124,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        ace-window
         anzu-query-replace
         beginend-message-goto-end
         beginend-prog-mode-goto-beginning
