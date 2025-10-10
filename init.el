@@ -1855,14 +1855,6 @@ negative, the password is inserted at point."
   (progn
     (setopt prodigy-completion-system 'default)))
 
-(use-package libbcel
-  :config
-  (progn
-    (setopt libbcel-oauth-store-encryption-keys (list "8E64FBE545A394F5D35CD202F72C652AE7564ECC"))
-    (setopt libbcel-oauth-client-id (auth-source-pass-get "client_id" "ftgp/37signals.com"))
-    (setopt libbcel-oauth-client-secret (auth-source-pass-get "client_secret" "ftgp/37signals.com"))
-    (setopt libbcel-client-account-id (auth-source-pass-get "account_id" "ftgp/37signals.com"))))
-
 (use-package libelcouch
   :init
   (progn
