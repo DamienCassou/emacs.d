@@ -1869,7 +1869,7 @@ negative, the password is inserted at point."
     (setopt navijira-url "https://jira.wolterskluwer.io/jira"))
   :config
   (progn
-    (setopt navijira-token (auth-source-pass-get "token" "wk/jira.wolterskluwer.io/navijira"))))
+    (setopt navijira-token (auth-source-pass-get 'secret "wk/jira.wolterskluwer.io/navijira"))))
 
 (use-package related-files
   :bind (("C-x j" . related-files-jump)
