@@ -2267,24 +2267,7 @@ If PROJECT is nil, use `project-current'."
          ("M-A" . marginalia-cycle))
   :config
   (progn
-    (marginalia-mode)
-
-    (defun my/marginalia-annotate-buffer (cand)
-      "Return a string giving information about CAND, a buffer.
-
-This is the same as `marginalia-annotate-buffer' but only keeps
-the buffer's filename."
-      (when-let (buffer (get-buffer cand))
-        (marginalia--fields
-         ((marginalia--buffer-file buffer)))))
-
-    ;; Use my own annotator when listing buffers:
-    (require 'map)
-    (map-put! marginalia-annotator-registry 'buffer (list #'my/marginalia-annotate-buffer))
-
-    ;; I don't want any information when listing files:
-    (map-delete marginalia-annotator-registry 'file)
-    (map-delete marginalia-annotator-registry 'project-file)))
+    (marginalia-mode)))
 
 (use-package epkg-marginalia
   :demand t
