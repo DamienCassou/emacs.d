@@ -2271,14 +2271,6 @@ If PROJECT is nil, use `project-current'."
   (progn
     (marginalia-mode)))
 
-(use-package epkg-marginalia
-  :demand t
-  :after marginalia
-  :init
-  (progn
-    (cl-pushnew 'epkg-marginalia-annotate-package
-                (alist-get 'package marginalia-annotator-registry))))
-
 (use-package orderless
   :demand t
   :init
