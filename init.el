@@ -1862,6 +1862,8 @@ negative, the password is inserted at point."
     (setq libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
 
 (use-package navijira
+  :after bookmark
+  :demand t ; required to open navijira from a bookmar
   :load-path "~/.emacs.d/lib/ftgp/navijira/"
   :commands (navijira-open)
   :init
