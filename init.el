@@ -2711,6 +2711,26 @@ The alert package works on different platforms."
 
 (global-set-key (kbd "C-x x v") 'my/view-text-file-as-info-manual)
 
+;; https://mbork.pl/2025-10-06_A_debug_helper_in_Elisp
+(defvar alert-vars-format "%s: %S\n")
+(defmacro alert-vars (&rest vars)
+  "Use `alert' to show the values of VARS.
+VARS should be a list of unquoted symbols."
+  `(alert ,(mapconcat (lambda (var) alert-vars-format) vars)
+          ,@(reverse
+             (seq-reduce (lambda (acc var)
+                           (cons var (cons (symbol-name var) acc)))
+                         vars
+                         '()))))
+(defun alert (&rest message-args)
+  "Like `message', but waiting for a keypress."
+  (when (eq (read-key
+             (concat
+              (apply #'format message-args)
+              "\n[press C-g to quit or any other key to continue]"))
+            ?\C-g)
+    (keyboard-quit)))
+
 ;; Local Variables:
 ;; eval: (outline-minor-mode)
 ;; no-byte-compile: t
