@@ -187,6 +187,11 @@ either read only or modified.")
                   my/mode-line-modes
                   my/mode-line-misc-info)))
 
+(progn ; `lisp'
+  ;; https://irreal.org/blog/?p=13371
+  (bind-key "C-. ," #'delete-pair)
+  (setopt delete-pair-blink-delay 0.1))
+
 (use-package which-func
   :defer 5
   :config
@@ -1992,6 +1997,7 @@ negative, the password is inserted at point."
   :bind (("M-D" . duplicate-dwim)))
 
 (use-package embrace
+  :disabled t
   :bind (("C-. ," . embrace-commander))
   :hook (emacs-lisp-mode . embrace-emacs-lisp-mode-hook))
 
