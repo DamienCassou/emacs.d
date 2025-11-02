@@ -227,6 +227,10 @@ current."
 
     (my/setup-frame)))
 
+(use-package menu-bar
+  :bind (;; I never want to change the font through a dialog:
+         ("s-t" . nil)))
+
 (use-package face-remap
   :bind (("C-x C-+" . global-text-scale-adjust)
          ("C-x C--" . global-text-scale-adjust)
