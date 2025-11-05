@@ -937,6 +937,19 @@ minibuffer, even without explicitly focusing it."
     (setopt ediff-split-window-function 'split-window-horizontally)
     (setopt ediff-window-setup-function 'ediff-setup-windows-plain)))
 
+(use-package casual-ediff
+  :demand t
+  :after ediff
+  :hook (ediff-keymap-setup . my/casual-ediff-bind)
+  :config
+  (progn
+    (casual-ediff-install)
+
+    (setopt ediff-keep-variants nil)
+
+    (defun my/casual-ediff-bind ()
+      (keymap-set ediff-mode-map "C-o" #'casual-ediff-tmenu))))
+
 (use-package jinx
   :hook ((emacs-startup . global-jinx-mode)
          (jinx-mode . my/jinx-add-ispell-localwords))
