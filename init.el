@@ -995,11 +995,11 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
             (ispell-add-per-file-word-list word)
             (add-to-list 'jinx--session-words word)
             (setopt jinx-local-words
-                  (string-join
-                   (sort (delete-dups
-                          (cons word (split-string jinx-local-words)))
-                         #'string<)
-                   " ")))
+                    (string-join
+                     (sort (delete-dups
+                            (cons word (split-string jinx-local-words)))
+                           #'string<)
+                     " ")))
         (list key word "File")))
 
     (require 'map)
