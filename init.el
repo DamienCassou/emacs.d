@@ -2124,16 +2124,6 @@ If PROJECT is nil, use `project-current'."
       (when (seq-contains-p (map-elt eglot--saved-bindings 'flymake-diagnostic-functions) 'flymake-eslint--checker)
         (setopt flymake-diagnostic-functions (list 'flymake-eslint--checker))))))
 
-(use-package dape
-  :init
-  (progn
-    (setopt dape-buffer-window-arrangement 'right)
-    (setopt dape-debug t))
-  :config
-  (progn
-    (remove-hook 'dape-on-start-hooks 'dape-info)
-    (remove-hook 'dape-on-start-hooks 'dape-repl)))
-
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
   :config
