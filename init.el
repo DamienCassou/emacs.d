@@ -1724,7 +1724,7 @@ negative, the password is inserted at point."
     ;; Let me easily use actions beyond jump:
     (setopt avy-single-candidate-jump nil)
     (setopt avy-flyspell-correct-function #'ispell-word)
-    (setopt avy-timeout-seconds 0.4))
+    (setopt avy-timeout-seconds 1))
   :config
   (progn
     (defmacro my/avy-without-moving-point (point &rest body)
