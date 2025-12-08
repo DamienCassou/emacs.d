@@ -1655,7 +1655,7 @@ The link will contain DESCRIPTION as text."
   (progn
     (defun my/password-length ()
       "Return a random number suitable for a password length."
-      (+ 30 (random 10)))
+      (+ 40 (random 10)))
 
     (defun my/generate-password (&optional length)
       "Generate a random password of size LENGTH, `my/password-length' by default.
