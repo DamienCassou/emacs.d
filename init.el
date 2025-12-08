@@ -1315,11 +1315,11 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
   (progn
     (setopt org-agenda-block-separator ?─)
     (setopt org-agenda-time-grid
-          '((daily today require-timed)
-            (800 1000 1200 1400 1600 1800 2000)
-            " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
+            '((daily today require-timed)
+              (800 1000 1200 1400 1600 1800 2000)
+              " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
     (setopt  org-agenda-current-time-string
-           "⭠ now ─────────────────────────────────────────────────"))
+             "⭠ now ─────────────────────────────────────────────────"))
   :config
   (progn
     ;; Those are my `beginning-of-buffer' and `end-of-buffer':
