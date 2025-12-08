@@ -1598,10 +1598,6 @@ The link will contain DESCRIPTION as text."
     (with-eval-after-load "eldoc"
       (eldoc-add-command #'paredit-backward-delete #'paredit-close-round))))
 
-(use-package combobulate
-  :demand t
-  :hook (prog-mode . combobulate-mode))
-
 (use-package combobulate-js-ts
   :hook (combobulate-javascript-minor-mode . my/combobulate-js-ts-setup)
   :config
