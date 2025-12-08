@@ -1879,7 +1879,7 @@ negative, the password is inserted at point."
 
 (use-package navijira
   :after bookmark
-  :demand t ; required to open navijira from a bookmar
+  :demand t ; required to open navijira from a bookmark
   :load-path "~/.emacs.d/lib/ftgp/navijira/"
   :commands (navijira-open)
   :init
