@@ -905,6 +905,9 @@ minibuffer, even without explicitly focusing it."
   :hook (forge-post-submit-callback . my/forge-start-timer-for-draft-pullreq)
   :config
   (progn
+    ;; Don't list pull requests in magit:
+    (setopt forge-status-buffer-default-topic-filters (forge--topics-spec :type nil))
+
     (defun my/forge-start-timer-for-draft-pullreq (pullreq &rest _)
       "Start a `tmr' timer if PULLREQ is draft."
       (when (map-elt pullreq 'draft)
