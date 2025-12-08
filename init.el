@@ -1877,14 +1877,18 @@ negative, the password is inserted at point."
     (setopt libelcouch-timeout 100)
     (setq libelcouch-couchdb-instances '(("Local" "http://localhost:5984")))))
 
+(use-package finsit-navijira
+  :demand t
+  :after navijira
+  :config
+  (progn
+    (setopt finsit-navijira-components-dir "~/work/setup")))
+
 (use-package navijira
   :after bookmark
   :demand t ; required to open navijira from a bookmark
   :load-path "~/.emacs.d/lib/ftgp/navijira/"
   :commands (navijira-open)
-  :init
-  (progn
-    (setopt navijira-url "https://jira.wolterskluwer.io/jira"))
   :config
   (progn
     (setopt navijira-token (auth-source-pass-get 'secret "wk/jira.wolterskluwer.io/navijira"))))
