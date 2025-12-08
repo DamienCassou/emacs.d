@@ -1170,8 +1170,8 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
   (progn
     (setopt ledger-import-boobank-import-from-date "2024-05-16")
     (setopt ledger-import-autosync-command
-          '("hledger-autosync" "--assertions"
-            "--payee-format" "{payee}"))
+            '("hledger-autosync" "--assertions"
+              "--payee-format" "{payee}"))
 
     (defun my/ledger-import-alert ()
       "Notify the user that import is finished."
@@ -1206,12 +1206,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
       (my/ledger-import-remove-EUR)
       (my/ledger-import-merge-autosync-transactions)
       (my/ledger-import-add-today-date-as-outline)
-      (my/ledger-import-alert))
-
-    ;; Fill `ledger-import-accounts' and `ledger-import-ofx-rewrite-rules':
-    (let ((file (expand-file-name "~/.password-store/Secure_Notes/ledger-accounts.gpg")))
-      (when (file-exists-p file)
-        (load file t)))))
+      (my/ledger-import-alert))))
 
 (use-package outli
   :hook (emacs-lisp-mode . outli-mode))
