@@ -3,9 +3,6 @@
 [submodule "borg"]
 	path = lib/borg
 	url = git@github.com:emacscollective/borg.git
-[submodule "combobulate"]
-	path = lib/combobulate
-	url = https://github.com/mickeynp/combobulate
 [submodule "epithet"]
 	path = lib/epithet
 	url = https://github.com/oantolin/epithet
