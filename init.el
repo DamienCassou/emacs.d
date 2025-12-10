@@ -734,9 +734,7 @@ minibuffer, even without explicitly focusing it."
 (use-package dired
   :bind (
          :map dired-mode-map
-         ("C-a" . my/dired-move-beginning-of-line)
-         ("k" . dired-do-delete)
-         ("D" . nil))
+         ("C-a" . my/dired-move-beginning-of-line))
   :hook (dired-mode . dired-hide-details-mode)
   :init
   (progn
@@ -1310,7 +1308,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
 (use-package org-agenda
   :bind (
          :map org-agenda-mode-map
-         ("k"         . org-agenda-kill))
+         ("D"         . org-agenda-kill))
   :init
   (progn
     (setopt org-agenda-block-separator ?─)
@@ -1863,7 +1861,7 @@ negative, the password is inserted at point."
 (use-package prodigy
   :bind (("C-. p" . prodigy)
          :map prodigy-mode-map
-         ("k" . (lambda () (interactive) (prodigy-stop t)))
+         ("D" . (lambda () (interactive) (prodigy-stop t)))
          ("M-w" . prodigy-copy-url)
          ("C-<down>" . prodigy-next-with-status)
          ("C-<up>" . prodigy-prev-with-status))
@@ -2593,7 +2591,7 @@ The alert package works on different platforms."
   :bind (
          :map tmr-tabulated-mode-map
          ("a" . tmr-with-description)
-         ("K" . tmr-remove-finished)))
+         ("D" . tmr-remove)))
 
 (use-package fontaine
   :demand t
