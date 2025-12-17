@@ -7,11 +7,6 @@
 ;; Apply recommendation from modus Info manual:
 (setopt face-near-same-color-threshold 45000)
 
-(progn
-  ;; https://themkat.net/2025/03/25/simple_smoother_emacs_scrolling.html
-  (setopt scroll-conservatively 10)
-  (setopt scroll-margin 15))
-
 (setopt ring-bell-function (lambda ()))
 
 (setopt ns-right-alternate-modifier 'none)
