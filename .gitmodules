@@ -18,3 +18,6 @@
 [submodule "var/epkgs"]
 	path = var/epkgs
 	url = git@github.com:emacsmirror/epkgs.git
+[submodule "ws-butler"]
+	path = lib/ws-butler
+	url = git@github.com:lewang/ws-butler.git
