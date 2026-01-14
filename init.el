@@ -1152,50 +1152,6 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
   (progn
     (setopt ledger-complete-in-steps nil)))
 
-(use-package ledger-import
-  :hook ((ledger-import-finished . my/ledger-import-finish))
-  :config
-  (progn
-    (setopt ledger-import-boobank-import-from-date "2024-05-16")
-    (setopt ledger-import-autosync-command
-            '("hledger-autosync" "--assertions"
-              "--payee-format" "{payee}"))
-
-    (defun my/ledger-import-alert ()
-      "Notify the user that import is finished."
-      (alert "Finished"
-             :title "Ledger-autosync"
-             :buffer (current-buffer)))
-
-    (defun my/ledger-import-remove-EUR ()
-      "Remove the EUR commodity in the current buffer."
-      (goto-char (point-min))
-      (while (search-forward " EUR" nil t)
-        (replace-match ""))
-      (ledger-mode-clean-buffer))
-
-    (defun my/ledger-import-merge-autosync-transactions ()
-      "Merge all autosync transactions into just one."
-      (goto-char (point-min))
-      (search-forward "Autosync Balance Assertion")
-      (delete-matching-lines "Autosync Balance Assertion")
-      (delete-matching-lines "^$"))
-
-    (defun my/ledger-import-add-today-date-as-outline ()
-      "Add today's date as `outline-mode' markup."
-      (goto-char (point-min))
-      (search-forward "Autosync Balance Assertion")
-      (goto-char (line-beginning-position))
-      (insert (format "*** %s\n\n" (format-time-string "%B %-d"))))
-
-    (defun my/ledger-import-finish ()
-      "Some actions to do when ledger-import finishes."
-      (interactive)
-      (my/ledger-import-remove-EUR)
-      (my/ledger-import-merge-autosync-transactions)
-      (my/ledger-import-add-today-date-as-outline)
-      (my/ledger-import-alert))))
-
 (use-package outli
   :hook (emacs-lisp-mode . outli-mode))
 
