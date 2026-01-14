@@ -2039,6 +2039,9 @@ If PROJECT is nil, use `project-current'."
 (use-package json-ts-mode
   :mode "\\.json\\'")
 
+(use-package lua-ts-mode
+  :mode "\\.lua\\'")
+
 (use-package toml-ts-mode
   :mode "\\.toml\\'")
 
