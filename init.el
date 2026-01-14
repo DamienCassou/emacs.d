@@ -697,18 +697,12 @@ minibuffer, even without explicitly focusing it."
 
 (use-package vundo
   :bind ("C-x u" . vundo)
-  :hook ((vundo-mode . my/vundo-setup))
   :init
   (progn
     (setopt vundo-window-max-height 5))
   :config
   (progn
-    (setopt vundo-glyph-alist vundo-unicode-symbols)
-
-    (defun my/vundo-setup ()
-      "Remove mode-line and header-line."
-      (setopt mode-line-format nil)
-      (setopt header-line-format nil))))
+    (setopt vundo-glyph-alist vundo-unicode-symbols)))
 
 (use-package ibuffer
   :bind (
