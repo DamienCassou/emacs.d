@@ -1117,6 +1117,11 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
       (save-buffer)
       (autoclose-shell-start "lint-system" '("lint-system")))))
 
+(use-package ledger-init
+  :init
+  (progn
+    (setq ledger-default-date-format "%Y-%m-%d")))
+
 (use-package my-ledger
   :demand t
   :after ledger-mode
