@@ -195,7 +195,7 @@ either read only or modified.")
 
 (use-package register
   :config
-  (set-register ?t "!-tests.js !.spec.component.js !_spec.ui.js !_spec.e2e.js"))
+  (set-register ?t "!-tests.js !.spec.component.js !_spec.ui.js !_spec.e2e.js !Test.cs"))
 
 (use-package custom
   :demand t
