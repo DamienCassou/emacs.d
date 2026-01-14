@@ -259,6 +259,7 @@ current."
   :demand t
   :bind (
          :map completion-preview-active-mode-map
+         ("M-f" . completion-preview-complete)
          ("M-n" . completion-preview-next-candidate)
          ("M-p" . completion-preview-prev-candidate))
   :hook ((prog-mode . completion-preview-mode)))
