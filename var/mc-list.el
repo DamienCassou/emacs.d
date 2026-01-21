@@ -116,6 +116,7 @@
         wgrep-change-to-wgrep-mode
         wgrep-finish-edit
         whole-line-or-region-kill-region
+        whole-line-or-region-kill-ring-save
         yaml-electric-backspace
         yaml-electric-dash-and-dot
         yank-from-kill-ring
