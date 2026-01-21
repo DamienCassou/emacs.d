@@ -2044,6 +2044,14 @@ If PROJECT is nil, use `project-current'."
 (use-package docker
   :bind (("C-. d" . docker)))
 
+(use-package docker-container
+  :config
+  (progn
+    (when-let* ((ports-column (cl-find "Ports" docker-container-columns
+                                       :key (lambda (column) (map-elt column :name))
+                                       :test #'string=)))
+      (map-put! ports-column :width 30))))
+
 (use-package dockerfile-ts-mode
   :mode "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'")
 
