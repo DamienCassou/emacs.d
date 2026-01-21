@@ -2416,7 +2416,7 @@ If PROJECT is nil, use `project-current'."
     (consult-customize
      consult-ripgrep consult-git-grep consult-grep consult-buffer
      consult-bookmark consult-recent-file consult-xref
-     consult--source-recent-file consult--source-project-recent-file consult--source-bookmark
+     consult-source-recent-file consult-source-project-recent-file consult-source-bookmark
      :preview-key "M-.")
 
     ;; Remove some sources when listing buffers:
