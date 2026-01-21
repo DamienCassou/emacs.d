@@ -941,6 +941,20 @@ minibuffer, even without explicitly focusing it."
     (defun my/casual-ediff-bind ()
       (keymap-set ediff-mode-map "C-o" #'casual-ediff-tmenu))))
 
+(use-package difftastic
+  :init
+  (progn
+    (with-eval-after-load forge-post
+      (remove-hook 'forge-edit-post-hook #'forge-create-pullreq-show-diff)
+      (add-hook 'forge-edit-post-hook #'difftastic-forge-create-pulreq-show-diff))))
+
+(use-package difftastic-bindings
+  :demand t
+  :after magit
+  :config
+  (progn
+    (difftastic-bindings-mode)))
+
 (use-package jinx
   :hook ((emacs-startup . global-jinx-mode)
          (jinx-mode . my/jinx-add-ispell-localwords))
