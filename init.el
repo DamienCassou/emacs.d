@@ -1189,32 +1189,32 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
     (setopt org-default-someday-file (expand-file-name "someday.org" org-directory))
     (setopt org-default-tickler-file (expand-file-name "tickler.org" org-directory))
     (setopt org-agenda-files `(,org-default-notes-file
-                             ,org-default-calendar-file
-                             ,org-default-gtd-file
-                             ,org-default-tickler-file))
+                               ,org-default-calendar-file
+                               ,org-default-gtd-file
+                               ,org-default-tickler-file))
 
     (setopt org-refile-targets `((,org-default-notes-file :level . 1)
-                               (,org-default-gtd-file :maxlevel . 3)
-                               (,org-default-someday-file :level . 1)
-                               (,org-default-tickler-file :maxlevel . 2)))
+                                 (,org-default-gtd-file :maxlevel . 3)
+                                 (,org-default-someday-file :level . 1)
+                                 (,org-default-tickler-file :maxlevel . 2)))
 
     (setopt org-capture-templates
-          '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox") "* TODO %?%i")
-            ("p" "Appt" entry (file org-default-calendar-file) "* %?\n%^T")
-            ("T" "Tickler" entry (file+headline org-default-tickler-file "Tickler") "* %i%? \nSCHEDULED: %^t")))
+            '(("t" "Todo" entry (file+headline org-default-notes-file "Inbox") "* TODO %?%i")
+              ("p" "Appt" entry (file org-default-calendar-file) "* %?\n%^T")
+              ("T" "Tickler" entry (file+headline org-default-tickler-file "Tickler") "* %i%? \nSCHEDULED: %^t")))
 
     (setopt org-todo-keywords
-          '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
-            (sequence "WAITING(w)" "|" "DONE(d)")))
+            '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
+              (sequence "WAITING(w)" "|" "DONE(d)")))
 
     (setopt org-agenda-custom-commands
-          '(("a" "Agenda for the current week" ((agenda "" nil)) nil nil)
-            ("w" . "TODOs")
-            ("d" "30 days deadlines" agenda ""
-             ((org-agenda-entry-types '(:deadline))
-              (org-agenda-overriding-header "Month deadlines")
-              (org-agenda-span 'month)
-              (org-agenda-overriding-header "")))))
+            '(("a" "Agenda for the current week" ((agenda "" nil)) nil nil)
+              ("w" . "TODOs")
+              ("d" "30 days deadlines" agenda ""
+               ((org-agenda-entry-types '(:deadline))
+                (org-agenda-overriding-header "Month deadlines")
+                (org-agenda-span 'month)
+                (org-agenda-overriding-header "")))))
 
     (setopt org-agenda-show-future-repeats nil)
     (setopt org-enforce-todo-dependencies t)
@@ -1339,8 +1339,8 @@ because slides don't change their ID all the time."
     (setopt denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
     (setopt denote-front-matter-date-format 'org-timestamp)
     (setopt denote-dired-directories
-          (list denote-directory
-                (expand-file-name "attachments" denote-directory))))
+            (list denote-directory
+                  (expand-file-name "attachments" denote-directory))))
   :config
   (progn
     (defun my/denote-find-file (filename)
