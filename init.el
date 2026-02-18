@@ -1186,7 +1186,6 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
     (setopt org-default-notes-file (expand-file-name "inbox.org" org-directory))
     (setopt org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
     (setopt org-default-gtd-file (expand-file-name "gtd.org" org-directory))
-    (setopt org-default-someday-file (expand-file-name "someday.org" org-directory))
     (setopt org-default-tickler-file (expand-file-name "tickler.org" org-directory))
     (setopt org-agenda-files `(,org-default-notes-file
                                ,org-default-calendar-file
@@ -1195,7 +1194,6 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
 
     (setopt org-refile-targets `((,org-default-notes-file :level . 1)
                                  (,org-default-gtd-file :maxlevel . 3)
-                                 (,org-default-someday-file :level . 1)
                                  (,org-default-tickler-file :maxlevel . 2)))
 
     (setopt org-capture-templates
