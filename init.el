@@ -1696,23 +1696,19 @@ negative, the password is inserted at point."
 
     (defun my/avy-action-help (point)
       "Show the Emacs help for thing at POINT."
-      (my/avy-without-moving-point point
-        (helpful-at-point)))
+      (my/avy-without-moving-point point (helpful-at-point)))
 
     (defun my/avy-action-kill-whole-line (point)
       "Kill the whole line at POINT."
-      (my/avy-without-moving-point point
-        (kill-whole-line)))
+      (my/avy-without-moving-point point (kill-whole-line)))
 
     (defun my/avy-action-comment-line (point)
       "Comment the whole line at POINT."
-      (my/avy-without-moving-point point
-        (comment-line 1)))
+      (my/avy-without-moving-point point (comment-line 1)))
 
     (defun my/avy-action-embark (point)
       "Start `embark-act' at POINT."
-      (my/avy-without-moving-point point
-        (embark-act)))
+      (my/avy-without-moving-point point (embark-act)))
 
     (setq avy-dispatch-alist
           '(
