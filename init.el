@@ -1671,9 +1671,6 @@ negative, the password is inserted at point."
     (setopt auth-sources '(password-store))))
 
 (use-package avy
-  :bind* (("C-," . avy-goto-char-timer)
-          :map isearch-mode-map
-          ("C-," . avy-isearch))
   :bind (("M-g g" . avy-goto-line))
   :init
   (progn
@@ -1771,6 +1768,17 @@ negative, the password is inserted at point."
             (?\M-w . avy-action-copy)
             (?\M-\; . my/avy-action-comment-line)
             (?\C-\S-a . my/avy-action-embark)))))
+
+(use-package flash
+  :demand t
+  :bind ("C-," . flash-jump))
+
+(use-package flash-isearch
+  :demand t
+  :after isearch
+  :config
+  (progn
+    (flash-isearch-mode)))
 
 (use-package beginend
   :demand t
