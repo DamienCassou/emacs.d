@@ -1180,7 +1180,9 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
   (("C-. o a"   . org-agenda)
    ("C-. o l"   . org-store-link)
    ("C-. o s"   . org-save-all-org-buffers)
-   ("C-. o t"   . org-capture))
+   ("C-. o t"   . org-capture)
+   :map org-mode-map
+   ("C-," . nil))
   :hook (org-mode . visual-line-mode)
   :init
   (progn
