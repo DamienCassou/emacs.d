@@ -6,6 +6,9 @@
 [submodule "epithet"]
 	path = lib/epithet
 	url = https://github.com/oantolin/epithet
+[submodule "flash"]
+	path = lib/flash
+	url = https://github.com/Prgebish/flash
 [submodule "ftgp"]
 	path = lib/ftgp
 	url = git@github.com:foretagsplatsen/emacs.git
