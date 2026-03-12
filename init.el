@@ -1477,7 +1477,8 @@ The link will contain DESCRIPTION as text."
 
     (setopt notmuch-saved-searches
             `((:name "inbox" :query ,"(folder:\"Perso/INBOX\")" :key "i")
-              (:name "sent" :query "from:damien@cassou.me" :key "s")))))
+              (:name "sent" :query "from:damien@cassou.me" :key "s")
+              (:name "junk" :query ,"(folder:\"Perso/Junk\")" :key "j")))))
 
 (use-package notmuch-mua
   :demand t
