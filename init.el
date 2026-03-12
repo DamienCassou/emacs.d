@@ -2412,7 +2412,7 @@ If PROJECT is nil, use `project-current'."
     ;; Use `project` with consult:
     (setopt consult-project-root-function
             (lambda ()
-              (when-let (project (project-current))
+              (when-let* (project (project-current))
                 (project-root project))))
 
     (defun my/consult-switch-vterm ()
