@@ -368,12 +368,12 @@ This is recommended by Vertico's README."
               (bg-mode-line-inactive unspecified)
               (border-mode-line-inactive unspecified)))
 
-    (setopt modus-themes-headings
-            '((1 . (1.6))
-              (2 . (background 1.5))
-              (3 . (background bold 1.2))
-              (4 . (1.1))
-              (t . ())))
+    (setq modus-themes-headings
+          '((1 . (1.6))
+            (2 . (background 1.5))
+            (3 . (background bold 1.2))
+            (4 . (1.1))
+            (t . ())))
 
     (load-theme 'modus-operandi))
   :config
