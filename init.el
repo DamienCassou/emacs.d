@@ -32,6 +32,9 @@
 (progn ; paragraphs
   (set-default 'sentence-end-double-space nil))
 
+(progn ; bindings
+  (setopt mode-line-collapse-minor-modes '(not flymake-mode)))
+
 (use-package comp
   :init
   (progn
@@ -2148,6 +2151,7 @@ If PROJECT is nil, use `project-current'."
     (mpdel-embark-setup)))
 
 (use-package minions
+  :when (version< emacs-version "31")
   :demand t
   :init
   (progn
