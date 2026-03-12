@@ -959,6 +959,11 @@ minibuffer, even without explicitly focusing it."
   (progn
     (difftastic-bindings-mode)))
 
+(use-package flyspell
+  :bind (
+         :map flyspell-mode-map
+         ("C-," . nil)))
+
 (use-package jinx
   :hook ((emacs-startup . global-jinx-mode)
          (jinx-mode . my/jinx-add-ispell-localwords))
