@@ -1428,7 +1428,11 @@ The link will contain DESCRIPTION as text."
   :hook ((nix-ts-mode text-mode conf-mode) . drag-stuff-mode))
 
 (use-package expand-region
+  :disabled t
   :bind ("M-h" . er/expand-region))
+
+(use-package exreg
+  :bind ("M-h" . expreg-expand))
 
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
