@@ -1485,9 +1485,25 @@ The link will contain DESCRIPTION as text."
     (setopt notmuch-identities '("Damien Cassou <damien@cassou.me>"))
 
     (setopt notmuch-saved-searches
-            `((:name "inbox" :query ,"(folder:\"Perso/INBOX\")" :key "i")
+            `((:name "inbox" :query "(folder:\"Perso/INBOX\")" :key "i")
               (:name "sent" :query "from:damien@cassou.me" :key "s")
-              (:name "junk" :query ,"(folder:\"Perso/Junk\")" :key "j")))))
+              (:name "junk" :query "folder:\"Perso/Junk\" AND (NOT tag:spam)" :key "j"))))
+
+  :config
+  (progn
+    (defun my/notmuch-move-to-inbox ()
+      (interactive)
+      (let* ((source (notmuch-show-get-filename))
+             (target (file-name-as-directory (expand-file-name "../../../INBOX/cur" source))))
+        (rename-file source target)
+        (message "File moved")))
+
+    (defun my/notmuch-move-to-spam ()
+      (interactive)
+      (let* ((source (notmuch-show-get-filename))
+             (target (file-name-as-directory (expand-file-name "../../../Junk/cur" source))))
+        (rename-file source target)
+        (message "File moved")))))
 
 (use-package notmuch-mua
   :demand t
