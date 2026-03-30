@@ -1805,13 +1805,6 @@ negative, the password is inserted at point."
   :demand t
   :bind ("C-," . flash-jump))
 
-(use-package flash-isearch
-  :demand t
-  :after isearch
-  :config
-  (progn
-    (flash-isearch-mode)))
-
 (use-package beginend
   :demand t
   :config
