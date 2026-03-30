@@ -1547,6 +1547,9 @@ The link will contain DESCRIPTION as text."
    :map notmuch-show-mode-map
    ("C-c C-c" . notmuch-microdata-show-action-view)))
 
+(use-package surround
+  :bind-keymap ("M-'" . surround-keymap))
+
 (use-package shr
   :bind ((
           :map shr-map
