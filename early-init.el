@@ -42,4 +42,5 @@
   (shell-command "ls ~/Downloads")
   (shell-command "ls ~/Movies/TV")
   (shell-command "ls ~/Pictures/'Photo Booth Library'")
+  (shell-command "ls ~/Desktop/")
   (shell-command "ping -c 1 raspberrypi.local"))
