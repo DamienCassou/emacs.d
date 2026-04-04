@@ -931,7 +931,12 @@ minibuffer, even without explicitly focusing it."
 (use-package vc-hooks
   :init
   (progn
-    (setopt vc-follow-symlinks nil)))
+    (setopt vc-follow-symlinks nil))
+  :config
+  (progn
+    ;; fixes a security issue:
+    ;; https://github.com/califio/publications/blob/main/MADBugs/vim-vs-emacs-vs-claude/Emacs.md
+    (remove-hook #'find-file-hook #'vc-refresh-state)))
 
 (use-package ediff-wind
   :init
