@@ -40,7 +40,10 @@
   (setopt bidi-paragraph-direction 'left-to-right)
   (setopt bidi-inhibit-bpa t)
   (setopt redisplay-skip-fontification-on-input t)
-  (setopt read-process-output-max (* 4 1024 1024)))
+  (setopt read-process-output-max (* 4 1024 1024))
+
+  ;; Keep window balanced:
+  (setopt window-combination-resize t))
 
 (use-package comp
   :init
@@ -256,14 +259,7 @@ current."
   :bind (("C-x o" . nil))
   :init
   (progn
-    (setopt switch-to-buffer-obey-display-actions t)
-
-    (defun my/window-balance-windows (&rest args)
-      "Same as `balance-windows' but ignores arguments."
-      (balance-windows))
-
-    (seq-doseq (fn (list #'split-window #'delete-window))
-      (advice-add fn :after #'my/window-balance-windows))))
+    (setopt switch-to-buffer-obey-display-actions t)))
 
 (use-package completion-preview
   :demand t
