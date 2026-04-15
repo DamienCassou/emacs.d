@@ -280,22 +280,6 @@ current."
   (progn
     (setopt visual-wrap-extra-indent 2)))
 
-(use-package ace-window
-  :disabled t
-  :demand t
-  :bind ("M-o" . ace-window)
-  :init
-  (progn
-    ;; home row in a Colemak layout
-    (setopt aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
-    (setopt aw-background nil))
-  :config
-  (progn
-    (ace-window-display-mode)
-    ;; reduce the height of ace-window letters so they blend nicely
-    ;; within their buffers without moving pixels around:
-    (set-face-attribute 'aw-leading-char-face nil :height 1.0)))
-
 (use-package spatial-window
   :bind ("M-o" . spatial-window-select)
   :init
