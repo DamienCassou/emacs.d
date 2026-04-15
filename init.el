@@ -288,6 +288,9 @@ current."
     (setopt spatial-window-overlay-delay 0.3)))
 
 (use-package ffap
+  :init
+  (progn
+    (setopt ffap-machine-p-known 'reject))
   :config
   (progn
     (defun my/ffap-menu-ask (&rest args)
