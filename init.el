@@ -35,6 +35,13 @@
 (progn ; bindings
   (setopt mode-line-collapse-minor-modes '(not flymake-mode)))
 
+(progn ; C source code
+  ;; improve performance:
+  (setopt bidi-paragraph-direction 'left-to-right)
+  (setopt bidi-inhibit-bpa t)
+  (setopt redisplay-skip-fontification-on-input t)
+  (setopt read-process-output-max (* 4 1024 1024)))
+
 (use-package comp
   :init
   (progn
