@@ -455,7 +455,10 @@ This is recommended by Vertico's README."
     (setopt eval-expression-print-level 10)
     (setopt next-error-message-highlight 'keep)
     (setopt set-mark-command-repeat-pop t)
-    (setopt line-number-mode nil))
+    (setopt line-number-mode nil)
+    (setopt save-interprogram-paste-before-kill t)
+    (setopt kill-do-not-save-duplicates t)
+    (setopt set-mark-command-repeat-pop t))
   :config
   (progn
     (defun my/join-line ()
