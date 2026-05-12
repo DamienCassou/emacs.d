@@ -1919,7 +1919,16 @@ negative, the password is inserted at point."
     (reformatter-define nixfmt
       :program (executable-find "nixfmt")
       :args (list (format "--filename=%s" input-file))
-      :input-file (reformatter-temp-file-in-current-directory))))
+      :input-file (reformatter-temp-file-in-current-directory))
+
+    (reformatter-define csharpier
+      :program (executable-find "~/.dotnet/dotnet")
+      :args (list "csharpier" "format" "--stdin-path" input-file)
+      :input-file (reformatter-temp-file-in-current-directory)
+      :working-directory (locate-dominating-file
+                          default-directory
+                          (lambda (directory)
+                            (directory-files directory nil (rx ".sln" (? "x") string-end)))))))
 
 (use-package eslint-disable-rule
   :demand t
