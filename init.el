@@ -2115,9 +2115,9 @@ If PROJECT is nil, use `project-current'."
   (progn
     ;; Remove automatically-added entries:
     (setopt magic-fallback-mode-alist
-          (cl-delete 'json-mode magic-fallback-mode-alist :key #'cdr))
+            (cl-delete 'json-mode magic-fallback-mode-alist :key #'cdr))
     (setopt auto-mode-alist
-          (cl-delete 'json-mode auto-mode-alist :key #'cdr))))
+            (cl-delete 'json-mode auto-mode-alist :key #'cdr))))
 
 (use-package sh-script
   :interpreter ("bash" . bash-ts-mode)
