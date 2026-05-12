@@ -2110,6 +2110,11 @@ If PROJECT is nil, use `project-current'."
 (use-package toml-ts-mode
   :mode "\\.toml\\'")
 
+(use-package nxml-mode
+  :mode (rx (or
+             (seq "." (or "xml" "csproj" "Build.props" "slnx") string-end)
+             (seq "nuget.config" string-end))))
+
 (use-package json-mode
   :config
   (progn
