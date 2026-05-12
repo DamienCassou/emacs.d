@@ -1918,7 +1918,8 @@ negative, the password is inserted at point."
 
     (reformatter-define nixfmt
       :program (executable-find "nixfmt")
-      :args (list (format "--filename=" input-file)))))
+      :args (list (format "--filename=%s" input-file))
+      :input-file (reformatter-temp-file-in-current-directory))))
 
 (use-package eslint-disable-rule
   :demand t
