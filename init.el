@@ -1479,11 +1479,12 @@ The link will contain DESCRIPTION as text."
     (setopt notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
     (setopt notmuch-search-oldest-first nil)
     (setopt notmuch-draft-save-plaintext t)
-    (setopt notmuch-fcc-dirs "Perso/Sent")
-    (setopt notmuch-identities '("Damien Cassou <damien@cassou.me>"))
+    (setopt notmuch-fcc-dirs '(("booking@lacantine-brest.net" . "Booking/INBOX.Sent")
+                               (".*" . "Perso/Sent")))
 
     (setopt notmuch-saved-searches
             `((:name "inbox" :query "(folder:\"Perso/INBOX\")" :key "i")
+              (:name "inbox (booking)" :query "(folder:\"Booking/INBOX\")" :key "I")
               (:name "sent" :query "from:damien@cassou.me" :key "s")
               (:name "junk" :query "folder:\"Perso/Junk\" AND (NOT tag:spam)" :key "j"))))
 
@@ -1573,7 +1574,8 @@ The link will contain DESCRIPTION as text."
     (setopt message-send-mail-function 'message-send-mail-with-sendmail)
     (setopt message-signature t)
     (setopt message-signature-file "~/.signature")
-    (setopt message-mail-user-agent t)))
+    (setopt message-mail-user-agent t)
+    (setopt message-sendmail-envelope-from 'header)))
 
 (use-package paredit
   :bind (
@@ -2028,7 +2030,6 @@ negative, the password is inserted at point."
 (use-package sendmail
   :init
   (progn
-    (setopt send-mail-function 'smtpmail-send-it)
     (setopt sendmail-program "msmtp")))
 
 (use-package vterm
