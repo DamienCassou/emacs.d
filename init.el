@@ -1812,15 +1812,10 @@ negative, the password is inserted at point."
     (beginend-global-mode)))
 
 (use-package markdown-mode
+  :mode ("README\\.md\\'" . gfm-mode)
   :init
   (progn
-    ;; Remove automatically added entry to prefer markdown-ts-mode:
-    (with-eval-after-load 'markdown-mode
-      (setopt auto-mode-alist
-              (cl-delete 'markdown-mode auto-mode-alist :key #'cdr)))))
-
-(use-package markdown-ts-mode
-  :mode (rx (seq "." (or "md" "mdx" "markdown") string-end)))
+    (setopt markdown-gfm-additional-languages '("bash"))))
 
 (use-package repeat
   :demand t
