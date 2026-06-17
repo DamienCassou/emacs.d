@@ -909,7 +909,7 @@ minibuffer, even without explicitly focusing it."
                               ((string-match-p "foretagsplatsen/frontend" url) 7)
                               (t 10))))
           (require 'tmr)
-          (tmr minutes (format "Check draft %s" url) t))))))
+          (tmr minutes (format "Check draft %s" url)))))))
 
 (use-package forge-topic
   :init
@@ -2593,7 +2593,7 @@ prefix arg was used."
   :config
   (progn
     (defun my/tmr--acknowledge-prompt ()
-      t)
+      nil)
 
     (advice-add #'tmr--acknowledge-prompt
                 :override #'my/tmr--acknowledge-prompt)
