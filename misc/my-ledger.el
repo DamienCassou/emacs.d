@@ -43,7 +43,7 @@ MOMENT is an encoded date."
 (defun my-ledger-insert-mortgage-transaction ()
   "Insert a transaction based on a given description."
   (interactive)
-  (let* ((description (read-string "Description: "))
+  (let* ((description (string-trim (read-string "Description: ")))
          (date (ledger-read-date "Date: ")))
     (my-ledger-position-at-date (ledger-parse-iso-date date))
     (insert (format "%s %s\n" date description))
