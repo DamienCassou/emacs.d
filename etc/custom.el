@@ -29,7 +29,9 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el"
              :add-directory "tests")))
  '(safe-local-variable-values
-   '((org-export-global-macros
+   '((flymake-hledger-checks "ordereddates" "accounts" "commodities"
+                             "balanced")
+     (org-export-global-macros
       ("os-version" lambda (&rest _)
        (cond
         ((and (eq system-type 'gnu/linux)
