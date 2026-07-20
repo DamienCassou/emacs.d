@@ -18,6 +18,9 @@
 [submodule "microdata"]
 	path = lib/microdata
 	url = git@github.com:Stebalien/microdata.el.git
+[submodule "ox-linuxmag-fr"]
+	path = lib/ox-linuxmag-fr
+	url = https://github.com/DamienCassou/ox-linuxmag-fr
 [submodule "var/epkgs"]
 	path = var/epkgs
 	url = git@github.com:emacsmirror/epkgs.git
