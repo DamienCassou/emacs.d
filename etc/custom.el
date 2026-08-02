@@ -29,7 +29,12 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el"
              :add-directory "tests")))
  '(safe-local-variable-values
-   '((flymake-hledger-checks "ordereddates" "accounts" "commodities"
+   '((org-babel-default-header-args:sh (:exports . "both")
+                                       (:results . "output raw")
+                                       (:session . "nixos-sysops")
+                                       (:tangle . "yes")
+                                       (:wrap . "src text"))
+     (flymake-hledger-checks "ordereddates" "accounts" "commodities"
                              "balanced")
      (org-export-global-macros
       ("os-version" lambda (&rest _)
