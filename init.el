@@ -2444,12 +2444,6 @@ If PROJECT is nil, use `project-current'."
     ;; Use consult to have in-buffer completions displayed in the minibuffer:
     (setopt completion-in-region-function #'consult-completion-in-region)
 
-    ;; Use `project` with consult:
-    (setopt consult-project-root-function
-            (lambda ()
-              (when-let* (project (project-current))
-                (project-root project))))
-
     (defun my/consult-switch-vterm ()
       "List vterm buffers."
       (interactive)
