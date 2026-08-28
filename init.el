@@ -1198,7 +1198,7 @@ If SAVE is non-nil save, otherwise format candidate given action KEY."
     (setopt org-insert-heading-respect-content t)
     (setopt org-clock-clocked-in-display nil)
     (setopt org-adapt-indentation nil)
-    (setopt org-directory "~/personal/notes/org")
+    (setopt org-directory "~/personal/NextCloud/licorne.ninja/notes/org")
     (setopt org-default-notes-file (expand-file-name "inbox.org" org-directory))
     (setopt org-default-calendar-file (expand-file-name "schplaf.org" org-directory))
     (setopt org-default-gtd-file (expand-file-name "gtd.org" org-directory))
@@ -1349,7 +1349,7 @@ because slides don't change their ID all the time."
   :init
   (progn
     (setopt denote-date-prompt-use-org-read-date t)
-    (setopt denote-directory (expand-file-name "~/personal/notes/denote"))
+    (setopt denote-directory (expand-file-name "~/personal/NextCloud/licorne.ninja/notes/denote"))
     (setopt denote-known-keywords '("emacs" "beniguet" "école" "Sarah"))
     (setopt denote-front-matter-date-format 'org-timestamp)
     (setopt denote-dired-directories
