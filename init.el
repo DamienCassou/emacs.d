@@ -2370,24 +2370,7 @@ If PROJECT is nil, use `project-current'."
     (add-to-list 'project-switch-commands '(my/vterm-open-new "Shell") t)
 
     (add-to-list 'project-vc-extra-root-markers "package.json")
-    (add-to-list 'project-vc-extra-root-markers "*.sln")
-
-    (defun my/project-copy-filename (file)
-      "Copy the path of FILE relative to the project root to the kill ring."
-      (interactive (list (or
-                          (buffer-file-name)
-                          (and (derived-mode-p 'dired-mode) (dired-filename-at-point))
-                          default-directory)))
-      (when-let* (file
-                  (expanded-filename (expand-file-name file))
-                  (root (expand-file-name (project-root
-                                           (project-current
-                                            nil
-                                            (file-name-directory expanded-filename)))))
-                  ((string-prefix-p root expanded-filename))
-                  (result (substring expanded-filename (length root))))
-        (kill-new result)
-        (message "%s" result)))))
+    (add-to-list 'project-vc-extra-root-markers "*.sln")))
 
 (use-package conner
   :bind (([remap project-compile] . conner-run-project-command))
