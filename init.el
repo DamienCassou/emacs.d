@@ -2404,6 +2404,9 @@ If PROJECT is nil, use `project-current'."
       (consult-buffer (list vterm-source))))
   :config
   (progn
+    ;; Add --hidden to the list of arguments:
+    (setq consult-ripgrep-args (concat "rg --hidden --glob=!.git " (substring consult-ripgrep-args 3)))
+
     ;; Configure automatic preview of candidates
     (consult-customize
      consult-ripgrep consult-git-grep consult-grep consult-buffer
