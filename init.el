@@ -2,8 +2,6 @@
 
 (add-to-list 'load-path (locate-user-emacs-file "misc"))
 
-(setopt load-prefer-newer t)
-
 ;; Apply recommendation from modus Info manual:
 (setopt face-near-same-color-threshold 45000)
 
@@ -15,11 +13,6 @@
 ;; I don't use package.el to install packages but I still want to
 ;; configure autoloads and info manuals:
 (package-activate-all)
-
-(progn ;    `borg'
-  (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
-  (require  'borg)
-  (borg-initialize))
 
 (progn ; `use-package'
   (setopt use-package-always-defer t)
@@ -61,8 +54,6 @@
   :hook (auto-compile-inhibit-compile . auto-compile-inhibit-compile-detached-git-head)
   :config
   (progn
-    (auto-compile-on-load-mode)
-    (auto-compile-on-save-mode)
     (auto-compile-use-mode-line-set nil nil)))
 
 (progn ; `startup'

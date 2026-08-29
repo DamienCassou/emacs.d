@@ -10,9 +10,20 @@
   (setq invocation-directory
         (let ((emacs-bin-store-path (file-chase-links (expand-file-name invocation-name "~/.nix-profile/bin"))))
           (file-name-parent-directory emacs-bin-store-path))))
+;; Recommended borg setup (https://github.com/emacscollective/seed/blob/main/early-init.el)
+(setq load-prefer-newer t)
 
-;; In Emacs 27+, package initialization occurs before `user-init-file' is
-;; loaded, but after `early-init-file'.
+;; Recommended borg setup (https://github.com/emacscollective/seed/blob/main/early-init.el)
+(add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
+(require  'borg)
+(borg-initialize)
+
+;; Recommended borg setup (https://github.com/emacscollective/seed/blob/main/early-init.el)
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
+
+;; Recommended borg setup (https://github.com/emacscollective/seed/blob/main/early-init.el)
 (setq package-enable-at-startup nil)
 
 ;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
