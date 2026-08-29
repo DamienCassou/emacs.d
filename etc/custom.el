@@ -29,7 +29,8 @@
      (recipe :remove-suffix ".el" :add-suffix "-test.el"
              :add-directory "tests")))
  '(safe-local-variable-values
-   '((org-babel-default-header-args:sh (:exports . "both")
+   '((sisyphus-libraries t "borg.mk" "borg.sh")
+     (org-babel-default-header-args:sh (:exports . "both")
                                        (:results . "output raw")
                                        (:session . "nixos-sysops")
                                        (:tangle . "yes")
