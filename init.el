@@ -2544,6 +2544,7 @@ prefix arg was used."
     (defun my/tmr--acknowledge-prompt ()
       nil)
 
+    ;; Never ask if the timer should be acknowledged:
     (advice-add #'tmr--acknowledge-prompt
                 :override #'my/tmr--acknowledge-prompt)
 
