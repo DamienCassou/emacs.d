@@ -2552,7 +2552,7 @@ prefix arg was used."
       "Replaces `tmr-notification-notify' to use the alert package.
 The alert package works on different platforms."
       (let ((title "TMR")
-            (body (tmr--long-description-for-finished-timer timer)))
+            (body (substring-no-properties (tmr--long-description-for-finished-timer timer))))
         (alert body :title title)))
 
     (advice-add #'tmr-notification-notify
