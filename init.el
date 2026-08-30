@@ -160,7 +160,8 @@ either read only or modified.")
 (progn ; `lisp'
   ;; https://irreal.org/blog/?p=13371
   (bind-key "C-. ," #'delete-pair)
-  (setopt delete-pair-blink-delay 0.1))
+  (setopt delete-pair-blink-delay 0.1)
+  (setopt delete-pair-push-mark t))
 
 (use-package which-func
   :defer 5
@@ -420,7 +421,8 @@ This is recommended by Vertico's README."
     (setopt line-number-mode nil)
     (setopt save-interprogram-paste-before-kill t)
     (setopt kill-do-not-save-duplicates t)
-    (setopt set-mark-command-repeat-pop t))
+    (setopt set-mark-command-repeat-pop t)
+    (setopt exchange-point-and-mark-highlight-region nil))
   :config
   (progn
     (defun my/join-line ()
