@@ -1817,6 +1817,12 @@ negative, the password is inserted at point."
   (progn
     (global-subword-mode)))
 
+(use-package system-taskbar
+  :demand t
+  :config
+  (progn
+    (system-taskbar-mode 1)))
+
 (use-package prodigy
   :bind (("C-. p" . prodigy)
          :map prodigy-mode-map
