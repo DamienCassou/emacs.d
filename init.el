@@ -2538,7 +2538,8 @@ prefix arg was used."
   (progn
     (setopt tmr-description-list '("Check draft PR" "Merge PR" "Check dev-damien"))
     (setopt tmr-sound-file
-            (expand-file-name (locate-user-emacs-file "media/complete.oga"))))
+            (expand-file-name (locate-user-emacs-file "media/complete.oga")))
+    (setopt tmr-timer-finished-functions (list #'tmr-sound-play #'my/tmr--notification-notify #'tmr-print-message-for-finished-timer #'my/tmr--system-alert)))
   :config
   (progn
     (defun my/tmr--acknowledge-prompt ()
@@ -2554,9 +2555,11 @@ The alert package works on different platforms."
       (let ((title "TMR")
             (body (substring-no-properties (tmr--long-description-for-finished-timer timer))))
         (alert body :title title)))
+    (defun my/tmr--system-alert (timer)
+      "Set Emacs to be in alert mode.
 
-    (advice-add #'tmr-notification-notify
-                :override #'my/tmr--notification-notify)))
+Flashes the system taskbar icon."
+      (system-taskbar-attention 'informational))))
 
 (use-package tmr-tabulated
   :bind (
