@@ -117,6 +117,7 @@
         wdired-upcase-word
         wgrep-change-to-wgrep-mode
         wgrep-finish-edit
+        whole-line-or-region-comment-dwim-2
         whole-line-or-region-kill-region
         whole-line-or-region-kill-ring-save
         yaml-electric-backspace
