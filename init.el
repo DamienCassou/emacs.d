@@ -859,6 +859,9 @@ minibuffer, even without explicitly focusing it."
   :demand t
   :after magit
   :hook (forge-post-submit-callback . my/forge-start-timer-for-draft-pullreq)
+  :init
+  (progn
+    (setq forge-browse-topics-using-forge nil))
   :config
   (progn
     ;; Don't list pull requests in magit:
