@@ -965,24 +965,26 @@ Those are the words following `ispell-words-keyword' (usually
         (setopt jinx--session-words (append jinx--session-words (split-string ispell-localwords)))))
 
     ;; https://github.com/minad/jinx/wiki
-    (defun my/jinx-save-as-ispell-localword (save key word)
-      "Save WORD using ispell's `ispell-words-keyword'.
-If SAVE is non-nil save, otherwise format candidate given action KEY."
-      (if save
-          (progn
-            (require 'ispell)
-            (ispell-add-per-file-word-list word)
-            (add-to-list 'jinx--session-words word)
-            (setopt jinx-local-words
-                    (string-join
-                     (sort (delete-dups
-                            (cons word (split-string jinx-local-words)))
-                           #'string<)
-                     " ")))
-        (list key word "File")))
+    (defun my/jinx-save-as-ispell-localword (action key word)
+      "Add or remove WORD using ispell's `ispell-words-keyword', or format word.
 
-    (require 'map)
-    (map-put! jinx--save-keys ?* #'my/jinx-save-as-ispell-localword)))
+ACTION can be add, remove, has, format; in the last case, format with KEY."
+      (pcase-exhaustive action
+        ('add (progn
+                (require 'ispell)
+                (ispell-add-per-file-word-list word)
+                (add-to-list 'jinx--session-words word)
+                (setq jinx-local-words
+                      (string-join
+                       (sort (delete-dups
+                              (cons word (split-string jinx-local-words)))
+                             #'string<)
+                       " "))))
+        ('remove (cl-callf2 remove word jinx--session-words))
+        ('has (member word (split-string jinx-local-words)))
+        ('format `((,(char-to-string key) ,word "File")))))
+
+    (setf (alist-get ?* jinx--save-keys) #'my/jinx-save-as-ispell-localword)))
 
 (use-package eldoc
   :init
