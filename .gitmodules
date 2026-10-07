@@ -21,6 +21,9 @@
 [submodule "ox-linuxmag-fr"]
 	path = lib/ox-linuxmag-fr
 	url = https://github.com/DamienCassou/ox-linuxmag-fr
+[submodule "powershell"]
+	path = lib/powershell
+	url = https://github.com/jschaf/powershell.el
 [submodule "var/epkgs"]
 	path = var/epkgs
 	url = git@github.com:emacsmirror/epkgs.git
