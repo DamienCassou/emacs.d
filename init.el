@@ -2054,6 +2054,12 @@ If PROJECT is nil, use `project-current'."
         (vterm-send-string "source ~/.profile" t)
         (vterm-send-return)))))
 
+(use-package powershell
+  :bind (
+         :map powershell-mode-map
+         ("C-'" . nil)
+         ("M-'" . nil)))
+
 (use-package docker
   :bind (("C-. d" . docker)))
 
