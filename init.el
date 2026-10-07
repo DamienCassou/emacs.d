@@ -2689,7 +2689,7 @@ Flashes the system taskbar icon."
                    "-o" ,org-file-name
                    ,(buffer-file-name)))
           (with-current-buffer (find-file-noselect org-file-name)
-            (info (org-texinfo-export-to-info)))))
+            (info (expand-file-name (org-texinfo-export-to-info))))))
        (t (user-error "Don't know how to convert `%s' to an `info' file"
                       (buffer-file-name)))))))
 
