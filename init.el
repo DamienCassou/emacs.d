@@ -790,6 +790,15 @@ minibuffer, even without explicitly focusing it."
   (progn
     (recentf-mode)))
 
+(use-package git-commit
+  :config
+  (progn
+    ;; I asked magit not to add commit diff in the commit message by
+    ;; remove "--verbose" from the magit-commit transient. These 2
+    ;; lines avoid searching for a non-existent diff section:
+    (remove-hook 'git-commit-setup-hook #'git-commit-collapse-diff)
+    (remove-hook 'git-commit-setup-hook #'git-commit-propertize-diff)))
+
 (use-package magit
   :bind ((
           :map magit-mode-map
