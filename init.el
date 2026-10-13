@@ -1295,11 +1295,12 @@ because slides don't change their ID all the time."
   :config
   (progn
     (setopt org-caldav-url "https://licorne.ninja/remote.php/dav/calendars/DamienCassou"
-          org-caldav-calendar-id "personal"
-          org-caldav-inbox org-default-calendar-file
-          org-caldav-files '()
-          org-icalendar-timezone "Europe/Berlin"
-          org-caldav-sync-changes-to-org 'all)
+            org-caldav-calendar-id "personal"
+            org-caldav-inbox org-default-calendar-file
+            org-caldav-files '()
+            org-icalendar-timezone "Europe/Berlin"
+            org-caldav-sync-changes-to-org 'all
+            org-caldav-delete-calendar-entries 'always)
 
     (defun my/org-caldav-archive-year (year)
       "Archive a given year in my calendar."
