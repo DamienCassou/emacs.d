@@ -1377,12 +1377,15 @@ Interactively, DATE is asked to the user."
       "Save FILE in attachments/ directory and add a link in current buffer.
 The link will contain DESCRIPTION as text."
       (interactive "*fSelect file to attach: \nMDescription: " org-mode)
-      (let ((target-dir (expand-file-name "attachments" denote-directory)))
+      (let ((target-dir (expand-file-name (concat (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))
+                                                  "-attachments")
+                                          denote-directory)))
         (unless (file-directory-p target-dir)
           (make-directory target-dir))
-        (let* ((target-basename (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))
-               (target-filename (make-temp-file
-                                 (expand-file-name (concat target-basename ".") target-dir)
+        (let* ((target-filename (make-temp-file
+                                 (expand-file-name
+                                  (concat (file-name-sans-extension (file-name-nondirectory file)) ".")
+                                  target-dir)
                                  nil
                                  (concat "." (file-name-extension file)))))
           (copy-file file target-filename t)
