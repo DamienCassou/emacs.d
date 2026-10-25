@@ -65,7 +65,8 @@
 
 (progn ; `files'
   (setopt make-backup-files nil)
-  (setopt version-control 'never))
+  (setopt version-control 'never)
+  (setopt trusted-content `(,(abbreviate-file-name (expand-file-name "lib/ghelstack/" user-emacs-directory)))))
 
 (progn ; `filelock'
   (setopt create-lockfiles nil))
