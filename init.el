@@ -2707,8 +2707,6 @@ Flashes the system taskbar icon."
        (t (user-error "Don't know how to convert `%s' to an `info' file"
                       (buffer-file-name)))))))
 
-(global-set-key (kbd "C-x x v") 'my/view-text-file-as-info-manual)
-
 ;; https://mbork.pl/2025-10-06_A_debug_helper_in_Elisp
 (defvar my/alert-vars-format "%s: %S\n")
 (defmacro my/alert-vars (&rest vars)
